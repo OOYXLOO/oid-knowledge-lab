@@ -1,7 +1,7 @@
 "use strict";
 
 const assert = require("assert");
-const { buildIanaPenReport, emailDomain, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
+const { buildIanaPenReport, buildPublicPenIndex, emailDomain, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { parseOidMarkdown } = require("../src/parser");
 const { buildReport } = require("../src/report");
 const { isAllowedByRobots } = require("../src/robots");
@@ -102,10 +102,22 @@ Decimal
     Example Contact
       ---none---
       extra note
+11
+  Broken Namedave&example.com
+    Contact
+      other&example.com
+12
+  MainSkill Technologies GmbH&Co.KG
+    Contact
+      iana_assignments&mainskill.com
+13
+  Broken InitialK&example.com
+    Contact
+      other&example.com
 `;
   const records = parseEnterpriseNumbers(text);
   assert.equal(parseLastUpdated(text), "2026-06-23");
-  assert.equal(records.length, 3);
+  assert.equal(records.length, 6);
   assert.equal(records[1].oid, "1.3.6.1.4.1.9");
   assert.equal(records[1].organization, "ciscoSystems");
   assert.equal(records[2].notes[0], "extra note");
@@ -113,11 +125,23 @@ Decimal
   assert.equal(emailDomain("---none---"), "none");
 
   const report = buildIanaPenReport(records, { lastUpdated: "2026-06-23" });
-  assert.equal(report.record_count, 3);
-  assert.equal(report.assigned_count, 2);
+  assert.equal(report.record_count, 6);
+  assert.equal(report.assigned_count, 5);
   assert.equal(report.reserved_count, 1);
-  assert.equal(report.highest_enterprise_number, 10);
+  assert.equal(report.highest_enterprise_number, 13);
   assert.ok(report.top_email_domains.some((entry) => entry.key === "cisco.com"));
+
+  const publicIndex = buildPublicPenIndex(records);
+  assert.deepEqual(publicIndex[0], {
+    number: 9,
+    oid: "1.3.6.1.4.1.9",
+    organization: "ciscoSystems"
+  });
+  assert.equal(Object.hasOwn(publicIndex[0], "contact"), false);
+  assert.equal(Object.hasOwn(publicIndex[0], "email_obfuscated"), false);
+  assert.equal(publicIndex.some((record) => record.number === 11), false);
+  assert.equal(publicIndex.some((record) => record.number === 12), true);
+  assert.equal(publicIndex.some((record) => record.number === 13), false);
 }
 
 function testSiteRenderer() {
@@ -135,9 +159,12 @@ function testSiteRenderer() {
     highest_enterprise_number: 99,
     top_email_domains: [{ key: "example.com", count: 3 }],
     organization_initials: [{ key: "A", count: 10 }],
+    search_index_count: 99,
     sample_organizations: [{ enterprise_number: 9, oid: "1.3.6.1.4.1.9", organization: "Example <Org>" }]
   });
   assert.ok(html.includes("IANA Private Enterprise Numbers dashboard"));
+  assert.ok(html.includes("Search enterprise OIDs"));
+  assert.ok(html.includes("99 public IANA PEN assignments"));
   assert.ok(html.includes("66,101") === false);
   assert.ok(html.includes("Example &lt;Org&gt;"));
 }

@@ -32,6 +32,20 @@ function barRows(items, total, label) {
   }).join("\n");
 }
 
+function renderSearchPanel(searchCount) {
+  return `<section class="panel search-panel">
+      <div>
+        <p class="eyebrow">Lookup tool</p>
+        <h2>Search enterprise OIDs</h2>
+        <p class="panel-copy">Search ${formatNumber(searchCount)} public IANA PEN assignments by enterprise number, OID, or organization name. Contact-level records are not included in this published index.</p>
+      </div>
+      <label class="search-label" for="pen-search">Search term</label>
+      <input id="pen-search" data-search-input type="search" placeholder="Try 9, 1.3.6.1.4.1.9, Cisco, IBM" autocomplete="off">
+      <p class="search-count" data-search-count></p>
+      <div class="search-results" data-search-results></div>
+    </section>`;
+}
+
 function renderDashboard(report) {
   const assigned = Number(report.assigned_count || 0);
   const total = Number(report.record_count || 0);
@@ -43,6 +57,8 @@ function renderDashboard(report) {
     <td><code>${escapeHtml(item.oid)}</code></td>
     <td>${escapeHtml(item.organization)}</td>
   </tr>`).join("\n");
+
+  const searchCount = Number(report.search_index_count || report.assigned_count || 0);
 
   return `<!doctype html>
 <html lang="en">
@@ -87,6 +103,8 @@ function renderDashboard(report) {
       <div class="bars">${barRows(report.organization_initials, initialMax, "orgs")}</div>
     </section>
 
+    ${renderSearchPanel(searchCount)}
+
     <section class="panel">
       <div>
         <p class="eyebrow">Sample lookup surface</p>
@@ -105,6 +123,8 @@ function renderDashboard(report) {
     </section>
   </main>
   <script src="data.js"></script>
+  <script src="search-index.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>`;
 }
@@ -194,6 +214,35 @@ a {
   margin-top: 16px;
   padding: 20px;
 }
+.panel-copy {
+  max-width: 760px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.search-label {
+  display: block;
+  margin: 12px 0 6px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.search-panel input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  font: inherit;
+}
+.search-count {
+  margin: 10px 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.search-results {
+  overflow-x: auto;
+}
 .bar-row {
   display: grid;
   grid-template-columns: minmax(100px, 180px) 1fr minmax(92px, auto);
@@ -246,15 +295,76 @@ code {
 `;
 }
 
-function buildSite({ reportFile, outDir }) {
+function renderAppJs() {
+  return `(function () {
+  const input = document.querySelector("[data-search-input]");
+  const results = document.querySelector("[data-search-results]");
+  const count = document.querySelector("[data-search-count]");
+  const index = Array.isArray(window.OID_KNOWLEDGE_INDEX) ? window.OID_KNOWLEDGE_INDEX : [];
+
+  function escapeHtml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function normalize(value) {
+    return String(value == null ? "" : value).trim().toLowerCase();
+  }
+
+  function matches(record, query) {
+    if (!query) return true;
+    return String(record.number).includes(query) ||
+      normalize(record.oid).includes(query) ||
+      normalize(record.organization).includes(query);
+  }
+
+  function render() {
+    if (!input || !results || !count) return;
+    const query = normalize(input.value);
+    const matchesList = index.filter((record) => matches(record, query));
+    const shown = matchesList.slice(0, query ? 25 : 12);
+    count.textContent = query
+      ? "Showing " + shown.length.toLocaleString("en-US") + " of " + matchesList.length.toLocaleString("en-US") + " matches"
+      : "Showing first " + shown.length.toLocaleString("en-US") + " of " + index.length.toLocaleString("en-US") + " searchable assignments";
+    results.innerHTML = "<table><thead><tr><th>Number</th><th>OID</th><th>Organization</th></tr></thead><tbody>" +
+      shown.map((record) => "<tr><td>" + Number(record.number).toLocaleString("en-US") + "</td><td><code>" + escapeHtml(record.oid) + "</code></td><td>" + escapeHtml(record.organization) + "</td></tr>").join("") +
+      "</tbody></table>";
+  }
+
+  if (input) input.addEventListener("input", render);
+  render();
+}());
+`;
+}
+
+function readSearchIndex(indexFile, report) {
+  if (indexFile && fs.existsSync(indexFile)) {
+    return JSON.parse(fs.readFileSync(indexFile, "utf8"));
+  }
+  return (report.sample_organizations || []).map((record) => ({
+    number: record.enterprise_number,
+    oid: record.oid,
+    organization: record.organization
+  }));
+}
+
+function buildSite({ indexFile, reportFile, outDir }) {
   const report = JSON.parse(fs.readFileSync(reportFile, "utf8"));
+  const searchIndex = readSearchIndex(indexFile, report);
+  report.search_index_count = searchIndex.length;
   ensureDir(outDir);
   fs.writeFileSync(path.join(outDir, "index.html"), renderDashboard(report), "utf8");
   fs.writeFileSync(path.join(outDir, "styles.css"), renderCss(), "utf8");
   fs.writeFileSync(path.join(outDir, "data.js"), `window.OID_KNOWLEDGE_REPORT = ${JSON.stringify(report, null, 2)};\n`, "utf8");
+  fs.writeFileSync(path.join(outDir, "search-index.js"), `window.OID_KNOWLEDGE_INDEX = ${JSON.stringify(searchIndex)};\n`, "utf8");
+  fs.writeFileSync(path.join(outDir, "app.js"), renderAppJs(), "utf8");
   return {
-    output_files: ["index.html", "styles.css", "data.js"].map((file) => path.join(outDir, file)),
+    output_files: ["index.html", "styles.css", "data.js", "search-index.js", "app.js"].map((file) => path.join(outDir, file)),
     record_count: report.record_count,
+    search_record_count: searchIndex.length,
     source: report.source
   };
 }
@@ -264,5 +374,6 @@ module.exports = {
   escapeHtml,
   formatNumber,
   percent,
-  renderDashboard
+  renderDashboard,
+  renderSearchPanel
 };

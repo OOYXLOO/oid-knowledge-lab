@@ -6,9 +6,9 @@
   "scripts": {
     "check": "node --check src/cli.js && node --check src/ianaPen.js && node --check src/net.js && node --check src/parser.js && node --check src/report.js && node --check src/site.js && node --check src/robots.js && node --check src/sitemap.js && node --check tests/oidKnowledge.test.js",
     "test": "node tests/oidKnowledge.test.js",
-    "build:site": "node src/cli.js build-site --report reports/iana-pen-summary.json --out public",
+    "build:site": "node src/cli.js build-site --report reports/iana-pen-summary.json --index reports/iana-pen-public-index.json --out public",
     "crawl:sample": "node src/cli.js crawl --limit 25 --delay-ms 1000 --out data/sample",
-    "import:iana-pen": "node src/cli.js import-iana-pen --out data/iana --report reports/iana-pen-summary.json",
+    "import:iana-pen": "node src/cli.js import-iana-pen --out data/iana --report reports/iana-pen-summary.json --public-index reports/iana-pen-public-index.json",
     "report": "node src/cli.js report --in data/sample/records.jsonl --out data/sample/report.json",
     "audit:local": "npm run check && npm test && npm run build:site"
   },

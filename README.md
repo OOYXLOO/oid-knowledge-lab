@@ -63,7 +63,7 @@ The project also supports the IANA Private Enterprise Numbers registry. IANA lic
 npm run import:iana-pen
 ```
 
-The command writes local JSONL under `data/iana/` and a committed aggregate report under `reports/iana-pen-summary.json`. The JSONL is ignored by Git because it includes public contact fields; the report keeps only aggregate statistics and sample organizations.
+The command writes local JSONL under `data/iana/`, a committed aggregate report under `reports/iana-pen-summary.json`, and a committed public search index under `reports/iana-pen-public-index.json`. The JSONL is ignored by Git because it includes public contact fields; the report and search index keep only aggregate statistics, enterprise numbers, OIDs, and organization names.
 
 ## Static Dashboard
 
@@ -71,7 +71,7 @@ The command writes local JSONL under `data/iana/` and a committed aggregate repo
 npm run build:site
 ```
 
-This generates a static dashboard in `public/` from the aggregate report. It is safe to publish because it contains only summary counts, source links, and sample organizations.
+This generates a static dashboard in `public/` from the aggregate report and public search index. It is safe to publish because it excludes contact names and email values.
 
 ## Authorized Full Import
 
@@ -90,6 +90,6 @@ The command refuses to run full collection without both the environment flag and
 node src/cli.js inspect-source
 node src/cli.js crawl --limit 10 --delay-ms 1000 --out data/sample
 node src/cli.js report --in data/sample/records.jsonl --out data/sample/report.json
-node src/cli.js import-iana-pen --out data/iana --report reports/iana-pen-summary.json
-node src/cli.js build-site --report reports/iana-pen-summary.json --out public
+node src/cli.js import-iana-pen --out data/iana --report reports/iana-pen-summary.json --public-index reports/iana-pen-public-index.json
+node src/cli.js build-site --report reports/iana-pen-summary.json --index reports/iana-pen-public-index.json --out public
 ```

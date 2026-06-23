@@ -87,11 +87,24 @@ function buildIanaPenReport(records, meta = {}) {
   };
 }
 
+function buildPublicPenIndex(records) {
+  const emailLike = /[A-Za-z0-9._%+-]+[&@][a-z0-9.-]+\.[a-z]{2,}/;
+  return records
+    .filter((record) => record.organization && record.organization.toLowerCase() !== "reserved")
+    .filter((record) => !emailLike.test(record.organization))
+    .map((record) => ({
+      number: record.enterprise_number,
+      oid: record.oid,
+      organization: record.organization
+    }));
+}
+
 module.exports = {
   IANA_LICENSE_URL,
   IANA_PEN_URL,
   PEN_PREFIX,
   buildIanaPenReport,
+  buildPublicPenIndex,
   emailDomain,
   parseEnterpriseNumbers,
   parseLastUpdated

@@ -2,7 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
-const { buildIanaPenReport, IANA_LICENSE_URL, IANA_PEN_URL, parseEnterpriseNumbers, parseLastUpdated } = require("./ianaPen");
+const { buildIanaPenReport, buildPublicPenIndex, IANA_LICENSE_URL, IANA_PEN_URL, parseEnterpriseNumbers, parseLastUpdated } = require("./ianaPen");
 const { ensureDir, fetchText, sleep, writeJson } = require("./net");
 const { parseOidMarkdown } = require("./parser");
 const { buildReport, readJsonl } = require("./report");
@@ -141,15 +141,18 @@ function report(args) {
 
 function buildStaticSite(args) {
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
+  const indexFile = path.resolve(ROOT, argValue(args, "--index", "reports/iana-pen-public-index.json"));
   const outDir = path.resolve(ROOT, argValue(args, "--out", "public"));
-  const result = buildSite({ reportFile, outDir });
+  const result = buildSite({ indexFile, reportFile, outDir });
   console.log(`site files: ${result.output_files.map((file) => path.relative(ROOT, file).replace(/\\/g, "/")).join(", ")}`);
   console.log(`site records: ${result.record_count}`);
+  console.log(`search records: ${result.search_record_count}`);
 }
 
 async function importIanaPen(args) {
   const outDir = path.resolve(ROOT, argValue(args, "--out", "data/iana"));
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
+  const publicIndexFile = path.resolve(ROOT, argValue(args, "--public-index", "reports/iana-pen-public-index.json"));
   const response = await fetchText(IANA_PEN_URL);
   const records = parseEnterpriseNumbers(response.body);
   const lastUpdated = parseLastUpdated(response.body);
@@ -170,9 +173,11 @@ async function importIanaPen(args) {
     licenseUrl: IANA_LICENSE_URL,
     lastUpdated
   }));
+  writeJson(publicIndexFile, buildPublicPenIndex(records));
   console.log(`iana records: ${records.length}`);
   console.log(`jsonl written: ${path.relative(ROOT, jsonlFile).replace(/\\/g, "/")}`);
   console.log(`report written: ${path.relative(ROOT, reportFile).replace(/\\/g, "/")}`);
+  console.log(`public index written: ${path.relative(ROOT, publicIndexFile).replace(/\\/g, "/")}`);
 }
 
 async function main() {
