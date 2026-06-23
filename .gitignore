@@ -1,0 +1,8 @@
+node_modules/
+.env
+.DS_Store
+data/full/
+data/raw/
+data/sample/*.json
+data/sample/*.jsonl
+tmp/
