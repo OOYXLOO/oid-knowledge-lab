@@ -5,6 +5,7 @@ const { buildIanaPenReport, emailDomain, parseEnterpriseNumbers, parseLastUpdate
 const { parseOidMarkdown } = require("../src/parser");
 const { buildReport } = require("../src/report");
 const { isAllowedByRobots } = require("../src/robots");
+const { escapeHtml, percent, renderDashboard } = require("../src/site");
 const { getOidEntries, parseSitemap } = require("../src/sitemap");
 
 function testSitemapParser() {
@@ -119,12 +120,35 @@ Decimal
   assert.ok(report.top_email_domains.some((entry) => entry.key === "cisco.com"));
 }
 
+function testSiteRenderer() {
+  assert.equal(escapeHtml("<tag>\"x\"</tag>"), "&lt;tag&gt;&quot;x&quot;&lt;/tag&gt;");
+  assert.equal(percent(25, 100), "25.0%");
+  const html = renderDashboard({
+    source_url: "https://example.com/source",
+    license_url: "https://example.com/license",
+    license_summary: "Open registry summary.",
+    generated_at: "2026-06-24T00:00:00.000Z",
+    prefix: "1.3.6.1.4.1",
+    record_count: 100,
+    assigned_count: 95,
+    reserved_count: 5,
+    highest_enterprise_number: 99,
+    top_email_domains: [{ key: "example.com", count: 3 }],
+    organization_initials: [{ key: "A", count: 10 }],
+    sample_organizations: [{ enterprise_number: 9, oid: "1.3.6.1.4.1.9", organization: "Example <Org>" }]
+  });
+  assert.ok(html.includes("IANA Private Enterprise Numbers dashboard"));
+  assert.ok(html.includes("66,101") === false);
+  assert.ok(html.includes("Example &lt;Org&gt;"));
+}
+
 function main() {
   testSitemapParser();
   testRobots();
   testMarkdownParser();
   testReport();
   testIanaPenParser();
+  testSiteRenderer();
   console.log("oid knowledge tests passed");
 }
 

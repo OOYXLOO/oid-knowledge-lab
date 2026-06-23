@@ -22,6 +22,7 @@ Relevant public references:
 ```bash
 npm run check
 npm test
+npm run build:site
 npm run crawl:sample
 npm run report
 npm run import:iana-pen
@@ -64,6 +65,14 @@ npm run import:iana-pen
 
 The command writes local JSONL under `data/iana/` and a committed aggregate report under `reports/iana-pen-summary.json`. The JSONL is ignored by Git because it includes public contact fields; the report keeps only aggregate statistics and sample organizations.
 
+## Static Dashboard
+
+```bash
+npm run build:site
+```
+
+This generates a static dashboard in `public/` from the aggregate report. It is safe to publish because it contains only summary counts, source links, and sample organizations.
+
 ## Authorized Full Import
 
 Only use this after obtaining specific authorization from the site owner:
@@ -82,4 +91,5 @@ node src/cli.js inspect-source
 node src/cli.js crawl --limit 10 --delay-ms 1000 --out data/sample
 node src/cli.js report --in data/sample/records.jsonl --out data/sample/report.json
 node src/cli.js import-iana-pen --out data/iana --report reports/iana-pen-summary.json
+node src/cli.js build-site --report reports/iana-pen-summary.json --out public
 ```

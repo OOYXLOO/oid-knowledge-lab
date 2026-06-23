@@ -7,6 +7,7 @@ const { ensureDir, fetchText, sleep, writeJson } = require("./net");
 const { parseOidMarkdown } = require("./parser");
 const { buildReport, readJsonl } = require("./report");
 const { isAllowedByRobots, sitemapUrls } = require("./robots");
+const { buildSite } = require("./site");
 const { getOidEntries, parseSitemap } = require("./sitemap");
 
 const ROOT = path.resolve(__dirname, "..");
@@ -138,6 +139,14 @@ function report(args) {
   console.log(`report written: ${path.relative(ROOT, output).replace(/\\/g, "/")}`);
 }
 
+function buildStaticSite(args) {
+  const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
+  const outDir = path.resolve(ROOT, argValue(args, "--out", "public"));
+  const result = buildSite({ reportFile, outDir });
+  console.log(`site files: ${result.output_files.map((file) => path.relative(ROOT, file).replace(/\\/g, "/")).join(", ")}`);
+  console.log(`site records: ${result.record_count}`);
+}
+
 async function importIanaPen(args) {
   const outDir = path.resolve(ROOT, argValue(args, "--out", "data/iana"));
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
@@ -170,9 +179,10 @@ async function main() {
   const [command, ...args] = process.argv.slice(2);
   if (command === "inspect-source") return inspectSource();
   if (command === "crawl") return crawl(args);
+  if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 
