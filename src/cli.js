@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { auditAssetFile } = require("./assetAudit");
 const { buildIanaPenReport, buildPublicPenIndex, IANA_LICENSE_URL, IANA_PEN_URL, parseEnterpriseNumbers, parseLastUpdated } = require("./ianaPen");
 const { buildManifestFromFiles } = require("./manifest");
 const { ensureDir, fetchText, sleep, writeJson } = require("./net");
@@ -152,6 +153,20 @@ function report(args) {
   console.log(`report written: ${path.relative(ROOT, output).replace(/\\/g, "/")}`);
 }
 
+function auditAssets(args) {
+  const inputFile = path.resolve(ROOT, argValue(args, "--in", "examples/sample-assets.csv"));
+  const penIndexFile = path.resolve(ROOT, argValue(args, "--pen-index", "reports/iana-pen-public-index.json"));
+  const oidBaseIndexFile = path.resolve(ROOT, argValue(args, "--sitemap", "reports/oid-base-sitemap-index.json"));
+  const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/asset-audit.json"));
+  const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/asset-audit.md"));
+  const audit = auditAssetFile({ inputFile, penIndexFile, oidBaseIndexFile, jsonOutFile, markdownOutFile });
+  console.log(`asset audit records: ${audit.summary.total_assets}`);
+  console.log(`valid OIDs: ${audit.summary.valid_oids}`);
+  console.log(`quality score: ${audit.summary.quality_score}/100`);
+  console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
+  console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
+}
+
 function buildStaticSite(args) {
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
   const indexFile = path.resolve(ROOT, argValue(args, "--index", "reports/iana-pen-public-index.json"));
@@ -225,11 +240,12 @@ async function main() {
   if (command === "inspect-source") return inspectSource();
   if (command === "export-sitemap-index") return exportSitemapIndex(args);
   if (command === "crawl") return crawl(args);
+  if (command === "audit-assets") return auditAssets(args);
   if (command === "audit-dataset") return auditDataset(args);
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|audit-dataset|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|audit-assets|audit-dataset|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

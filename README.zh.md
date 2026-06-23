@@ -38,6 +38,7 @@ npm run check
 npm test
 npm run refresh:publishable
 npm run build:site
+npm run audit:assets
 npm run crawl:sample
 npm run report
 ```
@@ -76,7 +77,29 @@ node src/cli.js crawl --authorized-full --authorization-note "authorization refe
 - `reports/oid-base-sitemap-index.json`：OID-base sitemap 级目录。
 - `reports/iana-pen-public-index.json`：不含联系人字段的 IANA PEN 公开索引。
 - `reports/dataset-manifest.json`：可公开数据包清单。
+- `reports/asset-audit.md`：示例 OID 资产清单分析报告。
 - `public/index.html`：静态检索面板入口。
+
+## OID 资产清单分析
+
+如果你有一份本地 OID 清单，可以用下面的命令把它和 IANA PEN、OID-base sitemap 目录做交叉分析：
+
+```bash
+npm run audit:assets
+```
+
+默认示例输入是 `examples/sample-assets.csv`，输出是：
+
+- `reports/asset-audit.json`
+- `reports/asset-audit.md`
+
+真实客户清单不要提交到仓库，只在本地用 `--in` 指定：
+
+```bash
+node src/cli.js audit-assets --in path/to/assets.csv --out reports/asset-audit.json --markdown reports/asset-audit.md
+```
+
+输入可以是简单 CSV 或 tab 分隔文件，需要 `oid` 列，可选 `asset`、`name`、`id` 或 `label` 列。
 
 ## GitHub Pages
 

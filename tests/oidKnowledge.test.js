@@ -1,6 +1,7 @@
 "use strict";
 
 const assert = require("assert");
+const { analyzeAssetText, renderAssetAuditMarkdown } = require("../src/assetAudit");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { assertPublishableManifest, buildDatasetManifest } = require("../src/manifest");
 const { parseOidMarkdown } = require("../src/parser");
@@ -257,6 +258,46 @@ function testSiteRenderer() {
   assert.ok(html.includes("Example &lt;Org&gt;"));
 }
 
+function testAssetAudit() {
+  const penIndex = [
+    { number: 9, oid: "1.3.6.1.4.1.9", organization: "ciscoSystems" }
+  ];
+  const oidBaseIndex = {
+    entries: [
+      {
+        oid: "2.16.840.1.101.3.4.2.1",
+        source_url: "https://oid-base.com/get/2.16.840.1.101.3.4.2.1",
+        sitemap_lastmod: "2021-07-27",
+        root_arc: "2",
+        depth: 10
+      }
+    ]
+  };
+
+  const audit = analyzeAssetText(`asset,oid
+router-core,1.3.6.1.4.1.9.9.41
+sha256-policy,2.16.840.1.101.3.4.2.1
+bad-row,not-an-oid
+`, { penIndex, oidBaseIndex, generatedAt: "2026-06-24T00:00:00.000Z" });
+
+  assert.equal(audit.summary.total_assets, 3);
+  assert.equal(audit.summary.valid_oids, 2);
+  assert.equal(audit.summary.invalid_values, 1);
+  assert.equal(audit.summary.private_enterprise_oids, 1);
+  assert.equal(audit.summary.known_enterprises, 1);
+  assert.equal(audit.summary.oidbase_directory_matches, 1);
+  assert.equal(audit.summary.quality_score, 78);
+  assert.equal(audit.findings[0].enterprise.organization, "ciscoSystems");
+  assert.equal(audit.findings[1].oidbase_match.source_url, "https://oid-base.com/get/2.16.840.1.101.3.4.2.1");
+  assert.equal(audit.findings[2].status, "invalid_value");
+  assert.ok(audit.recommendations.some((item) => item.includes("invalid")));
+
+  const markdown = renderAssetAuditMarkdown(audit);
+  assert.ok(markdown.includes("# OID Asset Audit"));
+  assert.ok(markdown.includes("ciscoSystems"));
+  assert.ok(markdown.includes("not-an-oid"));
+}
+
 function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -266,6 +307,7 @@ function main() {
   testDatasetManifest();
   testIanaPenParser();
   testSiteRenderer();
+  testAssetAudit();
   console.log("oid knowledge tests passed");
 }
 

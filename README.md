@@ -37,6 +37,7 @@ npm run check
 npm test
 npm run refresh:publishable
 npm run build:site
+npm run audit:assets
 npm run crawl:sample
 npm run report
 npm run import:iana-pen
@@ -100,6 +101,27 @@ Each parsed record contains:
 
 The crawler stores parsed records by default, not raw page copies. Raw export should only be used when the source license or authorization allows it.
 
+## OID Asset Audit
+
+Use the asset-audit command when you have a local inventory of OIDs and want to classify it against the public PEN index and OID-base sitemap catalog:
+
+```bash
+npm run audit:assets
+```
+
+The default command reads `examples/sample-assets.csv` and writes:
+
+- `reports/asset-audit.json`
+- `reports/asset-audit.md`
+
+For a real inventory, keep the source file local and pass it explicitly:
+
+```bash
+node src/cli.js audit-assets --in path/to/assets.csv --out reports/asset-audit.json --markdown reports/asset-audit.md
+```
+
+Accepted input is a simple CSV or tab-delimited file with an `oid` column and an optional `asset`, `name`, `id`, or `label` column.
+
 ## Open Data Import: IANA PEN
 
 The project also supports the IANA Private Enterprise Numbers registry. IANA licensing terms dedicate protocol registries to CC0 1.0, making this a better source for reusable analysis than copying OID-base content.
@@ -136,6 +158,7 @@ See `docs/authorized-full-crawl.zh.md` for a Chinese operator note covering the 
 ```bash
 node src/cli.js inspect-source
 node src/cli.js export-sitemap-index --out reports/oid-base-sitemap-index.json
+node src/cli.js audit-assets --in examples/sample-assets.csv --out reports/asset-audit.json --markdown reports/asset-audit.md
 node src/cli.js crawl --limit 10 --delay-ms 1000 --out data/sample
 node src/cli.js report --in data/sample/records.jsonl --out data/sample/report.json
 node src/cli.js import-iana-pen --out data/iana --report reports/iana-pen-summary.json --public-index reports/iana-pen-public-index.json

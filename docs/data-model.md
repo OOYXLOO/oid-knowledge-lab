@@ -73,3 +73,39 @@ Generated IANA JSONL is ignored by Git. Aggregate reports omit contact names and
 ```
 
 The manifest is intentionally publishable: it uses repository-relative paths and records excluded data categories instead of storing restricted source material.
+
+## Asset Audit
+
+`node src/cli.js audit-assets` reads a local CSV or tab-delimited inventory with an `oid` column and optional `asset`, `name`, `id`, or `label` column.
+
+The JSON output contains:
+
+```json
+{
+  "source_kind": "user supplied OID asset list",
+  "summary": {
+    "total_assets": 4,
+    "valid_oids": 3,
+    "invalid_values": 1,
+    "private_enterprise_oids": 1,
+    "known_enterprises": 1,
+    "oidbase_directory_matches": 1,
+    "quality_score": 71
+  },
+  "findings": [
+    {
+      "label": "router-core",
+      "oid": "1.3.6.1.4.1.9.9.41",
+      "status": "known_private_enterprise_oid",
+      "enterprise": {
+        "number": 9,
+        "organization": "ciscoSystems"
+      },
+      "risk": "low"
+    }
+  ],
+  "recommendations": []
+}
+```
+
+The command does not need raw OID-base page bodies. It cross-checks against the publishable IANA PEN index and the OID-base sitemap catalog.

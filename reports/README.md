@@ -6,5 +6,7 @@ This directory stores aggregate reports that are safe to publish.
 - `iana-pen-summary.json`: aggregate report for the IANA Private Enterprise Numbers registry.
 - `iana-pen-public-index.json`: searchable public IANA PEN index with organization names and OIDs, excluding contact and email fields.
 - `dataset-manifest.json`: publishable data package manifest with artifact sizes, hashes, counts, source links, and data-exclusion boundaries.
+- `asset-audit.json`: example OID asset inventory audit generated from `examples/sample-assets.csv`.
+- `asset-audit.md`: Markdown version of the example asset audit, suitable for a quick review handoff.
 
 Full JSONL imports and raw source files stay under ignored `data/` paths unless the source authorization explicitly allows publication.

@@ -1,0 +1,5 @@
+asset,oid
+router-core,1.3.6.1.4.1.9.9.41
+example-directory-hit,2.16.840.1.101.3.7.1.219.0
+directory-root,1.3.6.1.4.1
+invalid-row,not-an-oid
