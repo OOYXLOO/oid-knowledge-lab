@@ -154,11 +154,13 @@ function report(args) {
 function buildStaticSite(args) {
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
   const indexFile = path.resolve(ROOT, argValue(args, "--index", "reports/iana-pen-public-index.json"));
+  const sitemapFile = path.resolve(ROOT, argValue(args, "--sitemap", "reports/oid-base-sitemap-index.json"));
   const outDir = path.resolve(ROOT, argValue(args, "--out", "public"));
-  const result = buildSite({ indexFile, reportFile, outDir });
+  const result = buildSite({ indexFile, reportFile, sitemapFile, outDir });
   console.log(`site files: ${result.output_files.map((file) => path.relative(ROOT, file).replace(/\\/g, "/")).join(", ")}`);
   console.log(`site records: ${result.record_count}`);
   console.log(`search records: ${result.search_record_count}`);
+  console.log(`oid-base directory records: ${result.oid_base_directory_count}`);
 }
 
 async function importIanaPen(args) {

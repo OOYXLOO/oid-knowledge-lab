@@ -207,10 +207,12 @@ function testSiteRenderer() {
     organization_initials: [{ key: "A", count: 10 }],
     search_index_count: 99,
     sample_organizations: [{ enterprise_number: 9, oid: "1.3.6.1.4.1.9", organization: "Example <Org>" }]
-  });
-  assert.ok(html.includes("IANA Private Enterprise Numbers dashboard"));
+  }, 42);
+  assert.ok(html.includes("OID and enterprise registry dashboard"));
   assert.ok(html.includes("Search enterprise OIDs"));
+  assert.ok(html.includes("Search sitemap catalog"));
   assert.ok(html.includes("99 public IANA PEN assignments"));
+  assert.ok(html.includes("42 OID-base sitemap entries"));
   assert.ok(html.includes("66,101") === false);
   assert.ok(html.includes("Example &lt;Org&gt;"));
 }

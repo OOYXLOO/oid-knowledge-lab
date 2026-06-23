@@ -78,10 +78,10 @@ The command writes local JSONL under `data/iana/`, a committed aggregate report 
 ## Static Dashboard
 
 ```bash
-npm run build:site
+node src/cli.js build-site --report reports/iana-pen-summary.json --index reports/iana-pen-public-index.json --sitemap reports/oid-base-sitemap-index.json --out public
 ```
 
-This generates a static dashboard in `public/` from the aggregate report and public search index. It is safe to publish because it excludes contact names and email values.
+This generates a static dashboard in `public/` from the aggregate report, public PEN search index, and OID-base sitemap catalog. It is safe to publish because it excludes contact names, email values, and OID-base page bodies.
 
 ## Authorized Full Import
 

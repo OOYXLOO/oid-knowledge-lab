@@ -46,7 +46,21 @@ function renderSearchPanel(searchCount) {
     </section>`;
 }
 
-function renderDashboard(report) {
+function renderOidBasePanel(directoryCount) {
+  return `<section class="panel search-panel">
+      <div>
+        <p class="eyebrow">OID-base directory</p>
+        <h2>Search sitemap catalog</h2>
+        <p class="panel-copy">Search ${formatNumber(directoryCount)} OID-base sitemap entries by OID, root arc, source URL, or last-modified date. This catalog stores directory metadata only and does not copy OID-base page bodies.</p>
+      </div>
+      <label class="search-label" for="oid-base-search">Search term</label>
+      <input id="oid-base-search" data-oidbase-input type="search" placeholder="Try 2.16.840, root:2, 2026, certificate" autocomplete="off">
+      <p class="search-count" data-oidbase-count></p>
+      <div class="search-results" data-oidbase-results></div>
+    </section>`;
+}
+
+function renderDashboard(report, oidBaseDirectoryCount = 0) {
   const assigned = Number(report.assigned_count || 0);
   const total = Number(report.record_count || 0);
   const reserved = Number(report.reserved_count || 0);
@@ -72,11 +86,12 @@ function renderDashboard(report) {
   <main>
     <section class="hero">
       <p class="eyebrow">OID Knowledge Lab</p>
-      <h1>IANA Private Enterprise Numbers dashboard</h1>
-      <p class="summary">A compact, publishable view of the <code>${escapeHtml(report.prefix)}</code> enterprise OID branch using IANA registry data.</p>
+      <h1>OID and enterprise registry dashboard</h1>
+      <p class="summary">A compact, publishable workspace for <code>${escapeHtml(report.prefix)}</code> enterprise OIDs and OID-base directory coverage. It combines open IANA data with sitemap-level OID-base metadata.</p>
       <div class="links">
         <a href="${escapeHtml(report.source_url)}">IANA source</a>
         <a href="${escapeHtml(report.license_url)}">Licensing terms</a>
+        <a href="https://oid-base.com/sitemap.xml">OID-base sitemap</a>
       </div>
     </section>
 
@@ -84,7 +99,7 @@ function renderDashboard(report) {
       <article><span>Total records</span><strong>${formatNumber(total)}</strong></article>
       <article><span>Assigned</span><strong>${formatNumber(assigned)}</strong><small>${percent(assigned, total)}</small></article>
       <article><span>Reserved</span><strong>${formatNumber(reserved)}</strong><small>${percent(reserved, total)}</small></article>
-      <article><span>Highest number</span><strong>${formatNumber(report.highest_enterprise_number)}</strong></article>
+      <article><span>OID-base entries</span><strong>${formatNumber(oidBaseDirectoryCount)}</strong></article>
     </section>
 
     <section class="panel">
@@ -105,6 +120,8 @@ function renderDashboard(report) {
 
     ${renderSearchPanel(searchCount)}
 
+    ${renderOidBasePanel(oidBaseDirectoryCount)}
+
     <section class="panel">
       <div>
         <p class="eyebrow">Sample lookup surface</p>
@@ -124,6 +141,7 @@ function renderDashboard(report) {
   </main>
   <script src="data.js"></script>
   <script src="search-index.js"></script>
+  <script src="oid-base-directory.js"></script>
   <script src="app.js"></script>
 </body>
 </html>`;
@@ -300,7 +318,11 @@ function renderAppJs() {
   const input = document.querySelector("[data-search-input]");
   const results = document.querySelector("[data-search-results]");
   const count = document.querySelector("[data-search-count]");
+  const oidBaseInput = document.querySelector("[data-oidbase-input]");
+  const oidBaseResults = document.querySelector("[data-oidbase-results]");
+  const oidBaseCount = document.querySelector("[data-oidbase-count]");
   const index = Array.isArray(window.OID_KNOWLEDGE_INDEX) ? window.OID_KNOWLEDGE_INDEX : [];
+  const oidBaseDirectory = Array.isArray(window.OID_BASE_DIRECTORY) ? window.OID_BASE_DIRECTORY : [];
 
   function escapeHtml(value) {
     return String(value == null ? "" : value)
@@ -321,7 +343,17 @@ function renderAppJs() {
       normalize(record.organization).includes(query);
   }
 
-  function render() {
+  function matchesOidBase(record, query) {
+    if (!query) return true;
+    const normalizedQuery = query.replace(/^root:/, "");
+    return normalize(record.oid).includes(query) ||
+      normalize(record.source_url).includes(query) ||
+      normalize(record.markdown_url).includes(query) ||
+      normalize(record.sitemap_lastmod).includes(query) ||
+      normalize(record.root_arc).includes(normalizedQuery);
+  }
+
+  function renderPen() {
     if (!input || !results || !count) return;
     const query = normalize(input.value);
     const matchesList = index.filter((record) => matches(record, query));
@@ -334,8 +366,23 @@ function renderAppJs() {
       "</tbody></table>";
   }
 
-  if (input) input.addEventListener("input", render);
-  render();
+  function renderOidBase() {
+    if (!oidBaseInput || !oidBaseResults || !oidBaseCount) return;
+    const query = normalize(oidBaseInput.value);
+    const matchesList = oidBaseDirectory.filter((record) => matchesOidBase(record, query));
+    const shown = matchesList.slice(0, query ? 25 : 12);
+    oidBaseCount.textContent = query
+      ? "Showing " + shown.length.toLocaleString("en-US") + " of " + matchesList.length.toLocaleString("en-US") + " matches"
+      : "Showing first " + shown.length.toLocaleString("en-US") + " of " + oidBaseDirectory.length.toLocaleString("en-US") + " sitemap entries";
+    oidBaseResults.innerHTML = "<table><thead><tr><th>OID</th><th>Depth</th><th>Last modified</th><th>Source</th></tr></thead><tbody>" +
+      shown.map((record) => "<tr><td><code>" + escapeHtml(record.oid) + "</code></td><td>" + escapeHtml(record.depth) + "</td><td>" + escapeHtml(record.sitemap_lastmod || "") + "</td><td><a href=\\"" + escapeHtml(record.source_url) + "\\">source</a></td></tr>").join("") +
+      "</tbody></table>";
+  }
+
+  if (input) input.addEventListener("input", renderPen);
+  if (oidBaseInput) oidBaseInput.addEventListener("input", renderOidBase);
+  renderPen();
+  renderOidBase();
 }());
 `;
 }
@@ -351,20 +398,38 @@ function readSearchIndex(indexFile, report) {
   }));
 }
 
-function buildSite({ indexFile, reportFile, outDir }) {
+function readOidBaseDirectory(sitemapFile) {
+  if (!sitemapFile || !fs.existsSync(sitemapFile)) return [];
+  const catalog = JSON.parse(fs.readFileSync(sitemapFile, "utf8"));
+  return (catalog.entries || []).map((entry) => ({
+    oid: entry.oid,
+    source_url: entry.source_url,
+    markdown_url: entry.markdown_url,
+    sitemap_lastmod: entry.sitemap_lastmod,
+    root_arc: entry.root_arc,
+    depth: entry.depth
+  }));
+}
+
+function buildSite({ indexFile, reportFile, sitemapFile, outDir }) {
   const report = JSON.parse(fs.readFileSync(reportFile, "utf8"));
   const searchIndex = readSearchIndex(indexFile, report);
+  const oidBaseDirectory = readOidBaseDirectory(sitemapFile);
   report.search_index_count = searchIndex.length;
+  report.oid_base_directory_count = oidBaseDirectory.length;
   ensureDir(outDir);
-  fs.writeFileSync(path.join(outDir, "index.html"), renderDashboard(report), "utf8");
+  fs.writeFileSync(path.join(outDir, "index.html"), renderDashboard(report, oidBaseDirectory.length), "utf8");
   fs.writeFileSync(path.join(outDir, "styles.css"), renderCss(), "utf8");
   fs.writeFileSync(path.join(outDir, "data.js"), `window.OID_KNOWLEDGE_REPORT = ${JSON.stringify(report, null, 2)};\n`, "utf8");
   fs.writeFileSync(path.join(outDir, "search-index.js"), `window.OID_KNOWLEDGE_INDEX = ${JSON.stringify(searchIndex)};\n`, "utf8");
+  fs.writeFileSync(path.join(outDir, "oid-base-directory.js"), `window.OID_BASE_DIRECTORY = ${JSON.stringify(oidBaseDirectory)};\n`, "utf8");
   fs.writeFileSync(path.join(outDir, "app.js"), renderAppJs(), "utf8");
+  const outputFiles = ["index.html", "styles.css", "data.js", "search-index.js", "oid-base-directory.js", "app.js"];
   return {
-    output_files: ["index.html", "styles.css", "data.js", "search-index.js", "app.js"].map((file) => path.join(outDir, file)),
+    output_files: outputFiles.map((file) => path.join(outDir, file)),
     record_count: report.record_count,
     search_record_count: searchIndex.length,
+    oid_base_directory_count: oidBaseDirectory.length,
     source: report.source
   };
 }
@@ -375,5 +440,6 @@ module.exports = {
   formatNumber,
   percent,
   renderDashboard,
+  renderOidBasePanel,
   renderSearchPanel
 };

@@ -2,7 +2,11 @@
   const input = document.querySelector("[data-search-input]");
   const results = document.querySelector("[data-search-results]");
   const count = document.querySelector("[data-search-count]");
+  const oidBaseInput = document.querySelector("[data-oidbase-input]");
+  const oidBaseResults = document.querySelector("[data-oidbase-results]");
+  const oidBaseCount = document.querySelector("[data-oidbase-count]");
   const index = Array.isArray(window.OID_KNOWLEDGE_INDEX) ? window.OID_KNOWLEDGE_INDEX : [];
+  const oidBaseDirectory = Array.isArray(window.OID_BASE_DIRECTORY) ? window.OID_BASE_DIRECTORY : [];
 
   function escapeHtml(value) {
     return String(value == null ? "" : value)
@@ -23,7 +27,17 @@
       normalize(record.organization).includes(query);
   }
 
-  function render() {
+  function matchesOidBase(record, query) {
+    if (!query) return true;
+    const normalizedQuery = query.replace(/^root:/, "");
+    return normalize(record.oid).includes(query) ||
+      normalize(record.source_url).includes(query) ||
+      normalize(record.markdown_url).includes(query) ||
+      normalize(record.sitemap_lastmod).includes(query) ||
+      normalize(record.root_arc).includes(normalizedQuery);
+  }
+
+  function renderPen() {
     if (!input || !results || !count) return;
     const query = normalize(input.value);
     const matchesList = index.filter((record) => matches(record, query));
@@ -36,6 +50,21 @@
       "</tbody></table>";
   }
 
-  if (input) input.addEventListener("input", render);
-  render();
+  function renderOidBase() {
+    if (!oidBaseInput || !oidBaseResults || !oidBaseCount) return;
+    const query = normalize(oidBaseInput.value);
+    const matchesList = oidBaseDirectory.filter((record) => matchesOidBase(record, query));
+    const shown = matchesList.slice(0, query ? 25 : 12);
+    oidBaseCount.textContent = query
+      ? "Showing " + shown.length.toLocaleString("en-US") + " of " + matchesList.length.toLocaleString("en-US") + " matches"
+      : "Showing first " + shown.length.toLocaleString("en-US") + " of " + oidBaseDirectory.length.toLocaleString("en-US") + " sitemap entries";
+    oidBaseResults.innerHTML = "<table><thead><tr><th>OID</th><th>Depth</th><th>Last modified</th><th>Source</th></tr></thead><tbody>" +
+      shown.map((record) => "<tr><td><code>" + escapeHtml(record.oid) + "</code></td><td>" + escapeHtml(record.depth) + "</td><td>" + escapeHtml(record.sitemap_lastmod || "") + "</td><td><a href=\"" + escapeHtml(record.source_url) + "\">source</a></td></tr>").join("") +
+      "</tbody></table>";
+  }
+
+  if (input) input.addEventListener("input", renderPen);
+  if (oidBaseInput) oidBaseInput.addEventListener("input", renderOidBase);
+  renderPen();
+  renderOidBase();
 }());
