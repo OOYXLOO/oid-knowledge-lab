@@ -1,6 +1,6 @@
 {
   "name": "OID Knowledge Lab publishable data manifest",
-  "generated_at": "2026-06-23T22:43:51.075Z",
+  "generated_at": "2026-06-23T23:33:43.081Z",
   "publishable": true,
   "content_boundary": "This manifest covers OID-base sitemap metadata and open IANA PEN aggregate/public data; it does not contain OID-base page bodies, raw page mirrors, private contact fields, credentials, cookies, tokens, or account data.",
   "oid_base": {
@@ -145,12 +145,12 @@
     {
       "path": "reports/oid-base-sitemap-index.json",
       "bytes": 2288780,
-      "sha256": "sha256:b871651afc778ef23054506d505640a077de8a33634eaa482f245363996640d0"
+      "sha256": "sha256:f3ad11922c5c8fa3ce97b5481080a2989596e1e6cfe803e8048bce088e1b84c3"
     },
     {
       "path": "reports/iana-pen-summary.json",
       "bytes": 4969,
-      "sha256": "sha256:89ae8ccce2120033dea4a6095e8e7dffdcd6280aa4be6139110eabce652ca5fa"
+      "sha256": "sha256:31d7a8b69c5a93acad185989e08529e62f3c55c7f3bd2e7a691b805e458bdeeb"
     },
     {
       "path": "reports/iana-pen-public-index.json",
@@ -160,7 +160,7 @@
     {
       "path": "public/index.html",
       "bytes": 10438,
-      "sha256": "sha256:ec56a1cd958df3bff7e65f1d388739a26e03746c571d0d859d1ffa852504bd1f"
+      "sha256": "sha256:2fc7b51b892f3f8c62c0b6929736f19d60730b71b227b1f448e4f9121e386daa"
     },
     {
       "path": "public/oid-base-directory.js",

@@ -13,6 +13,7 @@ Last refreshed on 2026-06-24:
 - Public IANA PEN search index: 65,959 records after excluding contact-level noise
 - Static dashboard: generated under `public/`
 - Dataset manifest: `reports/dataset-manifest.json` with artifact hashes, sizes, source links, and publication boundaries
+- GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
 
@@ -127,6 +128,8 @@ node src/cli.js crawl --authorized-full --authorization-note "authorization refe
 ```
 
 The command refuses to run full collection without both the environment flag and an authorization note.
+
+See `docs/authorized-full-crawl.zh.md` for a Chinese operator note covering the authorization gate, local-only output boundary, and publishable artifact rules.
 
 ## Useful Commands
 
