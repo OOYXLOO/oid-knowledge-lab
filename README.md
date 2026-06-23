@@ -24,6 +24,7 @@ npm run check
 npm test
 npm run crawl:sample
 npm run report
+npm run import:iana-pen
 ```
 
 The sample output is written under `data/sample/`:
@@ -53,6 +54,16 @@ Each parsed record contains:
 
 The crawler stores parsed records by default, not raw page copies. Raw export should only be used when the source license or authorization allows it.
 
+## Open Data Import: IANA PEN
+
+The project also supports the IANA Private Enterprise Numbers registry. IANA licensing terms dedicate protocol registries to CC0 1.0, making this a better source for reusable analysis than copying OID-base content.
+
+```bash
+npm run import:iana-pen
+```
+
+The command writes local JSONL under `data/iana/` and a committed aggregate report under `reports/iana-pen-summary.json`. The JSONL is ignored by Git because it includes public contact fields; the report keeps only aggregate statistics and sample organizations.
+
 ## Authorized Full Import
 
 Only use this after obtaining specific authorization from the site owner:
@@ -70,4 +81,5 @@ The command refuses to run full collection without both the environment flag and
 node src/cli.js inspect-source
 node src/cli.js crawl --limit 10 --delay-ms 1000 --out data/sample
 node src/cli.js report --in data/sample/records.jsonl --out data/sample/report.json
+node src/cli.js import-iana-pen --out data/iana --report reports/iana-pen-summary.json
 ```

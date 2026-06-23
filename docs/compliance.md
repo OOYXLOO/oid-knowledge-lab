@@ -20,6 +20,8 @@ Observed rules during project creation:
 
 This repository is built as tooling plus a small verification sample. It is not a full mirror.
 
+IANA Private Enterprise Numbers are handled separately from OID-base content. IANA licensing terms state that protocol registries may be freely used and are subject to the CC0 1.0 dedication. The project can therefore generate aggregate reports from IANA PEN data without relying on an OID-base full mirror.
+
 Full collection requires:
 
 1. Written authorization or another clear license basis.
@@ -31,3 +33,5 @@ Full collection requires:
 ## Data Handling
 
 The default crawler stores parsed JSONL records and a content hash. It does not store raw Markdown copies by default. That makes samples useful for parser tests and analysis design without creating an unnecessary content mirror.
+
+Full JSONL imports and raw source files stay under ignored `data/` paths unless the source authorization explicitly allows publication.

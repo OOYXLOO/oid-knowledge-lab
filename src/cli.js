@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { buildIanaPenReport, IANA_LICENSE_URL, IANA_PEN_URL, parseEnterpriseNumbers, parseLastUpdated } = require("./ianaPen");
 const { ensureDir, fetchText, sleep, writeJson } = require("./net");
 const { parseOidMarkdown } = require("./parser");
 const { buildReport, readJsonl } = require("./report");
@@ -137,12 +138,41 @@ function report(args) {
   console.log(`report written: ${path.relative(ROOT, output).replace(/\\/g, "/")}`);
 }
 
+async function importIanaPen(args) {
+  const outDir = path.resolve(ROOT, argValue(args, "--out", "data/iana"));
+  const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
+  const response = await fetchText(IANA_PEN_URL);
+  const records = parseEnterpriseNumbers(response.body);
+  const lastUpdated = parseLastUpdated(response.body);
+
+  ensureDir(outDir);
+  const jsonlFile = path.join(outDir, "enterprise-numbers.jsonl");
+  fs.writeFileSync(jsonlFile, records.map((record) => JSON.stringify(record)).join("\n") + "\n", "utf8");
+  writeJson(path.join(outDir, "enterprise-numbers-summary.json"), {
+    source_url: IANA_PEN_URL,
+    license_url: IANA_LICENSE_URL,
+    last_updated: lastUpdated,
+    generated_at: new Date().toISOString(),
+    record_count: records.length,
+    jsonl_file: path.relative(ROOT, jsonlFile).replace(/\\/g, "/")
+  });
+  writeJson(reportFile, buildIanaPenReport(records, {
+    sourceUrl: IANA_PEN_URL,
+    licenseUrl: IANA_LICENSE_URL,
+    lastUpdated
+  }));
+  console.log(`iana records: ${records.length}`);
+  console.log(`jsonl written: ${path.relative(ROOT, jsonlFile).replace(/\\/g, "/")}`);
+  console.log(`report written: ${path.relative(ROOT, reportFile).replace(/\\/g, "/")}`);
+}
+
 async function main() {
   const [command, ...args] = process.argv.slice(2);
   if (command === "inspect-source") return inspectSource();
   if (command === "crawl") return crawl(args);
+  if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|crawl|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

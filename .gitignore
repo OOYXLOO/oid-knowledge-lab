@@ -2,6 +2,8 @@ node_modules/
 .env
 .DS_Store
 data/full/
+data/iana/*.jsonl
+data/iana/*.txt
 data/raw/
 data/sample/*.json
 data/sample/*.jsonl

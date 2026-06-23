@@ -29,3 +29,18 @@ Reports summarize:
 - last-modified year distribution
 - duplicate descriptions
 - sample source URLs
+
+## IANA PEN Record
+
+```json
+{
+  "source": "iana-pen",
+  "enterprise_number": 9,
+  "oid": "1.3.6.1.4.1.9",
+  "organization": "ciscoSystems",
+  "contact": "Dave Jones",
+  "email_obfuscated": "davej&cisco.com"
+}
+```
+
+Generated IANA JSONL is ignored by Git. Aggregate reports omit contact names and email values.

@@ -1,6 +1,7 @@
 "use strict";
 
 const assert = require("assert");
+const { buildIanaPenReport, emailDomain, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { parseOidMarkdown } = require("../src/parser");
 const { buildReport } = require("../src/report");
 const { isAllowedByRobots } = require("../src/robots");
@@ -78,11 +79,52 @@ function testReport() {
   assert.equal(report.with_supplementary_information, 1);
 }
 
+function testIanaPenParser() {
+  const text = `PRIVATE ENTERPRISE NUMBERS
+
+(last updated 2026-06-23)
+
+Decimal
+| Organization
+| | Contact
+| | | Email
+0
+  Reserved
+    Internet Assigned Numbers Authority
+      iana&iana.org
+9
+  ciscoSystems
+    Dave Jones
+      davej&cisco.com
+10
+  Example Org
+    Example Contact
+      ---none---
+      extra note
+`;
+  const records = parseEnterpriseNumbers(text);
+  assert.equal(parseLastUpdated(text), "2026-06-23");
+  assert.equal(records.length, 3);
+  assert.equal(records[1].oid, "1.3.6.1.4.1.9");
+  assert.equal(records[1].organization, "ciscoSystems");
+  assert.equal(records[2].notes[0], "extra note");
+  assert.equal(emailDomain("davej&cisco.com"), "cisco.com");
+  assert.equal(emailDomain("---none---"), "none");
+
+  const report = buildIanaPenReport(records, { lastUpdated: "2026-06-23" });
+  assert.equal(report.record_count, 3);
+  assert.equal(report.assigned_count, 2);
+  assert.equal(report.reserved_count, 1);
+  assert.equal(report.highest_enterprise_number, 10);
+  assert.ok(report.top_email_domains.some((entry) => entry.key === "cisco.com"));
+}
+
 function main() {
   testSitemapParser();
   testRobots();
   testMarkdownParser();
   testReport();
+  testIanaPenParser();
   console.log("oid knowledge tests passed");
 }
 
