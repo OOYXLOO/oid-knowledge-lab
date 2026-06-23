@@ -44,3 +44,32 @@ Reports summarize:
 ```
 
 Generated IANA JSONL is ignored by Git. Aggregate reports omit contact names and email values.
+
+## Dataset Manifest
+
+`reports/dataset-manifest.json` records the publishable data package:
+
+```json
+{
+  "name": "OID Knowledge Lab publishable data manifest",
+  "publishable": true,
+  "oid_base": {
+    "sitemap_entries": 7492,
+    "copied_page_bodies": false
+  },
+  "iana_pen": {
+    "record_count": 66101,
+    "public_index_records": 65959,
+    "contact_fields_published": false
+  },
+  "artifacts": [
+    {
+      "path": "reports/oid-base-sitemap-index.json",
+      "bytes": 2288780,
+      "sha256": "sha256:..."
+    }
+  ]
+}
+```
+
+The manifest is intentionally publishable: it uses repository-relative paths and records excluded data categories instead of storing restricted source material.

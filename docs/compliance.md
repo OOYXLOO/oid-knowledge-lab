@@ -35,3 +35,5 @@ Full collection requires:
 The default crawler stores parsed JSONL records and a content hash. It does not store raw Markdown copies by default. That makes samples useful for parser tests and analysis design without creating an unnecessary content mirror.
 
 Full JSONL imports and raw source files stay under ignored `data/` paths unless the source authorization explicitly allows publication.
+
+`npm run audit:dataset` writes `reports/dataset-manifest.json` and checks that the publishable package excludes OID-base page bodies and IANA contact fields.

@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { buildIanaPenReport, buildPublicPenIndex, IANA_LICENSE_URL, IANA_PEN_URL, parseEnterpriseNumbers, parseLastUpdated } = require("./ianaPen");
+const { buildManifestFromFiles } = require("./manifest");
 const { ensureDir, fetchText, sleep, writeJson } = require("./net");
 const { parseOidMarkdown } = require("./parser");
 const { buildReport, readJsonl } = require("./report");
@@ -163,6 +164,31 @@ function buildStaticSite(args) {
   console.log(`oid-base directory records: ${result.oid_base_directory_count}`);
 }
 
+function auditDataset(args) {
+  const oidBaseIndexFile = path.resolve(ROOT, argValue(args, "--sitemap", "reports/oid-base-sitemap-index.json"));
+  const ianaPenReportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
+  const penPublicIndexFile = path.resolve(ROOT, argValue(args, "--index", "reports/iana-pen-public-index.json"));
+  const outFile = path.resolve(ROOT, argValue(args, "--out", "reports/dataset-manifest.json"));
+  const extraArtifactFiles = [
+    path.resolve(ROOT, "public/index.html"),
+    path.resolve(ROOT, "public/oid-base-directory.js"),
+    path.resolve(ROOT, "public/search-index.js")
+  ].filter((file) => fs.existsSync(file));
+
+  const manifest = buildManifestFromFiles({
+    rootDir: ROOT,
+    oidBaseIndexFile,
+    ianaPenReportFile,
+    penPublicIndexFile,
+    extraArtifactFiles
+  });
+  writeJson(outFile, manifest);
+  console.log(`dataset manifest written: ${path.relative(ROOT, outFile).replace(/\\/g, "/")}`);
+  console.log(`oid-base sitemap entries: ${manifest.oid_base.sitemap_entries}`);
+  console.log(`iana public index records: ${manifest.iana_pen.public_index_records}`);
+  console.log(`artifacts checked: ${manifest.artifact_count}`);
+}
+
 async function importIanaPen(args) {
   const outDir = path.resolve(ROOT, argValue(args, "--out", "data/iana"));
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
@@ -199,10 +225,11 @@ async function main() {
   if (command === "inspect-source") return inspectSource();
   if (command === "export-sitemap-index") return exportSitemapIndex(args);
   if (command === "crawl") return crawl(args);
+  if (command === "audit-dataset") return auditDataset(args);
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|audit-dataset|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

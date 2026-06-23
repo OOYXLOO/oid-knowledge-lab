@@ -1,0 +1,177 @@
+{
+  "name": "OID Knowledge Lab publishable data manifest",
+  "generated_at": "2026-06-23T22:43:51.075Z",
+  "publishable": true,
+  "content_boundary": "This manifest covers OID-base sitemap metadata and open IANA PEN aggregate/public data; it does not contain OID-base page bodies, raw page mirrors, private contact fields, credentials, cookies, tokens, or account data.",
+  "oid_base": {
+    "source_url": "https://oid-base.com/sitemap.xml",
+    "robots_url": "https://oid-base.com/robots.txt",
+    "terms_url": "https://oid-base.com/disclaimer.htm.md",
+    "llms_url": "https://oid-base.com/llms.txt",
+    "source_kind": "sitemap metadata",
+    "sitemap_entries": 7492,
+    "public_directory_entries": 7492,
+    "copied_page_bodies": false,
+    "root_arc_counts": [
+      {
+        "key": "1",
+        "count": 7147
+      },
+      {
+        "key": "2",
+        "count": 326
+      },
+      {
+        "key": "0",
+        "count": 19
+      }
+    ],
+    "depth_counts": [
+      {
+        "key": "14",
+        "count": 2371
+      },
+      {
+        "key": "15",
+        "count": 1297
+      },
+      {
+        "key": "12",
+        "count": 1011
+      },
+      {
+        "key": "13",
+        "count": 662
+      },
+      {
+        "key": "11",
+        "count": 598
+      },
+      {
+        "key": "10",
+        "count": 573
+      },
+      {
+        "key": "7",
+        "count": 283
+      },
+      {
+        "key": "8",
+        "count": 261
+      },
+      {
+        "key": "9",
+        "count": 136
+      },
+      {
+        "key": "16",
+        "count": 114
+      },
+      {
+        "key": "18",
+        "count": 65
+      },
+      {
+        "key": "6",
+        "count": 61
+      },
+      {
+        "key": "17",
+        "count": 16
+      },
+      {
+        "key": "21",
+        "count": 11
+      },
+      {
+        "key": "3",
+        "count": 8
+      },
+      {
+        "key": "19",
+        "count": 5
+      },
+      {
+        "key": "5",
+        "count": 5
+      },
+      {
+        "key": "22",
+        "count": 4
+      },
+      {
+        "key": "1",
+        "count": 3
+      },
+      {
+        "key": "20",
+        "count": 3
+      },
+      {
+        "key": "4",
+        "count": 2
+      },
+      {
+        "key": "23",
+        "count": 1
+      },
+      {
+        "key": "24",
+        "count": 1
+      },
+      {
+        "key": "28",
+        "count": 1
+      }
+    ],
+    "collection_boundary": "Sitemap-level OID catalog only. Full page-body collection requires specific authorization from the source owner."
+  },
+  "iana_pen": {
+    "source_url": "https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers",
+    "license_url": "https://www.iana.org/help/licensing-terms",
+    "record_count": 66101,
+    "assigned_count": 65977,
+    "reserved_count": 124,
+    "public_index_records": 65959,
+    "contact_fields_published": false
+  },
+  "excluded_data": [
+    "OID-base page bodies",
+    "raw Markdown/HTML mirrors",
+    "private contact fields",
+    "credentials or session data"
+  ],
+  "artifacts": [
+    {
+      "path": "reports/oid-base-sitemap-index.json",
+      "bytes": 2288780,
+      "sha256": "sha256:b871651afc778ef23054506d505640a077de8a33634eaa482f245363996640d0"
+    },
+    {
+      "path": "reports/iana-pen-summary.json",
+      "bytes": 4969,
+      "sha256": "sha256:89ae8ccce2120033dea4a6095e8e7dffdcd6280aa4be6139110eabce652ca5fa"
+    },
+    {
+      "path": "reports/iana-pen-public-index.json",
+      "bytes": 6938922,
+      "sha256": "sha256:648c3301aded5b78b17921caeb5c47632ad43ea46201538e8d0b6a341f2fba71"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 10438,
+      "sha256": "sha256:ec56a1cd958df3bff7e65f1d388739a26e03746c571d0d859d1ffa852504bd1f"
+    },
+    {
+      "path": "public/oid-base-directory.js",
+      "bytes": 1848306,
+      "sha256": "sha256:c8ca9ba96c23605ffecc5ef47153d5767c42028b015e1ebf484d7146b4832cf2"
+    },
+    {
+      "path": "public/search-index.js",
+      "bytes": 5355935,
+      "sha256": "sha256:f81b317749255faa609c44cefbcb06c0e241653b75c6f9c90ab6189be5643091"
+    }
+  ],
+  "artifact_count": 6
+}

@@ -4,6 +4,18 @@ OID Knowledge Lab is a responsible crawler and analysis workspace for Object Ide
 
 The current source adapter targets public OID-base pages through the site's sitemap and Markdown OID pages. It is intentionally conservative by default: sample crawls are small, delayed, resumable, and avoid disallowed paths.
 
+## Current Publishable Snapshot
+
+Last refreshed on 2026-06-24:
+
+- OID-base sitemap catalog: 7,492 public OID entries from `https://oid-base.com/sitemap.xml`
+- IANA Private Enterprise Numbers import: 66,101 raw registry records
+- Public IANA PEN search index: 65,959 records after excluding contact-level noise
+- Static dashboard: generated under `public/`
+- Dataset manifest: `reports/dataset-manifest.json` with artifact hashes, sizes, source links, and publication boundaries
+
+This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
+
 ## Compliance Boundary
 
 OID-base publishes a robots file and terms of use. The terms say that downloading, printing, or copying from the site must be noncommercial, personal, and limited to a small part of the data unless specific authorization is granted by the site owner.
@@ -22,6 +34,7 @@ Relevant public references:
 ```bash
 npm run check
 npm test
+npm run refresh:publishable
 npm run build:site
 npm run crawl:sample
 npm run report
@@ -37,6 +50,19 @@ The sample output is written under `data/sample/`:
 
 Generated sample JSON/JSONL files are ignored by Git. Commit only run receipts or synthetic fixtures unless the source authorization explicitly allows publishing collected data.
 
+## Rebuild the Publishable Data Package
+
+```bash
+npm run refresh:publishable
+```
+
+This command:
+
+1. Fetches the current OID-base sitemap and rebuilds `reports/oid-base-sitemap-index.json`.
+2. Imports the IANA PEN registry and rebuilds the aggregate/public reports.
+3. Rebuilds the static dashboard in `public/`.
+4. Writes `reports/dataset-manifest.json` with checksums for the publishable artifacts.
+
 ## OID-base Sitemap Index
 
 The repository can publish a complete OID-base sitemap catalog without copying page bodies:
@@ -46,6 +72,14 @@ npm run export:sitemap-index
 ```
 
 The command writes `reports/oid-base-sitemap-index.json` with OID paths, source URLs, Markdown URLs, sitemap `lastmod` dates, root arcs, and depth statistics. This is useful for coverage analysis and follow-up prioritization while keeping the content boundary clear.
+
+Run the dataset audit after regeneration:
+
+```bash
+npm run audit:dataset
+```
+
+The audit writes `reports/dataset-manifest.json` and refuses to mark the package publishable if OID-base page bodies or contact fields are included.
 
 ## Data Model
 

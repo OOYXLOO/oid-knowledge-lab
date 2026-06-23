@@ -2,6 +2,7 @@
 
 const assert = require("assert");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
+const { assertPublishableManifest, buildDatasetManifest } = require("../src/manifest");
 const { parseOidMarkdown } = require("../src/parser");
 const { buildReport } = require("../src/report");
 const { isAllowedByRobots } = require("../src/robots");
@@ -111,6 +112,45 @@ function testReport() {
   assert.equal(report.root_arcs[0].key, "2");
   assert.equal(report.with_child_oids, 1);
   assert.equal(report.with_supplementary_information, 1);
+}
+
+function testDatasetManifest() {
+  const manifest = buildDatasetManifest({
+    generatedAt: "2026-06-24T00:00:00.000Z",
+    oidBaseIndex: {
+      source_url: "https://oid-base.com/sitemap.xml",
+      oid_count: 2,
+      root_arc_counts: [{ key: "1", count: 1 }, { key: "2", count: 1 }],
+      depth_counts: [{ key: "3", count: 2 }]
+    },
+    ianaPenReport: {
+      source_url: "https://www.iana.org/assignments/enterprise-numbers.txt",
+      license_url: "https://www.iana.org/help/licensing-terms",
+      record_count: 10,
+      assigned_count: 9,
+      reserved_count: 1
+    },
+    penPublicIndexCount: 8,
+    oidBaseDirectoryCount: 2,
+    artifacts: [
+      { path: "reports/oid-base-sitemap-index.json", bytes: 1200, sha256: "sha256:abc" }
+    ]
+  });
+
+  assert.equal(manifest.generated_at, "2026-06-24T00:00:00.000Z");
+  assert.equal(manifest.oid_base.sitemap_entries, 2);
+  assert.equal(manifest.oid_base.copied_page_bodies, false);
+  assert.equal(manifest.iana_pen.public_index_records, 8);
+  assert.ok(manifest.content_boundary.includes("does not contain OID-base page bodies"));
+  assert.ok(manifest.excluded_data.includes("OID-base page bodies"));
+  assert.ok(manifest.artifacts[0].sha256.startsWith("sha256:"));
+  const internalTerms = ["money" + "-goal", "USD " + "200", "\u8d5a\u94b1"];
+  assert.equal(internalTerms.some((term) => JSON.stringify(manifest).toLowerCase().includes(term.toLowerCase())), false);
+  assert.doesNotThrow(() => assertPublishableManifest(manifest));
+  assert.throws(() => assertPublishableManifest({
+    ...manifest,
+    oid_base: { ...manifest.oid_base, copied_page_bodies: true }
+  }), /page bodies/);
 }
 
 function testIanaPenParser() {
@@ -223,6 +263,7 @@ function main() {
   testRobots();
   testMarkdownParser();
   testReport();
+  testDatasetManifest();
   testIanaPenParser();
   testSiteRenderer();
   console.log("oid knowledge tests passed");
