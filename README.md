@@ -37,6 +37,16 @@ The sample output is written under `data/sample/`:
 
 Generated sample JSON/JSONL files are ignored by Git. Commit only run receipts or synthetic fixtures unless the source authorization explicitly allows publishing collected data.
 
+## OID-base Sitemap Index
+
+The repository can publish a complete OID-base sitemap catalog without copying page bodies:
+
+```bash
+npm run export:sitemap-index
+```
+
+The command writes `reports/oid-base-sitemap-index.json` with OID paths, source URLs, Markdown URLs, sitemap `lastmod` dates, root arcs, and depth statistics. This is useful for coverage analysis and follow-up prioritization while keeping the content boundary clear.
+
 ## Data Model
 
 Each parsed record contains:
@@ -88,6 +98,7 @@ The command refuses to run full collection without both the environment flag and
 
 ```bash
 node src/cli.js inspect-source
+node src/cli.js export-sitemap-index --out reports/oid-base-sitemap-index.json
 node src/cli.js crawl --limit 10 --delay-ms 1000 --out data/sample
 node src/cli.js report --in data/sample/records.jsonl --out data/sample/report.json
 node src/cli.js import-iana-pen --out data/iana --report reports/iana-pen-summary.json --public-index reports/iana-pen-public-index.json

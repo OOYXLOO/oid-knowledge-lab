@@ -61,6 +61,15 @@ function countBy(items, getKey) {
     .map(([key, count]) => ({ key, count }));
 }
 
+function hasPublicContactNoise(value) {
+  const text = String(value || "");
+  const emailLike = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+  const ianaObfuscatedEmailLike = /[A-Za-z0-9._%+-]+&[a-z0-9.-]+\.[a-z]{2,}/;
+  const phoneLike = /(?:\+\d{1,3}|\(\d{2,4}\)|\b\d{3,}[-\s]\d{3,}\b)/;
+  const mostlyNumeric = /^[\d\s()+.-]{6,}$/;
+  return emailLike.test(text) || ianaObfuscatedEmailLike.test(text) || phoneLike.test(text) || mostlyNumeric.test(text.trim());
+}
+
 function buildIanaPenReport(records, meta = {}) {
   const assigned = records.filter((record) => record.organization && record.organization.toLowerCase() !== "reserved");
   const withNotes = assigned.filter((record) => record.notes.length > 0).length;
@@ -88,10 +97,9 @@ function buildIanaPenReport(records, meta = {}) {
 }
 
 function buildPublicPenIndex(records) {
-  const emailLike = /[A-Za-z0-9._%+-]+[&@][a-z0-9.-]+\.[a-z]{2,}/;
   return records
     .filter((record) => record.organization && record.organization.toLowerCase() !== "reserved")
-    .filter((record) => !emailLike.test(record.organization))
+    .filter((record) => !hasPublicContactNoise(record.organization))
     .map((record) => ({
       number: record.enterprise_number,
       oid: record.oid,
@@ -106,6 +114,7 @@ module.exports = {
   buildIanaPenReport,
   buildPublicPenIndex,
   emailDomain,
+  hasPublicContactNoise,
   parseEnterpriseNumbers,
   parseLastUpdated
 };

@@ -8,7 +8,7 @@ const { parseOidMarkdown } = require("./parser");
 const { buildReport, readJsonl } = require("./report");
 const { isAllowedByRobots, sitemapUrls } = require("./robots");
 const { buildSite } = require("./site");
-const { getOidEntries, parseSitemap } = require("./sitemap");
+const { buildSitemapIndex, getOidEntries, parseSitemap } = require("./sitemap");
 
 const ROOT = path.resolve(__dirname, "..");
 const BASE = "https://oid-base.com";
@@ -70,6 +70,18 @@ async function inspectSource() {
     oid_url_count: info.oid_url_count,
     robots_checks: checks
   }, null, 2));
+}
+
+async function exportSitemapIndex(args) {
+  const outFile = path.resolve(ROOT, argValue(args, "--out", "reports/oid-base-sitemap-index.json"));
+  const info = await loadSourceInfo();
+  ensureDir(path.dirname(outFile));
+  writeJson(outFile, buildSitemapIndex(info.oidEntries, {
+    sourceUrl: info.sitemap_url
+  }));
+  console.log(`sitemap source: ${info.sitemap_url}`);
+  console.log(`oid entries: ${info.oidEntries.length}`);
+  console.log(`index written: ${path.relative(ROOT, outFile).replace(/\\/g, "/")}`);
 }
 
 async function crawl(args) {
@@ -183,11 +195,12 @@ async function importIanaPen(args) {
 async function main() {
   const [command, ...args] = process.argv.slice(2);
   if (command === "inspect-source") return inspectSource();
+  if (command === "export-sitemap-index") return exportSitemapIndex(args);
   if (command === "crawl") return crawl(args);
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

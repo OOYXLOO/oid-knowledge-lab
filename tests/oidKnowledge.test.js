@@ -1,12 +1,12 @@
 "use strict";
 
 const assert = require("assert");
-const { buildIanaPenReport, buildPublicPenIndex, emailDomain, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
+const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { parseOidMarkdown } = require("../src/parser");
 const { buildReport } = require("../src/report");
 const { isAllowedByRobots } = require("../src/robots");
 const { escapeHtml, percent, renderDashboard } = require("../src/site");
-const { getOidEntries, parseSitemap } = require("../src/sitemap");
+const { buildSitemapIndex, getOidEntries, parseSitemap } = require("../src/sitemap");
 
 function testSitemapParser() {
   const urls = parseSitemap(`<?xml version="1.0"?><urlset>
@@ -16,11 +16,44 @@ function testSitemapParser() {
   assert.equal(urls.length, 2);
   const entries = getOidEntries(urls);
   assert.deepEqual(entries, [{
-    oid: "1.2.3",
-    source_url: "https://oid-base.com/get/1.2.3",
-    markdown_url: "https://oid-base.com/get-md/1.2.3",
-    sitemap_lastmod: "2026-01-01"
-  }]);
+      oid: "1.2.3",
+      source_url: "https://oid-base.com/get/1.2.3",
+      markdown_url: "https://oid-base.com/get-md/1.2.3",
+      sitemap_lastmod: "2026-01-01",
+      root_arc: "1",
+      depth: 3
+    }]);
+}
+
+function testSitemapIndex() {
+  const index = buildSitemapIndex([
+    {
+      oid: "1.2.3",
+      source_url: "https://oid-base.com/get/1.2.3",
+      markdown_url: "https://oid-base.com/get-md/1.2.3",
+      sitemap_lastmod: "2026-01-01",
+      root_arc: "1",
+      depth: 3
+    },
+    {
+      oid: "2.16.840",
+      source_url: "https://oid-base.com/get/2.16.840",
+      markdown_url: "https://oid-base.com/get-md/2.16.840",
+      sitemap_lastmod: "2025-01-01",
+      root_arc: "2",
+      depth: 3
+    }
+  ], {
+    sourceUrl: "https://oid-base.com/sitemap.xml",
+    generatedAt: "2026-06-24T00:00:00.000Z"
+  });
+
+  assert.equal(index.oid_count, 2);
+  assert.equal(index.source_kind, "sitemap metadata");
+  assert.equal(index.entries[0].oid, "1.2.3");
+  assert.equal(index.root_arc_counts[0].key, "1");
+  assert.ok(index.content_boundary.includes("does not copy"));
+  assert.equal(Object.hasOwn(index.entries[0], "description"), false);
 }
 
 function testRobots() {
@@ -114,10 +147,18 @@ Decimal
   Broken InitialK&example.com
     Contact
       other&example.com
+14
+  Volamp LtdW.G. Saich+44(0) 1252 724055
+    Contact
+      other&example.com
+15
+  556075-2825
+    Contact
+      other&example.com
 `;
   const records = parseEnterpriseNumbers(text);
   assert.equal(parseLastUpdated(text), "2026-06-23");
-  assert.equal(records.length, 6);
+  assert.equal(records.length, 8);
   assert.equal(records[1].oid, "1.3.6.1.4.1.9");
   assert.equal(records[1].organization, "ciscoSystems");
   assert.equal(records[2].notes[0], "extra note");
@@ -125,11 +166,14 @@ Decimal
   assert.equal(emailDomain("---none---"), "none");
 
   const report = buildIanaPenReport(records, { lastUpdated: "2026-06-23" });
-  assert.equal(report.record_count, 6);
-  assert.equal(report.assigned_count, 5);
+  assert.equal(report.record_count, 8);
+  assert.equal(report.assigned_count, 7);
   assert.equal(report.reserved_count, 1);
-  assert.equal(report.highest_enterprise_number, 13);
+  assert.equal(report.highest_enterprise_number, 15);
   assert.ok(report.top_email_domains.some((entry) => entry.key === "cisco.com"));
+  assert.equal(hasPublicContactNoise("Volamp LtdW.G. Saich+44(0) 1252 724055"), true);
+  assert.equal(hasPublicContactNoise("556075-2825"), true);
+  assert.equal(hasPublicContactNoise("MainSkill Technologies GmbH&Co.KG"), false);
 
   const publicIndex = buildPublicPenIndex(records);
   assert.deepEqual(publicIndex[0], {
@@ -142,6 +186,8 @@ Decimal
   assert.equal(publicIndex.some((record) => record.number === 11), false);
   assert.equal(publicIndex.some((record) => record.number === 12), true);
   assert.equal(publicIndex.some((record) => record.number === 13), false);
+  assert.equal(publicIndex.some((record) => record.number === 14), false);
+  assert.equal(publicIndex.some((record) => record.number === 15), false);
 }
 
 function testSiteRenderer() {
@@ -171,6 +217,7 @@ function testSiteRenderer() {
 
 function main() {
   testSitemapParser();
+  testSitemapIndex();
   testRobots();
   testMarkdownParser();
   testReport();
