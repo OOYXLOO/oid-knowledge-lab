@@ -51,6 +51,7 @@ npm run source-policy
 npm run plan:authorized-full-crawl
 npm run build:site
 npm run audit:assets
+npm run remediation:sample
 npm run coverage:oid
 npm run brief:sample
 npm run guard:publishable
@@ -181,6 +182,22 @@ Accepted input is a simple CSV or tab-delimited file with an `oid` column and an
 
 The generated static dashboard also includes an in-browser local OID list audit panel. It accepts the same simple CSV shape and runs entirely in the browser against the published search indexes, so a reviewer can test an inventory without uploading it to a server.
 
+## OID Remediation Board
+
+Turn the asset audit into a client-action queue:
+
+```bash
+npm run remediation:sample
+```
+
+The command writes:
+
+- `reports/remediation-board.json`
+- `reports/remediation-board.md`
+- `reports/remediation-board.csv`
+
+The board sorts findings into correction, review, and evidence-preservation work items with owner actions and acceptance checks. It is designed for sanitized client handoff: do not commit raw client inventories, credentials, private correspondence, or copied OID-base page bodies.
+
 ## OID Coverage Report
 
 Use the coverage command to compare the public IANA PEN search index against the OID-base sitemap directory:
@@ -252,6 +269,7 @@ node src/cli.js inspect-source
 node src/cli.js export-sitemap-index --out reports/oid-base-sitemap-index.json
 node src/cli.js plan-full-crawl --out reports/authorized-crawl-plan.json --markdown reports/authorized-crawl-plan.md
 node src/cli.js audit-assets --in examples/sample-assets.csv --out reports/asset-audit.json --markdown reports/asset-audit.md
+node src/cli.js remediation-board --asset-audit reports/asset-audit.json --out reports/remediation-board.json --markdown reports/remediation-board.md --csv reports/remediation-board.csv
 node src/cli.js coverage-report --pen-index reports/iana-pen-public-index.json --sitemap reports/oid-base-sitemap-index.json --out reports/coverage-report.json --markdown reports/coverage-report.md
 node src/cli.js guard-publishable
 node src/cli.js crawl --limit 10 --delay-ms 1000 --out data/sample --resume

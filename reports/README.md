@@ -12,6 +12,9 @@ This directory stores aggregate reports that are safe to publish.
 - `authorized-crawl-plan.md`: human-readable version of the authorized full crawl plan. It is a plan, not a copied content mirror.
 - `asset-audit.json`: example OID asset inventory audit generated from `examples/sample-assets.csv`.
 - `asset-audit.md`: Markdown version of the example asset audit, suitable for a quick review handoff.
+- `remediation-board.json`: machine-readable client action queue generated from the example asset audit.
+- `remediation-board.md`: Markdown version of the remediation board, with owner actions and acceptance checks.
+- `remediation-board.csv`: spreadsheet-ready remediation board for issue trackers or client review.
 - `coverage-report.json`: comparison of the public IANA PEN index against the OID-base sitemap directory.
 - `coverage-report.md`: Markdown handoff showing exact OID-base matches, subtree-only matches, and missing public directory evidence.
 - `sample-engagement-brief.md`: scoped assessment starter with client inputs, deliverables, acceptance criteria, and source boundary notes.

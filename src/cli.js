@@ -12,6 +12,7 @@ const { buildManifestFromFiles } = require("./manifest");
 const { ensureDir, fetchText, sleep, writeJson } = require("./net");
 const { parseOidMarkdown } = require("./parser");
 const { auditPublishableTree } = require("./publishGuard");
+const { writeRemediationBoard } = require("./remediationBoard");
 const { buildReport, readJsonl } = require("./report");
 const { completedOidsFromFile, selectPendingEntries, writeCrawlState } = require("./crawlState");
 const { isAllowedByRobots, sitemapUrls } = require("./robots");
@@ -256,6 +257,19 @@ function deliveryPack(args) {
   console.log(`delivery pack written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
 }
 
+function remediationBoard(args) {
+  const assetAuditFile = path.resolve(ROOT, argValue(args, "--asset-audit", "reports/asset-audit.json"));
+  const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/remediation-board.json"));
+  const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/remediation-board.md"));
+  const csvOutFile = path.resolve(ROOT, argValue(args, "--csv", "reports/remediation-board.csv"));
+  const board = writeRemediationBoard({ assetAuditFile, jsonOutFile, markdownOutFile, csvOutFile });
+  console.log(`remediation items: ${board.summary.total_items}`);
+  console.log(`client action items: ${board.summary.client_action_items}`);
+  console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
+  console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
+  console.log(`csv written: ${path.relative(ROOT, csvOutFile).replace(/\\/g, "/")}`);
+}
+
 function engagementBrief(args) {
   const assetAuditFile = path.resolve(ROOT, argValue(args, "--asset-audit", "reports/asset-audit.json"));
   const coverageReportFile = path.resolve(ROOT, argValue(args, "--coverage", "reports/coverage-report.json"));
@@ -289,6 +303,9 @@ function auditDataset(args) {
     path.resolve(ROOT, "reports/asset-audit.md"),
     path.resolve(ROOT, "reports/coverage-report.json"),
     path.resolve(ROOT, "reports/coverage-report.md"),
+    path.resolve(ROOT, "reports/remediation-board.csv"),
+    path.resolve(ROOT, "reports/remediation-board.json"),
+    path.resolve(ROOT, "reports/remediation-board.md"),
     path.resolve(ROOT, "reports/sample-delivery-pack.md"),
     path.resolve(ROOT, "reports/sample-engagement-brief.md"),
     path.resolve(ROOT, "reports/source-policy.json"),
@@ -380,6 +397,7 @@ async function main() {
   if (command === "audit-assets") return auditAssets(args);
   if (command === "coverage-report") return coverageReport(args);
   if (command === "delivery-pack") return deliveryPack(args);
+  if (command === "remediation-board") return remediationBoard(args);
   if (command === "engagement-brief") return engagementBrief(args);
   if (command === "audit-dataset") return auditDataset(args);
   if (command === "source-policy") return sourcePolicy(args);
@@ -387,7 +405,7 @@ async function main() {
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|engagement-brief|audit-dataset|source-policy|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|audit-dataset|source-policy|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

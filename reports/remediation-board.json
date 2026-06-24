@@ -1,0 +1,83 @@
+{
+  "generated_at": "2026-06-24T09:41:19.813Z",
+  "source_kind": "OID asset audit remediation board",
+  "summary": {
+    "generated_at": "2026-06-24T09:41:19.813Z",
+    "total_items": 4,
+    "p0_items": 1,
+    "p1_items": 1,
+    "p2_items": 2,
+    "evidence_ready_items": 2,
+    "client_action_items": 2
+  },
+  "rows": [
+    {
+      "id": "OID-004",
+      "source_index": 4,
+      "priority": "P0",
+      "asset": "invalid-row",
+      "oid": "not-an-oid",
+      "status": "invalid_value",
+      "issue": "Invalid OID syntax",
+      "risk": "high",
+      "evidence": "Local syntax validation",
+      "evidence_url": "",
+      "enterprise_owner": "",
+      "enterprise_oid": "",
+      "owner_action": "Correct or remove the value before using it in audit evidence, device metadata, or policy documentation.",
+      "acceptance_check": "The replacement value matches numeric OID syntax and re-runs without an invalid_value finding.",
+      "publishable_boundary": "Sanitized finding only; do not attach raw client inventory or copied OID-base page bodies."
+    },
+    {
+      "id": "OID-003",
+      "source_index": 3,
+      "priority": "P1",
+      "asset": "directory-root",
+      "oid": "1.3.6.1.4.1",
+      "status": "valid_oid_unmatched",
+      "issue": "Valid OID without public directory evidence",
+      "risk": "low",
+      "evidence": "No exact OID-base sitemap or public PEN mapping",
+      "evidence_url": "",
+      "enterprise_owner": "",
+      "enterprise_oid": "",
+      "owner_action": "Check internal registry notes or another authoritative source before relying on this OID externally.",
+      "acceptance_check": "A source link, internal registry reference, or explicit unresolved disposition is attached.",
+      "publishable_boundary": "Sanitized finding only; do not attach raw client inventory or copied OID-base page bodies."
+    },
+    {
+      "id": "OID-001",
+      "source_index": 1,
+      "priority": "P2",
+      "asset": "router-core",
+      "oid": "1.3.6.1.4.1.9.9.41",
+      "status": "known_private_enterprise_oid",
+      "issue": "Known private enterprise arc",
+      "risk": "low",
+      "evidence": "ciscoSystems",
+      "evidence_url": "",
+      "enterprise_owner": "ciscoSystems",
+      "enterprise_oid": "1.3.6.1.4.1.9",
+      "owner_action": "Attach the public enterprise owner mapping and confirm the sub-arc meaning with vendor or internal docs.",
+      "acceptance_check": "The asset record includes enterprise owner, enterprise root, and local sub-arc purpose.",
+      "publishable_boundary": "Sanitized finding only; do not attach raw client inventory or copied OID-base page bodies."
+    },
+    {
+      "id": "OID-002",
+      "source_index": 2,
+      "priority": "P2",
+      "asset": "example-directory-hit",
+      "oid": "2.16.840.1.101.3.7.1.219.0",
+      "status": "oidbase_directory_match",
+      "issue": "Public directory evidence ready",
+      "risk": "low",
+      "evidence": "https://oid-base.com/get/2.16.840.1.101.3.7.1.219.0",
+      "evidence_url": "https://oid-base.com/get/2.16.840.1.101.3.7.1.219.0",
+      "enterprise_owner": "",
+      "enterprise_oid": "",
+      "owner_action": "Preserve the source URL with the asset record and verify the business meaning with the owning team.",
+      "acceptance_check": "The asset record includes the OID-base source URL and an internal owner.",
+      "publishable_boundary": "Sanitized finding only; do not attach raw client inventory or copied OID-base page bodies."
+    }
+  ]
+}

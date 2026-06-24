@@ -11,6 +11,7 @@ const { renderEngagementBrief } = require("../src/engagementBrief");
 const { assertPublishableManifest, buildDatasetManifest } = require("../src/manifest");
 const { parseOidMarkdown } = require("../src/parser");
 const { auditPublishableFileList } = require("../src/publishGuard");
+const { buildRemediationBoard, renderRemediationBoardCsv, renderRemediationBoardMarkdown } = require("../src/remediationBoard");
 const { buildReport } = require("../src/report");
 const { isAllowedByRobots } = require("../src/robots");
 const { completedOidsFromJsonl, selectPendingEntries } = require("../src/crawlState");
@@ -563,6 +564,44 @@ function testDeliveryPackRenderer() {
   assert.equal(pack.includes("USD " + "200"), false);
 }
 
+function testRemediationBoardRenderer() {
+  const board = buildRemediationBoard({
+    generatedAt: "2026-06-24T00:00:00.000Z",
+    assetAudit: {
+      findings: [
+        { index: 1, label: "router-core", oid: "1.3.6.1.4.1.9.9.41", status: "known_private_enterprise_oid", risk: "low", enterprise: { organization: "ciscoSystems", oid: "1.3.6.1.4.1.9" } },
+        { index: 2, label: "directory-hit", oid: "2.16.840.1.101.3.4.2.1", status: "oidbase_directory_match", risk: "low", oidbase_match: { source_url: "https://oid-base.com/get/2.16.840.1.101.3.4.2.1" } },
+        { index: 3, label: "unknown-enterprise", oid: "1.3.6.1.4.1.999999.1", status: "unknown_private_enterprise_oid", risk: "medium" },
+        { index: 4, label: "bad-row", oid: "not-an-oid", status: "invalid_value", risk: "high" }
+      ]
+    }
+  });
+
+  assert.equal(board.summary.total_items, 4);
+  assert.equal(board.summary.p0_items, 1);
+  assert.equal(board.summary.p1_items, 1);
+  assert.equal(board.summary.p2_items, 2);
+  assert.equal(board.summary.evidence_ready_items, 2);
+  assert.equal(board.summary.client_action_items, 2);
+  assert.equal(board.rows[0].id, "OID-004");
+  assert.equal(board.rows[0].priority, "P0");
+  assert.ok(board.rows[0].acceptance_check.includes("re-runs"));
+  assert.ok(board.rows.some((row) => row.evidence_url === "https://oid-base.com/get/2.16.840.1.101.3.4.2.1"));
+
+  const markdown = renderRemediationBoardMarkdown(board);
+  assert.ok(markdown.includes("# OID Remediation Board"));
+  assert.ok(markdown.includes("Client action items: `2`"));
+  assert.ok(markdown.includes("Invalid OID syntax"));
+  assert.ok(markdown.includes("Sanitized finding"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+
+  const csv = renderRemediationBoardCsv(board);
+  assert.ok(csv.startsWith("id,priority,asset,oid,status"));
+  assert.ok(csv.includes("OID-004,P0,bad-row,not-an-oid"));
+  assert.equal(csv.includes("\u8d5a\u94b1"), false);
+}
+
 function testEngagementBriefRenderer() {
   const brief = renderEngagementBrief({
     generatedAt: "2026-06-24T00:00:00.000Z",
@@ -701,6 +740,7 @@ function main() {
   testAssetAudit();
   testCoverageReport();
   testDeliveryPackRenderer();
+  testRemediationBoardRenderer();
   testEngagementBriefRenderer();
   testPublishGuardFlagsPrivateMirrorFiles();
   testPublishGuardAllowsPublicArtifacts();
