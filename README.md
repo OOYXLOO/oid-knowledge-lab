@@ -25,6 +25,7 @@ Chinese operator notes:
 
 - `README.zh.md`
 - `docs/authorized-full-crawl.zh.md`
+- `docs/source-authorization-request.zh.md`
 - `docs/snapshot-20260624.zh.md`
 
 ## Compliance Boundary
