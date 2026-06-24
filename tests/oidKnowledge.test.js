@@ -2,6 +2,7 @@
 
 const assert = require("assert");
 const { analyzeAssetText, renderAssetAuditMarkdown } = require("../src/assetAudit");
+const { analyzeCoverage, renderCoverageMarkdown } = require("../src/coverage");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { assertPublishableManifest, buildDatasetManifest } = require("../src/manifest");
 const { parseOidMarkdown } = require("../src/parser");
@@ -313,6 +314,61 @@ bad-row,not-an-oid
   assert.ok(markdown.includes("not-an-oid"));
 }
 
+function testCoverageReport() {
+  const penIndex = [
+    { number: 9, oid: "1.3.6.1.4.1.9", organization: "ciscoSystems" },
+    { number: 10, oid: "1.3.6.1.4.1.10", organization: "Exact Org" },
+    { number: 11, oid: "1.3.6.1.4.1.11", organization: "Missing Org" },
+    { number: 12, oid: "1.3.6.1.4.1.12", organization: "Subtree Org" }
+  ];
+  const oidBaseIndex = {
+    entries: [
+      {
+        oid: "1.3.6.1.4.1.10",
+        source_url: "https://oid-base.com/get/1.3.6.1.4.1.10",
+        sitemap_lastmod: "2026-06-01",
+        root_arc: "1",
+        depth: 7
+      },
+      {
+        oid: "1.3.6.1.4.1.12.1",
+        source_url: "https://oid-base.com/get/1.3.6.1.4.1.12.1",
+        sitemap_lastmod: "2026-06-02",
+        root_arc: "1",
+        depth: 8
+      },
+      {
+        oid: "2.16.840.1.101.3.4.2.1",
+        source_url: "https://oid-base.com/get/2.16.840.1.101.3.4.2.1",
+        sitemap_lastmod: "2021-07-27",
+        root_arc: "2",
+        depth: 10
+      }
+    ]
+  };
+
+  const report = analyzeCoverage({ penIndex, oidBaseIndex, generatedAt: "2026-06-24T00:00:00.000Z" });
+  assert.equal(report.summary.total_public_pen_records, 4);
+  assert.equal(report.summary.exact_oidbase_matches, 1);
+  assert.equal(report.summary.subtree_only_matches, 1);
+  assert.equal(report.summary.missing_oidbase_entries, 2);
+  assert.equal(report.summary.coverage_score, 50);
+  assert.equal(report.findings[0].status, "missing_oidbase_entry");
+  assert.equal(report.findings[2].status, "exact_oidbase_match");
+  assert.equal(report.findings[3].matching_child_count, 1);
+  assert.deepEqual(report.action_plan.map((item) => [item.priority, item.title, item.count]), [
+    ["P1", "Review public PEN records missing from OID-base directory", 2],
+    ["P2", "Check subtree-only enterprise arcs for missing parent registration evidence", 1],
+    ["P3", "Preserve exact OID-base evidence mappings", 1]
+  ]);
+
+  const markdown = renderCoverageMarkdown(report);
+  assert.ok(markdown.includes("# OID Coverage Report"));
+  assert.ok(markdown.includes("Missing Org"));
+  assert.ok(markdown.includes("Subtree Org"));
+  assert.ok(markdown.includes("50/100"));
+}
+
 function testPublishGuardFlagsPrivateMirrorFiles() {
   const audit = auditPublishableFileList([
     "README.md",
@@ -357,6 +413,7 @@ function main() {
   testIanaPenParser();
   testSiteRenderer();
   testAssetAudit();
+  testCoverageReport();
   testPublishGuardFlagsPrivateMirrorFiles();
   testPublishGuardAllowsPublicArtifacts();
   console.log("oid knowledge tests passed");

@@ -8,5 +8,7 @@ This directory stores aggregate reports that are safe to publish.
 - `dataset-manifest.json`: publishable data package manifest with artifact sizes, hashes, counts, source links, and data-exclusion boundaries.
 - `asset-audit.json`: example OID asset inventory audit generated from `examples/sample-assets.csv`.
 - `asset-audit.md`: Markdown version of the example asset audit, suitable for a quick review handoff.
+- `coverage-report.json`: comparison of the public IANA PEN index against the OID-base sitemap directory.
+- `coverage-report.md`: Markdown handoff showing exact OID-base matches, subtree-only matches, and missing public directory evidence.
 
 Full JSONL imports and raw source files stay under ignored `data/` paths unless the source authorization explicitly allows publication.

@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { auditAssetFile } = require("./assetAudit");
+const { writeCoverageReport } = require("./coverage");
 const { buildIanaPenReport, buildPublicPenIndex, IANA_LICENSE_URL, IANA_PEN_URL, parseEnterpriseNumbers, parseLastUpdated } = require("./ianaPen");
 const { buildManifestFromFiles } = require("./manifest");
 const { ensureDir, fetchText, sleep, writeJson } = require("./net");
@@ -168,6 +169,21 @@ function auditAssets(args) {
   console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
 }
 
+function coverageReport(args) {
+  const penIndexFile = path.resolve(ROOT, argValue(args, "--pen-index", "reports/iana-pen-public-index.json"));
+  const oidBaseIndexFile = path.resolve(ROOT, argValue(args, "--sitemap", "reports/oid-base-sitemap-index.json"));
+  const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/coverage-report.json"));
+  const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/coverage-report.md"));
+  const report = writeCoverageReport({ penIndexFile, oidBaseIndexFile, jsonOutFile, markdownOutFile });
+  console.log(`public PEN records: ${report.summary.total_public_pen_records}`);
+  console.log(`exact OID-base matches: ${report.summary.exact_oidbase_matches}`);
+  console.log(`subtree-only matches: ${report.summary.subtree_only_matches}`);
+  console.log(`missing OID-base entries: ${report.summary.missing_oidbase_entries}`);
+  console.log(`coverage score: ${report.summary.coverage_score}/100`);
+  console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
+  console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
+}
+
 function buildStaticSite(args) {
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
   const indexFile = path.resolve(ROOT, argValue(args, "--index", "reports/iana-pen-public-index.json"));
@@ -186,6 +202,10 @@ function auditDataset(args) {
   const penPublicIndexFile = path.resolve(ROOT, argValue(args, "--index", "reports/iana-pen-public-index.json"));
   const outFile = path.resolve(ROOT, argValue(args, "--out", "reports/dataset-manifest.json"));
   const extraArtifactFiles = [
+    path.resolve(ROOT, "reports/asset-audit.json"),
+    path.resolve(ROOT, "reports/asset-audit.md"),
+    path.resolve(ROOT, "reports/coverage-report.json"),
+    path.resolve(ROOT, "reports/coverage-report.md"),
     path.resolve(ROOT, "public/index.html"),
     path.resolve(ROOT, "public/oid-base-directory.js"),
     path.resolve(ROOT, "public/search-index.js")
@@ -250,12 +270,13 @@ async function main() {
   if (command === "export-sitemap-index") return exportSitemapIndex(args);
   if (command === "crawl") return crawl(args);
   if (command === "audit-assets") return auditAssets(args);
+  if (command === "coverage-report") return coverageReport(args);
   if (command === "audit-dataset") return auditDataset(args);
   if (command === "guard-publishable") return guardPublishable();
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|audit-assets|audit-dataset|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|audit-assets|coverage-report|audit-dataset|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

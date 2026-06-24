@@ -11,6 +11,7 @@ Last refreshed on 2026-06-24:
 - OID-base sitemap catalog: 7,492 public OID entries from `https://oid-base.com/sitemap.xml`
 - IANA Private Enterprise Numbers import: 66,101 raw registry records
 - Public IANA PEN search index: 65,959 records after excluding contact-level noise
+- Coverage report: `reports/coverage-report.md` compares IANA PEN records with the OID-base sitemap directory
 - Static dashboard: generated under `public/`
 - Dataset manifest: `reports/dataset-manifest.json` with artifact hashes, sizes, source links, and publication boundaries
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
@@ -44,6 +45,7 @@ npm test
 npm run refresh:publishable
 npm run build:site
 npm run audit:assets
+npm run coverage:oid
 npm run guard:publishable
 npm run crawl:sample
 npm run report
@@ -137,6 +139,21 @@ node src/cli.js audit-assets --in path/to/assets.csv --out reports/asset-audit.j
 
 Accepted input is a simple CSV or tab-delimited file with an `oid` column and an optional `asset`, `name`, `id`, or `label` column.
 
+## OID Coverage Report
+
+Use the coverage command to compare the public IANA PEN search index against the OID-base sitemap directory:
+
+```bash
+npm run coverage:oid
+```
+
+The command writes:
+
+- `reports/coverage-report.json`
+- `reports/coverage-report.md`
+
+The report highlights exact OID-base matches, subtree-only matches, and public PEN records that do not have sitemap-level OID-base evidence. This is useful for OID asset inventory review because missing public directory evidence can become a concrete reconciliation queue.
+
 ## Open Data Import: IANA PEN
 
 The project also supports the IANA Private Enterprise Numbers registry. IANA licensing terms dedicate protocol registries to CC0 1.0, making this a better source for reusable analysis than copying OID-base content.
@@ -174,6 +191,7 @@ See `docs/authorized-full-crawl.zh.md` for a Chinese operator note covering the 
 node src/cli.js inspect-source
 node src/cli.js export-sitemap-index --out reports/oid-base-sitemap-index.json
 node src/cli.js audit-assets --in examples/sample-assets.csv --out reports/asset-audit.json --markdown reports/asset-audit.md
+node src/cli.js coverage-report --pen-index reports/iana-pen-public-index.json --sitemap reports/oid-base-sitemap-index.json --out reports/coverage-report.json --markdown reports/coverage-report.md
 node src/cli.js guard-publishable
 node src/cli.js crawl --limit 10 --delay-ms 1000 --out data/sample
 node src/cli.js report --in data/sample/records.jsonl --out data/sample/report.json
