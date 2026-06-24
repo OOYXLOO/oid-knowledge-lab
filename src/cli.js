@@ -14,7 +14,7 @@ const { parseOidMarkdown } = require("./parser");
 const { auditPublishableTree } = require("./publishGuard");
 const { writeRemediationBoard } = require("./remediationBoard");
 const { buildReport, readJsonl } = require("./report");
-const { completedOidsFromFile, selectPendingEntries, writeCrawlState } = require("./crawlState");
+const { completedOidsFromFile, failureRecordForEntry, selectPendingEntries, summarizeCrawlRun, writeCrawlState } = require("./crawlState");
 const { isAllowedByRobots, sitemapUrls } = require("./robots");
 const { buildSite } = require("./site");
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("./sitemap");
@@ -127,6 +127,7 @@ async function crawl(args) {
 
   ensureDir(outDir);
   const recordsFile = path.join(outDir, "records.jsonl");
+  const failuresFile = path.join(outDir, "failures.jsonl");
   const completedOids = resume ? completedOidsFromFile(recordsFile) : new Set();
   const selected = selectPendingEntries(info.oidEntries, { completedOids, limit });
   writeJson(path.join(outDir, "sitemap-sample.json"), {
@@ -142,35 +143,45 @@ async function crawl(args) {
   });
 
   if (!resume || !fs.existsSync(recordsFile)) fs.writeFileSync(recordsFile, "", "utf8");
+  if (!resume || !fs.existsSync(failuresFile)) fs.writeFileSync(failuresFile, "", "utf8");
   const records = [];
+  const failures = [];
 
   writeCrawlState(outDir, {
     status: "running",
     full_collection_authorized: full,
     resume_enabled: resume,
-    selected_count: selected.length,
-    completed_before_run: completedOids.size,
-    completed_this_run: 0,
-    records_file: path.relative(ROOT, recordsFile).replace(/\\/g, "/")
-  });
+      selected_count: selected.length,
+      completed_before_run: completedOids.size,
+      completed_this_run: 0,
+      failed_this_run: 0,
+      records_file: path.relative(ROOT, recordsFile).replace(/\\/g, "/")
+    });
 
   for (let index = 0; index < selected.length; index += 1) {
     const entry = selected[index];
     if (!isAllowedByRobots(info.robots, entry.markdown_url, "oid-knowledge-lab")) {
       throw new Error(`Robots policy does not allow ${entry.markdown_url}`);
     }
-    const fetched = await fetchText(entry.markdown_url);
-    const record = parseOidMarkdown(fetched.body, {
-      ...entry,
-      fetched_at: new Date().toISOString()
-    });
-    records.push(record);
-    fs.appendFileSync(recordsFile, `${JSON.stringify(record)}\n`, "utf8");
-    if (saveRaw) {
-      const safeName = String(record.oid || `record-${index}`).replace(/[^A-Za-z0-9_.-]/g, "_");
-      fs.writeFileSync(path.join(outDir, `${safeName}.md`), fetched.body, "utf8");
+    try {
+      const fetched = await fetchText(entry.markdown_url);
+      const record = parseOidMarkdown(fetched.body, {
+        ...entry,
+        fetched_at: new Date().toISOString()
+      });
+      records.push(record);
+      fs.appendFileSync(recordsFile, `${JSON.stringify(record)}\n`, "utf8");
+      if (saveRaw) {
+        const safeName = String(record.oid || `record-${index}`).replace(/[^A-Za-z0-9_.-]/g, "_");
+        fs.writeFileSync(path.join(outDir, `${safeName}.md`), fetched.body, "utf8");
+      }
+      console.log(`[${index + 1}/${selected.length}] ${record.oid} ${record.description || ""}`);
+    } catch (error) {
+      const failure = failureRecordForEntry(entry, error, index + 1);
+      failures.push(failure);
+      fs.appendFileSync(failuresFile, `${JSON.stringify(failure)}\n`, "utf8");
+      console.warn(`[${index + 1}/${selected.length}] ${failure.oid || "unknown"} failed: ${failure.error}`);
     }
-    console.log(`[${index + 1}/${selected.length}] ${record.oid} ${record.description || ""}`);
     if (index + 1 < selected.length) await sleep(delayMs);
     writeCrawlState(outDir, {
       status: "running",
@@ -179,32 +190,35 @@ async function crawl(args) {
       selected_count: selected.length,
       completed_before_run: completedOids.size,
       completed_this_run: records.length,
-      last_oid: record.oid,
-      records_file: path.relative(ROOT, recordsFile).replace(/\\/g, "/")
+      failed_this_run: failures.length,
+      last_oid: records[records.length - 1] ? records[records.length - 1].oid : null,
+      last_failed_oid: failures[failures.length - 1] ? failures[failures.length - 1].oid : null,
+      records_file: path.relative(ROOT, recordsFile).replace(/\\/g, "/"),
+      failures_file: path.relative(ROOT, failuresFile).replace(/\\/g, "/")
     });
   }
 
-  writeJson(path.join(outDir, "records-summary.json"), {
-    generated_at: new Date().toISOString(),
-    record_count: records.length,
-    completed_before_run: completedOids.size,
-    completed_after_run: completedOids.size + records.length,
-    first_oid: records[0] ? records[0].oid : null,
-    last_oid: records[records.length - 1] ? records[records.length - 1].oid : null,
-    full_collection_authorized: full,
-    raw_markdown_saved: saveRaw,
-    resume_enabled: resume
-  });
+  writeJson(path.join(outDir, "records-summary.json"), summarizeCrawlRun({
+    completedBeforeRun: completedOids.size,
+    records,
+    failures,
+    fullCollectionAuthorized: full,
+    rawMarkdownSaved: saveRaw,
+    resumeEnabled: resume
+  }));
   writeCrawlState(outDir, {
-    status: "complete",
+    status: failures.length ? "completed_with_failures" : "complete",
     full_collection_authorized: full,
     resume_enabled: resume,
     selected_count: selected.length,
     completed_before_run: completedOids.size,
     completed_this_run: records.length,
+    failed_this_run: failures.length,
     completed_after_run: completedOids.size + records.length,
     last_oid: records[records.length - 1] ? records[records.length - 1].oid : null,
-    records_file: path.relative(ROOT, recordsFile).replace(/\\/g, "/")
+    last_failed_oid: failures[failures.length - 1] ? failures[failures.length - 1].oid : null,
+    records_file: path.relative(ROOT, recordsFile).replace(/\\/g, "/"),
+    failures_file: path.relative(ROOT, failuresFile).replace(/\\/g, "/")
   });
 }
 

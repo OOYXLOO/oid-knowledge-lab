@@ -1,6 +1,6 @@
 {
   "name": "OID Knowledge Lab publishable data manifest",
-  "generated_at": "2026-06-24T10:43:36.437Z",
+  "generated_at": "2026-06-24T10:59:51.494Z",
   "publishable": true,
   "content_boundary": "This manifest covers OID-base sitemap metadata and open IANA PEN aggregate/public data; it does not contain OID-base page bodies, raw page mirrors, private contact fields, credentials, cookies, tokens, or account data.",
   "oid_base": {
@@ -145,12 +145,12 @@
     {
       "path": "reports/oid-base-sitemap-index.json",
       "bytes": 2288780,
-      "sha256": "sha256:8d773ceda18f537de1c5aecba2b9d32765603d51cfbafc251d34bbfceb60fa97"
+      "sha256": "sha256:aca5018733786054bfba4b51db8e3f13b6ad54aa4c9afff5f3030564e49e34b1"
     },
     {
       "path": "reports/iana-pen-summary.json",
       "bytes": 4969,
-      "sha256": "sha256:3d1033315f5adc0537963f7905491e3343a0dc6f3e503f6bfc0249e7f0849f4d"
+      "sha256": "sha256:83b460e01d99eb90ddf6f79b0c5d896dce531e50817d7ac0df4a5c7ed54a6591"
     },
     {
       "path": "reports/iana-pen-public-index.json",
@@ -160,32 +160,32 @@
     {
       "path": "reports/authorized-crawl-plan.json",
       "bytes": 3079,
-      "sha256": "sha256:1c21a14d0dee08ab3345c95133929a89feb3c0460b53bf9d493ffa3c18e4c265"
+      "sha256": "sha256:be7b978a83c9300b544700ad36421afde251f82029320713d16d3d66b16b6475"
     },
     {
       "path": "reports/authorized-crawl-plan.md",
       "bytes": 2488,
-      "sha256": "sha256:bb78462ac6e56edcecc0fb1e5c13e8a4474192b063a93986493b0db24b147a4b"
+      "sha256": "sha256:84242cbebfb5ebf18ad2b0e819ec64c31e88f14a3b38cabc50e2371ef46c7dd2"
     },
     {
       "path": "reports/asset-audit.json",
       "bytes": 2696,
-      "sha256": "sha256:562bf393a3fb3eae36ec7a9713bf86ba3c8f12a4da76e1a70a8f043b3c4dd2df"
+      "sha256": "sha256:b163270a476eb102fce988631ffc74599b271136886fd84a3f4f5ca1ef281d0d"
     },
     {
       "path": "reports/asset-audit.md",
       "bytes": 1538,
-      "sha256": "sha256:21b7165f8aaae8510125d28af4fe319289133dd082f8da1a047605c1a0233b74"
+      "sha256": "sha256:45186b4045eb81e192d568f44dae788cbfe91d94c885e73fa163d37ea90bedbb"
     },
     {
       "path": "reports/coverage-report.json",
       "bytes": 19192275,
-      "sha256": "sha256:a5fd1af6cfe422892a5555ce70b2045e00e1dfb61bfd8bec93ff9e6c61772878"
+      "sha256": "sha256:34bd7617a473075734bd1a4b40b9d184ea62e65968543fdd3539e0879686e3b3"
     },
     {
       "path": "reports/coverage-report.md",
       "bytes": 4567,
-      "sha256": "sha256:a930453c56c4cb1a9e7c5fc651d8cbff6202c618e86757b75769edeb5be1439a"
+      "sha256": "sha256:2b397c7534c5c9f20efb7162deb6b3946c239df093369ef370e40fceae62ca84"
     },
     {
       "path": "reports/remediation-board.csv",
@@ -195,37 +195,37 @@
     {
       "path": "reports/remediation-board.json",
       "bytes": 3476,
-      "sha256": "sha256:969e80f69ada6810aeb25d602912ba3674b992dcede3890d5229e185e3e1da78"
+      "sha256": "sha256:53bb79e59797a9308b9326f68ef6c520a64eb6d2ab512eee659fb057d3e4737f"
     },
     {
       "path": "reports/remediation-board.md",
       "bytes": 2153,
-      "sha256": "sha256:57c9d6ab0d953d170bf912876fd03260a2e13bfcd43a3ddc3a0370b833b74201"
+      "sha256": "sha256:dab0b2c592cf88783affc88c2c789877151cecff19770bd57b90db130ed1fa89"
     },
     {
       "path": "reports/sample-delivery-pack.md",
       "bytes": 2454,
-      "sha256": "sha256:779008e4c6d30f1627be98f927ca51f383c084beea85c6e50ae0a0d3a5ead1ec"
+      "sha256": "sha256:394ca6c4e5568b937ec25dd5088f7a05a6e6d35f16bfc441ee0cbb3b2a7b24a6"
     },
     {
       "path": "reports/sample-engagement-brief.md",
       "bytes": 2802,
-      "sha256": "sha256:008340f18c91bdd36843a12d64f4c6a1f2251fdf914216246ed4b387030d6520"
+      "sha256": "sha256:0ec557e54102a96b98a1cba81299ba96f4225679cf6206a4e6abc04fd291273d"
     },
     {
       "path": "reports/source-policy.json",
       "bytes": 1362,
-      "sha256": "sha256:60c5f959490f77ba4f4a86faf22bf0fc2089863a6b7a0057f6f013259b31f78d"
+      "sha256": "sha256:2a65b69999525073ba5df08f799eb874ad331a2c2752d89e405a8cb95094bf88"
     },
     {
       "path": "reports/source-policy.md",
       "bytes": 1255,
-      "sha256": "sha256:115155f2bbd0f3f8988e19b3feddc057c6c189e2730ebfb2c940d7bbf743067e"
+      "sha256": "sha256:eb0504c54dd9e942b9f1a348acd388f8f96a8a39065e02df2b411098185a4882"
     },
     {
       "path": "public/index.html",
       "bytes": 11387,
-      "sha256": "sha256:6a217e3fe76e76d120fed7a50639ae6fec7146e91e60ff3523e73209326d5145"
+      "sha256": "sha256:53571b2d40d9af5b0279623c2b52a45654f563f5503960ca9b7b5867d8956927"
     },
     {
       "path": "public/oid-base-directory.js",

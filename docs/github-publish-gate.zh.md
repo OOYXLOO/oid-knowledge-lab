@@ -18,6 +18,14 @@ npm audit --audit-level=moderate
 git push -u origin master
 ```
 
+## 当前阻塞记录
+
+- 本地最新提交以 `git log -1 --oneline` 为准；当前提交说明为 `Improve OID crawl resilience`。
+- 远端地址：`https://github.com/OOYXLOO/oid-knowledge-lab.git`。
+- 2026-06-24 已尝试 `git push -u origin master`，GitHub 返回 `Repository not found`。
+- 当前机器的便携 `gh` 位于 `C:\Users\YXL\.codex\tmp\gh-cli-portable\bin\gh.exe`，但 `gh auth status` 显示未登录。
+- 后续只需要先创建空仓库，或登录 `gh` 后运行 `gh repo create OOYXLOO/oid-knowledge-lab --public --source . --remote origin --push`。
+
 如果 GitHub Pages 要展示 `public/` 静态检索面板，在仓库 Settings -> Pages 里选择 GitHub Actions 作为发布来源；仓库内的 `.github/workflows/pages.yml` 会发布 `public/` 目录。
 
 ## 授权完整爬取

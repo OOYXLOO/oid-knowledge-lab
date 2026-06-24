@@ -73,6 +73,8 @@ npm run report
 
 小样本 JSON/JSONL 输出会写入 `data/sample/`，并被 Git 忽略。只有 `data/sample/RUN-*.md` 这种不含页面正文的运行回执适合提交。
 
+如果单个 OID 页面临时返回 503 或网络错误，爬虫会把失败写入 `data/sample/failures.jsonl` 或授权全量目录中的同名文件，并继续处理后续条目；`records-summary.json` 和 `crawl-state.json` 会记录失败数量和失败 OID，便于后续 `--resume` 续跑。
+
 ## 重新生成可公开数据包
 
 ```bash

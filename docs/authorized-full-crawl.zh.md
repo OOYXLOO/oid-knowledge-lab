@@ -14,6 +14,8 @@ npm run crawl:sample
 
 如果采集中断，可以追加 `--resume`。它会读取目标目录中的 `records.jsonl`，跳过已经完成的 OID，并把本轮进度写入 `crawl-state.json`。
 
+如果某个 OID 页面临时不可用，爬虫会把失败条目写入 `failures.jsonl`，继续处理后续条目，并在 `records-summary.json` / `crawl-state.json` 中记录失败数量、最后成功 OID 和最后失败 OID。后续再次运行 `--resume` 时，会继续跳过已经成功写入 `records.jsonl` 的 OID。
+
 ## 全量模式的必要条件
 
 运行全量采集前，必须同时满足：

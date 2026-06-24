@@ -14,7 +14,7 @@ const { auditPublishableFileList } = require("../src/publishGuard");
 const { buildRemediationBoard, renderRemediationBoardCsv, renderRemediationBoardMarkdown } = require("../src/remediationBoard");
 const { buildReport } = require("../src/report");
 const { isAllowedByRobots } = require("../src/robots");
-const { completedOidsFromJsonl, selectPendingEntries } = require("../src/crawlState");
+const { completedOidsFromJsonl, failureRecordForEntry, summarizeCrawlRun, selectPendingEntries } = require("../src/crawlState");
 const { buildAuthorizedCrawlPlan, renderAuthorizedCrawlPlanMarkdown } = require("../src/crawlPlan");
 const { escapeHtml, percent, renderDashboard } = require("../src/site");
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("../src/sitemap");
@@ -226,6 +226,37 @@ function testCrawlResumeSelectionSupportsUnlimitedLimit() {
   });
 
   assert.deepEqual(pending.map((entry) => entry.oid), ["1", "3"]);
+}
+
+function testCrawlFailureSummaryKeepsResumeStateUseful() {
+  const failure = failureRecordForEntry(
+    {
+      oid: "1.3.6.1.4.1.66020",
+      markdown_url: "https://oid-base.com/get-md/1.3.6.1.4.1.66020"
+    },
+    new Error("HTTP 503 for https://oid-base.com/get-md/1.3.6.1.4.1.66020"),
+    4
+  );
+  const summary = summarizeCrawlRun({
+    completedBeforeRun: 25,
+    records: [{ oid: "1.3.6.1.4.1.66019" }],
+    failures: [failure],
+    fullCollectionAuthorized: false,
+    rawMarkdownSaved: false,
+    resumeEnabled: true
+  });
+
+  assert.equal(failure.oid, "1.3.6.1.4.1.66020");
+  assert.equal(failure.status, "failed");
+  assert.equal(failure.error, "HTTP 503");
+  assert.equal(failure.index, 4);
+  assert.equal(Object.hasOwn(failure, "body"), false);
+  assert.equal(summary.record_count, 1);
+  assert.equal(summary.failed_count, 1);
+  assert.equal(summary.completed_before_run, 25);
+  assert.equal(summary.completed_after_run, 26);
+  assert.equal(summary.failed_oids[0], "1.3.6.1.4.1.66020");
+  assert.equal(summary.resume_enabled, true);
 }
 
 function testAuthorizedCrawlPlanDocumentsBoundaryAndScale() {
@@ -739,6 +770,7 @@ function main() {
   testReport();
   testCrawlResumeSelectionSkipsExistingRecords();
   testCrawlResumeSelectionSupportsUnlimitedLimit();
+  testCrawlFailureSummaryKeepsResumeStateUseful();
   testAuthorizedCrawlPlanDocumentsBoundaryAndScale();
   testDatasetManifest();
   testIanaPenParser();

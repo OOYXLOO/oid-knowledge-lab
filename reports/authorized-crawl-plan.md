@@ -1,6 +1,6 @@
 # Authorized Full Crawl Plan
 
-Generated at: `2026-06-24T10:41:39.198Z`
+Generated at: `2026-06-24T10:54:28.338Z`
 
 ## Scope
 

@@ -66,11 +66,13 @@ The sample output is written under `data/sample/`:
 
 - `sitemap-sample.json`
 - `records.jsonl`
+- `failures.jsonl`
 - `records-summary.json`
 - `crawl-state.json`
 - `report.json`
 
 Generated sample JSON/JSONL files and crawl state files are ignored by Git. Commit only run receipts or synthetic fixtures unless the source authorization explicitly allows publishing collected data.
+Transient fetch failures are written to `failures.jsonl` and reflected in `records-summary.json` / `crawl-state.json`, so a long crawl can resume instead of losing the whole run.
 If `--save-raw-markdown` is used for local parser debugging, generated sample Markdown files are also ignored and blocked by the publish guard; only `RUN-*.md` receipt files may be committed from `data/sample/`.
 
 ## Rebuild the Publishable Data Package
