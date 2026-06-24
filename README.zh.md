@@ -81,6 +81,14 @@ npm run coverage:oid
 
 这个报告的价值在于把“OID 资产清单里哪些条目缺少公开佐证”变成一份可执行的核对队列。后续可以把它扩展成面向客户资产清单的审计工具。
 
+## 样例交付包
+
+```bash
+npm run delivery:sample
+```
+
+这个命令会生成 `reports/sample-delivery-pack.md`。它把样例资产审计、OID-base 覆盖上下文、行动计划、首批发现和客户数据边界合并成一份可给潜在客户看的脱敏交付样例。
+
 ## OID 资产清单分析
 
 如果你有一份本地 OID 清单，可以用下面的命令把它和 IANA PEN、OID-base sitemap 目录做交叉分析：

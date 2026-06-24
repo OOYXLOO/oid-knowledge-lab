@@ -156,6 +156,16 @@ The command writes:
 
 The report highlights exact OID-base matches, subtree-only matches, and public PEN records that do not have sitemap-level OID-base evidence. This is useful for OID asset inventory review because missing public directory evidence can become a concrete reconciliation queue.
 
+## Sample Delivery Pack
+
+Generate a sanitized client-facing handoff from the sample asset audit and coverage report:
+
+```bash
+npm run delivery:sample
+```
+
+The output is `reports/sample-delivery-pack.md`. It combines an executive summary, registry coverage context, action plan, first findings, and client data boundary notes. Use it as a reusable example of the kind of evidence pack this project can produce from a local OID inventory.
+
 ## Open Data Import: IANA PEN
 
 The project also supports the IANA Private Enterprise Numbers registry. IANA licensing terms dedicate protocol registries to CC0 1.0, making this a better source for reusable analysis than copying OID-base content.

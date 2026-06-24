@@ -10,5 +10,6 @@ This directory stores aggregate reports that are safe to publish.
 - `asset-audit.md`: Markdown version of the example asset audit, suitable for a quick review handoff.
 - `coverage-report.json`: comparison of the public IANA PEN index against the OID-base sitemap directory.
 - `coverage-report.md`: Markdown handoff showing exact OID-base matches, subtree-only matches, and missing public directory evidence.
+- `sample-delivery-pack.md`: sanitized sample handoff that combines asset audit results and coverage context into a client-facing evidence pack.
 
 Full JSONL imports and raw source files stay under ignored `data/` paths unless the source authorization explicitly allows publication.

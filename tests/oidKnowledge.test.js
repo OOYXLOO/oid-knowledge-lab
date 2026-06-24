@@ -3,6 +3,7 @@
 const assert = require("assert");
 const { analyzeAssetText, renderAssetAuditMarkdown } = require("../src/assetAudit");
 const { analyzeCoverage, renderCoverageMarkdown } = require("../src/coverage");
+const { renderDeliveryPack } = require("../src/deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { assertPublishableManifest, buildDatasetManifest } = require("../src/manifest");
 const { parseOidMarkdown } = require("../src/parser");
@@ -372,6 +373,48 @@ function testCoverageReport() {
   assert.ok(markdown.includes("50/100"));
 }
 
+function testDeliveryPackRenderer() {
+  const pack = renderDeliveryPack({
+    generatedAt: "2026-06-24T00:00:00.000Z",
+    assetAudit: {
+      summary: {
+        total_assets: 4,
+        valid_oids: 3,
+        invalid_values: 1,
+        evidence_ready_assets: 2,
+        unresolved_assets: 2,
+        quality_score: 78
+      },
+      action_plan: [
+        { priority: "P0", title: "Correct invalid OID values", count: 1, action: "Fix malformed values." },
+        { priority: "P1", title: "Review unmatched valid OIDs", count: 1, action: "Check internal registry." }
+      ],
+      findings: [
+        { label: "router-core", oid: "1.3.6.1.4.1.9.9.41", status: "known_private_enterprise_oid", risk: "low" },
+        { label: "invalid-row", oid: "not-an-oid", status: "invalid_value", risk: "high" }
+      ]
+    },
+    coverageReport: {
+      summary: {
+        total_public_pen_records: 65959,
+        exact_oidbase_matches: 127,
+        subtree_only_matches: 289,
+        missing_oidbase_entries: 65543,
+        coverage_score: 1
+      }
+    }
+  });
+
+  assert.ok(pack.includes("# OID Asset Evidence Delivery Pack"));
+  assert.ok(pack.includes("Client data boundary"));
+  assert.ok(pack.includes("Quality score: `78/100`"));
+  assert.ok(pack.includes("OID-base coverage score: `1/100`"));
+  assert.ok(pack.includes("Correct invalid OID values"));
+  assert.ok(pack.includes("router-core"));
+  assert.equal(pack.includes("money-goal"), false);
+  assert.equal(pack.includes("USD 200"), false);
+}
+
 function testPublishGuardFlagsPrivateMirrorFiles() {
   const audit = auditPublishableFileList([
     "README.md",
@@ -417,6 +460,7 @@ function main() {
   testSiteRenderer();
   testAssetAudit();
   testCoverageReport();
+  testDeliveryPackRenderer();
   testPublishGuardFlagsPrivateMirrorFiles();
   testPublishGuardAllowsPublicArtifacts();
   console.log("oid knowledge tests passed");

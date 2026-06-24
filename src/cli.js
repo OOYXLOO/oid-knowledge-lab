@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { auditAssetFile } = require("./assetAudit");
 const { writeCoverageReport } = require("./coverage");
+const { writeDeliveryPack } = require("./deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, IANA_LICENSE_URL, IANA_PEN_URL, parseEnterpriseNumbers, parseLastUpdated } = require("./ianaPen");
 const { buildManifestFromFiles } = require("./manifest");
 const { ensureDir, fetchText, sleep, writeJson } = require("./net");
@@ -184,6 +185,14 @@ function coverageReport(args) {
   console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
 }
 
+function deliveryPack(args) {
+  const assetAuditFile = path.resolve(ROOT, argValue(args, "--asset-audit", "reports/asset-audit.json"));
+  const coverageReportFile = path.resolve(ROOT, argValue(args, "--coverage", "reports/coverage-report.json"));
+  const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/sample-delivery-pack.md"));
+  writeDeliveryPack({ assetAuditFile, coverageReportFile, markdownOutFile });
+  console.log(`delivery pack written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
+}
+
 function buildStaticSite(args) {
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
   const indexFile = path.resolve(ROOT, argValue(args, "--index", "reports/iana-pen-public-index.json"));
@@ -206,6 +215,7 @@ function auditDataset(args) {
     path.resolve(ROOT, "reports/asset-audit.md"),
     path.resolve(ROOT, "reports/coverage-report.json"),
     path.resolve(ROOT, "reports/coverage-report.md"),
+    path.resolve(ROOT, "reports/sample-delivery-pack.md"),
     path.resolve(ROOT, "public/index.html"),
     path.resolve(ROOT, "public/oid-base-directory.js"),
     path.resolve(ROOT, "public/search-index.js")
@@ -271,12 +281,13 @@ async function main() {
   if (command === "crawl") return crawl(args);
   if (command === "audit-assets") return auditAssets(args);
   if (command === "coverage-report") return coverageReport(args);
+  if (command === "delivery-pack") return deliveryPack(args);
   if (command === "audit-dataset") return auditDataset(args);
   if (command === "guard-publishable") return guardPublishable();
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|audit-assets|coverage-report|audit-dataset|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|audit-assets|coverage-report|delivery-pack|audit-dataset|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 
