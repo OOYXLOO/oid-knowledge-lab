@@ -15,6 +15,7 @@ const { completedOidsFromFile, selectPendingEntries, writeCrawlState } = require
 const { isAllowedByRobots, sitemapUrls } = require("./robots");
 const { buildSite } = require("./site");
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("./sitemap");
+const { buildSourcePolicySnapshot, writeSourcePolicyFiles } = require("./sourcePolicy");
 
 const ROOT = path.resolve(__dirname, "..");
 const BASE = "https://oid-base.com";
@@ -255,6 +256,8 @@ function auditDataset(args) {
     path.resolve(ROOT, "reports/coverage-report.json"),
     path.resolve(ROOT, "reports/coverage-report.md"),
     path.resolve(ROOT, "reports/sample-delivery-pack.md"),
+    path.resolve(ROOT, "reports/source-policy.json"),
+    path.resolve(ROOT, "reports/source-policy.md"),
     path.resolve(ROOT, "public/index.html"),
     path.resolve(ROOT, "public/oid-base-directory.js"),
     path.resolve(ROOT, "public/search-index.js")
@@ -272,6 +275,26 @@ function auditDataset(args) {
   console.log(`oid-base sitemap entries: ${manifest.oid_base.sitemap_entries}`);
   console.log(`iana public index records: ${manifest.iana_pen.public_index_records}`);
   console.log(`artifacts checked: ${manifest.artifact_count}`);
+}
+
+async function sourcePolicy(args) {
+  const jsonFile = path.resolve(ROOT, argValue(args, "--out", "reports/source-policy.json"));
+  const markdownFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/source-policy.md"));
+  const info = await loadSourceInfo();
+  const llms = await fetchText(`${BASE}/llms.txt`);
+  const terms = await fetchText(`${BASE}/disclaimer.htm.md`);
+  const snapshot = buildSourcePolicySnapshot({
+    robotsText: info.robots,
+    sitemapUrl: info.sitemap_url,
+    sitemapOidCount: info.oid_url_count,
+    llmsText: llms.body,
+    termsText: terms.body
+  });
+  writeSourcePolicyFiles({ snapshot, jsonFile, markdownFile });
+  console.log(`policy json written: ${path.relative(ROOT, jsonFile).replace(/\\/g, "/")}`);
+  console.log(`policy markdown written: ${path.relative(ROOT, markdownFile).replace(/\\/g, "/")}`);
+  console.log(`oid entries from sitemap: ${snapshot.sitemap.oid_entries}`);
+  console.log(`full crawl requires authorization: ${snapshot.collection_boundary.full_crawl_requires_authorization}`);
 }
 
 function guardPublishable() {
@@ -322,11 +345,12 @@ async function main() {
   if (command === "coverage-report") return coverageReport(args);
   if (command === "delivery-pack") return deliveryPack(args);
   if (command === "audit-dataset") return auditDataset(args);
+  if (command === "source-policy") return sourcePolicy(args);
   if (command === "guard-publishable") return guardPublishable();
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|audit-assets|coverage-report|delivery-pack|audit-dataset|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|audit-assets|coverage-report|delivery-pack|audit-dataset|source-policy|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

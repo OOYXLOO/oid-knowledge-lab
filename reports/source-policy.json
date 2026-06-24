@@ -1,0 +1,44 @@
+{
+  "source": "OID-base",
+  "generated_at": "2026-06-24T04:41:13.873Z",
+  "source_urls": {
+    "robots": "https://oid-base.com/robots.txt",
+    "sitemap": "https://oid-base.com/sitemap.xml",
+    "llms": "https://oid-base.com/llms.txt",
+    "terms": "https://oid-base.com/disclaimer.htm.md"
+  },
+  "hashes": {
+    "robots": "sha256:30e117740312834aad7d970af802de2e25ad04aca2fdc3a8c9b23147658155c5",
+    "llms": "sha256:39429f4dd80c469710754da26a3140148c3a103cae8488839f9afe688605d8f6",
+    "terms": "sha256:f4c09f4c9e9a779098a8f966e81984c819d643cf0284f5e74061f3e8759ba4bd"
+  },
+  "robots": {
+    "user_agent": "oid-knowledge-lab",
+    "disallowed_paths": [
+      "/cgi-bin/$",
+      "/cgi-bin/display?a=density",
+      "/cgi-bin/display?tree=",
+      "/cgi-bin/manage?",
+      "/helper"
+    ],
+    "sitemap_urls": [
+      "https://oid-base.com/sitemap.xml"
+    ]
+  },
+  "llms": {
+    "last_updated": "2026-04-30"
+  },
+  "sitemap": {
+    "oid_entries": 7492
+  },
+  "terms": {
+    "summary": "Copying is limited to noncommercial personal use and a small part unless specific authorization is granted.",
+    "full_terms_copied": false
+  },
+  "collection_boundary": {
+    "sitemap_metadata_publishable": true,
+    "small_parser_validation_samples": true,
+    "page_bodies_publishable_without_authorization": false,
+    "full_crawl_requires_authorization": true
+  }
+}

@@ -13,6 +13,7 @@ const { isAllowedByRobots } = require("../src/robots");
 const { completedOidsFromJsonl, selectPendingEntries } = require("../src/crawlState");
 const { escapeHtml, percent, renderDashboard } = require("../src/site");
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("../src/sitemap");
+const { buildSourcePolicySnapshot, renderSourcePolicyMarkdown } = require("../src/sourcePolicy");
 
 function testSitemapParser() {
   const urls = parseSitemap(`<?xml version="1.0"?><urlset>
@@ -60,6 +61,73 @@ function testSitemapIndex() {
   assert.equal(index.root_arc_counts[0].key, "1");
   assert.ok(index.content_boundary.includes("does not copy"));
   assert.equal(Object.hasOwn(index.entries[0], "description"), false);
+}
+
+function testSourcePolicySnapshotDocumentsCollectionBoundary() {
+  const snapshot = buildSourcePolicySnapshot({
+    generatedAt: "2026-06-24T00:00:00.000Z",
+    robotsText: `User-agent: *
+Disallow: /cgi-bin/$
+Disallow: /cgi-bin/display?tree=
+User-agent: otherbot
+Disallow: /get/
+Sitemap: https://oid-base.com/sitemap.xml`,
+    sitemapUrl: "https://oid-base.com/sitemap.xml",
+    sitemapOidCount: 7492,
+    llmsText: "# oid-base.com\n\nLast updated: 2026-04-30\n",
+    termsText: "Synthetic terms fixture: noncommercial use, small part limit, and specific authorization for broader collection."
+  });
+
+  assert.equal(snapshot.source, "OID-base");
+  assert.equal(snapshot.sitemap.oid_entries, 7492);
+  assert.equal(snapshot.collection_boundary.page_bodies_publishable_without_authorization, false);
+  assert.equal(snapshot.collection_boundary.full_crawl_requires_authorization, true);
+  assert.ok(snapshot.terms.summary.includes("limited"));
+  assert.ok(snapshot.terms.summary.includes("authorization"));
+  assert.equal(snapshot.terms.full_terms_copied, false);
+  assert.ok(snapshot.hashes.robots.startsWith("sha256:"));
+  assert.ok(snapshot.robots.disallowed_paths.includes("/cgi-bin/display?tree="));
+  assert.equal(snapshot.robots.user_agent, "oid-knowledge-lab");
+  assert.equal(snapshot.robots.disallowed_paths.includes("/get/"), false);
+  assert.equal(JSON.stringify(snapshot).includes("money" + "-goal"), false);
+}
+
+function testSourcePolicyMarkdownAvoidsFullTermsMirror() {
+  const markdown = renderSourcePolicyMarkdown({
+    source: "OID-base",
+    generated_at: "2026-06-24T00:00:00.000Z",
+    source_urls: {
+      robots: "https://oid-base.com/robots.txt",
+      sitemap: "https://oid-base.com/sitemap.xml",
+      llms: "https://oid-base.com/llms.txt",
+      terms: "https://oid-base.com/disclaimer.htm.md"
+    },
+    sitemap: { oid_entries: 7492 },
+    collection_boundary: {
+      page_bodies_publishable_without_authorization: false,
+      full_crawl_requires_authorization: true
+    },
+    terms: {
+      summary: "Copying is limited to noncommercial personal use and a small part unless specific authorization is granted.",
+      full_terms_copied: false
+    },
+    hashes: {
+      robots: "sha256:robots",
+      llms: "sha256:llms",
+      terms: "sha256:terms"
+    },
+    robots: {
+      user_agent: "oid-knowledge-lab",
+      disallowed_paths: ["/cgi-bin/$", "/cgi-bin/display?tree="]
+    }
+  });
+
+  assert.ok(markdown.includes("# Source Policy Snapshot"));
+  assert.ok(markdown.includes("OID entries from sitemap: `7,492`"));
+  assert.ok(markdown.includes("Full page-body crawl requires explicit authorization"));
+  assert.ok(markdown.includes("Effective user-agent: `oid-knowledge-lab`"));
+  assert.ok(markdown.includes("sha256:terms"));
+  assert.equal(markdown.includes("All rights reserved."), false);
 }
 
 function testRobots() {
@@ -487,6 +555,8 @@ function testPublishGuardAllowsPublicArtifacts() {
 function main() {
   testSitemapParser();
   testSitemapIndex();
+  testSourcePolicySnapshotDocumentsCollectionBoundary();
+  testSourcePolicyMarkdownAvoidsFullTermsMirror();
   testRobots();
   testMarkdownParser();
   testReport();

@@ -4,7 +4,7 @@ window.OID_KNOWLEDGE_REPORT = {
   "license_url": "https://www.iana.org/help/licensing-terms",
   "license_summary": "IANA protocol registries are covered by the CC0 1.0 dedication described in the IANA licensing terms.",
   "last_updated": "2026-06-23",
-  "generated_at": "2026-06-24T03:50:05.345Z",
+  "generated_at": "2026-06-24T04:41:10.402Z",
   "prefix": "1.3.6.1.4.1",
   "record_count": 66101,
   "assigned_count": 65977,

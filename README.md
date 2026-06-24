@@ -14,6 +14,7 @@ Last refreshed on 2026-06-24:
 - Coverage report: `reports/coverage-report.md` compares IANA PEN records with the OID-base sitemap directory
 - Static dashboard: generated under `public/`
 - Dataset manifest: `reports/dataset-manifest.json` with artifact hashes, sizes, source links, and publication boundaries
+- Source policy snapshot: `reports/source-policy.md` records robots, terms, sitemap, and hash evidence for the collection boundary
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
@@ -43,6 +44,7 @@ Relevant public references:
 npm run check
 npm test
 npm run refresh:publishable
+npm run source-policy
 npm run build:site
 npm run audit:assets
 npm run coverage:oid
@@ -73,8 +75,22 @@ This command:
 
 1. Fetches the current OID-base sitemap and rebuilds `reports/oid-base-sitemap-index.json`.
 2. Imports the IANA PEN registry and rebuilds the aggregate/public reports.
-3. Rebuilds the static dashboard in `public/`.
-4. Writes `reports/dataset-manifest.json` with checksums for the publishable artifacts.
+3. Refreshes `reports/source-policy.json` and `reports/source-policy.md`.
+4. Rebuilds the static dashboard in `public/`.
+5. Writes `reports/dataset-manifest.json` with checksums for the publishable artifacts.
+
+## Source Policy Snapshot
+
+```bash
+npm run source-policy
+```
+
+This command fetches the current OID-base robots file, sitemap metadata, LLM summary, and terms page, then writes:
+
+- `reports/source-policy.json`
+- `reports/source-policy.md`
+
+The report stores source URLs, hashes, effective robots rules for the project user-agent, sitemap OID count, and a short boundary summary. It intentionally does not copy the full terms text or OID-base page bodies.
 
 ## OID-base Sitemap Index
 
