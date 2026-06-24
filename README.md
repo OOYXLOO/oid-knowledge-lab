@@ -17,6 +17,12 @@ Last refreshed on 2026-06-24:
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
 
+Chinese operator notes:
+
+- `README.zh.md`
+- `docs/authorized-full-crawl.zh.md`
+- `docs/snapshot-20260624.zh.md`
+
 ## Compliance Boundary
 
 OID-base publishes a robots file and terms of use. The terms say that downloading, printing, or copying from the site must be noncommercial, personal, and limited to a small part of the data unless specific authorization is granted by the site owner.
