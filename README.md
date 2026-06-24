@@ -38,6 +38,7 @@ npm test
 npm run refresh:publishable
 npm run build:site
 npm run audit:assets
+npm run guard:publishable
 npm run crawl:sample
 npm run report
 npm run import:iana-pen
@@ -82,6 +83,14 @@ npm run audit:dataset
 ```
 
 The audit writes `reports/dataset-manifest.json` and refuses to mark the package publishable if OID-base page bodies or contact fields are included.
+
+Run the publish guard before pushing:
+
+```bash
+npm run guard:publishable
+```
+
+The guard inspects Git-tracked files and fails if local-only full crawl output, raw OID-base mirrors, sample parsed page bodies, or full IANA contact-level JSONL imports are about to be published.
 
 ## Data Model
 
@@ -159,6 +168,7 @@ See `docs/authorized-full-crawl.zh.md` for a Chinese operator note covering the 
 node src/cli.js inspect-source
 node src/cli.js export-sitemap-index --out reports/oid-base-sitemap-index.json
 node src/cli.js audit-assets --in examples/sample-assets.csv --out reports/asset-audit.json --markdown reports/asset-audit.md
+node src/cli.js guard-publishable
 node src/cli.js crawl --limit 10 --delay-ms 1000 --out data/sample
 node src/cli.js report --in data/sample/records.jsonl --out data/sample/report.json
 node src/cli.js import-iana-pen --out data/iana --report reports/iana-pen-summary.json --public-index reports/iana-pen-public-index.json

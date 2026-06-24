@@ -5,6 +5,7 @@ const { analyzeAssetText, renderAssetAuditMarkdown } = require("../src/assetAudi
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { assertPublishableManifest, buildDatasetManifest } = require("../src/manifest");
 const { parseOidMarkdown } = require("../src/parser");
+const { auditPublishableFileList } = require("../src/publishGuard");
 const { buildReport } = require("../src/report");
 const { isAllowedByRobots } = require("../src/robots");
 const { escapeHtml, percent, renderDashboard } = require("../src/site");
@@ -298,6 +299,40 @@ bad-row,not-an-oid
   assert.ok(markdown.includes("not-an-oid"));
 }
 
+function testPublishGuardFlagsPrivateMirrorFiles() {
+  const audit = auditPublishableFileList([
+    "README.md",
+    "reports/oid-base-sitemap-index.json",
+    "data/full/records.jsonl",
+    "data/raw/1.2.3.md",
+    "data/sample/records.jsonl"
+  ]);
+
+  assert.equal(audit.ok, false);
+  assert.equal(audit.blockers.length, 3);
+  assert.ok(audit.blockers.some((item) => item.path === "data/full/records.jsonl"));
+  assert.ok(audit.blockers.some((item) => item.path === "data/raw/1.2.3.md"));
+  assert.ok(audit.blockers.some((item) => item.path === "data/sample/records.jsonl"));
+}
+
+function testPublishGuardAllowsPublicArtifacts() {
+  const audit = auditPublishableFileList([
+    "README.md",
+    "README.zh.md",
+    "src/cli.js",
+    "reports/oid-base-sitemap-index.json",
+    "reports/iana-pen-public-index.json",
+    "reports/dataset-manifest.json",
+    "data/README.md",
+    "data/iana/RUN-20260624.md",
+    "data/sample/RUN-20260624.md",
+    "public/index.html"
+  ]);
+
+  assert.equal(audit.ok, true);
+  assert.equal(audit.blockers.length, 0);
+}
+
 function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -308,6 +343,8 @@ function main() {
   testIanaPenParser();
   testSiteRenderer();
   testAssetAudit();
+  testPublishGuardFlagsPrivateMirrorFiles();
+  testPublishGuardAllowsPublicArtifacts();
   console.log("oid knowledge tests passed");
 }
 

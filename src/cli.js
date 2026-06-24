@@ -7,6 +7,7 @@ const { buildIanaPenReport, buildPublicPenIndex, IANA_LICENSE_URL, IANA_PEN_URL,
 const { buildManifestFromFiles } = require("./manifest");
 const { ensureDir, fetchText, sleep, writeJson } = require("./net");
 const { parseOidMarkdown } = require("./parser");
+const { auditPublishableTree } = require("./publishGuard");
 const { buildReport, readJsonl } = require("./report");
 const { isAllowedByRobots, sitemapUrls } = require("./robots");
 const { buildSite } = require("./site");
@@ -204,6 +205,14 @@ function auditDataset(args) {
   console.log(`artifacts checked: ${manifest.artifact_count}`);
 }
 
+function guardPublishable() {
+  const audit = auditPublishableTree(ROOT);
+  console.log(JSON.stringify(audit, null, 2));
+  if (!audit.ok) {
+    process.exitCode = 1;
+  }
+}
+
 async function importIanaPen(args) {
   const outDir = path.resolve(ROOT, argValue(args, "--out", "data/iana"));
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
@@ -242,10 +251,11 @@ async function main() {
   if (command === "crawl") return crawl(args);
   if (command === "audit-assets") return auditAssets(args);
   if (command === "audit-dataset") return auditDataset(args);
+  if (command === "guard-publishable") return guardPublishable();
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|audit-assets|audit-dataset|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|audit-assets|audit-dataset|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

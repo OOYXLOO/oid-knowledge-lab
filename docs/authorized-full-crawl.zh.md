@@ -39,7 +39,7 @@ OID_BASE_FULL_CRAWL_AUTHORIZED=1 \
 node src/cli.js crawl --authorized-full --authorization-note "authorization reference" --delay-ms 1500 --out data/full
 ```
 
-`--authorization-note` 应写成可以以后审计的授权摘要，例如公开授权页 URL、合同编号或脱敏后的授权记录编号。不要在仓库里保存私人邮件、验证码、账号信息、付款信息或任何敏感凭据。
+`--authorization-note` 应写成以后可审计的授权摘要，例如公开授权页 URL、合同编号或脱敏后的授权记录编号。不要在仓库里保存私人邮件、验证码、账号信息、付款信息或任何敏感凭据。
 
 ## 发布边界
 
@@ -57,3 +57,11 @@ node src/cli.js crawl --authorized-full --authorization-note "authorization refe
 - OID-base raw Markdown/HTML 镜像。
 - 未授权的完整 JSONL 正文结果。
 - 私人通信、账号、Cookie、token、付款、税务或 KYC 信息。
+
+## 发布前检查
+
+```bash
+npm run guard:publishable
+```
+
+这个命令会检查 Git 已跟踪文件和数据清单，阻止误提交 `data/full/`、`data/raw/`、正文样本 JSONL 或联系人级导入数据。
