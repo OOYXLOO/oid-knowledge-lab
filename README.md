@@ -24,6 +24,7 @@ This repository stores the complete OID-base sitemap-level directory observed du
 Chinese operator notes:
 
 - `README.zh.md`
+- `docs/operator-reading-order.zh.md`
 - `docs/authorized-full-crawl.zh.md`
 - `docs/source-authorization-request.zh.md`
 - `docs/snapshot-20260624.zh.md`

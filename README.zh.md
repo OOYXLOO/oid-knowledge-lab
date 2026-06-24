@@ -2,44 +2,49 @@
 
 OID Knowledge Lab 是一个面向对象标识符（OID）的公开数据采集、清洗、检索和分析项目。
 
-这个项目的重点不是把 OID-base 整站正文复制出来，而是把可以公开复现的数据整理成结构化索引，并保留一个“取得授权后才可运行”的完整正文采集入口。
+这个项目的目标不是把 OID-base 整站正文复制到 GitHub，而是做一套可以长期运营的 OID 知识库底座：
+
+- 完整保存 OID-base 当前公开 `sitemap.xml` 中的 OID 页面目录。
+- 不保存 OID-base 页面正文、raw Markdown、raw HTML 或未授权全文 JSONL 镜像。
+- 导入 IANA Private Enterprise Numbers 这类可公开复用的数据源。
+- 生成可搜索静态页面、覆盖分析、数据清单、资产审计样例和交付报告样例。
+- 保留一个“取得授权后才能运行”的全量正文采集入口。
 
 ## 当前数据快照
 
-最后刷新时间：2026-06-24。
+最后刷新日期：2026-06-24。
 
 - OID-base sitemap 目录：7,492 条公开 OID 页面入口。
-- IANA Private Enterprise Numbers 原始解析：66,101 条注册记录。
+- IANA PEN 原始解析：66,101 条注册记录。
 - IANA PEN 公开检索索引：65,959 条记录，已排除联系人和邮箱字段。
-- OID 覆盖报告：`reports/coverage-report.md`，用于比较 IANA PEN 与 OID-base sitemap 的覆盖关系。
-- 来源政策快照：`reports/source-policy.md`，记录 robots、terms、sitemap 和哈希证据。
+- OID 覆盖报告：`reports/coverage-report.md`。
+- 来源政策快照：`reports/source-policy.md`。
+- 授权全量采集计划：`reports/authorized-crawl-plan.md`。
 - 示例资产审计报告：`reports/asset-audit.md`。
-- 示例修复队列：`reports/remediation-board.md` 和 `reports/remediation-board.csv`，把发现转换成客户行动项和验收条件。
-- 示例启动简报：`reports/sample-engagement-brief.md`，说明 OID 资产评估的输入、交付物和验收标准。
+- 示例修复队列：`reports/remediation-board.md` 和 `reports/remediation-board.csv`。
+- 示例启动简报：`reports/sample-engagement-brief.md`。
 - 示例交付包：`reports/sample-delivery-pack.md`。
-- 静态检索面板：`public/`。
-- 数据集清单：`reports/dataset-manifest.json`，包含文件大小、哈希、来源链接和发布边界。
+- 静态检索面板：`public/index.html`。
+- 数据集清单：`reports/dataset-manifest.json`。
 
-仓库保存的是 OID-base 的完整 sitemap 级目录，不保存 OID-base 页面正文、Markdown 原文或 HTML 镜像。
+仓库中保存的是 OID-base 的完整 sitemap 级目录，不包含 OID-base 页面正文。
 
 ## 为什么不公开整站正文
 
-OID-base 提供了 `robots.txt`、`sitemap.xml` 和 `llms.txt`，这些可以用于发现公开页面入口。
-
-但 OID-base 的使用条款限制了下载、打印、复制站内内容的范围。除非取得站点所有者的明确授权，否则不应把整站正文镜像用于公开再分发或后续商业用途。
+OID-base 的使用条款说明，站点内容和数据汇编默认保留权利；下载、打印或复制站内内容必须限于非商业个人用途和“小部分数据”，除非得到站点所有者的明确授权。
 
 因此本项目分成三层：
 
-- 可以公开：爬虫代码、robots/sitemap 检查、小样本运行记录、OID-base sitemap 级目录、IANA PEN 开放数据报告、去除联系人字段后的公开检索索引、静态页面、覆盖分析报告、来源政策快照。
-- 不公开：OID-base 全站页面正文、raw Markdown/HTML 镜像、未授权的完整 JSONL 正文结果。
+- 可以公开：爬虫代码、robots/sitemap 检查、运行回执、OID-base sitemap 目录、IANA PEN 公开索引、静态页面、覆盖分析、数据清单、来源政策快照、样例审计报告。
+- 不公开：OID-base 全站页面正文、raw Markdown/HTML 镜像、未授权完整 JSONL 正文结果、账号数据、Cookie、token、私信、付款和 KYC 信息。
 - 授权后可运行：带 `OID_BASE_FULL_CRAWL_AUTHORIZED=1` 和授权说明的完整采集命令。
 
-相关公开来源：
+相关来源：
 
 - `https://oid-base.com/robots.txt`
 - `https://oid-base.com/sitemap.xml`
 - `https://oid-base.com/llms.txt`
-- `https://oid-base.com/disclaimer.htm.md`
+- `https://oid-base.com/disclaimer.htm`
 
 ## 快速运行
 
@@ -48,6 +53,7 @@ npm run check
 npm test
 npm run refresh:publishable
 npm run source-policy
+npm run plan:authorized-full-crawl
 npm run build:site
 npm run audit:assets
 npm run remediation:sample
@@ -65,8 +71,7 @@ npm run crawl:sample:resume
 npm run report
 ```
 
-小样本 JSON/JSONL 输出会写入 `data/sample/`，并被 Git 忽略。`crawl` 支持 `--resume`，会读取已有 `records.jsonl`，跳过已经完成的 OID，只追加待采集项，并把进度写入 `crawl-state.json`。
-如果为了本地调试解析器使用 `--save-raw-markdown`，生成的样本 Markdown 也会被忽略，并由发布护栏拦截；`data/sample/` 下只有 `RUN-*.md` 这种不含页面正文的运行凭据适合提交。
+小样本 JSON/JSONL 输出会写入 `data/sample/`，并被 Git 忽略。只有 `data/sample/RUN-*.md` 这种不含页面正文的运行回执适合提交。
 
 ## 重新生成可公开数据包
 
@@ -79,95 +84,69 @@ npm run refresh:publishable
 1. 重新抓取 OID-base sitemap，并生成 `reports/oid-base-sitemap-index.json`。
 2. 重新导入 IANA PEN 注册表，并生成聚合报告和公开检索索引。
 3. 重新生成 `reports/source-policy.json` 和 `reports/source-policy.md`。
-4. 重新生成 `public/` 静态页面。
-5. 重新生成 `reports/dataset-manifest.json`。
+4. 重新生成授权全量采集计划。
+5. 重新生成 `public/` 静态页面。
+6. 重新生成 `reports/dataset-manifest.json`。
 
-## 来源政策快照
+## OID-base 目录索引
 
-```bash
-npm run source-policy
-```
+`reports/oid-base-sitemap-index.json` 是当前可公开的核心数据文件。它包含：
 
-这个命令会拉取当前 OID-base 的 robots、sitemap、llms 和 terms 页面，生成：
+- OID 值。
+- OID-base 页面 URL。
+- 对应 Markdown URL。
+- sitemap 中的最后修改日期。
+- 根弧。
+- OID 深度。
 
-- `reports/source-policy.json`
-- `reports/source-policy.md`
+它不包含页面正文、描述正文或 raw Markdown。
 
-报告记录来源链接、哈希、项目 user-agent 的有效 robots 规则、sitemap OID 数量和采集边界摘要。它不会复制完整 terms 文本，也不会保存 OID-base 页面正文。
-
-## OID 覆盖报告
-
-```bash
-npm run coverage:oid
-```
-
-这个命令会比较 `reports/iana-pen-public-index.json` 和 `reports/oid-base-sitemap-index.json`，输出：
-
-- `reports/coverage-report.json`
-- `reports/coverage-report.md`
-
-当前真实运行结果：
-
-- IANA PEN 公开记录：65,959。
-- OID-base 精确企业号匹配：127。
-- 只有子树匹配：289。
-- 缺少 OID-base sitemap 级证据：65,543。
-- 覆盖评分：1/100。
-
-这个报告的价值在于把“OID 资产清单里哪些条目缺少公开佐证”变成可执行的核对队列。
-
-## 样例交付包
+## IANA PEN 公开索引
 
 ```bash
-npm run delivery:sample
+npm run import:iana-pen
 ```
 
-输出文件是 `reports/sample-delivery-pack.md`。它把样例资产审计、OID-base 覆盖上下文、行动计划、首批发现和数据边界合并成一份脱敏交付样例。
+这个命令会导入 IANA Private Enterprise Numbers 注册表。
 
-## 样例启动简报
+完整 JSONL 位于 `data/iana/`，默认被 Git 忽略，因为它可能包含联系人字段。可提交的公开索引是 `reports/iana-pen-public-index.json`，只保留企业号、OID 和组织名。
 
-```bash
-npm run brief:sample
-```
+## OID 资产审计
 
-输出文件是 `reports/sample-engagement-brief.md`。它说明一项 OID 资产清单评估需要客户提供什么、默认范围是什么、会交付什么、验收标准是什么，以及哪些数据不会进入公开仓库。
-
-## OID 资产清单分析
-
-如果你有一份本地 OID 清单，可以用下面的命令把它和 IANA PEN、OID-base sitemap 目录做交叉分析：
+如果有一份本地 OID 清单，可以用下面的命令做交叉分析：
 
 ```bash
 npm run audit:assets
 ```
 
-默认示例输入是 `examples/sample-assets.csv`，输出是：
+默认输入是 `examples/sample-assets.csv`，输出：
 
 - `reports/asset-audit.json`
 - `reports/asset-audit.md`
 
-真实资产清单不要提交到仓库，只在本地用 `--in` 指定：
+真实客户清单不要提交到仓库。可以在本地指定输入：
 
 ```bash
 node src/cli.js audit-assets --in path/to/assets.csv --out reports/asset-audit.json --markdown reports/asset-audit.md
 ```
 
-输入可以是简单 CSV 或 tab 分隔文件，需要 `oid` 列，可选 `asset`、`name`、`id` 或 `label` 列。
+静态页面 `public/index.html` 也提供浏览器端本地审计面板。用户可以直接粘贴 OID CSV，分析在浏览器里完成，不上传到服务器。
 
-静态页面 `public/index.html` 里也有浏览器端本地审计面板。它接受同样的简单 CSV 格式，直接在浏览器里用已发布的 IANA/OID-base 索引完成分析，不需要上传资产清单。
-
-## OID 修复队列
+## 修复队列与交付包
 
 ```bash
 npm run remediation:sample
+npm run brief:sample
+npm run delivery:sample
 ```
 
-输出文件是：
+这些命令会把样例资产审计结果变成：
 
-- `reports/remediation-board.json`
-- `reports/remediation-board.md`
-- `reports/remediation-board.csv`
+- 客户可读的启动简报。
+- 可导入表格或 issue tracker 的修复队列。
+- 脱敏交付包。
 
-它会把资产审计发现按 `P0/P1/P2` 排成客户可执行队列，并为每条记录写清问题、责任方下一步、验收条件和公开证据链接。真实客户清单仍然只放本地，不进入公开仓库。
+这部分是后续商业化更有价值的方向：给客户分析他们自己的 OID/MIB/PKI 清单，而不是出售未授权的 OID-base 镜像。
 
 ## 发布护栏
 
@@ -175,17 +154,17 @@ npm run remediation:sample
 npm run guard:publishable
 ```
 
-这个命令会检查 Git 已跟踪文件，防止以下内容被误发布：
+护栏会检查 Git 已跟踪文件，防止以下内容被误发到公开仓库：
 
-- `data/full/` 授权完整采集结果。
+- `data/full/` 授权全量采集结果。
 - `data/raw/` raw Markdown/HTML 镜像。
-- `data/sample/records.jsonl` 等解析样本正文。
+- `data/sample/records.jsonl` 等样本正文结果。
 - `data/iana/*.jsonl` 这类可能包含联系人字段的完整导入。
-- 数据清单里声明包含 OID-base 正文或 IANA 联系人字段的包。
+- 声称包含 OID-base 正文或 IANA 联系人字段的数据清单。
 
 ## 授权后的完整采集
 
-只有在获得 OID-base 所有者明确授权后，才运行以下命令：
+只有在取得 OID-base 所有者明确授权后，才运行：
 
 ```powershell
 $env:OID_BASE_FULL_CRAWL_AUTHORIZED = "1"
@@ -194,33 +173,16 @@ node src/cli.js crawl --authorized-full --authorization-note "authorization refe
 
 没有授权时，`crawl` 命令最多只做小样本采集，用于验证解析器和数据模型。
 
-## 关键文件
+## 建议阅读顺序
 
-- `src/cli.js`：命令行入口。
-- `src/sitemap.js`：OID-base sitemap 解析和目录索引生成。
-- `src/sourcePolicy.js`：来源政策快照生成。
-- `src/parser.js`：OID-base Markdown 小样本解析器。
-- `src/ianaPen.js`：IANA PEN 注册表导入和清洗。
-- `src/coverage.js`：IANA PEN 与 OID-base sitemap 覆盖分析。
-- `src/assetAudit.js`：本地 OID 资产清单审计。
-- `src/engagementBrief.js`：样例启动简报生成。
-- `src/deliveryPack.js`：样例交付包生成。
-- `src/manifest.js`：公开数据包清单和边界检查。
-- `src/publishGuard.js`：发布护栏，防止误提交未授权正文或联系人数据。
-- `reports/oid-base-sitemap-index.json`：OID-base sitemap 级目录。
-- `reports/source-policy.md`：来源政策快照。
-- `reports/iana-pen-public-index.json`：不含联系人字段的 IANA PEN 公开索引。
-- `reports/coverage-report.md`：OID 覆盖报告。
-- `reports/asset-audit.md`：示例 OID 资产清单分析报告。
-- `reports/sample-engagement-brief.md`：样例启动简报。
-- `reports/sample-delivery-pack.md`：脱敏样例交付包。
-- `reports/dataset-manifest.json`：可公开数据包清单。
-- `public/index.html`：静态检索页面入口。
-- `docs/source-authorization-request.zh.md`：向 OID-base 所有者申请完整正文采集授权的模板和执行说明。
-- `docs/github-publish-gate.zh.md`：首次发布到 GitHub 和 Pages 的安全步骤。
+1. `README.zh.md`：先看项目整体边界。
+2. `reports/dataset-manifest.json`：确认哪些数据可以公开。
+3. `reports/oid-base-sitemap-index.json`：查看完整 sitemap 目录数据。
+4. `reports/coverage-report.md`：看 IANA PEN 与 OID-base sitemap 的覆盖关系。
+5. `reports/asset-audit.md`：看本项目如何分析一份 OID 清单。
+6. `reports/sample-delivery-pack.md`：看未来可以交付给客户的报告形态。
+7. `docs/authorized-full-crawl.zh.md`：如果以后拿到授权，再看全量正文采集流程。
 
 ## GitHub Pages
 
-仓库包含 `.github/workflows/pages.yml`。远端仓库创建后，可以在 GitHub Pages 设置里选择 GitHub Actions 作为发布来源，工作流会发布 `public/` 目录里的静态页面。
-
-如果只想本地预览，可以直接打开 `public/index.html`。
+仓库包含 `.github/workflows/pages.yml`。远端仓库创建后，可以在 GitHub Pages 设置中选择 GitHub Actions 作为发布来源，工作流会发布 `public/` 目录里的静态页面。

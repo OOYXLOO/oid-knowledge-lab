@@ -1,6 +1,6 @@
 # 授权全量采集说明
 
-本项目默认不会公开镜像 OID-base 的页面正文。全量采集只应在取得 OID-base 所有者明确授权后运行。
+本项目默认不会公开镜像 OID-base 的页面正文。全量正文采集只应该在取得 OID-base 所有者明确授权后运行。
 
 ## 默认模式
 
@@ -10,15 +10,15 @@
 npm run crawl:sample
 ```
 
-这会抓取少量 Markdown 页面，用于验证解析器、字段模型和报告生成。生成的 JSONL 文件位于 `data/sample/`，并被 `.gitignore` 忽略。
+这会抓取少量 Markdown 页面，用于验证解析器、字段模型和报告生成。生成的 JSON/JSONL 文件位于 `data/sample/`，并被 `.gitignore` 忽略。
 
 如果采集中断，可以追加 `--resume`。它会读取目标目录中的 `records.jsonl`，跳过已经完成的 OID，并把本轮进度写入 `crawl-state.json`。
 
 ## 全量模式的必要条件
 
-运行全量采集前，需要同时满足：
+运行全量采集前，必须同时满足：
 
-- 已取得 OID-base 所有者明确授权。
+- 已取得 OID-base 所有者的明确授权。
 - 授权范围允许保存所需字段。
 - 授权范围允许后续分析用途。
 - 不采集 robots 禁止的路径。
@@ -54,6 +54,7 @@ node src/cli.js crawl --authorized-full --authorization-note "authorization refe
 - 不含正文的 sitemap 目录。
 - 不含联系人字段的开放数据索引。
 - 数据清单和哈希。
+- 运行回执。
 
 不要发布：
 

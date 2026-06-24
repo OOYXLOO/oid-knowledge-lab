@@ -1,6 +1,6 @@
 # OID Remediation Board
 
-Generated: `2026-06-24T09:41:19.813Z`
+Generated: `2026-06-24T10:43:35.018Z`
 
 This board turns an OID asset audit into a client-action queue. It is safe to publish as a sanitized sample because it contains derived findings and public source pointers, not raw client inventories or copied OID-base page bodies.
 

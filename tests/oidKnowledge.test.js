@@ -691,6 +691,7 @@ function testPublishGuardAllowsPublicArtifacts() {
 function testChineseOperatorDocsAreReadableUtf8() {
   const docs = [
     "README.zh.md",
+    "docs/operator-reading-order.zh.md",
     "docs/authorized-full-crawl.zh.md",
     "docs/snapshot-20260624.zh.md"
   ];
@@ -699,6 +700,11 @@ function testChineseOperatorDocsAreReadableUtf8() {
       "\u672c\u9879\u76ee",
       "\u53ef\u4ee5\u516c\u5f00",
       "\u6388\u6743\u540e"
+    ],
+    "docs/operator-reading-order.zh.md": [
+      "\u9605\u8bfb\u987a\u5e8f",
+      "\u5feb\u901f\u540c\u6b65",
+      "\u6388\u6743\u5168\u91cf\u91c7\u96c6"
     ],
     "docs/authorized-full-crawl.zh.md": [
       "\u6388\u6743\u5168\u91cf\u91c7\u96c6",
@@ -711,7 +717,7 @@ function testChineseOperatorDocsAreReadableUtf8() {
       "\u5408\u89c4\u8fb9\u754c"
     ]
   };
-  const mojibakePattern = /锛|涓|涔|佺|绋|鐨|鏄|璇|鈥|�/;
+  const mojibakePattern = /锛|涓|涔|佺|绋|鐨|鏄|璇|鈥|鎺|鏁|閫|闆|鍙|绱|缁|瀹|锟|�/;
 
   for (const doc of docs) {
     const text = fs.readFileSync(path.join(ROOT, doc), "utf8");
