@@ -68,6 +68,7 @@ The sample output is written under `data/sample/`:
 - `report.json`
 
 Generated sample JSON/JSONL files and crawl state files are ignored by Git. Commit only run receipts or synthetic fixtures unless the source authorization explicitly allows publishing collected data.
+If `--save-raw-markdown` is used for local parser debugging, generated sample Markdown files are also ignored and blocked by the publish guard; only `RUN-*.md` receipt files may be committed from `data/sample/`.
 
 ## Rebuild the Publishable Data Package
 

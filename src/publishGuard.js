@@ -21,6 +21,11 @@ const BLOCKED_PATH_RULES = [
     reason: "Sample parsed records are local parser evidence, not part of the publishable data package."
   },
   {
+    name: "sample-raw-markdown",
+    pattern: /^data\/sample\/(?!RUN-[0-9]{8}\.md$).+\.md$/,
+    reason: "Sample raw OID-base Markdown must stay local; only run receipts without page bodies may be published."
+  },
+  {
     name: "iana-contact-jsonl",
     pattern: /^data\/iana\/.*\.jsonl$/,
     reason: "Full IANA JSONL imports can include contact-level fields and are excluded from the published package."

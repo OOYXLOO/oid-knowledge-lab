@@ -64,6 +64,7 @@ npm run report
 ```
 
 小样本 JSON/JSONL 输出会写入 `data/sample/`，并被 Git 忽略。`crawl` 支持 `--resume`，会读取已有 `records.jsonl`，跳过已经完成的 OID，只追加待采集项，并把进度写入 `crawl-state.json`。
+如果为了本地调试解析器使用 `--save-raw-markdown`，生成的样本 Markdown 也会被忽略，并由发布护栏拦截；`data/sample/` 下只有 `RUN-*.md` 这种不含页面正文的运行凭据适合提交。
 
 ## 重新生成可公开数据包
 

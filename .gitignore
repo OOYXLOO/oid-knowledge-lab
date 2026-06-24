@@ -7,4 +7,6 @@ data/iana/*.txt
 data/raw/
 data/sample/*.json
 data/sample/*.jsonl
+data/sample/*.md
+!data/sample/RUN-*.md
 tmp/

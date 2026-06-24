@@ -619,13 +619,15 @@ function testPublishGuardFlagsPrivateMirrorFiles() {
     "reports/oid-base-sitemap-index.json",
     "data/full/records.jsonl",
     "data/raw/1.2.3.md",
+    "data/sample/1.2.3.md",
     "data/sample/records.jsonl"
   ]);
 
   assert.equal(audit.ok, false);
-  assert.equal(audit.blockers.length, 3);
+  assert.equal(audit.blockers.length, 4);
   assert.ok(audit.blockers.some((item) => item.path === "data/full/records.jsonl"));
   assert.ok(audit.blockers.some((item) => item.path === "data/raw/1.2.3.md"));
+  assert.ok(audit.blockers.some((item) => item.path === "data/sample/1.2.3.md"));
   assert.ok(audit.blockers.some((item) => item.path === "data/sample/records.jsonl"));
 }
 
@@ -653,12 +655,32 @@ function testChineseOperatorDocsAreReadableUtf8() {
     "docs/authorized-full-crawl.zh.md",
     "docs/snapshot-20260624.zh.md"
   ];
+  const requiredPhrasesByDoc = {
+    "README.zh.md": [
+      "\u672c\u9879\u76ee",
+      "\u53ef\u4ee5\u516c\u5f00",
+      "\u6388\u6743\u540e"
+    ],
+    "docs/authorized-full-crawl.zh.md": [
+      "\u6388\u6743\u5168\u91cf\u91c7\u96c6",
+      "\u9ed8\u8ba4\u6a21\u5f0f",
+      "\u53d1\u5e03\u8fb9\u754c"
+    ],
+    "docs/snapshot-20260624.zh.md": [
+      "\u6570\u636e\u5feb\u7167",
+      "\u5df2\u8fd0\u884c\u7684\u91c7\u96c6",
+      "\u5408\u89c4\u8fb9\u754c"
+    ]
+  };
   const mojibakePattern = /锛|涓|涔|佺|绋|鐨|鏄|璇|鈥|�/;
 
   for (const doc of docs) {
     const text = fs.readFileSync(path.join(ROOT, doc), "utf8");
     assert.equal(mojibakePattern.test(text), false, `${doc} contains likely mojibake`);
     assert.ok(text.includes("OID"), `${doc} should describe the OID project`);
+    for (const phrase of requiredPhrasesByDoc[doc]) {
+      assert.ok(text.includes(phrase), `${doc} should contain readable Chinese phrase: ${phrase}`);
+    }
   }
 }
 
