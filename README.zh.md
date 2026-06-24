@@ -200,6 +200,7 @@ node src/cli.js crawl --authorized-full --authorization-note "authorization refe
 - `reports/sample-delivery-pack.md`：脱敏样例交付包。
 - `reports/dataset-manifest.json`：可公开数据包清单。
 - `public/index.html`：静态检索页面入口。
+- `docs/github-publish-gate.zh.md`：首次发布到 GitHub 和 Pages 的安全步骤。
 
 ## GitHub Pages
 
