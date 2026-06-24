@@ -1,6 +1,6 @@
 {
   "name": "OID-base authorized full crawl plan",
-  "generated_at": "2026-06-24T05:34:55.447Z",
+  "generated_at": "2026-06-24T06:15:12.922Z",
   "source": "https://oid-base.com/",
   "source_kind": "public sitemap plus authorized page-body collection",
   "entry_count": 7492,
@@ -26,6 +26,20 @@
     "aggregate reports",
     "hashes and dataset manifests",
     "small parser-validation receipts"
+  ],
+  "resume_strategy": {
+    "enabled_flag": "--resume",
+    "checkpoint_files": [
+      "records.jsonl",
+      "crawl-state.json",
+      "records-summary.json"
+    ],
+    "behavior": "Existing records.jsonl entries are treated as completed OIDs; the next run appends only pending sitemap entries."
+  },
+  "operational_receipts": [
+    "records.jsonl contains one parsed JSON record per completed OID.",
+    "crawl-state.json records running or complete status, selected count, completed count, and last OID.",
+    "records-summary.json records final count, first/last OID, authorization mode, raw-save mode, and resume mode."
   ],
   "excluded_outputs": [
     "unauthorized OID-base page bodies",

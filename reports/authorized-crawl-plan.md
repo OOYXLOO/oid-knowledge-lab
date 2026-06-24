@@ -1,6 +1,6 @@
 # Authorized Full Crawl Plan
 
-Generated at: `2026-06-24T05:34:55.447Z`
+Generated at: `2026-06-24T06:15:12.922Z`
 
 ## Scope
 
@@ -34,6 +34,23 @@ The full crawl output is local operational evidence, not a publishable page-body
 - aggregate reports
 - hashes and dataset manifests
 - small parser-validation receipts
+
+## Resume Strategy
+
+- Resume flag: `--resume`
+- Behavior: Existing records.jsonl entries are treated as completed OIDs; the next run appends only pending sitemap entries.
+
+Checkpoint files:
+
+- `records.jsonl`
+- `crawl-state.json`
+- `records-summary.json`
+
+## Operational Receipts
+
+- records.jsonl contains one parsed JSON record per completed OID.
+- crawl-state.json records running or complete status, selected count, completed count, and last OID.
+- records-summary.json records final count, first/last OID, authorization mode, raw-save mode, and resume mode.
 
 ## Excluded Outputs
 

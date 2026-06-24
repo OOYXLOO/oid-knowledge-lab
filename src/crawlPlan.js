@@ -54,6 +54,20 @@ function buildAuthorizedCrawlPlan(options = {}) {
       "hashes and dataset manifests",
       "small parser-validation receipts"
     ],
+    resume_strategy: {
+      enabled_flag: "--resume",
+      checkpoint_files: [
+        "records.jsonl",
+        "crawl-state.json",
+        "records-summary.json"
+      ],
+      behavior: "Existing records.jsonl entries are treated as completed OIDs; the next run appends only pending sitemap entries."
+    },
+    operational_receipts: [
+      "records.jsonl contains one parsed JSON record per completed OID.",
+      "crawl-state.json records running or complete status, selected count, completed count, and last OID.",
+      "records-summary.json records final count, first/last OID, authorization mode, raw-save mode, and resume mode."
+    ],
     excluded_outputs: [
       "unauthorized OID-base page bodies",
       "raw Markdown or HTML mirrors",
@@ -67,6 +81,10 @@ function buildAuthorizedCrawlPlan(options = {}) {
 function renderAuthorizedCrawlPlanMarkdown(plan) {
   const gates = (plan.required_gates || []).map((item) => `- ${item}`).join("\n");
   const publishable = (plan.publishable_outputs || []).map((item) => `- ${item}`).join("\n");
+  const checkpointFiles = (plan.resume_strategy?.checkpoint_files || [])
+    .map((item) => `- \`${item}\``)
+    .join("\n") || "- none";
+  const receipts = (plan.operational_receipts || []).map((item) => `- ${item}`).join("\n");
   const excluded = (plan.excluded_outputs || []).map((item) => `- ${item}`).join("\n");
   const samples = (plan.sample_entries || [])
     .map((entry) => `- \`${entry.oid}\` -> ${entry.markdown_url}`)
@@ -100,6 +118,19 @@ ${gates}
 ## Publishable Outputs
 
 ${publishable}
+
+## Resume Strategy
+
+- Resume flag: \`${plan.resume_strategy?.enabled_flag || "--resume"}\`
+- Behavior: ${plan.resume_strategy?.behavior || "Existing completed records are skipped."}
+
+Checkpoint files:
+
+${checkpointFiles}
+
+## Operational Receipts
+
+${receipts}
 
 ## Excluded Outputs
 

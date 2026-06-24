@@ -1,6 +1,8 @@
 "use strict";
 
 const assert = require("assert");
+const fs = require("fs");
+const path = require("path");
 const { analyzeAssetText, renderAssetAuditMarkdown } = require("../src/assetAudit");
 const { analyzeCoverage, renderCoverageMarkdown } = require("../src/coverage");
 const { renderDeliveryPack } = require("../src/deliveryPack");
@@ -16,6 +18,8 @@ const { buildAuthorizedCrawlPlan, renderAuthorizedCrawlPlanMarkdown } = require(
 const { escapeHtml, percent, renderDashboard } = require("../src/site");
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("../src/sitemap");
 const { buildSourcePolicySnapshot, renderSourcePolicyMarkdown } = require("../src/sourcePolicy");
+
+const ROOT = path.resolve(__dirname, "..");
 
 function testSitemapParser() {
   const urls = parseSitemap(`<?xml version="1.0"?><urlset>
@@ -243,12 +247,20 @@ function testAuthorizedCrawlPlanDocumentsBoundaryAndScale() {
   assert.equal(plan.output_policy.publishable_without_source_authorization, false);
   assert.ok(plan.required_gates.some((gate) => gate.includes("OID_BASE_FULL_CRAWL_AUTHORIZED=1")));
   assert.ok(plan.sample_entries.some((entry) => entry.oid === "1.2.3"));
+  assert.deepEqual(plan.resume_strategy.checkpoint_files, [
+    "records.jsonl",
+    "crawl-state.json",
+    "records-summary.json"
+  ]);
+  assert.ok(plan.operational_receipts.some((receipt) => receipt.includes("records-summary.json")));
 
   const markdown = renderAuthorizedCrawlPlanMarkdown(plan);
   assert.ok(markdown.includes("# Authorized Full Crawl Plan"));
   assert.ok(markdown.includes("Entries planned: `3`"));
   assert.ok(markdown.includes("Estimated request time: `3s`"));
   assert.ok(markdown.includes("data/full"));
+  assert.ok(markdown.includes("Checkpoint files"));
+  assert.ok(markdown.includes("records-summary.json"));
   assert.ok(markdown.includes("not a publishable page-body mirror"));
   assert.equal(markdown.includes("money" + "-goal"), false);
   assert.equal(markdown.includes("USD " + "200"), false);
@@ -635,6 +647,21 @@ function testPublishGuardAllowsPublicArtifacts() {
   assert.equal(audit.blockers.length, 0);
 }
 
+function testChineseOperatorDocsAreReadableUtf8() {
+  const docs = [
+    "README.zh.md",
+    "docs/authorized-full-crawl.zh.md",
+    "docs/snapshot-20260624.zh.md"
+  ];
+  const mojibakePattern = /锛|涓|涔|佺|绋|鐨|鏄|璇|鈥|�/;
+
+  for (const doc of docs) {
+    const text = fs.readFileSync(path.join(ROOT, doc), "utf8");
+    assert.equal(mojibakePattern.test(text), false, `${doc} contains likely mojibake`);
+    assert.ok(text.includes("OID"), `${doc} should describe the OID project`);
+  }
+}
+
 function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -655,6 +682,7 @@ function main() {
   testEngagementBriefRenderer();
   testPublishGuardFlagsPrivateMirrorFiles();
   testPublishGuardAllowsPublicArtifacts();
+  testChineseOperatorDocsAreReadableUtf8();
   console.log("oid knowledge tests passed");
 }
 
