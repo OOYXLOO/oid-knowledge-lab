@@ -7,6 +7,7 @@
     "check": "node --check src/assetAudit.js && node --check src/cli.js && node --check src/ianaPen.js && node --check src/manifest.js && node --check src/net.js && node --check src/parser.js && node --check src/publishGuard.js && node --check src/report.js && node --check src/site.js && node --check src/robots.js && node --check src/sitemap.js && node --check tests/oidKnowledge.test.js",
     "test": "node tests/oidKnowledge.test.js",
     "build:site": "node src/cli.js build-site --report reports/iana-pen-summary.json --index reports/iana-pen-public-index.json --out public",
+    "inspect-source": "node src/cli.js inspect-source",
     "export:sitemap-index": "node src/cli.js export-sitemap-index --out reports/oid-base-sitemap-index.json",
     "audit:dataset": "node src/cli.js audit-dataset --sitemap reports/oid-base-sitemap-index.json --report reports/iana-pen-summary.json --index reports/iana-pen-public-index.json --out reports/dataset-manifest.json",
     "guard:publishable": "node src/cli.js guard-publishable",
