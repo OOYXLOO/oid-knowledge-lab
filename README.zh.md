@@ -102,6 +102,8 @@ node src/cli.js audit-assets --in path/to/assets.csv --out reports/asset-audit.j
 
 输入可以是简单 CSV 或 tab 分隔文件，需要 `oid` 列，可选 `asset`、`name`、`id` 或 `label` 列。
 
+静态页面 `public/index.html` 里也已经加入浏览器端本地审计面板。它接受同样的简单 CSV 格式，直接在浏览器里用已发布的 IANA/OID-base 索引完成分析，不需要上传客户清单。
+
 ## 发布护栏
 
 ```bash

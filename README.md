@@ -139,6 +139,8 @@ node src/cli.js audit-assets --in path/to/assets.csv --out reports/asset-audit.j
 
 Accepted input is a simple CSV or tab-delimited file with an `oid` column and an optional `asset`, `name`, `id`, or `label` column.
 
+The generated static dashboard also includes an in-browser local OID list audit panel. It accepts the same simple CSV shape and runs entirely in the browser against the published search indexes, so a reviewer can test an inventory without uploading it to a server.
+
 ## OID Coverage Report
 
 Use the coverage command to compare the public IANA PEN search index against the OID-base sitemap directory:

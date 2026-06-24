@@ -1,6 +1,6 @@
 # OID Coverage Report
 
-Generated: `2026-06-24T02:23:31.148Z`
+Generated: `2026-06-24T02:45:17.570Z`
 
 Compares public IANA PEN index records with OID-base sitemap metadata only; no OID-base page bodies are copied.
 

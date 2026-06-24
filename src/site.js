@@ -60,6 +60,25 @@ function renderOidBasePanel(directoryCount) {
     </section>`;
 }
 
+function renderAuditPanel() {
+  return `<section class="panel audit-panel">
+      <div>
+        <p class="eyebrow">Asset audit</p>
+        <h2>Audit local OID list</h2>
+        <p class="panel-copy">Paste CSV or one OID per line. Analysis runs in this browser and is not uploaded.</p>
+      </div>
+      <label class="search-label" for="asset-audit-input">OID inventory</label>
+      <textarea id="asset-audit-input" data-audit-input rows="7" spellcheck="false" placeholder="asset,oid&#10;router-core,1.3.6.1.4.1.9.9.41&#10;sha256-policy,2.16.840.1.101.3.4.2.1"></textarea>
+      <div class="audit-actions">
+        <button type="button" data-audit-run>Run audit</button>
+        <button type="button" data-audit-sample>Load sample</button>
+        <button type="button" data-audit-clear>Clear</button>
+      </div>
+      <div class="audit-summary" data-audit-summary></div>
+      <div class="search-results" data-audit-results></div>
+    </section>`;
+}
+
 function renderDashboard(report, oidBaseDirectoryCount = 0) {
   const assigned = Number(report.assigned_count || 0);
   const total = Number(report.record_count || 0);
@@ -80,6 +99,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -121,6 +141,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0) {
     ${renderSearchPanel(searchCount)}
 
     ${renderOidBasePanel(oidBaseDirectoryCount)}
+
+    ${renderAuditPanel()}
 
     <section class="panel">
       <div>
@@ -253,6 +275,67 @@ a {
   color: var(--ink);
   font: inherit;
 }
+.audit-panel textarea {
+  width: 100%;
+  min-height: 148px;
+  resize: vertical;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--white);
+  font: 0.92rem/1.45 "SFMono-Regular", Consolas, monospace;
+}
+.audit-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+.audit-actions button {
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: #eef4f6;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.audit-actions button:hover {
+  border-color: var(--accent);
+}
+.audit-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 14px 0 6px;
+}
+.audit-summary span {
+  display: block;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.audit-summary strong {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink);
+  font-size: 1.25rem;
+}
+.status-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #eef4f6;
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
 .search-count {
   margin: 10px 0;
   color: var(--muted);
@@ -307,6 +390,7 @@ code {
   main { width: min(100% - 20px, 1120px); padding-top: 18px; }
   h1 { font-size: 1.8rem; }
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .audit-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .bar-row { grid-template-columns: 1fr; gap: 5px; margin-bottom: 12px; }
   table { display: block; overflow-x: auto; }
 }
@@ -321,8 +405,18 @@ function renderAppJs() {
   const oidBaseInput = document.querySelector("[data-oidbase-input]");
   const oidBaseResults = document.querySelector("[data-oidbase-results]");
   const oidBaseCount = document.querySelector("[data-oidbase-count]");
+  const auditInput = document.querySelector("[data-audit-input]");
+  const auditRun = document.querySelector("[data-audit-run]");
+  const auditSample = document.querySelector("[data-audit-sample]");
+  const auditClear = document.querySelector("[data-audit-clear]");
+  const auditSummary = document.querySelector("[data-audit-summary]");
+  const auditResults = document.querySelector("[data-audit-results]");
   const index = Array.isArray(window.OID_KNOWLEDGE_INDEX) ? window.OID_KNOWLEDGE_INDEX : [];
   const oidBaseDirectory = Array.isArray(window.OID_BASE_DIRECTORY) ? window.OID_BASE_DIRECTORY : [];
+  const penByNumber = new Map(index.map((record) => [Number(record.number), record]));
+  const oidBaseByOid = new Map(oidBaseDirectory.map((record) => [String(record.oid), record]));
+  const privateEnterprisePrefix = "1.3.6.1.4.1";
+  const oidPattern = /^(?:0|1|2)(?:\\.\\d+)*$/;
 
   function escapeHtml(value) {
     return String(value == null ? "" : value)
@@ -353,6 +447,119 @@ function renderAppJs() {
       normalize(record.root_arc).includes(normalizedQuery);
   }
 
+  function splitAuditRow(line) {
+    return String(line).includes("\\t")
+      ? String(line).split("\\t").map((part) => part.trim())
+      : String(line).split(",").map((part) => part.trim());
+  }
+
+  function looksLikeAuditHeader(parts) {
+    return parts.some((part) => ["oid", "object_identifier", "object identifier"].includes(normalize(part)));
+  }
+
+  function parseAuditRows(text) {
+    const lines = String(text || "").split(/\\r?\\n/)
+      .map((line) => line.trim())
+      .filter((line) => line && !line.startsWith("#"));
+    if (lines.length === 0) return [];
+
+    let headers = null;
+    let startIndex = 0;
+    const firstParts = splitAuditRow(lines[0]);
+    if (firstParts.length > 1 && looksLikeAuditHeader(firstParts)) {
+      headers = firstParts.map((part) => normalize(part));
+      startIndex = 1;
+    }
+
+    return lines.slice(startIndex).map((line, index) => {
+      const parts = splitAuditRow(line);
+      const oidIndex = headers ? headers.findIndex((header) => ["oid", "object_identifier", "object identifier"].includes(header)) : (parts.length > 1 ? 1 : 0);
+      const labelIndex = headers ? headers.findIndex((header) => ["asset", "name", "id", "label"].includes(header)) : (parts.length > 1 ? 0 : -1);
+      return {
+        index: index + 1,
+        label: labelIndex >= 0 ? parts[labelIndex] || "asset-" + (index + 1) : "asset-" + (index + 1),
+        oid: parts[oidIndex] || line
+      };
+    });
+  }
+
+  function privateEnterpriseNumber(oid) {
+    const prefix = privateEnterprisePrefix + ".";
+    if (!String(oid).startsWith(prefix)) return null;
+    const segment = String(oid).slice(prefix.length).split(".")[0];
+    return /^\\d+$/.test(segment) ? Number(segment) : null;
+  }
+
+  function analyzeAuditRows(rows) {
+    const findings = rows.map((row) => {
+      const oid = String(row.oid || "").trim();
+      const valid = oidPattern.test(oid);
+      if (!valid) {
+        return Object.assign({}, row, {
+          oid,
+          status: "invalid_value",
+          risk: "high",
+          enterprise: null,
+          oidbase_match: null
+        });
+      }
+      const enterpriseNumber = privateEnterpriseNumber(oid);
+      const enterprise = enterpriseNumber == null ? null : penByNumber.get(enterpriseNumber) || null;
+      const oidbaseMatch = oidBaseByOid.get(oid) || null;
+      const status = oidbaseMatch
+        ? "oidbase_directory_match"
+        : enterprise
+          ? "known_private_enterprise_oid"
+          : enterpriseNumber == null
+            ? "valid_oid_unmatched"
+            : "unknown_private_enterprise_oid";
+      return Object.assign({}, row, {
+        oid,
+        status,
+        risk: status === "unknown_private_enterprise_oid" ? "medium" : "low",
+        enterprise,
+        oidbase_match: oidbaseMatch
+      });
+    });
+    const invalid = findings.filter((item) => item.status === "invalid_value").length;
+    const known = findings.filter((item) => item.enterprise).length;
+    const oidBaseMatches = findings.filter((item) => item.oidbase_match).length;
+    const unresolved = findings.filter((item) => ["invalid_value", "unknown_private_enterprise_oid", "valid_oid_unmatched"].includes(item.status)).length;
+    const score = Math.max(0, Math.min(100, Math.round(100 - invalid * 15 - findings.filter((item) => item.status === "unknown_private_enterprise_oid").length * 10 - findings.filter((item) => item.status === "valid_oid_unmatched").length * 7)));
+    return {
+      summary: {
+        total_assets: findings.length,
+        valid_oids: findings.length - invalid,
+        invalid_values: invalid,
+        known_enterprises: known,
+        oidbase_directory_matches: oidBaseMatches,
+        unresolved_assets: unresolved,
+        quality_score: score
+      },
+      findings
+    };
+  }
+
+  function renderAudit() {
+    if (!auditInput || !auditSummary || !auditResults) return;
+    const rows = parseAuditRows(auditInput.value);
+    if (rows.length === 0) {
+      auditSummary.innerHTML = "";
+      auditResults.innerHTML = "";
+      return;
+    }
+    const audit = analyzeAuditRows(rows);
+    auditSummary.innerHTML =
+      "<span>Total<strong>" + audit.summary.total_assets.toLocaleString("en-US") + "</strong></span>" +
+      "<span>Valid OIDs<strong>" + audit.summary.valid_oids.toLocaleString("en-US") + "</strong></span>" +
+      "<span>Evidence matches<strong>" + (audit.summary.known_enterprises + audit.summary.oidbase_directory_matches).toLocaleString("en-US") + "</strong></span>" +
+      "<span>Quality score<strong>" + audit.summary.quality_score + "/100</strong></span>";
+    const shown = audit.findings.slice(0, 50);
+    auditResults.innerHTML = "<table><thead><tr><th>Asset</th><th>OID</th><th>Status</th><th>Enterprise</th><th>OID-base</th><th>Risk</th></tr></thead><tbody>" +
+      shown.map((finding) => "<tr><td>" + escapeHtml(finding.label) + "</td><td><code>" + escapeHtml(finding.oid) + "</code></td><td><span class=\\"status-badge\\">" + escapeHtml(finding.status) + "</span></td><td>" + escapeHtml(finding.enterprise ? finding.enterprise.organization : "") + "</td><td>" + (finding.oidbase_match ? "<a href=\\"" + escapeHtml(finding.oidbase_match.source_url) + "\\">source</a>" : "") + "</td><td>" + escapeHtml(finding.risk) + "</td></tr>").join("") +
+      "</tbody></table>";
+  }
+
   function renderPen() {
     if (!input || !results || !count) return;
     const query = normalize(input.value);
@@ -381,8 +588,18 @@ function renderAppJs() {
 
   if (input) input.addEventListener("input", renderPen);
   if (oidBaseInput) oidBaseInput.addEventListener("input", renderOidBase);
+  if (auditRun) auditRun.addEventListener("click", renderAudit);
+  if (auditSample && auditInput) auditSample.addEventListener("click", function () {
+    auditInput.value = "asset,oid\\nrouter-core,1.3.6.1.4.1.9.9.41\\nsha256-policy,2.16.840.1.101.3.4.2.1\\nunknown-enterprise,1.3.6.1.4.1.999999.1\\nbad-row,not-an-oid";
+    renderAudit();
+  });
+  if (auditClear && auditInput) auditClear.addEventListener("click", function () {
+    auditInput.value = "";
+    renderAudit();
+  });
   renderPen();
   renderOidBase();
+  renderAudit();
 }());
 `;
 }
@@ -439,6 +656,7 @@ module.exports = {
   escapeHtml,
   formatNumber,
   percent,
+  renderAuditPanel,
   renderDashboard,
   renderOidBasePanel,
   renderSearchPanel

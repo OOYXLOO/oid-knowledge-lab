@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -182,6 +183,23 @@
       <input id="oid-base-search" data-oidbase-input type="search" placeholder="Try 2.16.840, root:2, 2026, certificate" autocomplete="off">
       <p class="search-count" data-oidbase-count></p>
       <div class="search-results" data-oidbase-results></div>
+    </section>
+
+    <section class="panel audit-panel">
+      <div>
+        <p class="eyebrow">Asset audit</p>
+        <h2>Audit local OID list</h2>
+        <p class="panel-copy">Paste CSV or one OID per line. Analysis runs in this browser and is not uploaded.</p>
+      </div>
+      <label class="search-label" for="asset-audit-input">OID inventory</label>
+      <textarea id="asset-audit-input" data-audit-input rows="7" spellcheck="false" placeholder="asset,oid&#10;router-core,1.3.6.1.4.1.9.9.41&#10;sha256-policy,2.16.840.1.101.3.4.2.1"></textarea>
+      <div class="audit-actions">
+        <button type="button" data-audit-run>Run audit</button>
+        <button type="button" data-audit-sample>Load sample</button>
+        <button type="button" data-audit-clear>Clear</button>
+      </div>
+      <div class="audit-summary" data-audit-summary></div>
+      <div class="search-results" data-audit-results></div>
     </section>
 
     <section class="panel">

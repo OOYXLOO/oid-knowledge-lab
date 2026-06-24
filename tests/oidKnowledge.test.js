@@ -254,6 +254,9 @@ function testSiteRenderer() {
   assert.ok(html.includes("OID and enterprise registry dashboard"));
   assert.ok(html.includes("Search enterprise OIDs"));
   assert.ok(html.includes("Search sitemap catalog"));
+  assert.ok(html.includes("Audit local OID list"));
+  assert.ok(html.includes("data-audit-input"));
+  assert.ok(html.includes("data-audit-results"));
   assert.ok(html.includes("99 public IANA PEN assignments"));
   assert.ok(html.includes("42 OID-base sitemap entries"));
   assert.ok(html.includes("66,101") === false);
