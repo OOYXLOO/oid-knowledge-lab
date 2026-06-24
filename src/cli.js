@@ -11,6 +11,7 @@ const { ensureDir, fetchText, sleep, writeJson } = require("./net");
 const { parseOidMarkdown } = require("./parser");
 const { auditPublishableTree } = require("./publishGuard");
 const { buildReport, readJsonl } = require("./report");
+const { completedOidsFromFile, selectPendingEntries, writeCrawlState } = require("./crawlState");
 const { isAllowedByRobots, sitemapUrls } = require("./robots");
 const { buildSite } = require("./site");
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("./sitemap");
@@ -96,23 +97,37 @@ async function crawl(args) {
   const delayMs = Math.max(500, numberArg(args, "--delay-ms", full ? 1500 : 1000));
   const outDir = path.resolve(ROOT, argValue(args, "--out", "data/sample"));
   const saveRaw = hasFlag(args, "--save-raw-markdown");
+  const resume = hasFlag(args, "--resume");
   const info = await loadSourceInfo();
-  const selected = info.oidEntries.slice(0, limit);
 
   ensureDir(outDir);
+  const recordsFile = path.join(outDir, "records.jsonl");
+  const completedOids = resume ? completedOidsFromFile(recordsFile) : new Set();
+  const selected = selectPendingEntries(info.oidEntries, { completedOids, limit });
   writeJson(path.join(outDir, "sitemap-sample.json"), {
     source: info.sitemap_url,
     sitemap_url_count: info.sitemap_url_count,
     oid_url_count: info.oid_url_count,
     selected_count: selected.length,
+    skipped_completed_count: completedOids.size,
     full_collection_authorized: full,
+    resume_enabled: resume,
     generated_at: new Date().toISOString(),
     entries: selected
   });
 
-  const recordsFile = path.join(outDir, "records.jsonl");
-  fs.writeFileSync(recordsFile, "", "utf8");
+  if (!resume || !fs.existsSync(recordsFile)) fs.writeFileSync(recordsFile, "", "utf8");
   const records = [];
+
+  writeCrawlState(outDir, {
+    status: "running",
+    full_collection_authorized: full,
+    resume_enabled: resume,
+    selected_count: selected.length,
+    completed_before_run: completedOids.size,
+    completed_this_run: 0,
+    records_file: path.relative(ROOT, recordsFile).replace(/\\/g, "/")
+  });
 
   for (let index = 0; index < selected.length; index += 1) {
     const entry = selected[index];
@@ -132,15 +147,39 @@ async function crawl(args) {
     }
     console.log(`[${index + 1}/${selected.length}] ${record.oid} ${record.description || ""}`);
     if (index + 1 < selected.length) await sleep(delayMs);
+    writeCrawlState(outDir, {
+      status: "running",
+      full_collection_authorized: full,
+      resume_enabled: resume,
+      selected_count: selected.length,
+      completed_before_run: completedOids.size,
+      completed_this_run: records.length,
+      last_oid: record.oid,
+      records_file: path.relative(ROOT, recordsFile).replace(/\\/g, "/")
+    });
   }
 
   writeJson(path.join(outDir, "records-summary.json"), {
     generated_at: new Date().toISOString(),
     record_count: records.length,
+    completed_before_run: completedOids.size,
+    completed_after_run: completedOids.size + records.length,
     first_oid: records[0] ? records[0].oid : null,
     last_oid: records[records.length - 1] ? records[records.length - 1].oid : null,
     full_collection_authorized: full,
-    raw_markdown_saved: saveRaw
+    raw_markdown_saved: saveRaw,
+    resume_enabled: resume
+  });
+  writeCrawlState(outDir, {
+    status: "complete",
+    full_collection_authorized: full,
+    resume_enabled: resume,
+    selected_count: selected.length,
+    completed_before_run: completedOids.size,
+    completed_this_run: records.length,
+    completed_after_run: completedOids.size + records.length,
+    last_oid: records[records.length - 1] ? records[records.length - 1].oid : null,
+    records_file: path.relative(ROOT, recordsFile).replace(/\\/g, "/")
   });
 }
 

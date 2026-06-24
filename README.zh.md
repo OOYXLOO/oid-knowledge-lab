@@ -55,10 +55,11 @@ npm run guard:publishable
 
 ```bash
 npm run crawl:sample
+npm run crawl:sample:resume
 npm run report
 ```
 
-小样本 JSON/JSONL 输出会写入 `data/sample/`，并被 Git 忽略。
+小样本 JSON/JSONL 输出会写入 `data/sample/`，并被 Git 忽略。现在 `crawl` 也支持 `--resume`：它会读取已有的 `records.jsonl`，跳过已经完成的 OID，只追加待采集项，并写入 `crawl-state.json` 记录进度。
 
 ## 重新生成可公开数据包
 
@@ -145,7 +146,7 @@ npm run guard:publishable
 
 ```powershell
 $env:OID_BASE_FULL_CRAWL_AUTHORIZED = "1"
-node src/cli.js crawl --authorized-full --authorization-note "authorization reference" --delay-ms 1500 --out data/full
+node src/cli.js crawl --authorized-full --authorization-note "authorization reference" --delay-ms 1500 --out data/full --resume
 ```
 
 没有授权时，`crawl` 命令最多只做小样本采集，用于验证解析器和数据模型。

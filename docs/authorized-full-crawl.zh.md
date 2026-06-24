@@ -12,6 +12,8 @@ npm run crawl:sample
 
 这会抓取少量 Markdown 页面，用于验证解析器、字段模型和报告生成。生成的 JSONL 文件位于 `data/sample/`，并被 `.gitignore` 忽略。
 
+如果采集中断，可以追加 `--resume`。它会读取目标目录中的 `records.jsonl`，跳过已经完成的 OID，并把本轮进度写入 `crawl-state.json`。
+
 ## 全量模式的必要条件
 
 运行全量采集前，需要同时满足：
@@ -29,14 +31,14 @@ PowerShell：
 
 ```powershell
 $env:OID_BASE_FULL_CRAWL_AUTHORIZED = "1"
-node src/cli.js crawl --authorized-full --authorization-note "authorization reference" --delay-ms 1500 --out data/full
+node src/cli.js crawl --authorized-full --authorization-note "authorization reference" --delay-ms 1500 --out data/full --resume
 ```
 
 Bash：
 
 ```bash
 OID_BASE_FULL_CRAWL_AUTHORIZED=1 \
-node src/cli.js crawl --authorized-full --authorization-note "authorization reference" --delay-ms 1500 --out data/full
+node src/cli.js crawl --authorized-full --authorization-note "authorization reference" --delay-ms 1500 --out data/full --resume
 ```
 
 `--authorization-note` 应写成以后可审计的授权摘要，例如公开授权页 URL、合同编号或脱敏后的授权记录编号。

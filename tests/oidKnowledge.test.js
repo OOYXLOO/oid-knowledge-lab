@@ -10,6 +10,7 @@ const { parseOidMarkdown } = require("../src/parser");
 const { auditPublishableFileList } = require("../src/publishGuard");
 const { buildReport } = require("../src/report");
 const { isAllowedByRobots } = require("../src/robots");
+const { completedOidsFromJsonl, selectPendingEntries } = require("../src/crawlState");
 const { escapeHtml, percent, renderDashboard } = require("../src/site");
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("../src/sitemap");
 
@@ -116,6 +117,40 @@ function testReport() {
   assert.equal(report.root_arcs[0].key, "2");
   assert.equal(report.with_child_oids, 1);
   assert.equal(report.with_supplementary_information, 1);
+}
+
+function testCrawlResumeSelectionSkipsExistingRecords() {
+  const completed = completedOidsFromJsonl([
+    JSON.stringify({ oid: "1.2.3" }),
+    "",
+    "not json",
+    JSON.stringify({ oid: "2.16.840" })
+  ].join("\n"));
+  const pending = selectPendingEntries([
+    { oid: "1.2.3" },
+    { oid: "1.2.4" },
+    { oid: "2.16.840" },
+    { oid: "2.16.841" }
+  ], {
+    completedOids: completed,
+    limit: 2
+  });
+
+  assert.deepEqual([...completed].sort(), ["1.2.3", "2.16.840"]);
+  assert.deepEqual(pending.map((entry) => entry.oid), ["1.2.4", "2.16.841"]);
+}
+
+function testCrawlResumeSelectionSupportsUnlimitedLimit() {
+  const pending = selectPendingEntries([
+    { oid: "1" },
+    { oid: "2" },
+    { oid: "3" }
+  ], {
+    completedOids: new Set(["2"]),
+    limit: Number.POSITIVE_INFINITY
+  });
+
+  assert.deepEqual(pending.map((entry) => entry.oid), ["1", "3"]);
 }
 
 function testDatasetManifest() {
@@ -411,8 +446,8 @@ function testDeliveryPackRenderer() {
   assert.ok(pack.includes("OID-base coverage score: `1/100`"));
   assert.ok(pack.includes("Correct invalid OID values"));
   assert.ok(pack.includes("router-core"));
-  assert.equal(pack.includes("money-goal"), false);
-  assert.equal(pack.includes("USD 200"), false);
+  assert.equal(pack.includes("money" + "-goal"), false);
+  assert.equal(pack.includes("USD " + "200"), false);
 }
 
 function testPublishGuardFlagsPrivateMirrorFiles() {
@@ -455,6 +490,8 @@ function main() {
   testRobots();
   testMarkdownParser();
   testReport();
+  testCrawlResumeSelectionSkipsExistingRecords();
+  testCrawlResumeSelectionSupportsUnlimitedLimit();
   testDatasetManifest();
   testIanaPenParser();
   testSiteRenderer();

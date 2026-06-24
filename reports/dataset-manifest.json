@@ -1,6 +1,6 @@
 {
   "name": "OID Knowledge Lab publishable data manifest",
-  "generated_at": "2026-06-24T03:09:08.341Z",
+  "generated_at": "2026-06-24T03:56:06.982Z",
   "publishable": true,
   "content_boundary": "This manifest covers OID-base sitemap metadata and open IANA PEN aggregate/public data; it does not contain OID-base page bodies, raw page mirrors, private contact fields, credentials, cookies, tokens, or account data.",
   "oid_base": {
@@ -145,12 +145,12 @@
     {
       "path": "reports/oid-base-sitemap-index.json",
       "bytes": 2288780,
-      "sha256": "sha256:604ce7f6411514be5eac77ae305a6bf918d5fb79905bb002f30f5d0bee28f2bd"
+      "sha256": "sha256:5b88fc8320bcec033693b91be8eca978adcd07b4f03758dfdb802c0df105f75f"
     },
     {
       "path": "reports/iana-pen-summary.json",
       "bytes": 4969,
-      "sha256": "sha256:5c6b4c168e7356ea87d61818a656b5e318c49831fb6bf0ac4a0d427c3fad51f8"
+      "sha256": "sha256:13e6141dafa7a9ca9698393b2e0cbfec39ba8afea30395f7ec0f3aba68715bb0"
     },
     {
       "path": "reports/iana-pen-public-index.json",
@@ -170,22 +170,22 @@
     {
       "path": "reports/coverage-report.json",
       "bytes": 19192275,
-      "sha256": "sha256:d96ef8af69c7d2821b6b1377f8afca22316ca9fe7cb6ddda47a048b6362941e2"
+      "sha256": "sha256:c5f29dc19d31d6a0e856234a3496a69173e5197957f75f7a80dec3cf68499cb0"
     },
     {
       "path": "reports/coverage-report.md",
       "bytes": 4567,
-      "sha256": "sha256:ecebb0203de2314b5384d679ea4631ff686da6864f1c620e668bfd71ccef6f1d"
+      "sha256": "sha256:133aab935f19a9e185864ad465bc377b0220f9ced9350a9bcb2faf5d0c10ae7e"
     },
     {
       "path": "reports/sample-delivery-pack.md",
       "bytes": 2454,
-      "sha256": "sha256:e5414cf2a579e4dd3eb0bab6a8d8a54de0b80cb44789445f93b6a973b52741f1"
+      "sha256": "sha256:0ca2395fc2c89f124a93e3d6db7a64f4f249dfe0d4f2082182e6b18457a28eae"
     },
     {
       "path": "public/index.html",
       "bytes": 11387,
-      "sha256": "sha256:69331d2be3426bf97ba3a92cd94cb574c749b40ff1c7c11d76c5f3fc52ccaa9e"
+      "sha256": "sha256:8284fbee1740a9cb140ea55f48f172b1084d7221009320855ca9f63b5bec041b"
     },
     {
       "path": "public/oid-base-directory.js",

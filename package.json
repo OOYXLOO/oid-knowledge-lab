@@ -4,7 +4,7 @@
   "private": true,
   "description": "Responsible OID knowledge-base crawler and analysis workspace.",
   "scripts": {
-    "check": "node --check src/assetAudit.js && node --check src/cli.js && node --check src/coverage.js && node --check src/deliveryPack.js && node --check src/ianaPen.js && node --check src/manifest.js && node --check src/net.js && node --check src/parser.js && node --check src/publishGuard.js && node --check src/report.js && node --check src/site.js && node --check src/robots.js && node --check src/sitemap.js && node --check tests/oidKnowledge.test.js",
+    "check": "node --check src/assetAudit.js && node --check src/cli.js && node --check src/coverage.js && node --check src/crawlState.js && node --check src/deliveryPack.js && node --check src/ianaPen.js && node --check src/manifest.js && node --check src/net.js && node --check src/parser.js && node --check src/publishGuard.js && node --check src/report.js && node --check src/site.js && node --check src/robots.js && node --check src/sitemap.js && node --check tests/oidKnowledge.test.js",
     "test": "node tests/oidKnowledge.test.js",
     "build:site": "node src/cli.js build-site --report reports/iana-pen-summary.json --index reports/iana-pen-public-index.json --out public",
     "inspect-source": "node src/cli.js inspect-source",
@@ -13,6 +13,7 @@
     "guard:publishable": "node src/cli.js guard-publishable",
     "refresh:publishable": "npm run export:sitemap-index && npm run import:iana-pen && node src/cli.js build-site --report reports/iana-pen-summary.json --index reports/iana-pen-public-index.json --sitemap reports/oid-base-sitemap-index.json --out public && npm run audit:dataset",
     "crawl:sample": "node src/cli.js crawl --limit 25 --delay-ms 1000 --out data/sample",
+    "crawl:sample:resume": "node src/cli.js crawl --limit 25 --delay-ms 1000 --out data/sample --resume",
     "import:iana-pen": "node src/cli.js import-iana-pen --out data/iana --report reports/iana-pen-summary.json --public-index reports/iana-pen-public-index.json",
     "audit:assets": "node src/cli.js audit-assets --in examples/sample-assets.csv --out reports/asset-audit.json --markdown reports/asset-audit.md",
     "coverage:oid": "node src/cli.js coverage-report --pen-index reports/iana-pen-public-index.json --sitemap reports/oid-base-sitemap-index.json --out reports/coverage-report.json --markdown reports/coverage-report.md",

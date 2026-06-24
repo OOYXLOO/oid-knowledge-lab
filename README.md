@@ -48,6 +48,7 @@ npm run audit:assets
 npm run coverage:oid
 npm run guard:publishable
 npm run crawl:sample
+npm run crawl:sample:resume
 npm run report
 npm run import:iana-pen
 ```
@@ -57,9 +58,10 @@ The sample output is written under `data/sample/`:
 - `sitemap-sample.json`
 - `records.jsonl`
 - `records-summary.json`
+- `crawl-state.json`
 - `report.json`
 
-Generated sample JSON/JSONL files are ignored by Git. Commit only run receipts or synthetic fixtures unless the source authorization explicitly allows publishing collected data.
+Generated sample JSON/JSONL files and crawl state files are ignored by Git. Commit only run receipts or synthetic fixtures unless the source authorization explicitly allows publishing collected data.
 
 ## Rebuild the Publishable Data Package
 
@@ -117,6 +119,8 @@ Each parsed record contains:
 - `fetched_at`
 
 The crawler stores parsed records by default, not raw page copies. Raw export should only be used when the source license or authorization allows it.
+
+Interrupted crawls can be resumed with `--resume`. The command reads existing `records.jsonl`, skips completed OIDs, appends only pending entries, and writes `crawl-state.json` so a long authorized run can be audited after a laptop move, network drop, or manual stop.
 
 ## OID Asset Audit
 
@@ -190,7 +194,7 @@ Only use this after obtaining specific authorization from the site owner:
 
 ```bash
 set OID_BASE_FULL_CRAWL_AUTHORIZED=1
-node src/cli.js crawl --authorized-full --authorization-note "authorization reference" --delay-ms 1500 --out data/full
+node src/cli.js crawl --authorized-full --authorization-note "authorization reference" --delay-ms 1500 --out data/full --resume
 ```
 
 The command refuses to run full collection without both the environment flag and an authorization note.
@@ -205,7 +209,7 @@ node src/cli.js export-sitemap-index --out reports/oid-base-sitemap-index.json
 node src/cli.js audit-assets --in examples/sample-assets.csv --out reports/asset-audit.json --markdown reports/asset-audit.md
 node src/cli.js coverage-report --pen-index reports/iana-pen-public-index.json --sitemap reports/oid-base-sitemap-index.json --out reports/coverage-report.json --markdown reports/coverage-report.md
 node src/cli.js guard-publishable
-node src/cli.js crawl --limit 10 --delay-ms 1000 --out data/sample
+node src/cli.js crawl --limit 10 --delay-ms 1000 --out data/sample --resume
 node src/cli.js report --in data/sample/records.jsonl --out data/sample/report.json
 node src/cli.js import-iana-pen --out data/iana --report reports/iana-pen-summary.json --public-index reports/iana-pen-public-index.json
 node src/cli.js build-site --report reports/iana-pen-summary.json --index reports/iana-pen-public-index.json --out public
