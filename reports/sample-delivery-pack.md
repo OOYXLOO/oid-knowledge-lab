@@ -1,6 +1,6 @@
 # OID Asset Evidence Delivery Pack
 
-Generated: `2026-06-24T08:38:45.636Z`
+Generated: `2026-06-24T09:24:23.151Z`
 
 This sample delivery pack shows how OID Knowledge Lab turns a local OID inventory into a concise evidence and remediation handoff. It uses public registry indexes and does not require uploading client data.
 
