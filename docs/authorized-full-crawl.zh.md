@@ -14,7 +14,7 @@ npm run crawl:sample
 
 ## 全量模式的必要条件
 
-运行全量采集前需要同时满足：
+运行全量采集前，需要同时满足：
 
 - 已取得 OID-base 所有者明确授权。
 - 授权范围允许保存所需字段。
@@ -39,7 +39,9 @@ OID_BASE_FULL_CRAWL_AUTHORIZED=1 \
 node src/cli.js crawl --authorized-full --authorization-note "authorization reference" --delay-ms 1500 --out data/full
 ```
 
-`--authorization-note` 应写成以后可审计的授权摘要，例如公开授权页 URL、合同编号或脱敏后的授权记录编号。不要在仓库里保存私人邮件、验证码、账号信息、付款信息或任何敏感凭据。
+`--authorization-note` 应写成以后可审计的授权摘要，例如公开授权页 URL、合同编号或脱敏后的授权记录编号。
+
+不要在仓库里保存私人邮件、验证码、账号信息、付款信息或任何敏感凭据。
 
 ## 发布边界
 
