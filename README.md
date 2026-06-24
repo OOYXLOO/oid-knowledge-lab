@@ -15,6 +15,7 @@ Last refreshed on 2026-06-24:
 - Static dashboard: generated under `public/`
 - Dataset manifest: `reports/dataset-manifest.json` with artifact hashes, sizes, source links, and publication boundaries
 - Source policy snapshot: `reports/source-policy.md` records robots, terms, sitemap, and hash evidence for the collection boundary
+- Sample engagement brief: `reports/sample-engagement-brief.md` describes inputs, deliverables, and acceptance criteria for a scoped OID inventory assessment
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
@@ -48,6 +49,7 @@ npm run source-policy
 npm run build:site
 npm run audit:assets
 npm run coverage:oid
+npm run brief:sample
 npm run guard:publishable
 npm run crawl:sample
 npm run crawl:sample:resume
@@ -185,6 +187,14 @@ npm run delivery:sample
 ```
 
 The output is `reports/sample-delivery-pack.md`. It combines an executive summary, registry coverage context, action plan, first findings, and client data boundary notes. Use it as a reusable example of the kind of evidence pack this project can produce from a local OID inventory.
+
+## Sample Engagement Brief
+
+```bash
+npm run brief:sample
+```
+
+The output is `reports/sample-engagement-brief.md`. It describes the client inputs, assessment scope, deliverables, acceptance criteria, and source boundary for a scoped OID inventory assessment before the final evidence pack is generated.
 
 ## Open Data Import: IANA PEN
 

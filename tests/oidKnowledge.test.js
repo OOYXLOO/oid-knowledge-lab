@@ -5,6 +5,7 @@ const { analyzeAssetText, renderAssetAuditMarkdown } = require("../src/assetAudi
 const { analyzeCoverage, renderCoverageMarkdown } = require("../src/coverage");
 const { renderDeliveryPack } = require("../src/deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
+const { renderEngagementBrief } = require("../src/engagementBrief");
 const { assertPublishableManifest, buildDatasetManifest } = require("../src/manifest");
 const { parseOidMarkdown } = require("../src/parser");
 const { auditPublishableFileList } = require("../src/publishGuard");
@@ -518,6 +519,56 @@ function testDeliveryPackRenderer() {
   assert.equal(pack.includes("USD " + "200"), false);
 }
 
+function testEngagementBriefRenderer() {
+  const brief = renderEngagementBrief({
+    generatedAt: "2026-06-24T00:00:00.000Z",
+    assetAudit: {
+      summary: {
+        total_assets: 12,
+        valid_oids: 10,
+        invalid_values: 2,
+        evidence_ready_assets: 5,
+        unresolved_assets: 7,
+        quality_score: 71
+      },
+      action_plan: [
+        { priority: "P0", title: "Correct invalid OID values", count: 2, action: "Fix malformed values." },
+        { priority: "P1", title: "Review unmatched valid OIDs", count: 3, action: "Check internal registry." }
+      ]
+    },
+    coverageReport: {
+      summary: {
+        total_public_pen_records: 65959,
+        exact_oidbase_matches: 127,
+        subtree_only_matches: 289,
+        missing_oidbase_entries: 65543,
+        coverage_score: 1
+      }
+    },
+    sourcePolicy: {
+      source_urls: {
+        sitemap: "https://oid-base.com/sitemap.xml",
+        terms: "https://oid-base.com/disclaimer.htm.md"
+      },
+      collection_boundary: {
+        full_crawl_requires_authorization: true,
+        page_bodies_publishable_without_authorization: false
+      }
+    }
+  });
+
+  assert.ok(brief.includes("# OID Inventory Assessment Brief"));
+  assert.ok(brief.includes("## Client Inputs"));
+  assert.ok(brief.includes("## Deliverables"));
+  assert.ok(brief.includes("## Acceptance Criteria"));
+  assert.ok(brief.includes("Quality score: `71/100`"));
+  assert.ok(brief.includes("Full OID-base page bodies are outside the default scope"));
+  assert.ok(brief.includes("Correct invalid OID values"));
+  assert.equal(brief.includes("money" + "-goal"), false);
+  assert.equal(brief.includes("USD " + "200"), false);
+  assert.equal(brief.includes("\u8d5a\u94b1"), false);
+}
+
 function testPublishGuardFlagsPrivateMirrorFiles() {
   const audit = auditPublishableFileList([
     "README.md",
@@ -568,6 +619,7 @@ function main() {
   testAssetAudit();
   testCoverageReport();
   testDeliveryPackRenderer();
+  testEngagementBriefRenderer();
   testPublishGuardFlagsPrivateMirrorFiles();
   testPublishGuardAllowsPublicArtifacts();
   console.log("oid knowledge tests passed");
