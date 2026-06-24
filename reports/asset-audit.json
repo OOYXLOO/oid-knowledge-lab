@@ -1,17 +1,21 @@
 {
-  "generated_at": "2026-06-24T01:10:04.702Z",
+  "generated_at": "2026-06-24T01:22:25.631Z",
   "source_kind": "user supplied OID asset list",
   "summary": {
-    "generated_at": "2026-06-24T01:10:04.702Z",
+    "generated_at": "2026-06-24T01:22:25.631Z",
     "total_assets": 4,
     "valid_oids": 3,
     "invalid_values": 1,
     "private_enterprise_oids": 1,
     "known_enterprises": 1,
     "oidbase_directory_matches": 1,
+    "unknown_private_enterprise_oids": 0,
+    "valid_oid_unmatched": 1,
+    "evidence_ready_assets": 2,
+    "unresolved_assets": 2,
     "high_risk_findings": 1,
     "medium_risk_findings": 0,
-    "quality_score": 71
+    "quality_score": 78
   },
   "findings": [
     {
@@ -63,5 +67,25 @@
   "recommendations": [
     "Normalize or remove 1 invalid OID value(s) before publishing an asset inventory.",
     "Review OIDs without an OID-base sitemap match; they may be internal arcs, stale values, or require another registry source."
+  ],
+  "action_plan": [
+    {
+      "priority": "P0",
+      "title": "Correct invalid OID values",
+      "count": 1,
+      "action": "Fix malformed values before using the inventory as audit or integration evidence."
+    },
+    {
+      "priority": "P1",
+      "title": "Review unmatched valid OIDs against internal registries",
+      "count": 1,
+      "action": "Confirm whether each unmatched OID is internal, deprecated, or covered by a registry not present in this package."
+    },
+    {
+      "priority": "P2",
+      "title": "Preserve evidence-ready public registry mappings",
+      "count": 2,
+      "action": "Keep source URLs and enterprise mappings with the asset record for future review."
+    }
   ]
 }

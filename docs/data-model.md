@@ -90,7 +90,9 @@ The JSON output contains:
     "private_enterprise_oids": 1,
     "known_enterprises": 1,
     "oidbase_directory_matches": 1,
-    "quality_score": 71
+    "evidence_ready_assets": 2,
+    "unresolved_assets": 1,
+    "quality_score": 78
   },
   "findings": [
     {
@@ -107,5 +109,7 @@ The JSON output contains:
   "recommendations": []
 }
 ```
+
+The JSON output also includes an `action_plan` array. It groups findings into operator-ready follow-up buckets such as malformed values to fix, unknown enterprise arcs to map, unmatched valid OIDs to review, and public registry mappings that are ready to preserve as evidence.
 
 The command does not need raw OID-base page bodies. It cross-checks against the publishable IANA PEN index and the OID-base sitemap catalog.

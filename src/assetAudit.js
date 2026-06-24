@@ -72,8 +72,8 @@ function privateEnterpriseNumber(oid) {
 function qualityScore(summary) {
   let score = 100;
   score -= summary.invalid_values * 15;
-  score -= Math.max(0, summary.private_enterprise_oids - summary.known_enterprises) * 10;
-  score -= Math.max(0, summary.valid_oids - summary.oidbase_directory_matches) * 7;
+  score -= summary.unknown_private_enterprise_oids * 10;
+  score -= summary.valid_oid_unmatched * 7;
   return Math.max(0, Math.min(100, Math.round(score)));
 }
 
@@ -92,6 +92,43 @@ function buildRecommendations(summary) {
     recommendations.push("Asset OID inventory is consistent with the available public indexes.");
   }
   return recommendations;
+}
+
+function buildActionPlan(summary) {
+  const plan = [];
+  if (summary.invalid_values > 0) {
+    plan.push({
+      priority: "P0",
+      title: "Correct invalid OID values",
+      count: summary.invalid_values,
+      action: "Fix malformed values before using the inventory as audit or integration evidence."
+    });
+  }
+  if (summary.unknown_private_enterprise_oids > 0) {
+    plan.push({
+      priority: "P1",
+      title: "Identify owners for unknown private enterprise arcs",
+      count: summary.unknown_private_enterprise_oids,
+      action: "Map the enterprise number to a vendor, customer, or internal registration record."
+    });
+  }
+  if (summary.valid_oid_unmatched > 0) {
+    plan.push({
+      priority: "P1",
+      title: "Review unmatched valid OIDs against internal registries",
+      count: summary.valid_oid_unmatched,
+      action: "Confirm whether each unmatched OID is internal, deprecated, or covered by a registry not present in this package."
+    });
+  }
+  if (summary.evidence_ready_assets > 0) {
+    plan.push({
+      priority: "P2",
+      title: "Preserve evidence-ready public registry mappings",
+      count: summary.evidence_ready_assets,
+      action: "Keep source URLs and enterprise mappings with the asset record for future review."
+    });
+  }
+  return plan;
 }
 
 function analyzeAssetText(text, options = {}) {
@@ -153,6 +190,10 @@ function analyzeAssetText(text, options = {}) {
     private_enterprise_oids: findings.filter((finding) => privateEnterpriseNumber(finding.oid) != null).length,
     known_enterprises: findings.filter((finding) => finding.enterprise).length,
     oidbase_directory_matches: findings.filter((finding) => finding.oidbase_match).length,
+    unknown_private_enterprise_oids: findings.filter((finding) => finding.status === "unknown_private_enterprise_oid").length,
+    valid_oid_unmatched: findings.filter((finding) => finding.status === "valid_oid_unmatched").length,
+    evidence_ready_assets: findings.filter((finding) => finding.enterprise || finding.oidbase_match).length,
+    unresolved_assets: findings.filter((finding) => ["invalid_value", "unknown_private_enterprise_oid", "valid_oid_unmatched"].includes(finding.status)).length,
     high_risk_findings: findings.filter((finding) => finding.risk === "high").length,
     medium_risk_findings: findings.filter((finding) => finding.risk === "medium").length
   };
@@ -163,7 +204,8 @@ function analyzeAssetText(text, options = {}) {
     source_kind: "user supplied OID asset list",
     summary,
     findings,
-    recommendations: buildRecommendations(summary)
+    recommendations: buildRecommendations(summary),
+    action_plan: buildActionPlan(summary)
   };
 }
 
@@ -176,6 +218,12 @@ function renderAssetAuditMarkdown(audit) {
     finding.enterprise ? finding.enterprise.organization : "",
     finding.oidbase_match ? finding.oidbase_match.source_url : "",
     finding.risk
+  ].map((value) => String(value ?? "").replace(/\|/g, "\\|")));
+  const actionRows = (audit.action_plan || []).map((item) => [
+    item.priority,
+    item.title,
+    item.count,
+    item.action
   ].map((value) => String(value ?? "").replace(/\|/g, "\\|")));
 
   return `# OID Asset Audit
@@ -190,7 +238,15 @@ Generated at: ${audit.generated_at}
 - Private enterprise OIDs: ${audit.summary.private_enterprise_oids}
 - Known enterprises: ${audit.summary.known_enterprises}
 - OID-base directory matches: ${audit.summary.oidbase_directory_matches}
+- Evidence-ready assets: ${audit.summary.evidence_ready_assets}
+- Unresolved assets: ${audit.summary.unresolved_assets}
 - Quality score: ${audit.summary.quality_score}/100
+
+## Action Plan
+
+| Priority | Action | Count | Operator note |
+|---|---|---:|---|
+${actionRows.map((row) => `| ${row.join(" | ")} |`).join("\n")}
 
 ## Recommendations
 

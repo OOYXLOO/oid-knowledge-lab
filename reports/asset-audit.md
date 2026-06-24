@@ -1,6 +1,6 @@
 # OID Asset Audit
 
-Generated at: 2026-06-24T01:10:04.702Z
+Generated at: 2026-06-24T01:22:25.631Z
 
 ## Summary
 
@@ -10,7 +10,17 @@ Generated at: 2026-06-24T01:10:04.702Z
 - Private enterprise OIDs: 1
 - Known enterprises: 1
 - OID-base directory matches: 1
-- Quality score: 71/100
+- Evidence-ready assets: 2
+- Unresolved assets: 2
+- Quality score: 78/100
+
+## Action Plan
+
+| Priority | Action | Count | Operator note |
+|---|---|---:|---|
+| P0 | Correct invalid OID values | 1 | Fix malformed values before using the inventory as audit or integration evidence. |
+| P1 | Review unmatched valid OIDs against internal registries | 1 | Confirm whether each unmatched OID is internal, deprecated, or covered by a registry not present in this package. |
+| P2 | Preserve evidence-ready public registry mappings | 2 | Keep source URLs and enterprise mappings with the asset record for future review. |
 
 ## Recommendations
 

@@ -278,23 +278,37 @@ function testAssetAudit() {
   const audit = analyzeAssetText(`asset,oid
 router-core,1.3.6.1.4.1.9.9.41
 sha256-policy,2.16.840.1.101.3.4.2.1
+unknown-enterprise,1.3.6.1.4.1.999999.1
+internal-policy,1.2.840.113549
 bad-row,not-an-oid
 `, { penIndex, oidBaseIndex, generatedAt: "2026-06-24T00:00:00.000Z" });
 
-  assert.equal(audit.summary.total_assets, 3);
-  assert.equal(audit.summary.valid_oids, 2);
+  assert.equal(audit.summary.total_assets, 5);
+  assert.equal(audit.summary.valid_oids, 4);
   assert.equal(audit.summary.invalid_values, 1);
-  assert.equal(audit.summary.private_enterprise_oids, 1);
+  assert.equal(audit.summary.private_enterprise_oids, 2);
   assert.equal(audit.summary.known_enterprises, 1);
   assert.equal(audit.summary.oidbase_directory_matches, 1);
-  assert.equal(audit.summary.quality_score, 78);
+  assert.equal(audit.summary.evidence_ready_assets, 2);
+  assert.equal(audit.summary.unresolved_assets, 3);
+  assert.equal(audit.summary.quality_score, 68);
   assert.equal(audit.findings[0].enterprise.organization, "ciscoSystems");
   assert.equal(audit.findings[1].oidbase_match.source_url, "https://oid-base.com/get/2.16.840.1.101.3.4.2.1");
-  assert.equal(audit.findings[2].status, "invalid_value");
+  assert.equal(audit.findings[2].status, "unknown_private_enterprise_oid");
+  assert.equal(audit.findings[3].status, "valid_oid_unmatched");
+  assert.equal(audit.findings[4].status, "invalid_value");
   assert.ok(audit.recommendations.some((item) => item.includes("invalid")));
+  assert.deepEqual(audit.action_plan.map((item) => [item.priority, item.title, item.count]), [
+    ["P0", "Correct invalid OID values", 1],
+    ["P1", "Identify owners for unknown private enterprise arcs", 1],
+    ["P1", "Review unmatched valid OIDs against internal registries", 1],
+    ["P2", "Preserve evidence-ready public registry mappings", 2]
+  ]);
 
   const markdown = renderAssetAuditMarkdown(audit);
   assert.ok(markdown.includes("# OID Asset Audit"));
+  assert.ok(markdown.includes("## Action Plan"));
+  assert.ok(markdown.includes("Correct invalid OID values"));
   assert.ok(markdown.includes("ciscoSystems"));
   assert.ok(markdown.includes("not-an-oid"));
 }
