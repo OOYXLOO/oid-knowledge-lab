@@ -1,0 +1,78 @@
+{
+  "name": "OID-base authorized full crawl plan",
+  "generated_at": "2026-06-24T05:34:55.447Z",
+  "source": "https://oid-base.com/",
+  "source_kind": "public sitemap plus authorized page-body collection",
+  "entry_count": 7492,
+  "delay_ms": 1500,
+  "estimated_request_duration_ms": 11236500,
+  "estimated_request_duration_human": "3h 7m 17s",
+  "output_policy": {
+    "output_dir": "data/full",
+    "tracked_in_git": false,
+    "publishable_without_source_authorization": false,
+    "raw_markdown_default": false
+  },
+  "required_gates": [
+    "Written authorization or another clear license basis from the source owner.",
+    "Set OID_BASE_FULL_CRAWL_AUTHORIZED=1 before running the crawler.",
+    "Pass --authorized-full and a non-empty --authorization-note value.",
+    "Respect robots.txt and avoid disallowed paths.",
+    "Use a polite delay between page-body requests."
+  ],
+  "publishable_outputs": [
+    "crawler code",
+    "sitemap metadata index",
+    "aggregate reports",
+    "hashes and dataset manifests",
+    "small parser-validation receipts"
+  ],
+  "excluded_outputs": [
+    "unauthorized OID-base page bodies",
+    "raw Markdown or HTML mirrors",
+    "complete JSONL page-body exports without source authorization",
+    "credentials, cookies, tokens, account data, or private correspondence"
+  ],
+  "sample_entries": [
+    {
+      "oid": "0",
+      "markdown_url": "https://oid-base.com/get-md/0"
+    },
+    {
+      "oid": "1",
+      "markdown_url": "https://oid-base.com/get-md/1"
+    },
+    {
+      "oid": "1.3.6.1.4.1.65947",
+      "markdown_url": "https://oid-base.com/get-md/1.3.6.1.4.1.65947"
+    },
+    {
+      "oid": "1.3.6.1.4.1.65948",
+      "markdown_url": "https://oid-base.com/get-md/1.3.6.1.4.1.65948"
+    },
+    {
+      "oid": "1.3.6.1.4.1.65949",
+      "markdown_url": "https://oid-base.com/get-md/1.3.6.1.4.1.65949"
+    },
+    {
+      "oid": "1.3.6.1.4.1.65950",
+      "markdown_url": "https://oid-base.com/get-md/1.3.6.1.4.1.65950"
+    },
+    {
+      "oid": "1.3.6.1.4.1.65951",
+      "markdown_url": "https://oid-base.com/get-md/1.3.6.1.4.1.65951"
+    },
+    {
+      "oid": "1.3.6.1.4.1.65952",
+      "markdown_url": "https://oid-base.com/get-md/1.3.6.1.4.1.65952"
+    },
+    {
+      "oid": "1.3.6.1.4.1.65953",
+      "markdown_url": "https://oid-base.com/get-md/1.3.6.1.4.1.65953"
+    },
+    {
+      "oid": "1.3.6.1.4.1.65954",
+      "markdown_url": "https://oid-base.com/get-md/1.3.6.1.4.1.65954"
+    }
+  ]
+}

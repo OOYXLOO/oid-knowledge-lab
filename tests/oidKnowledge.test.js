@@ -12,6 +12,7 @@ const { auditPublishableFileList } = require("../src/publishGuard");
 const { buildReport } = require("../src/report");
 const { isAllowedByRobots } = require("../src/robots");
 const { completedOidsFromJsonl, selectPendingEntries } = require("../src/crawlState");
+const { buildAuthorizedCrawlPlan, renderAuthorizedCrawlPlanMarkdown } = require("../src/crawlPlan");
 const { escapeHtml, percent, renderDashboard } = require("../src/site");
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("../src/sitemap");
 const { buildSourcePolicySnapshot, renderSourcePolicyMarkdown } = require("../src/sourcePolicy");
@@ -220,6 +221,37 @@ function testCrawlResumeSelectionSupportsUnlimitedLimit() {
   });
 
   assert.deepEqual(pending.map((entry) => entry.oid), ["1", "3"]);
+}
+
+function testAuthorizedCrawlPlanDocumentsBoundaryAndScale() {
+  const plan = buildAuthorizedCrawlPlan({
+    generatedAt: "2026-06-24T00:00:00.000Z",
+    oidEntries: [
+      { oid: "0", markdown_url: "https://oid-base.com/get-md/0" },
+      { oid: "1.2.3", markdown_url: "https://oid-base.com/get-md/1.2.3" },
+      { oid: "2.16.840", markdown_url: "https://oid-base.com/get-md/2.16.840" }
+    ],
+    delayMs: 1500,
+    outDir: "data/full"
+  });
+
+  assert.equal(plan.entry_count, 3);
+  assert.equal(plan.delay_ms, 1500);
+  assert.equal(plan.estimated_request_duration_ms, 3000);
+  assert.equal(plan.output_policy.output_dir, "data/full");
+  assert.equal(plan.output_policy.tracked_in_git, false);
+  assert.equal(plan.output_policy.publishable_without_source_authorization, false);
+  assert.ok(plan.required_gates.some((gate) => gate.includes("OID_BASE_FULL_CRAWL_AUTHORIZED=1")));
+  assert.ok(plan.sample_entries.some((entry) => entry.oid === "1.2.3"));
+
+  const markdown = renderAuthorizedCrawlPlanMarkdown(plan);
+  assert.ok(markdown.includes("# Authorized Full Crawl Plan"));
+  assert.ok(markdown.includes("Entries planned: `3`"));
+  assert.ok(markdown.includes("Estimated request time: `3s`"));
+  assert.ok(markdown.includes("data/full"));
+  assert.ok(markdown.includes("not a publishable page-body mirror"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
 }
 
 function testDatasetManifest() {
@@ -613,6 +645,7 @@ function main() {
   testReport();
   testCrawlResumeSelectionSkipsExistingRecords();
   testCrawlResumeSelectionSupportsUnlimitedLimit();
+  testAuthorizedCrawlPlanDocumentsBoundaryAndScale();
   testDatasetManifest();
   testIanaPenParser();
   testSiteRenderer();

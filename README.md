@@ -15,6 +15,7 @@ Last refreshed on 2026-06-24:
 - Static dashboard: generated under `public/`
 - Dataset manifest: `reports/dataset-manifest.json` with artifact hashes, sizes, source links, and publication boundaries
 - Source policy snapshot: `reports/source-policy.md` records robots, terms, sitemap, and hash evidence for the collection boundary
+- Authorized full crawl plan: `reports/authorized-crawl-plan.md` records the scale, gates, local output path, and estimated runtime for a future authorized page-body import
 - Sample engagement brief: `reports/sample-engagement-brief.md` describes inputs, deliverables, and acceptance criteria for a scoped OID inventory assessment
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 
@@ -46,6 +47,7 @@ npm run check
 npm test
 npm run refresh:publishable
 npm run source-policy
+npm run plan:authorized-full-crawl
 npm run build:site
 npm run audit:assets
 npm run coverage:oid
@@ -78,8 +80,9 @@ This command:
 1. Fetches the current OID-base sitemap and rebuilds `reports/oid-base-sitemap-index.json`.
 2. Imports the IANA PEN registry and rebuilds the aggregate/public reports.
 3. Refreshes `reports/source-policy.json` and `reports/source-policy.md`.
-4. Rebuilds the static dashboard in `public/`.
-5. Writes `reports/dataset-manifest.json` with checksums for the publishable artifacts.
+4. Regenerates `reports/authorized-crawl-plan.json` and `reports/authorized-crawl-plan.md`.
+5. Rebuilds the static dashboard in `public/`.
+6. Writes `reports/dataset-manifest.json` with checksums for the publishable artifacts.
 
 ## Source Policy Snapshot
 
@@ -119,6 +122,19 @@ npm run guard:publishable
 ```
 
 The guard inspects Git-tracked files and fails if local-only full crawl output, raw OID-base mirrors, sample parsed page bodies, or full IANA contact-level JSONL imports are about to be published.
+
+## Authorized Full Crawl Plan
+
+```bash
+npm run plan:authorized-full-crawl
+```
+
+This command reads the live sitemap and writes:
+
+- `reports/authorized-crawl-plan.json`
+- `reports/authorized-crawl-plan.md`
+
+The plan is safe to publish because it contains only task scale, estimated runtime, first planned sitemap entries, required authorization gates, and output boundaries. It does not fetch or store OID-base page bodies.
 
 ## Data Model
 
@@ -232,6 +248,7 @@ See `docs/authorized-full-crawl.zh.md` for a Chinese operator note covering the 
 ```bash
 node src/cli.js inspect-source
 node src/cli.js export-sitemap-index --out reports/oid-base-sitemap-index.json
+node src/cli.js plan-full-crawl --out reports/authorized-crawl-plan.json --markdown reports/authorized-crawl-plan.md
 node src/cli.js audit-assets --in examples/sample-assets.csv --out reports/asset-audit.json --markdown reports/asset-audit.md
 node src/cli.js coverage-report --pen-index reports/iana-pen-public-index.json --sitemap reports/oid-base-sitemap-index.json --out reports/coverage-report.json --markdown reports/coverage-report.md
 node src/cli.js guard-publishable

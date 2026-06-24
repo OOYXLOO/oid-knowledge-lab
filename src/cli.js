@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { auditAssetFile } = require("./assetAudit");
 const { writeCoverageReport } = require("./coverage");
+const { buildAuthorizedCrawlPlan, renderAuthorizedCrawlPlanMarkdown } = require("./crawlPlan");
 const { writeDeliveryPack } = require("./deliveryPack");
 const { writeEngagementBrief } = require("./engagementBrief");
 const { buildIanaPenReport, buildPublicPenIndex, IANA_LICENSE_URL, IANA_PEN_URL, parseEnterpriseNumbers, parseLastUpdated } = require("./ianaPen");
@@ -90,6 +91,27 @@ async function exportSitemapIndex(args) {
   console.log(`sitemap source: ${info.sitemap_url}`);
   console.log(`oid entries: ${info.oidEntries.length}`);
   console.log(`index written: ${path.relative(ROOT, outFile).replace(/\\/g, "/")}`);
+}
+
+async function planFullCrawl(args) {
+  const jsonFile = path.resolve(ROOT, argValue(args, "--out", "reports/authorized-crawl-plan.json"));
+  const markdownFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/authorized-crawl-plan.md"));
+  const delayMs = numberArg(args, "--delay-ms", 1500);
+  const outDir = argValue(args, "--crawl-out", "data/full");
+  const info = await loadSourceInfo();
+  const plan = buildAuthorizedCrawlPlan({
+    oidEntries: info.oidEntries,
+    delayMs,
+    outDir
+  });
+
+  writeJson(jsonFile, plan);
+  ensureDir(path.dirname(markdownFile));
+  fs.writeFileSync(markdownFile, renderAuthorizedCrawlPlanMarkdown(plan), "utf8");
+  console.log(`planned entries: ${plan.entry_count}`);
+  console.log(`estimated request time: ${plan.estimated_request_duration_human}`);
+  console.log(`plan json written: ${path.relative(ROOT, jsonFile).replace(/\\/g, "/")}`);
+  console.log(`plan markdown written: ${path.relative(ROOT, markdownFile).replace(/\\/g, "/")}`);
 }
 
 async function crawl(args) {
@@ -261,6 +283,8 @@ function auditDataset(args) {
   const penPublicIndexFile = path.resolve(ROOT, argValue(args, "--index", "reports/iana-pen-public-index.json"));
   const outFile = path.resolve(ROOT, argValue(args, "--out", "reports/dataset-manifest.json"));
   const extraArtifactFiles = [
+    path.resolve(ROOT, "reports/authorized-crawl-plan.json"),
+    path.resolve(ROOT, "reports/authorized-crawl-plan.md"),
     path.resolve(ROOT, "reports/asset-audit.json"),
     path.resolve(ROOT, "reports/asset-audit.md"),
     path.resolve(ROOT, "reports/coverage-report.json"),
@@ -351,6 +375,7 @@ async function main() {
   const [command, ...args] = process.argv.slice(2);
   if (command === "inspect-source") return inspectSource();
   if (command === "export-sitemap-index") return exportSitemapIndex(args);
+  if (command === "plan-full-crawl") return planFullCrawl(args);
   if (command === "crawl") return crawl(args);
   if (command === "audit-assets") return auditAssets(args);
   if (command === "coverage-report") return coverageReport(args);
@@ -362,7 +387,7 @@ async function main() {
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|audit-assets|coverage-report|delivery-pack|engagement-brief|audit-dataset|source-policy|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|engagement-brief|audit-dataset|source-policy|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

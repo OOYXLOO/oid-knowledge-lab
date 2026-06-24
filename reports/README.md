@@ -8,6 +8,8 @@ This directory stores aggregate reports that are safe to publish.
 - `dataset-manifest.json`: publishable data package manifest with artifact sizes, hashes, counts, source links, and data-exclusion boundaries.
 - `source-policy.json`: source policy snapshot with source URLs, hashes, effective robots rules, sitemap count, and collection boundary flags.
 - `source-policy.md`: human-readable version of the source policy snapshot.
+- `authorized-crawl-plan.json`: machine-readable plan for a future authorized page-body collection, including task size, delay, output path, and authorization gates.
+- `authorized-crawl-plan.md`: human-readable version of the authorized full crawl plan. It is a plan, not a copied content mirror.
 - `asset-audit.json`: example OID asset inventory audit generated from `examples/sample-assets.csv`.
 - `asset-audit.md`: Markdown version of the example asset audit, suitable for a quick review handoff.
 - `coverage-report.json`: comparison of the public IANA PEN index against the OID-base sitemap directory.
