@@ -1,6 +1,6 @@
 {
   "name": "OID Knowledge Lab publishable data manifest",
-  "generated_at": "2026-06-25T20:52:13.369Z",
+  "generated_at": "2026-06-25T21:04:26.671Z",
   "publishable": true,
   "content_boundary": "This manifest covers OID-base sitemap metadata and open IANA PEN aggregate/public data; it does not contain OID-base page bodies, raw page mirrors, private contact fields, credentials, cookies, tokens, or account data.",
   "oid_base": {
@@ -170,22 +170,22 @@
     {
       "path": "reports/asset-audit.json",
       "bytes": 2696,
-      "sha256": "sha256:0cffc46de74c7e0ef4e5fc11c58d570ad32bb7229013bb19623707c4a04b2652"
+      "sha256": "sha256:bb797a3706c34493554e62619ce57689ed0a7a00632a651756e5de5c3c90a5f1"
     },
     {
       "path": "reports/asset-audit.md",
       "bytes": 1538,
-      "sha256": "sha256:8edab947373b3aa0f58d79da5f4caf99e76d7f9a5ee0d5bc99eed6b38e1ddb2f"
+      "sha256": "sha256:40e09d59b0c1b834ecb945b15e3820e881b54bff2d42a00e2818514a07fcdb6d"
     },
     {
       "path": "reports/coverage-report.json",
       "bytes": 19192275,
-      "sha256": "sha256:773770ff398d527f4d10722f66cf5e63546f04950a07c6c9d6897ef470c11a1b"
+      "sha256": "sha256:3ee65a8ea0a5c2c46ac470a75f0f02a16a2c5d9448713e8195f2ca5113e5125d"
     },
     {
       "path": "reports/coverage-report.md",
       "bytes": 4567,
-      "sha256": "sha256:73fa3fdc1550ab2d83324c70d3c78217b15899284551401fff2019ff17d89da4"
+      "sha256": "sha256:43bbea1ae4a134bf8bd7693dac68afaaaaa582237b78f711db8955fafa5819ee"
     },
     {
       "path": "reports/remediation-board.csv",
@@ -195,22 +195,22 @@
     {
       "path": "reports/remediation-board.json",
       "bytes": 3476,
-      "sha256": "sha256:a373aba8f754e1bfc72f2fbb69a028b25f8f6aee6d4dae9ddf2d22811807ca8b"
+      "sha256": "sha256:98437874849402bcbc6794f3b014c17467088c79797e8c658135e094fa1e0a36"
     },
     {
       "path": "reports/remediation-board.md",
       "bytes": 2153,
-      "sha256": "sha256:4a15adf3c37e7ca891dcff99ed2dddb6fbc9a99453249c4a3b5e8be7c2b13248"
+      "sha256": "sha256:93616f2d93cbd7be7d84ef2c373d040ebc4be9e76813a2b38821b6d6ac111fae"
     },
     {
       "path": "reports/sample-delivery-pack.md",
       "bytes": 2454,
-      "sha256": "sha256:e69dd61cb0452c716e3b4301ca15e918aed7957800d3c0c6ce84d3ddb98740ef"
+      "sha256": "sha256:e5712db03ab83ad0d3026b5074354fab85e3abf481ed2bcd484873e4a4d996cd"
     },
     {
       "path": "reports/sample-engagement-brief.md",
       "bytes": 2802,
-      "sha256": "sha256:e23f9e5a2eb3b89e43fa78ff1145e8f14db0db79c343faea1852f31cf234de3a"
+      "sha256": "sha256:18114575d7c6f7fc4f9a0c0fea6c8623e1583b78928ed83bfd9d65aadc5a4a52"
     },
     {
       "path": "reports/source-policy.json",

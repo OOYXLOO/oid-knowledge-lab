@@ -25,6 +25,7 @@ Chinese operator notes:
 
 - `README.zh.md`
 - `docs/operator-reading-order.zh.md`
+- `docs/client-review-guide.md`
 - `docs/authorized-full-crawl.zh.md`
 - `docs/source-authorization-request.zh.md`
 - `docs/snapshot-20260624.zh.md`
@@ -227,6 +228,8 @@ npm run delivery:sample
 The output is `reports/sample-delivery-pack.md`. It combines an executive summary, registry coverage context, action plan, first findings, and client data boundary notes. Use it as a reusable example of the kind of evidence pack this project can produce from a local OID inventory.
 
 The static site also builds `public/sample-assessment.html`, a browser-readable version of the same sanitized delivery story. It links the dashboard, delivery pack, remediation CSV, and dataset manifest so a reviewer can understand the sample handoff without reading the CLI output first.
+
+For a short reviewer path through the public artifacts, see `docs/client-review-guide.md`.
 
 ## Sample Engagement Brief
 
