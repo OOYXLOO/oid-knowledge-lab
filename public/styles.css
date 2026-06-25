@@ -228,6 +228,11 @@ th, td {
   text-align: left;
   vertical-align: top;
 }
+.handoff-table td:first-child {
+  width: 132px;
+  color: var(--accent);
+  font-weight: 700;
+}
 code {
   font-family: "SFMono-Regular", Consolas, monospace;
   font-size: 0.9em;

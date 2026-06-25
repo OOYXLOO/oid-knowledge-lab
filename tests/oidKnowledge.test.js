@@ -462,6 +462,8 @@ function testSiteRenderer() {
   assert.ok(html.includes("Search sitemap catalog"));
   assert.ok(html.includes("Audit local OID list"));
   assert.ok(html.includes("OID inventory assessment sample"));
+  assert.ok(html.includes("OID inventory assessment handoff"));
+  assert.ok(html.includes("Acceptance check"));
   assert.ok(html.includes("sample-assessment.html"));
   assert.ok(html.includes("data-audit-input"));
   assert.ok(html.includes("data-audit-results"));
@@ -474,6 +476,8 @@ function testSiteRenderer() {
   assert.ok(samplePage.includes("OID inventory assessment sample"));
   assert.ok(samplePage.includes("Markdown delivery pack"));
   assert.ok(samplePage.includes("Remediation CSV"));
+  assert.ok(samplePage.includes("How to use this sample with a real inventory"));
+  assert.ok(samplePage.includes("Markdown pack, remediation CSV"));
   assert.ok(samplePage.includes("Client data boundary"));
   assert.ok(samplePage.includes("ciscoSystems"));
   assert.equal(samplePage.includes("money" + "-goal"), false);

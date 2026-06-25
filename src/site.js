@@ -99,6 +99,25 @@ function renderSampleAssessmentPanel(assetAudit, coverageReport) {
     </section>`;
 }
 
+function renderClientReadinessPanel() {
+  return `<section class="panel client-readiness-panel">
+      <div>
+        <p class="eyebrow">Client readiness</p>
+        <h2>OID inventory assessment handoff</h2>
+        <p class="panel-copy">Use this page as a public proof surface for a scoped OID inventory review. A client can provide a sanitized CSV locally, run a browser-only audit, and receive an evidence pack without sharing credentials or private exports.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Step</th><th>What is needed</th><th>Output</th></tr></thead>
+        <tbody>
+          <tr><td>1. Input</td><td>CSV, TSV, or one OID per line; asset labels should be sanitized before review.</td><td>Local-only inventory parsed in the browser or CLI.</td></tr>
+          <tr><td>2. Evidence</td><td>IANA PEN index and OID-base sitemap directory metadata.</td><td>Known enterprise roots, directory matches, unresolved OIDs, and malformed values.</td></tr>
+          <tr><td>3. Handoff</td><td>Sample assessment page, remediation CSV, and dataset manifest.</td><td>Prioritized cleanup queue plus source boundaries suitable for review.</td></tr>
+        </tbody>
+      </table>
+      <p class="panel-copy"><strong>Acceptance check:</strong> the handoff should identify invalid values, preserve evidence-ready mappings, and list every unresolved OID with a next action. Raw inventories, secrets, account exports, and copied OID-base page bodies stay out of the repository.</p>
+    </section>`;
+}
+
 function renderActionPlanRows(actionPlan) {
   return (actionPlan || []).map((item) => `<tr>
     <td>${escapeHtml(item.priority)}</td>
@@ -174,6 +193,22 @@ function renderSampleAssessmentPage({ assetAudit, coverageReport }) {
         <thead><tr><th>Priority</th><th>Action</th><th>Count</th><th>Delivery note</th></tr></thead>
         <tbody>${renderActionPlanRows(assetAudit.action_plan)}</tbody>
       </table>
+    </section>
+
+    <section class="panel client-readiness-panel">
+      <div>
+        <p class="eyebrow">Engagement scope</p>
+        <h2>How to use this sample with a real inventory</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Phase</th><th>Boundary</th><th>Review proof</th></tr></thead>
+        <tbody>
+          <tr><td>Prepare</td><td>Sanitize asset labels and keep the raw inventory local.</td><td>Input shape: CSV, TSV, or one OID per line.</td></tr>
+          <tr><td>Classify</td><td>Use public IANA PEN data and OID-base sitemap metadata only.</td><td>Finding status, registry evidence, and unresolved review queue.</td></tr>
+          <tr><td>Deliver</td><td>Share derived findings, not credentials or private exports.</td><td>Markdown pack, remediation CSV, and browser-readable handoff page.</td></tr>
+        </tbody>
+      </table>
+      <p class="panel-copy"><strong>Acceptance check:</strong> a reviewer should be able to see what changed, which OIDs need action, what evidence supports each row, and what data was deliberately excluded.</p>
     </section>
 
     <section class="panel">
@@ -263,6 +298,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
     ${renderAuditPanel()}
 
     ${renderSampleAssessmentPanel(sampleAssessment?.assetAudit, sampleAssessment?.coverageReport)}
+
+    ${renderClientReadinessPanel()}
 
     <section class="panel">
       <div>
@@ -519,6 +556,11 @@ th, td {
   border-bottom: 1px solid var(--line);
   text-align: left;
   vertical-align: top;
+}
+.handoff-table td:first-child {
+  width: 132px;
+  color: var(--accent);
+  font-weight: 700;
 }
 code {
   font-family: "SFMono-Regular", Consolas, monospace;
@@ -813,6 +855,7 @@ module.exports = {
   percent,
   renderAuditPanel,
   renderDashboard,
+  renderClientReadinessPanel,
   renderSampleAssessmentPage,
   renderOidBasePanel,
   renderSearchPanel
