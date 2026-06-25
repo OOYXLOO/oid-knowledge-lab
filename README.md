@@ -257,6 +257,12 @@ node src/cli.js build-site --report reports/iana-pen-summary.json --index report
 
 This generates a static dashboard in `public/` from the aggregate report, public PEN search index, and OID-base sitemap catalog. It is safe to publish because it excludes contact names, email values, and OID-base page bodies.
 
+## GitHub Pages
+
+The repository includes `.github/workflows/pages.yml` for GitHub Actions based Pages deployment. A generated `gh-pages` branch is also available as a branch-based fallback; it contains only the static files from `public/` plus a short branch README.
+
+If Pages is configured to deploy from a branch, select `gh-pages` and `/ (root)`. If Pages is configured for GitHub Actions, use the workflow on the default branch.
+
 ## Authorized Full Import
 
 Only use this after obtaining specific authorization from the site owner:

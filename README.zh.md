@@ -192,3 +192,5 @@ node src/cli.js crawl --authorized-full --authorization-note "authorization refe
 ## GitHub Pages
 
 仓库包含 `.github/workflows/pages.yml`。远端仓库创建后，可以在 GitHub Pages 设置中选择 GitHub Actions 作为发布来源，工作流会发布 `public/` 目录里的静态页面。
+
+仓库也提供 `gh-pages` 分支作为分支发布的备用方案；该分支只包含 `public/` 生成的静态文件和一个简短 README。如果 Pages 设置为 `Deploy from a branch`，请选择 `gh-pages` 和 `/ (root)`；如果设置为 `GitHub Actions`，则使用默认分支上的 workflow。
