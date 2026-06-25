@@ -16,7 +16,7 @@ const { buildReport } = require("../src/report");
 const { isAllowedByRobots } = require("../src/robots");
 const { completedOidsFromJsonl, failureRecordForEntry, summarizeCrawlRun, selectPendingEntries } = require("../src/crawlState");
 const { buildAuthorizedCrawlPlan, renderAuthorizedCrawlPlanMarkdown } = require("../src/crawlPlan");
-const { escapeHtml, percent, renderDashboard } = require("../src/site");
+const { escapeHtml, percent, renderDashboard, renderSampleAssessmentPage } = require("../src/site");
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("../src/sitemap");
 const { buildSourcePolicySnapshot, renderSourcePolicyMarkdown } = require("../src/sourcePolicy");
 
@@ -417,6 +417,31 @@ Decimal
 function testSiteRenderer() {
   assert.equal(escapeHtml("<tag>\"x\"</tag>"), "&lt;tag&gt;&quot;x&quot;&lt;/tag&gt;");
   assert.equal(percent(25, 100), "25.0%");
+  const sampleAssessment = {
+    assetAudit: {
+      summary: {
+        total_assets: 4,
+        valid_oids: 3,
+        invalid_values: 1,
+        known_enterprises: 1,
+        oidbase_directory_matches: 1,
+        evidence_ready_assets: 2,
+        unresolved_assets: 2,
+        quality_score: 78
+      },
+      action_plan: [
+        { priority: "P0", title: "Correct invalid OID values", count: 1, action: "Fix malformed values." }
+      ],
+      findings: [
+        { label: "router-core", oid: "1.3.6.1.4.1.9.9.41", status: "known_private_enterprise_oid", risk: "low", enterprise: { organization: "ciscoSystems" } }
+      ]
+    },
+    coverageReport: {
+      summary: {
+        coverage_score: 1
+      }
+    }
+  };
   const html = renderDashboard({
     source_url: "https://example.com/source",
     license_url: "https://example.com/license",
@@ -431,17 +456,29 @@ function testSiteRenderer() {
     organization_initials: [{ key: "A", count: 10 }],
     search_index_count: 99,
     sample_organizations: [{ enterprise_number: 9, oid: "1.3.6.1.4.1.9", organization: "Example <Org>" }]
-  }, 42);
+  }, 42, sampleAssessment);
   assert.ok(html.includes("OID and enterprise registry dashboard"));
   assert.ok(html.includes("Search enterprise OIDs"));
   assert.ok(html.includes("Search sitemap catalog"));
   assert.ok(html.includes("Audit local OID list"));
+  assert.ok(html.includes("OID inventory assessment sample"));
+  assert.ok(html.includes("sample-assessment.html"));
   assert.ok(html.includes("data-audit-input"));
   assert.ok(html.includes("data-audit-results"));
   assert.ok(html.includes("99 public IANA PEN assignments"));
   assert.ok(html.includes("42 OID-base sitemap entries"));
   assert.ok(html.includes("66,101") === false);
   assert.ok(html.includes("Example &lt;Org&gt;"));
+
+  const samplePage = renderSampleAssessmentPage(sampleAssessment);
+  assert.ok(samplePage.includes("OID inventory assessment sample"));
+  assert.ok(samplePage.includes("Markdown delivery pack"));
+  assert.ok(samplePage.includes("Remediation CSV"));
+  assert.ok(samplePage.includes("Client data boundary"));
+  assert.ok(samplePage.includes("ciscoSystems"));
+  assert.equal(samplePage.includes("money" + "-goal"), false);
+  assert.equal(samplePage.includes("USD " + "200"), false);
+  assert.equal(samplePage.includes("\u8d5a\u94b1"), false);
 }
 
 function testAssetAudit() {

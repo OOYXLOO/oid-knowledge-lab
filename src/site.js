@@ -79,7 +79,125 @@ function renderAuditPanel() {
     </section>`;
 }
 
-function renderDashboard(report, oidBaseDirectoryCount = 0) {
+function renderSampleAssessmentPanel(assetAudit, coverageReport) {
+  if (!assetAudit || !coverageReport) return "";
+  const summary = assetAudit.summary || {};
+  const coverage = coverageReport.summary || {};
+  return `<section class="panel sample-assessment-panel">
+      <div>
+        <p class="eyebrow">Sample delivery</p>
+        <h2>OID inventory assessment sample</h2>
+        <p class="panel-copy">Review a sanitized evidence pack that classifies OID rows, separates registry evidence from unresolved items, and keeps client inventory data local.</p>
+      </div>
+      <div class="mini-metrics">
+        <span>Quality score<strong>${escapeHtml(summary.quality_score)}/100</strong></span>
+        <span>Evidence-ready assets<strong>${formatNumber(summary.evidence_ready_assets)}</strong></span>
+        <span>Unresolved assets<strong>${formatNumber(summary.unresolved_assets)}</strong></span>
+        <span>OID-base coverage<strong>${escapeHtml(coverage.coverage_score)}/100</strong></span>
+      </div>
+      <p><a href="sample-assessment.html">Open sample assessment handoff</a></p>
+    </section>`;
+}
+
+function renderActionPlanRows(actionPlan) {
+  return (actionPlan || []).map((item) => `<tr>
+    <td>${escapeHtml(item.priority)}</td>
+    <td>${escapeHtml(item.title)}</td>
+    <td>${formatNumber(item.count)}</td>
+    <td>${escapeHtml(item.action)}</td>
+  </tr>`).join("\n");
+}
+
+function renderFindingRows(findings) {
+  return (findings || []).slice(0, 12).map((finding) => `<tr>
+    <td>${escapeHtml(finding.label)}</td>
+    <td><code>${escapeHtml(finding.oid)}</code></td>
+    <td><span class="status-badge">${escapeHtml(finding.status)}</span></td>
+    <td>${escapeHtml(finding.risk)}</td>
+    <td>${escapeHtml(finding.enterprise ? finding.enterprise.organization : "")}${finding.oidbase_match ? `<a href="${escapeHtml(finding.oidbase_match.source_url)}">OID-base source</a>` : ""}</td>
+  </tr>`).join("\n");
+}
+
+function renderSampleAssessmentPage({ assetAudit, coverageReport }) {
+  const summary = assetAudit.summary || {};
+  const coverage = coverageReport.summary || {};
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OID Inventory Assessment Sample</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Sample evidence handoff</p>
+      <h1>OID inventory assessment sample</h1>
+      <p class="summary">A sanitized example of how OID Knowledge Lab turns a local OID inventory into registry evidence, cleanup priorities, and a client-safe remediation queue. No client data, credentials, contact fields, or OID-base page bodies are published here.</p>
+      <div class="links">
+        <a href="index.html">Dashboard</a>
+        <a href="../reports/sample-delivery-pack.md">Markdown delivery pack</a>
+        <a href="../reports/remediation-board.csv">Remediation CSV</a>
+        <a href="../reports/dataset-manifest.json">Dataset manifest</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Assessment metrics">
+      <article><span>Assets reviewed</span><strong>${formatNumber(summary.total_assets)}</strong></article>
+      <article><span>Valid OIDs</span><strong>${formatNumber(summary.valid_oids)}</strong></article>
+      <article><span>Evidence-ready</span><strong>${formatNumber(summary.evidence_ready_assets)}</strong></article>
+      <article><span>Quality score</span><strong>${escapeHtml(summary.quality_score)}/100</strong></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Decision summary</p>
+        <h2>What the sample assessment proves</h2>
+      </div>
+      <p class="panel-copy">The assessment separates malformed values, known private enterprise roots, exact OID-base sitemap evidence, and valid-but-unresolved OIDs. That makes the next action clear without uploading a private inventory or mirroring source pages.</p>
+      <div class="mini-metrics">
+        <span>Invalid values<strong>${formatNumber(summary.invalid_values)}</strong></span>
+        <span>Known enterprises<strong>${formatNumber(summary.known_enterprises)}</strong></span>
+        <span>OID-base matches<strong>${formatNumber(summary.oidbase_directory_matches)}</strong></span>
+        <span>Coverage score<strong>${escapeHtml(coverage.coverage_score)}/100</strong></span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Action plan</p>
+        <h2>Cleanup queue</h2>
+      </div>
+      <table>
+        <thead><tr><th>Priority</th><th>Action</th><th>Count</th><th>Delivery note</th></tr></thead>
+        <tbody>${renderActionPlanRows(assetAudit.action_plan)}</tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Sample findings</p>
+        <h2>Evidence mapping</h2>
+      </div>
+      <table>
+        <thead><tr><th>Asset</th><th>OID</th><th>Status</th><th>Risk</th><th>Evidence</th></tr></thead>
+        <tbody>${renderFindingRows(assetAudit.findings)}</tbody>
+      </table>
+    </section>
+
+    <section class="note">
+      <h2>Client data boundary</h2>
+      <p>Client inventories should be processed locally or in the browser. Raw client OID lists, credentials, session data, private account exports, and contact-level registry fields do not belong in this repository.</p>
+      <p>OID-base use is limited to sitemap metadata in this publishable package. Full page-body collection requires explicit source-owner authorization.</p>
+    </section>
+  </main>
+</body>
+</html>`;
+}
+
+function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = null) {
   const assigned = Number(report.assigned_count || 0);
   const total = Number(report.record_count || 0);
   const reserved = Number(report.reserved_count || 0);
@@ -143,6 +261,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0) {
     ${renderOidBasePanel(oidBaseDirectoryCount)}
 
     ${renderAuditPanel()}
+
+    ${renderSampleAssessmentPanel(sampleAssessment?.assetAudit, sampleAssessment?.coverageReport)}
 
     <section class="panel">
       <div>
@@ -327,6 +447,27 @@ a {
   color: var(--ink);
   font-size: 1.25rem;
 }
+.mini-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 14px 0;
+}
+.mini-metrics span {
+  display: block;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+.mini-metrics strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--ink);
+  font-size: 1.25rem;
+}
 .status-badge {
   display: inline-block;
   padding: 2px 7px;
@@ -391,6 +532,7 @@ code {
   h1 { font-size: 1.8rem; }
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .audit-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mini-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .bar-row { grid-template-columns: 1fr; gap: 5px; margin-bottom: 12px; }
   table { display: block; overflow-x: auto; }
 }
@@ -628,20 +770,33 @@ function readOidBaseDirectory(sitemapFile) {
   }));
 }
 
-function buildSite({ indexFile, reportFile, sitemapFile, outDir }) {
+function readOptionalJson(file) {
+  if (!file || !fs.existsSync(file)) return null;
+  return JSON.parse(fs.readFileSync(file, "utf8"));
+}
+
+function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverageReportFile, outDir }) {
   const report = JSON.parse(fs.readFileSync(reportFile, "utf8"));
   const searchIndex = readSearchIndex(indexFile, report);
   const oidBaseDirectory = readOidBaseDirectory(sitemapFile);
+  const sampleAssessment = {
+    assetAudit: readOptionalJson(assetAuditFile),
+    coverageReport: readOptionalJson(coverageReportFile)
+  };
   report.search_index_count = searchIndex.length;
   report.oid_base_directory_count = oidBaseDirectory.length;
   ensureDir(outDir);
-  fs.writeFileSync(path.join(outDir, "index.html"), renderDashboard(report, oidBaseDirectory.length), "utf8");
+  fs.writeFileSync(path.join(outDir, "index.html"), renderDashboard(report, oidBaseDirectory.length, sampleAssessment), "utf8");
   fs.writeFileSync(path.join(outDir, "styles.css"), renderCss(), "utf8");
   fs.writeFileSync(path.join(outDir, "data.js"), `window.OID_KNOWLEDGE_REPORT = ${JSON.stringify(report, null, 2)};\n`, "utf8");
   fs.writeFileSync(path.join(outDir, "search-index.js"), `window.OID_KNOWLEDGE_INDEX = ${JSON.stringify(searchIndex)};\n`, "utf8");
   fs.writeFileSync(path.join(outDir, "oid-base-directory.js"), `window.OID_BASE_DIRECTORY = ${JSON.stringify(oidBaseDirectory)};\n`, "utf8");
   fs.writeFileSync(path.join(outDir, "app.js"), renderAppJs(), "utf8");
   const outputFiles = ["index.html", "styles.css", "data.js", "search-index.js", "oid-base-directory.js", "app.js"];
+  if (sampleAssessment.assetAudit && sampleAssessment.coverageReport) {
+    fs.writeFileSync(path.join(outDir, "sample-assessment.html"), renderSampleAssessmentPage(sampleAssessment), "utf8");
+    outputFiles.push("sample-assessment.html");
+  }
   return {
     output_files: outputFiles.map((file) => path.join(outDir, file)),
     record_count: report.record_count,
@@ -658,6 +813,7 @@ module.exports = {
   percent,
   renderAuditPanel,
   renderDashboard,
+  renderSampleAssessmentPage,
   renderOidBasePanel,
   renderSearchPanel
 };

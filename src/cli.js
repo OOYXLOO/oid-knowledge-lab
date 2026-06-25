@@ -297,8 +297,10 @@ function buildStaticSite(args) {
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
   const indexFile = path.resolve(ROOT, argValue(args, "--index", "reports/iana-pen-public-index.json"));
   const sitemapFile = path.resolve(ROOT, argValue(args, "--sitemap", "reports/oid-base-sitemap-index.json"));
+  const assetAuditFile = path.resolve(ROOT, argValue(args, "--asset-audit", "reports/asset-audit.json"));
+  const coverageReportFile = path.resolve(ROOT, argValue(args, "--coverage", "reports/coverage-report.json"));
   const outDir = path.resolve(ROOT, argValue(args, "--out", "public"));
-  const result = buildSite({ indexFile, reportFile, sitemapFile, outDir });
+  const result = buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverageReportFile, outDir });
   console.log(`site files: ${result.output_files.map((file) => path.relative(ROOT, file).replace(/\\/g, "/")).join(", ")}`);
   console.log(`site records: ${result.record_count}`);
   console.log(`search records: ${result.search_record_count}`);
@@ -325,6 +327,7 @@ function auditDataset(args) {
     path.resolve(ROOT, "reports/source-policy.json"),
     path.resolve(ROOT, "reports/source-policy.md"),
     path.resolve(ROOT, "public/index.html"),
+    path.resolve(ROOT, "public/sample-assessment.html"),
     path.resolve(ROOT, "public/oid-base-directory.js"),
     path.resolve(ROOT, "public/search-index.js")
   ].filter((file) => fs.existsSync(file));
