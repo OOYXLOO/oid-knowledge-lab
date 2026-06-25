@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OID Inventory Assessment Sample</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Sample evidence handoff</p>
+      <h1>OID inventory assessment sample</h1>
+      <p class="summary">A sanitized example of how OID Knowledge Lab turns a local OID inventory into registry evidence, cleanup priorities, and a client-safe remediation queue. No client data, credentials, contact fields, or OID-base page bodies are published here.</p>
+      <div class="links">
+        <a href="index.html">Dashboard</a>
+        <a href="../reports/sample-delivery-pack.md">Markdown delivery pack</a>
+        <a href="../reports/remediation-board.csv">Remediation CSV</a>
+        <a href="../reports/dataset-manifest.json">Dataset manifest</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Assessment metrics">
+      <article><span>Assets reviewed</span><strong>4</strong></article>
+      <article><span>Valid OIDs</span><strong>3</strong></article>
+      <article><span>Evidence-ready</span><strong>2</strong></article>
+      <article><span>Quality score</span><strong>78/100</strong></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Decision summary</p>
+        <h2>What the sample assessment proves</h2>
+      </div>
+      <p class="panel-copy">The assessment separates malformed values, known private enterprise roots, exact OID-base sitemap evidence, and valid-but-unresolved OIDs. That makes the next action clear without uploading a private inventory or mirroring source pages.</p>
+      <div class="mini-metrics">
+        <span>Invalid values<strong>1</strong></span>
+        <span>Known enterprises<strong>1</strong></span>
+        <span>OID-base matches<strong>1</strong></span>
+        <span>Coverage score<strong>1/100</strong></span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Action plan</p>
+        <h2>Cleanup queue</h2>
+      </div>
+      <table>
+        <thead><tr><th>Priority</th><th>Action</th><th>Count</th><th>Delivery note</th></tr></thead>
+        <tbody><tr>
+    <td>P0</td>
+    <td>Correct invalid OID values</td>
+    <td>1</td>
+    <td>Fix malformed values before using the inventory as audit or integration evidence.</td>
+  </tr>
+<tr>
+    <td>P1</td>
+    <td>Review unmatched valid OIDs against internal registries</td>
+    <td>1</td>
+    <td>Confirm whether each unmatched OID is internal, deprecated, or covered by a registry not present in this package.</td>
+  </tr>
+<tr>
+    <td>P2</td>
+    <td>Preserve evidence-ready public registry mappings</td>
+    <td>2</td>
+    <td>Keep source URLs and enterprise mappings with the asset record for future review.</td>
+  </tr></tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Sample findings</p>
+        <h2>Evidence mapping</h2>
+      </div>
+      <table>
+        <thead><tr><th>Asset</th><th>OID</th><th>Status</th><th>Risk</th><th>Evidence</th></tr></thead>
+        <tbody><tr>
+    <td>router-core</td>
+    <td><code>1.3.6.1.4.1.9.9.41</code></td>
+    <td><span class="status-badge">known_private_enterprise_oid</span></td>
+    <td>low</td>
+    <td>ciscoSystems</td>
+  </tr>
+<tr>
+    <td>example-directory-hit</td>
+    <td><code>2.16.840.1.101.3.7.1.219.0</code></td>
+    <td><span class="status-badge">oidbase_directory_match</span></td>
+    <td>low</td>
+    <td><a href="https://oid-base.com/get/2.16.840.1.101.3.7.1.219.0">OID-base source</a></td>
+  </tr>
+<tr>
+    <td>directory-root</td>
+    <td><code>1.3.6.1.4.1</code></td>
+    <td><span class="status-badge">valid_oid_unmatched</span></td>
+    <td>low</td>
+    <td></td>
+  </tr>
+<tr>
+    <td>invalid-row</td>
+    <td><code>not-an-oid</code></td>
+    <td><span class="status-badge">invalid_value</span></td>
+    <td>high</td>
+    <td></td>
+  </tr></tbody>
+      </table>
+    </section>
+
+    <section class="note">
+      <h2>Client data boundary</h2>
+      <p>Client inventories should be processed locally or in the browser. Raw client OID lists, credentials, session data, private account exports, and contact-level registry fields do not belong in this repository.</p>
+      <p>OID-base use is limited to sitemap metadata in this publishable package. Full page-body collection requires explicit source-owner authorization.</p>
+    </section>
+  </main>
+</body>
+</html>
