@@ -217,6 +217,23 @@
       <p><a href="sample-assessment.html">Open sample assessment handoff</a></p>
     </section>
 
+    <section class="panel client-readiness-panel">
+      <div>
+        <p class="eyebrow">Client readiness</p>
+        <h2>OID inventory assessment handoff</h2>
+        <p class="panel-copy">Use this page as a public proof surface for a scoped OID inventory review. A client can provide a sanitized CSV locally, run a browser-only audit, and receive an evidence pack without sharing credentials or private exports.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Step</th><th>What is needed</th><th>Output</th></tr></thead>
+        <tbody>
+          <tr><td>1. Input</td><td>CSV, TSV, or one OID per line; asset labels should be sanitized before review.</td><td>Local-only inventory parsed in the browser or CLI.</td></tr>
+          <tr><td>2. Evidence</td><td>IANA PEN index and OID-base sitemap directory metadata.</td><td>Known enterprise roots, directory matches, unresolved OIDs, and malformed values.</td></tr>
+          <tr><td>3. Handoff</td><td>Sample assessment page, remediation CSV, and dataset manifest.</td><td>Prioritized cleanup queue plus source boundaries suitable for review.</td></tr>
+        </tbody>
+      </table>
+      <p class="panel-copy"><strong>Acceptance check:</strong> the handoff should identify invalid values, preserve evidence-ready mappings, and list every unresolved OID with a next action. Raw inventories, secrets, account exports, and copied OID-base page bodies stay out of the repository.</p>
+    </section>
+
     <section class="panel">
       <div>
         <p class="eyebrow">Sample lookup surface</p>

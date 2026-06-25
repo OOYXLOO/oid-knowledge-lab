@@ -70,6 +70,22 @@
       </table>
     </section>
 
+    <section class="panel client-readiness-panel">
+      <div>
+        <p class="eyebrow">Engagement scope</p>
+        <h2>How to use this sample with a real inventory</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Phase</th><th>Boundary</th><th>Review proof</th></tr></thead>
+        <tbody>
+          <tr><td>Prepare</td><td>Sanitize asset labels and keep the raw inventory local.</td><td>Input shape: CSV, TSV, or one OID per line.</td></tr>
+          <tr><td>Classify</td><td>Use public IANA PEN data and OID-base sitemap metadata only.</td><td>Finding status, registry evidence, and unresolved review queue.</td></tr>
+          <tr><td>Deliver</td><td>Share derived findings, not credentials or private exports.</td><td>Markdown pack, remediation CSV, and browser-readable handoff page.</td></tr>
+        </tbody>
+      </table>
+      <p class="panel-copy"><strong>Acceptance check:</strong> a reviewer should be able to see what changed, which OIDs need action, what evidence supports each row, and what data was deliberately excluded.</p>
+    </section>
+
     <section class="panel">
       <div>
         <p class="eyebrow">Sample findings</p>
