@@ -1379,6 +1379,20 @@ function testArticleSampleIndexIncludesAirbytePipelineProof() {
   assert.ok(sample.includes("Airbyte-friendly registry evidence pipeline"));
   assert.ok(sample.includes("source boundary"));
   assert.ok(sample.includes("sanitized local inventory"));
+
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("airbyte-submission-brief.md"), `${file} should link the Airbyte submission brief`);
+  }
+
+  const brief = fs.readFileSync(path.join(ROOT, "docs/articles/airbyte-submission-brief.md"), "utf8");
+  assert.ok(brief.includes("Airbyte submission brief"));
+  assert.ok(brief.includes("Article promise"));
+  assert.ok(brief.includes("Airbyte-style pipeline map"));
+  assert.ok(brief.includes("https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html"));
+  assert.equal(brief.includes("money" + "-goal"), false);
+  assert.equal(brief.includes("USD " + "200"), false);
+  assert.equal(brief.includes("\u8d5a\u94b1"), false);
 }
 
 function testBuyerSignalPackRenderer() {

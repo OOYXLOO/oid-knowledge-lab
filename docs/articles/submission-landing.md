@@ -78,6 +78,12 @@ Use the Airbyte-friendly registry pipeline sample when evaluating data integrati
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-friendly-registry-evidence-pipeline.md
 ```
 
+Use the Airbyte submission brief when an editor or program form needs a concise pitch note before a full draft:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-submission-brief.md
+```
+
 ## Strongest Assignment Angles
 
 ### 1. Static Evidence Dashboard Tutorial
@@ -150,6 +156,12 @@ Sample:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-friendly-registry-evidence-pipeline.md
+```
+
+Submission brief:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-submission-brief.md
 ```
 
 Supporting proof:

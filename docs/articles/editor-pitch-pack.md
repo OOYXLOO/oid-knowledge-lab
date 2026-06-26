@@ -137,6 +137,12 @@ Supporting sample:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-friendly-registry-evidence-pipeline.md
 ```
 
+Submission brief:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-submission-brief.md
+```
+
 Buyer signal proof:
 
 ```text

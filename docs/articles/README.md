@@ -191,6 +191,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-friendly-registry-evidence-pipeline.md
 ```
 
+### Airbyte submission brief
+
+Path: `docs/articles/airbyte-submission-brief.md`
+
+Best for editors interested in:
+
+- a submission-ready review note for the Airbyte community article path,
+- the article promise,
+- reader fit,
+- Airbyte-style source, transform, destination, and validation mapping,
+- public proof links,
+- and publication safety boundaries before requesting a full draft.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-submission-brief.md
+```
+
 ### Publication Proposal: Static Evidence Dashboard
 
 Path: `docs/articles/publication-proposal-static-evidence-dashboard.md`
