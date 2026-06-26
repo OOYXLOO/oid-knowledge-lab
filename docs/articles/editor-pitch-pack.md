@@ -89,6 +89,12 @@ The reader learns how to prepare a safe debugging handoff before sharing sensiti
 Supporting sample:
 
 ```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/observability-debugging-handoff-playbook.md
+```
+
+Supporting implementation note:
+
+```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-debug-handoff.md
 ```
 

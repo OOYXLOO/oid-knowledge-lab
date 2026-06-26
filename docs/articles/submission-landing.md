@@ -36,6 +36,12 @@ Use the public dashboard for proof that the samples are backed by a working repo
 https://ooyxloo.github.io/oid-knowledge-lab/
 ```
 
+Use the observability handoff playbook when evaluating a polished long-form article sample for logs, metrics, traces, production debugging, or incident response:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/observability-debugging-handoff-playbook.md
+```
+
 Use the client one-pager when evaluating service-style documentation, data cleanup, or audit-readiness fit:
 
 ```text
@@ -93,6 +99,12 @@ Why it fits:
 This topic connects logs, metrics, traces, correlation IDs, recent changes, ownership, and acceptance checks into a safe handoff that helps developers investigate production issues without exposing secrets.
 
 Sample:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/observability-debugging-handoff-playbook.md
+```
+
+Supporting implementation note:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-debug-handoff.md

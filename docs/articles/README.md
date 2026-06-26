@@ -210,6 +210,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-debug-handoff.md
 ```
 
+### Observability Debugging Handoffs: What to Capture Before You Ask for Logs
+
+Path: `docs/articles/observability-debugging-handoff-playbook.md`
+
+Best for readers interested in:
+
+- an editor-ready observability article sample,
+- logs, metrics, traces, and correlation handles,
+- safe incident handoff boundaries,
+- API, webhook, queue, and SaaS sync failure triage,
+- and acceptance checks before closing a production debugging task.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/observability-debugging-handoff-playbook.md
+```
+
 ### Production Integration Debug Handoff Template
 
 Path: `docs/articles/production-integration-handoff-template.md`
