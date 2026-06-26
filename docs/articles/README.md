@@ -172,6 +172,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md
 ```
 
+### Build a Static Evidence Dashboard with Node.js, GitHub Pages, and a Release Guard
+
+Path: `docs/articles/civo-static-evidence-dashboard-full-draft.md`
+
+Best for readers interested in:
+
+- a complete Civo-fit static dashboard tutorial draft,
+- generated JSON and Markdown reports,
+- dataset manifests with hashes and publication boundaries,
+- GitHub Pages deployment,
+- release guards for public artifacts,
+- and CI verification before publishing generated review surfaces.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-static-evidence-dashboard-full-draft.md
+```
+
 ### Airbyte-friendly registry evidence pipeline
 
 Path: `docs/articles/airbyte-friendly-registry-evidence-pipeline.md`

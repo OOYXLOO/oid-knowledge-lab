@@ -1446,6 +1446,31 @@ function testArticleSampleIndexIncludesCivoSubmissionBrief() {
   assert.equal(brief.includes("\u8d5a\u94b1"), false);
 }
 
+function testArticleSampleIndexIncludesCivoFullDraft() {
+  const files = [
+    "docs/articles/README.md",
+    "docs/articles/submission-landing.md",
+    "docs/articles/civo-submission-brief.md",
+    "public/writing-samples.html"
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("civo-static-evidence-dashboard-full-draft.md"), `${file} should link the Civo full draft`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const draft = fs.readFileSync(path.join(ROOT, "docs/articles/civo-static-evidence-dashboard-full-draft.md"), "utf8");
+  assert.ok(draft.includes("Build a Static Evidence Dashboard with Node.js, GitHub Pages, and a Release Guard"));
+  assert.ok(draft.includes("GitHub Pages"));
+  assert.ok(draft.includes("release guard"));
+  assert.ok(draft.includes("npm run guard:publishable"));
+  assert.equal(draft.includes("money" + "-goal"), false);
+  assert.equal(draft.includes("USD " + "200"), false);
+  assert.equal(draft.includes("\u8d5a\u94b1"), false);
+}
+
 function testBuyerSignalPackRenderer() {
   assert.equal(buyerSignalPackModule.__loadError, undefined, buyerSignalPackModule.__loadError);
   const { buildBuyerSignalPack, renderBuyerSignalMarkdown } = buyerSignalPackModule;
@@ -1538,6 +1563,7 @@ function main() {
   testArticleSampleIndexIncludesAirbytePipelineProof();
   testArticleSampleIndexIncludesAirbyteFullDraft();
   testArticleSampleIndexIncludesCivoSubmissionBrief();
+  testArticleSampleIndexIncludesCivoFullDraft();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }

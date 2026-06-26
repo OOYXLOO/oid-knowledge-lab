@@ -110,6 +110,12 @@ Sample:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md
 ```
 
+Full tutorial draft:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-static-evidence-dashboard-full-draft.md
+```
+
 Concise publication proposal:
 
 ```text

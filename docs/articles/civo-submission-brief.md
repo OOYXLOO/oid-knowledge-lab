@@ -65,6 +65,12 @@ Concise proposal:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/publication-proposal-static-evidence-dashboard.md
 ```
 
+Full tutorial draft:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-static-evidence-dashboard-full-draft.md
+```
+
 Long-form tutorial sample:
 
 ```text
