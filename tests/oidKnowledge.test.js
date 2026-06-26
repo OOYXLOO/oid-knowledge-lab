@@ -1521,6 +1521,32 @@ function testArticleSampleIndexIncludesAppSignalFullDraft() {
   assert.equal(draft.includes("\u8d5a\u94b1"), false);
 }
 
+function testArticleSampleIndexIncludesSigNozFullDraft() {
+  const files = [
+    "docs/articles/README.md",
+    "docs/articles/submission-landing.md",
+    "docs/articles/signoz-submission-brief.md",
+    "public/writing-samples.html"
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("signoz-observability-debugging-full-draft.md"), `${file} should link the SigNoz full draft`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const draft = fs.readFileSync(path.join(ROOT, "docs/articles/signoz-observability-debugging-full-draft.md"), "utf8");
+  assert.ok(draft.includes("Observability Debugging Handoffs: What to Capture Before You Ask for Logs"));
+  assert.ok(draft.includes("logs"));
+  assert.ok(draft.includes("metrics"));
+  assert.ok(draft.includes("traces"));
+  assert.ok(draft.includes("OpenTelemetry"));
+  assert.equal(draft.includes("money" + "-goal"), false);
+  assert.equal(draft.includes("USD " + "200"), false);
+  assert.equal(draft.includes("\u8d5a\u94b1"), false);
+}
+
 function testBuyerSignalPackRenderer() {
   assert.equal(buyerSignalPackModule.__loadError, undefined, buyerSignalPackModule.__loadError);
   const { buildBuyerSignalPack, renderBuyerSignalMarkdown } = buyerSignalPackModule;
@@ -1616,6 +1642,7 @@ function main() {
   testArticleSampleIndexIncludesCivoFullDraft();
   testArticleSampleIndexIncludesDirectusFullDraft();
   testArticleSampleIndexIncludesAppSignalFullDraft();
+  testArticleSampleIndexIncludesSigNozFullDraft();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }

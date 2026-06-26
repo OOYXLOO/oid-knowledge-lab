@@ -100,6 +100,12 @@ Primary observability sample:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/observability-debugging-handoff-playbook.md
 ```
 
+Full SigNoz-oriented draft:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-observability-debugging-full-draft.md
+```
+
 Production integration sample:
 
 ```text

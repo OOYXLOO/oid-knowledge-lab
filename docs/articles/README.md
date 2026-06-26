@@ -403,6 +403,26 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-submission-brief.md
 ```
 
+### Observability Debugging Handoffs: What to Capture Before You Ask for Logs - SigNoz full draft
+
+Path: `docs/articles/signoz-observability-debugging-full-draft.md`
+
+Best for readers interested in:
+
+- a complete SigNoz-style observability article draft,
+- logs, metrics, traces, and OpenTelemetry-backed debugging,
+- production integration handoffs,
+- safe evidence boundaries,
+- telemetry questions,
+- falsifiable hypotheses,
+- and acceptance checks before closing an incident.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-observability-debugging-full-draft.md
+```
+
 ### Publication Proposal: Turn a Messy OID Inventory into a Safe Review Package
 
 Path: `docs/articles/publication-proposal-oid-inventory-assessment.md`

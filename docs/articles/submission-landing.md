@@ -152,6 +152,12 @@ AppSignal full draft:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsignal-production-integration-debugging-full-draft.md
 ```
 
+SigNoz full draft:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-observability-debugging-full-draft.md
+```
+
 Supporting implementation note:
 
 ```text
