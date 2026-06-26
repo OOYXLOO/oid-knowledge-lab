@@ -307,6 +307,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsignal-submission-brief.md
 ```
 
+### SigNoz submission brief
+
+Path: `docs/articles/signoz-submission-brief.md`
+
+Best for editors interested in:
+
+- a SigNoz technical writer application review note,
+- observability debugging handoffs,
+- logs, metrics, traces, and correlation handles,
+- API, webhook, queue, and SaaS sync failure examples,
+- safe log and trace-sharing boundaries,
+- and reusable acceptance checks.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-submission-brief.md
+```
+
 ### Publication Proposal: Turn a Messy OID Inventory into a Safe Review Package
 
 Path: `docs/articles/publication-proposal-oid-inventory-assessment.md`
