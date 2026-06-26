@@ -191,6 +191,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-friendly-registry-evidence-pipeline.md
 ```
 
+### Build a Safe Registry Evidence Dashboard from Public and Local Data
+
+Path: `docs/articles/airbyte-registry-evidence-dashboard-full-draft.md`
+
+Best for readers interested in:
+
+- a full tutorial draft for a public registry evidence dashboard,
+- public source plus sanitized local inventory boundaries,
+- Airbyte-style source, normalization, transform, destination, and validation stages,
+- generated JSON, Markdown, CSV, and static dashboard artifacts,
+- dataset manifests and publish guards,
+- and a clear explanation of what should not be published.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-registry-evidence-dashboard-full-draft.md
+```
+
 ### Airbyte submission brief
 
 Path: `docs/articles/airbyte-submission-brief.md`

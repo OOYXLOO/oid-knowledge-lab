@@ -72,6 +72,12 @@ Use the PKI / CLM buyer brief when evaluating a small first milestone for certif
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-clm-buyer-brief.md
 ```
 
+Use the Airbyte registry evidence dashboard full draft when evaluating a complete data integration tutorial:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-registry-evidence-dashboard-full-draft.md
+```
+
 Use the Airbyte-friendly registry pipeline sample when evaluating data integration, public registry joins, sanitized local inventory review, and safe dashboard outputs:
 
 ```text
@@ -158,7 +164,13 @@ Why it fits:
 
 This topic maps a public registry source and a sanitized local inventory into an Airbyte-friendly pipeline: source boundary, normalization, row classification, remediation board, manifest, and static dashboard.
 
-Sample:
+Full draft:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-registry-evidence-dashboard-full-draft.md
+```
+
+Supporting sample:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-friendly-registry-evidence-pipeline.md

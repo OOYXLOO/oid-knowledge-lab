@@ -49,7 +49,13 @@ The result is concrete enough to implement without requiring access to private s
 
 ## Public proof links
 
-Primary sample:
+Primary full draft:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-registry-evidence-dashboard-full-draft.md
+```
+
+Supporting sample:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-friendly-registry-evidence-pipeline.md
