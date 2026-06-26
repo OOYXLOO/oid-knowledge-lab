@@ -20,6 +20,12 @@ try {
 } catch (error) {
   decisionOnePagerModule = { __loadError: error.message };
 }
+let clientKickoffPackModule;
+try {
+  clientKickoffPackModule = require("../src/clientKickoffPack");
+} catch (error) {
+  clientKickoffPackModule = { __loadError: error.message };
+}
 const { renderDeliveryPack } = require("../src/deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { renderEngagementBrief } = require("../src/engagementBrief");
@@ -888,6 +894,74 @@ function testDecisionOnePagerRenderer() {
   assert.equal(markdown.includes("USD " + "200"), false);
 }
 
+function testClientKickoffPackRenderer() {
+  assert.equal(clientKickoffPackModule.__loadError, undefined, clientKickoffPackModule.__loadError);
+  const { buildClientKickoffPack, renderClientKickoffMarkdown } = clientKickoffPackModule;
+  const pack = buildClientKickoffPack({
+    decisionOnePager: {
+      decision_prompt: "Approve a small first review of a sanitized OID inventory sample before any broader registry cleanup.",
+      next_step: {
+        owner_action: "Provide a sanitized CSV or tab-delimited OID inventory with an `oid` column and safe labels.",
+        reviewer_action: "Run the local/browser assessment, review unresolved rows, and confirm the handoff boundary.",
+        expected_output: "Decision-ready summary, remediation queue, public-source evidence map, and re-run notes."
+      },
+      safe_inputs: [
+        "Sanitized CSV or tab-delimited inventory with an `oid` column.",
+        "Safe asset labels such as device, service, certificate profile, or internal registry id."
+      ],
+      boundaries: [
+        "credentials, OTPs, cookies, tokens, private account exports, and production secrets",
+        "raw client inventories in public repositories"
+      ],
+      proof_links: [
+        { path: "reports/decision-one-pager.md", purpose: "One-page decision summary and next action" },
+        { path: "reports/statement-of-work-pack.md", purpose: "Work boundary and acceptance" }
+      ]
+    },
+    statementOfWorkPack: {
+      deliverables: [
+        "OID assessment summary with counts, quality score, and prioritized action groups.",
+        "Remediation queue suitable for spreadsheet or issue-tracker import."
+      ],
+      acceptance_checklist: [
+        "Every input row is classified as invalid, evidence-ready, or unresolved.",
+        "The final remediation queue lists owner actions and re-run checks."
+      ]
+    },
+    clientReadinessPack: {
+      readiness_score: 98,
+      review_flow: [
+        "Start from the sanitized inventory shape.",
+        "Run the browser-only assessment before sharing derived findings."
+      ]
+    },
+    generatedAt: "2026-06-26T06:50:00.000Z"
+  });
+
+  assert.equal(pack.schema_version, "oid-client-kickoff-pack/v1");
+  assert.equal(pack.title, "OID Inventory Assessment Client Kickoff Pack");
+  assert.equal(pack.generated_at, "2026-06-26T06:50:00.000Z");
+  assert.ok(pack.initial_reply.includes("sanitized OID inventory"));
+  assert.ok(pack.safe_intake_request.includes("oid"));
+  assert.ok(pack.first_call_agenda.some((item) => item.includes("inventory shape")));
+  assert.ok(pack.deliverables_preview.some((item) => item.includes("Remediation queue")));
+  assert.ok(pack.acceptance_preview.some((item) => item.includes("classified")));
+  assert.ok(pack.boundary_notes.some((item) => item.includes("credentials")));
+  assert.ok(pack.proof_links.some((item) => item.path === "reports/decision-one-pager.md"));
+  assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
+  assert.equal(JSON.stringify(pack).includes("\u8d5a\u94b1"), false);
+
+  const markdown = renderClientKickoffMarkdown(pack);
+  assert.ok(markdown.includes("# OID Inventory Assessment Client Kickoff Pack"));
+  assert.ok(markdown.includes("## Initial Reply"));
+  assert.ok(markdown.includes("## Safe Intake Request"));
+  assert.ok(markdown.includes("## First Call Agenda"));
+  assert.ok(markdown.includes("reports/decision-one-pager.md"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+}
+
 function testAssetAudit() {
   const penIndex = [
     { number: 9, oid: "1.3.6.1.4.1.9", organization: "ciscoSystems" }
@@ -1249,6 +1323,7 @@ function main() {
   testScopeProposalPackRenderer();
   testStatementOfWorkPackRenderer();
   testDecisionOnePagerRenderer();
+  testClientKickoffPackRenderer();
   testAssetAudit();
   testCoverageReport();
   testDeliveryPackRenderer();

@@ -19,5 +19,11 @@ This directory stores aggregate reports that are safe to publish.
 - `coverage-report.md`: Markdown handoff showing exact OID-base matches, subtree-only matches, and missing public directory evidence.
 - `sample-engagement-brief.md`: scoped assessment starter with client inputs, deliverables, acceptance criteria, and source boundary notes.
 - `sample-delivery-pack.md`: sanitized sample handoff that combines asset audit results and coverage context into a client-facing evidence pack.
+- `client-readiness-pack.md`: client-ready review flow, acceptance evidence, and excluded-data boundary.
+- `vertical-use-case-pack.md`: mapping from the assessment engine to SNMP/MIB, PKI policy OID, and internal registry cleanup lanes.
+- `scope-proposal-pack.md`: first-scope proposal with first-48-hour work, client inputs, acceptance criteria, and exclusions.
+- `statement-of-work-pack.md`: work boundary with deliverables, client responsibilities, acceptance checks, change control, and exclusions.
+- `decision-one-pager.md`: first-page decision summary for approving a small sanitized OID inventory review.
+- `client-kickoff-pack.md`: initial reply, safe intake request, first-call agenda, deliverables preview, acceptance preview, boundary notes, and proof links.
 
 Full JSONL imports and raw source files stay under ignored `data/` paths unless the source authorization explicitly allows publication.

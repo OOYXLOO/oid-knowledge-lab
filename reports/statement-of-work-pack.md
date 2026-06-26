@@ -1,6 +1,6 @@
 # OID Inventory Assessment Statement of Work Pack
 
-Generated: `2026-06-26T06:31:05.553Z`
+Generated: `2026-06-26T06:51:44.301Z`
 
 This pack converts the scope proposal into a reviewable work boundary. It is designed for sanitized OID inventories and derived findings only.
 

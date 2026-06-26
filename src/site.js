@@ -204,6 +204,25 @@ function renderDecisionOnePagerPanel() {
     </section>`;
 }
 
+function renderClientKickoffPanel() {
+  return `<section class="panel client-kickoff-panel">
+      <div>
+        <p class="eyebrow">Client kickoff</p>
+        <h2>Client kickoff pack</h2>
+        <p class="panel-copy">Start a first sanitized OID review with a reusable reply, safe intake request, first-call agenda, deliverables preview, acceptance preview, and proof links.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Moment</th><th>Kickoff answer</th></tr></thead>
+        <tbody>
+          <tr><td>Initial reply</td><td>Recommend a small sanitized review before live cleanup or private access.</td></tr>
+          <tr><td>Safe intake</td><td>Ask for an <code>oid</code> column and safe asset labels only.</td></tr>
+          <tr><td>First call</td><td>Confirm inventory shape, review lane, unresolved-row handoff, and excluded data.</td></tr>
+        </tbody>
+      </table>
+      <p><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/client-kickoff-pack.md">Client kickoff pack</a></p>
+    </section>`;
+}
+
 function renderClientIntakePackPanel() {
   return `<section class="panel intake-panel">
       <div>
@@ -405,6 +424,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
     ${renderClientIntakePackPanel()}
 
     ${renderDecisionOnePagerPanel()}
+
+    ${renderClientKickoffPanel()}
 
     ${renderClientReadinessPanel()}
 

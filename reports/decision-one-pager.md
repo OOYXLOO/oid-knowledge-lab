@@ -1,6 +1,6 @@
 # OID Inventory Assessment Decision One-Pager
 
-Generated: `2026-06-26T06:31:05.840Z`
+Generated: `2026-06-26T06:51:44.575Z`
 
 Audience: technical owner or buyer deciding whether to approve a small sanitized OID assessment
 

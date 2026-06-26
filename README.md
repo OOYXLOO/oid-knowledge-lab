@@ -22,6 +22,7 @@ Last refreshed on 2026-06-24:
 - Scope proposal pack: `reports/scope-proposal-pack.md` turns the sample assessment into a first-scope proposal with client inputs, first-48-hour work, acceptance criteria, and exclusions
 - Statement of work pack: `reports/statement-of-work-pack.md` turns the first-scope proposal into a work boundary with deliverables, client responsibilities, acceptance checks, change control, and exclusions
 - Decision one-pager: `reports/decision-one-pager.md` compresses the approval question, next step, safe inputs, boundaries, and proof links into a buyer-readable first page
+- Client kickoff pack: `reports/client-kickoff-pack.md` turns the decision one-pager into an initial reply, safe intake request, first-call agenda, deliverables preview, acceptance preview, and proof links
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
@@ -65,6 +66,8 @@ npm run readiness:client
 npm run fit:vertical
 npm run proposal:scope
 npm run sow:oid
+npm run decision:one-pager
+npm run kickoff:client
 npm run guard:publishable
 npm run crawl:sample
 npm run crawl:sample:resume
@@ -288,6 +291,19 @@ The command writes:
 - `reports/decision-one-pager.md`
 
 Use this after `sow:oid`. It gives a technical owner the first-page decision summary: why approve a small sanitized OID review, what safe input is needed next, what output to expect, which public proof links exist, and which data remains excluded.
+
+## Client Kickoff Pack
+
+```bash
+npm run kickoff:client
+```
+
+The command writes:
+
+- `reports/client-kickoff-pack.json`
+- `reports/client-kickoff-pack.md`
+
+Use this after `decision:one-pager`. It converts the decision aid into a reusable client kickoff surface: initial reply, safe intake request, first-call agenda, deliverables preview, acceptance preview, boundary notes, and public proof links.
 
 ## Client Readiness Pack
 
