@@ -1395,6 +1395,32 @@ function testArticleSampleIndexIncludesAirbytePipelineProof() {
   assert.equal(brief.includes("\u8d5a\u94b1"), false);
 }
 
+function testArticleSampleIndexIncludesCivoSubmissionBrief() {
+  const files = [
+    "docs/articles/README.md",
+    "docs/articles/submission-landing.md",
+    "docs/articles/editor-pitch-pack.md",
+    "public/writing-samples.html"
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("civo-submission-brief.md"), `${file} should link the Civo submission brief`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const brief = fs.readFileSync(path.join(ROOT, "docs/articles/civo-submission-brief.md"), "utf8");
+  assert.ok(brief.includes("Civo submission brief"));
+  assert.ok(brief.includes("GitHub Pages"));
+  assert.ok(brief.includes("release guard"));
+  assert.ok(brief.includes("npm run guard:publishable"));
+  assert.ok(brief.includes("https://ooyxloo.github.io/oid-knowledge-lab/"));
+  assert.equal(brief.includes("money" + "-goal"), false);
+  assert.equal(brief.includes("USD " + "200"), false);
+  assert.equal(brief.includes("\u8d5a\u94b1"), false);
+}
+
 function testBuyerSignalPackRenderer() {
   assert.equal(buyerSignalPackModule.__loadError, undefined, buyerSignalPackModule.__loadError);
   const { buildBuyerSignalPack, renderBuyerSignalMarkdown } = buyerSignalPackModule;
@@ -1485,6 +1511,7 @@ function main() {
   testChineseOperatorDocsAreReadableUtf8();
   testArticleSampleIndexIncludesOidAssessmentProposal();
   testArticleSampleIndexIncludesAirbytePipelineProof();
+  testArticleSampleIndexIncludesCivoSubmissionBrief();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }

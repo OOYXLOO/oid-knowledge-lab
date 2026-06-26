@@ -230,6 +230,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/publication-proposal-static-evidence-dashboard.md
 ```
 
+### Civo submission brief
+
+Path: `docs/articles/civo-submission-brief.md`
+
+Best for editors interested in:
+
+- a Civo-specific tutorial pitch,
+- a cloud-native static review surface,
+- Node.js generated artifacts,
+- GitHub Pages publication,
+- release guards,
+- and verification commands before publishing generated reports.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-submission-brief.md
+```
+
 ### Publication Proposal: Turn a Messy OID Inventory into a Safe Review Package
 
 Path: `docs/articles/publication-proposal-oid-inventory-assessment.md`

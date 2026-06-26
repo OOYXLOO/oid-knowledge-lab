@@ -67,6 +67,12 @@ Publication proposal:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/publication-proposal-static-evidence-dashboard.md
 ```
 
+Civo submission brief:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-submission-brief.md
+```
+
 Public proof:
 
 ```text
