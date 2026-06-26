@@ -253,6 +253,25 @@ function renderClientKickoffPanel() {
     </section>`;
 }
 
+function renderBuyerSignalPanel() {
+  return `<section class="panel buyer-signal-panel">
+      <div>
+        <p class="eyebrow">Buyer signal</p>
+        <h2>Buyer signal pack</h2>
+        <p class="panel-copy">Turn the sanitized sample assessment into a practical review surface for technical buyers and editors: buyer signals, qualifying questions, subject lines, first-scope offer, proof points, and source-boundary notes.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Use</th><th>What it gives the reviewer</th></tr></thead>
+        <tbody>
+          <tr><td>First reply</td><td>A compact way to explain why an OID inventory review is worth a small first scope.</td></tr>
+          <tr><td>Qualification</td><td>Questions that separate PKI, SNMP/MIB, monitoring, and internal registry cleanup contexts.</td></tr>
+          <tr><td>Proof</td><td>Links back to the assessment report, remediation board, decision page, and public sample handoff.</td></tr>
+        </tbody>
+      </table>
+      <p><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/buyer-signal-pack.md">Buyer signal pack</a></p>
+    </section>`;
+}
+
 function renderArticleSamplesPanel() {
   return `<section class="panel article-samples-panel">
       <div>
@@ -528,6 +547,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
     ${renderDecisionOnePagerPanel()}
 
     ${renderClientKickoffPanel()}
+
+    ${renderBuyerSignalPanel()}
 
     ${renderArticleSamplesPanel()}
 
@@ -1392,6 +1413,7 @@ module.exports = {
   renderVerticalUseCasePanel,
   renderScopeProposalPanel,
   renderDecisionOnePagerPanel,
+  renderBuyerSignalPanel,
   renderArticleSamplesPanel,
   renderPublicProofIndexPanel,
   renderClientIntakePackPanel,

@@ -283,6 +283,16 @@
       "sha256": "sha256:e65b291dd447821451e2f56d855b6bdee79cb724d160daaebb58eff3ff163745"
     },
     {
+      "path": "reports/buyer-signal-pack.json",
+      "bytes": 3520,
+      "sha256": "sha256:a344e0fa938eec281817e5761df26ba4daa71b3169f848e53eb8271a5a32db82"
+    },
+    {
+      "path": "reports/buyer-signal-pack.md",
+      "bytes": 2963,
+      "sha256": "sha256:9ef6e944b97ea8e8f08e5dc78b5bfebbc3ed4223cd16b3e8d4ecf5b47cc93c6e"
+    },
+    {
       "path": "reports/source-policy.json",
       "bytes": 1362,
       "sha256": "sha256:2a65b69999525073ba5df08f799eb874ad331a2c2752d89e405a8cb95094bf88"
@@ -294,8 +304,8 @@
     },
     {
       "path": "public/index.html",
-      "bytes": 27639,
-      "sha256": "sha256:8f5e5139172b100db0cfb1024baeee71588d5891764d3f62e0d7f4de612d3589"
+      "bytes": 30748,
+      "sha256": "sha256:cb289cf18f2e54e0ebcb2c0461fffa395b30ce3ea9d8174e7dc0d1dbfcdd6a5e"
     },
     {
       "path": "public/sample-assessment.html",
@@ -313,5 +323,5 @@
       "sha256": "sha256:f81b317749255faa609c44cefbcb06c0e241653b75c6f9c90ab6189be5643091"
     }
   ],
-  "artifact_count": 34
+  "artifact_count": 36
 }

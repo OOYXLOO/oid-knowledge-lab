@@ -26,6 +26,12 @@ try {
 } catch (error) {
   clientKickoffPackModule = { __loadError: error.message };
 }
+let buyerSignalPackModule;
+try {
+  buyerSignalPackModule = require("../src/buyerSignalPack");
+} catch (error) {
+  buyerSignalPackModule = { __loadError: error.message };
+}
 const { renderDeliveryPack } = require("../src/deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { renderEngagementBrief } = require("../src/engagementBrief");
@@ -513,6 +519,8 @@ function testSiteRenderer() {
   assert.ok(html.includes("reports/statement-of-work-pack.md"));
   assert.ok(html.includes("Decision one-pager"));
   assert.ok(html.includes("reports/decision-one-pager.md"));
+  assert.ok(html.includes("Buyer signal pack"));
+  assert.ok(html.includes("reports/buyer-signal-pack.md"));
   assert.ok(html.includes("Public proof index"));
   assert.ok(html.includes("Signal Garden"));
   assert.ok(html.includes("https://ooyxloo.github.io/signal-garden/"));
@@ -1352,6 +1360,63 @@ function testArticleSampleIndexIncludesOidAssessmentProposal() {
   assert.ok(proposal.includes("npm run guard:publishable"));
 }
 
+function testBuyerSignalPackRenderer() {
+  assert.equal(buyerSignalPackModule.__loadError, undefined, buyerSignalPackModule.__loadError);
+  const { buildBuyerSignalPack, renderBuyerSignalMarkdown } = buyerSignalPackModule;
+  const pack = buildBuyerSignalPack({
+    assetAudit: {
+      summary: {
+        total_assets: 12,
+        evidence_ready_assets: 4,
+        unresolved_assets: 6,
+        invalid_values: 2,
+        unknown_private_enterprise_oids: 3,
+        quality_score: 72
+      },
+      action_plan: [
+        { priority: "P0", title: "Correct invalid OID values", count: 2, action: "Fix malformed values." },
+        { priority: "P1", title: "Identify owners for unknown private enterprise arcs", count: 3, action: "Map PEN owners." }
+      ]
+    },
+    coverageReport: {
+      summary: {
+        total_public_pen_records: 65959,
+        exact_oidbase_matches: 127,
+        subtree_only_matches: 289,
+        missing_oidbase_entries: 65543,
+        coverage_score: 1
+      }
+    },
+    sourcePolicy: {
+      collection_boundary: {
+        full_crawl_requires_authorization: true,
+        page_bodies_publishable_without_authorization: false
+      }
+    },
+    generatedAt: "2026-06-27T00:00:00.000Z"
+  });
+
+  assert.equal(pack.schema_version, "oid-buyer-signal-pack/v1");
+  assert.equal(pack.generated_at, "2026-06-27T00:00:00.000Z");
+  assert.ok(pack.buyer_summary.includes("12 sanitized OID assets"));
+  assert.ok(pack.buyer_signals.some((item) => item.signal.includes("6 unresolved")));
+  assert.ok(pack.qualifying_questions.some((item) => item.includes("SNMP")));
+  assert.ok(pack.first_scope_offer.includes("sanitized OID inventory"));
+  assert.ok(pack.subject_lines.length >= 3);
+  assert.ok(pack.proof_links.some((item) => item.path === "reports/remediation-board.md"));
+  assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
+  assert.equal(JSON.stringify(pack).includes("\u8d5a\u94b1"), false);
+
+  const markdown = renderBuyerSignalMarkdown(pack);
+  assert.ok(markdown.includes("# OID Buyer Signal Pack"));
+  assert.ok(markdown.includes("## Buyer Signals"));
+  assert.ok(markdown.includes("## First Scope Offer"));
+  assert.ok(markdown.includes("reports/remediation-board.md"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+}
+
 function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -1384,6 +1449,7 @@ function main() {
   testPublishGuardAllowsPublicArtifacts();
   testChineseOperatorDocsAreReadableUtf8();
   testArticleSampleIndexIncludesOidAssessmentProposal();
+  testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
 

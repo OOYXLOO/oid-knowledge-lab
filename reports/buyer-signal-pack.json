@@ -1,0 +1,70 @@
+{
+  "schema_version": "oid-buyer-signal-pack/v1",
+  "generated_at": "2026-06-26T00:00:00.000Z",
+  "title": "OID Buyer Signal Pack",
+  "audience": "technical buyer, DevRel editor, PKI owner, SNMP/MIB owner, or internal registry maintainer",
+  "buyer_summary": "A sanitized review of 4 sanitized OID assets found 2 evidence-ready rows, 2 unresolved rows, 1 invalid values, and a 78/100 inventory quality score.",
+  "buyer_signals": [
+    {
+      "signal": "2 unresolved OID rows need owner review or registry reconciliation.",
+      "why_it_matters": "Unresolved identifiers make certificate policy, MIB, monitoring, or internal registry evidence harder to trust during incidents and audits."
+    },
+    {
+      "signal": "0 unknown private enterprise OIDs need PEN owner mapping.",
+      "why_it_matters": "Unknown enterprise arcs can hide vendor ownership gaps, stale documentation, or namespace drift."
+    },
+    {
+      "signal": "1 malformed OID values need correction before they can become evidence.",
+      "why_it_matters": "Bad syntax is a fast, bounded cleanup item that can be accepted through a re-run check."
+    },
+    {
+      "signal": "Public directory coverage score is 1/100 for the current PEN-to-OID-base comparison.",
+      "why_it_matters": "Low public coverage creates a concrete reconciliation queue while keeping copied page bodies out of the published package."
+    }
+  ],
+  "first_scope_offer": "Run a small sanitized OID inventory assessment: classify each row, preserve public registry evidence, identify unresolved owners, and return a remediation board plus re-run checks.",
+  "qualifying_questions": [
+    "Is the OID list primarily from SNMP/MIB files, certificate policy metadata, monitoring integrations, or an internal registry export?",
+    "Can the first sample be shared as CSV or TSV with an `oid` column and sanitized asset labels?",
+    "Which unresolved rows should go back to a vendor owner, PKI owner, platform owner, or internal registry maintainer?",
+    "Would a remediation CSV, one-page decision summary, or first-call kickoff note be the easiest review format?"
+  ],
+  "subject_lines": [
+    "Sanitized OID inventory review with public registry evidence",
+    "Small OID cleanup assessment for PKI, MIB, or internal registry teams",
+    "Turn unresolved OID rows into an owner-ready remediation board",
+    "OID evidence pack: malformed values, owner gaps, and re-run checks"
+  ],
+  "proof_points": [
+    "P0: Correct invalid OID values (1)",
+    "P1: Review unmatched valid OIDs against internal registries (1)",
+    "P2: Preserve evidence-ready public registry mappings (2)"
+  ],
+  "boundary_note": "The public package uses sitemap metadata and open registry summaries; full OID-base page-body collection remains gated on explicit source-owner authorization.",
+  "proof_links": [
+    {
+      "path": "reports/asset-audit.md",
+      "purpose": "Sanitized assessment summary and action plan"
+    },
+    {
+      "path": "reports/remediation-board.md",
+      "purpose": "Owner-ready remediation queue"
+    },
+    {
+      "path": "reports/decision-one-pager.md",
+      "purpose": "Buyer-readable approval summary"
+    },
+    {
+      "path": "reports/client-kickoff-pack.md",
+      "purpose": "Initial reply, intake request, and first-call agenda"
+    },
+    {
+      "path": "public/sample-assessment.html",
+      "purpose": "Browser-readable sample handoff"
+    },
+    {
+      "path": "public/consulting-brief.html",
+      "purpose": "Public assessment brief"
+    }
+  ]
+}

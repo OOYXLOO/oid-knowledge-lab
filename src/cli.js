@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { auditAssetFile } = require("./assetAudit");
+const { writeBuyerSignalPack } = require("./buyerSignalPack");
 const { writeClientReadinessPack } = require("./clientReadinessPack");
 const { writeClientKickoffPack } = require("./clientKickoffPack");
 const { writeCoverageReport } = require("./coverage");
@@ -415,6 +416,25 @@ function clientKickoffPack(args) {
   console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
 }
 
+function buyerSignalPack(args) {
+  const assetAuditFile = path.resolve(ROOT, argValue(args, "--asset-audit", "reports/asset-audit.json"));
+  const coverageReportFile = path.resolve(ROOT, argValue(args, "--coverage", "reports/coverage-report.json"));
+  const sourcePolicyFile = path.resolve(ROOT, argValue(args, "--source-policy", "reports/source-policy.json"));
+  const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/buyer-signal-pack.json"));
+  const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/buyer-signal-pack.md"));
+  const pack = writeBuyerSignalPack({
+    assetAuditFile,
+    coverageReportFile,
+    sourcePolicyFile,
+    jsonOutFile,
+    markdownOutFile
+  });
+  console.log(`buyer signals: ${pack.buyer_signals.length}`);
+  console.log(`subject lines: ${pack.subject_lines.length}`);
+  console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
+  console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
+}
+
 function buildStaticSite(args) {
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
   const indexFile = path.resolve(ROOT, argValue(args, "--index", "reports/iana-pen-public-index.json"));
@@ -460,6 +480,8 @@ function auditDataset(args) {
     path.resolve(ROOT, "reports/decision-one-pager.md"),
     path.resolve(ROOT, "reports/client-kickoff-pack.json"),
     path.resolve(ROOT, "reports/client-kickoff-pack.md"),
+    path.resolve(ROOT, "reports/buyer-signal-pack.json"),
+    path.resolve(ROOT, "reports/buyer-signal-pack.md"),
     path.resolve(ROOT, "reports/source-policy.json"),
     path.resolve(ROOT, "reports/source-policy.md"),
     path.resolve(ROOT, "public/index.html"),
@@ -558,13 +580,14 @@ async function main() {
   if (command === "statement-of-work-pack") return statementOfWorkPack(args);
   if (command === "decision-one-pager") return decisionOnePager(args);
   if (command === "client-kickoff-pack") return clientKickoffPack(args);
+  if (command === "buyer-signal-pack") return buyerSignalPack(args);
   if (command === "audit-dataset") return auditDataset(args);
   if (command === "source-policy") return sourcePolicy(args);
   if (command === "guard-publishable") return guardPublishable();
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|statement-of-work-pack|decision-one-pager|client-kickoff-pack|audit-dataset|source-policy|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|statement-of-work-pack|decision-one-pager|client-kickoff-pack|buyer-signal-pack|audit-dataset|source-policy|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

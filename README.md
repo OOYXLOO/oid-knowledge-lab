@@ -25,6 +25,7 @@ Last refreshed on 2026-06-26:
 - Statement of work pack: `reports/statement-of-work-pack.md` turns the first-scope proposal into a work boundary with deliverables, client responsibilities, acceptance checks, change control, and exclusions
 - Decision one-pager: `reports/decision-one-pager.md` compresses the approval question, next step, safe inputs, boundaries, and proof links into a buyer-readable first page
 - Client kickoff pack: `reports/client-kickoff-pack.md` turns the decision one-pager into an initial reply, safe intake request, first-call agenda, deliverables preview, acceptance preview, and proof links
+- Buyer signal pack: `reports/buyer-signal-pack.md` turns the sanitized sample assessment into buyer signals, qualifying questions, subject lines, a first-scope offer, proof points, and source-boundary notes
 - Public proof index: the generated dashboard links this project, Signal Garden, Incident Zero Stack, Hanzi Scout, and Helioigma as public review surfaces for editors, reviewers, or technical stakeholders
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 - Stable local audit mode: `npm run audit:local:stable` fixes report timestamps through `OID_KNOWLEDGE_GENERATED_AT` so verification runs do not create noisy timestamp-only diffs
@@ -92,6 +93,7 @@ npm run proposal:scope
 npm run sow:oid
 npm run decision:one-pager
 npm run kickoff:client
+npm run signal:buyer
 npm run guard:publishable
 npm run crawl:sample
 npm run crawl:sample:resume
@@ -335,6 +337,19 @@ The command writes:
 
 Use this after `decision:one-pager`. It converts the decision aid into a reusable client kickoff surface: initial reply, safe intake request, first-call agenda, deliverables preview, acceptance preview, boundary notes, and public proof links.
 
+## Buyer Signal Pack
+
+```bash
+npm run signal:buyer
+```
+
+The command writes:
+
+- `reports/buyer-signal-pack.json`
+- `reports/buyer-signal-pack.md`
+
+Use this after `kickoff:client`. It converts the sanitized sample assessment into a buyer-facing signal map: what the OID inventory reveals, why it matters, what first scope is safe to approve, which questions qualify the review lane, and which proof links support the work.
+
 ## Client Readiness Pack
 
 ```bash
@@ -409,6 +424,11 @@ node src/cli.js remediation-board --asset-audit reports/asset-audit.json --out r
 node src/cli.js coverage-report --pen-index reports/iana-pen-public-index.json --sitemap reports/oid-base-sitemap-index.json --out reports/coverage-report.json --markdown reports/coverage-report.md
 node src/cli.js client-readiness-pack --asset-audit reports/asset-audit.json --coverage reports/coverage-report.json --source-policy reports/source-policy.json --out reports/client-readiness-pack.json --markdown reports/client-readiness-pack.md
 node src/cli.js vertical-use-case-pack --asset-audit reports/asset-audit.json --coverage reports/coverage-report.json --source-policy reports/source-policy.json --out reports/vertical-use-case-pack.json --markdown reports/vertical-use-case-pack.md
+node src/cli.js scope-proposal-pack --asset-audit reports/asset-audit.json --coverage reports/coverage-report.json --source-policy reports/source-policy.json --client-readiness reports/client-readiness-pack.json --vertical-fit reports/vertical-use-case-pack.json --out reports/scope-proposal-pack.json --markdown reports/scope-proposal-pack.md
+node src/cli.js statement-of-work-pack --scope-proposal reports/scope-proposal-pack.json --client-readiness reports/client-readiness-pack.json --vertical-fit reports/vertical-use-case-pack.json --out reports/statement-of-work-pack.json --markdown reports/statement-of-work-pack.md
+node src/cli.js decision-one-pager --statement-of-work reports/statement-of-work-pack.json --scope-proposal reports/scope-proposal-pack.json --client-readiness reports/client-readiness-pack.json --vertical-fit reports/vertical-use-case-pack.json --out reports/decision-one-pager.json --markdown reports/decision-one-pager.md
+node src/cli.js client-kickoff-pack --decision-one-pager reports/decision-one-pager.json --statement-of-work reports/statement-of-work-pack.json --client-readiness reports/client-readiness-pack.json --out reports/client-kickoff-pack.json --markdown reports/client-kickoff-pack.md
+node src/cli.js buyer-signal-pack --asset-audit reports/asset-audit.json --coverage reports/coverage-report.json --source-policy reports/source-policy.json --out reports/buyer-signal-pack.json --markdown reports/buyer-signal-pack.md
 node src/cli.js guard-publishable
 node src/cli.js crawl --limit 10 --delay-ms 1000 --out data/sample --resume
 node src/cli.js report --in data/sample/records.jsonl --out data/sample/report.json
