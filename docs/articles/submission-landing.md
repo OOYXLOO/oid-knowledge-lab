@@ -36,6 +36,12 @@ Use the public dashboard for proof that the samples are backed by a working repo
 https://ooyxloo.github.io/oid-knowledge-lab/
 ```
 
+Use the client one-pager when evaluating service-style documentation, data cleanup, or audit-readiness fit:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/oid-assessment-client-one-pager.md
+```
+
 ## Strongest Assignment Angles
 
 ### 1. Static Evidence Dashboard Tutorial
@@ -96,6 +102,24 @@ Sample:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/public-github-bounty-triage-checklist.md
+```
+
+### 4. Client-Safe OID Inventory Assessment
+
+Working title:
+
+```text
+Turn a messy OID inventory into a safe review package
+```
+
+Why it fits:
+
+This angle explains how to scope a client-safe inventory review, separate public evidence from private inputs, produce remediation actions, and define acceptance checks before asking for sensitive access.
+
+Sample:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/oid-assessment-client-one-pager.md
 ```
 
 ## Proof Surface

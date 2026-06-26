@@ -6,7 +6,7 @@ The current source adapter targets public OID-base pages through the site's site
 
 ## Current Publishable Snapshot
 
-Last refreshed on 2026-06-24:
+Last refreshed on 2026-06-26:
 
 - OID-base sitemap catalog: 7,492 public OID entries from `https://oid-base.com/sitemap.xml`
 - IANA Private Enterprise Numbers import: 66,101 raw registry records
@@ -25,6 +25,7 @@ Last refreshed on 2026-06-24:
 - Client kickoff pack: `reports/client-kickoff-pack.md` turns the decision one-pager into an initial reply, safe intake request, first-call agenda, deliverables preview, acceptance preview, and proof links
 - Public proof index: the generated dashboard links this project, Signal Garden, Incident Zero Stack, Hanzi Scout, and Helioigma as public review surfaces for editors, reviewers, or technical stakeholders
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
+- Stable local audit mode: `npm run audit:local:stable` fixes report timestamps through `OID_KNOWLEDGE_GENERATED_AT` so verification runs do not create noisy timestamp-only diffs
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
 
@@ -44,6 +45,7 @@ Article samples:
 - `docs/articles/editor-brief.md`
 - `docs/articles/editor-pitch-pack.md`
 - `docs/articles/submission-landing.md`
+- `docs/articles/oid-assessment-client-one-pager.md`
 - `docs/articles/client-safe-oid-inventory-assessment.md`
 - `docs/articles/static-evidence-dashboard-github-pages.md`
 - `docs/articles/public-github-bounty-triage-checklist.md`
@@ -152,6 +154,12 @@ Run the publish guard before pushing:
 
 ```bash
 npm run guard:publishable
+```
+
+For a reproducible local verification run that avoids timestamp-only report churn:
+
+```bash
+npm run audit:local:stable
 ```
 
 The guard inspects Git-tracked files and fails if local-only full crawl output, raw OID-base mirrors, sample parsed page bodies, or full IANA contact-level JSONL imports are about to be published.

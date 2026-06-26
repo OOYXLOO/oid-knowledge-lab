@@ -79,6 +79,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/submission-landing.md
 ```
 
+### OID Inventory Assessment: Client One-Pager
+
+Path: `docs/articles/oid-assessment-client-one-pager.md`
+
+Best for readers interested in:
+
+- a buyer-readable explanation of the OID assessment workflow,
+- safe client input boundaries,
+- example deliverables,
+- acceptance checks,
+- and deciding whether a scoped OID inventory cleanup is worth starting.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/oid-assessment-client-one-pager.md
+```
+
 ### Build a Static Evidence Dashboard with Node.js and GitHub Pages
 
 Path: `docs/articles/static-evidence-dashboard-github-pages.md`

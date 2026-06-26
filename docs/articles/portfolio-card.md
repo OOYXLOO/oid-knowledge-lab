@@ -44,6 +44,12 @@ Why it is useful:
 - it names source-boundary decisions instead of treating every public pointer as equally strong,
 - and it turns a niche OID cleanup workflow into a reusable client-safe intake pattern.
 
+For a shorter buyer-readable version of the same assessment flow, use:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/oid-assessment-client-one-pager.md
+```
+
 ## Observability-Focused Sample
 
 For backend, DevOps, observability, or support escalation readers, use:
