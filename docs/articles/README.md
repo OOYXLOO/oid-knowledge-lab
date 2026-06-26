@@ -269,6 +269,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-editorial-fit-brief.md
 ```
 
+### Directus submission brief
+
+Path: `docs/articles/directus-submission-brief.md`
+
+Best for editors interested in:
+
+- a Directus guest-author application review note,
+- structured content and evidence-review workflows,
+- generated JSON reports as content records,
+- reviewer status fields and safe publication boundaries,
+- public proof pages connected to private-safe artifacts,
+- and implementation-backed developer education.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-submission-brief.md
+```
+
 ### Publication Proposal: Turn a Messy OID Inventory into a Safe Review Package
 
 Path: `docs/articles/publication-proposal-oid-inventory-assessment.md`
