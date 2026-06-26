@@ -106,6 +106,12 @@ Static evidence dashboard sample:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md
 ```
 
+Full Directus tutorial draft:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-registry-evidence-review-hub-full-draft.md
+```
+
 OID assessment sample:
 
 ```text

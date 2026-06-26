@@ -195,7 +195,31 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/buyer-s
 https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
 ```
 
-### 4. Public Issue Triage Checklist
+### 4. Directus Evidence Review Hub
+
+Working title:
+
+```text
+Build a registry evidence review hub with Directus, generated JSON, and a static proof page
+```
+
+Why it fits:
+
+This topic turns generated technical reports into Directus collections, review statuses, remediation records, and public proof links while keeping local-only inputs out of the published package.
+
+Full draft:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-registry-evidence-review-hub-full-draft.md
+```
+
+Submission brief:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-submission-brief.md
+```
+
+### 5. Public Issue Triage Checklist
 
 Working title:
 

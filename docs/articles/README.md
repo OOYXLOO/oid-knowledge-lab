@@ -326,6 +326,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-submission-brief.md
 ```
 
+### Build a Registry Evidence Review Hub with Directus, Generated JSON, and a Static Proof Page
+
+Path: `docs/articles/directus-registry-evidence-review-hub-full-draft.md`
+
+Best for readers interested in:
+
+- a complete Directus guest-author tutorial draft,
+- collection design for generated technical evidence,
+- `review_status` and acceptance-note workflows,
+- public proof pages linked from private-safe review records,
+- remediation queues,
+- and release guards before publishing generated artifacts.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-registry-evidence-review-hub-full-draft.md
+```
+
 ### AppSignal submission brief
 
 Path: `docs/articles/appsignal-submission-brief.md`

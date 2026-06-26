@@ -1471,6 +1471,31 @@ function testArticleSampleIndexIncludesCivoFullDraft() {
   assert.equal(draft.includes("\u8d5a\u94b1"), false);
 }
 
+function testArticleSampleIndexIncludesDirectusFullDraft() {
+  const files = [
+    "docs/articles/README.md",
+    "docs/articles/submission-landing.md",
+    "docs/articles/directus-submission-brief.md",
+    "public/writing-samples.html"
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("directus-registry-evidence-review-hub-full-draft.md"), `${file} should link the Directus full draft`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const draft = fs.readFileSync(path.join(ROOT, "docs/articles/directus-registry-evidence-review-hub-full-draft.md"), "utf8");
+  assert.ok(draft.includes("Build a Registry Evidence Review Hub with Directus, Generated JSON, and a Static Proof Page"));
+  assert.ok(draft.includes("Directus"));
+  assert.ok(draft.includes("review_status"));
+  assert.ok(draft.includes("static proof page"));
+  assert.equal(draft.includes("money" + "-goal"), false);
+  assert.equal(draft.includes("USD " + "200"), false);
+  assert.equal(draft.includes("\u8d5a\u94b1"), false);
+}
+
 function testBuyerSignalPackRenderer() {
   assert.equal(buyerSignalPackModule.__loadError, undefined, buyerSignalPackModule.__loadError);
   const { buildBuyerSignalPack, renderBuyerSignalMarkdown } = buyerSignalPackModule;
@@ -1564,6 +1589,7 @@ function main() {
   testArticleSampleIndexIncludesAirbyteFullDraft();
   testArticleSampleIndexIncludesCivoSubmissionBrief();
   testArticleSampleIndexIncludesCivoFullDraft();
+  testArticleSampleIndexIncludesDirectusFullDraft();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
