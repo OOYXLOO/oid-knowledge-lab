@@ -8,6 +8,7 @@ const { analyzeCoverage, renderCoverageMarkdown } = require("../src/coverage");
 const { renderDeliveryPack } = require("../src/deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { renderEngagementBrief } = require("../src/engagementBrief");
+const { buildClientIntakePack, renderClientIntakeMarkdown } = require("../src/intakePack");
 const { assertPublishableManifest, buildDatasetManifest } = require("../src/manifest");
 const { parseOidMarkdown } = require("../src/parser");
 const { auditPublishableFileList } = require("../src/publishGuard");
@@ -16,7 +17,7 @@ const { buildReport } = require("../src/report");
 const { isAllowedByRobots } = require("../src/robots");
 const { completedOidsFromJsonl, failureRecordForEntry, summarizeCrawlRun, selectPendingEntries } = require("../src/crawlState");
 const { buildAuthorizedCrawlPlan, renderAuthorizedCrawlPlanMarkdown } = require("../src/crawlPlan");
-const { escapeHtml, percent, renderDashboard, renderSampleAssessmentPage } = require("../src/site");
+const { escapeHtml, percent, renderAppJs, renderDashboard, renderSampleAssessmentPage } = require("../src/site");
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("../src/sitemap");
 const { buildSourcePolicySnapshot, renderSourcePolicyMarkdown } = require("../src/sourcePolicy");
 
@@ -472,6 +473,11 @@ function testSiteRenderer() {
   assert.ok(html.includes("sample-assessment.html"));
   assert.ok(html.includes("data-audit-input"));
   assert.ok(html.includes("data-audit-results"));
+  assert.ok(html.includes("Client-safe intake pack"));
+  assert.ok(html.includes("data-intake-copy"));
+  assert.ok(html.includes("data-intake-download-markdown"));
+  assert.ok(html.includes("data-intake-download-csv"));
+  assert.ok(html.includes("intake-pack.js"));
   assert.ok(html.includes("99 public IANA PEN assignments"));
   assert.ok(html.includes("42 OID-base sitemap entries"));
   assert.ok(html.includes("66,101") === false);
@@ -488,6 +494,34 @@ function testSiteRenderer() {
   assert.equal(samplePage.includes("money" + "-goal"), false);
   assert.equal(samplePage.includes("USD " + "200"), false);
   assert.equal(samplePage.includes("\u8d5a\u94b1"), false);
+
+  const appJs = renderAppJs();
+  assert.ok(appJs.includes("Intake Markdown download started."));
+  assert.ok(appJs.includes("Intake CSV download started."));
+}
+
+function testClientIntakePack() {
+  const pack = buildClientIntakePack({ generatedAt: "2026-06-24T00:00:00.000Z" });
+  assert.equal(pack.generated_at, "2026-06-24T00:00:00.000Z");
+  assert.equal(pack.title, "OID Assessment Client Intake Pack");
+  assert.ok(pack.copy_text.includes("asset,oid,notes"));
+  assert.ok(pack.copy_text.includes("Do not include credentials"));
+  assert.ok(pack.sample_csv.startsWith("asset,oid,notes"));
+  assert.ok(pack.sample_csv.includes("router-core,1.3.6.1.4.1.9.9.41"));
+  assert.ok(pack.checklist.some((item) => item.includes("sanitized")));
+  assert.ok(pack.acceptance_criteria.some((item) => item.includes("CSV")));
+  assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
+  assert.equal(JSON.stringify(pack).includes("\u8d5a\u94b1"), false);
+
+  const markdown = renderClientIntakeMarkdown(pack);
+  assert.ok(markdown.includes("# OID Assessment Client Intake Pack"));
+  assert.ok(markdown.includes("## Accepted input"));
+  assert.ok(markdown.includes("## Data boundary"));
+  assert.ok(markdown.includes("```csv"));
+  assert.ok(markdown.includes("asset,oid,notes"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
 }
 
 function testAssetAudit() {
@@ -839,6 +873,7 @@ function main() {
   testDatasetManifest();
   testIanaPenParser();
   testSiteRenderer();
+  testClientIntakePack();
   testAssetAudit();
   testCoverageReport();
   testDeliveryPackRenderer();

@@ -229,6 +229,8 @@ The output is `reports/sample-delivery-pack.md`. It combines an executive summar
 
 The static site also builds `public/sample-assessment.html`, a browser-readable version of the same sanitized delivery story. It links the dashboard, delivery pack, remediation CSV, and dataset manifest so a reviewer can understand the sample handoff without reading the CLI output first. The main dashboard's browser-only audit panel is the interactive companion for that sample: paste a sanitized OID list, generate the derived handoff locally, then export only the review artifacts.
 
+The dashboard also ships a client-safe intake pack. It gives reviewers or data owners a copyable request, a sample CSV template, and a Markdown intake checklist before they run the local audit, keeping raw inventories and private exports outside the repository.
+
 For a short reviewer path through the public artifacts, see `docs/client-review-guide.md`.
 
 ## Sample Engagement Brief

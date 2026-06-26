@@ -17,8 +17,14 @@
   const auditResults = document.querySelector("[data-audit-results]");
   const auditStatus = document.querySelector("[data-audit-status]");
   const auditHandoff = document.querySelector("[data-audit-handoff]");
+  const intakePackPreview = document.querySelector("[data-intake-pack]");
+  const intakeCopy = document.querySelector("[data-intake-copy]");
+  const intakeDownloadMarkdown = document.querySelector("[data-intake-download-markdown]");
+  const intakeDownloadCsv = document.querySelector("[data-intake-download-csv]");
+  const intakeStatus = document.querySelector("[data-intake-status]");
   const index = Array.isArray(window.OID_KNOWLEDGE_INDEX) ? window.OID_KNOWLEDGE_INDEX : [];
   const oidBaseDirectory = Array.isArray(window.OID_BASE_DIRECTORY) ? window.OID_BASE_DIRECTORY : [];
+  const intakePack = window.OID_CLIENT_INTAKE_PACK || null;
   const penByNumber = new Map(index.map((record) => [Number(record.number), record]));
   const oidBaseByOid = new Map(oidBaseDirectory.map((record) => [String(record.oid), record]));
   const privateEnterprisePrefix = "1.3.6.1.4.1";
@@ -256,6 +262,10 @@
     if (auditStatus) auditStatus.textContent = message || "";
   }
 
+  function setIntakeStatus(message) {
+    if (intakeStatus) intakeStatus.textContent = message || "";
+  }
+
   function downloadText(filename, mimeType, text) {
     const blob = new Blob([text], { type: mimeType });
     const url = URL.createObjectURL(blob);
@@ -300,6 +310,12 @@
       "</tbody></table>";
   }
 
+  function renderIntakePreview() {
+    if (!intakePackPreview || !intakePack) return;
+    intakePackPreview.textContent = intakePack.copy_text || "";
+    intakePackPreview.classList.add("is-visible");
+  }
+
   function ensureHandoff() {
     if (!latestHandoff) renderAudit();
     if (!latestHandoff) setAuditStatus("Paste or load an OID inventory before exporting.");
@@ -335,6 +351,33 @@
   if (input) input.addEventListener("input", renderPen);
   if (oidBaseInput) oidBaseInput.addEventListener("input", renderOidBase);
   if (auditRun) auditRun.addEventListener("click", renderAudit);
+  if (intakeCopy) intakeCopy.addEventListener("click", function () {
+    if (!intakePack) {
+      setIntakeStatus("Intake pack is unavailable on this page.");
+      return;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(intakePack.copy_text || "").then(function () {
+        setIntakeStatus("Intake request copied to clipboard.");
+      }).catch(function () {
+        setIntakeStatus("Copy failed. The intake request remains visible for manual selection.");
+      });
+    } else {
+      setIntakeStatus("Clipboard API unavailable. The intake request remains visible for manual selection.");
+    }
+  });
+  if (intakeDownloadMarkdown) intakeDownloadMarkdown.addEventListener("click", function () {
+    if (intakePack) {
+      downloadText("oid-assessment-intake-pack.md", "text/markdown;charset=utf-8", intakePack.markdown || intakePack.copy_text || "");
+      setIntakeStatus("Intake Markdown download started.");
+    }
+  });
+  if (intakeDownloadCsv) intakeDownloadCsv.addEventListener("click", function () {
+    if (intakePack) {
+      downloadText("oid-assessment-sample-input.csv", "text/csv;charset=utf-8", intakePack.sample_csv || "");
+      setIntakeStatus("Intake CSV download started.");
+    }
+  });
   if (auditCopySummary) auditCopySummary.addEventListener("click", function () {
     const handoff = ensureHandoff();
     if (!handoff) return;
@@ -371,4 +414,5 @@
   renderPen();
   renderOidBase();
   renderAudit();
+  renderIntakePreview();
 }());

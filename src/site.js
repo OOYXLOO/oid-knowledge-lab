@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { buildClientIntakePack, renderClientIntakeMarkdown } = require("./intakePack");
 const { ensureDir } = require("./net");
 
 function escapeHtml(value) {
@@ -123,6 +124,23 @@ function renderClientReadinessPanel() {
         </tbody>
       </table>
       <p class="panel-copy"><strong>Acceptance check:</strong> the handoff should identify invalid values, preserve evidence-ready mappings, and list every unresolved OID with a next action. Raw inventories, secrets, account exports, and copied OID-base page bodies stay out of the repository.</p>
+    </section>`;
+}
+
+function renderClientIntakePackPanel() {
+  return `<section class="panel intake-panel">
+      <div>
+        <p class="eyebrow">Client intake</p>
+        <h2>Client-safe intake pack</h2>
+        <p class="panel-copy">Copy a short request for a sanitized OID inventory, or download a CSV/Markdown template before running the browser-only audit. The packet defines what to include and what must stay out of the repository.</p>
+      </div>
+      <div class="audit-actions intake-actions">
+        <button type="button" data-intake-copy>Copy intake request</button>
+        <button type="button" data-intake-download-markdown>Download intake Markdown</button>
+        <button type="button" data-intake-download-csv>Download sample CSV</button>
+      </div>
+      <p class="audit-status" data-intake-status></p>
+      <pre class="audit-handoff intake-preview" data-intake-pack></pre>
     </section>`;
 }
 
@@ -307,6 +325,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
 
     ${renderSampleAssessmentPanel(sampleAssessment?.assetAudit, sampleAssessment?.coverageReport)}
 
+    ${renderClientIntakePackPanel()}
+
     ${renderClientReadinessPanel()}
 
     <section class="panel">
@@ -329,6 +349,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
   <script src="data.js"></script>
   <script src="search-index.js"></script>
   <script src="oid-base-directory.js"></script>
+  <script src="intake-pack.js"></script>
   <script src="app.js"></script>
 </body>
 </html>`;
@@ -641,8 +662,14 @@ function renderAppJs() {
   const auditResults = document.querySelector("[data-audit-results]");
   const auditStatus = document.querySelector("[data-audit-status]");
   const auditHandoff = document.querySelector("[data-audit-handoff]");
+  const intakePackPreview = document.querySelector("[data-intake-pack]");
+  const intakeCopy = document.querySelector("[data-intake-copy]");
+  const intakeDownloadMarkdown = document.querySelector("[data-intake-download-markdown]");
+  const intakeDownloadCsv = document.querySelector("[data-intake-download-csv]");
+  const intakeStatus = document.querySelector("[data-intake-status]");
   const index = Array.isArray(window.OID_KNOWLEDGE_INDEX) ? window.OID_KNOWLEDGE_INDEX : [];
   const oidBaseDirectory = Array.isArray(window.OID_BASE_DIRECTORY) ? window.OID_BASE_DIRECTORY : [];
+  const intakePack = window.OID_CLIENT_INTAKE_PACK || null;
   const penByNumber = new Map(index.map((record) => [Number(record.number), record]));
   const oidBaseByOid = new Map(oidBaseDirectory.map((record) => [String(record.oid), record]));
   const privateEnterprisePrefix = "1.3.6.1.4.1";
@@ -880,6 +907,10 @@ function renderAppJs() {
     if (auditStatus) auditStatus.textContent = message || "";
   }
 
+  function setIntakeStatus(message) {
+    if (intakeStatus) intakeStatus.textContent = message || "";
+  }
+
   function downloadText(filename, mimeType, text) {
     const blob = new Blob([text], { type: mimeType });
     const url = URL.createObjectURL(blob);
@@ -924,6 +955,12 @@ function renderAppJs() {
       "</tbody></table>";
   }
 
+  function renderIntakePreview() {
+    if (!intakePackPreview || !intakePack) return;
+    intakePackPreview.textContent = intakePack.copy_text || "";
+    intakePackPreview.classList.add("is-visible");
+  }
+
   function ensureHandoff() {
     if (!latestHandoff) renderAudit();
     if (!latestHandoff) setAuditStatus("Paste or load an OID inventory before exporting.");
@@ -959,6 +996,33 @@ function renderAppJs() {
   if (input) input.addEventListener("input", renderPen);
   if (oidBaseInput) oidBaseInput.addEventListener("input", renderOidBase);
   if (auditRun) auditRun.addEventListener("click", renderAudit);
+  if (intakeCopy) intakeCopy.addEventListener("click", function () {
+    if (!intakePack) {
+      setIntakeStatus("Intake pack is unavailable on this page.");
+      return;
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(intakePack.copy_text || "").then(function () {
+        setIntakeStatus("Intake request copied to clipboard.");
+      }).catch(function () {
+        setIntakeStatus("Copy failed. The intake request remains visible for manual selection.");
+      });
+    } else {
+      setIntakeStatus("Clipboard API unavailable. The intake request remains visible for manual selection.");
+    }
+  });
+  if (intakeDownloadMarkdown) intakeDownloadMarkdown.addEventListener("click", function () {
+    if (intakePack) {
+      downloadText("oid-assessment-intake-pack.md", "text/markdown;charset=utf-8", intakePack.markdown || intakePack.copy_text || "");
+      setIntakeStatus("Intake Markdown download started.");
+    }
+  });
+  if (intakeDownloadCsv) intakeDownloadCsv.addEventListener("click", function () {
+    if (intakePack) {
+      downloadText("oid-assessment-sample-input.csv", "text/csv;charset=utf-8", intakePack.sample_csv || "");
+      setIntakeStatus("Intake CSV download started.");
+    }
+  });
   if (auditCopySummary) auditCopySummary.addEventListener("click", function () {
     const handoff = ensureHandoff();
     if (!handoff) return;
@@ -995,6 +1059,7 @@ function renderAppJs() {
   renderPen();
   renderOidBase();
   renderAudit();
+  renderIntakePreview();
 }());
 `;
 }
@@ -1036,6 +1101,8 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     assetAudit: readOptionalJson(assetAuditFile),
     coverageReport: readOptionalJson(coverageReportFile)
   };
+  const intakePack = buildClientIntakePack({ generatedAt: report.generated_at });
+  intakePack.markdown = renderClientIntakeMarkdown(intakePack);
   report.search_index_count = searchIndex.length;
   report.oid_base_directory_count = oidBaseDirectory.length;
   ensureDir(outDir);
@@ -1044,8 +1111,9 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
   fs.writeFileSync(path.join(outDir, "data.js"), `window.OID_KNOWLEDGE_REPORT = ${JSON.stringify(report, null, 2)};\n`, "utf8");
   fs.writeFileSync(path.join(outDir, "search-index.js"), `window.OID_KNOWLEDGE_INDEX = ${JSON.stringify(searchIndex)};\n`, "utf8");
   fs.writeFileSync(path.join(outDir, "oid-base-directory.js"), `window.OID_BASE_DIRECTORY = ${JSON.stringify(oidBaseDirectory)};\n`, "utf8");
+  fs.writeFileSync(path.join(outDir, "intake-pack.js"), `window.OID_CLIENT_INTAKE_PACK = ${JSON.stringify(intakePack, null, 2)};\n`, "utf8");
   fs.writeFileSync(path.join(outDir, "app.js"), renderAppJs(), "utf8");
-  const outputFiles = ["index.html", "styles.css", "data.js", "search-index.js", "oid-base-directory.js", "app.js"];
+  const outputFiles = ["index.html", "styles.css", "data.js", "search-index.js", "oid-base-directory.js", "intake-pack.js", "app.js"];
   if (sampleAssessment.assetAudit && sampleAssessment.coverageReport) {
     fs.writeFileSync(path.join(outDir, "sample-assessment.html"), renderSampleAssessmentPage(sampleAssessment), "utf8");
     outputFiles.push("sample-assessment.html");
@@ -1067,6 +1135,8 @@ module.exports = {
   renderAuditPanel,
   renderDashboard,
   renderClientReadinessPanel,
+  renderClientIntakePackPanel,
+  renderAppJs,
   renderSampleAssessmentPage,
   renderOidBasePanel,
   renderSearchPanel

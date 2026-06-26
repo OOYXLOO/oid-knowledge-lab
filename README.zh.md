@@ -136,6 +136,8 @@ node src/cli.js audit-assets --in path/to/assets.csv --out reports/asset-audit.j
 
 静态页面 `public/index.html` 也提供浏览器端本地审计面板。用户可以直接粘贴 OID CSV，分析在浏览器里完成，不上传到服务器。审计后页面会生成可复制的评估摘要，并支持在本地下载 Markdown、CSV、JSON 三种派生交付物；这些导出只包含分析结果，不包含原始私有清单。站点还会生成 `public/sample-assessment.html`，把样例摘要、修复队列、证据映射和数据边界做成一个可扫读的交付页。
 
+页面还提供 `Client-safe intake pack`：可以复制给数据提供方的脱敏清单请求、下载样例 CSV，以及下载 Markdown intake checklist。它的作用是在正式审计前先统一输入格式和数据边界，避免原始客户清单、账号导出或敏感凭据进入仓库。
+
 ## 修复队列与交付包
 
 ```bash
