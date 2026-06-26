@@ -60,6 +60,12 @@ Supporting sample:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md
 ```
 
+Publication proposal:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/publication-proposal-static-evidence-dashboard.md
+```
+
 Public proof:
 
 ```text

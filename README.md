@@ -51,6 +51,7 @@ Article samples:
 - `docs/articles/pki-clm-buyer-brief.md`
 - `docs/articles/client-safe-oid-inventory-assessment.md`
 - `docs/articles/static-evidence-dashboard-github-pages.md`
+- `docs/articles/publication-proposal-static-evidence-dashboard.md`
 - `docs/articles/public-github-bounty-triage-checklist.md`
 - `docs/articles/observability-debugging-handoff-playbook.md`
 - `docs/articles/production-integration-debug-handoff.md`

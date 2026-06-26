@@ -172,6 +172,26 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md
 ```
 
+### Publication Proposal: Static Evidence Dashboard
+
+Path: `docs/articles/publication-proposal-static-evidence-dashboard.md`
+
+Best for editors interested in:
+
+- a concise article pitch,
+- target audience,
+- abstract,
+- outline,
+- implementation depth,
+- originality note,
+- and public proof links.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/publication-proposal-static-evidence-dashboard.md
+```
+
 ### A Practical Triage Checklist Before Implementing Public GitHub Bounty Issues
 
 Path: `docs/articles/public-github-bounty-triage-checklist.md`
