@@ -1496,6 +1496,31 @@ function testArticleSampleIndexIncludesDirectusFullDraft() {
   assert.equal(draft.includes("\u8d5a\u94b1"), false);
 }
 
+function testArticleSampleIndexIncludesAppSignalFullDraft() {
+  const files = [
+    "docs/articles/README.md",
+    "docs/articles/submission-landing.md",
+    "docs/articles/appsignal-submission-brief.md",
+    "public/writing-samples.html"
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("appsignal-production-integration-debugging-full-draft.md"), `${file} should link the AppSignal full draft`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const draft = fs.readFileSync(path.join(ROOT, "docs/articles/appsignal-production-integration-debugging-full-draft.md"), "utf8");
+  assert.ok(draft.includes("What to Capture Before Debugging a Production Integration Failure"));
+  assert.ok(draft.includes("logs"));
+  assert.ok(draft.includes("metrics"));
+  assert.ok(draft.includes("traces"));
+  assert.equal(draft.includes("money" + "-goal"), false);
+  assert.equal(draft.includes("USD " + "200"), false);
+  assert.equal(draft.includes("\u8d5a\u94b1"), false);
+}
+
 function testBuyerSignalPackRenderer() {
   assert.equal(buyerSignalPackModule.__loadError, undefined, buyerSignalPackModule.__loadError);
   const { buildBuyerSignalPack, renderBuyerSignalMarkdown } = buyerSignalPackModule;
@@ -1590,6 +1615,7 @@ function main() {
   testArticleSampleIndexIncludesCivoSubmissionBrief();
   testArticleSampleIndexIncludesCivoFullDraft();
   testArticleSampleIndexIncludesDirectusFullDraft();
+  testArticleSampleIndexIncludesAppSignalFullDraft();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }

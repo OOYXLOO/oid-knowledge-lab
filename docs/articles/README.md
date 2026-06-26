@@ -364,6 +364,26 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsignal-submission-brief.md
 ```
 
+### What to Capture Before Debugging a Production Integration Failure - AppSignal full draft
+
+Path: `docs/articles/appsignal-production-integration-debugging-full-draft.md`
+
+Best for readers interested in:
+
+- a complete AppSignal-style observability article draft,
+- production integration failures across APIs, webhooks, queues, and SaaS syncs,
+- safe log evidence,
+- metric questions,
+- trace paths,
+- correlation handles,
+- and acceptance checks before closing an incident.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsignal-production-integration-debugging-full-draft.md
+```
+
 ### SigNoz submission brief
 
 Path: `docs/articles/signoz-submission-brief.md`

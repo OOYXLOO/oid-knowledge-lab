@@ -146,6 +146,12 @@ Sample:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/observability-debugging-handoff-playbook.md
 ```
 
+AppSignal full draft:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsignal-production-integration-debugging-full-draft.md
+```
+
 Supporting implementation note:
 
 ```text
