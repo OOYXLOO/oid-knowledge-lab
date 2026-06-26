@@ -97,6 +97,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/oid-assessment-client-one-pager.md
 ```
 
+### Certificate Policy OID Inventory: A Safe First Review Pattern
+
+Path: `docs/articles/certificate-policy-oid-inventory.md`
+
+Best for readers interested in:
+
+- PKI and certificate lifecycle inventory,
+- X.509 certificate policy OIDs,
+- safe metadata collection,
+- renewal-risk and ownership triage,
+- remediation boards,
+- and audit-ready acceptance checks without private keys or account exports.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/certificate-policy-oid-inventory.md
+```
+
 ### Build a Static Evidence Dashboard with Node.js and GitHub Pages
 
 Path: `docs/articles/static-evidence-dashboard-github-pages.md`

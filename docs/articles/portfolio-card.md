@@ -50,6 +50,12 @@ For a shorter buyer-readable version of the same assessment flow, use:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/oid-assessment-client-one-pager.md
 ```
 
+For a PKI and certificate lifecycle angle, use:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/certificate-policy-oid-inventory.md
+```
+
 ## Observability-Focused Sample
 
 For backend, DevOps, observability, or support escalation readers, use:

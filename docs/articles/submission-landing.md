@@ -42,6 +42,12 @@ Use the client one-pager when evaluating service-style documentation, data clean
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/oid-assessment-client-one-pager.md
 ```
 
+Use the certificate policy OID article when evaluating PKI, X.509, certificate lifecycle, or audit-readiness fit:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/certificate-policy-oid-inventory.md
+```
+
 ## Strongest Assignment Angles
 
 ### 1. Static Evidence Dashboard Tutorial
@@ -120,6 +126,24 @@ Sample:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/oid-assessment-client-one-pager.md
+```
+
+### 5. Certificate Policy OID Inventory
+
+Working title:
+
+```text
+Certificate policy OID inventory: a safe first review pattern
+```
+
+Why it fits:
+
+This angle connects the OID assessment pattern to PKI and certificate lifecycle work: safe metadata, X.509 policy OIDs, renewal risk, ownership triage, remediation boards, and acceptance checks without collecting private keys or account exports.
+
+Sample:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/certificate-policy-oid-inventory.md
 ```
 
 ## Proof Surface

@@ -46,6 +46,7 @@ Article samples:
 - `docs/articles/editor-pitch-pack.md`
 - `docs/articles/submission-landing.md`
 - `docs/articles/oid-assessment-client-one-pager.md`
+- `docs/articles/certificate-policy-oid-inventory.md`
 - `docs/articles/client-safe-oid-inventory-assessment.md`
 - `docs/articles/static-evidence-dashboard-github-pages.md`
 - `docs/articles/public-github-bounty-triage-checklist.md`
