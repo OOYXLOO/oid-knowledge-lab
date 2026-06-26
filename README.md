@@ -36,6 +36,10 @@ Chinese operator notes:
 - `docs/source-authorization-request.zh.md`
 - `docs/snapshot-20260624.zh.md`
 
+Article samples:
+
+- `docs/articles/client-safe-oid-inventory-assessment.md`
+
 ## Compliance Boundary
 
 OID-base publishes a robots file and terms of use. The terms say that downloading, printing, or copying from the site must be noncommercial, personal, and limited to a small part of the data unless specific authorization is granted by the site owner.
