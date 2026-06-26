@@ -480,6 +480,10 @@ function testSiteRenderer() {
     sample_organizations: [{ enterprise_number: 9, oid: "1.3.6.1.4.1.9", organization: "Example <Org>" }]
   }, 42, sampleAssessment);
   assert.ok(html.includes("OID and enterprise registry dashboard"));
+  assert.ok(html.includes("consulting-brief.html"));
+  assert.ok(html.includes("Assessment brief"));
+  assert.ok(html.includes("Editor review path"));
+  assert.ok(html.includes("Observability debugging handoffs"));
   assert.ok(html.includes("Search enterprise OIDs"));
   assert.ok(html.includes("Search sitemap catalog"));
   assert.ok(html.includes("Audit local OID list"));

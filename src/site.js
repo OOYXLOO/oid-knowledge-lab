@@ -61,6 +61,36 @@ function renderOidBasePanel(directoryCount) {
     </section>`;
 }
 
+function renderEditorReviewPathPanel() {
+  return `<section class="panel review-path-panel">
+      <div>
+        <p class="eyebrow">Editor review path</p>
+        <h2>Technical writing and documentation samples</h2>
+        <p class="panel-copy">A compact review path for editors, DevRel teams, and documentation reviewers who want to evaluate long-form writing, implementation depth, and public verification evidence.</p>
+      </div>
+      <div class="review-grid">
+        <article>
+          <span>Long-form sample</span>
+          <strong>Observability debugging handoffs</strong>
+          <p>Logs, metrics, traces, correlation handles, safe evidence boundaries, and acceptance checks for production integration failures.</p>
+          <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/observability-debugging-handoff-playbook.md">Read sample</a>
+        </article>
+        <article>
+          <span>Submission overview</span>
+          <strong>Editor pitch pack</strong>
+          <p>Topic fit for developer tooling, DevOps, observability handoffs, release guards, static dashboards, and client-safe evidence workflows.</p>
+          <a href="writing-samples.html">Open review path</a>
+        </article>
+        <article>
+          <span>Working proof</span>
+          <strong>Public dashboard</strong>
+          <p>Runnable data workflow, publishable reports, source boundaries, search surfaces, local audit tools, and release guard checks.</p>
+          <a href="https://github.com/OOYXLOO/oid-knowledge-lab">View repository</a>
+        </article>
+      </div>
+    </section>`;
+}
+
 function renderAuditPanel() {
   return `<section class="panel audit-panel">
       <div>
@@ -455,6 +485,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="${escapeHtml(report.source_url)}">IANA source</a>
         <a href="${escapeHtml(report.license_url)}">Licensing terms</a>
         <a href="https://oid-base.com/sitemap.xml">OID-base sitemap</a>
+        <a href="consulting-brief.html">Assessment brief</a>
+        <a href="writing-samples.html">Writing samples</a>
       </div>
     </section>
 
@@ -464,6 +496,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
       <article><span>Reserved</span><strong>${formatNumber(reserved)}</strong><small>${percent(reserved, total)}</small></article>
       <article><span>OID-base entries</span><strong>${formatNumber(oidBaseDirectoryCount)}</strong></article>
     </section>
+
+    ${renderEditorReviewPathPanel()}
 
     <section class="panel">
       <div>
@@ -746,6 +780,37 @@ a {
   color: var(--ink);
   font-size: 1.25rem;
 }
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+.review-grid article {
+  min-height: 210px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+}
+.review-grid span {
+  display: block;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.review-grid strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.02rem;
+}
+.review-grid p {
+  min-height: 74px;
+  margin: 10px 0 12px;
+  color: var(--muted);
+  line-height: 1.45;
+}
 .status-badge {
   display: inline-block;
   padding: 2px 7px;
@@ -816,6 +881,9 @@ code {
   .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .audit-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mini-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .review-grid { grid-template-columns: 1fr; }
+  .review-grid article { min-height: auto; }
+  .review-grid p { min-height: auto; }
   .bar-row { grid-template-columns: 1fr; gap: 5px; margin-bottom: 12px; }
   table { display: block; overflow-x: auto; }
 }
@@ -1293,7 +1361,12 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
   fs.writeFileSync(path.join(outDir, "oid-base-directory.js"), `window.OID_BASE_DIRECTORY = ${JSON.stringify(oidBaseDirectory)};\n`, "utf8");
   fs.writeFileSync(path.join(outDir, "intake-pack.js"), `window.OID_CLIENT_INTAKE_PACK = ${JSON.stringify(intakePack, null, 2)};\n`, "utf8");
   fs.writeFileSync(path.join(outDir, "app.js"), renderAppJs(), "utf8");
-  const outputFiles = ["index.html", "styles.css", "data.js", "search-index.js", "oid-base-directory.js", "intake-pack.js", "app.js"];
+  const consultingBriefSource = path.join(__dirname, "..", "public", "consulting-brief.html");
+  const consultingBriefTarget = path.join(outDir, "consulting-brief.html");
+  if (path.resolve(consultingBriefSource) !== path.resolve(consultingBriefTarget)) {
+    fs.copyFileSync(consultingBriefSource, consultingBriefTarget);
+  }
+  const outputFiles = ["index.html", "consulting-brief.html", "styles.css", "data.js", "search-index.js", "oid-base-directory.js", "intake-pack.js", "app.js"];
   if (sampleAssessment.assetAudit && sampleAssessment.coverageReport) {
     fs.writeFileSync(path.join(outDir, "sample-assessment.html"), renderSampleAssessmentPage(sampleAssessment), "utf8");
     outputFiles.push("sample-assessment.html");
@@ -1314,6 +1387,7 @@ module.exports = {
   percent,
   renderAuditPanel,
   renderDashboard,
+  renderEditorReviewPathPanel,
   renderClientReadinessPanel,
   renderVerticalUseCasePanel,
   renderScopeProposalPanel,

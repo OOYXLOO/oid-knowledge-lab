@@ -13,6 +13,7 @@ Last refreshed on 2026-06-26:
 - Public IANA PEN search index: 65,959 records after excluding contact-level noise
 - Coverage report: `reports/coverage-report.md` compares IANA PEN records with the OID-base sitemap directory
 - Static dashboard: generated under `public/`
+- Assessment brief page: `public/consulting-brief.html` summarizes the client-safe OID inventory assessment path.
 - Writing samples review page: `public/writing-samples.html` links editor-facing samples and proof surfaces
 - Dataset manifest: `reports/dataset-manifest.json` with artifact hashes, sizes, source links, and publication boundaries
 - Source policy snapshot: `reports/source-policy.md` records robots, terms, sitemap, and hash evidence for the collection boundary
