@@ -225,6 +225,21 @@
       <p><a href="sample-assessment.html">Open sample assessment handoff</a></p>
     </section>
 
+    <section class="panel intake-panel">
+      <div>
+        <p class="eyebrow">Client intake</p>
+        <h2>Client-safe intake pack</h2>
+        <p class="panel-copy">Copy a short request for a sanitized OID inventory, or download a CSV/Markdown template before running the browser-only audit. The packet defines what to include and what must stay out of the repository.</p>
+      </div>
+      <div class="audit-actions intake-actions">
+        <button type="button" data-intake-copy>Copy intake request</button>
+        <button type="button" data-intake-download-markdown>Download intake Markdown</button>
+        <button type="button" data-intake-download-csv>Download sample CSV</button>
+      </div>
+      <p class="audit-status" data-intake-status></p>
+      <pre class="audit-handoff intake-preview" data-intake-pack></pre>
+    </section>
+
     <section class="panel client-readiness-panel">
       <div>
         <p class="eyebrow">Client readiness</p>
@@ -341,6 +356,7 @@
   <script src="data.js"></script>
   <script src="search-index.js"></script>
   <script src="oid-base-directory.js"></script>
+  <script src="intake-pack.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
