@@ -110,6 +110,12 @@ Portfolio card:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/portfolio-card.md
 ```
 
+Editor pitch pack:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-pitch-pack.md
+```
+
 Dashboard:
 
 ```text

@@ -78,6 +78,14 @@ For a one-page overview of topic fit, reader outcomes, proof links, and boundari
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-brief.md
 ```
 
+## Editor Pitch Pack
+
+For publication-ready topic angles that map each sample to a concrete article proposal:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-pitch-pack.md
+```
+
 ## Public Proof
 
 Dashboard:

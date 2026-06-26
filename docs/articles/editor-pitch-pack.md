@@ -1,0 +1,183 @@
+# Editor Pitch Pack: Data Tools, Debugging Handoffs, and Client-Safe Evidence
+
+This pitch pack gives editors, maintainers, and technical content teams a fast way to review topic fit before requesting a full outline or draft.
+
+The samples are based on OID Knowledge Lab, a public Node.js data workflow that builds a searchable static dashboard, dataset manifest, source-boundary notes, client-safe assessment artifacts, and reusable handoff templates. The repository is intentionally designed around publishable evidence: it stores derived reports and public pointers, not private inventories, secrets, payment data, account exports, or copied third-party page bodies.
+
+## Short Positioning
+
+I write implementation-aware developer documentation for practical engineering workflows:
+
+- small Node.js data tools,
+- static dashboards and generated review artifacts,
+- release guards and dataset manifests,
+- observability-oriented debugging handoffs,
+- public issue triage,
+- safe client intake boundaries,
+- and technical handoffs that help readers act without sharing private production data.
+
+The strongest fit is a publication that wants hands-on engineering content with runnable commands, concrete artifacts, clear tradeoffs, and verification steps.
+
+## Pitch 1: Static Evidence Dashboards
+
+Working title:
+
+```text
+Build a Static Evidence Dashboard with Node.js, GitHub Pages, and a Release Guard
+```
+
+Best-fit publications:
+
+- cloud developer blogs,
+- DevOps and platform engineering blogs,
+- developer tooling publications,
+- documentation engineering teams,
+- and engineering teams that publish public review artifacts.
+
+Reader promise:
+
+The reader learns how to turn generated JSON and Markdown reports into a static dashboard, define a manifest, separate public evidence from private inputs, and run a guard before publishing.
+
+Supporting sample:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md
+```
+
+Public proof:
+
+```text
+https://ooyxloo.github.io/oid-knowledge-lab/
+```
+
+## Pitch 2: Observability Handoffs
+
+Working title:
+
+```text
+What to Capture Before Debugging a Production Integration Failure
+```
+
+Best-fit publications:
+
+- observability blogs,
+- OpenTelemetry-adjacent developer education programs,
+- SRE and DevOps publications,
+- SaaS integration teams,
+- and support escalation teams.
+
+Reader promise:
+
+The reader learns how to prepare a safe debugging handoff before sharing sensitive production context: expected behavior, observed behavior, time windows, correlation handles, safe logs, metrics, traces, recent changes, ownership, hypotheses, and acceptance checks.
+
+Supporting sample:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-debug-handoff.md
+```
+
+Reusable template:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-handoff-template.md
+```
+
+## Pitch 3: Public Issue Triage
+
+Working title:
+
+```text
+A Practical Triage Checklist Before Implementing Public GitHub Bounty Issues
+```
+
+Best-fit publications:
+
+- open source maintainer blogs,
+- developer productivity publications,
+- engineering career publications,
+- DevRel teams,
+- and teams running public issue or bounty queues.
+
+Reader promise:
+
+The reader learns how to evaluate public reward signals, assignment risk, pull request saturation, acceptance criteria, account-gate boundaries, and when to skip a task before investing engineering time.
+
+Supporting sample:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/public-github-bounty-triage-checklist.md
+```
+
+## Pitch 4: Client-Safe Data Intake
+
+Working title:
+
+```text
+Designing a Client-Safe Inventory Assessment Before Asking for Private Data
+```
+
+Best-fit publications:
+
+- data quality publications,
+- security and compliance blogs,
+- infrastructure engineering teams,
+- PKI or networking audiences,
+- and teams that need repeatable review intake.
+
+Reader promise:
+
+The reader learns how to request sanitized inputs, classify evidence strength, produce a remediation queue, and keep raw private inventories out of public repositories or shared review links.
+
+Supporting sample:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/client-safe-oid-inventory-assessment.md
+```
+
+## Review Path
+
+Start here for a compact sample overview:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/portfolio-card.md
+```
+
+Use this page for an editor-level summary:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-brief.md
+```
+
+Use the full sample index when reviewing multiple angles:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/README.md
+```
+
+## What I Can Write Next
+
+Good next assignments:
+
+- a 1,500 to 2,500 word tutorial based on the static dashboard workflow,
+- an observability article that turns the integration handoff into a troubleshooting playbook,
+- a shorter checklist article for public issue triage,
+- a practical guide to release guards for generated artifacts,
+- or a client-safe intake template article for data review projects.
+
+## Verification
+
+The repository uses these checks before publishing changes:
+
+```bash
+npm run check
+npm test
+npm run build:site
+npm run guard:publishable
+git diff --check
+```
+
+The publish guard checks that local-only crawl output, raw page-body mirrors, contact-level exports, and other unsafe artifacts are not tracked in Git.
+
+## Boundaries
+
+These pitches describe original engineering workflows and public proof artifacts. They do not publish private customer inventories, production secrets, payment data, full third-party page-body mirrors, account exports, or unpublished client information.

@@ -43,6 +43,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-brief.md
 ```
 
+### Editor pitch pack
+
+Path: `docs/articles/editor-pitch-pack.md`
+
+Best for readers interested in:
+
+- publication-ready topic angles,
+- Draft.dev, Civo, SigNoz, DevRel, or documentation-team fit,
+- sample-to-pitch mapping,
+- reusable public proof links,
+- and safe publication boundaries.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-pitch-pack.md
+```
+
 ### Build a Static Evidence Dashboard with Node.js and GitHub Pages
 
 Path: `docs/articles/static-evidence-dashboard-github-pages.md`

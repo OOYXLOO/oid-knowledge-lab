@@ -42,6 +42,7 @@ Article samples:
 - `docs/articles/README.md`
 - `docs/articles/portfolio-card.md`
 - `docs/articles/editor-brief.md`
+- `docs/articles/editor-pitch-pack.md`
 - `docs/articles/client-safe-oid-inventory-assessment.md`
 - `docs/articles/static-evidence-dashboard-github-pages.md`
 - `docs/articles/public-github-bounty-triage-checklist.md`
