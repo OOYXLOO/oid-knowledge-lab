@@ -6,6 +6,25 @@ The samples are written for readers who want practical engineering patterns: saf
 
 ## Samples
 
+### Editor brief
+
+Path: `docs/articles/editor-brief.md`
+
+Best for readers interested in:
+
+- a quick overview of the article sample set,
+- topic fit,
+- audience fit,
+- reader outcomes,
+- public proof links,
+- and verification boundaries.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-brief.md
+```
+
 ### Build a Static Evidence Dashboard with Node.js and GitHub Pages
 
 Path: `docs/articles/static-evidence-dashboard-github-pages.md`
