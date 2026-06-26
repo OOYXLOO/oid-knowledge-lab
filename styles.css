@@ -120,7 +120,7 @@ a {
   gap: 10px;
   margin-top: 10px;
 }
-.audit-actions button {
+.audit-actions button, .audit-export-actions button {
   min-height: 38px;
   padding: 8px 12px;
   border: 1px solid var(--line);
@@ -131,8 +131,40 @@ a {
   font-weight: 700;
   cursor: pointer;
 }
-.audit-actions button:hover {
+.audit-actions button:hover, .audit-export-actions button:hover {
   border-color: var(--accent);
+}
+.audit-export-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 4px;
+}
+.audit-export-actions button {
+  background: #fff8ee;
+}
+.audit-status {
+  min-height: 20px;
+  margin: 8px 0 0;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.audit-handoff {
+  display: none;
+  max-height: 260px;
+  overflow: auto;
+  margin: 10px 0 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+  color: var(--ink);
+  font: 0.84rem/1.45 "SFMono-Regular", Consolas, monospace;
+  white-space: pre-wrap;
+}
+.audit-handoff.is-visible {
+  display: block;
 }
 .audit-summary {
   display: grid;
