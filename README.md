@@ -21,6 +21,7 @@ Last refreshed on 2026-06-24:
 - Vertical use-case fit pack: `reports/vertical-use-case-pack.md` maps the same assessment engine to SNMP/MIB, PKI certificate policy, and internal OID registry cleanup reviews
 - Scope proposal pack: `reports/scope-proposal-pack.md` turns the sample assessment into a first-scope proposal with client inputs, first-48-hour work, acceptance criteria, and exclusions
 - Statement of work pack: `reports/statement-of-work-pack.md` turns the first-scope proposal into a work boundary with deliverables, client responsibilities, acceptance checks, change control, and exclusions
+- Decision one-pager: `reports/decision-one-pager.md` compresses the approval question, next step, safe inputs, boundaries, and proof links into a buyer-readable first page
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
@@ -274,6 +275,19 @@ The command writes:
 - `reports/statement-of-work-pack.md`
 
 Use this after `proposal:scope`. It converts the first-scope proposal into a clean work boundary: objective, schedule, deliverables, client responsibilities, acceptance checklist, review lanes, public artifacts, change control, and excluded data.
+
+## Decision One-Pager
+
+```bash
+npm run decision:one-pager
+```
+
+The command writes:
+
+- `reports/decision-one-pager.json`
+- `reports/decision-one-pager.md`
+
+Use this after `sow:oid`. It gives a technical owner the first-page decision summary: why approve a small sanitized OID review, what safe input is needed next, what output to expect, which public proof links exist, and which data remains excluded.
 
 ## Client Readiness Pack
 

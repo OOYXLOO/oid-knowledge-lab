@@ -14,6 +14,12 @@ try {
 } catch (error) {
   statementOfWorkModule = { __loadError: error.message };
 }
+let decisionOnePagerModule;
+try {
+  decisionOnePagerModule = require("../src/decisionOnePager");
+} catch (error) {
+  decisionOnePagerModule = { __loadError: error.message };
+}
 const { renderDeliveryPack } = require("../src/deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { renderEngagementBrief } = require("../src/engagementBrief");
@@ -495,6 +501,8 @@ function testSiteRenderer() {
   assert.ok(html.includes("reports/scope-proposal-pack.md"));
   assert.ok(html.includes("Statement of work pack"));
   assert.ok(html.includes("reports/statement-of-work-pack.md"));
+  assert.ok(html.includes("Decision one-pager"));
+  assert.ok(html.includes("reports/decision-one-pager.md"));
   assert.ok(html.includes("SNMP / MIB"));
   assert.ok(html.includes("PKI policy"));
   assert.ok(html.includes("99 public IANA PEN assignments"));
@@ -805,6 +813,77 @@ function testStatementOfWorkPackRenderer() {
   assert.ok(markdown.includes("## Acceptance Checklist"));
   assert.ok(markdown.includes("## Change Control"));
   assert.ok(markdown.includes("reports/scope-proposal-pack.md"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+}
+
+function testDecisionOnePagerRenderer() {
+  assert.equal(decisionOnePagerModule.__loadError, undefined, decisionOnePagerModule.__loadError);
+  const { buildDecisionOnePager, renderDecisionOnePagerMarkdown } = decisionOnePagerModule;
+  const pack = buildDecisionOnePager({
+    statementOfWorkPack: {
+      objective: "Review a sanitized OID inventory sample and produce a compact remediation queue.",
+      deliverables: [
+        "OID assessment summary with counts and action groups.",
+        "Remediation queue suitable for spreadsheet or issue-tracker import."
+      ],
+      client_responsibilities: [
+        "Provide a sanitized CSV or tab-delimited OID inventory with an `oid` column."
+      ],
+      acceptance_checklist: [
+        "Every input row is classified as invalid, evidence-ready, or unresolved."
+      ],
+      out_of_scope: [
+        "credentials, OTPs, cookies, tokens, private account exports, and production secrets"
+      ]
+    },
+    clientReadinessPack: {
+      readiness_score: 96,
+      readiness_checks: [
+        { id: "client-intake", status: "ready" },
+        { id: "source-boundary", status: "ready" }
+      ]
+    },
+    scopeProposalPack: {
+      decision_summary: [
+        "Sample rows reviewed: 4",
+        "Evidence-ready rows: 2",
+        "Unresolved rows: 1"
+      ],
+      first_48_hours: [
+        { step: "Confirm sanitized inventory shape", output: "CSV with oid column." },
+        { step: "Run local assessment", output: "Classify rows and produce findings." }
+      ]
+    },
+    verticalUseCasePack: {
+      use_cases: [
+        { title: "PKI certificate policy OID review", fit_score: 93 },
+        { title: "SNMP / MIB vendor PEN inventory", fit_score: 89 }
+      ]
+    },
+    generatedAt: "2026-06-26T06:30:00.000Z"
+  });
+
+  assert.equal(pack.schema_version, "oid-decision-one-pager/v1");
+  assert.equal(pack.title, "OID Inventory Assessment Decision One-Pager");
+  assert.equal(pack.generated_at, "2026-06-26T06:30:00.000Z");
+  assert.equal(pack.audience, "technical owner or buyer deciding whether to approve a small sanitized OID assessment");
+  assert.ok(pack.decision_prompt.includes("Approve a small first review"));
+  assert.ok(pack.why_now.some((item) => item.includes("Sample rows reviewed")));
+  assert.ok(pack.next_step.owner_action.includes("sanitized"));
+  assert.ok(pack.proof_links.some((item) => item.path === "reports/statement-of-work-pack.md"));
+  assert.ok(pack.safe_inputs.some((item) => item.includes("oid")));
+  assert.ok(pack.boundaries.some((item) => item.includes("credentials")));
+  assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
+  assert.equal(JSON.stringify(pack).includes("\u8d5a\u94b1"), false);
+
+  const markdown = renderDecisionOnePagerMarkdown(pack);
+  assert.ok(markdown.includes("# OID Inventory Assessment Decision One-Pager"));
+  assert.ok(markdown.includes("## Decision Prompt"));
+  assert.ok(markdown.includes("## Recommended Next Step"));
+  assert.ok(markdown.includes("reports/statement-of-work-pack.md"));
+  assert.ok(markdown.includes("PKI certificate policy OID review"));
   assert.equal(markdown.includes("money" + "-goal"), false);
   assert.equal(markdown.includes("USD " + "200"), false);
 }
@@ -1169,6 +1248,7 @@ function main() {
   testVerticalUseCasePackRenderer();
   testScopeProposalPackRenderer();
   testStatementOfWorkPackRenderer();
+  testDecisionOnePagerRenderer();
   testAssetAudit();
   testCoverageReport();
   testDeliveryPackRenderer();

@@ -1,6 +1,6 @@
 # OID Inventory Assessment Scope Proposal Pack
 
-Generated: `2026-06-26T05:48:46.029Z`
+Generated: `2026-06-26T06:31:05.260Z`
 
 This pack turns the public OID assessment artifacts into a small, reviewable first scope. It is designed for client-safe inventory samples and derived findings only.
 
