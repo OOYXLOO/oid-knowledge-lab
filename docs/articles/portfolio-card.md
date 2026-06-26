@@ -44,6 +44,20 @@ Why it is useful:
 - it names source-boundary decisions instead of treating every public pointer as equally strong,
 - and it turns a niche OID cleanup workflow into a reusable client-safe intake pattern.
 
+## Observability-Focused Sample
+
+For backend, DevOps, observability, or support escalation readers, use:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-debug-handoff.md
+```
+
+Why it is useful:
+
+- it focuses on logs, metrics, traces, correlation IDs, and production integration debugging,
+- it shows how to prepare a safe handoff before sharing sensitive context,
+- and it includes a copyable incident-note template with acceptance checks.
+
 ## Short Editor Brief
 
 For a one-page overview of topic fit, reader outcomes, proof links, and boundaries:

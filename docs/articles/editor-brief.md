@@ -8,6 +8,7 @@ The samples focus on practical engineering workflows:
 
 - Node.js reporting scripts and generated artifacts,
 - static dashboard publishing with GitHub Pages,
+- observability-oriented debugging handoffs,
 - dataset manifests and release evidence,
 - publish guards that prevent unsafe public artifacts,
 - client-safe data intake and handoff boundaries,
@@ -66,6 +67,32 @@ Why this sample is useful:
 - It demonstrates domain-specific explanation without requiring private data.
 - It explains source boundaries and evidence strength instead of treating public pointers as full authority.
 - It shows how a technical review can be scoped before asking for production access.
+
+## Sample 3: What to Capture Before Debugging a Production Integration Failure
+
+Raw article:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-debug-handoff.md
+```
+
+Best-fit audiences:
+
+- backend and platform engineers,
+- DevOps and SRE readers,
+- observability practitioners,
+- SaaS integration teams,
+- and support escalation teams that need safer debugging handoffs.
+
+Reader outcome:
+
+The reader learns how to prepare a production integration debugging handoff with expected behavior, observed behavior, time windows, correlation IDs, safe logs, metrics, traces, recent changes, ownership, and acceptance checks.
+
+Why this sample is useful:
+
+- It is closer to observability and OpenTelemetry-adjacent editorial programs than the OID-specific sample.
+- It shows practical debugging structure without asking readers to share production secrets.
+- It includes a copyable Markdown handoff template that can be used in tickets or incident notes.
 
 ## Public Proof Links
 

@@ -62,6 +62,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md
 ```
 
+### What to Capture Before Debugging a Production Integration Failure
+
+Path: `docs/articles/production-integration-debug-handoff.md`
+
+Best for readers interested in:
+
+- observability-driven debugging,
+- safe production handoff notes,
+- logs, metrics, and trace context,
+- integration failure triage,
+- sanitized evidence sharing,
+- and acceptance checks for API, webhook, queue, or SaaS integration incidents.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-debug-handoff.md
+```
+
 ### Designing a Client-Safe OID Inventory Assessment
 
 Path: `docs/articles/client-safe-oid-inventory-assessment.md`
