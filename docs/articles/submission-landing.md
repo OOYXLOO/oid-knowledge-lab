@@ -48,6 +48,12 @@ Use the client one-pager when evaluating service-style documentation, data clean
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/oid-assessment-client-one-pager.md
 ```
 
+Use the OID assessment publication proposal when evaluating a concise editor-ready pitch for infrastructure hygiene, PKI, SNMP/MIB, or safe data-cleanup readers:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/publication-proposal-oid-inventory-assessment.md
+```
+
 Use the certificate policy OID article when evaluating PKI, X.509, certificate lifecycle, or audit-readiness fit:
 
 ```text
@@ -158,6 +164,12 @@ Sample:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/oid-assessment-client-one-pager.md
 ```
 
+Concise publication proposal:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/publication-proposal-oid-inventory-assessment.md
+```
+
 ### 5. Certificate Policy OID Inventory
 
 Working title:
@@ -224,6 +236,12 @@ Dashboard:
 
 ```text
 https://ooyxloo.github.io/oid-knowledge-lab/
+```
+
+Assessment brief:
+
+```text
+https://ooyxloo.github.io/oid-knowledge-lab/consulting-brief.html
 ```
 
 Article index:

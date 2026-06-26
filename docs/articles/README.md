@@ -192,6 +192,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/publication-proposal-static-evidence-dashboard.md
 ```
 
+### Publication Proposal: Turn a Messy OID Inventory into a Safe Review Package
+
+Path: `docs/articles/publication-proposal-oid-inventory-assessment.md`
+
+Best for editors interested in:
+
+- a concise OID inventory assessment article pitch,
+- PKI, SNMP/MIB, and internal registry cleanup readers,
+- safe client input boundaries,
+- public evidence without third-party page-body mirroring,
+- remediation boards,
+- and concrete proof links.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/publication-proposal-oid-inventory-assessment.md
+```
+
 ### A Practical Triage Checklist Before Implementing Public GitHub Bounty Issues
 
 Path: `docs/articles/public-github-bounty-triage-checklist.md`

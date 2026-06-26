@@ -1331,6 +1331,27 @@ function testChineseOperatorDocsAreReadableUtf8() {
   }
 }
 
+function testArticleSampleIndexIncludesOidAssessmentProposal() {
+  const files = [
+    "docs/articles/README.md",
+    "docs/articles/submission-landing.md",
+    "docs/articles/publication-proposal-oid-inventory-assessment.md",
+    "public/writing-samples.html"
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("publication-proposal-oid-inventory-assessment.md") || file.endsWith("publication-proposal-oid-inventory-assessment.md"), `${file} should link the OID assessment proposal`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const proposal = fs.readFileSync(path.join(ROOT, "docs/articles/publication-proposal-oid-inventory-assessment.md"), "utf8");
+  assert.ok(proposal.includes("Turn a messy OID inventory into a safe review package"));
+  assert.ok(proposal.includes("https://ooyxloo.github.io/oid-knowledge-lab/consulting-brief.html"));
+  assert.ok(proposal.includes("npm run guard:publishable"));
+}
+
 function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -1362,6 +1383,7 @@ function main() {
   testPublishGuardFlagsPrivateMirrorFiles();
   testPublishGuardAllowsPublicArtifacts();
   testChineseOperatorDocsAreReadableUtf8();
+  testArticleSampleIndexIncludesOidAssessmentProposal();
   console.log("oid knowledge tests passed");
 }
 
