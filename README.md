@@ -20,6 +20,7 @@ Last refreshed on 2026-06-24:
 - Client readiness pack: `reports/client-readiness-pack.md` gives a compact review flow, readiness checks, public artifacts, acceptance evidence, and excluded-data boundary for a scoped client inventory review
 - Vertical use-case fit pack: `reports/vertical-use-case-pack.md` maps the same assessment engine to SNMP/MIB, PKI certificate policy, and internal OID registry cleanup reviews
 - Scope proposal pack: `reports/scope-proposal-pack.md` turns the sample assessment into a first-scope proposal with client inputs, first-48-hour work, acceptance criteria, and exclusions
+- Statement of work pack: `reports/statement-of-work-pack.md` turns the first-scope proposal into a work boundary with deliverables, client responsibilities, acceptance checks, change control, and exclusions
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
@@ -62,6 +63,7 @@ npm run brief:sample
 npm run readiness:client
 npm run fit:vertical
 npm run proposal:scope
+npm run sow:oid
 npm run guard:publishable
 npm run crawl:sample
 npm run crawl:sample:resume
@@ -259,6 +261,19 @@ The command writes:
 - `reports/scope-proposal-pack.md`
 
 Use this after `readiness:client` and `fit:vertical`. It turns the same sample assessment into a compact first-scope proposal: recommended scope, decision summary, first 48 hours, client inputs, acceptance criteria, public artifacts, excluded data, and source boundary.
+
+## Statement of Work Pack
+
+```bash
+npm run sow:oid
+```
+
+The command writes:
+
+- `reports/statement-of-work-pack.json`
+- `reports/statement-of-work-pack.md`
+
+Use this after `proposal:scope`. It converts the first-scope proposal into a clean work boundary: objective, schedule, deliverables, client responsibilities, acceptance checklist, review lanes, public artifacts, change control, and excluded data.
 
 ## Client Readiness Pack
 

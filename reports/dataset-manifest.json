@@ -1,6 +1,6 @@
 {
   "name": "OID Knowledge Lab publishable data manifest",
-  "generated_at": "2026-06-26T03:52:29.296Z",
+  "generated_at": "2026-06-26T05:48:47.112Z",
   "publishable": true,
   "content_boundary": "This manifest covers OID-base sitemap metadata and open IANA PEN aggregate/public data; it does not contain OID-base page bodies, raw page mirrors, private contact fields, credentials, cookies, tokens, or account data.",
   "oid_base": {
@@ -170,22 +170,22 @@
     {
       "path": "reports/asset-audit.json",
       "bytes": 2696,
-      "sha256": "sha256:4fb5ebe0bf266170a8609cf7e61c05f186e9393c767ca74e78f39f91ae54407e"
+      "sha256": "sha256:93d6b3d0f7d70fb55e6dfef6b6f8a26e5f6cc57909c0b75bb60675777c717ad7"
     },
     {
       "path": "reports/asset-audit.md",
       "bytes": 1538,
-      "sha256": "sha256:a5fd108c81ab8be28db17661b4a2ec811a2957c9644374678b2774dbe1a6744a"
+      "sha256": "sha256:f863d7a0515fd7cf3295139d9f48dcc686423f1305f3429c51a5bb390796a9c0"
     },
     {
       "path": "reports/coverage-report.json",
       "bytes": 19192275,
-      "sha256": "sha256:f58a91879147568f05ec02e9b797a5ad975fd6e1fd6638de0632ced684c77f3e"
+      "sha256": "sha256:4604d6f454b122cc9788fff00727893102cd0c4e7e8c3001297ddf59e5c54310"
     },
     {
       "path": "reports/coverage-report.md",
       "bytes": 4567,
-      "sha256": "sha256:728594eebc221a3820102f59b3f20dc09f7eb7415bffeb447d28adcf29c9b3fc"
+      "sha256": "sha256:5dcc5c9c7273771ead85a28e7dff3166e58785122163ad4f82dbe043d630ef1d"
     },
     {
       "path": "reports/remediation-board.csv",
@@ -195,52 +195,62 @@
     {
       "path": "reports/remediation-board.json",
       "bytes": 3476,
-      "sha256": "sha256:04d1742b6ba06a002c2546b19ac3e0172cae6a9b4634d65adb800f120ba0930f"
+      "sha256": "sha256:e546c6b2115975ada044bec490c5e5e149cd424f48f6f364e0e4dd483bf4fd84"
     },
     {
       "path": "reports/remediation-board.md",
       "bytes": 2153,
-      "sha256": "sha256:911a97c7a37a3e40f4ea6dd18fad4834edf1bf2918e931ff936b193c50a031cb"
+      "sha256": "sha256:d0d81f6d088651ccc8f3f4765ebdbc14564ed25fbd8a160f6d3dcea28d4ba4cf"
     },
     {
       "path": "reports/sample-delivery-pack.md",
       "bytes": 2454,
-      "sha256": "sha256:2f44600df5d2bc3bcbe6b1266db0797f795d820e6cdd6aaade129e81caebfb52"
+      "sha256": "sha256:7f9c9854b9e80d8316ac0f2a5e79bd1a1cd9a27a1b9fcdaf7d0a9d64ec5976e3"
     },
     {
       "path": "reports/sample-engagement-brief.md",
       "bytes": 3971,
-      "sha256": "sha256:61962ef7d3170e469b885d3cbb872cb0bcacb706c4aba615975badf7e209f851"
+      "sha256": "sha256:fea02501dfb59016abbd44e99b0c0f829d1cc1c8e35257039cd6b35e6eb742f7"
     },
     {
       "path": "reports/client-readiness-pack.json",
       "bytes": 4408,
-      "sha256": "sha256:6f161eb6dcd0c2d0f0325b51a73f13d9e670527e29635edd25f07767b5d3629f"
+      "sha256": "sha256:94706072e6ffcf57c0018b5a8e1ce4da598c29c33131a4c1bf391436edc0eb9d"
     },
     {
       "path": "reports/client-readiness-pack.md",
       "bytes": 3459,
-      "sha256": "sha256:95ea3c0f1f973c4f45ad56d00a3fccbf5021d1840c0d8e893e5291e6ebc90e36"
+      "sha256": "sha256:41dd64dde415c800797c352188457329d43dc222cb62bf48180be3476422f20e"
     },
     {
       "path": "reports/vertical-use-case-pack.json",
       "bytes": 5769,
-      "sha256": "sha256:1f43f79060c14e3fef32eaf4dddcdfd69c1d12d62c872a083f2074f90ca63070"
+      "sha256": "sha256:143cf5ea056d78d250d5127deb996ed17e32e220eafe23fef7941293a1d16bab"
     },
     {
       "path": "reports/vertical-use-case-pack.md",
       "bytes": 5020,
-      "sha256": "sha256:850ce65bf44327c013d70498eacfb845909a35aae09dd271faae583355409098"
+      "sha256": "sha256:c8c10143fd0bf52edaebf7e2d8e789f00174bd5dbcd9d029db6b9ed106ab76e5"
     },
     {
       "path": "reports/scope-proposal-pack.json",
       "bytes": 3628,
-      "sha256": "sha256:5097921642722cb53a78b1518b34dda58d20f7554c5bfea60264e7361274359f"
+      "sha256": "sha256:9c1b45392f2b43f7654031cbd8eaf44c08c6ada860994ab2bdf72df71f96761e"
     },
     {
       "path": "reports/scope-proposal-pack.md",
       "bytes": 3220,
-      "sha256": "sha256:078c7f4aa38b525f4e6e6dd0ad27a8c20ab52bd8d51b13254c7cafbf46fe4d7d"
+      "sha256": "sha256:2a35b76c8b0c4adadb0bba152df69885c19549138a15d619493d43919a309e5d"
+    },
+    {
+      "path": "reports/statement-of-work-pack.json",
+      "bytes": 4595,
+      "sha256": "sha256:6d1582bf2cac467d29dca186eba1d6db17b417ded5bf80cfdf423d3b468047b8"
+    },
+    {
+      "path": "reports/statement-of-work-pack.md",
+      "bytes": 3936,
+      "sha256": "sha256:9a4ea36530e011ea6fcefa03e238fc2fc7a10df62a58f4bbe8b52143d86b9801"
     },
     {
       "path": "reports/source-policy.json",
@@ -254,8 +264,8 @@
     },
     {
       "path": "public/index.html",
-      "bytes": 17354,
-      "sha256": "sha256:dbed67e7dee9229be1b2bf4fb0c0706ed0cb50c64bc4749984c5932c5e55c850"
+      "bytes": 18407,
+      "sha256": "sha256:7823d15b0adbf54166ec7b4e668ee88a3eb8f2e97f59446d7e0ed1f728d72c12"
     },
     {
       "path": "public/sample-assessment.html",
@@ -273,5 +283,5 @@
       "sha256": "sha256:f81b317749255faa609c44cefbcb06c0e241653b75c6f9c90ab6189be5643091"
     }
   ],
-  "artifact_count": 26
+  "artifact_count": 28
 }

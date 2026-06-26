@@ -1,0 +1,106 @@
+{
+  "schema_version": "oid-statement-of-work-pack/v1",
+  "generated_at": "2026-06-26T05:48:46.320Z",
+  "title": "OID Inventory Assessment Statement of Work Pack",
+  "objective": "Start with a sanitized OID inventory sample, classify every row, and produce a compact remediation queue before any broader registry cleanup.",
+  "schedule": [
+    {
+      "phase": "Kickoff",
+      "output": "Confirm safe inventory shape, review lane, and excluded data."
+    },
+    {
+      "phase": "Confirm sanitized inventory shape",
+      "output": "CSV or tab-delimited input with an oid column and safe asset labels."
+    },
+    {
+      "phase": "Run local assessment",
+      "output": "Classify invalid values, known public PEN ownership, OID-base sitemap matches, and unresolved valid OIDs."
+    },
+    {
+      "phase": "Review action queue",
+      "output": "3 action-plan groups become a scoped remediation board with owner actions."
+    },
+    {
+      "phase": "Approve handoff boundary",
+      "output": "Share derived findings and public source links only; raw inventories and copied page bodies remain outside the package."
+    },
+    {
+      "phase": "Final handoff",
+      "output": "Deliver the assessment summary, remediation queue, source-boundary receipt, and re-run notes."
+    }
+  ],
+  "deliverables": [
+    "OID assessment summary with counts, quality score, and prioritized action groups.",
+    "Remediation queue suitable for spreadsheet or issue-tracker import.",
+    "Public-source evidence map using IANA PEN records and OID-base sitemap URLs.",
+    "Client-safe handoff notes covering exclusions, re-run checks, and unresolved owner questions."
+  ],
+  "client_responsibilities": [
+    "Provide a sanitized CSV or tab-delimited OID inventory with an `oid` column.",
+    "Use safe asset labels and remove credentials, account exports, customer records, and private correspondence.",
+    "Choose the primary review lane before kickoff: SNMP/MIB, PKI policy, or internal registry cleanup.",
+    "Assign an internal reviewer for unresolved OIDs that need organization-specific ownership checks."
+  ],
+  "acceptance_checklist": [
+    "Every input row is classified as invalid, evidence-ready, or unresolved.",
+    "Invalid OID values include correction guidance.",
+    "Known private enterprise arcs include public PEN owner evidence when available.",
+    "OID-base evidence is represented as sitemap/source URLs; OID-base page bodies stay out of the published package.",
+    "The final remediation queue lists owner actions and re-run checks.",
+    "The handoff includes a source boundary note that excludes raw inventories and copied page bodies.",
+    "Each unresolved OID has a next action or internal owner-review question."
+  ],
+  "change_control": [
+    "Inventory size, new data sources, live system access, account exports, or additional review lanes require separate approval.",
+    "Full OID-base page-body collection requires explicit source-owner authorization before it enters any workflow.",
+    "Private credentials, tokens, cookies, payment data, and KYC material are not accepted as project inputs."
+  ],
+  "out_of_scope": [
+    "credentials, OTPs, cookies, tokens, private account exports, and production secrets",
+    "payment, tax, KYC, or billing material",
+    "raw client inventories in public repositories",
+    "OID-base raw Markdown, HTML, or page-body mirrors without source-owner authorization",
+    "open-ended enterprise architecture review beyond the agreed OID inventory sample"
+  ],
+  "readiness_score": 100,
+  "review_lanes": [
+    {
+      "title": "Internal OID registry cleanup",
+      "fit_score": 90
+    },
+    {
+      "title": "PKI certificate policy OID review",
+      "fit_score": 85
+    },
+    {
+      "title": "SNMP / MIB vendor PEN inventory",
+      "fit_score": 80
+    }
+  ],
+  "public_artifacts": [
+    {
+      "path": "reports/statement-of-work-pack.md",
+      "purpose": "Statement of work, responsibilities, acceptance, and change-control boundary"
+    },
+    {
+      "path": "reports/scope-proposal-pack.md",
+      "purpose": "First scope, client inputs, first-48-hour plan, and exclusions"
+    },
+    {
+      "path": "reports/client-readiness-pack.md",
+      "purpose": "Readiness checks and review flow"
+    },
+    {
+      "path": "reports/sample-delivery-pack.md",
+      "purpose": "Example assessment delivery shape"
+    },
+    {
+      "path": "reports/remediation-board.csv",
+      "purpose": "Importable cleanup queue sample"
+    },
+    {
+      "path": "reports/source-policy.md",
+      "purpose": "Source boundary receipt"
+    }
+  ]
+}

@@ -8,6 +8,12 @@ const { analyzeCoverage, renderCoverageMarkdown } = require("../src/coverage");
 const { buildClientReadinessPack, renderClientReadinessMarkdown } = require("../src/clientReadinessPack");
 const { buildVerticalUseCasePack, renderVerticalUseCaseMarkdown } = require("../src/verticalUseCasePack");
 const { buildScopeProposalPack, renderScopeProposalMarkdown } = require("../src/proposalPack");
+let statementOfWorkModule;
+try {
+  statementOfWorkModule = require("../src/statementOfWorkPack");
+} catch (error) {
+  statementOfWorkModule = { __loadError: error.message };
+}
 const { renderDeliveryPack } = require("../src/deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { renderEngagementBrief } = require("../src/engagementBrief");
@@ -487,6 +493,8 @@ function testSiteRenderer() {
   assert.ok(html.includes("reports/vertical-use-case-pack.md"));
   assert.ok(html.includes("Scope proposal pack"));
   assert.ok(html.includes("reports/scope-proposal-pack.md"));
+  assert.ok(html.includes("Statement of work pack"));
+  assert.ok(html.includes("reports/statement-of-work-pack.md"));
   assert.ok(html.includes("SNMP / MIB"));
   assert.ok(html.includes("PKI policy"));
   assert.ok(html.includes("99 public IANA PEN assignments"));
@@ -736,6 +744,67 @@ function testScopeProposalPackRenderer() {
   assert.ok(markdown.includes("## Out of Scope"));
   assert.ok(markdown.includes("SNMP / MIB vendor PEN inventory"));
   assert.ok(markdown.includes("OID-base page bodies stay out"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+}
+
+function testStatementOfWorkPackRenderer() {
+  assert.equal(statementOfWorkModule.__loadError, undefined, statementOfWorkModule.__loadError);
+  const { buildStatementOfWorkPack, renderStatementOfWorkMarkdown } = statementOfWorkModule;
+  const pack = buildStatementOfWorkPack({
+    generatedAt: "2026-06-26T04:30:00.000Z",
+    scopeProposalPack: {
+      recommended_scope: "Start with a sanitized OID inventory sample, classify every row, and produce a compact remediation queue.",
+      first_48_hours: [
+        { step: "Confirm sanitized inventory shape", output: "CSV with oid column." },
+        { step: "Run local assessment", output: "Classified findings." }
+      ],
+      acceptance_criteria: [
+        "Every input row is classified as invalid, evidence-ready, or unresolved.",
+        "The final remediation queue lists owner actions and re-run checks."
+      ],
+      out_of_scope: [
+        "credentials, OTPs, cookies, tokens, private account exports, and production secrets",
+        "OID-base raw Markdown, HTML, or page-body mirrors without source-owner authorization"
+      ]
+    },
+    clientReadinessPack: {
+      readiness_score: 100,
+      readiness_checks: [
+        { id: "client-intake", status: "ready" },
+        { id: "source-boundary", status: "ready" }
+      ]
+    },
+    verticalUseCasePack: {
+      use_cases: [
+        { title: "SNMP / MIB vendor PEN inventory", fit_score: 92 },
+        { title: "Internal OID registry cleanup", fit_score: 86 }
+      ]
+    }
+  });
+
+  assert.equal(pack.schema_version, "oid-statement-of-work-pack/v1");
+  assert.equal(pack.title, "OID Inventory Assessment Statement of Work Pack");
+  assert.equal(pack.generated_at, "2026-06-26T04:30:00.000Z");
+  assert.ok(pack.objective.includes("sanitized OID inventory"));
+  assert.ok(pack.deliverables.some((item) => item.includes("assessment summary")));
+  assert.ok(pack.client_responsibilities.some((item) => item.includes("sanitized CSV")));
+  assert.ok(pack.acceptance_checklist.some((item) => item.includes("classified")));
+  assert.ok(pack.change_control.some((item) => item.includes("separate approval")));
+  assert.ok(pack.out_of_scope.some((item) => item.includes("credentials")));
+  assert.ok(pack.public_artifacts.some((item) => item.path === "reports/statement-of-work-pack.md"));
+  assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
+  assert.equal(JSON.stringify(pack).includes("\u8d5a\u94b1"), false);
+
+  const markdown = renderStatementOfWorkMarkdown(pack);
+  assert.ok(markdown.includes("# OID Inventory Assessment Statement of Work Pack"));
+  assert.ok(markdown.includes("## Objective"));
+  assert.ok(markdown.includes("## Deliverables"));
+  assert.ok(markdown.includes("## Client Responsibilities"));
+  assert.ok(markdown.includes("## Acceptance Checklist"));
+  assert.ok(markdown.includes("## Change Control"));
+  assert.ok(markdown.includes("reports/scope-proposal-pack.md"));
   assert.equal(markdown.includes("money" + "-goal"), false);
   assert.equal(markdown.includes("USD " + "200"), false);
 }
@@ -1099,6 +1168,7 @@ function main() {
   testClientReadinessPackRenderer();
   testVerticalUseCasePackRenderer();
   testScopeProposalPackRenderer();
+  testStatementOfWorkPackRenderer();
   testAssetAudit();
   testCoverageReport();
   testDeliveryPackRenderer();

@@ -166,6 +166,25 @@ function renderScopeProposalPanel() {
     </section>`;
 }
 
+function renderStatementOfWorkPanel() {
+  return `<section class="panel statement-of-work-panel">
+      <div>
+        <p class="eyebrow">Work boundary</p>
+        <h2>Statement of work pack</h2>
+        <p class="panel-copy">Turn the first-scope proposal into a clean work boundary: objective, schedule, deliverables, client responsibilities, acceptance checklist, change control, and exclusions.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Area</th><th>Boundary</th></tr></thead>
+        <tbody>
+          <tr><td>Inputs</td><td>Sanitized CSV or TSV inventory with an <code>oid</code> column and safe asset labels.</td></tr>
+          <tr><td>Outputs</td><td>Assessment summary, remediation queue, public-source evidence map, and handoff notes.</td></tr>
+          <tr><td>Acceptance</td><td>Each row classified with a next action, evidence boundary, and re-run check.</td></tr>
+        </tbody>
+      </table>
+      <p><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/statement-of-work-pack.md">Statement of work pack</a></p>
+    </section>`;
+}
+
 function renderClientIntakePackPanel() {
   return `<section class="panel intake-panel">
       <div>
@@ -371,6 +390,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
     ${renderVerticalUseCasePanel()}
 
     ${renderScopeProposalPanel()}
+
+    ${renderStatementOfWorkPanel()}
 
     <section class="panel">
       <div>
