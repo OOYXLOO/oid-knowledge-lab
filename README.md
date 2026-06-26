@@ -1,3 +1,4 @@
-# OID Knowledge Lab static site
+﻿# OID Knowledge Lab static dashboard
 
-This branch contains the generated static dashboard from the repository public directory.
+Published from the generated public assets on main commit 5ee1915.
+
