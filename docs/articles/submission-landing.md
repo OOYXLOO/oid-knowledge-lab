@@ -48,6 +48,12 @@ Use the certificate policy OID article when evaluating PKI, X.509, certificate l
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/certificate-policy-oid-inventory.md
 ```
 
+Use the PKI lifecycle assessment note when evaluating certificate inventory discovery, renewal-risk triage, owner gaps, and safe metadata-only client intake:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-certificate-lifecycle-assessment.md
+```
+
 ## Strongest Assignment Angles
 
 ### 1. Static Evidence Dashboard Tutorial
@@ -144,6 +150,24 @@ Sample:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/certificate-policy-oid-inventory.md
+```
+
+### 6. PKI Certificate Lifecycle Assessment
+
+Working title:
+
+```text
+PKI certificate lifecycle assessment: a safe discovery pattern
+```
+
+Why it fits:
+
+This angle explains a small, metadata-only certificate inventory assessment before automation or platform changes: renewal risk, owner gaps, issuer/path review, key usage / EKU, certificate policy OIDs, remediation lanes, and milestone acceptance checks.
+
+Sample:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-certificate-lifecycle-assessment.md
 ```
 
 ## Proof Surface
