@@ -1,6 +1,6 @@
 # OID Inventory Assessment Brief
 
-Generated: `2026-06-25T23:43:36.758Z`
+Generated: `2026-06-26T01:08:52.062Z`
 
 This brief describes a scoped OID inventory assessment using public registry indexes, a local client inventory, and a publishable evidence boundary. It is intended as a project starter before a full evidence delivery pack is produced.
 

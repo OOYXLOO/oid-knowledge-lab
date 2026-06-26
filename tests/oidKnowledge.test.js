@@ -3,7 +3,7 @@
 const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
-const { analyzeAssetText, renderAssetAuditMarkdown } = require("../src/assetAudit");
+const { analyzeAssetText, buildAssessmentHandoff, renderAssetAuditCsv, renderAssetAuditMarkdown } = require("../src/assetAudit");
 const { analyzeCoverage, renderCoverageMarkdown } = require("../src/coverage");
 const { renderDeliveryPack } = require("../src/deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
@@ -461,6 +461,11 @@ function testSiteRenderer() {
   assert.ok(html.includes("Search enterprise OIDs"));
   assert.ok(html.includes("Search sitemap catalog"));
   assert.ok(html.includes("Audit local OID list"));
+  assert.ok(html.includes("data-audit-copy-summary"));
+  assert.ok(html.includes("data-audit-download-markdown"));
+  assert.ok(html.includes("data-audit-download-csv"));
+  assert.ok(html.includes("data-audit-download-json"));
+  assert.ok(html.includes("data-audit-handoff"));
   assert.ok(html.includes("OID inventory assessment sample"));
   assert.ok(html.includes("OID inventory assessment handoff"));
   assert.ok(html.includes("Acceptance check"));
@@ -537,6 +542,24 @@ bad-row,not-an-oid
   assert.ok(markdown.includes("Correct invalid OID values"));
   assert.ok(markdown.includes("ciscoSystems"));
   assert.ok(markdown.includes("not-an-oid"));
+
+  const csv = renderAssetAuditCsv(audit);
+  assert.ok(csv.startsWith("index,label,oid,status,risk,enterprise,oidbase_source,next_action"));
+  assert.ok(csv.includes("router-core,1.3.6.1.4.1.9.9.41,known_private_enterprise_oid,low,ciscoSystems"));
+  assert.ok(csv.includes("bad-row,not-an-oid,invalid_value,high"));
+  assert.equal(csv.includes("money" + "-goal"), false);
+  assert.equal(csv.includes("USD " + "200"), false);
+
+  const handoff = buildAssessmentHandoff(audit, { generatedAt: "2026-06-24T00:00:00.000Z" });
+  assert.equal(handoff.generated_at, "2026-06-24T00:00:00.000Z");
+  assert.equal(handoff.summary_text.includes("Quality score: 68/100"), true);
+  assert.equal(handoff.summary_text.includes("Client data boundary"), true);
+  assert.ok(handoff.markdown.includes("# OID Inventory Assessment Handoff"));
+  assert.ok(handoff.markdown.includes("## Client data boundary"));
+  assert.ok(handoff.csv.startsWith("index,label,oid,status,risk,enterprise,oidbase_source,next_action"));
+  assert.equal(Object.hasOwn(handoff, "source_text"), false);
+  assert.equal(JSON.stringify(handoff).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(handoff).includes("USD " + "200"), false);
 }
 
 function testCoverageReport() {

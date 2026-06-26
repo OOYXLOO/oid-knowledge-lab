@@ -184,7 +184,7 @@ node src/cli.js audit-assets --in path/to/assets.csv --out reports/asset-audit.j
 
 Accepted input is a simple CSV or tab-delimited file with an `oid` column and an optional `asset`, `name`, `id`, or `label` column.
 
-The generated static dashboard also includes an in-browser local OID list audit panel. It accepts the same simple CSV shape and runs entirely in the browser against the published search indexes, so a reviewer can test an inventory without uploading it to a server.
+The generated static dashboard also includes an in-browser local OID list audit panel. It accepts the same simple CSV shape and runs entirely in the browser against the published search indexes, so a reviewer can test an inventory without uploading it to a server. After an audit, the page can create a copyable assessment summary and local Markdown, CSV, or JSON downloads that contain derived findings only.
 
 ## OID Remediation Board
 
@@ -227,7 +227,7 @@ npm run delivery:sample
 
 The output is `reports/sample-delivery-pack.md`. It combines an executive summary, registry coverage context, action plan, first findings, and client data boundary notes. Use it as a reusable example of the kind of evidence pack this project can produce from a local OID inventory.
 
-The static site also builds `public/sample-assessment.html`, a browser-readable version of the same sanitized delivery story. It links the dashboard, delivery pack, remediation CSV, and dataset manifest so a reviewer can understand the sample handoff without reading the CLI output first.
+The static site also builds `public/sample-assessment.html`, a browser-readable version of the same sanitized delivery story. It links the dashboard, delivery pack, remediation CSV, and dataset manifest so a reviewer can understand the sample handoff without reading the CLI output first. The main dashboard's browser-only audit panel is the interactive companion for that sample: paste a sanitized OID list, generate the derived handoff locally, then export only the review artifacts.
 
 For a short reviewer path through the public artifacts, see `docs/client-review-guide.md`.
 

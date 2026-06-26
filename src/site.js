@@ -75,6 +75,14 @@ function renderAuditPanel() {
         <button type="button" data-audit-clear>Clear</button>
       </div>
       <div class="audit-summary" data-audit-summary></div>
+      <div class="audit-export-actions" aria-label="Assessment exports">
+        <button type="button" data-audit-copy-summary>Copy summary</button>
+        <button type="button" data-audit-download-markdown>Download Markdown</button>
+        <button type="button" data-audit-download-csv>Download CSV</button>
+        <button type="button" data-audit-download-json>Download JSON</button>
+      </div>
+      <p class="audit-status" data-audit-status></p>
+      <pre class="audit-handoff" data-audit-handoff></pre>
       <div class="search-results" data-audit-results></div>
     </section>`;
 }
@@ -449,7 +457,7 @@ a {
   gap: 10px;
   margin-top: 10px;
 }
-.audit-actions button {
+.audit-actions button, .audit-export-actions button {
   min-height: 38px;
   padding: 8px 12px;
   border: 1px solid var(--line);
@@ -460,8 +468,40 @@ a {
   font-weight: 700;
   cursor: pointer;
 }
-.audit-actions button:hover {
+.audit-actions button:hover, .audit-export-actions button:hover {
   border-color: var(--accent);
+}
+.audit-export-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0 4px;
+}
+.audit-export-actions button {
+  background: #fff8ee;
+}
+.audit-status {
+  min-height: 20px;
+  margin: 8px 0 0;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.audit-handoff {
+  display: none;
+  max-height: 260px;
+  overflow: auto;
+  margin: 10px 0 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+  color: var(--ink);
+  font: 0.84rem/1.45 "SFMono-Regular", Consolas, monospace;
+  white-space: pre-wrap;
+}
+.audit-handoff.is-visible {
+  display: block;
 }
 .audit-summary {
   display: grid;
@@ -593,14 +633,21 @@ function renderAppJs() {
   const auditRun = document.querySelector("[data-audit-run]");
   const auditSample = document.querySelector("[data-audit-sample]");
   const auditClear = document.querySelector("[data-audit-clear]");
+  const auditCopySummary = document.querySelector("[data-audit-copy-summary]");
+  const auditDownloadMarkdown = document.querySelector("[data-audit-download-markdown]");
+  const auditDownloadCsv = document.querySelector("[data-audit-download-csv]");
+  const auditDownloadJson = document.querySelector("[data-audit-download-json]");
   const auditSummary = document.querySelector("[data-audit-summary]");
   const auditResults = document.querySelector("[data-audit-results]");
+  const auditStatus = document.querySelector("[data-audit-status]");
+  const auditHandoff = document.querySelector("[data-audit-handoff]");
   const index = Array.isArray(window.OID_KNOWLEDGE_INDEX) ? window.OID_KNOWLEDGE_INDEX : [];
   const oidBaseDirectory = Array.isArray(window.OID_BASE_DIRECTORY) ? window.OID_BASE_DIRECTORY : [];
   const penByNumber = new Map(index.map((record) => [Number(record.number), record]));
   const oidBaseByOid = new Map(oidBaseDirectory.map((record) => [String(record.oid), record]));
   const privateEnterprisePrefix = "1.3.6.1.4.1";
   const oidPattern = /^(?:0|1|2)(?:\\.\\d+)*$/;
+  let latestHandoff = null;
 
   function escapeHtml(value) {
     return String(value == null ? "" : value)
@@ -709,39 +756,178 @@ function renderAppJs() {
     const known = findings.filter((item) => item.enterprise).length;
     const oidBaseMatches = findings.filter((item) => item.oidbase_match).length;
     const unresolved = findings.filter((item) => ["invalid_value", "unknown_private_enterprise_oid", "valid_oid_unmatched"].includes(item.status)).length;
+    const unknownPrivate = findings.filter((item) => item.status === "unknown_private_enterprise_oid").length;
+    const validUnmatched = findings.filter((item) => item.status === "valid_oid_unmatched").length;
     const score = Math.max(0, Math.min(100, Math.round(100 - invalid * 15 - findings.filter((item) => item.status === "unknown_private_enterprise_oid").length * 10 - findings.filter((item) => item.status === "valid_oid_unmatched").length * 7)));
     return {
+      generated_at: new Date().toISOString(),
+      source_kind: "browser local OID asset list",
       summary: {
         total_assets: findings.length,
         valid_oids: findings.length - invalid,
         invalid_values: invalid,
+        private_enterprise_oids: findings.filter((item) => privateEnterpriseNumber(item.oid) != null).length,
         known_enterprises: known,
         oidbase_directory_matches: oidBaseMatches,
+        evidence_ready_assets: findings.filter((item) => item.enterprise || item.oidbase_match).length,
         unresolved_assets: unresolved,
+        unknown_private_enterprise_oids: unknownPrivate,
+        valid_oid_unmatched: validUnmatched,
+        high_risk_findings: findings.filter((item) => item.risk === "high").length,
+        medium_risk_findings: findings.filter((item) => item.risk === "medium").length,
         quality_score: score
       },
       findings
     };
   }
 
+  function csvCell(value) {
+    const text = String(value == null ? "" : value);
+    return /[",\\r\\n]/.test(text) ? "\\"" + text.replace(/"/g, "\\"\\"") + "\\"" : text;
+  }
+
+  function nextActionForFinding(finding) {
+    if (finding.status === "invalid_value") return "Correct the malformed OID value before using this row as evidence.";
+    if (finding.status === "unknown_private_enterprise_oid") return "Identify the private enterprise owner from vendor or internal registration records.";
+    if (finding.status === "valid_oid_unmatched") return "Confirm whether this valid OID is internal, deprecated, or covered by another registry.";
+    return "Preserve the public registry evidence with the asset record.";
+  }
+
+  function renderAuditCsv(audit) {
+    const rows = [[
+      "index",
+      "label",
+      "oid",
+      "status",
+      "risk",
+      "enterprise",
+      "oidbase_source",
+      "next_action"
+    ]].concat(audit.findings.map((finding) => [
+      finding.index,
+      finding.label,
+      finding.oid,
+      finding.status,
+      finding.risk,
+      finding.enterprise ? finding.enterprise.organization : "",
+      finding.oidbase_match ? finding.oidbase_match.source_url : "",
+      nextActionForFinding(finding)
+    ]));
+    return rows.map((row) => row.map(csvCell).join(",")).join("\\n") + "\\n";
+  }
+
+  function buildSummaryText(audit) {
+    const summary = audit.summary;
+    return [
+      "OID inventory assessment handoff",
+      "Quality score: " + summary.quality_score + "/100",
+      "Assets reviewed: " + summary.total_assets,
+      "Evidence-ready assets: " + summary.evidence_ready_assets,
+      "Unresolved assets: " + summary.unresolved_assets,
+      "Invalid values: " + summary.invalid_values,
+      "Unknown private enterprise OIDs: " + summary.unknown_private_enterprise_oids,
+      "Client data boundary: derived findings only; raw inventories, credentials, private exports, and copied OID-base page bodies stay out of this package."
+    ].join("\\n");
+  }
+
+  function markdownRow(values) {
+    return "| " + values.map((value) => String(value == null ? "" : value).replace(/\\|/g, "\\\\|")).join(" | ") + " |";
+  }
+
+  function buildAssessmentHandoff(audit) {
+    const summaryText = buildSummaryText(audit);
+    const markdown = [
+      "# OID Inventory Assessment Handoff",
+      "",
+      "Generated at: " + audit.generated_at,
+      "",
+      "## Decision summary",
+      "",
+      summaryText.split("\\n").map((line) => "- " + line).join("\\n"),
+      "",
+      "## Derived findings",
+      "",
+      "| # | Asset | OID | Status | Risk | Enterprise | OID-base source | Next action |",
+      "|---|---|---|---|---|---|---|---|",
+      audit.findings.map((finding) => markdownRow([
+        finding.index,
+        finding.label,
+        finding.oid,
+        finding.status,
+        finding.risk,
+        finding.enterprise ? finding.enterprise.organization : "",
+        finding.oidbase_match ? finding.oidbase_match.source_url : "",
+        nextActionForFinding(finding)
+      ])).join("\\n"),
+      "",
+      "## Client data boundary",
+      "",
+      "This handoff contains derived findings only. Raw inventories, credentials, private account exports, contact-level registry records, and copied OID-base page bodies should not be published in this repository.",
+      ""
+    ].join("\\n");
+    return {
+      generated_at: audit.generated_at,
+      source_kind: audit.source_kind,
+      summary_text: summaryText,
+      markdown,
+      csv: renderAuditCsv(audit),
+      summary: audit.summary,
+      findings: audit.findings
+    };
+  }
+
+  function setAuditStatus(message) {
+    if (auditStatus) auditStatus.textContent = message || "";
+  }
+
+  function downloadText(filename, mimeType, text) {
+    const blob = new Blob([text], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+  }
+
   function renderAudit() {
     if (!auditInput || !auditSummary || !auditResults) return;
     const rows = parseAuditRows(auditInput.value);
     if (rows.length === 0) {
+      latestHandoff = null;
       auditSummary.innerHTML = "";
       auditResults.innerHTML = "";
+      if (auditHandoff) {
+        auditHandoff.textContent = "";
+        auditHandoff.classList.remove("is-visible");
+      }
+      setAuditStatus("");
       return;
     }
     const audit = analyzeAuditRows(rows);
+    latestHandoff = buildAssessmentHandoff(audit);
     auditSummary.innerHTML =
       "<span>Total<strong>" + audit.summary.total_assets.toLocaleString("en-US") + "</strong></span>" +
       "<span>Valid OIDs<strong>" + audit.summary.valid_oids.toLocaleString("en-US") + "</strong></span>" +
       "<span>Evidence matches<strong>" + (audit.summary.known_enterprises + audit.summary.oidbase_directory_matches).toLocaleString("en-US") + "</strong></span>" +
       "<span>Quality score<strong>" + audit.summary.quality_score + "/100</strong></span>";
+    if (auditHandoff) {
+      auditHandoff.textContent = latestHandoff.summary_text;
+      auditHandoff.classList.add("is-visible");
+    }
+    setAuditStatus("Assessment handoff is ready for copy or local download.");
     const shown = audit.findings.slice(0, 50);
     auditResults.innerHTML = "<table><thead><tr><th>Asset</th><th>OID</th><th>Status</th><th>Enterprise</th><th>OID-base</th><th>Risk</th></tr></thead><tbody>" +
       shown.map((finding) => "<tr><td>" + escapeHtml(finding.label) + "</td><td><code>" + escapeHtml(finding.oid) + "</code></td><td><span class=\\"status-badge\\">" + escapeHtml(finding.status) + "</span></td><td>" + escapeHtml(finding.enterprise ? finding.enterprise.organization : "") + "</td><td>" + (finding.oidbase_match ? "<a href=\\"" + escapeHtml(finding.oidbase_match.source_url) + "\\">source</a>" : "") + "</td><td>" + escapeHtml(finding.risk) + "</td></tr>").join("") +
       "</tbody></table>";
+  }
+
+  function ensureHandoff() {
+    if (!latestHandoff) renderAudit();
+    if (!latestHandoff) setAuditStatus("Paste or load an OID inventory before exporting.");
+    return latestHandoff;
   }
 
   function renderPen() {
@@ -773,6 +959,31 @@ function renderAppJs() {
   if (input) input.addEventListener("input", renderPen);
   if (oidBaseInput) oidBaseInput.addEventListener("input", renderOidBase);
   if (auditRun) auditRun.addEventListener("click", renderAudit);
+  if (auditCopySummary) auditCopySummary.addEventListener("click", function () {
+    const handoff = ensureHandoff();
+    if (!handoff) return;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(handoff.summary_text).then(function () {
+        setAuditStatus("Summary copied to clipboard.");
+      }).catch(function () {
+        setAuditStatus("Copy failed. The summary remains visible for manual selection.");
+      });
+    } else {
+      setAuditStatus("Clipboard API unavailable. The summary remains visible for manual selection.");
+    }
+  });
+  if (auditDownloadMarkdown) auditDownloadMarkdown.addEventListener("click", function () {
+    const handoff = ensureHandoff();
+    if (handoff) downloadText("oid-assessment-handoff.md", "text/markdown;charset=utf-8", handoff.markdown);
+  });
+  if (auditDownloadCsv) auditDownloadCsv.addEventListener("click", function () {
+    const handoff = ensureHandoff();
+    if (handoff) downloadText("oid-assessment-findings.csv", "text/csv;charset=utf-8", handoff.csv);
+  });
+  if (auditDownloadJson) auditDownloadJson.addEventListener("click", function () {
+    const handoff = ensureHandoff();
+    if (handoff) downloadText("oid-assessment-handoff.json", "application/json;charset=utf-8", JSON.stringify(handoff, null, 2) + "\\n");
+  });
   if (auditSample && auditInput) auditSample.addEventListener("click", function () {
     auditInput.value = "asset,oid\\nrouter-core,1.3.6.1.4.1.9.9.41\\nsha256-policy,2.16.840.1.101.3.4.2.1\\nunknown-enterprise,1.3.6.1.4.1.999999.1\\nbad-row,not-an-oid";
     renderAudit();

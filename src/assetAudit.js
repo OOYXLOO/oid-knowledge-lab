@@ -260,6 +260,114 @@ ${rows.map((row) => `| ${row.join(" | ")} |`).join("\n")}
 `;
 }
 
+function csvCell(value) {
+  const text = String(value ?? "");
+  if (!/[",\r\n]/.test(text)) return text;
+  return `"${text.replace(/"/g, '""')}"`;
+}
+
+function nextActionForFinding(finding) {
+  if (finding.status === "invalid_value") return "Correct the malformed OID value before using this row as evidence.";
+  if (finding.status === "unknown_private_enterprise_oid") return "Identify the private enterprise owner from vendor or internal registration records.";
+  if (finding.status === "valid_oid_unmatched") return "Confirm whether this valid OID is internal, deprecated, or covered by another registry.";
+  return "Preserve the public registry evidence with the asset record.";
+}
+
+function renderAssetAuditCsv(audit) {
+  const header = [
+    "index",
+    "label",
+    "oid",
+    "status",
+    "risk",
+    "enterprise",
+    "oidbase_source",
+    "next_action"
+  ];
+  const rows = (audit.findings || []).map((finding) => [
+    finding.index,
+    finding.label,
+    finding.oid,
+    finding.status,
+    finding.risk,
+    finding.enterprise ? finding.enterprise.organization : "",
+    finding.oidbase_match ? finding.oidbase_match.source_url : "",
+    nextActionForFinding(finding)
+  ]);
+  return `${[header, ...rows].map((row) => row.map(csvCell).join(",")).join("\n")}\n`;
+}
+
+function buildAssessmentSummaryText(audit) {
+  const summary = audit.summary || {};
+  return [
+    "OID inventory assessment handoff",
+    `Quality score: ${summary.quality_score}/100`,
+    `Assets reviewed: ${summary.total_assets}`,
+    `Evidence-ready assets: ${summary.evidence_ready_assets}`,
+    `Unresolved assets: ${summary.unresolved_assets}`,
+    `Invalid values: ${summary.invalid_values}`,
+    `Unknown private enterprise OIDs: ${summary.unknown_private_enterprise_oids}`,
+    "Client data boundary: derived findings only; raw inventories, credentials, private exports, and copied OID-base page bodies stay out of this package."
+  ].join("\n");
+}
+
+function buildAssessmentHandoff(audit, options = {}) {
+  const generatedAt = options.generatedAt || audit.generated_at || new Date().toISOString();
+  const summaryText = buildAssessmentSummaryText(audit);
+  const actionRows = (audit.action_plan || []).map((item) => [
+    item.priority,
+    item.title,
+    item.count,
+    item.action
+  ].map((value) => String(value ?? "").replace(/\|/g, "\\|")));
+  const findingRows = (audit.findings || []).map((finding) => [
+    finding.index,
+    finding.label,
+    finding.oid,
+    finding.status,
+    finding.risk,
+    finding.enterprise ? finding.enterprise.organization : "",
+    finding.oidbase_match ? finding.oidbase_match.source_url : "",
+    nextActionForFinding(finding)
+  ].map((value) => String(value ?? "").replace(/\|/g, "\\|")));
+
+  const markdown = `# OID Inventory Assessment Handoff
+
+Generated at: ${generatedAt}
+
+## Decision summary
+
+${summaryText.split("\n").map((line) => `- ${line}`).join("\n")}
+
+## Action plan
+
+| Priority | Action | Count | Delivery note |
+|---|---|---:|---|
+${actionRows.map((row) => `| ${row.join(" | ")} |`).join("\n")}
+
+## Derived findings
+
+| # | Asset | OID | Status | Risk | Enterprise | OID-base source | Next action |
+|---|---|---|---|---|---|---|---|
+${findingRows.map((row) => `| ${row.join(" | ")} |`).join("\n")}
+
+## Client data boundary
+
+This handoff contains derived findings only. Raw inventories, credentials, private account exports, contact-level registry records, and copied OID-base page bodies should not be published in this repository.
+`;
+
+  return {
+    generated_at: generatedAt,
+    source_kind: audit.source_kind || "user supplied OID asset list",
+    summary_text: summaryText,
+    markdown,
+    csv: renderAssetAuditCsv(audit),
+    summary: audit.summary,
+    action_plan: audit.action_plan || [],
+    findings: audit.findings || []
+  };
+}
+
 function readJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
@@ -284,7 +392,9 @@ function auditAssetFile({ inputFile, penIndexFile, oidBaseIndexFile, jsonOutFile
 module.exports = {
   analyzeAssetText,
   auditAssetFile,
+  buildAssessmentHandoff,
   parseAssetRows,
   privateEnterpriseNumber,
+  renderAssetAuditCsv,
   renderAssetAuditMarkdown
 };
