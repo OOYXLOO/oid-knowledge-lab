@@ -100,6 +100,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-debug-handoff.md
 ```
 
+### Production Integration Debug Handoff Template
+
+Path: `docs/articles/production-integration-handoff-template.md`
+
+Best for readers interested in:
+
+- a copyable incident, ticket, or support-escalation template,
+- safe production context sharing,
+- expected versus observed behavior,
+- correlation handles, metrics, traces, recent changes, and ownership,
+- and acceptance checks for API, webhook, queue, SaaS sync, or automation failures.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-handoff-template.md
+```
+
 ### Designing a Client-Safe OID Inventory Assessment
 
 Path: `docs/articles/client-safe-oid-inventory-assessment.md`

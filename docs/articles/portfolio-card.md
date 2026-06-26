@@ -58,6 +58,18 @@ Why it is useful:
 - it shows how to prepare a safe handoff before sharing sensitive context,
 - and it includes a copyable incident-note template with acceptance checks.
 
+For a shorter reusable template, use:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-handoff-template.md
+```
+
+Why it is useful:
+
+- it gives a ready-to-copy structure for API, webhook, queue, SaaS sync, and automation failures,
+- it separates safe evidence from excluded production data,
+- and it gives reviewers an immediate checklist for expected behavior, observed behavior, correlation handles, recent changes, ownership, and acceptance checks.
+
 ## Short Editor Brief
 
 For a one-page overview of topic fit, reader outcomes, proof links, and boundaries:

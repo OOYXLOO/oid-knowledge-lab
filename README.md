@@ -46,6 +46,7 @@ Article samples:
 - `docs/articles/static-evidence-dashboard-github-pages.md`
 - `docs/articles/public-github-bounty-triage-checklist.md`
 - `docs/articles/production-integration-debug-handoff.md`
+- `docs/articles/production-integration-handoff-template.md`
 
 ## Compliance Boundary
 

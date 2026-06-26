@@ -94,6 +94,14 @@ Why this sample is useful:
 - It shows practical debugging structure without asking readers to share production secrets.
 - It includes a copyable Markdown handoff template that can be used in tickets or incident notes.
 
+Companion template:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-handoff-template.md
+```
+
+The companion template is useful when a reviewer wants the shortest reusable artifact: expected behavior, observed behavior, time window, correlation handles, safe evidence, metrics, traces, recent changes, ownership, hypotheses, acceptance checks, and excluded data.
+
 ## Public Proof Links
 
 Portfolio card:
