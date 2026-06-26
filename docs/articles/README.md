@@ -135,6 +135,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-certificate-lifecycle-assessment.md
 ```
 
+### PKI / CLM Buyer Brief: Metadata-Only Certificate Lifecycle Discovery
+
+Path: `docs/articles/pki-clm-buyer-brief.md`
+
+Best for readers interested in:
+
+- a buyer-readable first milestone for certificate lifecycle management,
+- a 48-hour discovery shape,
+- safe metadata-only inputs,
+- certificate renewal, owner, source-system, issuer, EKU, and policy OID review,
+- and acceptance checks before CLM tooling, automation, or CA migration work.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-clm-buyer-brief.md
+```
+
 ### Build a Static Evidence Dashboard with Node.js and GitHub Pages
 
 Path: `docs/articles/static-evidence-dashboard-github-pages.md`

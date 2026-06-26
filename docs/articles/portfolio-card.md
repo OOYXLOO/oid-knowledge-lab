@@ -56,6 +56,12 @@ For a PKI and certificate lifecycle angle, use:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/certificate-policy-oid-inventory.md
 ```
 
+For a buyer-readable PKI / CLM discovery milestone, use:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-clm-buyer-brief.md
+```
+
 ## Observability-Focused Sample
 
 For backend, DevOps, observability, or support escalation readers, use:

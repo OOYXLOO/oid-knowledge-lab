@@ -48,6 +48,7 @@ Article samples:
 - `docs/articles/oid-assessment-client-one-pager.md`
 - `docs/articles/certificate-policy-oid-inventory.md`
 - `docs/articles/pki-certificate-lifecycle-assessment.md`
+- `docs/articles/pki-clm-buyer-brief.md`
 - `docs/articles/client-safe-oid-inventory-assessment.md`
 - `docs/articles/static-evidence-dashboard-github-pages.md`
 - `docs/articles/public-github-bounty-triage-checklist.md`

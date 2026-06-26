@@ -54,6 +54,12 @@ Use the PKI lifecycle assessment note when evaluating certificate inventory disc
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-certificate-lifecycle-assessment.md
 ```
 
+Use the PKI / CLM buyer brief when evaluating a small first milestone for certificate lifecycle management discovery:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-clm-buyer-brief.md
+```
+
 ## Strongest Assignment Angles
 
 ### 1. Static Evidence Dashboard Tutorial
@@ -168,6 +174,24 @@ Sample:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-certificate-lifecycle-assessment.md
+```
+
+### 7. PKI / CLM Discovery Buyer Brief
+
+Working title:
+
+```text
+Metadata-only certificate lifecycle discovery before a CLM rollout
+```
+
+Why it fits:
+
+This angle is a buyer-readable first step for certificate lifecycle work: 48-hour discovery, safe input fields, renewal risk, owner gaps, issuer/path review, EKU and policy OID findings, remediation board, and acceptance checks before automation or migration.
+
+Sample:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-clm-buyer-brief.md
 ```
 
 ## Proof Surface
