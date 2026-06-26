@@ -23,6 +23,7 @@ Last refreshed on 2026-06-24:
 - Statement of work pack: `reports/statement-of-work-pack.md` turns the first-scope proposal into a work boundary with deliverables, client responsibilities, acceptance checks, change control, and exclusions
 - Decision one-pager: `reports/decision-one-pager.md` compresses the approval question, next step, safe inputs, boundaries, and proof links into a buyer-readable first page
 - Client kickoff pack: `reports/client-kickoff-pack.md` turns the decision one-pager into an initial reply, safe intake request, first-call agenda, deliverables preview, acceptance preview, and proof links
+- Public proof index: the generated dashboard links this project, Signal Garden, Incident Zero Stack, Hanzi Scout, and Helioigma as public review surfaces for editors, reviewers, or technical stakeholders
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.

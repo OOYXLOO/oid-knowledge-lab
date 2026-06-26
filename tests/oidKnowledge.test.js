@@ -509,6 +509,15 @@ function testSiteRenderer() {
   assert.ok(html.includes("reports/statement-of-work-pack.md"));
   assert.ok(html.includes("Decision one-pager"));
   assert.ok(html.includes("reports/decision-one-pager.md"));
+  assert.ok(html.includes("Public proof index"));
+  assert.ok(html.includes("Signal Garden"));
+  assert.ok(html.includes("https://ooyxloo.github.io/signal-garden/"));
+  assert.ok(html.includes("Incident Zero Stack"));
+  assert.ok(html.includes("https://ooyxloo.github.io/incident-zero-stack/"));
+  assert.ok(html.includes("Hanzi Scout"));
+  assert.ok(html.includes("https://ooyxloo.github.io/hanzi-scout/"));
+  assert.ok(html.includes("Helioigma"));
+  assert.ok(html.includes("https://ooyxloo.github.io/helioigma/"));
   assert.ok(html.includes("SNMP / MIB"));
   assert.ok(html.includes("PKI policy"));
   assert.ok(html.includes("99 public IANA PEN assignments"));
