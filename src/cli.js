@@ -14,6 +14,7 @@ const { buildManifestFromFiles } = require("./manifest");
 const { ensureDir, fetchText, sleep, writeJson } = require("./net");
 const { parseOidMarkdown } = require("./parser");
 const { auditPublishableTree } = require("./publishGuard");
+const { writeScopeProposalPack } = require("./proposalPack");
 const { writeRemediationBoard } = require("./remediationBoard");
 const { buildReport, readJsonl } = require("./report");
 const { completedOidsFromFile, failureRecordForEntry, selectPendingEntries, summarizeCrawlRun, writeCrawlState } = require("./crawlState");
@@ -333,6 +334,28 @@ function verticalUseCasePack(args) {
   console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
 }
 
+function scopeProposalPack(args) {
+  const assetAuditFile = path.resolve(ROOT, argValue(args, "--asset-audit", "reports/asset-audit.json"));
+  const coverageReportFile = path.resolve(ROOT, argValue(args, "--coverage", "reports/coverage-report.json"));
+  const sourcePolicyFile = path.resolve(ROOT, argValue(args, "--source-policy", "reports/source-policy.json"));
+  const clientReadinessFile = path.resolve(ROOT, argValue(args, "--client-readiness", "reports/client-readiness-pack.json"));
+  const verticalUseCaseFile = path.resolve(ROOT, argValue(args, "--vertical-fit", "reports/vertical-use-case-pack.json"));
+  const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/scope-proposal-pack.json"));
+  const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/scope-proposal-pack.md"));
+  const pack = writeScopeProposalPack({
+    assetAuditFile,
+    coverageReportFile,
+    sourcePolicyFile,
+    clientReadinessFile,
+    verticalUseCaseFile,
+    jsonOutFile,
+    markdownOutFile
+  });
+  console.log(`scope proposal first-48-hour steps: ${pack.first_48_hours.length}`);
+  console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
+  console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
+}
+
 function buildStaticSite(args) {
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
   const indexFile = path.resolve(ROOT, argValue(args, "--index", "reports/iana-pen-public-index.json"));
@@ -368,6 +391,8 @@ function auditDataset(args) {
     path.resolve(ROOT, "reports/client-readiness-pack.md"),
     path.resolve(ROOT, "reports/vertical-use-case-pack.json"),
     path.resolve(ROOT, "reports/vertical-use-case-pack.md"),
+    path.resolve(ROOT, "reports/scope-proposal-pack.json"),
+    path.resolve(ROOT, "reports/scope-proposal-pack.md"),
     path.resolve(ROOT, "reports/source-policy.json"),
     path.resolve(ROOT, "reports/source-policy.md"),
     path.resolve(ROOT, "public/index.html"),
@@ -462,13 +487,14 @@ async function main() {
   if (command === "engagement-brief") return engagementBrief(args);
   if (command === "client-readiness-pack") return clientReadinessPack(args);
   if (command === "vertical-use-case-pack") return verticalUseCasePack(args);
+  if (command === "scope-proposal-pack") return scopeProposalPack(args);
   if (command === "audit-dataset") return auditDataset(args);
   if (command === "source-policy") return sourcePolicy(args);
   if (command === "guard-publishable") return guardPublishable();
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|audit-dataset|source-policy|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|audit-dataset|source-policy|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

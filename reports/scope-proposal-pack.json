@@ -1,0 +1,96 @@
+{
+  "schema_version": "oid-scope-proposal-pack/v1",
+  "generated_at": "2026-06-26T03:52:28.537Z",
+  "title": "OID Inventory Assessment Scope Proposal Pack",
+  "recommended_scope": "Start with a sanitized OID inventory sample, classify every row, and produce a compact remediation queue before any broader registry cleanup.",
+  "decision_summary": [
+    "Sample rows reviewed: 4",
+    "Evidence-ready rows: 2",
+    "Unresolved rows: 2",
+    "Invalid values: 1",
+    "Client readiness score: 100/100",
+    "Public PEN records available: 65959"
+  ],
+  "first_48_hours": [
+    {
+      "step": "Confirm sanitized inventory shape",
+      "output": "CSV or tab-delimited input with an oid column and safe asset labels."
+    },
+    {
+      "step": "Run local assessment",
+      "output": "Classify invalid values, known public PEN ownership, OID-base sitemap matches, and unresolved valid OIDs."
+    },
+    {
+      "step": "Review action queue",
+      "output": "3 action-plan groups become a scoped remediation board with owner actions."
+    },
+    {
+      "step": "Approve handoff boundary",
+      "output": "Share derived findings and public source links only; raw inventories and copied page bodies remain outside the package."
+    }
+  ],
+  "client_inputs": [
+    "A CSV or tab-delimited OID inventory with an `oid` column.",
+    "Safe asset labels such as device, certificate profile, service, spreadsheet row, or internal registry id.",
+    "Internal owner notes only for unresolved OIDs that need organization-specific review.",
+    "Confirmation of the preferred review lane: SNMP/MIB, PKI policy, or internal registry cleanup."
+  ],
+  "acceptance_criteria": [
+    "Every input row is classified as invalid, evidence-ready, or unresolved.",
+    "Invalid OID values include correction guidance.",
+    "Known private enterprise arcs include public PEN owner evidence when available.",
+    "OID-base evidence is represented as sitemap/source URLs; OID-base page bodies stay out of the published package.",
+    "The final remediation queue lists owner actions and re-run checks."
+  ],
+  "out_of_scope": [
+    "credentials, OTPs, cookies, tokens, private account exports, and production secrets",
+    "payment, tax, KYC, or billing material",
+    "raw client inventories in public repositories",
+    "OID-base raw Markdown, HTML, or page-body mirrors without source-owner authorization",
+    "open-ended enterprise architecture review beyond the agreed OID inventory sample"
+  ],
+  "best_fit_lanes": [
+    {
+      "title": "Internal OID registry cleanup",
+      "fit_score": 90
+    },
+    {
+      "title": "PKI certificate policy OID review",
+      "fit_score": 85
+    },
+    {
+      "title": "SNMP / MIB vendor PEN inventory",
+      "fit_score": 80
+    }
+  ],
+  "public_artifacts": [
+    {
+      "path": "reports/scope-proposal-pack.md",
+      "purpose": "Client-facing scope, first-48-hour plan, inputs, acceptance, and exclusions"
+    },
+    {
+      "path": "reports/client-readiness-pack.md",
+      "purpose": "Readiness checks and review flow"
+    },
+    {
+      "path": "reports/vertical-use-case-pack.md",
+      "purpose": "Use-case fit by review lane"
+    },
+    {
+      "path": "reports/sample-engagement-brief.md",
+      "purpose": "Detailed brief for the assessment"
+    },
+    {
+      "path": "reports/remediation-board.csv",
+      "purpose": "Importable cleanup queue sample"
+    },
+    {
+      "path": "reports/source-policy.md",
+      "purpose": "Source boundary receipt"
+    }
+  ],
+  "source_boundary": {
+    "full_crawl_requires_authorization": true,
+    "page_bodies_publishable_without_authorization": false
+  }
+}

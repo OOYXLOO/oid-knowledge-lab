@@ -1,6 +1,6 @@
 # OID Inventory Assessment Vertical Fit Pack
 
-Generated: `2026-06-26T03:14:55.802Z`
+Generated: `2026-06-26T03:52:28.192Z`
 
 This pack maps the same OID inventory assessment engine to three practical review contexts. It is a public, source-safe planning artifact: it uses derived findings, public registry evidence, and source-boundary receipts, not raw client inventories or copied OID-base page bodies.
 

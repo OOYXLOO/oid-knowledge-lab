@@ -147,6 +147,25 @@ function renderVerticalUseCasePanel() {
     </section>`;
 }
 
+function renderScopeProposalPanel() {
+  return `<section class="panel scope-proposal-panel">
+      <div>
+        <p class="eyebrow">First-scope proposal</p>
+        <h2>Scope proposal pack</h2>
+        <p class="panel-copy">Translate the sample audit into a small first engagement: client-safe inputs, first 48 hours, acceptance criteria, and excluded data boundaries.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Decision area</th><th>Proposal evidence</th></tr></thead>
+        <tbody>
+          <tr><td>Start point</td><td>Sanitized OID inventory sample with an explicit <code>oid</code> column.</td></tr>
+          <tr><td>First 48 hours</td><td>Inventory shape check, local assessment, action queue, and handoff boundary review.</td></tr>
+          <tr><td>Acceptance</td><td>Every row classified as invalid, evidence-ready, or unresolved with a next action.</td></tr>
+        </tbody>
+      </table>
+      <p><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/scope-proposal-pack.md">Scope proposal pack</a></p>
+    </section>`;
+}
+
 function renderClientIntakePackPanel() {
   return `<section class="panel intake-panel">
       <div>
@@ -350,6 +369,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
     ${renderClientReadinessPanel()}
 
     ${renderVerticalUseCasePanel()}
+
+    ${renderScopeProposalPanel()}
 
     <section class="panel">
       <div>
@@ -1158,6 +1179,7 @@ module.exports = {
   renderDashboard,
   renderClientReadinessPanel,
   renderVerticalUseCasePanel,
+  renderScopeProposalPanel,
   renderClientIntakePackPanel,
   renderAppJs,
   renderSampleAssessmentPage,

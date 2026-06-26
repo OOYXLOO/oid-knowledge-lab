@@ -19,6 +19,7 @@ Last refreshed on 2026-06-24:
 - Sample engagement brief: `reports/sample-engagement-brief.md` describes inputs, deliverables, and acceptance criteria for a scoped OID inventory assessment
 - Client readiness pack: `reports/client-readiness-pack.md` gives a compact review flow, readiness checks, public artifacts, acceptance evidence, and excluded-data boundary for a scoped client inventory review
 - Vertical use-case fit pack: `reports/vertical-use-case-pack.md` maps the same assessment engine to SNMP/MIB, PKI certificate policy, and internal OID registry cleanup reviews
+- Scope proposal pack: `reports/scope-proposal-pack.md` turns the sample assessment into a first-scope proposal with client inputs, first-48-hour work, acceptance criteria, and exclusions
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
@@ -60,6 +61,7 @@ npm run coverage:oid
 npm run brief:sample
 npm run readiness:client
 npm run fit:vertical
+npm run proposal:scope
 npm run guard:publishable
 npm run crawl:sample
 npm run crawl:sample:resume
@@ -244,6 +246,19 @@ npm run brief:sample
 ```
 
 The output is `reports/sample-engagement-brief.md`. It describes the client inputs, assessment scope, deliverables, acceptance criteria, and source boundary for a scoped OID inventory assessment before the final evidence pack is generated.
+
+## Scope Proposal Pack
+
+```bash
+npm run proposal:scope
+```
+
+The command writes:
+
+- `reports/scope-proposal-pack.json`
+- `reports/scope-proposal-pack.md`
+
+Use this after `readiness:client` and `fit:vertical`. It turns the same sample assessment into a compact first-scope proposal: recommended scope, decision summary, first 48 hours, client inputs, acceptance criteria, public artifacts, excluded data, and source boundary.
 
 ## Client Readiness Pack
 

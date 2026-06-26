@@ -7,6 +7,7 @@ const { analyzeAssetText, buildAssessmentHandoff, renderAssetAuditCsv, renderAss
 const { analyzeCoverage, renderCoverageMarkdown } = require("../src/coverage");
 const { buildClientReadinessPack, renderClientReadinessMarkdown } = require("../src/clientReadinessPack");
 const { buildVerticalUseCasePack, renderVerticalUseCaseMarkdown } = require("../src/verticalUseCasePack");
+const { buildScopeProposalPack, renderScopeProposalMarkdown } = require("../src/proposalPack");
 const { renderDeliveryPack } = require("../src/deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { renderEngagementBrief } = require("../src/engagementBrief");
@@ -484,6 +485,8 @@ function testSiteRenderer() {
   assert.ok(html.includes("reports/client-readiness-pack.md"));
   assert.ok(html.includes("Vertical use-case fit pack"));
   assert.ok(html.includes("reports/vertical-use-case-pack.md"));
+  assert.ok(html.includes("Scope proposal pack"));
+  assert.ok(html.includes("reports/scope-proposal-pack.md"));
   assert.ok(html.includes("SNMP / MIB"));
   assert.ok(html.includes("PKI policy"));
   assert.ok(html.includes("99 public IANA PEN assignments"));
@@ -660,6 +663,79 @@ function testVerticalUseCasePackRenderer() {
   assert.ok(markdown.includes("Internal OID registry cleanup"));
   assert.ok(markdown.includes("## Discovery Questions"));
   assert.ok(markdown.includes("reports/client-readiness-pack.md"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+}
+
+function testScopeProposalPackRenderer() {
+  const pack = buildScopeProposalPack({
+    generatedAt: "2026-06-26T04:00:00.000Z",
+    assetAudit: {
+      summary: {
+        total_assets: 6,
+        valid_oids: 5,
+        invalid_values: 1,
+        evidence_ready_assets: 2,
+        unresolved_assets: 3,
+        quality_score: 72
+      },
+      action_plan: [
+        { priority: "P0", title: "Correct invalid OID values", count: 1, action: "Fix malformed values." },
+        { priority: "P1", title: "Review unmatched valid OIDs", count: 3, action: "Check internal registry owners." }
+      ]
+    },
+    coverageReport: {
+      summary: {
+        total_public_pen_records: 65959,
+        exact_oidbase_matches: 127,
+        subtree_only_matches: 289,
+        coverage_score: 1
+      }
+    },
+    sourcePolicy: {
+      collection_boundary: {
+        full_crawl_requires_authorization: true,
+        page_bodies_publishable_without_authorization: false
+      }
+    },
+    clientReadinessPack: {
+      readiness_score: 100,
+      readiness_checks: [
+        { id: "client-intake", status: "ready" },
+        { id: "source-boundary", status: "ready" }
+      ]
+    },
+    verticalUseCasePack: {
+      use_cases: [
+        { title: "SNMP / MIB vendor PEN inventory", fit_score: 92 },
+        { title: "PKI certificate policy OID review", fit_score: 78 },
+        { title: "Internal OID registry cleanup", fit_score: 86 }
+      ]
+    }
+  });
+
+  assert.equal(pack.schema_version, "oid-scope-proposal-pack/v1");
+  assert.equal(pack.title, "OID Inventory Assessment Scope Proposal Pack");
+  assert.equal(pack.generated_at, "2026-06-26T04:00:00.000Z");
+  assert.equal(pack.first_48_hours.length, 4);
+  assert.ok(pack.recommended_scope.includes("sanitized OID inventory sample"));
+  assert.ok(pack.client_inputs.some((item) => item.includes("CSV")));
+  assert.ok(pack.acceptance_criteria.some((item) => item.includes("classified")));
+  assert.ok(pack.out_of_scope.some((item) => item.includes("credentials")));
+  assert.ok(pack.public_artifacts.some((item) => item.path === "reports/scope-proposal-pack.md"));
+  assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
+  assert.equal(JSON.stringify(pack).includes("\u8d5a\u94b1"), false);
+
+  const markdown = renderScopeProposalMarkdown(pack);
+  assert.ok(markdown.includes("# OID Inventory Assessment Scope Proposal Pack"));
+  assert.ok(markdown.includes("## Recommended Scope"));
+  assert.ok(markdown.includes("## First 48 Hours"));
+  assert.ok(markdown.includes("## Client Inputs"));
+  assert.ok(markdown.includes("## Acceptance Criteria"));
+  assert.ok(markdown.includes("## Out of Scope"));
+  assert.ok(markdown.includes("SNMP / MIB vendor PEN inventory"));
+  assert.ok(markdown.includes("OID-base page bodies stay out"));
   assert.equal(markdown.includes("money" + "-goal"), false);
   assert.equal(markdown.includes("USD " + "200"), false);
 }
@@ -1022,6 +1098,7 @@ function main() {
   testClientIntakePack();
   testClientReadinessPackRenderer();
   testVerticalUseCasePackRenderer();
+  testScopeProposalPackRenderer();
   testAssetAudit();
   testCoverageReport();
   testDeliveryPackRenderer();
