@@ -4,7 +4,7 @@
   "private": true,
   "description": "Responsible OID knowledge-base crawler and analysis workspace.",
   "scripts": {
-    "check": "node --check src/assetAudit.js && node --check src/cli.js && node --check src/coverage.js && node --check src/crawlPlan.js && node --check src/crawlState.js && node --check src/deliveryPack.js && node --check src/engagementBrief.js && node --check src/ianaPen.js && node --check src/intakePack.js && node --check src/manifest.js && node --check src/net.js && node --check src/parser.js && node --check src/publishGuard.js && node --check src/remediationBoard.js && node --check src/report.js && node --check src/site.js && node --check src/robots.js && node --check src/sitemap.js && node --check src/sourcePolicy.js && node --check tests/oidKnowledge.test.js",
+    "check": "node --check src/assetAudit.js && node --check src/clientReadinessPack.js && node --check src/cli.js && node --check src/coverage.js && node --check src/crawlPlan.js && node --check src/crawlState.js && node --check src/deliveryPack.js && node --check src/engagementBrief.js && node --check src/ianaPen.js && node --check src/intakePack.js && node --check src/manifest.js && node --check src/net.js && node --check src/parser.js && node --check src/publishGuard.js && node --check src/remediationBoard.js && node --check src/report.js && node --check src/site.js && node --check src/robots.js && node --check src/sitemap.js && node --check src/sourcePolicy.js && node --check tests/oidKnowledge.test.js",
     "test": "node tests/oidKnowledge.test.js",
     "build:site": "node src/cli.js build-site --report reports/iana-pen-summary.json --index reports/iana-pen-public-index.json --out public",
     "inspect-source": "node src/cli.js inspect-source",
@@ -22,8 +22,9 @@
     "coverage:oid": "node src/cli.js coverage-report --pen-index reports/iana-pen-public-index.json --sitemap reports/oid-base-sitemap-index.json --out reports/coverage-report.json --markdown reports/coverage-report.md",
     "delivery:sample": "node src/cli.js delivery-pack --asset-audit reports/asset-audit.json --coverage reports/coverage-report.json --markdown reports/sample-delivery-pack.md",
     "brief:sample": "node src/cli.js engagement-brief --asset-audit reports/asset-audit.json --coverage reports/coverage-report.json --source-policy reports/source-policy.json --markdown reports/sample-engagement-brief.md",
+    "readiness:client": "node src/cli.js client-readiness-pack --asset-audit reports/asset-audit.json --coverage reports/coverage-report.json --source-policy reports/source-policy.json --out reports/client-readiness-pack.json --markdown reports/client-readiness-pack.md",
     "report": "node src/cli.js report --in data/sample/records.jsonl --out data/sample/report.json",
-    "audit:local": "npm run check && npm test && npm run build:site && npm run audit:assets && npm run remediation:sample && npm run coverage:oid && npm run delivery:sample && npm run brief:sample && npm run audit:dataset && npm run guard:publishable"
+    "audit:local": "npm run check && npm test && npm run audit:assets && npm run remediation:sample && npm run coverage:oid && npm run delivery:sample && npm run brief:sample && npm run readiness:client && npm run build:site && npm run audit:dataset && npm run guard:publishable"
   },
   "keywords": [
     "oid",

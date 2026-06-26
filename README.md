@@ -17,6 +17,7 @@ Last refreshed on 2026-06-24:
 - Source policy snapshot: `reports/source-policy.md` records robots, terms, sitemap, and hash evidence for the collection boundary
 - Authorized full crawl plan: `reports/authorized-crawl-plan.md` records the scale, gates, local output path, and estimated runtime for a future authorized page-body import
 - Sample engagement brief: `reports/sample-engagement-brief.md` describes inputs, deliverables, and acceptance criteria for a scoped OID inventory assessment
+- Client readiness pack: `reports/client-readiness-pack.md` gives a compact review flow, readiness checks, public artifacts, acceptance evidence, and excluded-data boundary for a scoped client inventory review
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
@@ -56,6 +57,7 @@ npm run audit:assets
 npm run remediation:sample
 npm run coverage:oid
 npm run brief:sample
+npm run readiness:client
 npm run guard:publishable
 npm run crawl:sample
 npm run crawl:sample:resume
@@ -241,6 +243,19 @@ npm run brief:sample
 
 The output is `reports/sample-engagement-brief.md`. It describes the client inputs, assessment scope, deliverables, acceptance criteria, and source boundary for a scoped OID inventory assessment before the final evidence pack is generated.
 
+## Client Readiness Pack
+
+```bash
+npm run readiness:client
+```
+
+The command writes:
+
+- `reports/client-readiness-pack.json`
+- `reports/client-readiness-pack.md`
+
+The pack ties the intake request, browser-only audit, sample delivery pack, remediation queue, source-policy boundary, and dataset manifest into one review map. It helps a data owner or reviewer understand exactly what a scoped OID inventory assessment needs, what it produces, how it is accepted, and which data stays excluded.
+
 ## Open Data Import: IANA PEN
 
 The project also supports the IANA Private Enterprise Numbers registry. IANA licensing terms dedicate protocol registries to CC0 1.0, making this a better source for reusable analysis than copying OID-base content.
@@ -287,6 +302,7 @@ node src/cli.js plan-full-crawl --out reports/authorized-crawl-plan.json --markd
 node src/cli.js audit-assets --in examples/sample-assets.csv --out reports/asset-audit.json --markdown reports/asset-audit.md
 node src/cli.js remediation-board --asset-audit reports/asset-audit.json --out reports/remediation-board.json --markdown reports/remediation-board.md --csv reports/remediation-board.csv
 node src/cli.js coverage-report --pen-index reports/iana-pen-public-index.json --sitemap reports/oid-base-sitemap-index.json --out reports/coverage-report.json --markdown reports/coverage-report.md
+node src/cli.js client-readiness-pack --asset-audit reports/asset-audit.json --coverage reports/coverage-report.json --source-policy reports/source-policy.json --out reports/client-readiness-pack.json --markdown reports/client-readiness-pack.md
 node src/cli.js guard-publishable
 node src/cli.js crawl --limit 10 --delay-ms 1000 --out data/sample --resume
 node src/cli.js report --in data/sample/records.jsonl --out data/sample/report.json

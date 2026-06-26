@@ -5,6 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const { analyzeAssetText, buildAssessmentHandoff, renderAssetAuditCsv, renderAssetAuditMarkdown } = require("../src/assetAudit");
 const { analyzeCoverage, renderCoverageMarkdown } = require("../src/coverage");
+const { buildClientReadinessPack, renderClientReadinessMarkdown } = require("../src/clientReadinessPack");
 const { renderDeliveryPack } = require("../src/deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { renderEngagementBrief } = require("../src/engagementBrief");
@@ -478,6 +479,8 @@ function testSiteRenderer() {
   assert.ok(html.includes("data-intake-download-markdown"));
   assert.ok(html.includes("data-intake-download-csv"));
   assert.ok(html.includes("intake-pack.js"));
+  assert.ok(html.includes("Client readiness pack"));
+  assert.ok(html.includes("reports/client-readiness-pack.md"));
   assert.ok(html.includes("99 public IANA PEN assignments"));
   assert.ok(html.includes("42 OID-base sitemap entries"));
   assert.ok(html.includes("66,101") === false);
@@ -520,6 +523,66 @@ function testClientIntakePack() {
   assert.ok(markdown.includes("## Data boundary"));
   assert.ok(markdown.includes("```csv"));
   assert.ok(markdown.includes("asset,oid,notes"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+}
+
+function testClientReadinessPackRenderer() {
+  const pack = buildClientReadinessPack({
+    generatedAt: "2026-06-26T02:20:00.000Z",
+    assetAudit: {
+      summary: {
+        total_assets: 4,
+        valid_oids: 3,
+        invalid_values: 1,
+        evidence_ready_assets: 2,
+        unresolved_assets: 2,
+        quality_score: 78
+      },
+      action_plan: [
+        { priority: "P0", title: "Correct invalid OID values", count: 1, action: "Fix malformed values." },
+        { priority: "P1", title: "Review unmatched valid OIDs", count: 1, action: "Check internal registry." }
+      ]
+    },
+    coverageReport: {
+      summary: {
+        total_public_pen_records: 65959,
+        exact_oidbase_matches: 127,
+        subtree_only_matches: 289,
+        missing_oidbase_entries: 65543,
+        coverage_score: 1
+      }
+    },
+    sourcePolicy: {
+      collection_boundary: {
+        full_crawl_requires_authorization: true,
+        page_bodies_publishable_without_authorization: false
+      }
+    },
+    intakePack: buildClientIntakePack({ generatedAt: "2026-06-26T02:20:00.000Z" })
+  });
+
+  assert.equal(pack.generated_at, "2026-06-26T02:20:00.000Z");
+  assert.equal(pack.title, "OID Inventory Assessment Client Readiness Pack");
+  assert.equal(pack.readiness_score, 100);
+  assert.ok(pack.readiness_checks.every((item) => item.status === "ready"));
+  assert.ok(pack.readiness_checks.some((item) => item.id === "client-intake"));
+  assert.ok(pack.public_artifacts.some((item) => item.path === "reports/sample-delivery-pack.md"));
+  assert.ok(pack.public_artifacts.some((item) => item.path === "public/sample-assessment.html"));
+  assert.ok(pack.review_flow.some((item) => item.step === "Prepare sanitized inventory"));
+  assert.ok(pack.acceptance_evidence.some((item) => item.includes("Every input row")));
+  assert.ok(pack.excluded_data.some((item) => item.includes("credentials")));
+  assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
+  assert.equal(JSON.stringify(pack).includes("\u8d5a\u94b1"), false);
+
+  const markdown = renderClientReadinessMarkdown(pack);
+  assert.ok(markdown.includes("# OID Inventory Assessment Client Readiness Pack"));
+  assert.ok(markdown.includes("Readiness score: `100/100`"));
+  assert.ok(markdown.includes("## Review Flow"));
+  assert.ok(markdown.includes("## Acceptance Evidence"));
+  assert.ok(markdown.includes("reports/client-readiness-pack.md"));
+  assert.ok(markdown.includes("OID-base page bodies stay out"));
   assert.equal(markdown.includes("money" + "-goal"), false);
   assert.equal(markdown.includes("USD " + "200"), false);
 }
@@ -874,6 +937,7 @@ function main() {
   testIanaPenParser();
   testSiteRenderer();
   testClientIntakePack();
+  testClientReadinessPackRenderer();
   testAssetAudit();
   testCoverageReport();
   testDeliveryPackRenderer();

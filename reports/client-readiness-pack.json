@@ -1,0 +1,130 @@
+{
+  "schema_version": "oid-client-readiness-pack/v1",
+  "generated_at": "2026-06-26T02:20:41.740Z",
+  "title": "OID Inventory Assessment Client Readiness Pack",
+  "readiness_score": 100,
+  "readiness_checks": [
+    {
+      "id": "client-intake",
+      "label": "Client-safe intake request is available",
+      "status": "ready",
+      "evidence": "intake request plus sample CSV"
+    },
+    {
+      "id": "browser-audit",
+      "label": "Browser-only local audit can produce derived findings",
+      "status": "ready",
+      "evidence": "4 sample rows reviewed"
+    },
+    {
+      "id": "evidence-pack",
+      "label": "Sample evidence delivery pack is represented",
+      "status": "ready",
+      "evidence": "2 evidence-ready sample assets"
+    },
+    {
+      "id": "remediation-queue",
+      "label": "Remediation queue has action items",
+      "status": "ready",
+      "evidence": "3 sample action-plan groups"
+    },
+    {
+      "id": "coverage-context",
+      "label": "Public coverage context is available",
+      "status": "ready",
+      "evidence": "65959 public PEN records"
+    },
+    {
+      "id": "source-boundary",
+      "label": "Source boundary excludes OID-base page-body mirroring",
+      "status": "ready",
+      "evidence": "full page-body crawl requires explicit authorization"
+    }
+  ],
+  "public_artifacts": [
+    {
+      "path": "public/index.html",
+      "purpose": "Browser dashboard and local OID list audit"
+    },
+    {
+      "path": "public/sample-assessment.html",
+      "purpose": "Browser-readable sample assessment handoff"
+    },
+    {
+      "path": "public/intake-pack.js",
+      "purpose": "Downloadable client intake request and sample CSV data"
+    },
+    {
+      "path": "reports/client-readiness-pack.md",
+      "purpose": "This compact review flow and acceptance pack"
+    },
+    {
+      "path": "reports/sample-engagement-brief.md",
+      "purpose": "Scope, inputs, deliverables, and acceptance criteria"
+    },
+    {
+      "path": "reports/sample-delivery-pack.md",
+      "purpose": "Sanitized evidence delivery example"
+    },
+    {
+      "path": "reports/remediation-board.csv",
+      "purpose": "Importable cleanup queue"
+    },
+    {
+      "path": "reports/source-policy.md",
+      "purpose": "Robots, terms, sitemap, and collection boundary receipt"
+    },
+    {
+      "path": "reports/dataset-manifest.json",
+      "purpose": "Artifact hashes, sizes, and publishable data boundary"
+    }
+  ],
+  "review_flow": [
+    {
+      "step": "Prepare sanitized inventory",
+      "output": "Client uses the intake request and sample CSV shape before sharing any OID list."
+    },
+    {
+      "step": "Run local assessment",
+      "output": "Browser or CLI classifies invalid values, public registry evidence, unknown private enterprise arcs, and unresolved valid OIDs."
+    },
+    {
+      "step": "Review action queue",
+      "output": "Remediation CSV and Markdown board identify owner actions and acceptance checks."
+    },
+    {
+      "step": "Deliver evidence pack",
+      "output": "Derived findings and source links are shared without raw client inventories or copied OID-base page bodies."
+    },
+    {
+      "step": "Re-run after cleanup",
+      "output": "The same input format can be audited again to confirm the cleanup result."
+    }
+  ],
+  "acceptance_evidence": [
+    "Every input row is classified as invalid, evidence-ready, or unresolved.",
+    "Invalid OID values have correction guidance.",
+    "Known private enterprise arcs include public PEN owner evidence when available.",
+    "OID-base evidence uses sitemap/source URLs only; OID-base page bodies stay out of the published package.",
+    "Unresolved valid OIDs are listed as an internal registry review queue.",
+    "Final shared artifacts contain derived findings only."
+  ],
+  "excluded_data": [
+    "Raw client inventories",
+    "credentials, OTPs, cookies, tokens, and private account exports",
+    "Payment, tax, KYC, or billing material",
+    "OID-base raw Markdown, HTML, or page-body mirrors without source-owner authorization",
+    "IANA contact-level JSONL imports"
+  ],
+  "sample_metrics": {
+    "asset_rows": 4,
+    "quality_score": 78,
+    "evidence_ready_assets": 2,
+    "unresolved_assets": 2,
+    "public_pen_records": 65959,
+    "oidbase_exact_matches": 127,
+    "oidbase_subtree_only_matches": 289,
+    "oidbase_missing_entries": 65543,
+    "oidbase_coverage_score": 1
+  }
+}

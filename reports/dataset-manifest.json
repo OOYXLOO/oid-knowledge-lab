@@ -1,6 +1,6 @@
 {
   "name": "OID Knowledge Lab publishable data manifest",
-  "generated_at": "2026-06-26T01:39:43.956Z",
+  "generated_at": "2026-06-26T02:20:42.538Z",
   "publishable": true,
   "content_boundary": "This manifest covers OID-base sitemap metadata and open IANA PEN aggregate/public data; it does not contain OID-base page bodies, raw page mirrors, private contact fields, credentials, cookies, tokens, or account data.",
   "oid_base": {
@@ -170,22 +170,22 @@
     {
       "path": "reports/asset-audit.json",
       "bytes": 2696,
-      "sha256": "sha256:1c75894338d3789173eaad0e2158836bb4209a1bbe7a6217ec3cb5bcd6c6f963"
+      "sha256": "sha256:aa37536b0af99bfed3d2b456ce07aa9ac97157ad209ecd1d154f88f732edc4e5"
     },
     {
       "path": "reports/asset-audit.md",
       "bytes": 1538,
-      "sha256": "sha256:70c752d799b861869de00ecd2a1ab1f2f2af2994d10285b2775c3f872416b524"
+      "sha256": "sha256:10a6f0124132269e40487f88b62838353f9bc3ed99beca2862a9aaec07b7d007"
     },
     {
       "path": "reports/coverage-report.json",
       "bytes": 19192275,
-      "sha256": "sha256:2d76c58c0b49744304e6c72e7e5a6b0735db085ae148199a0ec6cb6d76bbbae9"
+      "sha256": "sha256:3d8c79819a8820feebca2eb5c48b1aeed96427317678c73fd811c5f9de0aa2d5"
     },
     {
       "path": "reports/coverage-report.md",
       "bytes": 4567,
-      "sha256": "sha256:89df55c948c0bb6b40d97a1022847d36ec33ec2f4a3973af393fe97962e29d49"
+      "sha256": "sha256:61d6b325410e0732b40d1f0d29eec4113e3fc8c2d44a60b089cf67c98a25f218"
     },
     {
       "path": "reports/remediation-board.csv",
@@ -195,22 +195,32 @@
     {
       "path": "reports/remediation-board.json",
       "bytes": 3476,
-      "sha256": "sha256:f8e0ea2ae0bd1704e7d5fc72180bfb9b369dc4c20da1a8b05ca8886692ea9e0d"
+      "sha256": "sha256:368f308253c8069132ce53d430a0be3b30eb4d2f5664ec4e1da35e0316ed227a"
     },
     {
       "path": "reports/remediation-board.md",
       "bytes": 2153,
-      "sha256": "sha256:a50ccf7236d0db9a75a0dedce7d2cc54d69fc6b856948a52e66b568b27d7bcfd"
+      "sha256": "sha256:df0c9a53b7d990e7ae2e7991df1a030a1abb0110dcb10bdad3cb44a0c32f4d34"
     },
     {
       "path": "reports/sample-delivery-pack.md",
       "bytes": 2454,
-      "sha256": "sha256:c0cd933c6bfdee577f21161f70debb842214738fbcb8552890f4e79bcbeda36a"
+      "sha256": "sha256:c280957f05c814e41bbf8667a074ba1fc5e875d7724f383ae3c23073779f8c74"
     },
     {
       "path": "reports/sample-engagement-brief.md",
       "bytes": 2802,
-      "sha256": "sha256:e8b9deee956e1ac66d2959b6a13524ca1312b7bfa51c5e1102a249be53757681"
+      "sha256": "sha256:7480757c9eb0ab7ef7a3d0b7e292aa963c9e0952fe9cbefa2896103cc5d350a8"
+    },
+    {
+      "path": "reports/client-readiness-pack.json",
+      "bytes": 4408,
+      "sha256": "sha256:acacb9bd8a8686a4398d378f246edf2c7be9b548d7232ab400d6a3356e9f96a9"
+    },
+    {
+      "path": "reports/client-readiness-pack.md",
+      "bytes": 3459,
+      "sha256": "sha256:742c1e038462f558e11ca04e0249650f48a64dba429a632ffad59003748c7fa6"
     },
     {
       "path": "reports/source-policy.json",
@@ -224,8 +234,8 @@
     },
     {
       "path": "public/index.html",
-      "bytes": 15005,
-      "sha256": "sha256:22f9c532f78d3a3258a159ce1c3ebc260c49b0f2b3479755ce827f7b06568018"
+      "bytes": 15142,
+      "sha256": "sha256:6bbfaeabd86e3b1478f98f90b4987585b9530ff24deb87861b8ec812102f22e5"
     },
     {
       "path": "public/sample-assessment.html",
@@ -243,5 +253,5 @@
       "sha256": "sha256:f81b317749255faa609c44cefbcb06c0e241653b75c6f9c90ab6189be5643091"
     }
   ],
-  "artifact_count": 20
+  "artifact_count": 22
 }
