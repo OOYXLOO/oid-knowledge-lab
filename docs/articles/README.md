@@ -116,6 +116,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/certificate-policy-oid-inventory.md
 ```
 
+### PKI Certificate Lifecycle Assessment: A Safe Discovery Pattern
+
+Path: `docs/articles/pki-certificate-lifecycle-assessment.md`
+
+Best for readers interested in:
+
+- certificate lifecycle management discovery,
+- PKI inventory evidence,
+- renewal-risk and ownership triage,
+- certificate policy OID review,
+- safe metadata-only client intake,
+- and milestone acceptance checks before automation or platform changes.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-certificate-lifecycle-assessment.md
+```
+
 ### Build a Static Evidence Dashboard with Node.js and GitHub Pages
 
 Path: `docs/articles/static-evidence-dashboard-github-pages.md`
