@@ -43,6 +43,7 @@ Article samples:
 - `docs/articles/editor-brief.md`
 - `docs/articles/client-safe-oid-inventory-assessment.md`
 - `docs/articles/static-evidence-dashboard-github-pages.md`
+- `docs/articles/public-github-bounty-triage-checklist.md`
 - `docs/articles/production-integration-debug-handoff.md`
 
 ## Compliance Boundary

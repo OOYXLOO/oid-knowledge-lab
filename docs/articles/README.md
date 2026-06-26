@@ -62,6 +62,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md
 ```
 
+### A Practical Triage Checklist Before Implementing Public GitHub Bounty Issues
+
+Path: `docs/articles/public-github-bounty-triage-checklist.md`
+
+Best for readers interested in:
+
+- public issue triage,
+- reward and assignment risk,
+- pull request queue saturation,
+- testable acceptance criteria,
+- privacy and account-gate boundaries,
+- and deciding when not to implement.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/public-github-bounty-triage-checklist.md
+```
+
 ### What to Capture Before Debugging a Production Integration Failure
 
 Path: `docs/articles/production-integration-debug-handoff.md`
