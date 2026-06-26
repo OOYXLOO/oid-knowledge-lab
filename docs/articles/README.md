@@ -288,6 +288,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-submission-brief.md
 ```
 
+### AppSignal submission brief
+
+Path: `docs/articles/appsignal-submission-brief.md`
+
+Best for editors interested in:
+
+- an AppSignal-style observability article pitch,
+- logs, metrics, traces, and production debugging handoffs,
+- API, webhook, queue, and SaaS sync failure examples,
+- copyable incident handoff templates,
+- safe evidence-sharing boundaries,
+- and implementation-backed writing samples.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsignal-submission-brief.md
+```
+
 ### Publication Proposal: Turn a Messy OID Inventory into a Safe Review Package
 
 Path: `docs/articles/publication-proposal-oid-inventory-assessment.md`
