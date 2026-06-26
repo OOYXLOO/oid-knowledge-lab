@@ -67,6 +67,40 @@ Acceptance checks:
 
 The goal is not to prove the root cause immediately. The goal is to make the next investigation step narrow, safe, and testable.
 
+## Where the handoff sits in an observability workflow
+
+The handoff is the bridge between a human report and the telemetry system. It should not replace logs, metrics, and traces. It should make them searchable.
+
+```mermaid
+flowchart LR
+  user["User or support report"] --> handoff["Debugging handoff"]
+  app["Application services"] --> logs["Structured logs"]
+  app --> metrics["Metrics"]
+  app --> traces["Distributed traces"]
+  queue["Queues and jobs"] --> logs
+  queue --> metrics
+  queue --> traces
+  vendor["External API or webhook provider"] --> handoff
+  handoff --> query["Focused investigation query"]
+  logs --> query
+  metrics --> query
+  traces --> query
+  query --> hypothesis["Falsifiable hypothesis"]
+  hypothesis --> fix["Fix or rollback"]
+  fix --> checks["Acceptance checks"]
+```
+
+In practice, this means the incident note should contain the handles that let an engineer jump from the report to the right telemetry slice:
+
+- the time window for log and trace search,
+- the service, endpoint, queue, or worker name,
+- correlation IDs or safe aliases,
+- the specific metric that should move,
+- the recent change that might explain the shift,
+- and the acceptance check that proves the issue is resolved.
+
+Without this bridge, even a strong observability stack becomes a large search box.
+
 ## Capture expected and observed behavior
 
 Start with the difference between what should happen and what did happen.
