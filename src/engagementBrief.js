@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { ensureDir } = require("./net");
+const { generatedTimestamp } = require("./time");
 
 function escapeTable(value) {
   return String(value ?? "").replace(/\|/g, "\\|");
@@ -17,7 +18,7 @@ function yesNo(value) {
   return value ? "yes" : "no";
 }
 
-function renderEngagementBrief({ assetAudit = {}, coverageReport = {}, sourcePolicy = {}, generatedAt = new Date().toISOString() }) {
+function renderEngagementBrief({ assetAudit = {}, coverageReport = {}, sourcePolicy = {}, generatedAt = generatedTimestamp() }) {
   const assetSummary = assetAudit.summary || {};
   const coverageSummary = coverageReport.summary || {};
   const boundary = sourcePolicy.collection_boundary || {};

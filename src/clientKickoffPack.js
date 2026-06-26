@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { ensureDir, writeJson } = require("./net");
+const { generatedTimestamp } = require("./time");
 
 function row(values) {
   return `| ${values.map((value) => String(value ?? "").replace(/\|/g, "\\|")).join(" | ")} |`;
@@ -21,7 +22,7 @@ function buildClientKickoffPack({
   decisionOnePager = {},
   statementOfWorkPack = {},
   clientReadinessPack = {},
-  generatedAt = new Date().toISOString()
+  generatedAt = generatedTimestamp()
 } = {}) {
   const ownerAction = decisionOnePager.next_step?.owner_action ||
     "Provide a sanitized CSV or tab-delimited OID inventory with an `oid` column and safe labels.";

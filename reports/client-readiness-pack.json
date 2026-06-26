@@ -1,6 +1,6 @@
 {
   "schema_version": "oid-client-readiness-pack/v1",
-  "generated_at": "2026-06-26T06:51:43.346Z",
+  "generated_at": "2026-06-26T00:00:00.000Z",
   "title": "OID Inventory Assessment Client Readiness Pack",
   "readiness_score": 100,
   "readiness_checks": [

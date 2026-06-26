@@ -1,7 +1,9 @@
 "use strict";
 
+const { generatedTimestamp } = require("./time");
+
 function buildClientIntakePack(options = {}) {
-  const generatedAt = options.generatedAt || new Date().toISOString();
+  const generatedAt = options.generatedAt || generatedTimestamp();
   const sampleCsv = [
     "asset,oid,notes",
     "router-core,1.3.6.1.4.1.9.9.41,sanitized network device example",

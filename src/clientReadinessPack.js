@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { ensureDir, writeJson } = require("./net");
+const { generatedTimestamp } = require("./time");
 
 function status(ok) {
   return ok ? "ready" : "missing";
@@ -27,7 +28,7 @@ function buildClientReadinessPack({
   coverageReport = {},
   sourcePolicy = {},
   intakePack = {},
-  generatedAt = new Date().toISOString()
+  generatedAt = generatedTimestamp()
 } = {}) {
   const assetSummary = assetAudit.summary || {};
   const coverageSummary = coverageReport.summary || {};

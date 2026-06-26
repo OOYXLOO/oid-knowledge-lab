@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { ensureDir, writeJson } = require("./net");
+const { generatedTimestamp } = require("./time");
 
 const PEN_PREFIX = "1.3.6.1.4.1";
 
@@ -53,7 +54,7 @@ function statusPriority(status) {
   }[status] ?? 9;
 }
 
-function analyzeCoverage({ penIndex, oidBaseIndex, generatedAt = new Date().toISOString() }) {
+function analyzeCoverage({ penIndex, oidBaseIndex, generatedAt = generatedTimestamp() }) {
   const records = Array.isArray(penIndex) ? penIndex : [];
   const entries = Array.isArray(oidBaseIndex?.entries) ? oidBaseIndex.entries : [];
   const enterpriseMap = buildOidBaseEnterpriseMap(entries);

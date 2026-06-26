@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { generatedTimestamp } = require("./time");
 
 const PRIVATE_ENTERPRISE_PREFIX = "1.3.6.1.4.1";
 const OID_PATTERN = /^(?:0|1|2)(?:\.\d+)*$/;
@@ -183,7 +184,7 @@ function analyzeAssetText(text, options = {}) {
   });
 
   const summary = {
-    generated_at: options.generatedAt || new Date().toISOString(),
+    generated_at: options.generatedAt || generatedTimestamp(),
     total_assets: findings.length,
     valid_oids: findings.filter((finding) => finding.status !== "invalid_value").length,
     invalid_values: findings.filter((finding) => finding.status === "invalid_value").length,
@@ -312,7 +313,7 @@ function buildAssessmentSummaryText(audit) {
 }
 
 function buildAssessmentHandoff(audit, options = {}) {
-  const generatedAt = options.generatedAt || audit.generated_at || new Date().toISOString();
+  const generatedAt = options.generatedAt || audit.generated_at || generatedTimestamp();
   const summaryText = buildAssessmentSummaryText(audit);
   const actionRows = (audit.action_plan || []).map((item) => [
     item.priority,

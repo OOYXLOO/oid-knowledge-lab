@@ -1,6 +1,6 @@
 {
   "schema_version": "oid-client-kickoff-pack/v1",
-  "generated_at": "2026-06-26T06:51:44.843Z",
+  "generated_at": "2026-06-26T00:00:00.000Z",
   "title": "OID Inventory Assessment Client Kickoff Pack",
   "audience": "client-side technical owner or reviewer preparing a first sanitized OID inventory review",
   "initial_reply": "Thanks for the OID inventory context. A good first step is a small sanitized OID inventory review before any live registry cleanup or private system access. Recommended next action: Provide a sanitized CSV or tab-delimited OID inventory with an `oid` column and safe labels. Expected output: Decision-ready summary, remediation queue, public-source evidence map, and re-run notes.",

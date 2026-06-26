@@ -1,6 +1,6 @@
 {
   "schema_version": "oid-decision-one-pager/v1",
-  "generated_at": "2026-06-26T06:51:44.575Z",
+  "generated_at": "2026-06-26T00:00:00.000Z",
   "title": "OID Inventory Assessment Decision One-Pager",
   "audience": "technical owner or buyer deciding whether to approve a small sanitized OID assessment",
   "decision_prompt": "Approve a small first review of a sanitized OID inventory sample before any broader registry cleanup.",

@@ -1,6 +1,6 @@
 # OID Inventory Assessment Client Readiness Pack
 
-Generated: `2026-06-26T06:51:43.346Z`
+Generated: `2026-06-26T00:00:00.000Z`
 
 Readiness score: `100/100`
 

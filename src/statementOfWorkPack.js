@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { ensureDir, writeJson } = require("./net");
+const { generatedTimestamp } = require("./time");
 
 function row(values) {
   return `| ${values.map((value) => String(value ?? "").replace(/\|/g, "\\|")).join(" | ")} |`;
@@ -23,7 +24,7 @@ function buildStatementOfWorkPack({
   scopeProposalPack = {},
   clientReadinessPack = {},
   verticalUseCasePack = {},
-  generatedAt = new Date().toISOString()
+  generatedAt = generatedTimestamp()
 } = {}) {
   return {
     schema_version: "oid-statement-of-work-pack/v1",

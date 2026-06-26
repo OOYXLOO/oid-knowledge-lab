@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { ensureDir } = require("./net");
+const { generatedTimestamp } = require("./time");
 
 const PRIORITY_WEIGHT = {
   P0: 0,
@@ -77,7 +78,7 @@ function classifyFinding(finding = {}) {
   };
 }
 
-function buildRemediationBoard({ assetAudit = {}, generatedAt = new Date().toISOString() }) {
+function buildRemediationBoard({ assetAudit = {}, generatedAt = generatedTimestamp() }) {
   const findings = assetAudit.findings || [];
   const rows = findings.map((finding, index) => {
     const classification = classifyFinding(finding);
@@ -138,7 +139,7 @@ function renderRemediationBoardMarkdown(board = {}) {
 
   return `# OID Remediation Board
 
-Generated: \`${board.generated_at || new Date().toISOString()}\`
+Generated: \`${board.generated_at || generatedTimestamp()}\`
 
 This board turns an OID asset audit into a client-action queue. It is safe to publish as a sanitized sample because it contains derived findings and public source pointers, not raw client inventories or copied OID-base page bodies.
 

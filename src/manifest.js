@@ -3,6 +3,7 @@
 const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
+const { generatedTimestamp } = require("./time");
 
 function sha256Buffer(buffer) {
   return `sha256:${crypto.createHash("sha256").update(buffer).digest("hex")}`;
@@ -28,7 +29,7 @@ function buildDatasetManifest(options = {}) {
 
   return {
     name: "OID Knowledge Lab publishable data manifest",
-    generated_at: options.generatedAt || new Date().toISOString(),
+    generated_at: options.generatedAt || generatedTimestamp(),
     publishable: true,
     content_boundary: "This manifest covers OID-base sitemap metadata and open IANA PEN aggregate/public data; it does not contain OID-base page bodies, raw page mirrors, private contact fields, credentials, cookies, tokens, or account data.",
     oid_base: {

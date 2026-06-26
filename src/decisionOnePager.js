@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { ensureDir, writeJson } = require("./net");
+const { generatedTimestamp } = require("./time");
 
 function row(values) {
   return `| ${values.map((value) => String(value ?? "").replace(/\|/g, "\\|")).join(" | ")} |`;
@@ -29,7 +30,7 @@ function buildDecisionOnePager({
   clientReadinessPack = {},
   scopeProposalPack = {},
   verticalUseCasePack = {},
-  generatedAt = new Date().toISOString()
+  generatedAt = generatedTimestamp()
 } = {}) {
   const topLanes = topUseCases(verticalUseCasePack);
   const topLane = topLanes[0]?.title || "sanitized OID inventory review";

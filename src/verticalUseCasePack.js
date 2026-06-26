@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { ensureDir, writeJson } = require("./net");
+const { generatedTimestamp } = require("./time");
 
 function countFindings(assetAudit, predicate) {
   return (assetAudit.findings || []).filter(predicate).length;
@@ -24,7 +25,7 @@ function buildVerticalUseCasePack({
   assetAudit = {},
   coverageReport = {},
   sourcePolicy = {},
-  generatedAt = new Date().toISOString()
+  generatedAt = generatedTimestamp()
 } = {}) {
   const summary = assetAudit.summary || {};
   const coverage = coverageReport.summary || {};
@@ -226,4 +227,3 @@ module.exports = {
   renderVerticalUseCaseMarkdown,
   writeVerticalUseCasePack
 };
-

@@ -1,6 +1,6 @@
 {
   "schema_version": "oid-scope-proposal-pack/v1",
-  "generated_at": "2026-06-26T06:51:44.029Z",
+  "generated_at": "2026-06-26T00:00:00.000Z",
   "title": "OID Inventory Assessment Scope Proposal Pack",
   "recommended_scope": "Start with a sanitized OID inventory sample, classify every row, and produce a compact remediation queue before any broader registry cleanup.",
   "decision_summary": [

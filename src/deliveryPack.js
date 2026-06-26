@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { ensureDir } = require("./net");
+const { generatedTimestamp } = require("./time");
 
 function escapeTable(value) {
   return String(value ?? "").replace(/\|/g, "\\|");
@@ -18,7 +19,7 @@ function findingRows(findings = []) {
   return rows.length ? rows.join("\n") : "| - | - | No findings | - |";
 }
 
-function renderDeliveryPack({ assetAudit, coverageReport, generatedAt = new Date().toISOString() }) {
+function renderDeliveryPack({ assetAudit, coverageReport, generatedAt = generatedTimestamp() }) {
   const assetSummary = assetAudit?.summary || {};
   const coverageSummary = coverageReport?.summary || {};
   const findings = assetAudit?.findings || [];

@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 const { ensureDir, writeJson } = require("./net");
+const { generatedTimestamp } = require("./time");
 
 function row(values) {
   return `| ${values.map((value) => String(value ?? "").replace(/\|/g, "\\|")).join(" | ")} |`;
@@ -25,7 +26,7 @@ function buildScopeProposalPack({
   sourcePolicy = {},
   clientReadinessPack = {},
   verticalUseCasePack = {},
-  generatedAt = new Date().toISOString()
+  generatedAt = generatedTimestamp()
 } = {}) {
   const assetSummary = assetAudit.summary || {};
   const coverageSummary = coverageReport.summary || {};
