@@ -910,9 +910,15 @@ function testEngagementBriefRenderer() {
   });
 
   assert.ok(brief.includes("# OID Inventory Assessment Brief"));
+  assert.ok(brief.includes("## Executive Summary"));
+  assert.ok(brief.includes("## Best Fit"));
+  assert.ok(brief.includes("## First Review Call Agenda"));
   assert.ok(brief.includes("## Client Inputs"));
   assert.ok(brief.includes("## Deliverables"));
   assert.ok(brief.includes("## Acceptance Criteria"));
+  assert.ok(brief.includes("Start with a sanitized inventory sample"));
+  assert.ok(brief.includes("SNMP/MIB owner review"));
+  assert.ok(brief.includes("internal OID registry cleanup"));
   assert.ok(brief.includes("Quality score: `71/100`"));
   assert.ok(brief.includes("Full OID-base page bodies are outside the default scope"));
   assert.ok(brief.includes("Correct invalid OID values"));

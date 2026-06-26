@@ -29,6 +29,25 @@ Generated: \`${generatedAt}\`
 
 This brief describes a scoped OID inventory assessment using public registry indexes, a local client inventory, and a publishable evidence boundary. It is intended as a project starter before a full evidence delivery pack is produced.
 
+## Executive Summary
+
+- Start with a sanitized inventory sample and classify every row as invalid, evidence-ready, or unresolved.
+- Use public IANA PEN records, OID-base sitemap URLs, and local-only client notes to separate trusted evidence from owner-review gaps.
+- Deliver a correction queue, evidence links, and acceptance checks without publishing raw client inventory or copied OID-base page bodies.
+
+## Best Fit
+
+- SNMP/MIB owner review where enterprise OIDs appear in device telemetry, traps, or vendor exports.
+- PKI certificate policy review where policy, algorithm, or assurance OIDs need source evidence.
+- Internal OID registry cleanup where inherited spreadsheets contain malformed values, unclear owners, or mixed namespace conventions.
+
+## First Review Call Agenda
+
+1. Confirm the sanitized inventory columns and expected row count.
+2. Pick the primary review lane: SNMP/MIB owner review, PKI certificate policy review, or internal OID registry cleanup.
+3. Agree on the evidence boundary: public PEN owner, OID-base sitemap URL, internal owner, or correction ticket.
+4. Run the sample audit and decide which findings become the first remediation queue.
+
 ## Assessment Snapshot
 
 - Asset rows in sample audit: \`${assetSummary.total_assets || 0}\`
