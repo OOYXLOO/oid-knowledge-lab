@@ -439,6 +439,8 @@ function auditDataset(args) {
     path.resolve(ROOT, "reports/authorized-crawl-plan.md"),
     path.resolve(ROOT, "reports/asset-audit.json"),
     path.resolve(ROOT, "reports/asset-audit.md"),
+    path.resolve(ROOT, "reports/certificate-policy-oid-audit.json"),
+    path.resolve(ROOT, "reports/certificate-policy-oid-audit.md"),
     path.resolve(ROOT, "reports/coverage-report.json"),
     path.resolve(ROOT, "reports/coverage-report.md"),
     path.resolve(ROOT, "reports/remediation-board.csv"),

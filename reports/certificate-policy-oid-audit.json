@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-06-26T00:00:00.000Z",
+  "source_kind": "user supplied OID asset list",
+  "summary": {
+    "generated_at": "2026-06-26T00:00:00.000Z",
+    "total_assets": 4,
+    "valid_oids": 3,
+    "invalid_values": 1,
+    "private_enterprise_oids": 2,
+    "known_enterprises": 2,
+    "oidbase_directory_matches": 0,
+    "unknown_private_enterprise_oids": 0,
+    "valid_oid_unmatched": 1,
+    "evidence_ready_assets": 2,
+    "unresolved_assets": 2,
+    "high_risk_findings": 1,
+    "medium_risk_findings": 0,
+    "quality_score": 78
+  },
+  "findings": [
+    {
+      "index": 1,
+      "label": "api-edge-cert",
+      "oid": "2.16.840.1.113733.1.7.23.6",
+      "status": "valid_oid_unmatched",
+      "risk": "low",
+      "enterprise": null,
+      "oidbase_match": null
+    },
+    {
+      "index": 2,
+      "label": "vpn-client-cert",
+      "oid": "1.3.6.1.4.1.55555.7.1",
+      "status": "known_private_enterprise_oid",
+      "risk": "low",
+      "enterprise": {
+        "number": 55555,
+        "oid": "1.3.6.1.4.1.55555",
+        "organization": "Rendeer Systems LLC"
+      },
+      "oidbase_match": null
+    },
+    {
+      "index": 3,
+      "label": "legacy-mtls-cert",
+      "oid": "abc.1.2",
+      "status": "invalid_value",
+      "risk": "high",
+      "issue": "Value is not a syntactically valid numeric OID."
+    },
+    {
+      "index": 4,
+      "label": "partner-saml-cert",
+      "oid": "1.3.6.1.4.1.9.9.46",
+      "status": "known_private_enterprise_oid",
+      "risk": "low",
+      "enterprise": {
+        "number": 9,
+        "oid": "1.3.6.1.4.1.9",
+        "organization": "ciscoSystems"
+      },
+      "oidbase_match": null
+    }
+  ],
+  "recommendations": [
+    "Normalize or remove 1 invalid OID value(s) before publishing an asset inventory.",
+    "Review OIDs without an OID-base sitemap match; they may be internal arcs, stale values, or require another registry source."
+  ],
+  "action_plan": [
+    {
+      "priority": "P0",
+      "title": "Correct invalid OID values",
+      "count": 1,
+      "action": "Fix malformed values before using the inventory as audit or integration evidence."
+    },
+    {
+      "priority": "P1",
+      "title": "Review unmatched valid OIDs against internal registries",
+      "count": 1,
+      "action": "Confirm whether each unmatched OID is internal, deprecated, or covered by a registry not present in this package."
+    },
+    {
+      "priority": "P2",
+      "title": "Preserve evidence-ready public registry mappings",
+      "count": 2,
+      "action": "Keep source URLs and enterprise mappings with the asset record for future review."
+    }
+  ]
+}

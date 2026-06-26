@@ -1043,6 +1043,22 @@ bad-row,not-an-oid
   assert.equal(JSON.stringify(handoff).includes("USD " + "200"), false);
 }
 
+function testAssetAuditRecognizesCertificatePolicyOidHeader() {
+  const audit = analyzeAssetText(`asset_label,certificate_subject,certificate_policy_oid
+api-edge-cert,CN=api.example.test,2.16.840.1.113733.1.7.23.6
+legacy-mtls-cert,CN=legacy-mtls,abc.1.2`, {
+    generatedAt: "2026-06-26T00:00:00.000Z"
+  });
+
+  assert.equal(audit.summary.total_assets, 2);
+  assert.equal(audit.findings[0].label, "api-edge-cert");
+  assert.equal(audit.findings[0].oid, "2.16.840.1.113733.1.7.23.6");
+  assert.equal(audit.findings[0].status, "valid_oid_unmatched");
+  assert.equal(audit.findings[1].label, "legacy-mtls-cert");
+  assert.equal(audit.findings[1].oid, "abc.1.2");
+  assert.equal(audit.findings[1].status, "invalid_value");
+}
+
 function testCoverageReport() {
   const penIndex = [
     { number: 9, oid: "1.3.6.1.4.1.9", organization: "ciscoSystems" },
@@ -1334,6 +1350,7 @@ function main() {
   testDecisionOnePagerRenderer();
   testClientKickoffPackRenderer();
   testAssetAudit();
+  testAssetAuditRecognizesCertificatePolicyOidHeader();
   testCoverageReport();
   testDeliveryPackRenderer();
   testRemediationBoardRenderer();

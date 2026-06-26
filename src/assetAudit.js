@@ -6,6 +6,26 @@ const { generatedTimestamp } = require("./time");
 
 const PRIVATE_ENTERPRISE_PREFIX = "1.3.6.1.4.1";
 const OID_PATTERN = /^(?:0|1|2)(?:\.\d+)*$/;
+const OID_HEADER_NAMES = new Set([
+  "oid",
+  "object_identifier",
+  "object identifier",
+  "policy_oid",
+  "policy oid",
+  "certificate_policy_oid",
+  "certificate policy oid"
+]);
+const LABEL_HEADER_NAMES = new Set([
+  "asset",
+  "asset_label",
+  "asset label",
+  "name",
+  "id",
+  "label",
+  "certificate_subject",
+  "certificate subject",
+  "subject"
+]);
 
 function splitRow(line) {
   if (line.includes("\t")) return line.split("\t").map((part) => part.trim());
@@ -13,7 +33,7 @@ function splitRow(line) {
 }
 
 function looksLikeHeader(parts) {
-  return parts.some((part) => ["oid", "object_identifier", "object identifier"].includes(part.toLowerCase()));
+  return parts.some((part) => OID_HEADER_NAMES.has(part.toLowerCase()));
 }
 
 function parseAssetRows(text) {
@@ -34,8 +54,8 @@ function parseAssetRows(text) {
 
   return lines.slice(startIndex).map((line, index) => {
     const parts = splitRow(line);
-    const oidIndex = headers ? headers.findIndex((header) => header === "oid" || header === "object_identifier" || header === "object identifier") : (parts.length > 1 ? 1 : 0);
-    const labelIndex = headers ? headers.findIndex((header) => ["asset", "name", "id", "label"].includes(header)) : (parts.length > 1 ? 0 : -1);
+    const oidIndex = headers ? headers.findIndex((header) => OID_HEADER_NAMES.has(header)) : (parts.length > 1 ? 1 : 0);
+    const labelIndex = headers ? headers.findIndex((header) => LABEL_HEADER_NAMES.has(header)) : (parts.length > 1 ? 0 : -1);
     const rawOid = parts[oidIndex] || line;
     const label = labelIndex >= 0 ? parts[labelIndex] : `asset-${index + 1}`;
     return {

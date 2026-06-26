@@ -178,6 +178,16 @@
       "sha256": "sha256:2c06d3e0e562db739c7c4c56bc5af6d6d5a80f285fa9148a7a6cd3643618bb48"
     },
     {
+      "path": "reports/certificate-policy-oid-audit.json",
+      "bytes": 2611,
+      "sha256": "sha256:0630b670c9e5edc002c7cf322545939ce9bf144f2a3774ab084a4fdb9e58f730"
+    },
+    {
+      "path": "reports/certificate-policy-oid-audit.md",
+      "bytes": 1522,
+      "sha256": "sha256:394963605dd9dbf6dc5df81cfc96559adbbd2a42b7885c0f821aa89e553ff773"
+    },
+    {
       "path": "reports/coverage-report.json",
       "bytes": 19192275,
       "sha256": "sha256:756dca2272ca5a23bab0c9b997bf1cf60a31fb32bdd2cc18431db2f216bdb1f7"
@@ -303,5 +313,5 @@
       "sha256": "sha256:f81b317749255faa609c44cefbcb06c0e241653b75c6f9c90ab6189be5643091"
     }
   ],
-  "artifact_count": 32
+  "artifact_count": 34
 }

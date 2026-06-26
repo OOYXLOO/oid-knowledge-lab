@@ -119,6 +119,24 @@ OID Knowledge Lab shows the same pattern with public registry/OID assessment art
 https://ooyxloo.github.io/oid-knowledge-lab/
 ```
 
+The repository also includes a sanitized certificate policy inventory sample:
+
+```text
+examples/certificate-policy-assets.csv
+```
+
+Run the sample audit:
+
+```bash
+npm run audit:certificate-policy
+```
+
+Generated report:
+
+```text
+reports/certificate-policy-oid-audit.md
+```
+
 Client one-pager:
 
 ```text

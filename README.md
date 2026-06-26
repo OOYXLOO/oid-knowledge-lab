@@ -76,6 +76,7 @@ npm run source-policy
 npm run plan:authorized-full-crawl
 npm run build:site
 npm run audit:assets
+npm run audit:certificate-policy
 npm run remediation:sample
 npm run coverage:oid
 npm run brief:sample

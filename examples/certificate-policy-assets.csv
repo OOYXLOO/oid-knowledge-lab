@@ -1,0 +1,5 @@
+asset_label,certificate_subject,issuer,not_after,certificate_policy_oid,key_usage,eku,source_note,owner_hint
+api-edge-cert,CN=api.example.test,Example Internal Issuing CA,2026-09-12,2.16.840.1.113733.1.7.23.6,digitalSignature,serverAuth,load balancer export,platform
+vpn-client-cert,CN=vpn-client,Example Device CA,2026-10-01,1.3.6.1.4.1.55555.7.1,digitalSignature,clientAuth,device inventory,network
+legacy-mtls-cert,CN=legacy-mtls,Unknown Issuer,2026-07-18,abc.1.2,digitalSignature,serverAuth,spreadsheet copy,unknown
+partner-saml-cert,CN=partner-saml,Example Partner CA,2026-11-22,1.3.6.1.4.1.9.9.46,digitalSignature,clientAuth,partner metadata export,identity
