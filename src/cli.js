@@ -21,6 +21,7 @@ const { isAllowedByRobots, sitemapUrls } = require("./robots");
 const { buildSite } = require("./site");
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("./sitemap");
 const { buildSourcePolicySnapshot, writeSourcePolicyFiles } = require("./sourcePolicy");
+const { writeVerticalUseCasePack } = require("./verticalUseCasePack");
 
 const ROOT = path.resolve(__dirname, "..");
 const BASE = "https://oid-base.com";
@@ -314,6 +315,24 @@ function clientReadinessPack(args) {
   console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
 }
 
+function verticalUseCasePack(args) {
+  const assetAuditFile = path.resolve(ROOT, argValue(args, "--asset-audit", "reports/asset-audit.json"));
+  const coverageReportFile = path.resolve(ROOT, argValue(args, "--coverage", "reports/coverage-report.json"));
+  const sourcePolicyFile = path.resolve(ROOT, argValue(args, "--source-policy", "reports/source-policy.json"));
+  const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/vertical-use-case-pack.json"));
+  const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/vertical-use-case-pack.md"));
+  const pack = writeVerticalUseCasePack({
+    assetAuditFile,
+    coverageReportFile,
+    sourcePolicyFile,
+    jsonOutFile,
+    markdownOutFile
+  });
+  console.log(`vertical use cases: ${pack.use_cases.length}`);
+  console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
+  console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
+}
+
 function buildStaticSite(args) {
   const reportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
   const indexFile = path.resolve(ROOT, argValue(args, "--index", "reports/iana-pen-public-index.json"));
@@ -347,6 +366,8 @@ function auditDataset(args) {
     path.resolve(ROOT, "reports/sample-engagement-brief.md"),
     path.resolve(ROOT, "reports/client-readiness-pack.json"),
     path.resolve(ROOT, "reports/client-readiness-pack.md"),
+    path.resolve(ROOT, "reports/vertical-use-case-pack.json"),
+    path.resolve(ROOT, "reports/vertical-use-case-pack.md"),
     path.resolve(ROOT, "reports/source-policy.json"),
     path.resolve(ROOT, "reports/source-policy.md"),
     path.resolve(ROOT, "public/index.html"),
@@ -440,13 +461,14 @@ async function main() {
   if (command === "remediation-board") return remediationBoard(args);
   if (command === "engagement-brief") return engagementBrief(args);
   if (command === "client-readiness-pack") return clientReadinessPack(args);
+  if (command === "vertical-use-case-pack") return verticalUseCasePack(args);
   if (command === "audit-dataset") return auditDataset(args);
   if (command === "source-policy") return sourcePolicy(args);
   if (command === "guard-publishable") return guardPublishable();
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|audit-dataset|source-policy|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|audit-dataset|source-policy|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

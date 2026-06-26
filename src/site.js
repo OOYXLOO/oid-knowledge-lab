@@ -128,6 +128,25 @@ function renderClientReadinessPanel() {
     </section>`;
 }
 
+function renderVerticalUseCasePanel() {
+  return `<section class="panel vertical-fit-panel">
+      <div>
+        <p class="eyebrow">Use-case fit</p>
+        <h2>Vertical use-case fit pack</h2>
+        <p class="panel-copy">Map the same assessment engine to SNMP/MIB enterprise OID reviews, PKI certificate policy OID checks, and internal OID registry cleanup without publishing raw client inventories.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Use case</th><th>Input</th><th>Review output</th></tr></thead>
+        <tbody>
+          <tr><td>SNMP / MIB</td><td>Sanitized device, trap, or MIB OID list.</td><td>PEN owner evidence and unknown enterprise arc queue.</td></tr>
+          <tr><td>PKI policy</td><td>Certificate policy, algorithm, or assurance OIDs.</td><td>Registry-backed evidence and documentation gaps.</td></tr>
+          <tr><td>Internal registry</td><td>Exported OID spreadsheet with sanitized labels.</td><td>Invalid values, owner-review queue, and re-run checks.</td></tr>
+        </tbody>
+      </table>
+      <p><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/vertical-use-case-pack.md">Vertical use-case fit pack</a></p>
+    </section>`;
+}
+
 function renderClientIntakePackPanel() {
   return `<section class="panel intake-panel">
       <div>
@@ -329,6 +348,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
     ${renderClientIntakePackPanel()}
 
     ${renderClientReadinessPanel()}
+
+    ${renderVerticalUseCasePanel()}
 
     <section class="panel">
       <div>
@@ -1136,6 +1157,7 @@ module.exports = {
   renderAuditPanel,
   renderDashboard,
   renderClientReadinessPanel,
+  renderVerticalUseCasePanel,
   renderClientIntakePackPanel,
   renderAppJs,
   renderSampleAssessmentPage,

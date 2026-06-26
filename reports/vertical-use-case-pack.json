@@ -1,0 +1,134 @@
+{
+  "schema_version": "oid-vertical-use-case-pack/v1",
+  "generated_at": "2026-06-26T02:40:40.125Z",
+  "title": "OID Inventory Assessment Vertical Fit Pack",
+  "source_boundary": {
+    "full_crawl_requires_authorization": true,
+    "page_bodies_publishable_without_authorization": false
+  },
+  "use_cases": [
+    {
+      "id": "snmp-mib-pen-inventory",
+      "title": "SNMP / MIB vendor PEN inventory",
+      "audience": "Network, NOC, and observability teams that need to reconcile enterprise OIDs found in MIBs, traps, or device exports.",
+      "fit_score": 80,
+      "fit_signals": [
+        "1 private enterprise OIDs in the sample inventory",
+        "1 known public PEN owner matches",
+        "65959 public PEN records available for owner evidence"
+      ],
+      "input_request": "A sanitized CSV with device, MIB, trap, or asset labels and the OID values to reconcile.",
+      "delivery_slice": "Classify known enterprise roots, unknown enterprise arcs, and owner evidence gaps; return a cleanup queue and evidence links.",
+      "acceptance_checks": [
+        "Known PEN roots include public owner evidence.",
+        "Unknown enterprise arcs are isolated for internal owner review.",
+        "Invalid values are separated before any owner mapping is trusted."
+      ],
+      "sample_oids": [
+        {
+          "label": "router-core",
+          "oid": "1.3.6.1.4.1.9.9.41",
+          "status": "known_private_enterprise_oid",
+          "evidence": "ciscoSystems"
+        }
+      ]
+    },
+    {
+      "id": "pki-certificate-policy-oid-review",
+      "title": "PKI certificate policy OID review",
+      "audience": "Security, compliance, and platform teams that maintain certificate policy, algorithm, or assurance OIDs.",
+      "fit_score": 85,
+      "fit_signals": [
+        "3 syntactically valid OIDs in the sample inventory",
+        "1 OID-base sitemap directory evidence matches",
+        "127 public exact directory matches in the broader coverage report"
+      ],
+      "input_request": "A sanitized list of certificate policy, algorithm, or registry OIDs plus optional labels describing where they appear.",
+      "delivery_slice": "Separate registry-backed OIDs from unmatched values and produce an acceptance checklist for policy documentation.",
+      "acceptance_checks": [
+        "Registry-backed OIDs include a public source URL or are marked for internal policy evidence.",
+        "Unmatched policy OIDs are listed with a precise evidence gap.",
+        "No certificate private keys, secrets, or account exports are requested."
+      ],
+      "sample_oids": [
+        {
+          "label": "example-directory-hit",
+          "oid": "2.16.840.1.101.3.7.1.219.0",
+          "status": "oidbase_directory_match",
+          "evidence": "https://oid-base.com/get/2.16.840.1.101.3.7.1.219.0"
+        }
+      ]
+    },
+    {
+      "id": "internal-oid-registry-cleanup",
+      "title": "Internal OID registry cleanup",
+      "audience": "Architecture and identity teams that have inherited OID lists with unclear owners, malformed values, or mixed namespace conventions.",
+      "fit_score": 90,
+      "fit_signals": [
+        "2 unresolved or review-needed sample assets",
+        "1 invalid OID values requiring correction",
+        "78/100 sample inventory quality score"
+      ],
+      "input_request": "A sanitized export from the internal registry or spreadsheet with OID, asset label, and optional notes columns.",
+      "delivery_slice": "Create a prioritized owner-review queue, invalid-value correction list, and re-run acceptance checklist.",
+      "acceptance_checks": [
+        "Every row is classified as invalid, evidence-ready, or owner-review required.",
+        "The remediation CSV can be imported into a tracker.",
+        "A re-run can confirm that cleanup reduced unresolved and invalid rows."
+      ],
+      "sample_oids": [
+        {
+          "label": "directory-root",
+          "oid": "1.3.6.1.4.1",
+          "status": "valid_oid_unmatched",
+          "evidence": "review queue"
+        },
+        {
+          "label": "invalid-row",
+          "oid": "not-an-oid",
+          "status": "invalid_value",
+          "evidence": "review queue"
+        }
+      ]
+    }
+  ],
+  "discovery_questions": [
+    "Do the OIDs come from SNMP/MIB exports, traps, or device telemetry?",
+    "Are any OIDs used in certificate policy, algorithm, assurance, or PKI documentation?",
+    "Is there an internal registry or spreadsheet that should become the source of truth?",
+    "Which rows can be shared as sanitized labels, and which must stay local-only?",
+    "What evidence should be accepted for each row: public PEN owner, OID-base sitemap URL, internal owner, or correction ticket?"
+  ],
+  "public_artifacts": [
+    {
+      "path": "reports/vertical-use-case-pack.md",
+      "purpose": "Vertical fit map for SNMP/MIB, PKI, and internal registry reviews"
+    },
+    {
+      "path": "reports/client-readiness-pack.md",
+      "purpose": "Client intake, review flow, acceptance evidence, and excluded-data boundary"
+    },
+    {
+      "path": "reports/sample-delivery-pack.md",
+      "purpose": "Sanitized evidence delivery example"
+    },
+    {
+      "path": "reports/remediation-board.csv",
+      "purpose": "Importable cleanup queue"
+    },
+    {
+      "path": "public/index.html",
+      "purpose": "Browser-only local OID list audit surface"
+    },
+    {
+      "path": "public/sample-assessment.html",
+      "purpose": "Browser-readable sample handoff"
+    }
+  ],
+  "excluded_data": [
+    "Raw client inventories",
+    "credentials, OTPs, cookies, API keys, private keys, and tokens",
+    "payment, tax, KYC, billing, or private account material",
+    "OID-base raw page-body mirrors without explicit source-owner authorization"
+  ]
+}

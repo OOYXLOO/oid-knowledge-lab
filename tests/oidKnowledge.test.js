@@ -6,6 +6,7 @@ const path = require("path");
 const { analyzeAssetText, buildAssessmentHandoff, renderAssetAuditCsv, renderAssetAuditMarkdown } = require("../src/assetAudit");
 const { analyzeCoverage, renderCoverageMarkdown } = require("../src/coverage");
 const { buildClientReadinessPack, renderClientReadinessMarkdown } = require("../src/clientReadinessPack");
+const { buildVerticalUseCasePack, renderVerticalUseCaseMarkdown } = require("../src/verticalUseCasePack");
 const { renderDeliveryPack } = require("../src/deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { renderEngagementBrief } = require("../src/engagementBrief");
@@ -481,6 +482,10 @@ function testSiteRenderer() {
   assert.ok(html.includes("intake-pack.js"));
   assert.ok(html.includes("Client readiness pack"));
   assert.ok(html.includes("reports/client-readiness-pack.md"));
+  assert.ok(html.includes("Vertical use-case fit pack"));
+  assert.ok(html.includes("reports/vertical-use-case-pack.md"));
+  assert.ok(html.includes("SNMP / MIB"));
+  assert.ok(html.includes("PKI policy"));
   assert.ok(html.includes("99 public IANA PEN assignments"));
   assert.ok(html.includes("42 OID-base sitemap entries"));
   assert.ok(html.includes("66,101") === false);
@@ -583,6 +588,78 @@ function testClientReadinessPackRenderer() {
   assert.ok(markdown.includes("## Acceptance Evidence"));
   assert.ok(markdown.includes("reports/client-readiness-pack.md"));
   assert.ok(markdown.includes("OID-base page bodies stay out"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+}
+
+function testVerticalUseCasePackRenderer() {
+  const pack = buildVerticalUseCasePack({
+    generatedAt: "2026-06-26T02:35:00.000Z",
+    assetAudit: {
+      summary: {
+        total_assets: 5,
+        valid_oids: 4,
+        invalid_values: 1,
+        private_enterprise_oids: 2,
+        known_enterprises: 1,
+        oidbase_directory_matches: 1,
+        evidence_ready_assets: 2,
+        unresolved_assets: 3,
+        quality_score: 68
+      },
+      findings: [
+        { label: "router-core", oid: "1.3.6.1.4.1.9.9.41", status: "known_private_enterprise_oid", risk: "low", enterprise: { organization: "ciscoSystems" } },
+        { label: "sha256-policy", oid: "2.16.840.1.101.3.4.2.1", status: "oidbase_directory_match", risk: "low", oidbase_match: { source_url: "https://oid-base.com/get/2.16.840.1.101.3.4.2.1" } },
+        { label: "unknown-enterprise", oid: "1.3.6.1.4.1.999999.1", status: "unknown_private_enterprise_oid", risk: "medium" },
+        { label: "internal-policy", oid: "1.2.840.113549", status: "valid_oid_unmatched", risk: "medium" },
+        { label: "bad-row", oid: "not-an-oid", status: "invalid_value", risk: "high" }
+      ]
+    },
+    coverageReport: {
+      summary: {
+        total_public_pen_records: 65959,
+        exact_oidbase_matches: 127,
+        subtree_only_matches: 289,
+        missing_oidbase_entries: 65543,
+        coverage_score: 1
+      }
+    },
+    sourcePolicy: {
+      collection_boundary: {
+        full_crawl_requires_authorization: true,
+        page_bodies_publishable_without_authorization: false
+      }
+    }
+  });
+
+  assert.equal(pack.schema_version, "oid-vertical-use-case-pack/v1");
+  assert.equal(pack.title, "OID Inventory Assessment Vertical Fit Pack");
+  assert.equal(pack.generated_at, "2026-06-26T02:35:00.000Z");
+  assert.equal(pack.use_cases.length, 3);
+  assert.deepEqual(pack.use_cases.map((item) => item.id), [
+    "snmp-mib-pen-inventory",
+    "pki-certificate-policy-oid-review",
+    "internal-oid-registry-cleanup"
+  ]);
+  assert.ok(pack.use_cases[0].fit_signals.some((item) => item.includes("2 private enterprise")));
+  assert.ok(pack.use_cases[1].sample_oids.some((item) => item.oid === "2.16.840.1.101.3.4.2.1"));
+  assert.ok(pack.use_cases[2].fit_signals.some((item) => item.includes("3 unresolved")));
+  assert.ok(pack.discovery_questions.some((item) => item.includes("SNMP")));
+  assert.ok(pack.discovery_questions.some((item) => item.includes("certificate")));
+  assert.ok(pack.discovery_questions.some((item) => item.includes("internal registry")));
+  assert.ok(pack.public_artifacts.some((item) => item.path === "reports/vertical-use-case-pack.md"));
+  assert.ok(pack.excluded_data.some((item) => item.includes("credentials")));
+  assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
+  assert.equal(JSON.stringify(pack).includes("\u8d5a\u94b1"), false);
+
+  const markdown = renderVerticalUseCaseMarkdown(pack);
+  assert.ok(markdown.includes("# OID Inventory Assessment Vertical Fit Pack"));
+  assert.ok(markdown.includes("SNMP / MIB vendor PEN inventory"));
+  assert.ok(markdown.includes("PKI certificate policy OID review"));
+  assert.ok(markdown.includes("Internal OID registry cleanup"));
+  assert.ok(markdown.includes("## Discovery Questions"));
+  assert.ok(markdown.includes("reports/client-readiness-pack.md"));
   assert.equal(markdown.includes("money" + "-goal"), false);
   assert.equal(markdown.includes("USD " + "200"), false);
 }
@@ -938,6 +1015,7 @@ function main() {
   testSiteRenderer();
   testClientIntakePack();
   testClientReadinessPackRenderer();
+  testVerticalUseCasePackRenderer();
   testAssetAudit();
   testCoverageReport();
   testDeliveryPackRenderer();
