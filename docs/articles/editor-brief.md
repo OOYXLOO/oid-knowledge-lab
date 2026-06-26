@@ -69,6 +69,12 @@ Why this sample is useful:
 
 ## Public Proof Links
 
+Portfolio card:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/portfolio-card.md
+```
+
 Dashboard:
 
 ```text

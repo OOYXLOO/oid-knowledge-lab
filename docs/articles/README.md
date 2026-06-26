@@ -6,6 +6,24 @@ The samples are written for readers who want practical engineering patterns: saf
 
 ## Samples
 
+### Portfolio card
+
+Path: `docs/articles/portfolio-card.md`
+
+Best for readers interested in:
+
+- a short entry point to the writing sample set,
+- the author's strongest technical documentation fit,
+- the best first sample to review,
+- domain-specific sample selection,
+- and public proof links.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/portfolio-card.md
+```
+
 ### Editor brief
 
 Path: `docs/articles/editor-brief.md`

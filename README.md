@@ -39,6 +39,7 @@ Chinese operator notes:
 Article samples:
 
 - `docs/articles/README.md`
+- `docs/articles/portfolio-card.md`
 - `docs/articles/editor-brief.md`
 - `docs/articles/client-safe-oid-inventory-assessment.md`
 - `docs/articles/static-evidence-dashboard-github-pages.md`
