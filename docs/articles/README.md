@@ -249,6 +249,26 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-submission-brief.md
 ```
 
+### Draft.dev editorial fit brief
+
+Path: `docs/articles/draftdev-editorial-fit-brief.md`
+
+Best for editors interested in:
+
+- a writer-network application review note,
+- implementation-backed developer writing,
+- developer tooling and release-safety topics,
+- observability handoff topics,
+- static dashboard and generated-documentation samples,
+- public proof links,
+- and safe publication boundaries.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-editorial-fit-brief.md
+```
+
 ### Publication Proposal: Turn a Messy OID Inventory into a Safe Review Package
 
 Path: `docs/articles/publication-proposal-oid-inventory-assessment.md`
