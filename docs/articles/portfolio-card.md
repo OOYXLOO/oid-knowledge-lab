@@ -86,6 +86,14 @@ For publication-ready topic angles that map each sample to a concrete article pr
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-pitch-pack.md
 ```
 
+## Submission Landing
+
+For a single review link suitable for editor applications or paid writing forms:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/submission-landing.md
+```
+
 ## Public Proof
 
 Dashboard:

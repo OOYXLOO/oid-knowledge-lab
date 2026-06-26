@@ -61,6 +61,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-pitch-pack.md
 ```
 
+### Submission landing
+
+Path: `docs/articles/submission-landing.md`
+
+Best for readers interested in:
+
+- a single link for editor applications or paid writing forms,
+- the strongest first samples,
+- topic fit by platform,
+- public proof links,
+- and verification boundaries.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/submission-landing.md
+```
+
 ### Build a Static Evidence Dashboard with Node.js and GitHub Pages
 
 Path: `docs/articles/static-evidence-dashboard-github-pages.md`
