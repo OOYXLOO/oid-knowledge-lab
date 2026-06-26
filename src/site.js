@@ -223,6 +223,24 @@ function renderClientKickoffPanel() {
     </section>`;
 }
 
+function renderArticleSamplesPanel() {
+  return `<section class="panel article-samples-panel">
+      <div>
+        <p class="eyebrow">Technical writing</p>
+        <h2>Article samples</h2>
+        <p class="panel-copy">Review long-form engineering samples about static evidence dashboards, publish guards, client-safe data boundaries, and OID inventory assessment workflows.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Sample</th><th>Best-fit reader</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/static-evidence-dashboard-github-pages.md">Static evidence dashboard</a></td><td>Node.js, GitHub Pages, manifests, and public release guards.</td></tr>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/client-safe-oid-inventory-assessment.md">Client-safe OID assessment</a></td><td>Safe inventory intake, public evidence boundaries, and remediation handoff.</td></tr>
+        </tbody>
+      </table>
+      <p><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/README.md">Article sample index</a></p>
+    </section>`;
+}
+
 function renderClientIntakePackPanel() {
   return `<section class="panel intake-panel">
       <div>
@@ -426,6 +444,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
     ${renderDecisionOnePagerPanel()}
 
     ${renderClientKickoffPanel()}
+
+    ${renderArticleSamplesPanel()}
 
     ${renderClientReadinessPanel()}
 
@@ -1244,6 +1264,7 @@ module.exports = {
   renderVerticalUseCasePanel,
   renderScopeProposalPanel,
   renderDecisionOnePagerPanel,
+  renderArticleSamplesPanel,
   renderClientIntakePackPanel,
   renderAppJs,
   renderSampleAssessmentPage,
