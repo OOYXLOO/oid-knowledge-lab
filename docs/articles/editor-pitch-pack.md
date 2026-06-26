@@ -18,6 +18,22 @@ I write implementation-aware developer documentation for practical engineering w
 
 The strongest fit is a publication that wants hands-on engineering content with runnable commands, concrete artifacts, clear tradeoffs, and verification steps.
 
+## Platform Fit Notes
+
+These public application paths are the current best fit for the sample set:
+
+| Publication path | Strongest matching pitch | Why it fits |
+| --- | --- | --- |
+| https://draft.dev/write | Static evidence dashboards or public issue triage | Draft.dev-style developer education usually needs implementation depth, reproducible commands, and clear engineering tradeoffs. |
+| https://www.civo.com/write-for-us | Static evidence dashboards with GitHub Pages and release guards | The cloud-native angle is strongest when the article teaches a small, runnable workflow with public deployment evidence. |
+| https://signoz.io/technical-writer-program/ | Observability handoffs before production debugging | The sample set already includes logs, metrics, traces, time windows, correlation handles, and safe incident handoff boundaries. |
+
+The best first link for any editor form is:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/submission-landing.md
+```
+
 ## Pitch 1: Static Evidence Dashboards
 
 Working title:
