@@ -27,6 +27,7 @@ These public application paths are the current best fit for the sample set:
 | https://draft.dev/write | Static evidence dashboards or public issue triage | Draft.dev-style developer education usually needs implementation depth, reproducible commands, and clear engineering tradeoffs. |
 | https://www.civo.com/write-for-us | Static evidence dashboards with GitHub Pages and release guards | The cloud-native angle is strongest when the article teaches a small, runnable workflow with public deployment evidence. |
 | https://signoz.io/technical-writer-program/ | Observability handoffs before production debugging | The sample set already includes logs, metrics, traces, time windows, correlation handles, and safe incident handoff boundaries. |
+| https://airbyte.com/community/write-for-the-community | Registry evidence pipeline from public and local data | The Airbyte-friendly angle maps public source ingestion, sanitized local input, normalization, classification, and safe destination artifacts. |
 
 The best first link for any editor form is:
 
@@ -110,7 +111,39 @@ Reusable template:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-handoff-template.md
 ```
 
-## Pitch 3: Public Issue Triage
+## Pitch 3: Registry Evidence Pipeline
+
+Working title:
+
+```text
+Build a Safe Registry Evidence Dashboard from Public and Local Data
+```
+
+Best-fit publications:
+
+- data engineering blogs,
+- data integration communities,
+- developer tooling publications,
+- data quality teams,
+- and DevRel teams that want practical source-to-dashboard examples.
+
+Reader promise:
+
+The reader learns how to model a public registry source and a sanitized local inventory as a repeatable pipeline: source boundary, normalization, classification, remediation output, manifest, static dashboard, and publish guard.
+
+Supporting sample:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-friendly-registry-evidence-pipeline.md
+```
+
+Buyer signal proof:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/buyer-signal-pack.md
+```
+
+## Pitch 4: Public Issue Triage
 
 Working title:
 
@@ -136,7 +169,7 @@ Supporting sample:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/public-github-bounty-triage-checklist.md
 ```
 
-## Pitch 4: Client-Safe Data Intake
+## Pitch 5: Client-Safe Data Intake
 
 Working title:
 
@@ -187,6 +220,7 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/R
 Good next assignments:
 
 - a 1,500 to 2,500 word tutorial based on the static dashboard workflow,
+- an Airbyte-friendly article about public registry data plus sanitized local inventory pipelines,
 - an observability article that turns the integration handoff into a troubleshooting playbook,
 - a shorter checklist article for public issue triage,
 - a practical guide to release guards for generated artifacts,

@@ -172,6 +172,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md
 ```
 
+### Airbyte-friendly registry evidence pipeline
+
+Path: `docs/articles/airbyte-friendly-registry-evidence-pipeline.md`
+
+Best for readers interested in:
+
+- public registry data plus sanitized local inventory workflows,
+- Airbyte-style source, normalization, destination, and validation stages,
+- data quality evidence dashboards,
+- remediation queues,
+- source-boundary design,
+- and publishable artifacts that exclude private inputs.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-friendly-registry-evidence-pipeline.md
+```
+
 ### Publication Proposal: Static Evidence Dashboard
 
 Path: `docs/articles/publication-proposal-static-evidence-dashboard.md`

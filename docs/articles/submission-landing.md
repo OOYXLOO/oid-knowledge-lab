@@ -72,6 +72,12 @@ Use the PKI / CLM buyer brief when evaluating a small first milestone for certif
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-clm-buyer-brief.md
 ```
 
+Use the Airbyte-friendly registry pipeline sample when evaluating data integration, public registry joins, sanitized local inventory review, and safe dashboard outputs:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-friendly-registry-evidence-pipeline.md
+```
+
 ## Strongest Assignment Angles
 
 ### 1. Static Evidence Dashboard Tutorial
@@ -128,7 +134,32 @@ Reusable template:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-handoff-template.md
 ```
 
-### 3. Public Issue Triage Checklist
+### 3. Registry Evidence Pipeline
+
+Working title:
+
+```text
+Build a safe registry evidence dashboard from public and local data
+```
+
+Why it fits:
+
+This topic maps a public registry source and a sanitized local inventory into an Airbyte-friendly pipeline: source boundary, normalization, row classification, remediation board, manifest, and static dashboard.
+
+Sample:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-friendly-registry-evidence-pipeline.md
+```
+
+Supporting proof:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/buyer-signal-pack.md
+https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
+```
+
+### 4. Public Issue Triage Checklist
 
 Working title:
 
@@ -146,7 +177,7 @@ Sample:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/public-github-bounty-triage-checklist.md
 ```
 
-### 4. Client-Safe OID Inventory Assessment
+### 5. Client-Safe OID Inventory Assessment
 
 Working title:
 
@@ -170,7 +201,7 @@ Concise publication proposal:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/publication-proposal-oid-inventory-assessment.md
 ```
 
-### 5. Certificate Policy OID Inventory
+### 6. Certificate Policy OID Inventory
 
 Working title:
 
@@ -188,7 +219,7 @@ Sample:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/certificate-policy-oid-inventory.md
 ```
 
-### 6. PKI Certificate Lifecycle Assessment
+### 7. PKI Certificate Lifecycle Assessment
 
 Working title:
 
@@ -206,7 +237,7 @@ Sample:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-certificate-lifecycle-assessment.md
 ```
 
-### 7. PKI / CLM Discovery Buyer Brief
+### 8. PKI / CLM Discovery Buyer Brief
 
 Working title:
 

@@ -1360,6 +1360,27 @@ function testArticleSampleIndexIncludesOidAssessmentProposal() {
   assert.ok(proposal.includes("npm run guard:publishable"));
 }
 
+function testArticleSampleIndexIncludesAirbytePipelineProof() {
+  const files = [
+    "docs/articles/README.md",
+    "docs/articles/submission-landing.md",
+    "docs/articles/editor-pitch-pack.md",
+    "public/writing-samples.html"
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("airbyte-friendly-registry-evidence-pipeline.md"), `${file} should link the Airbyte-friendly registry evidence pipeline sample`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const sample = fs.readFileSync(path.join(ROOT, "docs/articles/airbyte-friendly-registry-evidence-pipeline.md"), "utf8");
+  assert.ok(sample.includes("Airbyte-friendly registry evidence pipeline"));
+  assert.ok(sample.includes("source boundary"));
+  assert.ok(sample.includes("sanitized local inventory"));
+}
+
 function testBuyerSignalPackRenderer() {
   assert.equal(buyerSignalPackModule.__loadError, undefined, buyerSignalPackModule.__loadError);
   const { buildBuyerSignalPack, renderBuyerSignalMarkdown } = buyerSignalPackModule;
@@ -1449,6 +1470,7 @@ function main() {
   testPublishGuardAllowsPublicArtifacts();
   testChineseOperatorDocsAreReadableUtf8();
   testArticleSampleIndexIncludesOidAssessmentProposal();
+  testArticleSampleIndexIncludesAirbytePipelineProof();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
