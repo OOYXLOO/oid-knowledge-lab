@@ -250,6 +250,25 @@ function renderArticleSamplesPanel() {
     </section>`;
 }
 
+function renderCertificatePolicySamplePanel() {
+  return `<section class="panel certificate-policy-sample-panel">
+      <div>
+        <p class="eyebrow">PKI sample audit</p>
+        <h2>Certificate policy OID inventory sample</h2>
+        <p class="panel-copy">Review a sanitized X.509 certificate metadata sample, run the policy-OID audit command, and inspect the generated remediation-oriented report without sharing private keys, CA credentials, or production exports.</p>
+      </div>
+      <table>
+        <thead><tr><th>Artifact</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/certificate-policy-assets.csv">Sample CSV</a></td><td>Sanitized certificate metadata with certificate policy OIDs, issuer, expiry, key usage, EKU, source notes, and owner hints.</td></tr>
+          <tr><td><code>npm run audit:certificate-policy</code></td><td>Reproducible command that classifies certificate policy OIDs through the same local assessment engine.</td></tr>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/certificate-policy-oid-audit.md">Generated audit report</a></td><td>Derived findings, action plan, registry evidence, invalid-value handling, and safe publication boundary.</td></tr>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/certificate-policy-oid-inventory.md">Article sample</a></td><td>Explains how policy-OID review connects to PKI, certificate lifecycle, renewal risk, and ownership triage.</td></tr>
+        </tbody>
+      </table>
+    </section>`;
+}
+
 function renderPublicProofIndexPanel() {
   return `<section class="panel public-proof-index-panel">
       <div>
@@ -476,6 +495,8 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
     ${renderClientKickoffPanel()}
 
     ${renderArticleSamplesPanel()}
+
+    ${renderCertificatePolicySamplePanel()}
 
     ${renderPublicProofIndexPanel()}
 

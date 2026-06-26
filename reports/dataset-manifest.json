@@ -294,8 +294,8 @@
     },
     {
       "path": "public/index.html",
-      "bytes": 26046,
-      "sha256": "sha256:4217060e78dbad1ad869ec58e7a6308b8479de8a085b24648f1e5186b20b390d"
+      "bytes": 27639,
+      "sha256": "sha256:8f5e5139172b100db0cfb1024baeee71588d5891764d3f62e0d7f4de612d3589"
     },
     {
       "path": "public/sample-assessment.html",
