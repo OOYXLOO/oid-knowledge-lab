@@ -1,4 +1,4 @@
-# Observability Debugging Handoffs: What to Capture Before You Ask for Logs
+# Instrument a Node.js Webhook Worker with OpenTelemetry and Debug It in SigNoz
 
 Production incidents often start with a familiar request:
 

@@ -383,18 +383,17 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsignal-submission-brief.md
 ```
 
-### What to Capture Before Debugging a Production Integration Failure - AppSignal full draft
+### Debug a Node.js Integration Failure with AppSignal APM, Error Tracking, and Custom Metrics - AppSignal full draft
 
 Path: `docs/articles/appsignal-production-integration-debugging-full-draft.md`
 
 Best for readers interested in:
 
 - a complete AppSignal-style observability article draft,
-- production integration failures across APIs, webhooks, queues, and SaaS syncs,
-- safe log evidence,
-- metric questions,
-- trace paths,
-- correlation handles,
+- Node.js webhook-to-worker integration debugging,
+- AppSignal APM spans and slow-operation evidence,
+- error tracking with safe correlation fields,
+- custom metrics and namespaces,
 - and acceptance checks before closing an incident.
 
 Direct raw link:
@@ -422,18 +421,17 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-submission-brief.md
 ```
 
-### Observability Debugging Handoffs: What to Capture Before You Ask for Logs - SigNoz full draft
+### Instrument a Node.js Webhook Worker with OpenTelemetry and Debug It in SigNoz - SigNoz full draft
 
 Path: `docs/articles/signoz-observability-debugging-full-draft.md`
 
 Best for readers interested in:
 
 - a complete SigNoz-style observability article draft,
-- logs, metrics, traces, and OpenTelemetry-backed debugging,
-- production integration handoffs,
-- safe evidence boundaries,
-- telemetry questions,
-- falsifiable hypotheses,
+- Node.js webhook worker instrumentation,
+- OpenTelemetry spans, logs, metrics, and resource attributes,
+- OTLP exporter setup,
+- SigNoz Explorer trace-log correlation,
 - and acceptance checks before closing an incident.
 
 Direct raw link:

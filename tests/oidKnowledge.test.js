@@ -1577,7 +1577,7 @@ function testArticleSampleIndexIncludesSigNozFullDraft() {
   }
 
   const draft = fs.readFileSync(path.join(ROOT, "docs/articles/signoz-observability-debugging-full-draft.md"), "utf8");
-  assert.ok(draft.includes("Observability Debugging Handoffs: What to Capture Before You Ask for Logs"));
+  assert.ok(draft.includes("Instrument a Node.js Webhook Worker with OpenTelemetry and Debug It in SigNoz"));
   assert.ok(draft.includes("Node.js"));
   assert.ok(draft.includes("logs"));
   assert.ok(draft.includes("metrics"));
@@ -1612,7 +1612,11 @@ function testPublicEditorPitchPackHasFieldReadyCopy() {
     assert.ok(text.includes(platform), `editor pitch pack should include ${platform}`);
   }
   assert.ok(text.includes("Build a Safe Registry Evidence Dashboard from Public and Local Data"));
-  assert.ok(text.includes("Observability Debugging Handoffs"));
+  assert.ok(text.includes("Build a Kubernetes Release Evidence Dashboard for Civo"));
+  assert.ok(text.includes("Build a Registry Evidence Review Hub with Directus Data Studio"));
+  assert.ok(text.includes("Developer-tool tutorials"));
+  assert.ok(text.includes("Debug a Node.js Integration Failure with AppSignal APM"));
+  assert.ok(text.includes("Instrument a Node.js Webhook Worker with OpenTelemetry"));
   assert.equal(text.includes("money" + "-goal"), false);
   assert.equal(text.includes("USD " + "200"), false);
   assert.equal(text.includes("\u8d5a\u94b1"), false);

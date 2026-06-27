@@ -24,9 +24,11 @@ These public application paths are the current best fit for the sample set:
 
 | Publication path | Strongest matching pitch | Why it fits |
 | --- | --- | --- |
-| https://draft.dev/write | Static evidence dashboards or public issue triage | Draft.dev-style developer education usually needs implementation depth, reproducible commands, and clear engineering tradeoffs. |
-| https://www.civo.com/write-for-us | Static evidence dashboards with GitHub Pages and release guards | The cloud-native angle is strongest when the article teaches a small, runnable workflow with public deployment evidence. |
-| https://signoz.io/technical-writer-program/ | Observability handoffs before production debugging | The sample set already includes logs, metrics, traces, time windows, correlation handles, and safe incident handoff boundaries. |
+| https://www.civo.com/write-for-us | Kubernetes release evidence dashboards with GitHub Pages and release guards | The cloud-native angle is strongest when the article teaches a small Civo Kubernetes workflow with public release evidence. |
+| https://draft.dev/write | Developer-tool tutorials, observability handoffs, and release-safety sample set | Draft.dev-style developer education usually needs implementation depth, reproducible commands, client brief adaptation, and clear engineering tradeoffs. |
+| https://directus.com/docs/community/programs/guest-authors | Directus Data Studio evidence review hub | Directus fit is strongest when generated JSON becomes collections, relations, roles, review statuses, and static proof links. |
+| https://blog.appsignal.com/write-for-us.html | Node.js integration debugging with AppSignal APM | AppSignal fit is strongest when the article connects APM, error tracking, custom metrics, namespaces, and performance troubleshooting. |
+| https://signoz.io/technical-writer-program/ | Node.js OpenTelemetry webhook worker debugging | SigNoz fit is strongest when a code-based OpenTelemetry tutorial sends telemetry through OTLP and uses SigNoz Explorer for traces, logs, and metrics. |
 | https://airbyte.com/community/write-for-the-community | Registry evidence pipeline from public and local data | The Airbyte-friendly angle maps public source ingestion, sanitized local input, normalization, classification, and safe destination artifacts. |
 
 The best first link for any editor form is:
@@ -41,12 +43,12 @@ For copy-ready form fields, use:
 https://ooyxloo.github.io/oid-knowledge-lab/editor-submission-field-pack.html
 ```
 
-## Pitch 1: Static Evidence Dashboards
+## Pitch 1: Civo Kubernetes Release Evidence Dashboard
 
 Working title:
 
 ```text
-Build a Static Evidence Dashboard with Node.js, GitHub Pages, and a Release Guard
+Build a Kubernetes Release Evidence Dashboard for Civo with Node.js and a Release Guard
 ```
 
 Best-fit publications:
@@ -59,7 +61,7 @@ Best-fit publications:
 
 Reader promise:
 
-The reader learns how to turn generated JSON and Markdown reports into a static dashboard, define a manifest, separate public evidence from private inputs, and run a guard before publishing.
+The reader learns how to capture safe kubectl release evidence, summarize rollout and container image status, build a static review dashboard, define a manifest, keep kubeconfig files and Secrets out of public artifacts, and run a guard before publishing.
 
 Supporting sample:
 
@@ -85,12 +87,12 @@ Public proof:
 https://ooyxloo.github.io/oid-knowledge-lab/
 ```
 
-## Pitch 2: Observability Handoffs
+## Pitch 2: AppSignal Integration Debugging
 
 Working title:
 
 ```text
-What to Capture Before Debugging a Production Integration Failure
+Debug a Node.js Integration Failure with AppSignal APM, Error Tracking, and Custom Metrics
 ```
 
 Best-fit publications:
@@ -103,7 +105,7 @@ Best-fit publications:
 
 Reader promise:
 
-The reader learns how to prepare a safe debugging handoff before sharing sensitive production context: expected behavior, observed behavior, time windows, correlation handles, safe logs, metrics, traces, recent changes, ownership, hypotheses, and acceptance checks.
+The reader learns how to debug a Node.js webhook-to-worker integration failure with AppSignal APM, error tracking, custom metrics, namespaces, safe correlation fields, and a copyable handoff that turns vague "check the logs" requests into a focused investigation.
 
 Supporting sample:
 
@@ -121,6 +123,38 @@ Reusable template:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-handoff-template.md
+```
+
+## Pitch 2b: SigNoz OpenTelemetry Debugging
+
+Working title:
+
+```text
+Instrument a Node.js Webhook Worker with OpenTelemetry and Debug It in SigNoz
+```
+
+Best-fit publications:
+
+- SigNoz,
+- OpenTelemetry-adjacent developer education programs,
+- SRE and DevOps publications,
+- SaaS integration teams,
+- and support escalation teams.
+
+Reader promise:
+
+The reader instruments a small Node.js webhook worker with OpenTelemetry, sends telemetry through an OTLP exporter, adds trace-log correlation for failed jobs, and uses SigNoz Explorer to connect traces, logs, metrics, and a reusable debugging handoff.
+
+Supporting sample:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-observability-debugging-full-draft.md
+```
+
+Submission brief:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-submission-brief.md
 ```
 
 ## Pitch 3: Registry Evidence Pipeline

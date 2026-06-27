@@ -92,17 +92,17 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/a
 
 ## Strongest Assignment Angles
 
-### 1. Static Evidence Dashboard Tutorial
+### 1. Civo Kubernetes Release Evidence Dashboard
 
 Working title:
 
 ```text
-Build a static evidence dashboard with Node.js, GitHub Pages, and a release guard
+Build a Kubernetes Release Evidence Dashboard for Civo with Node.js and a Release Guard
 ```
 
 Why it fits:
 
-This is a hands-on developer tutorial with a complete path from generated reports to a public dashboard, manifest-style proof links, source boundaries, and a publish guard.
+This is a hands-on cloud-native tutorial with a complete path from safe kubectl release evidence to a public dashboard, manifest-style proof links, source boundaries, and a publish guard.
 
 Sample:
 
@@ -128,17 +128,17 @@ Civo submission brief:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-submission-brief.md
 ```
 
-### 2. Observability Handoff Article
+### 2. AppSignal APM Integration Debugging
 
 Working title:
 
 ```text
-What to capture before debugging a production integration failure
+Debug a Node.js Integration Failure with AppSignal APM, Error Tracking, and Custom Metrics
 ```
 
 Why it fits:
 
-This topic connects logs, metrics, traces, correlation IDs, recent changes, ownership, and acceptance checks into a safe handoff that helps developers investigate production issues without exposing secrets.
+This topic connects AppSignal APM, error tracking, custom metrics, namespaces, correlation IDs, recent changes, and acceptance checks into a safe handoff that helps developers investigate production integration issues without exposing secrets.
 
 Sample:
 
@@ -152,7 +152,7 @@ AppSignal full draft:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsignal-production-integration-debugging-full-draft.md
 ```
 
-SigNoz full draft:
+SigNoz companion draft:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-observability-debugging-full-draft.md
@@ -168,6 +168,30 @@ Reusable template:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-handoff-template.md
+```
+
+### 2b. SigNoz OpenTelemetry Debugging
+
+Working title:
+
+```text
+Instrument a Node.js Webhook Worker with OpenTelemetry and Debug It in SigNoz
+```
+
+Why it fits:
+
+This topic is a code-based OpenTelemetry tutorial: instrument a Node.js webhook worker, send telemetry through an OTLP exporter, add trace-log correlation, and use SigNoz Explorer to connect traces, logs, metrics, and a reusable debugging handoff.
+
+Full draft:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-observability-debugging-full-draft.md
+```
+
+Submission brief:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-submission-brief.md
 ```
 
 ### 3. Registry Evidence Pipeline
@@ -212,12 +236,12 @@ https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
 Working title:
 
 ```text
-Build a registry evidence review hub with Directus, generated JSON, and a static proof page
+Build a Registry Evidence Review Hub with Directus Data Studio, Generated JSON, and a Static Proof Page
 ```
 
 Why it fits:
 
-This topic turns generated technical reports into Directus collections, review statuses, remediation records, and public proof links while keeping local-only inputs out of the published package.
+This topic turns generated technical reports into Directus Data Studio collections, many-to-one relations, roles and permissions, review statuses, remediation records, optional Directus Flow notifications, and public proof links while keeping local-only inputs out of the published package.
 
 Full draft:
 
