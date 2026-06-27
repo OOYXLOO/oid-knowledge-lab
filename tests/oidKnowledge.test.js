@@ -1666,7 +1666,7 @@ function testPaidWritingApplicationDeskIsPublicAndBoundarySafe() {
   for (const file of files) {
     const text = fs.readFileSync(path.join(ROOT, file), "utf8");
     assert.ok(text.includes("Paid writing application desk"), `${file} should include the application desk title`);
-    for (const platform of ["Real Python", "Airbyte", "Civo", "Draft.dev"]) {
+    for (const platform of ["Real Python", "Vultr", "Draft.dev", "DigitalOcean"]) {
       assert.ok(text.includes(platform), `${file} should include ${platform}`);
     }
     assert.ok(text.includes("https://oid-knowledge-lab.vercel.app/writing-samples.html"));
@@ -1677,9 +1677,9 @@ function testPaidWritingApplicationDeskIsPublicAndBoundarySafe() {
   }
   const page = fs.readFileSync(path.join(ROOT, "public/paid-writing-application-desk.html"), "utf8");
   assert.ok(page.includes("realpython-ai-validation-mini-sample.md"));
-  assert.ok(page.includes("airbyte-registry-evidence-dashboard-full-draft.md"));
-  assert.ok(page.includes("civo-static-evidence-dashboard-full-draft.md"));
+  assert.ok(page.includes("vultr-creator-readiness-pack.md"));
   assert.ok(page.includes("draftdev-writer-profile-one-pager.md"));
+  assert.ok(page.includes("digitalocean-topic-proposal-readiness-pack.md"));
 }
 
 function testBackupPitchPackIsPublicAndBoundarySafe() {

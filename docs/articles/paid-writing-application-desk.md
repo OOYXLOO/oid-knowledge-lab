@@ -25,9 +25,9 @@ https://github.com/OOYXLOO/oid-knowledge-lab
 | Priority | Program | First sample | Application angle |
 | --- | --- | --- | --- |
 | 1 | Real Python | `realpython-ai-validation-mini-sample.md` | Python + AI education, test-first validation, safe assistant workflows |
-| 2 | Draft.dev | `draftdev-writer-profile-one-pager.md` | Implementation-backed developer tooling, DevOps, observability, and docs systems |
-| 3 | Civo | `civo-static-evidence-dashboard-full-draft.md` | Cloud-native static evidence dashboard with release guard and public proof |
-| 4 | Airbyte | `airbyte-registry-evidence-dashboard-full-draft.md` | Data integration tutorial with source boundaries, normalization, destination artifacts, and validation |
+| 2 | Vultr Creator Program | `vultr-creator-editor-one-pager.md` | Cloud infrastructure tutorial with Node.js report generation, static delivery, and safe publication checks |
+| 3 | Draft.dev | `draftdev-writer-profile-one-pager.md` | Implementation-backed developer tooling, DevOps, observability, and docs systems |
+| 4 | DigitalOcean entry check | `digitalocean-editor-one-pager.md` | Node.js static evidence dashboard tutorial, submitted only if the current intake flow is open |
 
 ## Copyable short bio
 
@@ -61,6 +61,40 @@ Short pitch:
 I would like to write practical Python + AI tutorials that show readers how to validate generated code instead of trusting it. The sample demonstrates a small behavior contract, pytest coverage for normal, edge, invalid-input, and type cases, a revised implementation, and a lightweight evidence log. No credentials or private data are used.
 ```
 
+## Vultr Creator Program
+
+Best fit:
+
+- cloud infrastructure tutorials,
+- Node.js generated reports,
+- static evidence dashboards,
+- object storage or static hosting workflows,
+- and publish-safety boundaries for generated artifacts.
+
+First link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/vultr-creator-editor-one-pager.md
+```
+
+Reviewer hub:
+
+```text
+https://oid-knowledge-lab.vercel.app/vultr-creator-reviewer-hub.html
+```
+
+Short pitch:
+
+```text
+I can write a practical Vultr tutorial showing how developers can generate safe JSON and Markdown evidence artifacts with Node.js, publish a static review dashboard, and keep credentials, private inventories, and copied third-party page bodies out of the release.
+```
+
+Readiness pack:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/vultr-creator-readiness-pack.md
+```
+
 ## Draft.dev
 
 Best fit:
@@ -89,66 +123,44 @@ Short pitch:
 I am a good fit for implementation-backed developer articles: I build the workflow, create reproducible checks, document the proof path, and then write the tutorial. My strongest lanes are developer tooling, release guards, observability handoffs, static dashboards, and safe generated-documentation systems.
 ```
 
-## Civo
+Readiness pack:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-writer-network-readiness-pack.md
+```
+
+## DigitalOcean entry check
 
 Best fit:
 
-- cloud-native tutorials,
-- generated release evidence,
-- GitHub Pages or static review surfaces,
-- CI checks,
-- and release guards.
+- practical developer tutorials,
+- Node.js report generation,
+- static dashboards,
+- dataset manifests,
+- and publish guards.
 
 First link:
 
 ```text
-https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-static-evidence-dashboard-full-draft.md
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/digitalocean-editor-one-pager.md
 ```
 
 Reviewer hub:
 
 ```text
-https://oid-knowledge-lab.vercel.app/civo-reviewer-hub.html
+https://oid-knowledge-lab.vercel.app/digitalocean-reviewer-hub.html
 ```
 
 Short pitch:
 
 ```text
-I can write a cloud-native tutorial showing how to generate a static release evidence dashboard, publish it as a lightweight review surface, and protect the public artifact with a release guard. The draft is implementation-backed and avoids secrets, account exports, and private customer inventories.
+I would like to write a practical DigitalOcean Community tutorial showing developers how to generate JSON and Markdown review artifacts with Node.js, build a static evidence dashboard, add a dataset manifest, and block unsafe generated files before publishing.
 ```
 
-## Airbyte
-
-Best fit:
-
-- source-to-destination data workflows,
-- public source plus sanitized local inventory boundaries,
-- normalization and validation,
-- generated reports,
-- and publishable evidence dashboards.
-
-First link:
+Readiness pack:
 
 ```text
-https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-registry-evidence-dashboard-full-draft.md
-```
-
-Runnable proof:
-
-```text
-https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-runnable-proof-pack.md
-```
-
-Reviewer hub:
-
-```text
-https://oid-knowledge-lab.vercel.app/airbyte-reviewer-hub.html
-```
-
-Short pitch:
-
-```text
-I can adapt the OID Knowledge Lab workflow into an Airbyte-style tutorial: read a public registry source, keep sanitized local inventory separate, normalize records, write destination artifacts, validate outputs, and publish a safe dashboard with a manifest and guardrail checks.
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/digitalocean-topic-proposal-readiness-pack.md
 ```
 
 ## Submission boundary

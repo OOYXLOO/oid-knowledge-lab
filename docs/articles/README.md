@@ -106,7 +106,7 @@ Path: `docs/articles/paid-writing-application-desk.md`
 Best for editor and writer-network application forms interested in:
 
 - a copy-ready short bio,
-- the strongest first sample for Real Python, Airbyte, Civo, and Draft.dev,
+- the strongest first sample for Real Python, Vultr, Draft.dev, and DigitalOcean,
 - public portfolio and proof links,
 - platform-specific short pitches,
 - and safe submission boundaries.
