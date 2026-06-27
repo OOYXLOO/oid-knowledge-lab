@@ -25,7 +25,7 @@ Build a Safe Registry Evidence Dashboard from Public and Local Data
 Short pitch:
 
 ```text
-This article shows how to turn a public registry source plus a sanitized local inventory into a reviewable evidence dashboard. It covers source boundaries, normalization, destination artifacts, manifest generation, and a publish guard so readers can share useful proof without exposing private exports or credentials.
+This article shows how to turn a public registry source plus a sanitized local inventory into a reviewable evidence dashboard. It starts with a local Node.js reproduction, then maps the workflow to Airbyte concepts: Connector Builder or Low-code CDK for the public source, a File source for the sanitized inventory, and a Local JSON destination or warehouse table for review artifacts.
 ```
 
 Sample links:

@@ -60,6 +60,27 @@ An Airbyte-style mental model helps keep the workflow understandable:
 
 The implementation does not need a live warehouse to be useful. A local Node.js pipeline plus a static dashboard is enough for an editor, reviewer, or client stakeholder to inspect the pattern.
 
+## Airbyte adaptation path
+
+The local tutorial is intentionally runnable without cloud credentials, but the same workflow maps cleanly onto an Airbyte implementation:
+
+| Local tutorial part | Airbyte adaptation |
+| --- | --- |
+| Public registry sitemap or API export | Build a small HTTP source with Connector Builder or the Low-code CDK. |
+| Sanitized local inventory CSV | Load a safe file through a File source or an internal approved source. |
+| Node.js normalization script | Move repeatable transforms into a destination-side model, dbt step, or post-sync job. |
+| JSON and Markdown review outputs | Write machine-readable rows to a Local JSON destination or a warehouse destination, then render review artifacts. |
+| Publish guard | Keep a CI guard before public dashboards, docs, or static review pages are released. |
+
+This framing keeps the article useful for Airbyte readers without requiring the tutorial to handle private credentials. The public registry source can become a Connector Builder prototype first, while the sanitized inventory remains a separate source so private operational rows do not get mixed into public proof pages by accident.
+
+Useful official reference points for the final article:
+
+- Connector Builder for creating API-backed sources.
+- Low-code CDK for declarative source connector development.
+- File source for loading a local or hosted CSV input when the inventory has already been sanitized.
+- Local JSON destination for a small reproducible destination during article review.
+
 ## Normalize Registry and Inventory Rows
 
 Treat normalization as a contract. The public registry and the local inventory should both produce stable records:

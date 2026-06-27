@@ -1389,6 +1389,8 @@ function testArticleSampleIndexIncludesAirbytePipelineProof() {
   assert.ok(brief.includes("Airbyte submission brief"));
   assert.ok(brief.includes("Article promise"));
   assert.ok(brief.includes("Airbyte-style pipeline map"));
+  assert.ok(brief.includes("Connector Builder"));
+  assert.ok(brief.includes("Local JSON destination"));
   assert.ok(brief.includes("https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html"));
   assert.equal(brief.includes("money" + "-goal"), false);
   assert.equal(brief.includes("USD " + "200"), false);
@@ -1413,6 +1415,10 @@ function testArticleSampleIndexIncludesAirbyteFullDraft() {
   const draft = fs.readFileSync(path.join(ROOT, "docs/articles/airbyte-registry-evidence-dashboard-full-draft.md"), "utf8");
   assert.ok(draft.includes("Build a Safe Registry Evidence Dashboard from Public and Local Data"));
   assert.ok(draft.includes("sanitized local inventory"));
+  assert.ok(draft.includes("Airbyte adaptation path"));
+  assert.ok(draft.includes("Low-code CDK"));
+  assert.ok(draft.includes("File source"));
+  assert.ok(draft.includes("Local JSON destination"));
   assert.ok(draft.includes("publish guard"));
   assert.ok(draft.includes("https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html"));
   assert.equal(draft.includes("money" + "-goal"), false);
@@ -1593,6 +1599,7 @@ function testEditorSubmissionFieldPackIsPublicAndBoundarySafe() {
     assert.equal(text.includes("\u8d5a\u94b1"), false);
   }
   assert.ok(page.includes("airbyte-registry-evidence-dashboard-full-draft.md"));
+  assert.ok(page.includes("Connector Builder"));
   assert.ok(page.includes("civo-static-evidence-dashboard-full-draft.md"));
   assert.ok(page.includes("signoz-observability-debugging-full-draft.md"));
 }

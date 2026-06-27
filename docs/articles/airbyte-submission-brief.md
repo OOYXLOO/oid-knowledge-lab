@@ -34,12 +34,18 @@ Airbyte readers often care about connector boundaries, normalization, destinatio
 
 The result is concrete enough to implement without requiring access to private systems.
 
+## Airbyte-specific adaptation
+
+The public registry side can be presented as a Connector Builder or Low-code CDK source prototype. The sanitized local inventory can be loaded separately through a File source. The article can keep the tutorial runnable with local Node.js commands, then show how the same source, transform, destination, and validation boundaries would move into an Airbyte pipeline.
+
+For a reviewer-friendly first version, the destination can be a Local JSON destination or a warehouse table that later feeds the static dashboard. This gives Airbyte readers a practical path from connector design to reviewable data quality evidence without asking them to publish raw private inventory rows.
+
 ## Proposed outline
 
 1. The problem: public evidence and local inventory drift apart.
 2. Source boundary: public registry data versus private local inventory.
 3. Minimal safe local CSV shape.
-4. Airbyte-style pipeline map: source, normalization, transform, destination, validation.
+4. Airbyte-style pipeline map: Connector Builder / Low-code CDK source, File source, normalization, transform, Local JSON destination, validation.
 5. Classification statuses for valid, invalid, matched, and unresolved rows.
 6. Remediation queue and reviewer summary.
 7. Static dashboard and dataset manifest.
