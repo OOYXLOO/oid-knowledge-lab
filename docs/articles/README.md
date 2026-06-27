@@ -61,6 +61,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-pitch-pack.md
 ```
 
+### Editor decision brief
+
+Path: `docs/articles/editor-decision-brief.md`
+
+Best for editors and documentation teams interested in:
+
+- a one-page decision path,
+- topic fit,
+- implementation depth,
+- originality boundaries,
+- public proof links,
+- and a low-risk first assignment shape.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-decision-brief.md
+```
+
 ### Editor submission field pack
 
 Path: `docs/articles/editor-submission-field-pack.md`

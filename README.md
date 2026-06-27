@@ -9,6 +9,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Vercel showcase: <https://oid-knowledge-lab.vercel.app>
 - GitHub Pages mirror: <https://ooyxloo.github.io/oid-knowledge-lab/>
 - Editor pitch pack: <https://oid-knowledge-lab.vercel.app/editor-pitch-pack.html>
+- Editor decision brief: <https://oid-knowledge-lab.vercel.app/editor-decision-brief.html>
 - Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
 
 ## Current Publishable Snapshot
@@ -54,6 +55,7 @@ Article samples:
 - `docs/articles/portfolio-card.md`
 - `docs/articles/editor-brief.md`
 - `docs/articles/editor-pitch-pack.md`
+- `docs/articles/editor-decision-brief.md`
 - `docs/articles/submission-landing.md`
 - `docs/articles/oid-assessment-client-one-pager.md`
 - `docs/articles/certificate-policy-oid-inventory.md`
