@@ -131,6 +131,30 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/paid-writing-application-desk.md
 ```
 
+### SitePoint and TestDriven.io backup pitch pack
+
+Path: `docs/articles/sitepoint-testdriven-backup-pitch-pack.md`
+
+Best for editors interested in:
+
+- a smaller static evidence dashboard tutorial,
+- a Python + AI validation testing tutorial,
+- public proof links,
+- reusable short bio copy,
+- and safe submission boundaries.
+
+Public page:
+
+```text
+https://oid-knowledge-lab.vercel.app/content-backup-pitch-pack.html
+```
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/sitepoint-testdriven-backup-pitch-pack.md
+```
+
 ### Implementation authenticity proof
 
 Path: `docs/articles/implementation-authenticity-proof.md`

@@ -1502,7 +1502,8 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "editor-pitch-pack.html",
     "editor-submission-field-pack.html",
     "editor-decision-brief.html",
-    "paid-writing-application-desk.html"
+    "paid-writing-application-desk.html",
+    "content-backup-pitch-pack.html"
   ];
   for (const file of staticReviewPages) {
     const source = path.join(__dirname, "..", "public", file);
