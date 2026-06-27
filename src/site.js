@@ -88,6 +88,12 @@ function renderEditorReviewPathPanel() {
           <a href="airbyte-reviewer-hub.html">Open Airbyte hub</a>
         </article>
         <article>
+          <span>Civo review</span>
+          <strong>Kubernetes release evidence</strong>
+          <p>Civo-focused tutorial idea hub with Kubernetes release evidence, generated review artifacts, static dashboard proof, and publish-safety boundaries.</p>
+          <a href="civo-reviewer-hub.html">Open Civo hub</a>
+        </article>
+        <article>
           <span>Directus review</span>
           <strong>Registry evidence review hub</strong>
           <p>Directus-focused guest-author review page with collection design, permissions, API import path, proof links, and publication boundary.</p>
@@ -317,6 +323,7 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/editor-pitch-pack.md">Editor pitch pack</a></td><td>Publication-ready topic angles mapped to samples, proof links, and safe boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/implementation-authenticity-proof.md">Implementation authenticity proof</a></td><td>Public trail from working code to generated artifacts to editorial samples, with reproducible checks.</td></tr>
           <tr><td><a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a></td><td>One-page Airbyte-specific editorial review path with proof links, article fit, implementation boundary, and next-step notes.</td></tr>
+          <tr><td><a href="civo-reviewer-hub.html">Civo reviewer hub</a></td><td>One-page Civo tutorial idea review path with Kubernetes release evidence, implementation proof, safe publication boundary, and fresh-draft note.</td></tr>
           <tr><td><a href="directus-reviewer-hub.html">Directus reviewer hub</a></td><td>One-page Directus guest-author review path with collection model, permissions, API import outline, proof links, and publication boundary.</td></tr>
           <tr><td><a href="signoz-reviewer-hub.html">SigNoz reviewer hub</a></td><td>One-page SigNoz technical-writer review path with OpenTelemetry, traces, logs, metrics, handoff fields, and proof links.</td></tr>
           <tr><td><a href="appsignal-reviewer-hub.html">AppSignal reviewer hub</a></td><td>One-page AppSignal editor review path with APM, error tracking, custom metrics, namespaces, safe handoff fields, and proof links.</td></tr>
@@ -548,6 +555,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="consulting-brief.html">Assessment brief</a>
         <a href="writing-samples.html">Writing samples</a>
         <a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a>
+        <a href="civo-reviewer-hub.html">Civo reviewer hub</a>
         <a href="directus-reviewer-hub.html">Directus reviewer hub</a>
         <a href="signoz-reviewer-hub.html">SigNoz reviewer hub</a>
         <a href="appsignal-reviewer-hub.html">AppSignal reviewer hub</a>
@@ -1476,6 +1484,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
   }
   const staticReviewPages = [
     "airbyte-reviewer-hub.html",
+    "civo-reviewer-hub.html",
     "directus-reviewer-hub.html",
     "signoz-reviewer-hub.html",
     "appsignal-reviewer-hub.html",
