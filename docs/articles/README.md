@@ -61,6 +61,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-pitch-pack.md
 ```
 
+### Editor submission field pack
+
+Path: `docs/articles/editor-submission-field-pack.md`
+
+Best for editors and contributor forms interested in:
+
+- a short bio,
+- platform-specific article titles,
+- short pitches,
+- sample links,
+- public proof links,
+- and safe submission boundaries.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-submission-field-pack.md
+```
+
 ### Submission landing
 
 Path: `docs/articles/submission-landing.md`

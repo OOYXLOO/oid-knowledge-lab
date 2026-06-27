@@ -35,6 +35,12 @@ The best first link for any editor form is:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/submission-landing.md
 ```
 
+For copy-ready form fields, use:
+
+```text
+https://ooyxloo.github.io/oid-knowledge-lab/editor-submission-field-pack.html
+```
+
 ## Pitch 1: Static Evidence Dashboards
 
 Working title:
