@@ -1426,6 +1426,33 @@ function testArticleSampleIndexIncludesAirbyteFullDraft() {
   assert.equal(draft.includes("\u8d5a\u94b1"), false);
 }
 
+function testAirbyteReviewerHubIncludesRunnableProofPack() {
+  const files = [
+    "docs/articles/README.md",
+    "docs/articles/airbyte-submission-brief.md",
+    "public/airbyte-reviewer-hub.html",
+    "public/writing-samples.html"
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("airbyte-runnable-proof-pack.md"), `${file} should link the runnable Airbyte proof pack`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const proof = fs.readFileSync(path.join(ROOT, "docs/articles/airbyte-runnable-proof-pack.md"), "utf8");
+  assert.ok(proof.includes("Runnable Airbyte proof pack"));
+  assert.ok(proof.includes("npm run audit:local"));
+  assert.ok(proof.includes("Connector Builder"));
+  assert.ok(proof.includes("sanitized local inventory"));
+  assert.ok(proof.includes("reports/dataset-manifest.json"));
+  assert.ok(proof.includes("public/airbyte-reviewer-hub.html"));
+  assert.equal(proof.includes("money" + "-goal"), false);
+  assert.equal(proof.includes("USD " + "200"), false);
+  assert.equal(proof.includes("\u8d5a\u94b1"), false);
+}
+
 function testArticleSampleIndexIncludesCivoSubmissionBrief() {
   const files = [
     "docs/articles/README.md",
@@ -1737,6 +1764,7 @@ function main() {
   testArticleSampleIndexIncludesOidAssessmentProposal();
   testArticleSampleIndexIncludesAirbytePipelineProof();
   testArticleSampleIndexIncludesAirbyteFullDraft();
+  testAirbyteReviewerHubIncludesRunnableProofPack();
   testArticleSampleIndexIncludesCivoSubmissionBrief();
   testArticleSampleIndexIncludesCivoFullDraft();
   testArticleSampleIndexIncludesDirectusFullDraft();

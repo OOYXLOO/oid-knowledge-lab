@@ -322,6 +322,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-submission-brief.md
 ```
 
+### Runnable Airbyte proof pack
+
+Path: `docs/articles/airbyte-runnable-proof-pack.md`
+
+Best for Airbyte editors and data-engineering readers interested in:
+
+- reproducible commands behind the proposed tutorial,
+- source, transform, destination, and validation boundaries,
+- Connector Builder and File source adaptation notes,
+- generated report and dashboard artifacts,
+- and publish-safety checks before public release.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-runnable-proof-pack.md
+```
+
 ### Airbyte editor one-pager
 
 Path: `docs/articles/airbyte-editor-one-pager.md`

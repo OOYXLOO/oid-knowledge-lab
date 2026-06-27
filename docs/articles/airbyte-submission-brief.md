@@ -85,6 +85,12 @@ Airbyte Connector Builder appendix:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-connector-builder-appendix.md
 ```
 
+Runnable Airbyte proof pack:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-runnable-proof-pack.md
+```
+
 Working dashboard:
 
 ```text
