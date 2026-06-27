@@ -82,6 +82,12 @@ function renderEditorReviewPathPanel() {
           <a href="writing-samples.html">Open review path</a>
         </article>
         <article>
+          <span>Airbyte review</span>
+          <strong>Registry evidence tutorial hub</strong>
+          <p>Airbyte-focused review page with the editor one-pager, submission brief, connector appendix, implementation proof, and publication boundary.</p>
+          <a href="airbyte-reviewer-hub.html">Open Airbyte hub</a>
+        </article>
+        <article>
           <span>Working proof</span>
           <strong>Public dashboard</strong>
           <p>Runnable data workflow, publishable reports, source boundaries, search surfaces, local audit tools, and release guard checks.</p>
@@ -292,6 +298,7 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/editor-brief.md">Editor brief</a></td><td>Quick topic fit, reader outcomes, proof links, and verification boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/editor-pitch-pack.md">Editor pitch pack</a></td><td>Publication-ready topic angles mapped to samples, proof links, and safe boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/implementation-authenticity-proof.md">Implementation authenticity proof</a></td><td>Public trail from working code to generated artifacts to editorial samples, with reproducible checks.</td></tr>
+          <tr><td><a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a></td><td>One-page Airbyte-specific editorial review path with proof links, article fit, implementation boundary, and next-step notes.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/airbyte-editor-one-pager.md">Airbyte editor one-pager</a></td><td>Fast article-fit review path for a safe registry evidence dashboard and Airbyte-oriented source boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/civo-editor-one-pager.md">Civo editor one-pager</a></td><td>Kubernetes release evidence tutorial idea with static dashboard and release-guard boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/draftdev-writer-profile-one-pager.md">Draft.dev writer profile</a></td><td>Implementation-backed writer-network fit, topic lanes, proof links, and delivery style.</td></tr>
@@ -519,6 +526,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="https://oid-base.com/sitemap.xml">OID-base sitemap</a>
         <a href="consulting-brief.html">Assessment brief</a>
         <a href="writing-samples.html">Writing samples</a>
+        <a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a>
         <a href="implementation-authenticity-proof.html">Implementation proof</a>
       </div>
     </section>
@@ -1442,7 +1450,23 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
   if (path.resolve(consultingBriefSource) !== path.resolve(consultingBriefTarget)) {
     fs.copyFileSync(consultingBriefSource, consultingBriefTarget);
   }
-  const outputFiles = ["index.html", "consulting-brief.html", "styles.css", "data.js", "search-index.js", "oid-base-directory.js", "intake-pack.js", "app.js"];
+  const staticReviewPages = [
+    "airbyte-reviewer-hub.html",
+    "writing-samples.html",
+    "implementation-authenticity-proof.html",
+    "technical-rigor-proof.html",
+    "editor-pitch-pack.html",
+    "editor-submission-field-pack.html",
+    "editor-decision-brief.html"
+  ];
+  for (const file of staticReviewPages) {
+    const source = path.join(__dirname, "..", "public", file);
+    const target = path.join(outDir, file);
+    if (fs.existsSync(source) && path.resolve(source) !== path.resolve(target)) {
+      fs.copyFileSync(source, target);
+    }
+  }
+  const outputFiles = ["index.html", "consulting-brief.html", "styles.css", "data.js", "search-index.js", "oid-base-directory.js", "intake-pack.js", "app.js", ...staticReviewPages];
   if (sampleAssessment.assetAudit && sampleAssessment.coverageReport) {
     fs.writeFileSync(path.join(outDir, "sample-assessment.html"), renderSampleAssessmentPage(sampleAssessment), "utf8");
     outputFiles.push("sample-assessment.html");
