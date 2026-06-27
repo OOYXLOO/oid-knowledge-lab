@@ -125,7 +125,7 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/s
 Dashboard:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/
+https://oid-knowledge-lab.vercel.app/
 ```
 
 Article index:

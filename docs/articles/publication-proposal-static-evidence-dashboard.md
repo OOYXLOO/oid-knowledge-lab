@@ -80,7 +80,7 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/s
 Public dashboard proof:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/
+https://oid-knowledge-lab.vercel.app/
 ```
 
 Source repository:

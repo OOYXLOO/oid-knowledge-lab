@@ -33,7 +33,7 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/p
 Use the public dashboard for proof that the samples are backed by a working repository:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/
+https://oid-knowledge-lab.vercel.app/
 ```
 
 Use the observability handoff playbook when evaluating a polished long-form article sample for logs, metrics, traces, production debugging, or incident response:
@@ -228,7 +228,7 @@ Supporting proof:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/buyer-signal-pack.md
-https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
+https://oid-knowledge-lab.vercel.app/sample-assessment.html
 ```
 
 ### 4. Directus Evidence Review Hub
@@ -362,13 +362,13 @@ https://github.com/OOYXLOO/oid-knowledge-lab
 Dashboard:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/
+https://oid-knowledge-lab.vercel.app/
 ```
 
 Assessment brief:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/consulting-brief.html
+https://oid-knowledge-lab.vercel.app/consulting-brief.html
 ```
 
 Article index:

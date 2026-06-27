@@ -1356,7 +1356,7 @@ function testArticleSampleIndexIncludesOidAssessmentProposal() {
 
   const proposal = fs.readFileSync(path.join(ROOT, "docs/articles/publication-proposal-oid-inventory-assessment.md"), "utf8");
   assert.ok(proposal.includes("Turn a messy OID inventory into a safe review package"));
-  assert.ok(proposal.includes("https://ooyxloo.github.io/oid-knowledge-lab/consulting-brief.html"));
+  assert.ok(proposal.includes("https://oid-knowledge-lab.vercel.app/consulting-brief.html"));
   assert.ok(proposal.includes("npm run guard:publishable"));
 }
 
@@ -1391,7 +1391,7 @@ function testArticleSampleIndexIncludesAirbytePipelineProof() {
   assert.ok(brief.includes("Airbyte-style pipeline map"));
   assert.ok(brief.includes("Connector Builder"));
   assert.ok(brief.includes("Local JSON destination"));
-  assert.ok(brief.includes("https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html"));
+  assert.ok(brief.includes("https://oid-knowledge-lab.vercel.app/sample-assessment.html"));
   assert.equal(brief.includes("money" + "-goal"), false);
   assert.equal(brief.includes("USD " + "200"), false);
   assert.equal(brief.includes("\u8d5a\u94b1"), false);
@@ -1420,7 +1420,7 @@ function testArticleSampleIndexIncludesAirbyteFullDraft() {
   assert.ok(draft.includes("File source"));
   assert.ok(draft.includes("Local JSON destination"));
   assert.ok(draft.includes("publish guard"));
-  assert.ok(draft.includes("https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html"));
+  assert.ok(draft.includes("https://oid-knowledge-lab.vercel.app/sample-assessment.html"));
   assert.equal(draft.includes("money" + "-goal"), false);
   assert.equal(draft.includes("USD " + "200"), false);
   assert.equal(draft.includes("\u8d5a\u94b1"), false);
@@ -1451,7 +1451,7 @@ function testArticleSampleIndexIncludesCivoSubmissionBrief() {
   assert.ok(brief.includes("GitHub Pages"));
   assert.ok(brief.includes("release guard"));
   assert.ok(brief.includes("npm run guard:publishable"));
-  assert.ok(brief.includes("https://ooyxloo.github.io/oid-knowledge-lab/"));
+  assert.ok(brief.includes("https://oid-knowledge-lab.vercel.app/"));
   assert.equal(brief.includes("money" + "-goal"), false);
   assert.equal(brief.includes("USD " + "200"), false);
   assert.equal(brief.includes("\u8d5a\u94b1"), false);
@@ -1634,7 +1634,7 @@ function testEditorSubmissionFieldPackIsPublicAndBoundarySafe() {
     assert.ok(text.includes("Directus"));
     assert.ok(text.includes("AppSignal"));
     assert.ok(text.includes("SigNoz"));
-    assert.ok(text.includes("https://ooyxloo.github.io/oid-knowledge-lab/editor-pitch-pack.html"));
+    assert.ok(text.includes("https://oid-knowledge-lab.vercel.app/editor-pitch-pack.html"));
     assert.ok(text.includes("No credentials"));
     assert.equal(text.includes("money" + "-goal"), false);
     assert.equal(text.includes("USD " + "200"), false);

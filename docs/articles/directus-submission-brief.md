@@ -105,7 +105,7 @@ Fields:
 Writing sample page:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html
+https://oid-knowledge-lab.vercel.app/writing-samples.html
 ```
 
 Static evidence dashboard sample:
@@ -123,13 +123,13 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/d
 OID assessment sample:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
+https://oid-knowledge-lab.vercel.app/sample-assessment.html
 ```
 
 Public proof index:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/
+https://oid-knowledge-lab.vercel.app/
 ```
 
 Repository:

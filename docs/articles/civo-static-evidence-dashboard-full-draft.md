@@ -386,13 +386,13 @@ Do not hide important generation steps inside the hosting platform. If the publi
 OID Knowledge Lab uses this pattern for a public evidence dashboard:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/
+https://oid-knowledge-lab.vercel.app/
 ```
 
 The sample assessment page shows a generated review handoff:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
+https://oid-knowledge-lab.vercel.app/sample-assessment.html
 ```
 
 The repository keeps local crawl outputs and private inputs out of the published package. Public artifacts contain derived reports, source pointers, counts, hashes, and review notes.

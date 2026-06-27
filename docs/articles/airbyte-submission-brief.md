@@ -55,7 +55,7 @@ For a reviewer-friendly first version, the destination can be a Local JSON desti
 
 ## Public proof links
 
-Primary full draft:
+Reference sample:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-registry-evidence-dashboard-full-draft.md
@@ -70,13 +70,13 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/a
 Working dashboard:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/
+https://oid-knowledge-lab.vercel.app/
 ```
 
 Sample assessment:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
+https://oid-knowledge-lab.vercel.app/sample-assessment.html
 ```
 
 Buyer signal pack:
@@ -110,4 +110,4 @@ The article should be written as original developer education based on the publi
 
 ## Editor decision note
 
-This is strongest as a practical tutorial, not an opinion essay. If accepted, the full draft should emphasize source design, normalization, validation, and publishable output boundaries, with enough code for readers to reproduce the pattern locally.
+This is strongest as a practical tutorial, not an opinion essay. If accepted, the publication draft should be adapted to Airbyte's assigned topic, source design expectations, normalization guidance, validation steps, and publishable output boundaries, with enough code for readers to reproduce the pattern locally.

@@ -50,7 +50,7 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/o
 Working public proof:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html
+https://oid-knowledge-lab.vercel.app/writing-samples.html
 ```
 
 Repository:

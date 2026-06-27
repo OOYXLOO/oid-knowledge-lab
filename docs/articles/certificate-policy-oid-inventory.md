@@ -116,7 +116,7 @@ A first review is useful when:
 OID Knowledge Lab shows the same pattern with public registry/OID assessment artifacts:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/
+https://oid-knowledge-lab.vercel.app/
 ```
 
 The repository also includes a sanitized certificate policy inventory sample:

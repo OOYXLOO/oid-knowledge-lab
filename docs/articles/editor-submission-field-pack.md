@@ -9,7 +9,7 @@ I write implementation-backed developer tutorials about data workflows, observab
 ## Default proof link
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/editor-pitch-pack.html
+https://oid-knowledge-lab.vercel.app/editor-pitch-pack.html
 ```
 
 ## Platform fields

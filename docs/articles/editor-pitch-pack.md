@@ -40,7 +40,7 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/s
 For copy-ready form fields, use:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/editor-submission-field-pack.html
+https://oid-knowledge-lab.vercel.app/editor-submission-field-pack.html
 ```
 
 ## Pitch 1: Civo Kubernetes Release Evidence Dashboard
@@ -84,7 +84,7 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/c
 Public proof:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/
+https://oid-knowledge-lab.vercel.app/
 ```
 
 ## Pitch 2: AppSignal Integration Debugging
