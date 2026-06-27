@@ -1699,25 +1699,37 @@ function testPaidWritingApplicationDeskIsPublicAndBoundarySafe() {
 }
 
 function testBackupPitchPackIsPublicAndBoundarySafe() {
-  const files = [
+  const combinedFiles = [
     "docs/articles/README.md",
     "docs/articles/sitepoint-testdriven-backup-pitch-pack.md",
     "public/writing-samples.html",
     "public/content-backup-pitch-pack.html"
   ];
-  for (const file of files) {
+  for (const file of combinedFiles) {
     const text = fs.readFileSync(path.join(ROOT, file), "utf8");
-    assert.ok(text.includes("SitePoint"), `${file} should include SitePoint`);
+    assert.ok(text.includes("Tuts+"), `${file} should include Tuts+`);
     assert.ok(text.includes("TestDriven.io"), `${file} should include TestDriven.io`);
     assert.ok(text.includes("No credentials"), `${file} should include submission boundaries`);
     assert.equal(text.includes("money" + "-goal"), false);
     assert.equal(text.includes("USD " + "200"), false);
     assert.equal(text.includes("\u8d5a\u94b1"), false);
   }
+  for (const file of ["docs/articles/tutsplus-tutorial-readiness-pack.md", "public/tutsplus-tutorial-reviewer-hub.html"]) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("Tuts+"), `${file} should include Tuts+`);
+    assert.ok(text.includes("No credentials"), `${file} should include submission boundaries`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
   const page = fs.readFileSync(path.join(ROOT, "public/content-backup-pitch-pack.html"), "utf8");
+  assert.ok(page.includes("tutsplus-tutorial-reviewer-hub.html"));
+  assert.ok(page.includes("tutsplus-tutorial-readiness-pack.md"));
   assert.ok(page.includes("static-evidence-dashboard-github-pages.md"));
   assert.ok(page.includes("realpython-ai-validation-mini-sample.md"));
-  assert.ok(page.includes("implementation-authenticity-proof.html"));
+  const hub = fs.readFileSync(path.join(ROOT, "public/tutsplus-tutorial-reviewer-hub.html"), "utf8");
+  assert.ok(hub.includes("Tuts+ tutorial reviewer hub"));
+  assert.ok(hub.includes("tutsplus-tutorial-readiness-pack.md"));
 }
 
 function testPublicEditorPitchPackHasFieldReadyCopy() {

@@ -155,7 +155,7 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/p1-application-answer-sheet.md
 ```
 
-### SitePoint and TestDriven.io backup pitch pack
+### Tuts+ and TestDriven.io backup pitch pack
 
 Path: `docs/articles/sitepoint-testdriven-backup-pitch-pack.md`
 
@@ -177,6 +177,31 @@ Direct raw link:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/sitepoint-testdriven-backup-pitch-pack.md
+```
+
+### Tuts+ tutorial readiness pack
+
+Path: `docs/articles/tutsplus-tutorial-readiness-pack.md`
+
+Best for tutorial editors interested in:
+
+- a Node.js static dashboard tutorial pitch,
+- generated JSON and Markdown reports,
+- static HTML rendering,
+- publish guards,
+- public proof links,
+- and safe submission boundaries.
+
+Public page:
+
+```text
+https://oid-knowledge-lab.vercel.app/tutsplus-tutorial-reviewer-hub.html
+```
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/tutsplus-tutorial-readiness-pack.md
 ```
 
 ### Implementation authenticity proof

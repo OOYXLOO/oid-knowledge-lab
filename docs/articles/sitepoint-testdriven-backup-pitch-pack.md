@@ -1,4 +1,4 @@
-# SitePoint and TestDriven.io Backup Pitch Pack
+# Tuts+ and TestDriven.io Backup Pitch Pack
 
 This pack gives editors a compact way to review two smaller, implementation-backed tutorial angles that reuse the public OID Knowledge Lab proof surface without requiring private data, credentials, or account exports.
 
@@ -24,12 +24,12 @@ https://github.com/OOYXLOO/oid-knowledge-lab
 
 I write implementation-backed developer tutorials. My strongest samples cover Python + AI validation with `pytest`, Node.js static evidence dashboards, data integration pipelines, observability debugging handoffs, and publish-safety checks. Each sample is tied to a public repository, reproducible commands, and a clear boundary around credentials, private data, and copied third-party content.
 
-## SitePoint angle
+## Tuts+ angle
 
 Proposed title:
 
 ```text
-How to Build a Static Evidence Dashboard for Safer Developer Handoffs
+Build a Static Evidence Dashboard with Node.js, JSON Reports, and a Publish Guard
 ```
 
 Summary:
@@ -41,6 +41,8 @@ This tutorial shows how to turn a small public dataset and a sanitized local inp
 Best first sample:
 
 ```text
+https://oid-knowledge-lab.vercel.app/tutsplus-tutorial-reviewer-hub.html
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/tutsplus-tutorial-readiness-pack.md
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md
 ```
 
@@ -102,4 +104,3 @@ Why it fits:
 - No payment, tax, or identity data.
 - No copied full third-party page bodies.
 - No claim that a sample has already been accepted by an editor.
-
