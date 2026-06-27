@@ -204,6 +204,30 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/tutsplus-tutorial-readiness-pack.md
 ```
 
+### ContentLab writer network readiness pack
+
+Path: `docs/articles/contentlab-writer-network-readiness-pack.md`
+
+Best for writer-network reviewers interested in:
+
+- implementation-backed developer writing samples,
+- Cloud, DevOps, AI validation, observability, and static dashboard topic lanes,
+- a copy-ready short bio and application note,
+- public proof links,
+- and safe submission boundaries.
+
+Public page:
+
+```text
+https://oid-knowledge-lab.vercel.app/contentlab-writer-network-hub.html
+```
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/contentlab-writer-network-readiness-pack.md
+```
+
 ### Implementation authenticity proof
 
 Path: `docs/articles/implementation-authenticity-proof.md`

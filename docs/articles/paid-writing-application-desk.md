@@ -28,6 +28,7 @@ https://github.com/OOYXLOO/oid-knowledge-lab
 | 2 | Vultr Creator Program | `vultr-creator-editor-one-pager.md` | Cloud infrastructure tutorial with Node.js report generation, static delivery, and safe publication checks |
 | 3 | Draft.dev | `draftdev-writer-profile-one-pager.md` | Implementation-backed developer tooling, DevOps, observability, and docs systems |
 | 4 | DigitalOcean entry check | `digitalocean-editor-one-pager.md` | Node.js static evidence dashboard tutorial, submitted only if the current intake flow is open |
+| 5 | ContentLab writer network | `contentlab-writer-network-readiness-pack.md` | Implementation-backed developer writing for Cloud, DevOps, AI validation, observability, and release-safety workflows |
 
 ## Copyable short bio
 
@@ -161,6 +162,35 @@ Readiness pack:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/digitalocean-topic-proposal-readiness-pack.md
+```
+
+## ContentLab writer network
+
+Best fit:
+
+- Cloud and DevOps tutorials,
+- developer tooling,
+- AI-assisted coding validation,
+- observability debugging,
+- generated documentation systems,
+- and implementation-backed samples for technical audiences.
+
+First link:
+
+```text
+https://oid-knowledge-lab.vercel.app/contentlab-writer-network-hub.html
+```
+
+Readiness pack:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/contentlab-writer-network-readiness-pack.md
+```
+
+Short pitch:
+
+```text
+I would like to be considered for ContentLab's technical author network. I am strongest when an article needs both implementation depth and clear explanation: building a small working example, validating edge cases, shaping evidence into a reproducible workflow, and then writing a practical tutorial for developers. My public portfolio includes Node.js report generation, static dashboard publication, AI-assisted Python validation with pytest, observability debugging handoffs, and release-safety boundaries.
 ```
 
 ## Submission boundary

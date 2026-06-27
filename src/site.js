@@ -136,6 +136,12 @@ function renderEditorReviewPathPanel() {
           <a href="realpython-ai-reviewer-hub.html">Open Real Python hub</a>
         </article>
         <article>
+          <span>ContentLab review</span>
+          <strong>Developer writer network packet</strong>
+          <p>ContentLab-focused review page for Cloud, DevOps, AI validation, observability, static dashboards, and implementation-backed developer writing.</p>
+          <a href="contentlab-writer-network-hub.html">Open ContentLab hub</a>
+        </article>
+        <article>
           <span>Working proof</span>
           <strong>Public dashboard</strong>
           <p>Runnable data workflow, publishable reports, source boundaries, search surfaces, local audit tools, and release guard checks.</p>
@@ -588,6 +594,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="vultr-creator-reviewer-hub.html">Vultr Creator reviewer hub</a>
         <a href="digitalocean-reviewer-hub.html">DigitalOcean reviewer hub</a>
         <a href="realpython-ai-reviewer-hub.html">Real Python AI reviewer hub</a>
+        <a href="contentlab-writer-network-hub.html">ContentLab writer hub</a>
         <a href="implementation-authenticity-proof.html">Implementation proof</a>
       </div>
     </section>
@@ -1520,6 +1527,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "vultr-creator-reviewer-hub.html",
     "digitalocean-reviewer-hub.html",
     "realpython-ai-reviewer-hub.html",
+    "contentlab-writer-network-hub.html",
     "writing-samples.html",
     "implementation-authenticity-proof.html",
     "technical-rigor-proof.html",
