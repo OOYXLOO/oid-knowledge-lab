@@ -55,6 +55,12 @@ For a reviewer-friendly first version, the destination can be a Local JSON desti
 
 ## Public proof links
 
+Implementation authenticity proof:
+
+```text
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
+```
+
 Reference sample:
 
 ```text
@@ -103,6 +109,10 @@ The article can include:
 - and verification commands.
 
 It does not require publishing raw client inventories or copying third-party page bodies.
+
+## Authenticity note
+
+This proposal is based on a working public implementation rather than a generic article idea. The repository includes Node.js scripts, generated reports, public proof pages, tests, and publish-safety checks. The draft links are used as evidence of implementation depth and writing style; an accepted publication draft can be adapted to Airbyte's requested source, destination, validation, and editorial format.
 
 ## Safety and originality boundary
 

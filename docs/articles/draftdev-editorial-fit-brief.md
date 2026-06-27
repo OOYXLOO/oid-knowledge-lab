@@ -29,6 +29,12 @@ The strongest fit is developer education for teams that care about:
 
 ## Best first samples
 
+Implementation authenticity proof:
+
+```text
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
+```
+
 Submission landing:
 
 ```text
@@ -156,6 +162,12 @@ npm test
 npm run build:site
 npm run guard:publishable
 git diff --check
+```
+
+Short authenticity note for application forms:
+
+```text
+The samples are implementation-backed: I build or verify a working example first, expose public proof links and reproducible checks, then turn the result into a tutorial, troubleshooting guide, or operational handoff article.
 ```
 
 ## Editorial workflow

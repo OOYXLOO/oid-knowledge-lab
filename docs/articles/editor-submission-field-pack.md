@@ -9,6 +9,7 @@ I write implementation-backed developer tutorials about data workflows, observab
 ## Default proof link
 
 ```text
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
 https://oid-knowledge-lab.vercel.app/editor-pitch-pack.html
 ```
 
@@ -31,6 +32,7 @@ This article shows how to turn a public registry source plus a sanitized local i
 Sample links:
 
 ```text
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-registry-evidence-dashboard-full-draft.md
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-submission-brief.md
 ```
@@ -73,6 +75,7 @@ My strongest Draft.dev fit is turning a client brief, SME notes, docs page, or s
 Sample links:
 
 ```text
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-editorial-fit-brief.md
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/submission-landing.md
 ```
