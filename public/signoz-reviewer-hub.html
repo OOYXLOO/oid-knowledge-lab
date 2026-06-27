@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SigNoz Reviewer Hub - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">SigNoz reviewer hub</p>
+      <h1>OpenTelemetry debugging handoff article review path</h1>
+      <p class="summary">A compact technical-writer review page for a SigNoz-oriented article about instrumenting a Node.js webhook worker, correlating traces, logs, and metrics, and turning vague production reports into precise debugging handoffs.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="implementation-authenticity-proof.html">Authenticity proof</a>
+        <a href="technical-rigor-proof.html">Technical proof</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="SigNoz review metrics">
+      <article><span>Topic</span><strong>SigNoz</strong><small>OpenTelemetry debugging</small></article>
+      <article><span>Reader</span><strong>Backend/SRE</strong><small>Production-adjacent failures</small></article>
+      <article><span>Signals</span><strong>3</strong><small>Traces, logs, metrics</small></article>
+      <article><span>Boundary</span><strong>Safe</strong><small>No private payloads</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Article fit</p>
+        <h2>Proposed tutorial</h2>
+        <p class="panel-copy">The article shows how to instrument a small Node.js webhook worker with OpenTelemetry, export telemetry through OTLP, and use SigNoz-style traces, logs, and metrics to debug a failed background job. The stronger angle is not another generic instrumentation walkthrough; it is the practical handoff discipline that makes observability queries answer a precise question.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Reader question</th><th>Review answer</th></tr></thead>
+        <tbody>
+          <tr><td>Why SigNoz?</td><td>The workflow needs OpenTelemetry signals, trace-log correlation, metrics for retry and latency, and an investigation path that connects vague reports to concrete evidence.</td></tr>
+          <tr><td>What is built?</td><td>A Node.js webhook worker example with spans, safe attributes, structured logs, retry metrics, and a copyable debugging handoff template.</td></tr>
+          <tr><td>What stays out?</td><td>Authorization headers, API keys, raw cookies, private customer payloads, payment data, raw production logs, and private account identifiers.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Open first</p>
+        <h2>Primary review links</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Need</th><th>Link</th><th>What it proves</th></tr></thead>
+        <tbody>
+          <tr><td>Submission brief</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-submission-brief.md">SigNoz submission brief</a></td><td>Audience, article promise, SigNoz fit, outline, implementation depth, and safety boundary.</td></tr>
+          <tr><td>Draft sample</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/signoz-observability-debugging-full-draft.md">Observability debugging draft</a></td><td>A long-form sample showing OpenTelemetry, OTLP, spans, logs, metrics, correlation fields, and acceptance checks.</td></tr>
+          <tr><td>Handoff playbook</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/observability-debugging-handoff-playbook.md">Observability debugging handoff playbook</a></td><td>Reusable incident handoff structure for logs, metrics, traces, hypotheses, and fix acceptance.</td></tr>
+          <tr><td>Template</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-handoff-template.md">Production integration handoff template</a></td><td>Copyable, safe fields for API, webhook, queue, and SaaS sync failures.</td></tr>
+          <tr><td>Proof</td><td><a href="implementation-authenticity-proof.html">Implementation authenticity proof</a></td><td>Public trail from code to generated artifacts to editorial samples.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Observability map</p>
+        <h2>Signals and handoff fields</h2>
+      </div>
+      <div class="decision-strip">
+        <article>
+          <span>Traces</span>
+          <strong>Request path</strong>
+          <p>Webhook receive, queue publish, worker consume, downstream API call, span attributes, and trace identifiers.</p>
+        </article>
+        <article>
+          <span>Logs</span>
+          <strong>Discrete events</strong>
+          <p>Validation failures, retry attempts, sanitized messages, trace-log correlation fields, and safe event aliases.</p>
+        </article>
+        <article>
+          <span>Metrics</span>
+          <strong>Failure shape</strong>
+          <p>Retry count, validation error rate, worker latency, queue depth, and deployment-window comparisons.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Reviewer checklist</p>
+        <h2>What to evaluate</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Area</th><th>Expected evidence</th></tr></thead>
+        <tbody>
+          <tr><td>SigNoz specificity</td><td>OpenTelemetry SDK setup, OTLP exporter framing, traces, logs, metrics, Explorer investigation questions, and acceptance checks.</td></tr>
+          <tr><td>Operational value</td><td>The article starts from a vague incident report and shows the exact fields that make telemetry useful for a responder.</td></tr>
+          <tr><td>Publication boundary</td><td>The linked material is a review packet and sample set. A final article should be freshly written for the editor's accepted topic and product terminology.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
