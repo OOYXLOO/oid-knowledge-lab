@@ -1656,6 +1656,32 @@ function testWritingSamplesPageHasEditorDecisionPanel() {
   assert.equal(text.includes("\u8d5a\u94b1"), false);
 }
 
+function testPaidWritingApplicationDeskIsPublicAndBoundarySafe() {
+  const files = [
+    "docs/articles/README.md",
+    "docs/articles/paid-writing-application-desk.md",
+    "public/writing-samples.html",
+    "public/paid-writing-application-desk.html"
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("Paid writing application desk"), `${file} should include the application desk title`);
+    for (const platform of ["Real Python", "Airbyte", "Civo", "Draft.dev"]) {
+      assert.ok(text.includes(platform), `${file} should include ${platform}`);
+    }
+    assert.ok(text.includes("https://oid-knowledge-lab.vercel.app/writing-samples.html"));
+    assert.ok(text.includes("No credentials"));
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+  const page = fs.readFileSync(path.join(ROOT, "public/paid-writing-application-desk.html"), "utf8");
+  assert.ok(page.includes("realpython-ai-validation-mini-sample.md"));
+  assert.ok(page.includes("airbyte-registry-evidence-dashboard-full-draft.md"));
+  assert.ok(page.includes("civo-static-evidence-dashboard-full-draft.md"));
+  assert.ok(page.includes("draftdev-writer-profile-one-pager.md"));
+}
+
 function testPublicEditorPitchPackHasFieldReadyCopy() {
   const text = fs.readFileSync(path.join(ROOT, "public/editor-pitch-pack.html"), "utf8");
   assert.ok(text.includes("Field-ready editor pitch pack"));
@@ -1797,6 +1823,7 @@ function main() {
   testArticleSampleIndexIncludesSigNozFullDraft();
   testArticleSampleIndexIncludesRealPythonMiniSample();
   testWritingSamplesPageHasEditorDecisionPanel();
+  testPaidWritingApplicationDeskIsPublicAndBoundarySafe();
   testPublicEditorPitchPackHasFieldReadyCopy();
   testEditorSubmissionFieldPackIsPublicAndBoundarySafe();
   testBuyerSignalPackRenderer();

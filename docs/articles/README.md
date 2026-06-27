@@ -99,6 +99,38 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-submission-field-pack.md
 ```
 
+### Paid writing application desk
+
+Path: `docs/articles/paid-writing-application-desk.md`
+
+Best for editor and writer-network application forms interested in:
+
+- a copy-ready short bio,
+- the strongest first sample for Real Python, Airbyte, Civo, and Draft.dev,
+- public portfolio and proof links,
+- platform-specific short pitches,
+- and safe submission boundaries.
+
+Boundary note: No credentials, no private account exports, no private customer inventories, no payment data, and no copied full third-party page bodies.
+
+Public portfolio:
+
+```text
+https://oid-knowledge-lab.vercel.app/writing-samples.html
+```
+
+Public page:
+
+```text
+https://oid-knowledge-lab.vercel.app/paid-writing-application-desk.html
+```
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/paid-writing-application-desk.md
+```
+
 ### Implementation authenticity proof
 
 Path: `docs/articles/implementation-authenticity-proof.md`
