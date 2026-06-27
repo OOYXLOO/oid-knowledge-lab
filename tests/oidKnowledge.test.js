@@ -1546,7 +1546,13 @@ function testArticleSampleIndexIncludesAppSignalFullDraft() {
   }
 
   const draft = fs.readFileSync(path.join(ROOT, "docs/articles/appsignal-production-integration-debugging-full-draft.md"), "utf8");
-  assert.ok(draft.includes("What to Capture Before Debugging a Production Integration Failure"));
+  assert.ok(draft.includes("Debug a Node.js Integration Failure with AppSignal APM, Error Tracking, and Custom Metrics"));
+  assert.ok(draft.includes("AppSignal APM"));
+  assert.ok(draft.includes("error tracking"));
+  assert.ok(draft.includes("custom metrics"));
+  assert.ok(draft.includes("performance"));
+  assert.ok(draft.includes("Node.js"));
+  assert.ok(draft.includes("namespace"));
   assert.ok(draft.includes("logs"));
   assert.ok(draft.includes("metrics"));
   assert.ok(draft.includes("traces"));

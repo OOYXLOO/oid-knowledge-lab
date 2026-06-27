@@ -103,13 +103,13 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/d
 Working title:
 
 ```text
-What to Capture Before Debugging a Production Integration Failure
+Debug a Node.js Integration Failure with AppSignal APM, Error Tracking, and Custom Metrics
 ```
 
 Short pitch:
 
 ```text
-This observability article gives developers a safe debugging handoff before escalating an integration incident: expected behavior, observed behavior, time windows, correlation handles, logs, metrics, traces, hypotheses, ownership, and acceptance checks.
+This AppSignal tutorial shows how to debug a Node.js webhook-to-worker integration failure with APM, error tracking, custom metrics, namespaces, safe correlation fields, and a copyable debugging handoff that turns vague "check the logs" requests into a focused investigation.
 ```
 
 Sample links:

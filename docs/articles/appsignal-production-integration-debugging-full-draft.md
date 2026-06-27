@@ -1,4 +1,4 @@
-# What to Capture Before Debugging a Production Integration Failure
+# Debug a Node.js Integration Failure with AppSignal APM, Error Tracking, and Custom Metrics
 
 Production integration failures rarely start with a clean bug report. They usually start with a short message:
 
@@ -8,9 +8,11 @@ The customer sync failed.
 Can someone check the logs?
 ```
 
-That request is understandable, but it is not enough to debug efficiently. Logs, metrics, and traces are much more useful when the first handoff gives them a precise question to answer.
+That request is understandable, but it is not enough to debug efficiently. AppSignal APM, error tracking, custom metrics, logs, and traces are much more useful when the first handoff gives them a precise question to answer.
 
-This article shows how to turn a vague production integration failure into a focused debugging handoff. The examples apply to APIs, webhooks, queues, background jobs, and SaaS sync workflows.
+This article shows how to turn a vague production integration failure into a focused AppSignal investigation. The running example is a small Node.js webhook-to-worker flow, but the same pattern applies to APIs, webhooks, queues, background jobs, and SaaS sync workflows.
+
+The goal is practical: use AppSignal APM to find the slow or failing path, error tracking to capture the exception, custom metrics to show retry and queue behavior, and namespaces to separate web request performance from worker job performance.
 
 ## The Goal of a Debugging Handoff
 
@@ -25,6 +27,106 @@ A good handoff should help the next engineer answer:
 7. What acceptance check proves the issue is fixed?
 
 The handoff is not a replacement for observability tools. It is the map that tells those tools where to look.
+
+## Example: a Node.js Webhook-to-Worker Failure
+
+Imagine a Node.js application with this path:
+
+```text
+POST /webhooks/payment
+  -> validate payment event
+  -> enqueue billing-sync job
+  -> billing-sync worker
+  -> POST partner /invoices
+```
+
+The customer report says the billing record did not appear. AppSignal should help answer four questions:
+
+1. Did the web request finish successfully?
+2. Did the worker job run?
+3. Did the downstream invoice API fail or slow down?
+4. Did retries or queue age increase after the failure?
+
+Use a safe correlation shape in the application:
+
+```text
+webhook_event_id=evt_safe_example
+job_id=billing-sync-safe-example
+tenant_alias=tenant-alpha
+integration=partner-invoices
+```
+
+Keep raw payloads, authorization headers, cookies, API keys, payment data, and private customer fields out of logs and error context.
+
+## Add AppSignal Context and Namespaces
+
+Use namespaces to separate web request performance from background job performance. In an AppSignal project, that makes it easier to inspect the API endpoint and worker path independently.
+
+Conceptually:
+
+```js
+// billingWorker.js
+const appsignal = require("./appsignal");
+
+async function processBillingJob(job) {
+  const span = appsignal.tracer().createSpan("billing_sync.process");
+  span.setNamespace("background");
+  span.set("webhook_event_id", job.webhookEventId);
+  span.set("job_id", job.id);
+  span.set("tenant_alias", job.tenantAlias);
+  span.set("integration", "partner-invoices");
+
+  try {
+    await callInvoiceApi(job);
+  } catch (error) {
+    span.set("billing_result", "retry");
+    throw error;
+  } finally {
+    span.close();
+  }
+}
+```
+
+The exact API shape depends on the AppSignal package version and framework integration. The tutorial should link to the current AppSignal Node.js documentation and keep the example focused on the data model: namespace, correlation fields, and the operation name.
+
+## Capture the Exception with Error Tracking
+
+When the downstream API fails, error tracking should capture the class and safe context:
+
+```text
+error.class=PartnerTimeout
+message="POST /invoices timed out after 10s"
+namespace=background
+integration=partner-invoices
+webhook_event_id=evt_safe_example
+job_id=billing-sync-safe-example
+```
+
+That context keeps the error actionable without exposing the private invoice payload. The handoff can then say:
+
+```text
+Search AppSignal error tracking for PartnerTimeout in the background namespace between 13:55 and 14:25 UTC.
+Filter by integration=partner-invoices and webhook_event_id=evt_safe_example.
+```
+
+## Add Custom Metrics for Retry and Queue Behavior
+
+APM and error tracking tell you where a failure happened. Custom metrics show whether it is isolated or systemic.
+
+For an integration worker, useful custom metrics include:
+
+- `billing_sync.retry_count`,
+- `billing_sync.queue_age_seconds`,
+- `billing_sync.downstream_latency_ms`,
+- `billing_sync.partner_timeout_count`.
+
+The metric question should be narrow:
+
+```text
+Did billing_sync.partner_timeout_count or billing_sync.queue_age_seconds increase between 13:55 and 14:25 UTC?
+```
+
+That question is better than "check metrics" because it tells the responder which signal would prove scope and severity.
 
 ## Start with Expected and Observed Behavior
 

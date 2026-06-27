@@ -1,14 +1,14 @@
-# AppSignal submission brief: production integration debugging handoffs
+# AppSignal submission brief: Node.js integration debugging with APM
 
 This brief is a submission-ready review note for an AppSignal article pitch. It is not a final article draft. It summarizes the article promise, observability fit, implementation-backed samples, and safe publication boundary before an editor requests the full article.
 
 ## Working title
 
-What to capture before debugging a production integration failure
+Debug a Node.js Integration Failure with AppSignal APM, Error Tracking, and Custom Metrics
 
 ## Reader
 
-The reader is a backend developer, SRE, platform engineer, support escalation engineer, or technical lead who has to debug production integration failures across APIs, webhooks, queues, background jobs, and SaaS sync workflows.
+The reader is a backend developer, SRE, platform engineer, support escalation engineer, or technical lead who has to debug production integration failures in a Node.js service across APIs, webhooks, queues, background jobs, and SaaS sync workflows.
 
 They likely have access to logs, metrics, traces, or error dashboards, but the first report is still vague:
 
@@ -18,30 +18,31 @@ The sync failed.
 Can someone check the logs?
 ```
 
-The article teaches how to turn that vague request into a focused debugging handoff.
+The article teaches how to turn that vague request into a focused AppSignal investigation using APM events, error tracking, custom metrics, namespaces, and a copyable debugging handoff.
 
 ## Article promise
 
-The article shows readers how to capture:
+The article shows readers how to:
 
-1. Expected behavior.
-2. Observed behavior.
-3. Time window and environment.
-4. Correlation handles.
-5. Safe log snippets.
-6. Metrics to inspect.
-7. Trace pointers.
-8. Recent deploys, config changes, and vendor events.
-9. Hypotheses that can be falsified.
-10. Acceptance checks before closing the incident.
+1. Reproduce a minimal Node.js integration failure.
+2. Use AppSignal APM to inspect a slow or failing background job.
+3. Capture the exception with error tracking.
+4. Add custom metrics for retry count, queue age, and downstream latency.
+5. Use namespaces to separate web requests from worker jobs.
+6. Tie correlation handles to logs, metrics, and traces.
+7. Record recent deploys, config changes, and vendor events.
+8. Write falsifiable hypotheses.
+9. Define acceptance checks before closing the incident.
 
 ## Why this fits AppSignal readers
 
-AppSignal readers care about observability in real application work, not only dashboards. This article connects human incident handoffs to the telemetry layer:
+AppSignal readers care about observability in real application work, not only dashboards. This article connects a concrete Node.js integration failure to AppSignal's core surfaces:
 
+- AppSignal APM helps locate the slow worker path,
+- error tracking captures the exception and grouping context,
+- custom metrics show retry count, queue age, and downstream latency,
+- namespaces separate web request performance from background job performance,
 - logs become searchable because the handoff includes service, time window, request IDs, and event IDs,
-- metrics become useful because the handoff names the expected error-rate, latency, retry, or queue-depth signal,
-- traces become actionable because the handoff names the request path and downstream operation to check,
 - and acceptance checks prevent "looks better" from replacing a verified fix.
 
 The article is practical rather than theoretical. It gives a copyable template and examples for API, webhook, queue, and SaaS sync failures.
@@ -49,16 +50,18 @@ The article is practical rather than theoretical. It gives a copyable template a
 ## Proposed outline
 
 1. Why "send me the logs" is not enough.
-2. Capture expected and observed behavior.
-3. Pin down the time window.
-4. Add correlation handles.
-5. Separate safe evidence from private production data.
-6. Connect logs, metrics, and traces.
-7. Record recent changes without jumping to blame.
-8. Write falsifiable hypotheses.
-9. Define acceptance checks before the fix.
-10. Copyable debugging handoff template.
-11. Common mistakes and conclusion.
+2. Build a minimal Node.js webhook-to-worker example.
+3. Use AppSignal APM to inspect the slow or failing worker path.
+4. Capture the integration exception with error tracking.
+5. Add custom metrics for retry count, queue age, and downstream latency.
+6. Use namespaces to separate web and worker telemetry.
+7. Capture expected behavior, observed behavior, time window, and correlation handles.
+8. Separate safe evidence from private production data.
+9. Record recent changes without jumping to blame.
+10. Write falsifiable hypotheses.
+11. Define acceptance checks before the fix.
+12. Copyable debugging handoff template.
+13. Common mistakes and conclusion.
 
 ## Public proof links
 
@@ -102,6 +105,11 @@ https://github.com/OOYXLOO/oid-knowledge-lab
 
 The final article can include:
 
+- a minimal Node.js webhook/worker example,
+- AppSignal APM investigation steps,
+- error tracking context,
+- custom metrics for integration failures,
+- namespace guidance for web versus worker telemetry,
 - a complete debugging handoff template,
 - examples for API, webhook, queue, and SaaS sync failures,
 - sample log, metric, and trace questions,
