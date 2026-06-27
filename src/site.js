@@ -118,6 +118,12 @@ function renderEditorReviewPathPanel() {
           <a href="vultr-creator-reviewer-hub.html">Open Vultr hub</a>
         </article>
         <article>
+          <span>DigitalOcean review</span>
+          <strong>Static evidence dashboard tutorial</strong>
+          <p>DigitalOcean Community-focused review page with Node.js report generation, static dashboard output, manifest checks, and publish-safety boundaries.</p>
+          <a href="digitalocean-reviewer-hub.html">Open DigitalOcean hub</a>
+        </article>
+        <article>
           <span>Real Python review</span>
           <strong>Python + AI validation workflow</strong>
           <p>Real Python-focused review page with AI-assisted Python development, pytest validation, edge cases, evidence logs, and safe publication boundaries.</p>
@@ -572,6 +578,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="signoz-reviewer-hub.html">SigNoz reviewer hub</a>
         <a href="appsignal-reviewer-hub.html">AppSignal reviewer hub</a>
         <a href="vultr-creator-reviewer-hub.html">Vultr Creator reviewer hub</a>
+        <a href="digitalocean-reviewer-hub.html">DigitalOcean reviewer hub</a>
         <a href="realpython-ai-reviewer-hub.html">Real Python AI reviewer hub</a>
         <a href="implementation-authenticity-proof.html">Implementation proof</a>
       </div>
@@ -1503,6 +1510,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "signoz-reviewer-hub.html",
     "appsignal-reviewer-hub.html",
     "vultr-creator-reviewer-hub.html",
+    "digitalocean-reviewer-hub.html",
     "realpython-ai-reviewer-hub.html",
     "writing-samples.html",
     "implementation-authenticity-proof.html",
