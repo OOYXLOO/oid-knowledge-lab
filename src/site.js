@@ -112,6 +112,12 @@ function renderEditorReviewPathPanel() {
           <a href="appsignal-reviewer-hub.html">Open AppSignal hub</a>
         </article>
         <article>
+          <span>Real Python review</span>
+          <strong>Python + AI validation workflow</strong>
+          <p>Real Python-focused review page with AI-assisted Python development, pytest validation, edge cases, evidence logs, and safe publication boundaries.</p>
+          <a href="realpython-ai-reviewer-hub.html">Open Real Python hub</a>
+        </article>
+        <article>
           <span>Working proof</span>
           <strong>Public dashboard</strong>
           <p>Runnable data workflow, publishable reports, source boundaries, search surfaces, local audit tools, and release guard checks.</p>
@@ -559,6 +565,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="directus-reviewer-hub.html">Directus reviewer hub</a>
         <a href="signoz-reviewer-hub.html">SigNoz reviewer hub</a>
         <a href="appsignal-reviewer-hub.html">AppSignal reviewer hub</a>
+        <a href="realpython-ai-reviewer-hub.html">Real Python AI reviewer hub</a>
         <a href="implementation-authenticity-proof.html">Implementation proof</a>
       </div>
     </section>
@@ -1488,6 +1495,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "directus-reviewer-hub.html",
     "signoz-reviewer-hub.html",
     "appsignal-reviewer-hub.html",
+    "realpython-ai-reviewer-hub.html",
     "writing-samples.html",
     "implementation-authenticity-proof.html",
     "technical-rigor-proof.html",
