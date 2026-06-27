@@ -1547,6 +1547,18 @@ function testArticleSampleIndexIncludesSigNozFullDraft() {
   assert.equal(draft.includes("\u8d5a\u94b1"), false);
 }
 
+function testWritingSamplesPageHasEditorDecisionPanel() {
+  const text = fs.readFileSync(path.join(ROOT, "public/writing-samples.html"), "utf8");
+  assert.ok(text.includes("Editor quick decision"), "writing samples page should include a fast editorial decision panel");
+  assert.ok(text.includes("Submission-ready queue"), "writing samples page should show the submission-ready queue");
+  for (const platform of ["Airbyte", "Civo", "Draft.dev", "Directus", "AppSignal", "SigNoz"]) {
+    assert.ok(text.includes(platform), `writing samples page should include ${platform}`);
+  }
+  assert.equal(text.includes("money" + "-goal"), false);
+  assert.equal(text.includes("USD " + "200"), false);
+  assert.equal(text.includes("\u8d5a\u94b1"), false);
+}
+
 function testBuyerSignalPackRenderer() {
   assert.equal(buyerSignalPackModule.__loadError, undefined, buyerSignalPackModule.__loadError);
   const { buildBuyerSignalPack, renderBuyerSignalMarkdown } = buyerSignalPackModule;
@@ -1643,6 +1655,7 @@ function main() {
   testArticleSampleIndexIncludesDirectusFullDraft();
   testArticleSampleIndexIncludesAppSignalFullDraft();
   testArticleSampleIndexIncludesSigNozFullDraft();
+  testWritingSamplesPageHasEditorDecisionPanel();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
