@@ -61,13 +61,13 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/c
 Topic area:
 
 ```text
-Developer tooling, observability handoffs, release guards, and static evidence dashboards
+Developer-tool tutorials, observability handoffs, release guards, API debugging, and implementation-backed technical writing
 ```
 
 Short fit note:
 
 ```text
-My strongest samples are implementation-backed tutorials for developers who need concrete workflows: static dashboards, generated documentation systems, release guards, observability debugging handoffs, and safe public proof pages.
+My strongest Draft.dev fit is turning a client brief, SME notes, docs page, or sample repository into a practical developer article. I can propose an outline, build or verify the example, write a byline or ghostwritten draft, and handle revision while preserving technical accuracy and reproducibility.
 ```
 
 Sample links:

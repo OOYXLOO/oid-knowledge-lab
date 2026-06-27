@@ -6,9 +6,19 @@ This brief is a review note for a Draft.dev writer-network application. It is no
 
 I write best when the article is tied to a small, working engineering artifact: a reproducible Node.js workflow, generated reports, a static dashboard, release checks, or an observability handoff pattern that readers can adapt to their own systems.
 
+For a Draft.dev writer-network application, the fit is not a single article idea. The fit is a repeatable delivery style for developer-tool clients:
+
+1. read a client brief and identify the promised reader outcome,
+2. turn SME notes into a technical outline,
+3. build or verify a small working example,
+4. write the tutorial in a developer-facing voice,
+5. handle editorial revision without losing technical accuracy,
+6. and deliver either byline or ghostwritten content depending on the assignment.
+
 The strongest fit is developer education for teams that care about:
 
 - developer tooling,
+- developer-tool launches and adoption content,
 - DevOps workflows,
 - observability handoffs,
 - API and integration debugging,
@@ -48,6 +58,32 @@ Repository:
 ```text
 https://github.com/OOYXLOO/oid-knowledge-lab
 ```
+
+## Draft.dev delivery fit
+
+I am best suited for assignments where the editor or client has a defined technical product, API, platform, or workflow and needs a working article rather than a generic thought piece.
+
+Good assignment shapes:
+
+- turn a product brief into a practical tutorial,
+- interview or review SME notes and convert them into a clear outline,
+- build a small proof project to support the article,
+- compare implementation trade-offs for a developer-tool audience,
+- create a troubleshooting or observability playbook,
+- revise a draft for precision, structure, and reproducibility,
+- or ghostwrite a technical article that still reads like a working engineer wrote it.
+
+I can work from:
+
+- a client brief,
+- rough SME notes,
+- an existing docs page,
+- a sample repository,
+- a product changelog,
+- an API reference,
+- or an editor-provided outline.
+
+The strongest outputs are implementation-backed tutorials, opinion-light explainers, and operational playbooks. I am less suited to content that requires private customer anecdotes, proprietary benchmarks, or broad executive thought leadership without code or concrete workflows.
 
 ## Topic lanes
 
@@ -121,6 +157,17 @@ npm run build:site
 npm run guard:publishable
 git diff --check
 ```
+
+## Editorial workflow
+
+For a Draft.dev assignment, I would normally deliver:
+
+1. a short outline that confirms reader, promise, prerequisites, and code path;
+2. a first draft with commands, examples, and expected outputs;
+3. a revision pass after editor or SME comments;
+4. a final pass for link quality, publication boundary, and reproducibility.
+
+When a piece is byline or ghostwritten, the implementation standard stays the same: readers should be able to tell what to build, why each step exists, and how to verify the outcome.
 
 ## Publication boundary
 

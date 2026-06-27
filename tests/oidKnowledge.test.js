@@ -1516,6 +1516,20 @@ function testArticleSampleIndexIncludesDirectusFullDraft() {
   assert.equal(draft.includes("\u8d5a\u94b1"), false);
 }
 
+function testDraftDevEditorialFitBriefMatchesWriterNetwork() {
+  const brief = fs.readFileSync(path.join(ROOT, "docs/articles/draftdev-editorial-fit-brief.md"), "utf8");
+  assert.ok(brief.includes("Draft.dev writer-network application"));
+  assert.ok(brief.includes("developer-tool"));
+  assert.ok(brief.includes("client brief"));
+  assert.ok(brief.includes("SME notes"));
+  assert.ok(brief.includes("outline"));
+  assert.ok(brief.includes("revision"));
+  assert.ok(brief.includes("byline or ghostwritten"));
+  assert.equal(brief.includes("money" + "-goal"), false);
+  assert.equal(brief.includes("USD " + "200"), false);
+  assert.equal(brief.includes("\u8d5a\u94b1"), false);
+}
+
 function testArticleSampleIndexIncludesAppSignalFullDraft() {
   const files = [
     "docs/articles/README.md",
