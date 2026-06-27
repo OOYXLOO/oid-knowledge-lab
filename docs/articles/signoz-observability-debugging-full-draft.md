@@ -12,6 +12,8 @@ This article shows how to write a practical observability debugging handoff befo
 
 The goal is simple: make the next query in SigNoz, OpenTelemetry-backed traces, logs, or metrics precise enough that the responder can investigate instead of interviewing the incident.
 
+To keep the article code-based, we will use a small Node.js webhook worker as the running example. It receives a webhook, publishes a background job, processes the job, and calls a downstream invoice API. We will add OpenTelemetry SDK setup, an OTLP exporter, trace-log correlation fields, and a few metrics that make the failure searchable in SigNoz Explorer.
+
 ## Why "check the logs" is not a debugging plan
 
 Logs are only one layer of observability. A useful investigation usually needs three connected views:
@@ -33,6 +35,125 @@ If the handoff only says "the webhook failed", the responder has to reconstruct 
 - What result proves the incident is fixed?
 
 Those questions should not be rediscovered one message at a time. The handoff should answer them before telemetry is queried.
+
+## Example service: a Node.js webhook worker
+
+The example service has four steps:
+
+1. receive `POST /webhooks/payment`,
+2. validate the webhook event,
+3. enqueue a billing job,
+4. process the job and call an invoice API.
+
+The important part is not the billing domain. The important part is that each step creates telemetry with the same safe correlation handles:
+
+```text
+service.name=billing-worker
+deployment.environment=production
+webhook.event_id=evt_safe_example
+job.id=job_safe_example
+tenant.alias=tenant-alpha
+```
+
+Do not put raw request payloads, authorization headers, cookies, API keys, private customer data, or payment data into spans or logs. Keep sensitive data in the appropriate secure system and reference it with a safe alias when needed.
+
+## Add OpenTelemetry and an OTLP exporter
+
+A minimal Node.js setup can initialize tracing, metrics, and log correlation before the app starts:
+
+```js
+// telemetry.js
+const { NodeSDK } = require("@opentelemetry/sdk-node");
+const { OTLPTraceExporter } = require("@opentelemetry/exporter-trace-otlp-http");
+const { OTLPMetricExporter } = require("@opentelemetry/exporter-metrics-otlp-http");
+const { PeriodicExportingMetricReader } = require("@opentelemetry/sdk-metrics");
+const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumentations-node");
+
+const sdk = new NodeSDK({
+  traceExporter: new OTLPTraceExporter({
+    url: process.env.OTEL_EXPORTER_OTLP_TRACES_ENDPOINT
+  }),
+  metricReader: new PeriodicExportingMetricReader({
+    exporter: new OTLPMetricExporter({
+      url: process.env.OTEL_EXPORTER_OTLP_METRICS_ENDPOINT
+    })
+  }),
+  instrumentations: [getNodeAutoInstrumentations()]
+});
+
+sdk.start();
+```
+
+In a local or hosted SigNoz setup, configure the OTLP exporter endpoint with environment variables. Keep the endpoint and any access token out of the repository:
+
+```bash
+export OTEL_SERVICE_NAME=billing-worker
+export OTEL_EXPORTER_OTLP_TRACES_ENDPOINT="https://ingest.example.com/v1/traces"
+export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT="https://ingest.example.com/v1/metrics"
+node -r ./telemetry.js server.js
+```
+
+The exact endpoint depends on how SigNoz is deployed. The article should point readers to their SigNoz ingestion settings rather than hard-code a private endpoint.
+
+## Add spans and trace-log correlation
+
+Automatic instrumentation is a good start, but webhook and job systems usually need business attributes. Add a span around the worker step and include safe identifiers:
+
+```js
+const { trace, metrics } = require("@opentelemetry/api");
+
+const tracer = trace.getTracer("billing-worker");
+const meter = metrics.getMeter("billing-worker");
+const retryCounter = meter.createCounter("billing_worker.retry_count");
+
+async function processBillingJob(job) {
+  return tracer.startActiveSpan("billing.job.process", async (span) => {
+    span.setAttributes({
+      "webhook.event_id": job.webhookEventId,
+      "job.id": job.id,
+      "tenant.alias": job.tenantAlias,
+      "billing.operation": "invoice-update"
+    });
+
+    try {
+      await callInvoiceApi(job);
+      span.setAttribute("billing.result", "success");
+    } catch (error) {
+      retryCounter.add(1, {
+        "billing.error_class": error.name,
+        "billing.operation": "invoice-update"
+      });
+      span.recordException(error);
+      span.setAttribute("billing.result", "retry");
+      throw error;
+    } finally {
+      span.end();
+    }
+  });
+}
+```
+
+For logs, include the trace ID and event ID so SigNoz can connect the log line to the trace:
+
+```js
+const { trace } = require("@opentelemetry/api");
+
+function logError(message, context) {
+  const span = trace.getActiveSpan();
+  const spanContext = span ? span.spanContext() : {};
+  console.error(JSON.stringify({
+    level: "error",
+    message,
+    trace_id: spanContext.traceId,
+    span_id: spanContext.spanId,
+    webhook_event_id: context.webhookEventId,
+    job_id: context.jobId,
+    error_class: context.errorClass
+  }));
+}
+```
+
+This is trace-log correlation in plain terms: a human report can name `webhook_event_id`, the logs can include `trace_id`, and SigNoz Explorer can move from the failed log entry to the trace path.
 
 ## Start with expected and observed behavior
 
@@ -139,6 +260,14 @@ For trace_id trace_safe_example, did the worker call invoice-update after webhoo
 ```
 
 These questions are narrow enough for an observability platform to answer. They also make the next step reviewable: if the query does not answer the question, the handoff needs more context.
+
+In SigNoz Explorer, that translates into an investigation path:
+
+1. Search traces for `service.name = billing-worker` and `webhook.event_id = evt_safe_example`.
+2. Open the failed trace and inspect the `billing.job.process` span.
+3. Jump to correlated logs using `trace_id`.
+4. Compare retry metrics around the same time window.
+5. Confirm whether the failure is validation, downstream latency, queue retry, or stale projection.
 
 ## Map logs, metrics, and traces to failure modes
 

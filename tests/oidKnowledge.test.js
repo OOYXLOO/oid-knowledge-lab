@@ -1572,10 +1572,14 @@ function testArticleSampleIndexIncludesSigNozFullDraft() {
 
   const draft = fs.readFileSync(path.join(ROOT, "docs/articles/signoz-observability-debugging-full-draft.md"), "utf8");
   assert.ok(draft.includes("Observability Debugging Handoffs: What to Capture Before You Ask for Logs"));
+  assert.ok(draft.includes("Node.js"));
   assert.ok(draft.includes("logs"));
   assert.ok(draft.includes("metrics"));
   assert.ok(draft.includes("traces"));
   assert.ok(draft.includes("OpenTelemetry"));
+  assert.ok(draft.includes("OTLP exporter"));
+  assert.ok(draft.includes("SigNoz Explorer"));
+  assert.ok(draft.includes("trace-log correlation"));
   assert.equal(draft.includes("money" + "-goal"), false);
   assert.equal(draft.includes("USD " + "200"), false);
   assert.equal(draft.includes("\u8d5a\u94b1"), false);

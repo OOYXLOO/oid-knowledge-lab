@@ -124,13 +124,13 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/a
 Working title:
 
 ```text
-Observability Debugging Handoffs: What to Capture Before You Ask for Logs
+Instrument a Node.js Webhook Worker with OpenTelemetry and Debug It in SigNoz
 ```
 
 Short pitch:
 
 ```text
-This article turns observability into a reusable handoff pattern: logs for facts, metrics for scope, traces for path, OpenTelemetry context for correlation, and acceptance checks for closure.
+This code-based SigNoz tutorial instruments a small Node.js webhook worker with OpenTelemetry, sends telemetry through an OTLP exporter, adds trace-log correlation for failed jobs, and uses SigNoz Explorer to connect traces, logs, metrics, and a reusable debugging handoff.
 ```
 
 Sample links:

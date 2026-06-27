@@ -1,14 +1,14 @@
-# SigNoz submission brief: observability debugging handoff
+# SigNoz submission brief: Node.js OpenTelemetry debugging handoff
 
 This brief is a submission-ready review note for a SigNoz technical writer application. It is not a final article draft. It summarizes the article promise, SigNoz fit, observability depth, public samples, and safe publication boundary before an editor requests a complete draft.
 
 ## Working title
 
-What to capture before debugging a production integration failure
+Instrument a Node.js Webhook Worker with OpenTelemetry and Debug It in SigNoz
 
 ## Reader
 
-The reader is a backend developer, DevOps engineer, SRE, platform engineer, or support escalation engineer debugging production-adjacent failures across:
+The reader is a backend developer, DevOps engineer, SRE, platform engineer, or support escalation engineer debugging production-adjacent failures in Node.js services across:
 
 - APIs,
 - webhooks,
@@ -25,29 +25,32 @@ Can you check logs?
 The sync is broken.
 ```
 
-The article teaches readers how to prepare the context that makes logs, metrics, and traces useful.
+The article teaches readers how to instrument a small Node.js webhook worker, send telemetry with an OTLP exporter, and use SigNoz Explorer to connect a vague failure report to traces, logs, and metrics.
 
 ## Article promise
 
-The article gives readers a practical debugging handoff structure:
+The article gives readers a code-based debugging path:
 
-1. Expected behavior.
-2. Observed behavior.
-3. Time window and environment.
-4. Correlation handles.
-5. Safe log snippets.
-6. Metrics to inspect.
-7. Trace questions to answer.
-8. Recent deploys, config changes, schema changes, and vendor events.
-9. Falsifiable hypotheses.
-10. Acceptance checks before closing the incident.
+1. Create a minimal Node.js webhook worker.
+2. Add OpenTelemetry SDK initialization.
+3. Export traces, logs, and metrics through OTLP.
+4. Add request, webhook event, job, and retry attributes.
+5. Demonstrate trace-log correlation for a failed webhook job.
+6. Use SigNoz Explorer to inspect the trace path, log entries, and retry metric.
+7. Turn the investigation into a reusable debugging handoff.
+8. Define acceptance checks before closing the incident.
 
 ## Why this fits SigNoz readers
 
-SigNoz readers are often trying to make production telemetry more actionable. This article focuses on the step before a query is written: how to frame the investigation so logs, metrics, and traces answer a precise question.
+SigNoz readers are often trying to make production telemetry more actionable. This article combines a small code example with the operational step before a query is written: how to frame the investigation so logs, metrics, and traces answer a precise question.
 
 The article can map handoff fields to observability work:
 
+- OpenTelemetry spans show the webhook-to-worker path,
+- structured logs include `trace_id` and `webhook_event_id`,
+- metrics show retry count and worker latency,
+- the OTLP exporter sends signals to SigNoz,
+- SigNoz Explorer connects the failed job to traces and logs,
 - `time_window` narrows log and trace search,
 - `service` and `environment` prevent wrong-scope queries,
 - `request_id`, `trace_id`, `job_id`, and `webhook_event_id` connect human reports to telemetry,
@@ -60,17 +63,18 @@ This makes the piece practical for SigNoz readers without requiring access to pr
 ## Proposed outline
 
 1. Why "check the logs" is not a debugging plan.
-2. Define expected and observed behavior.
-3. Capture time window, environment, and affected path.
-4. Add correlation handles for logs and traces.
-5. Collect safe log snippets without leaking secrets or private payloads.
-6. Connect metrics to the failure mode: errors, latency, retries, queue depth, throughput.
-7. Connect traces to the request path and downstream operation.
-8. Record recent deploys, config changes, schema changes, and vendor events.
-9. Write falsifiable hypotheses.
-10. Define acceptance checks before the fix.
-11. Copyable debugging handoff template.
-12. Conclusion: observability works better when the handoff asks a precise question.
+2. Build a small Node.js webhook worker that can fail safely.
+3. Add OpenTelemetry SDK setup and an OTLP exporter.
+4. Add spans around webhook receive, queue publish, worker consume, and downstream API call.
+5. Add structured logs with trace-log correlation fields.
+6. Add metrics for retry count, validation errors, and worker latency.
+7. Use SigNoz Explorer to inspect the failed trace, related logs, and metrics.
+8. Convert the telemetry into a debugging handoff.
+9. Record recent deploys, config changes, schema changes, and vendor events.
+10. Write falsifiable hypotheses.
+11. Define acceptance checks before the fix.
+12. Copyable debugging handoff template.
+13. Conclusion: observability works better when code instrumentation and handoff context agree.
 
 ## Example telemetry questions
 
@@ -134,6 +138,11 @@ https://github.com/OOYXLOO/oid-knowledge-lab
 
 The full article can include:
 
+- a minimal Node.js worker example,
+- OpenTelemetry SDK setup,
+- OTLP exporter configuration,
+- example spans, attributes, logs, and metrics,
+- a SigNoz Explorer investigation path,
 - a copyable Markdown handoff template,
 - examples for API, webhook, queue, and SaaS sync failures,
 - safe log examples,
