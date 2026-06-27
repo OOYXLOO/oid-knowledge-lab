@@ -4,7 +4,7 @@ This brief is a submission-ready review note for a Directus guest-author applica
 
 ## Working title
 
-Build a registry evidence review hub with Directus, generated JSON, and a static proof page
+Build a Registry Evidence Review Hub with Directus Data Studio, Generated JSON, and a Static Proof Page
 
 ## Reader
 
@@ -23,12 +23,15 @@ Good-fit teams include:
 The tutorial would teach readers how to:
 
 1. Start with generated JSON reports from a local workflow.
-2. Model reviewable evidence in Directus collections.
-3. Separate public records from local-only inputs.
-4. Add review statuses, source links, artifact hashes, and acceptance notes.
-5. Use Directus as the editorial and reviewer surface.
-6. Export or link a public static proof page for readers who do not need admin access.
-7. Add a release guard before publishing generated artifacts.
+2. Model reviewable evidence in Directus collections using Data Studio.
+3. Connect `review_artifacts` back to `evidence_sources` with a many-to-one relation.
+4. Separate public records from local-only inputs with roles and permissions.
+5. Import safe fields through CSV, the Items API, or the Directus SDK.
+6. Add review statuses, source links, artifact hashes, and acceptance notes.
+7. Optionally add a Directus Flow that notifies reviewers when a high-priority artifact is created.
+8. Use Directus as the editorial and reviewer surface.
+9. Export or link a public static proof page for readers who do not need admin access.
+10. Add a release guard before publishing generated artifacts.
 
 ## Why this fits Directus readers
 
@@ -37,6 +40,9 @@ Directus is strong when structured content, data review, and editorial workflows
 - generated reports become content records,
 - public source references become relation-friendly fields,
 - reviewer decisions become controlled statuses,
+- roles and permissions keep draft review records separate from public proof links,
+- the Items API or Directus SDK can import generated evidence without manual copy-paste,
+- a Directus Flow can create lightweight review notifications,
 - derived artifacts remain publishable,
 - and raw private/local crawl outputs remain outside the public repository.
 
@@ -64,7 +70,7 @@ Fields:
 - `public_url`
 - `sha256`
 - `record_count`
-- `source`
+- `source` as a many-to-one relation to `evidence_sources`
 - `publishable`
 - `review_status`
 - `acceptance_note`
@@ -85,12 +91,14 @@ Fields:
 1. Why generated evidence needs a review hub.
 2. The boundary: local inputs, generated reports, public proof links.
 3. Directus collection design for evidence sources and artifacts.
-4. Import generated JSON reports into reviewable records.
-5. Add review statuses and acceptance notes.
-6. Link a static proof page for public reviewers.
-7. Add release guards before publishing.
-8. What not to publish: raw mirrors, credentials, customer inventories, and local-only crawl output.
-9. Verification checklist and next steps.
+4. Configure roles and permissions for reviewers and public readers.
+5. Import generated JSON reports into reviewable records through CSV, the Items API, or the Directus SDK.
+6. Add review statuses and acceptance notes.
+7. Add an optional Directus Flow for high-priority review notifications.
+8. Link a static proof page for public reviewers.
+9. Add release guards before publishing.
+10. What not to publish: raw mirrors, credentials, customer inventories, and local-only crawl output.
+11. Verification checklist and next steps.
 
 ## Public proof links
 
@@ -136,6 +144,9 @@ The full article can include:
 
 - example JSON input,
 - Directus collection definitions,
+- roles and permissions notes,
+- Items API or SDK import examples,
+- an optional Directus Flow example,
 - import mapping notes,
 - review-status workflow,
 - safe publication boundary checks,

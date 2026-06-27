@@ -4,7 +4,7 @@ Generated technical reports are useful, but they are often awkward to review. A 
 
 Directus can sit between those surfaces. It can turn generated reports into structured review records, give reviewers controlled fields such as `review_status` and `acceptance_note`, and still link to a public static proof page for readers who do not need admin access.
 
-This tutorial shows how to build a small registry evidence review hub with Directus. The example uses generated OID Knowledge Lab reports, but the pattern works for release readiness reports, migration checks, data-quality audits, catalog reviews, and compliance handoffs.
+This tutorial shows how to build a small registry evidence review hub with Directus Data Studio, collection relations, the Items API, roles and permissions, and an optional Directus Flow. The example uses generated OID Knowledge Lab reports, but the pattern works for release readiness reports, migration checks, data-quality audits, catalog reviews, and compliance handoffs.
 
 ## What We Are Building
 
@@ -12,7 +12,9 @@ The review hub has three layers:
 
 1. Generated JSON reports from a local workflow.
 2. Directus collections for reviewable evidence records.
-3. A static proof page that public reviewers can inspect without Directus access.
+3. A reviewer role that can triage artifacts without changing source boundaries.
+4. An optional Directus Flow for high-priority review notifications.
+5. A static proof page that public reviewers can inspect without Directus access.
 
 The hub should help answer:
 
@@ -69,7 +71,7 @@ The Directus hub does not need to copy every line from every report. It should i
 
 ## Collection Design
 
-Create three collections.
+Create three collections in Directus Data Studio. The model is intentionally small so readers can build it by hand, then automate imports later.
 
 ### Collection: `evidence_sources`
 
@@ -111,7 +113,7 @@ This collection stores generated outputs that need review.
 | `publishable` | boolean | Whether the artifact is safe for public review. |
 | `review_status` | string | `new`, `needs_changes`, `accepted`, `blocked`, or `published`. |
 | `acceptance_note` | text | What the reviewer accepted or still needs. |
-| `source` | relation | Link to `evidence_sources`. |
+| `source` | many-to-one relation | Link each artifact back to one `evidence_sources` record. |
 
 The `review_status` field is important. It turns a generated report into a workflow item.
 
@@ -130,7 +132,22 @@ This collection tracks findings that need human action.
 
 This lets reviewers separate accepted public evidence from unresolved cleanup work.
 
-## Import Mapping
+## Roles and Permissions
+
+Add two roles before importing data:
+
+| Role | Permissions |
+| --- | --- |
+| `Evidence Reviewer` | Read `evidence_sources`, read and update `review_artifacts.review_status` and `review_artifacts.acceptance_note`, and read `remediation_items`. |
+| `Public Reader` | Read only records where `publishable` is true and `review_status` is `published`. |
+
+The goal is not to make Directus the public proof page. The goal is to use Directus as the review surface while keeping public readers on a narrow, already-approved view.
+
+For fields that may hold reviewer-only context, keep public read permissions disabled. This is especially important for `owner_note`, draft acceptance notes, and any field that might mention local-only inputs.
+
+## Import Mapping with the Items API
+
+A generated JSON report can be mapped into Directus records with CSV import, the Items API, or the Directus SDK. The mapping should be explicit:
 
 A generated JSON report can be mapped into Directus records with a small import script or a CSV import. The mapping should be explicit:
 
@@ -146,6 +163,25 @@ A generated JSON report can be mapped into Directus records with a small import 
 ```
 
 Avoid importing entire raw payloads into long text fields. Import only the fields that support review.
+
+For example, an Items API request can create a review artifact from safe fields:
+
+```bash
+curl \
+  -X POST "https://directus.example.com/items/review_artifacts" \
+  -H "Authorization: Bearer $DIRECTUS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "OID asset audit",
+    "artifact_type": "json",
+    "public_url": "https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/asset-audit.json",
+    "publishable": true,
+    "review_status": "new",
+    "acceptance_note": "Derived report; safe for public review after manifest check."
+  }'
+```
+
+Do not hard-code this token in the repository or paste it into a public tutorial sample. Use an environment variable, local secret manager, or Directus-provided token handling in your own project.
 
 ## Review Workflow
 
@@ -166,6 +202,16 @@ Accepted because the manifest lists only derived reports, public source links, h
 ```
 
 This makes the review decision reusable.
+
+## Optional Directus Flow
+
+If the team wants a lightweight automation layer, create a Directus Flow:
+
+1. Trigger: item created in `review_artifacts`.
+2. Condition: `publishable` is true and `record_count` is greater than zero.
+3. Operation: send an internal notification or create a `remediation_items` record when `review_status` is `needs_changes`.
+
+Keep the Flow small. It should route review attention, not publish artifacts automatically. Publication still happens after the release guard passes and a reviewer accepts the artifact.
 
 ## Static Proof Page
 
@@ -224,11 +270,13 @@ Directus can store the guard result as a `review_artifacts` record:
 2. Generate a dataset manifest with hashes and publication boundaries.
 3. Build a static proof page.
 4. Create Directus collections for sources, artifacts, and remediation items.
-5. Import only review-safe fields.
-6. Assign `review_status` values.
-7. Link accepted artifacts to the static proof page.
-8. Run the release guard before publishing.
-9. Re-check public links after deployment.
+5. Add roles and permissions for reviewers and public readers.
+6. Import only review-safe fields through CSV, the Items API, or the Directus SDK.
+7. Assign `review_status` values.
+8. Add a Directus Flow only if it helps route review work.
+9. Link accepted artifacts to the static proof page.
+10. Run the release guard before publishing.
+11. Re-check public links after deployment.
 
 ## Common Mistakes
 
@@ -236,6 +284,8 @@ Avoid these shortcuts:
 
 - importing raw private exports into Directus,
 - storing copied third-party page bodies as evidence records,
+- giving public readers access to draft review notes,
+- turning a Directus Flow into an automatic publisher,
 - using `review_status` as a vague label instead of a decision,
 - publishing a static page that does not match the reviewed artifacts,
 - skipping the manifest,

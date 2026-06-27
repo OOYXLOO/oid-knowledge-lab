@@ -1504,6 +1504,11 @@ function testArticleSampleIndexIncludesDirectusFullDraft() {
   const draft = fs.readFileSync(path.join(ROOT, "docs/articles/directus-registry-evidence-review-hub-full-draft.md"), "utf8");
   assert.ok(draft.includes("Build a Registry Evidence Review Hub with Directus, Generated JSON, and a Static Proof Page"));
   assert.ok(draft.includes("Directus"));
+  assert.ok(draft.includes("Data Studio"));
+  assert.ok(draft.includes("Items API"));
+  assert.ok(draft.includes("roles and permissions"));
+  assert.ok(draft.includes("Directus Flow"));
+  assert.ok(draft.includes("many-to-one relation"));
   assert.ok(draft.includes("review_status"));
   assert.ok(draft.includes("static proof page"));
   assert.equal(draft.includes("money" + "-goal"), false);

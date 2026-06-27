@@ -82,13 +82,13 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/s
 Working title:
 
 ```text
-Build a registry evidence review hub with Directus, generated JSON, and a static proof page
+Build a Registry Evidence Review Hub with Directus Data Studio, Generated JSON, and a Static Proof Page
 ```
 
 Short pitch:
 
 ```text
-This article maps generated evidence reports into a Directus review hub. It turns JSON reports into collections, adds reviewer statuses and remediation fields, and links decisions back to a static proof page with clear publication boundaries.
+This article maps generated evidence reports into a Directus review hub. It uses Data Studio collections, a many-to-one relation, roles and permissions, the Items API or SDK for safe imports, review statuses, optional Directus Flow notifications, and a static proof page with clear publication boundaries.
 ```
 
 Sample links:
