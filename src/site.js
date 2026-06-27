@@ -70,6 +70,12 @@ function renderEditorReviewPathPanel() {
       </div>
       <div class="review-grid">
         <article>
+          <span>Client service</span>
+          <strong>Direct OID review fit</strong>
+          <p>Buyer-facing page for PKI policy OIDs, SNMP/MIB enterprise OIDs, and internal registry cleanup requests that need a small first assessment.</p>
+          <a href="direct-client-fit.html">Open fit page</a>
+        </article>
+        <article>
           <span>Long-form sample</span>
           <strong>Observability debugging handoffs</strong>
           <p>Logs, metrics, traces, correlation handles, safe evidence boundaries, and acceptance checks for production integration failures.</p>
@@ -572,6 +578,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="https://oid-base.com/sitemap.xml">OID-base sitemap</a>
         <a href="consulting-brief.html">Assessment brief</a>
         <a href="starter-scope.html">Starter scope</a>
+        <a href="direct-client-fit.html">Direct client fit</a>
         <a href="writing-samples.html">Writing samples</a>
         <a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a>
         <a href="civo-reviewer-hub.html">Civo reviewer hub</a>
@@ -1521,6 +1528,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "editor-decision-brief.html",
     "paid-writing-application-desk.html",
     "starter-scope.html",
+    "direct-client-fit.html",
     "content-backup-pitch-pack.html"
   ];
   for (const file of staticReviewPages) {
