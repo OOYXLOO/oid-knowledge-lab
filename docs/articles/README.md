@@ -99,6 +99,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-submission-field-pack.md
 ```
 
+### Implementation authenticity proof
+
+Path: `docs/articles/implementation-authenticity-proof.md`
+
+Best for editors and writer programs interested in:
+
+- proof that article ideas are backed by working implementation,
+- reproducible commands,
+- public source and generated artifacts,
+- a copyable authenticity note for submission forms,
+- and a clear publication boundary around private data and copied page bodies.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/implementation-authenticity-proof.md
+```
+
 ### Submission landing
 
 Path: `docs/articles/submission-landing.md`

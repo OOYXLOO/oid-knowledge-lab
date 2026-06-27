@@ -87,6 +87,12 @@ function renderEditorReviewPathPanel() {
           <p>Runnable data workflow, publishable reports, source boundaries, search surfaces, local audit tools, and release guard checks.</p>
           <a href="https://github.com/OOYXLOO/oid-knowledge-lab">View repository</a>
         </article>
+        <article>
+          <span>Authenticity proof</span>
+          <strong>Implementation-backed samples</strong>
+          <p>Public evidence that the article samples are tied to code, generated artifacts, reproducible checks, and publication boundaries.</p>
+          <a href="implementation-authenticity-proof.html">Open proof</a>
+        </article>
       </div>
     </section>`;
 }
@@ -285,6 +291,7 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/portfolio-card.md">Portfolio card</a></td><td>Fast writing-positioning overview, best first sample, proof links, and verification boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/editor-brief.md">Editor brief</a></td><td>Quick topic fit, reader outcomes, proof links, and verification boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/editor-pitch-pack.md">Editor pitch pack</a></td><td>Publication-ready topic angles mapped to samples, proof links, and safe boundaries.</td></tr>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/implementation-authenticity-proof.md">Implementation authenticity proof</a></td><td>Public trail from working code to generated artifacts to editorial samples, with reproducible checks.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/submission-landing.md">Submission landing</a></td><td>One-link review path for editor applications, paid writing forms, proof links, and sample fit.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/oid-assessment-client-one-pager.md">OID assessment one-pager</a></td><td>Buyer-readable assessment scope, safe client inputs, deliverables, and acceptance checks.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/certificate-policy-oid-inventory.md">Certificate policy OID inventory</a></td><td>PKI and certificate lifecycle metadata review, renewal-risk triage, and safe policy-OID evidence handling.</td></tr>
@@ -506,6 +513,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="https://oid-base.com/sitemap.xml">OID-base sitemap</a>
         <a href="consulting-brief.html">Assessment brief</a>
         <a href="writing-samples.html">Writing samples</a>
+        <a href="implementation-authenticity-proof.html">Implementation proof</a>
       </div>
     </section>
 
