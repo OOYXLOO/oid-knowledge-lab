@@ -117,6 +117,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/implementation-authenticity-proof.md
 ```
 
+### Reviewer routing card
+
+Path: `docs/articles/reviewer-routing-card.md`
+
+Best for editors, DevRel reviewers, and documentation teams interested in:
+
+- a 60-second path through the sample set,
+- implementation proof before reading long drafts,
+- platform-specific sample lanes,
+- a safe first-assignment shape,
+- and verification commands.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/reviewer-routing-card.md
+```
+
 ### Submission landing
 
 Path: `docs/articles/submission-landing.md`
