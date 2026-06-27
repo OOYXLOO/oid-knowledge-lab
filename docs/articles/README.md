@@ -304,6 +304,23 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-submission-brief.md
 ```
 
+### Airbyte Connector Builder appendix
+
+Path: `docs/articles/airbyte-connector-builder-appendix.md`
+
+Best for Airbyte editors and data-engineering readers interested in:
+
+- mapping the OID Knowledge Lab workflow to Connector Builder or Low-code CDK concepts,
+- keeping public registry metadata and sanitized local inventory as separate sources,
+- designing a safe destination row shape,
+- and validating publish boundaries before exposing generated dashboards.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-connector-builder-appendix.md
+```
+
 ### Publication Proposal: Static Evidence Dashboard
 
 Path: `docs/articles/publication-proposal-static-evidence-dashboard.md`

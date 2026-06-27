@@ -73,6 +73,12 @@ Supporting sample:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-friendly-registry-evidence-pipeline.md
 ```
 
+Airbyte Connector Builder appendix:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-connector-builder-appendix.md
+```
+
 Working dashboard:
 
 ```text
@@ -106,6 +112,7 @@ The article can include:
 - generated JSON / Markdown / CSV outputs,
 - a dashboard page,
 - a dataset manifest,
+- an Airbyte Connector Builder adaptation appendix,
 - and verification commands.
 
 It does not require publishing raw client inventories or copying third-party page bodies.
