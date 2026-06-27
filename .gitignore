@@ -10,3 +10,5 @@ data/sample/*.jsonl
 data/sample/*.md
 !data/sample/RUN-*.md
 tmp/
+
+.vercel
