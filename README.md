@@ -10,6 +10,7 @@ The current source adapter targets public OID-base pages through the site's site
 - GitHub Pages mirror: <https://ooyxloo.github.io/oid-knowledge-lab/>
 - Editor pitch pack: <https://oid-knowledge-lab.vercel.app/editor-pitch-pack.html>
 - Editor decision brief: <https://oid-knowledge-lab.vercel.app/editor-decision-brief.html>
+- Technical rigor proof: <https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html>
 - Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
 
 ## Current Publishable Snapshot
@@ -23,6 +24,7 @@ Last refreshed on 2026-06-26:
 - Static dashboard: generated under `public/`
 - Assessment brief page: `public/consulting-brief.html` summarizes the client-safe OID inventory assessment path.
 - Writing samples review page: `public/writing-samples.html` links editor-facing samples and proof surfaces
+- Technical rigor proof page: `public/technical-rigor-proof.html` maps writing samples to verification commands, generated artifacts, and publication boundaries
 - Dataset manifest: `reports/dataset-manifest.json` with artifact hashes, sizes, source links, and publication boundaries
 - Source policy snapshot: `reports/source-policy.md` records robots, terms, sitemap, and hash evidence for the collection boundary
 - Authorized full crawl plan: `reports/authorized-crawl-plan.md` records the scale, gates, local output path, and estimated runtime for a future authorized page-body import
