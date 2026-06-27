@@ -10,6 +10,7 @@ The current source adapter targets public OID-base pages through the site's site
 - GitHub Pages mirror: <https://ooyxloo.github.io/oid-knowledge-lab/>
 - Editor pitch pack: <https://oid-knowledge-lab.vercel.app/editor-pitch-pack.html>
 - Editor decision brief: <https://oid-knowledge-lab.vercel.app/editor-decision-brief.html>
+- Editor trust packet: <https://oid-knowledge-lab.vercel.app/editor-trust-packet.html>
 - Technical rigor proof: <https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html>
 - Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
 
