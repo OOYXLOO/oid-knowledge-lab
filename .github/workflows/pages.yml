@@ -28,3 +28,6 @@ jobs:
           grep -q "How to use this sample with a real inventory" public/sample-assessment.html
           test -f public/writing-samples.html
           grep -q "Developer documentation, observability, and release-safety samples" public/writing-samples.html
+          grep -q "editor-pitch-pack.html" public/writing-samples.html
+          test -f public/editor-pitch-pack.html
+          grep -q "Field-ready editor pitch pack" public/editor-pitch-pack.html

@@ -1551,9 +1551,23 @@ function testWritingSamplesPageHasEditorDecisionPanel() {
   const text = fs.readFileSync(path.join(ROOT, "public/writing-samples.html"), "utf8");
   assert.ok(text.includes("Editor quick decision"), "writing samples page should include a fast editorial decision panel");
   assert.ok(text.includes("Submission-ready queue"), "writing samples page should show the submission-ready queue");
+  assert.ok(text.includes("editor-pitch-pack.html"), "writing samples page should link the field-ready editor pitch pack");
   for (const platform of ["Airbyte", "Civo", "Draft.dev", "Directus", "AppSignal", "SigNoz"]) {
     assert.ok(text.includes(platform), `writing samples page should include ${platform}`);
   }
+  assert.equal(text.includes("money" + "-goal"), false);
+  assert.equal(text.includes("USD " + "200"), false);
+  assert.equal(text.includes("\u8d5a\u94b1"), false);
+}
+
+function testPublicEditorPitchPackHasFieldReadyCopy() {
+  const text = fs.readFileSync(path.join(ROOT, "public/editor-pitch-pack.html"), "utf8");
+  assert.ok(text.includes("Field-ready editor pitch pack"));
+  for (const platform of ["Airbyte", "Civo", "Draft.dev", "Directus", "AppSignal", "SigNoz"]) {
+    assert.ok(text.includes(platform), `editor pitch pack should include ${platform}`);
+  }
+  assert.ok(text.includes("Build a Safe Registry Evidence Dashboard from Public and Local Data"));
+  assert.ok(text.includes("Observability Debugging Handoffs"));
   assert.equal(text.includes("money" + "-goal"), false);
   assert.equal(text.includes("USD " + "200"), false);
   assert.equal(text.includes("\u8d5a\u94b1"), false);
@@ -1656,6 +1670,7 @@ function main() {
   testArticleSampleIndexIncludesAppSignalFullDraft();
   testArticleSampleIndexIncludesSigNozFullDraft();
   testWritingSamplesPageHasEditorDecisionPanel();
+  testPublicEditorPitchPackHasFieldReadyCopy();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
