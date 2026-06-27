@@ -35,7 +35,7 @@ Readers will learn how to:
 
 ## Why this fits Civo readers
 
-Civo readers often want practical cloud-native tutorials around Kubernetes, containers, and production workflows that can be followed without heavyweight infrastructure. This article keeps the implementation small and deployable:
+Civo readers often want practical cloud-native tutorials around Kubernetes, containers, production workflows, and implementation-focused infrastructure patterns that can be followed without heavyweight infrastructure. This article keeps the implementation small and deployable:
 
 - no database required,
 - no long-running server required,
@@ -48,6 +48,8 @@ Civo readers often want practical cloud-native tutorials around Kubernetes, cont
 - and verification commands make the release repeatable.
 
 The tutorial also fits teams that need a low-cost way to publish review artifacts before a migration, audit, platform cleanup, or stakeholder review of a container release.
+
+The angle also fits current Civo author guidance around cloud-native transformation, Kubernetes, containers, and original hands-on tutorials. The linked materials are proof and outline support; the final Google Doc should be written freshly after editorial acceptance.
 
 ## Proposed outline
 
