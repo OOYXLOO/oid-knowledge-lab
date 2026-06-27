@@ -100,6 +100,12 @@ function renderEditorReviewPathPanel() {
           <a href="signoz-reviewer-hub.html">Open SigNoz hub</a>
         </article>
         <article>
+          <span>AppSignal review</span>
+          <strong>Node.js integration debugging</strong>
+          <p>AppSignal-focused review page with APM, error tracking, custom metrics, namespaces, safe evidence, and handoff templates.</p>
+          <a href="appsignal-reviewer-hub.html">Open AppSignal hub</a>
+        </article>
+        <article>
           <span>Working proof</span>
           <strong>Public dashboard</strong>
           <p>Runnable data workflow, publishable reports, source boundaries, search surfaces, local audit tools, and release guard checks.</p>
@@ -313,6 +319,7 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a></td><td>One-page Airbyte-specific editorial review path with proof links, article fit, implementation boundary, and next-step notes.</td></tr>
           <tr><td><a href="directus-reviewer-hub.html">Directus reviewer hub</a></td><td>One-page Directus guest-author review path with collection model, permissions, API import outline, proof links, and publication boundary.</td></tr>
           <tr><td><a href="signoz-reviewer-hub.html">SigNoz reviewer hub</a></td><td>One-page SigNoz technical-writer review path with OpenTelemetry, traces, logs, metrics, handoff fields, and proof links.</td></tr>
+          <tr><td><a href="appsignal-reviewer-hub.html">AppSignal reviewer hub</a></td><td>One-page AppSignal editor review path with APM, error tracking, custom metrics, namespaces, safe handoff fields, and proof links.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/airbyte-editor-one-pager.md">Airbyte editor one-pager</a></td><td>Fast article-fit review path for a safe registry evidence dashboard and Airbyte-oriented source boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/civo-editor-one-pager.md">Civo editor one-pager</a></td><td>Kubernetes release evidence tutorial idea with static dashboard and release-guard boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/draftdev-writer-profile-one-pager.md">Draft.dev writer profile</a></td><td>Implementation-backed writer-network fit, topic lanes, proof links, and delivery style.</td></tr>
@@ -543,6 +550,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a>
         <a href="directus-reviewer-hub.html">Directus reviewer hub</a>
         <a href="signoz-reviewer-hub.html">SigNoz reviewer hub</a>
+        <a href="appsignal-reviewer-hub.html">AppSignal reviewer hub</a>
         <a href="implementation-authenticity-proof.html">Implementation proof</a>
       </div>
     </section>
@@ -1470,6 +1478,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "airbyte-reviewer-hub.html",
     "directus-reviewer-hub.html",
     "signoz-reviewer-hub.html",
+    "appsignal-reviewer-hub.html",
     "writing-samples.html",
     "implementation-authenticity-proof.html",
     "technical-rigor-proof.html",
