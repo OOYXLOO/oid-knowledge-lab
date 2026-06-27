@@ -1527,6 +1527,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "editor-submission-field-pack.html",
     "editor-decision-brief.html",
     "paid-writing-application-desk.html",
+    "p1-application-answer-sheet.html",
     "starter-scope.html",
     "direct-client-fit.html",
     "content-backup-pitch-pack.html"

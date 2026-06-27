@@ -1660,26 +1660,42 @@ function testPaidWritingApplicationDeskIsPublicAndBoundarySafe() {
   const files = [
     "docs/articles/README.md",
     "docs/articles/paid-writing-application-desk.md",
+    "docs/articles/p1-application-answer-sheet.md",
     "public/writing-samples.html",
-    "public/paid-writing-application-desk.html"
+    "public/paid-writing-application-desk.html",
+    "public/p1-application-answer-sheet.html"
   ];
   for (const file of files) {
     const text = fs.readFileSync(path.join(ROOT, file), "utf8");
-    assert.ok(text.includes("Paid writing application desk"), `${file} should include the application desk title`);
     for (const platform of ["Real Python", "Vultr", "Draft.dev", "DigitalOcean"]) {
       assert.ok(text.includes(platform), `${file} should include ${platform}`);
     }
-    assert.ok(text.includes("https://oid-knowledge-lab.vercel.app/writing-samples.html"));
+    assert.ok(
+      text.includes("https://oid-knowledge-lab.vercel.app/writing-samples.html") ||
+        text.includes("writing-samples.html"),
+      `${file} should link to the writing samples portfolio`
+    );
     assert.ok(text.includes("No credentials"));
     assert.equal(text.includes("money" + "-goal"), false);
     assert.equal(text.includes("USD " + "200"), false);
     assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+  for (const file of ["docs/articles/paid-writing-application-desk.md", "public/paid-writing-application-desk.html"]) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("Paid writing application desk"), `${file} should include the application desk title`);
   }
   const page = fs.readFileSync(path.join(ROOT, "public/paid-writing-application-desk.html"), "utf8");
   assert.ok(page.includes("realpython-ai-validation-mini-sample.md"));
   assert.ok(page.includes("vultr-creator-readiness-pack.md"));
   assert.ok(page.includes("draftdev-writer-profile-one-pager.md"));
   assert.ok(page.includes("digitalocean-topic-proposal-readiness-pack.md"));
+  assert.ok(page.includes("p1-application-answer-sheet.html"));
+  const answerSheet = fs.readFileSync(path.join(ROOT, "public/p1-application-answer-sheet.html"), "utf8");
+  assert.ok(answerSheet.includes("Universal bio"));
+  assert.ok(answerSheet.includes("Real Python"));
+  assert.ok(answerSheet.includes("Vultr Creator Program"));
+  assert.ok(answerSheet.includes("Draft.dev"));
+  assert.ok(answerSheet.includes("DigitalOcean entry check"));
 }
 
 function testBackupPitchPackIsPublicAndBoundarySafe() {
