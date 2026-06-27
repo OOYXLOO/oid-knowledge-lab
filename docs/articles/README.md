@@ -471,6 +471,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-editor-one-pager.md
 ```
 
+### DigitalOcean editor one-pager
+
+Path: `docs/articles/digitalocean-editor-one-pager.md`
+
+Best for tutorial editors interested in:
+
+- a practical Node.js static dashboard tutorial,
+- generated JSON and Markdown reports,
+- publish-guard safety checks,
+- public proof links,
+- and a boundary for a freshly written tutorial draft.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/digitalocean-editor-one-pager.md
+```
+
 ### Build a Registry Evidence Review Hub with Directus, Generated JSON, and a Static Proof Page
 
 Path: `docs/articles/directus-registry-evidence-review-hub-full-draft.md`
