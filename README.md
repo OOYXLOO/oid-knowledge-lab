@@ -4,6 +4,13 @@ OID Knowledge Lab is a responsible crawler and analysis workspace for Object Ide
 
 The current source adapter targets public OID-base pages through the site's sitemap and Markdown OID pages. It is intentionally conservative by default: sample crawls are small, delayed, resumable, and avoid disallowed paths.
 
+## Public URLs
+
+- Vercel showcase: <https://oid-knowledge-lab.vercel.app>
+- GitHub Pages mirror: <https://ooyxloo.github.io/oid-knowledge-lab/>
+- Editor pitch pack: <https://oid-knowledge-lab.vercel.app/editor-pitch-pack.html>
+- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
+
 ## Current Publishable Snapshot
 
 Last refreshed on 2026-06-26:
