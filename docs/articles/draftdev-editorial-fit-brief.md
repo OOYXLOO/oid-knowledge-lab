@@ -32,7 +32,13 @@ The strongest fit is developer education for teams that care about:
 Implementation authenticity proof:
 
 ```text
-https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
+https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html
+```
+
+Draft.dev writer profile one-pager:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-writer-profile-one-pager.md
 ```
 
 Submission landing:

@@ -66,6 +66,12 @@ The tutorial also fits teams that need a low-cost way to publish review artifact
 
 ## Public proof links
 
+Civo editor one-pager:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-editor-one-pager.md
+```
+
 Concise proposal:
 
 ```text

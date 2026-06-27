@@ -102,6 +102,12 @@ Fields:
 
 ## Public proof links
 
+Directus editor one-pager:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-editor-one-pager.md
+```
+
 Writing sample page:
 
 ```text

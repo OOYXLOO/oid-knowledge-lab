@@ -378,6 +378,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-submission-brief.md
 ```
 
+### Civo editor one-pager
+
+Path: `docs/articles/civo-editor-one-pager.md`
+
+Best for Civo editors interested in:
+
+- a fast tutorial-idea decision aid,
+- Kubernetes release evidence,
+- static dashboard and release-guard framing,
+- public proof links,
+- and a boundary for freshly written Google Doc drafts.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-editor-one-pager.md
+```
+
 ### Draft.dev editorial fit brief
 
 Path: `docs/articles/draftdev-editorial-fit-brief.md`
@@ -398,6 +416,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-editorial-fit-brief.md
 ```
 
+### Draft.dev writer profile one-pager
+
+Path: `docs/articles/draftdev-writer-profile-one-pager.md`
+
+Best for writer-network reviewers interested in:
+
+- a concise writer profile,
+- topic lanes,
+- implementation-backed delivery style,
+- strongest proof links,
+- and a clear boundary that this is not a single AI-generated article submission.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-writer-profile-one-pager.md
+```
+
 ### Directus submission brief
 
 Path: `docs/articles/directus-submission-brief.md`
@@ -415,6 +451,24 @@ Direct raw link:
 
 ```text
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-submission-brief.md
+```
+
+### Directus editor one-pager
+
+Path: `docs/articles/directus-editor-one-pager.md`
+
+Best for Directus guest-author reviewers interested in:
+
+- a fast tutorial-fit decision aid,
+- Directus collection and review workflow framing,
+- API/SDK import and permission boundaries,
+- public proof links,
+- and a clear safe-publication boundary.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-editor-one-pager.md
 ```
 
 ### Build a Registry Evidence Review Hub with Directus, Generated JSON, and a Static Proof Page

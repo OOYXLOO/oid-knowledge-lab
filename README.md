@@ -60,6 +60,9 @@ Article samples:
 - `docs/articles/editor-decision-brief.md`
 - `docs/articles/submission-landing.md`
 - `docs/articles/airbyte-editor-one-pager.md`
+- `docs/articles/civo-editor-one-pager.md`
+- `docs/articles/draftdev-writer-profile-one-pager.md`
+- `docs/articles/directus-editor-one-pager.md`
 - `docs/articles/oid-assessment-client-one-pager.md`
 - `docs/articles/certificate-policy-oid-inventory.md`
 - `docs/articles/pki-certificate-lifecycle-assessment.md`
