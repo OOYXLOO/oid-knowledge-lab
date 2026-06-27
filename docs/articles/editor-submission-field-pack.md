@@ -40,13 +40,13 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/a
 Working title:
 
 ```text
-Build a static evidence dashboard with Node.js, GitHub Pages, and a release guard
+Build a Kubernetes Release Evidence Dashboard for Civo with Node.js and a Release Guard
 ```
 
 Short pitch:
 
 ```text
-This tutorial teaches a small cloud-native publishing workflow: generate JSON and Markdown reports, build a static review dashboard, publish it through GitHub Pages, and run a release guard before sharing artifacts externally.
+This tutorial teaches a practical Civo Kubernetes release workflow: capture safe `kubectl` evidence from a cluster, summarize rollout and container image status, build a static review dashboard with Node.js, publish it through GitHub Pages, and run a release guard before sharing artifacts externally.
 ```
 
 Sample links:

@@ -1443,6 +1443,11 @@ function testArticleSampleIndexIncludesCivoSubmissionBrief() {
 
   const brief = fs.readFileSync(path.join(ROOT, "docs/articles/civo-submission-brief.md"), "utf8");
   assert.ok(brief.includes("Civo submission brief"));
+  assert.ok(brief.includes("Civo Kubernetes"));
+  assert.ok(brief.includes("kubectl"));
+  assert.ok(brief.includes("cluster"));
+  assert.ok(brief.includes("container image"));
+  assert.ok(brief.includes("release evidence"));
   assert.ok(brief.includes("GitHub Pages"));
   assert.ok(brief.includes("release guard"));
   assert.ok(brief.includes("npm run guard:publishable"));
@@ -1468,7 +1473,11 @@ function testArticleSampleIndexIncludesCivoFullDraft() {
   }
 
   const draft = fs.readFileSync(path.join(ROOT, "docs/articles/civo-static-evidence-dashboard-full-draft.md"), "utf8");
-  assert.ok(draft.includes("Build a Static Evidence Dashboard with Node.js, GitHub Pages, and a Release Guard"));
+  assert.ok(draft.includes("Build a Kubernetes Release Evidence Dashboard for Civo with Node.js and a Release Guard"));
+  assert.ok(draft.includes("Civo Kubernetes"));
+  assert.ok(draft.includes("kubectl"));
+  assert.ok(draft.includes("container image"));
+  assert.ok(draft.includes("release evidence"));
   assert.ok(draft.includes("GitHub Pages"));
   assert.ok(draft.includes("release guard"));
   assert.ok(draft.includes("npm run guard:publishable"));

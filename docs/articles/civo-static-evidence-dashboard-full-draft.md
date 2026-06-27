@@ -1,16 +1,16 @@
-# Build a Static Evidence Dashboard with Node.js, GitHub Pages, and a Release Guard
+# Build a Kubernetes Release Evidence Dashboard for Civo with Node.js and a Release Guard
 
-Static dashboards are a useful middle ground between a private report and a live application. They are easy to host, easy to review, and easy to reproduce. For generated technical evidence, that makes them a good fit for migration readiness reports, data-quality audits, release summaries, compliance handoffs, and client-safe review packages.
+Static dashboards are a useful middle ground between a private report and a live application. They are easy to host, easy to review, and easy to reproduce. For generated Kubernetes release evidence, that makes them a good fit for Civo Kubernetes deployments, migration readiness reports, container image reviews, rollout summaries, compliance handoffs, and client-safe review packages.
 
-This tutorial shows how to build a static evidence dashboard with Node.js and GitHub Pages. The example uses generated JSON and Markdown reports, but the same pattern works for any workflow where you need to publish derived findings without exposing raw private inputs.
+This tutorial shows how to build a static release evidence dashboard with Node.js and GitHub Pages. The example captures sanitized `kubectl` checks from a Civo Kubernetes cluster, turns them into JSON and Markdown reports, and publishes only derived review artifacts.
 
 The result is a small project with:
 
-- generated reports,
+- generated release evidence reports,
 - a dataset manifest,
 - a static dashboard,
 - a GitHub Pages deployment surface,
-- and a release guard that blocks unsafe files before publishing.
+- and a release guard that blocks kubeconfig files, Kubernetes Secrets, private manifests, credentials, and unsafe files before publishing.
 
 ## What the Dashboard Should Prove
 
@@ -24,6 +24,15 @@ Before building the page, decide what the page needs to prove. A useful dashboar
 
 That definition keeps the dashboard from becoming only a decorative page. It becomes a review surface.
 
+For a Civo Kubernetes release, the dashboard should also answer:
+
+1. Which namespace was checked?
+2. Which Deployment and container image were reviewed?
+3. Did the rollout complete?
+4. Were Pods ready?
+5. Were the Service and Ingress present?
+6. Which private cluster details were intentionally left out?
+
 ## Project Structure
 
 Use a structure that separates local inputs, generated reports, and public assets:
@@ -34,6 +43,7 @@ evidence-dashboard/
     local/
       .gitkeep
   reports/
+    k8s-release-evidence.json
     summary.json
     summary.md
     dataset-manifest.json
@@ -42,29 +52,79 @@ evidence-dashboard/
     styles.css
     data.js
   src/
+    collect-k8s-evidence.js
     build-site.js
     manifest.js
     publish-guard.js
   package.json
 ```
 
-The important rule is simple: `public/` is the only directory intended for static hosting. Local inputs and private exports stay outside the published artifact.
+The important rule is simple: `public/` is the only directory intended for static hosting. Local inputs, kubeconfig files, raw manifests, and private exports stay outside the published artifact.
 
-## Step 1: Create a Summary Report
+## Step 1: Capture Sanitized Kubernetes Release Evidence
+
+Start with the Civo Kubernetes checks a reviewer actually needs. Keep the collector narrow: it should read status and metadata, not dump every manifest in the cluster.
+
+For example, the manual checks might look like this:
+
+```bash
+kubectl config current-context
+kubectl -n demo rollout status deployment/oid-dashboard
+kubectl -n demo get deployment oid-dashboard -o json
+kubectl -n demo get pods -l app=oid-dashboard -o json
+kubectl -n demo get service oid-dashboard -o json
+kubectl -n demo get ingress oid-dashboard -o json
+```
+
+The generated report should keep safe release evidence such as namespace, Deployment name, desired replicas, ready replicas, container image, rollout status, Service type, and Ingress host. It should not copy kubeconfig content, Secret values, private internal hostnames, or full raw manifests.
+
+For a minimal example, create `reports/k8s-release-evidence.json`:
+
+```json
+{
+  "generated_at": "2026-06-27T00:00:00.000Z",
+  "cluster_provider": "Civo Kubernetes",
+  "namespace": "demo",
+  "deployment": "oid-dashboard",
+  "container_image": "ghcr.io/example/oid-dashboard:2026-06-27",
+  "rollout_status": "success",
+  "desired_replicas": 2,
+  "ready_replicas": 2,
+  "service": {
+    "name": "oid-dashboard",
+    "type": "ClusterIP"
+  },
+  "ingress": {
+    "name": "oid-dashboard",
+    "host": "dashboard.example.com"
+  },
+  "excluded": [
+    "kubeconfig",
+    "Kubernetes Secrets",
+    "raw private manifests",
+    "internal-only cluster endpoints"
+  ]
+}
+```
+
+In a production workflow, generate this file from a small Node.js script that shells out to `kubectl`, parses JSON, and writes only the safe fields.
+
+## Step 2: Create a Summary Report
 
 Start with a generated summary. In a real project, this could come from a migration checker, test run, inventory audit, or compliance script. For a minimal example, create `reports/summary.json`:
 
 ```json
 {
   "generated_at": "2026-06-27T00:00:00.000Z",
-  "project": "Evidence dashboard sample",
-  "source_count": 3,
-  "finding_count": 4,
-  "high_priority_count": 1,
+  "project": "Civo Kubernetes release evidence dashboard",
+  "source_count": 5,
+  "finding_count": 0,
+  "high_priority_count": 0,
   "status": "review_ready",
   "notes": [
-    "Derived findings only",
-    "Raw private exports are excluded",
+    "Release evidence only",
+    "Raw Kubernetes manifests are excluded",
+    "Kubernetes Secrets are excluded",
     "Public page is generated from reports"
   ]
 }
@@ -72,7 +132,7 @@ Start with a generated summary. In a real project, this could come from a migrat
 
 For a production workflow, generate this file rather than editing it by hand. The dashboard should reflect current evidence, not stale prose.
 
-## Step 2: Generate a Dataset Manifest
+## Step 3: Generate a Dataset Manifest
 
 A manifest records what is in the release package. It should include artifact paths, byte sizes, hashes, and publication boundaries.
 
@@ -103,12 +163,15 @@ function buildManifest(root) {
     generated_at: new Date().toISOString(),
     publishable: true,
     artifacts: [
+      artifact(root, "reports/k8s-release-evidence.json", "sanitized release evidence"),
       artifact(root, "reports/summary.json", "derived report"),
       artifact(root, "reports/summary.md", "derived report"),
       artifact(root, "public/index.html", "static dashboard")
     ],
     excluded: [
-      "raw private exports",
+      "kubeconfig files",
+      "Kubernetes Secrets",
+      "raw private manifests",
       "credentials and tokens",
       "account-local storage",
       "payment or tax records",
@@ -122,7 +185,7 @@ module.exports = { buildManifest };
 
 The manifest is useful because reviewers can inspect exactly what was published.
 
-## Step 3: Build the Static Page
+## Step 4: Build the Static Page
 
 Now generate `public/index.html` from the summary and manifest. A simple `src/build-site.js` can do the job:
 
@@ -133,6 +196,7 @@ const { buildManifest } = require("./manifest");
 
 const root = path.join(__dirname, "..");
 const summary = JSON.parse(fs.readFileSync(path.join(root, "reports/summary.json"), "utf8"));
+const releaseEvidence = JSON.parse(fs.readFileSync(path.join(root, "reports/k8s-release-evidence.json"), "utf8"));
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -166,6 +230,15 @@ function renderPage(manifest) {
     </dl>
     <h2>Notes</h2>
     <ul>${renderList(summary.notes)}</ul>
+    <h2>Kubernetes Release Evidence</h2>
+    <dl>
+      <dt>Provider</dt><dd>${escapeHtml(releaseEvidence.cluster_provider)}</dd>
+      <dt>Namespace</dt><dd>${escapeHtml(releaseEvidence.namespace)}</dd>
+      <dt>Deployment</dt><dd>${escapeHtml(releaseEvidence.deployment)}</dd>
+      <dt>Container image</dt><dd>${escapeHtml(releaseEvidence.container_image)}</dd>
+      <dt>Rollout</dt><dd>${escapeHtml(releaseEvidence.rollout_status)}</dd>
+      <dt>Ready replicas</dt><dd>${escapeHtml(`${releaseEvidence.ready_replicas}/${releaseEvidence.desired_replicas}`)}</dd>
+    </dl>
     <h2>Publishable Artifacts</h2>
     <ul>${renderList(manifest.artifacts.map((item) => `${item.path} - ${item.boundary}`))}</ul>
     <h2>Excluded Inputs</h2>
@@ -186,7 +259,7 @@ fs.writeFileSync(path.join(root, "public/index.html"), renderPage(manifest), "ut
 
 The script writes the page twice so the manifest can include the final dashboard file. For a larger project, you can split this into a report generation step and a site generation step.
 
-## Step 4: Add a Release Guard
+## Step 5: Add a Release Guard
 
 A release guard checks that unsafe files are not being published. This does not replace human review, but it catches common mistakes.
 
@@ -197,10 +270,16 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const blockedPatterns = [
+  /kubeconfig/i,
   /password/i,
   /api[_-]?key/i,
   /secret/i,
+  /kind:\s*Secret/i,
+  /client-key-data/i,
+  /client-certificate-data/i,
+  /certificate-authority-data/i,
   /private export/i,
+  /raw private manifest/i,
   /account-local storage/i,
   /payment/i,
   /tax record/i
@@ -208,6 +287,7 @@ const blockedPatterns = [
 
 const publicFiles = [
   "public/index.html",
+  "reports/k8s-release-evidence.json",
   "reports/summary.json",
   "reports/summary.md",
   "reports/dataset-manifest.json"
@@ -235,7 +315,7 @@ console.log(JSON.stringify({ ok: true, checked_files: publicFiles.length }, null
 
 In a real project, the guard should inspect tracked files, generated assets, and project-specific local-only directories. Keep the checks boring and explicit.
 
-## Step 5: Add Package Scripts
+## Step 6: Add Package Scripts
 
 The `package.json` scripts should make the workflow repeatable:
 
@@ -258,7 +338,7 @@ npm run verify
 
 That one command proves the scripts parse, the site builds, and the publish boundary was checked.
 
-## Step 6: Deploy with GitHub Pages
+## Step 7: Deploy with GitHub Pages
 
 For a minimal GitHub Pages deployment:
 
@@ -275,7 +355,7 @@ https://OWNER.github.io/REPOSITORY/
 
 If the page changes frequently, include a commit hash in the review note so the reviewer knows which version they saw.
 
-## Step 7: Add CI Verification
+## Step 8: Add CI Verification
 
 GitHub Actions can run the same checks before deployment:
 
@@ -324,6 +404,8 @@ Avoid these shortcuts:
 - publishing a static page without a manifest,
 - linking to local machine paths,
 - placing private exports under `public/`,
+- committing kubeconfig files or raw Kubernetes manifests,
+- publishing internal cluster hostnames,
 - copying raw third-party page bodies into the repository,
 - skipping the release guard,
 - and letting the public page drift away from generated reports.
@@ -351,6 +433,6 @@ Then inspect the public page and confirm:
 
 ## Conclusion
 
-A static evidence dashboard is valuable because it makes generated technical findings easier to review. Node.js can generate the reports, GitHub Pages can host the page, and a release guard can keep unsafe material out of the public package.
+A static evidence dashboard is valuable because it makes generated Kubernetes release findings easier to review. Node.js can generate the reports, GitHub Pages can host the page, and a release guard can keep unsafe material out of the public package.
 
-The pattern is small enough for a tutorial and practical enough for real teams: generate the evidence, publish only derived artifacts, and make the publication boundary visible.
+The pattern is small enough for a tutorial and practical enough for real Civo Kubernetes teams: generate the release evidence, publish only derived artifacts, and make the publication boundary visible.
