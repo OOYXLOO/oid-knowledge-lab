@@ -1,0 +1,50 @@
+# Airbyte editor one-pager: safe registry evidence dashboard
+
+This one-pager is for editors reviewing the article idea before requesting a final draft. It is not a finished publication draft.
+
+## Working title
+
+Build a Safe Registry Evidence Dashboard from Public and Local Data
+
+## One-sentence pitch
+
+Show Airbyte readers how to model a public registry source and a sanitized local inventory as separate inputs, normalize them into reviewable rows, and publish only safe evidence artifacts with a manifest and release guard.
+
+## Why this is useful for Airbyte readers
+
+Data movement work often fails at the review boundary: a pipeline can sync rows successfully while still losing source context, mixing private inventory fields into public outputs, or publishing stale generated reports. This article gives readers a small, reproducible pattern for moving from source data to a reviewable destination while keeping private inputs out of public artifacts.
+
+## Proposed reader outcome
+
+After reading the article, a developer should be able to:
+
+1. Define a narrow public-source stream for registry metadata.
+2. Keep a sanitized local inventory as a separate file source.
+3. Normalize OID rows into a stable review shape.
+4. Classify rows as matched, unresolved, malformed, or requiring owner review.
+5. Export JSON, CSV, Markdown, and a static dashboard from derived findings.
+6. Verify row counts, hashes, publish boundaries, and blocked raw artifacts before release.
+
+## Airbyte-oriented tutorial map
+
+| Article section | Airbyte reader framing |
+| --- | --- |
+| Public source boundary | Connector Builder or Low-code CDK source prototype |
+| Sanitized local inventory | File source with approved columns only |
+| Normalization | Destination-side transform, dbt model, or local Node.js reproduction |
+| Review output | Local JSON destination or warehouse table feeding a static dashboard |
+| Release safety | Manifest, row counts, and publish guard before generated artifacts go public |
+
+## Implementation proof
+
+- Working dashboard: <https://oid-knowledge-lab.vercel.app/>
+- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
+- Implementation proof: <https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html>
+- Airbyte submission brief: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-submission-brief.md>
+- Connector Builder appendix: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-connector-builder-appendix.md>
+
+## Publication boundary
+
+The public repository stores derived reports, safe examples, public registry pointers, and review artifacts. It does not publish private customer inventories, credentials, account exports, payment data, contact-level registry exports, raw third-party page-body mirrors, or local-only full crawl output.
+
+If the idea is accepted, the final draft should be freshly written for Airbyte's requested editorial format and product terminology rather than submitted as a generic generated draft.

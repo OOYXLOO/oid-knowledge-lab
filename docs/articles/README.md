@@ -304,6 +304,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-submission-brief.md
 ```
 
+### Airbyte editor one-pager
+
+Path: `docs/articles/airbyte-editor-one-pager.md`
+
+Best for Airbyte editors interested in:
+
+- a fast one-page decision aid,
+- article promise and reader outcome,
+- source, transform, destination, and validation mapping,
+- public proof links,
+- and a clear boundary that the final publication draft should be freshly adapted.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-editor-one-pager.md
+```
+
 ### Airbyte Connector Builder appendix
 
 Path: `docs/articles/airbyte-connector-builder-appendix.md`

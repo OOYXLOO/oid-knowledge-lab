@@ -59,6 +59,7 @@ Article samples:
 - `docs/articles/editor-pitch-pack.md`
 - `docs/articles/editor-decision-brief.md`
 - `docs/articles/submission-landing.md`
+- `docs/articles/airbyte-editor-one-pager.md`
 - `docs/articles/oid-assessment-client-one-pager.md`
 - `docs/articles/certificate-policy-oid-inventory.md`
 - `docs/articles/pki-certificate-lifecycle-assessment.md`
