@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Starter OID Assessment Scope - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Starter scope</p>
+      <h1>A small first OID inventory review with clear evidence and boundaries</h1>
+      <p class="summary">Use this page to evaluate a low-risk first engagement for PKI policy OIDs, SNMP/MIB enterprise OIDs, or internal registry cleanup. The first scope starts from sanitized input, produces derived findings, and keeps private inventories out of public artifacts.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="consulting-brief.html">Assessment brief</a>
+        <a href="sample-assessment.html">Sample handoff</a>
+        <a href="implementation-authenticity-proof.html">Implementation proof</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Starter scope metrics">
+      <article><span>Start point</span><strong>CSV</strong><small>sanitized OID inventory</small></article>
+      <article><span>First pass</span><strong>48h</strong><small>shape, classify, queue</small></article>
+      <article><span>Outputs</span><strong>4</strong><small>summary, CSV, JSON, handoff</small></article>
+      <article><span>Boundary</span><strong>Local</strong><small>raw client data stays private</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">First-scope promise</p>
+        <h2>What the starter review does</h2>
+        <p class="panel-copy">The first review answers a narrow question: which OID rows are valid, which have public evidence, which need internal owner confirmation, and which should be corrected before a broader cleanup starts.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Phase</th><th>Action</th><th>Output</th></tr></thead>
+        <tbody>
+          <tr><td>1. Intake</td><td>Review a sanitized CSV, TSV, or one-OID-per-line sample.</td><td>Input-shape receipt and safe-data boundary check.</td></tr>
+          <tr><td>2. Classification</td><td>Run local/browser checks against known public PEN evidence and directory metadata.</td><td>Invalid, evidence-ready, unresolved, and owner-review rows.</td></tr>
+          <tr><td>3. Handoff</td><td>Package derived findings without publishing raw client inventories.</td><td>Markdown summary, remediation CSV, JSON evidence, and re-run checks.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel review-path-panel">
+      <div>
+        <p class="eyebrow">Buyer review path</p>
+        <h2>Open these before sharing any data</h2>
+      </div>
+      <div class="review-grid">
+        <article>
+          <span>Proof</span>
+          <strong>Sample assessment</strong>
+          <p>A browser-readable example that shows quality score, findings, evidence links, and remediation actions.</p>
+          <a href="sample-assessment.html">Open sample</a>
+        </article>
+        <article>
+          <span>Scope</span>
+          <strong>Scope proposal pack</strong>
+          <p>First 48 hours, client inputs, acceptance criteria, best-fit lanes, and exclusions.</p>
+          <a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/scope-proposal-pack.md">Read scope</a>
+        </article>
+        <article>
+          <span>Delivery</span>
+          <strong>Client kickoff pack</strong>
+          <p>Safe intake request, first-call agenda, outputs, and next actions for a technical owner.</p>
+          <a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/client-kickoff-pack.md">Read kickoff</a>
+        </article>
+        <article>
+          <span>Boundary</span>
+          <strong>Source policy receipt</strong>
+          <p>Explains which public sources are used, what requires authorization, and what is not republished.</p>
+          <a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/source-policy.md">Read source policy</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Best-fit requests</p>
+        <h2>Where this starter scope is useful</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Request</th><th>Good starter input</th><th>Useful result</th></tr></thead>
+        <tbody>
+          <tr><td>PKI certificate policy review</td><td>Certificate policy OIDs, safe issuer labels, and renewal windows.</td><td>Policy evidence, unresolved owner questions, and cleanup queue.</td></tr>
+          <tr><td>SNMP / MIB review</td><td>Enterprise OIDs, MIB module labels, trap names, or device family hints.</td><td>PEN owner evidence and unknown enterprise arc review list.</td></tr>
+          <tr><td>Internal OID registry cleanup</td><td>Spreadsheet export with an <code>oid</code> column and sanitized owner hints.</td><td>Invalid values, duplicate-looking arcs, and owner-action rows.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Safe intake</p>
+        <h2>What to send and what to remove</h2>
+        <p class="panel-copy">Send a sanitized sample with an <code>oid</code> column and safe labels such as device family, certificate profile, service, internal registry id, or MIB module. Remove credentials, tokens, customer names, production hostnames, billing data, private account exports, and any field that is not needed for OID classification.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

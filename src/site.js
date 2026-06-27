@@ -571,6 +571,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="${escapeHtml(report.license_url)}">Licensing terms</a>
         <a href="https://oid-base.com/sitemap.xml">OID-base sitemap</a>
         <a href="consulting-brief.html">Assessment brief</a>
+        <a href="starter-scope.html">Starter scope</a>
         <a href="writing-samples.html">Writing samples</a>
         <a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a>
         <a href="civo-reviewer-hub.html">Civo reviewer hub</a>
@@ -1519,6 +1520,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "editor-submission-field-pack.html",
     "editor-decision-brief.html",
     "paid-writing-application-desk.html",
+    "starter-scope.html",
     "content-backup-pitch-pack.html"
   ];
   for (const file of staticReviewPages) {
