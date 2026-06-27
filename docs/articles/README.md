@@ -470,6 +470,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-writer-profile-one-pager.md
 ```
 
+### Validate AI-Generated Python Code with Tests, Edge Cases, and a Lightweight Evidence Log
+
+Path: `docs/articles/realpython-ai-validation-mini-sample.md`
+
+Best for Real Python, Python + AI editors, and developer-education reviewers interested in:
+
+- a compact Python tutorial sample,
+- validating AI-generated code with `pytest`,
+- edge cases and unsafe-input rejection,
+- evidence logs,
+- and clear boundaries around secrets, private data, and overclaiming.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-ai-validation-mini-sample.md
+```
+
 ### Directus submission brief
 
 Path: `docs/articles/directus-submission-brief.md`

@@ -1618,6 +1618,31 @@ function testArticleSampleIndexIncludesSigNozFullDraft() {
   assert.equal(draft.includes("\u8d5a\u94b1"), false);
 }
 
+function testArticleSampleIndexIncludesRealPythonMiniSample() {
+  const files = [
+    "docs/articles/README.md",
+    "public/writing-samples.html",
+    "public/realpython-ai-reviewer-hub.html"
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("realpython-ai-validation-mini-sample.md"), `${file} should link the Real Python mini sample`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const sample = fs.readFileSync(path.join(ROOT, "docs/articles/realpython-ai-validation-mini-sample.md"), "utf8");
+  assert.ok(sample.includes("Validate AI-Generated Python Code"));
+  assert.ok(sample.includes("pytest"));
+  assert.ok(sample.includes("Evidence log"));
+  assert.ok(sample.includes("When to reject"));
+  assert.ok(sample.includes("No secrets"));
+  assert.equal(sample.includes("money" + "-goal"), false);
+  assert.equal(sample.includes("USD " + "200"), false);
+  assert.equal(sample.includes("\u8d5a\u94b1"), false);
+}
+
 function testWritingSamplesPageHasEditorDecisionPanel() {
   const text = fs.readFileSync(path.join(ROOT, "public/writing-samples.html"), "utf8");
   assert.ok(text.includes("Editor quick decision"), "writing samples page should include a fast editorial decision panel");
@@ -1770,6 +1795,7 @@ function main() {
   testArticleSampleIndexIncludesDirectusFullDraft();
   testArticleSampleIndexIncludesAppSignalFullDraft();
   testArticleSampleIndexIncludesSigNozFullDraft();
+  testArticleSampleIndexIncludesRealPythonMiniSample();
   testWritingSamplesPageHasEditorDecisionPanel();
   testPublicEditorPitchPackHasFieldReadyCopy();
   testEditorSubmissionFieldPackIsPublicAndBoundarySafe();
