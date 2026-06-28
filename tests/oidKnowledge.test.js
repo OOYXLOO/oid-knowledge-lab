@@ -1622,14 +1622,28 @@ function testArticleSampleIndexIncludesRealPythonMiniSample() {
   const files = [
     "docs/articles/README.md",
     "public/writing-samples.html",
-    "public/realpython-ai-reviewer-hub.html"
+    "public/realpython-ai-reviewer-hub.html",
+    "docs/articles/realpython-paid-pilot-readiness-pack.md",
+    "docs/articles/realpython-application-one-link.md"
   ];
   for (const file of files) {
     const text = fs.readFileSync(path.join(ROOT, file), "utf8");
-    assert.ok(text.includes("realpython-ai-validation-mini-sample.md"), `${file} should link the Real Python mini sample`);
+    if (file !== "docs/articles/realpython-application-one-link.md") {
+      assert.ok(text.includes("realpython-ai-validation-mini-sample.md"), `${file} should link the Real Python mini sample`);
+    }
     assert.equal(text.includes("money" + "-goal"), false);
     assert.equal(text.includes("USD " + "200"), false);
     assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  for (const file of [
+    "public/realpython-ai-reviewer-hub.html",
+    "docs/articles/realpython-paid-pilot-readiness-pack.md",
+    "docs/articles/realpython-application-one-link.md"
+  ]) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("duration_parser_review"), `${file} should link the duration parser review case`);
+    assert.ok(text.includes("Duration parser"), `${file} should name the duration parser review case`);
   }
 
   const sample = fs.readFileSync(path.join(ROOT, "docs/articles/realpython-ai-validation-mini-sample.md"), "utf8");

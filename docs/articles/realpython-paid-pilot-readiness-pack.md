@@ -46,9 +46,16 @@ Real Python readers often need practical depth more than tool hype. This topic g
 - Reviewer hub: <https://oid-knowledge-lab.vercel.app/realpython-ai-reviewer-hub.html>
 - Mini sample: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-ai-validation-mini-sample.md>
 - Runnable mini lab: <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python>
+- Duration parser review case: <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review>
+- Duration parser evidence log: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md>
 - Tutorial outline: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-ai-validation-tutorial-outline.md>
 - Technical proof: <https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html>
 - Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
+
+The duration parser case is useful for a paid pilot because it is small enough
+to understand quickly while still showing the central article promise: start
+from a plausible generated helper, reject silent failure, define valid input,
+revise the implementation, and prove the revision with focused tests.
 
 ## Editorial boundary
 

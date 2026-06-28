@@ -21,13 +21,19 @@ I write practical Python and AI-assisted development tutorials that treat genera
 3. Mini lab evidence log:  
    <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/evidence-log.md>
 
-4. Article mini sample:  
+4. Duration parser review case:
+   <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review>
+
+5. Duration parser evidence log:
+   <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md>
+
+6. Article mini sample:
    <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-ai-validation-mini-sample.md>
 
-5. Tutorial outline:  
+7. Tutorial outline:
    <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-ai-validation-tutorial-outline.md>
 
-6. Paid pilot readiness pack:  
+8. Paid pilot readiness pack:
    <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-paid-pilot-readiness-pack.md>
 
 ## Reader promise
@@ -63,6 +69,10 @@ The lab includes:
 - `package_names.py` - revised implementation after treating generated code as an untrusted draft.
 - `test_package_names.py` - focused behavior checks using Python's standard `unittest`.
 - `evidence-log.md` - verification log, accepted changes, limitations, and safety boundary.
+
+The duration parser review case adds a second small reviewer sample. It rejects
+a generated implementation that silently returns `0` for unknown duration units,
+then replaces it with explicit errors and eight unit tests.
 
 ## Editorial boundary
 
