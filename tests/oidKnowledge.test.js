@@ -2089,6 +2089,36 @@ function testModelResponseComparisonLabIsLinkedAndBoundarySafe() {
   }
 }
 
+function testOpenTrainAiCodeEvaluationOneLinkIsLinkedAndBoundarySafe() {
+  const files = [
+    "public/opentrain-ai-code-evaluation-one-link.html",
+    "docs/articles/opentrain-ai-code-evaluation-one-link.md"
+  ];
+  const linkSources = [
+    "public/ai-evaluator-application-packet.html",
+    "public/index.html",
+    "public/writing-samples.html"
+  ];
+
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("OpenTrain"), `${file} should include the OpenTrain label`);
+    assert.ok(text.includes("AI code evaluation") || text.includes("code-evaluation"), `${file} should include code evaluation positioning`);
+    assert.ok(text.includes("Python Assessment Drill"), `${file} should link the Python assessment drill`);
+    assert.ok(text.includes("Model Response Comparison Lab"), `${file} should link the model comparison lab`);
+    assert.ok(text.includes("duration_parser_review"), `${file} should link the duration parser review case`);
+    assert.ok(text.includes("Verdict:"), `${file} should include the verdict frame`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  for (const file of linkSources) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("opentrain-ai-code-evaluation-one-link.html"), `${file} should link the OpenTrain one-link packet`);
+  }
+}
+
 function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -2143,6 +2173,7 @@ function main() {
   testAiReviewerApplicationSummaryIsLinkedAndBoundarySafe();
   testPythonAssessmentDrillIsLinkedAndBoundarySafe();
   testModelResponseComparisonLabIsLinkedAndBoundarySafe();
+  testOpenTrainAiCodeEvaluationOneLinkIsLinkedAndBoundarySafe();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
