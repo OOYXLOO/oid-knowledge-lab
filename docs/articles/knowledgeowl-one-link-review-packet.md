@@ -19,6 +19,7 @@ The article is practical, documentation-focused, and written for teams that need
 ## Best First Links
 
 - One-link reviewer page: <https://oid-knowledge-lab.vercel.app/knowledgeowl-one-link.html>
+- Application field pack: <https://oid-knowledge-lab.vercel.app/knowledgeowl-application-field-pack.html>
 - Editorial draft preview: <https://oid-knowledge-lab.vercel.app/knowledgeowl-editorial-draft-preview.html>
 - Evidence log template: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/knowledgeowl-evidence-log-template.md>
 - Evidence log playground: <https://oid-knowledge-lab.vercel.app/evidence-log-playground.html>

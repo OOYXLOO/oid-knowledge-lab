@@ -1641,6 +1641,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "contentlab-writer-network-hub.html",
     "knowledgeowl-reviewer-hub.html",
     "knowledgeowl-one-link.html",
+    "knowledgeowl-application-field-pack.html",
     "alignerr-python-one-link.html",
     "mindrift-code-one-link.html",
     "opentrain-ai-code-evaluation-one-link.html",

@@ -1651,6 +1651,30 @@ function testKnowledgeOwlEvidenceLogTemplateIsLinkedAndBoundarySafe() {
   assert.equal(template.includes("\u8d5a\u94b1"), false);
 }
 
+function testKnowledgeOwlApplicationFieldPackIsPublicAndSubmitReady() {
+  const files = [
+    "docs/articles/knowledgeowl-application-field-pack.md",
+    "public/knowledgeowl-application-field-pack.html",
+    "public/knowledgeowl-one-link.html"
+  ];
+
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("KnowledgeOwl"), `${file} should name KnowledgeOwl`);
+    assert.ok(text.includes("blog@knowledgeowl.com"), `${file} should include the submission address`);
+    assert.ok(text.includes("USD 250") || text.includes("$250"), `${file} should include the public minimum article rate`);
+    assert.ok(text.includes("topic ideas"), `${file} should include topic ideas`);
+    assert.ok(text.includes("brief outline"), `${file} should include a brief outline`);
+    assert.ok(text.includes("samples"), `${file} should include sample links`);
+    assert.ok(text.includes("knowledgeowl-editorial-draft-preview"), `${file} should link the draft preview`);
+    assert.ok(text.includes("knowledgeowl-evidence-log-template"), `${file} should link the evidence log template`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+    assert.equal(text.includes("D:\\hks"), false);
+  }
+}
+
 function testArticleSampleIndexIncludesRealPythonMiniSample() {
   const files = [
     "docs/articles/README.md",
@@ -2326,6 +2350,7 @@ async function main() {
   testArticleSampleIndexIncludesAppSignalFullDraft();
   testArticleSampleIndexIncludesSigNozFullDraft();
   testKnowledgeOwlEvidenceLogTemplateIsLinkedAndBoundarySafe();
+  testKnowledgeOwlApplicationFieldPackIsPublicAndSubmitReady();
   testArticleSampleIndexIncludesRealPythonMiniSample();
   testWritingSamplesPageHasEditorDecisionPanel();
   testPhpDeploymentEvidenceChecklistIsLinkedAndBoundarySafe();
