@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evidence Log Playground - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Evidence log playground</p>
+      <h1>Review AI-assisted knowledge base updates before publishing</h1>
+      <p class="summary">A browser-only demo for turning a draft support article into a reviewable evidence log. It keeps source facts, generated wording, reviewer decisions, and publish blockers separate.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="knowledgeowl-reviewer-hub.html">KnowledgeOwl hub</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="implementation-authenticity-proof.html">Authenticity proof</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Evidence log review metrics">
+      <article><span>Inputs</span><strong>Local</strong><small>Browser only</small></article>
+      <article><span>Workflow</span><strong>Review</strong><small>Draft to decision</small></article>
+      <article><span>Output</span><strong>Log</strong><small>Markdown handoff</small></article>
+      <article><span>Boundary</span><strong>Safe</strong><small>No uploads</small></article>
+    </section>
+
+    <section class="panel evidence-workbench">
+      <div>
+        <p class="eyebrow">Try the workflow</p>
+        <h2>Build a review log</h2>
+        <p class="panel-copy">Fill the sample fields or keep the defaults, then generate a compact Markdown handoff. This mirrors the article idea: AI-assisted wording is useful only when a human can inspect the source facts, checks, assumptions, and remaining blockers.</p>
+      </div>
+
+      <div class="evidence-grid">
+        <label>
+          <span>Reader question</span>
+          <textarea data-reader-question rows="4">How do I rotate an API token without breaking active integrations?</textarea>
+        </label>
+        <label>
+          <span>Source facts</span>
+          <textarea data-source-facts rows="6">The existing token stays valid for 24 hours after a replacement is created.
+Production integrations read the token from a secret manager.
+The support article should not include real tokens, account IDs, or screenshots from private consoles.</textarea>
+        </label>
+        <label>
+          <span>AI-assisted draft claim</span>
+          <textarea data-draft-claim rows="6">Create a new token, update the secret manager, restart the worker, and delete the old token immediately.</textarea>
+        </label>
+        <label>
+          <span>Reviewer checks</span>
+          <textarea data-review-checks rows="6">Compare the draft against the 24-hour overlap rule.
+Confirm deletion timing does not break rollback.
+Check that the article warns readers not to paste live tokens into tickets or AI tools.</textarea>
+        </label>
+      </div>
+
+      <div class="evidence-controls">
+        <label><input type="checkbox" data-check="source" checked> Source facts are named</label>
+        <label><input type="checkbox" data-check="risk"> Risky claim needs revision</label>
+        <label><input type="checkbox" data-check="privacy" checked> Private data boundary is stated</label>
+        <label><input type="checkbox" data-check="human"> Human owner review required</label>
+      </div>
+
+      <div class="audit-actions">
+        <button type="button" data-generate-log>Generate evidence log</button>
+        <button type="button" data-copy-log>Copy Markdown</button>
+        <button type="button" data-reset-log>Reset sample</button>
+      </div>
+      <p class="audit-status" data-log-status></p>
+      <pre class="audit-handoff is-visible" data-log-output></pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Review model</p>
+        <h2>What this proves</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Concern</th><th>How the demo handles it</th></tr></thead>
+        <tbody>
+          <tr><td>AI accuracy</td><td>The draft claim is reviewed against source facts before acceptance.</td></tr>
+          <tr><td>Support safety</td><td>The log keeps private tokens, account data, screenshots, and customer exports out of the article.</td></tr>
+          <tr><td>Editorial review</td><td>The generated handoff shows what was checked, what changed, and what still needs a human owner.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var defaults = {
+        question: "How do I rotate an API token without breaking active integrations?",
+        facts: "The existing token stays valid for 24 hours after a replacement is created.\nProduction integrations read the token from a secret manager.\nThe support article should not include real tokens, account IDs, or screenshots from private consoles.",
+        claim: "Create a new token, update the secret manager, restart the worker, and delete the old token immediately.",
+        checks: "Compare the draft against the 24-hour overlap rule.\nConfirm deletion timing does not break rollback.\nCheck that the article warns readers not to paste live tokens into tickets or AI tools."
+      };
+
+      var question = document.querySelector("[data-reader-question]");
+      var facts = document.querySelector("[data-source-facts]");
+      var claim = document.querySelector("[data-draft-claim]");
+      var checks = document.querySelector("[data-review-checks]");
+      var output = document.querySelector("[data-log-output]");
+      var status = document.querySelector("[data-log-status]");
+      var generate = document.querySelector("[data-generate-log]");
+      var copy = document.querySelector("[data-copy-log]");
+      var reset = document.querySelector("[data-reset-log]");
+      var boxes = Array.prototype.slice.call(document.querySelectorAll("[data-check]"));
+
+      function lines(value) {
+        return String(value || "")
+          .split(/\r?\n/)
+          .map(function (line) { return line.trim(); })
+          .filter(Boolean);
+      }
+
+      function bulletList(items) {
+        return items.length ? items.map(function (item) { return "- " + item; }).join("\n") : "- Not recorded";
+      }
+
+      function checkedLabels() {
+        return boxes.filter(function (box) { return box.checked; }).map(function (box) {
+          return box.parentElement ? box.parentElement.textContent.trim() : box.getAttribute("data-check");
+        });
+      }
+
+      function decision() {
+        var risky = document.querySelector("[data-check='risk']").checked;
+        var human = document.querySelector("[data-check='human']").checked;
+        if (risky && human) return "Revise before publication; owner review required.";
+        if (risky) return "Revise the risky claim before publication.";
+        if (human) return "Ready for owner review after source checks.";
+        return "Ready for editorial review with recorded assumptions.";
+      }
+
+      function buildLog() {
+        return [
+          "# Knowledge Base Evidence Log",
+          "",
+          "Generated in browser: " + new Date().toISOString(),
+          "",
+          "## Reader question",
+          "",
+          question.value.trim() || "Not recorded",
+          "",
+          "## Source facts",
+          "",
+          bulletList(lines(facts.value)),
+          "",
+          "## AI-assisted draft claim",
+          "",
+          claim.value.trim() || "Not recorded",
+          "",
+          "## Reviewer checks",
+          "",
+          bulletList(lines(checks.value)),
+          "",
+          "## Review markers",
+          "",
+          bulletList(checkedLabels()),
+          "",
+          "## Decision",
+          "",
+          decision(),
+          "",
+          "## Publication boundary",
+          "",
+          "Do not include passwords, API tokens, account-local screenshots, customer exports, private support tickets, payment data, or copied third-party article bodies.",
+          ""
+        ].join("\n");
+      }
+
+      function render() {
+        output.textContent = buildLog();
+        status.textContent = "Evidence log ready. Inputs stay in this browser session.";
+      }
+
+      function resetSample() {
+        question.value = defaults.question;
+        facts.value = defaults.facts;
+        claim.value = defaults.claim;
+        checks.value = defaults.checks;
+        boxes.forEach(function (box) {
+          box.checked = box.getAttribute("data-check") === "source" || box.getAttribute("data-check") === "privacy";
+        });
+        render();
+      }
+
+      generate.addEventListener("click", render);
+      reset.addEventListener("click", resetSample);
+      boxes.forEach(function (box) { box.addEventListener("change", render); });
+      [question, facts, claim, checks].forEach(function (field) {
+        field.addEventListener("input", render);
+      });
+      copy.addEventListener("click", function () {
+        var text = buildLog();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            status.textContent = "Markdown copied.";
+          }).catch(function () {
+            status.textContent = "Copy failed. The Markdown remains visible for manual selection.";
+          });
+        } else {
+          status.textContent = "Clipboard unavailable. The Markdown remains visible for manual selection.";
+        }
+      });
+
+      render();
+    }());
+  </script>
+</body>
+</html>

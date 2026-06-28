@@ -144,7 +144,7 @@ function renderEditorReviewPathPanel() {
         <article>
           <span>KnowledgeOwl review</span>
           <strong>AI-assisted knowledge base evidence logs</strong>
-          <p>Documentation-focused review page with an evidence-log workflow for AI-assisted help-center articles, review boundaries, and implementation proof.</p>
+          <p>Documentation-focused review page with an evidence-log workflow, interactive browser demo, review boundaries, and implementation proof.</p>
           <a href="knowledgeowl-reviewer-hub.html">Open KnowledgeOwl hub</a>
         </article>
         <article>
@@ -373,6 +373,7 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/civo-editor-one-pager.md">Civo editor one-pager</a></td><td>Kubernetes release evidence tutorial idea with static dashboard and release-guard boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/draftdev-writer-profile-one-pager.md">Draft.dev writer profile</a></td><td>Implementation-backed writer-network fit, topic lanes, proof links, and delivery style.</td></tr>
           <tr><td><a href="knowledgeowl-reviewer-hub.html">KnowledgeOwl reviewer hub</a></td><td>Documentation-focused article proposal about evidence logs for AI-assisted knowledge base articles.</td></tr>
+          <tr><td><a href="evidence-log-playground.html">Evidence log playground</a></td><td>Browser-only demo for turning AI-assisted support article drafts into source-aware review handoffs.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/knowledgeowl-documentation-readiness-pack.md">KnowledgeOwl readiness pack</a></td><td>Article promise, short pitch, outline, proof links, and publication boundary for a documentation-team audience.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/directus-editor-one-pager.md">Directus editor one-pager</a></td><td>Registry evidence review hub idea mapped to Directus collections, permissions, and safe proof pages.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/digitalocean-editor-one-pager.md">DigitalOcean editor one-pager</a></td><td>Node.js static evidence dashboard tutorial idea with generated reports and publish guards.</td></tr>
@@ -811,6 +812,49 @@ a {
   background: var(--white);
   font: 0.92rem/1.45 "SFMono-Regular", Consolas, monospace;
 }
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+.evidence-grid label {
+  display: block;
+}
+.evidence-grid span, .evidence-controls label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.evidence-grid textarea {
+  width: 100%;
+  min-height: 132px;
+  margin-top: 6px;
+  resize: vertical;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--white);
+  font: 0.9rem/1.45 "SFMono-Regular", Consolas, monospace;
+}
+.evidence-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.evidence-controls label {
+  min-height: 46px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+}
+.evidence-controls input {
+  margin-right: 6px;
+}
 .audit-actions {
   display: flex;
   flex-wrap: wrap;
@@ -1041,6 +1085,8 @@ code {
   .audit-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mini-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .review-grid { grid-template-columns: 1fr; }
+  .evidence-grid { grid-template-columns: 1fr; }
+  .evidence-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .decision-strip { grid-template-columns: 1fr; }
   .queue-list { grid-template-columns: 1fr; }
   .review-grid article { min-height: auto; }
@@ -1543,6 +1589,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "realpython-ai-reviewer-hub.html",
     "contentlab-writer-network-hub.html",
     "knowledgeowl-reviewer-hub.html",
+    "evidence-log-playground.html",
     "writing-samples.html",
     "implementation-authenticity-proof.html",
     "technical-rigor-proof.html",

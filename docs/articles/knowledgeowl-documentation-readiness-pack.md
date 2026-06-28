@@ -63,6 +63,12 @@ Technical rigor:
 https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html
 ```
 
+Interactive proof:
+
+```text
+https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
+```
+
 AI validation mini lab:
 
 ```text
@@ -96,4 +102,3 @@ This packet is a review aid, not a final article. The final article should be
 freshly written for KnowledgeOwl's audience and editorial process. It should not
 include private customer content, credentials, payment details, copied full
 third-party article bodies, or account-local screenshots.
-

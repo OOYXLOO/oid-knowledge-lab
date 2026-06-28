@@ -271,6 +271,12 @@ Public page:
 https://oid-knowledge-lab.vercel.app/knowledgeowl-reviewer-hub.html
 ```
 
+Interactive proof:
+
+```text
+https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
+```
+
 Direct raw link:
 
 ```text

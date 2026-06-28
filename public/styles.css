@@ -114,6 +114,49 @@ a {
   background: var(--white);
   font: 0.92rem/1.45 "SFMono-Regular", Consolas, monospace;
 }
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+.evidence-grid label {
+  display: block;
+}
+.evidence-grid span, .evidence-controls label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.evidence-grid textarea {
+  width: 100%;
+  min-height: 132px;
+  margin-top: 6px;
+  resize: vertical;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink);
+  background: var(--white);
+  font: 0.9rem/1.45 "SFMono-Regular", Consolas, monospace;
+}
+.evidence-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+.evidence-controls label {
+  min-height: 46px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+}
+.evidence-controls input {
+  margin-right: 6px;
+}
 .audit-actions {
   display: flex;
   flex-wrap: wrap;
@@ -344,6 +387,8 @@ code {
   .audit-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mini-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .review-grid { grid-template-columns: 1fr; }
+  .evidence-grid { grid-template-columns: 1fr; }
+  .evidence-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .decision-strip { grid-template-columns: 1fr; }
   .queue-list { grid-template-columns: 1fr; }
   .review-grid article { min-height: auto; }
