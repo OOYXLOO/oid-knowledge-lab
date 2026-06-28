@@ -97,6 +97,35 @@
 
     <section class="panel">
       <div>
+        <p class="eyebrow">Application answers</p>
+        <h2>Copy-ready Real Python responses</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Prompt</th><th>Response</th></tr></thead>
+        <tbody>
+          <tr><td>Why this role?</td><td>I want to teach Python developers the practical middle ground of AI-assisted development: use assistants for speed, but keep behavior contracts, tests, edge-case review, and human judgment in the loop.</td></tr>
+          <tr><td>First article idea</td><td>Validate AI-Generated Python Code With Pytest, Edge Cases, and Evidence Logs. The tutorial would start from a plausible generated helper, define expected behavior, add focused tests, revise unsafe behavior, and finish with a compact evidence log.</td></tr>
+          <tr><td>Reader outcome</td><td>Readers should leave with a repeatable workflow for deciding when to accept, revise, or reject generated Python code, instead of treating fluent output as correct.</td></tr>
+          <tr><td>Editorial fit</td><td>The material is practical, Python-specific, implementation-backed, and focused on quality rather than AI hype or model-building theory.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Paid pilot shape</p>
+        <h2>Small enough to edit, concrete enough to run</h2>
+      </div>
+      <div class="decision-strip">
+        <article><span>1</span><strong>Generated draft</strong><p>Start with a compact helper function that looks plausible but has hidden edge-case issues.</p></article>
+        <article><span>2</span><strong>Behavior contract</strong><p>Translate the intended behavior into explicit examples before trusting the code.</p></article>
+        <article><span>3</span><strong>Pytest pass</strong><p>Add normal, boundary, invalid-input, and unsafe-string tests the reader can run locally.</p></article>
+        <article><span>4</span><strong>Evidence log</strong><p>End with a short log of commands, failures, accepted fixes, rejected assumptions, and limitations.</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
         <p class="eyebrow">Reviewer checklist</p>
         <h2>What to evaluate</h2>
       </div>

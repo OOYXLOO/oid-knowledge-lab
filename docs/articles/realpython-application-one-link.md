@@ -47,6 +47,49 @@ By the end of the proposed article, a Python reader should know how to:
 - Revise generated code instead of accepting it blindly.
 - Keep a compact evidence log of commands, results, accepted changes, and known limitations.
 
+## Copy-Ready Application Responses
+
+```text
+Why this role?
+I want to teach Python developers the practical middle ground of AI-assisted
+development: use assistants for speed, but keep behavior contracts, tests,
+edge-case review, and human judgment in the loop.
+```
+
+```text
+First article idea:
+Validate AI-Generated Python Code With Pytest, Edge Cases, and Evidence Logs.
+The tutorial would start from a plausible generated helper, define expected
+behavior, add focused tests, revise unsafe behavior, and finish with a compact
+evidence log.
+```
+
+```text
+Reader outcome:
+Readers should leave with a repeatable workflow for deciding when to accept,
+revise, or reject generated Python code, instead of treating fluent output as
+correct.
+```
+
+```text
+Editorial fit:
+The material is practical, Python-specific, implementation-backed, and focused
+on quality rather than AI hype or model-building theory.
+```
+
+## Paid Pilot Shape
+
+The first paid pilot can stay narrow:
+
+1. Start with a compact generated helper function that looks plausible but has
+   hidden edge-case issues.
+2. Translate the intended behavior into explicit examples before trusting the
+   code.
+3. Add normal, boundary, invalid-input, and unsafe-string tests the reader can
+   run locally.
+4. End with a short evidence log of commands, failures, accepted fixes, rejected
+   assumptions, and limitations.
+
 ## Runnable proof
 
 The mini lab is intentionally dependency-free so it can be reviewed quickly:
