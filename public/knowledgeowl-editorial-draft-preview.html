@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KnowledgeOwl Editorial Draft Preview - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">KnowledgeOwl draft preview</p>
+      <h1>How to Turn AI-Assisted Documentation Reviews into Evidence Logs</h1>
+      <p class="summary">A longer editorial preview for a proposed KnowledgeOwl guest article. It shows the structure, tone, examples, and safety boundaries of the article before a final editor-specific draft is prepared.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="knowledgeowl-reviewer-hub.html">KnowledgeOwl hub</a>
+        <a href="knowledgeowl-sample-section.html">Short sample section</a>
+        <a href="evidence-log-playground.html">Evidence log playground</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/knowledgeowl-editorial-draft-preview.md">Markdown preview</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <p class="panel-copy">AI-assisted drafting can make knowledge base work faster, but speed is not the same as reviewability. A draft can sound confident while still mixing verified source facts, guessed details, product assumptions, and reviewer notes in the same paragraph. For documentation teams, that is the real risk: not that a model helped write a sentence, but that nobody can easily tell which parts of the article are ready to publish.</p>
+      <p class="panel-copy">A lightweight evidence log gives the team a safer handoff. It does not replace a style guide, editorial judgment, or subject-matter review. It simply makes the review trail visible before the article reaches the customer-facing knowledge base.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Step 1</p>
+        <h2>Start with the reader question</h2>
+      </div>
+      <p class="panel-copy">Every review log should begin with the reader question. What was the customer, support agent, or internal user trying to do? A clear question keeps the article from drifting into a general explanation that sounds useful but does not answer the immediate need.</p>
+      <pre>Reader question:
+How do I rotate an integration token without breaking existing jobs?</pre>
+      <p class="panel-copy">That question gives the reviewer a target. The draft is not just "about token rotation." It needs to explain a safe rotation path and warn about anything that could interrupt existing jobs.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Step 2</p>
+        <h2>Separate source facts from draft claims</h2>
+      </div>
+      <p class="panel-copy">The next step is to separate what the team knows from what the draft currently says. Source facts might come from a release note, product documentation, an SME comment, a support macro, or an approved internal runbook. Draft claims are statements that appear in the article but still need review.</p>
+      <pre>Source facts:
+- Token rotation is available from the integration settings page.
+- Existing jobs keep using the old token until the new token is saved.
+- The old token should be revoked after dependent jobs are confirmed.
+
+Draft claims to review:
+- "Rotation is instant and never affects running jobs."
+- "Admins can recover a revoked token."</pre>
+      <p class="panel-copy">This separation matters because fluent writing can hide uncertainty. The phrase "never affects running jobs" might be true, partly true, or dangerously overbroad. The evidence log gives reviewers a place to test that claim before it becomes a published promise.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Step 3</p>
+        <h2>Capture reviewer checks</h2>
+      </div>
+      <p class="panel-copy">Reviewer checks should be specific enough that another person can act on them. Instead of writing "verify accuracy," name the decision that still needs confirmation.</p>
+      <pre>Reviewer checks:
+- Confirm whether running jobs can fail during rotation.
+- Confirm whether revoked tokens are recoverable.
+- Add a warning if customers need to update scheduled jobs manually.</pre>
+      <p class="panel-copy">This makes the handoff useful for technical writers, support leads, and SMEs. The writer does not have to guess what the reviewer meant. The SME does not have to re-read the whole draft to find the risky claims. The support lead can see whether the article answers the customer scenario that triggered the update.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Step 4</p>
+        <h2>Mark publication blockers</h2>
+      </div>
+      <p class="panel-copy">Some issues should block publication. A blocker is not a general improvement idea; it is a reason the article should not go live yet.</p>
+      <table class="handoff-table">
+        <thead><tr><th>Blocker</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>Irreversible action without a warning</td><td>Readers may lose access, data, or configuration without realizing the risk.</td></tr>
+          <tr><td>Unconfirmed product behavior</td><td>The article can become a public promise the product does not keep.</td></tr>
+          <tr><td>Private support details</td><td>Review artifacts should not spread sensitive customer context.</td></tr>
+          <tr><td>Copied third-party paragraph</td><td>Unreviewed copied text creates editorial and legal risk.</td></tr>
+          <tr><td>Missing feature, region, plan, or permission boundary</td><td>The answer may be correct only for a subset of readers.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Step 5</p>
+        <h2>Keep private data out of the handoff</h2>
+      </div>
+      <p class="panel-copy">An evidence log should make review easier without spreading sensitive data. Support teams often work near private customer details, screenshots, logs, billing information, access tokens, and internal account identifiers. Those details should not be copied into a general review artifact unless the team has a clear policy and a need to include them.</p>
+      <pre>Safety boundary:
+- Do not include customer account screenshots.
+- Do not paste tokens, cookies, or one-time codes.
+- Summarize the support case without copying private identifiers.
+- Link only to approved internal references when private context is required.</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Conclusion</p>
+        <h2>Use the log as a bridge</h2>
+      </div>
+      <p class="panel-copy">The evidence log is not meant to appear in the final article. Customers should see a clear, concise help article. The log is the internal bridge between "an AI drafted something plausible" and "a human reviewer can approve this update with confidence."</p>
+      <p class="panel-copy">AI-assisted documentation does not need a heavy process to become safer. It needs a visible review trail. A small evidence log gives documentation and support teams a practical way to keep speed without giving up accountability.</p>
+    </section>
+  </main>
+</body>
+</html>
