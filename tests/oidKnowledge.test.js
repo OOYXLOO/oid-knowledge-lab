@@ -1696,6 +1696,32 @@ function testWritingSamplesPageHasEditorDecisionPanel() {
   assert.equal(text.includes("\u8d5a\u94b1"), false);
 }
 
+function testPhpDeploymentEvidenceChecklistIsLinkedAndBoundarySafe() {
+  const files = [
+    "docs/articles/amezmo-php-deployment-evidence-checklist.md",
+    "public/amezmo-php-deployment-one-link.html",
+    "public/index.html",
+    "public/writing-samples.html",
+    "docs/articles/README.md"
+  ];
+
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("PHP"), `${file} should include PHP positioning`);
+    assert.ok(text.includes("deployment") || text.includes("Deployment"), `${file} should include deployment positioning`);
+    assert.ok(text.includes("No secrets") || text.includes("no-secret") || text.includes("Secrets excluded") || text.includes("credentials"), `${file} should include secret boundary`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const page = fs.readFileSync(path.join(ROOT, "public/amezmo-php-deployment-one-link.html"), "utf8");
+  assert.ok(page.includes("composer validate --strict"));
+  assert.ok(page.includes("php artisan migrate --pretend"));
+  assert.ok(page.includes("Rollback"));
+  assert.ok(page.includes("amezmo-php-deployment-evidence-checklist.md"));
+}
+
 function testPaidWritingApplicationDeskIsPublicAndBoundarySafe() {
   const files = [
     "docs/articles/README.md",
@@ -2044,6 +2070,7 @@ function main() {
   testKnowledgeOwlEvidenceLogTemplateIsLinkedAndBoundarySafe();
   testArticleSampleIndexIncludesRealPythonMiniSample();
   testWritingSamplesPageHasEditorDecisionPanel();
+  testPhpDeploymentEvidenceChecklistIsLinkedAndBoundarySafe();
   testPaidWritingApplicationDeskIsPublicAndBoundarySafe();
   testBackupPitchPackIsPublicAndBoundarySafe();
   testPublicEditorPitchPackHasFieldReadyCopy();

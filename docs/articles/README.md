@@ -302,6 +302,31 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/knowledgeowl-evidence-log-template.md
 ```
 
+### PHP deployment evidence checklist
+
+Path: `docs/articles/amezmo-php-deployment-evidence-checklist.md`
+
+Best for PHP hosting and deployment editors interested in:
+
+- deployment pre-checks,
+- Laravel and Symfony command examples,
+- migration and queue-worker evidence,
+- rollback notes,
+- health checks,
+- and no-secret release boundaries.
+
+Public page:
+
+```text
+https://oid-knowledge-lab.vercel.app/amezmo-php-deployment-one-link.html
+```
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/amezmo-php-deployment-evidence-checklist.md
+```
+
 ### SitePoint evidence log widget readiness pack
 
 Path: `docs/articles/sitepoint-evidence-log-widget-readiness-pack.md`
