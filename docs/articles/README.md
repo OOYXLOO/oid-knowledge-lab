@@ -252,6 +252,31 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/contentlab-writer-network-readiness-pack.md
 ```
 
+### KnowledgeOwl documentation readiness pack
+
+Path: `docs/articles/knowledgeowl-documentation-readiness-pack.md`
+
+Best for documentation and knowledge-base editors interested in:
+
+- AI-assisted knowledge base article review,
+- lightweight evidence logs,
+- source boundaries,
+- repeatable checks before publication,
+- implementation-backed proof links,
+- and safe publication boundaries.
+
+Public page:
+
+```text
+https://oid-knowledge-lab.vercel.app/knowledgeowl-reviewer-hub.html
+```
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/knowledgeowl-documentation-readiness-pack.md
+```
+
 ### Implementation authenticity proof
 
 Path: `docs/articles/implementation-authenticity-proof.md`
