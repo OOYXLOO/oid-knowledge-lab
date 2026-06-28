@@ -2150,6 +2150,35 @@ function testOpenTrainAiCodeEvaluationOneLinkIsLinkedAndBoundarySafe() {
   }
 }
 
+function testAiEvaluatorUnifiedApplicationDeskIsPublicAndSubmitReady() {
+  const files = [
+    "docs/articles/ai-evaluator-unified-application-desk.md",
+    "public/ai-evaluator-unified-application-desk.html",
+    "public/ai-evaluator-application-packet.html",
+    "public/mindrift-code-one-link.html",
+    "public/alignerr-python-one-link.html",
+    "public/opentrain-ai-code-evaluation-one-link.html"
+  ];
+
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("AI evaluator"), `${file} should include AI evaluator positioning`);
+    assert.ok(text.includes("Mindrift"), `${file} should include Mindrift`);
+    assert.ok(text.includes("Alignerr"), `${file} should include Alignerr`);
+    assert.ok(text.includes("OpenTrain"), `${file} should include OpenTrain`);
+    assert.ok(text.includes("Short role summary"), `${file} should include a short role summary`);
+    assert.ok(text.includes("Verdict:"), `${file} should include verdict frame`);
+    assert.ok(text.includes("duration_parser_review"), `${file} should link the duration parser proof`);
+    assert.ok(text.includes("Python Assessment Drill"), `${file} should link the Python drill`);
+    assert.ok(text.includes("Model Response Comparison Lab"), `${file} should link model comparison proof`);
+    assert.ok(text.includes("No credentials"), `${file} should include public safety boundaries`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+    assert.equal(text.includes("D:\\hks"), false);
+  }
+}
+
 function testQwenAgentPlanBuildsOfflineRemediationHandoff() {
   const plan = buildQwenAgentPlan({
     generatedAt: "2026-06-29T00:00:00.000Z",
@@ -2365,6 +2394,7 @@ async function main() {
   testPythonAssessmentDrillIsLinkedAndBoundarySafe();
   testModelResponseComparisonLabIsLinkedAndBoundarySafe();
   testOpenTrainAiCodeEvaluationOneLinkIsLinkedAndBoundarySafe();
+  testAiEvaluatorUnifiedApplicationDeskIsPublicAndSubmitReady();
   testQwenAgentPlanBuildsOfflineRemediationHandoff();
   testQwenChatRequestUsesDashScopeCompatibleMode();
   await testQwenChatCallUsesBearerKeyAndParsesMessage();

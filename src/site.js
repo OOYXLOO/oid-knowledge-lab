@@ -1644,6 +1644,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "knowledgeowl-application-field-pack.html",
     "alignerr-python-one-link.html",
     "mindrift-code-one-link.html",
+    "ai-evaluator-unified-application-desk.html",
     "opentrain-ai-code-evaluation-one-link.html",
     "qwen-autopilot-agent-one-link.html",
     "evidence-log-playground.html",
