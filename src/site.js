@@ -148,6 +148,12 @@ function renderEditorReviewPathPanel() {
           <a href="knowledgeowl-reviewer-hub.html">Open KnowledgeOwl hub</a>
         </article>
         <article>
+          <span>SitePoint review</span>
+          <strong>Browser-only evidence log widget</strong>
+          <p>Web tutorial review page for a plain HTML, CSS, and JavaScript widget that exports source-aware Markdown evidence logs.</p>
+          <a href="sitepoint-reviewer-hub.html">Open SitePoint hub</a>
+        </article>
+        <article>
           <span>Tuts+ instructor</span>
           <strong>Tutorial and video-course pitch</strong>
           <p>Envato Tuts+ focused review page with a written tutorial angle, 30+ minute course outline, proof links, and safe publication boundaries.</p>
@@ -375,6 +381,8 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="knowledgeowl-reviewer-hub.html">KnowledgeOwl reviewer hub</a></td><td>Documentation-focused article proposal about evidence logs for AI-assisted knowledge base articles.</td></tr>
           <tr><td><a href="evidence-log-playground.html">Evidence log playground</a></td><td>Browser-only demo for turning AI-assisted support article drafts into source-aware review handoffs.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/knowledgeowl-documentation-readiness-pack.md">KnowledgeOwl readiness pack</a></td><td>Article promise, short pitch, outline, proof links, and publication boundary for a documentation-team audience.</td></tr>
+          <tr><td><a href="sitepoint-reviewer-hub.html">SitePoint reviewer hub</a></td><td>Frontend tutorial proposal for the evidence log widget, with a runnable browser demo and originality boundary.</td></tr>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/sitepoint-evidence-log-widget-readiness-pack.md">SitePoint readiness pack</a></td><td>Article promise, outline, proof links, and AI-assistance boundary for a web-development audience.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/directus-editor-one-pager.md">Directus editor one-pager</a></td><td>Registry evidence review hub idea mapped to Directus collections, permissions, and safe proof pages.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/digitalocean-editor-one-pager.md">DigitalOcean editor one-pager</a></td><td>Node.js static evidence dashboard tutorial idea with generated reports and publish guards.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/airbyte-connector-builder-appendix.md">Airbyte Connector Builder appendix</a></td><td>Airbyte-specific adaptation path for Connector Builder, File source, destination shape, and publish-boundary validation.</td></tr>
@@ -1590,6 +1598,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "contentlab-writer-network-hub.html",
     "knowledgeowl-reviewer-hub.html",
     "evidence-log-playground.html",
+    "sitepoint-reviewer-hub.html",
     "writing-samples.html",
     "implementation-authenticity-proof.html",
     "technical-rigor-proof.html",

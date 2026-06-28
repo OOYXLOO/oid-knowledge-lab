@@ -283,6 +283,37 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/knowledgeowl-documentation-readiness-pack.md
 ```
 
+### SitePoint evidence log widget readiness pack
+
+Path: `docs/articles/sitepoint-evidence-log-widget-readiness-pack.md`
+
+Best for web-development editors interested in:
+
+- a plain HTML, CSS, and JavaScript tutorial,
+- a browser-only interactive demo,
+- AI-assisted documentation review workflows,
+- Markdown handoff generation,
+- local-only input boundaries,
+- and human review over AI-generated claims.
+
+Public page:
+
+```text
+https://oid-knowledge-lab.vercel.app/sitepoint-reviewer-hub.html
+```
+
+Interactive proof:
+
+```text
+https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
+```
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/sitepoint-evidence-log-widget-readiness-pack.md
+```
+
 ### Implementation authenticity proof
 
 Path: `docs/articles/implementation-authenticity-proof.md`
