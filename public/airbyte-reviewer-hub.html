@@ -89,6 +89,35 @@
 
     <section class="panel">
       <div>
+        <p class="eyebrow">Application answers</p>
+        <h2>Copy-ready Airbyte responses</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Prompt</th><th>Response</th></tr></thead>
+        <tbody>
+          <tr><td>Short pitch</td><td>I would like to propose an implementation-backed tutorial about building a safe registry evidence dashboard from public metadata and sanitized local inventory data. The article would map the workflow to Airbyte-style source, normalization, destination, and validation stages, then show how to generate a static review surface with a dataset manifest and publish guard.</td></tr>
+          <tr><td>Why Airbyte readers care</td><td>Airbyte readers often need to move data across source boundaries without accidentally mixing public evidence, private inventory rows, and publishable outputs. This tutorial gives them a small reproducible pattern for source separation, validation, destination artifacts, and reviewer handoff.</td></tr>
+          <tr><td>Google Doc draft note</td><td>The initial Google Doc can be a concise outline with bullet points, implementation proof links, and editorial boundaries. If accepted, the final article should be written freshly in the author&apos;s own words for Airbyte&apos;s brief and terminology.</td></tr>
+          <tr><td>Originality boundary</td><td>The linked pages are implementation proof and topic notes. They should not be submitted as an unchanged AI-generated article draft.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Draft shape</p>
+        <h2>Human-written outline for editor review</h2>
+      </div>
+      <div class="decision-strip">
+        <article><span>1</span><strong>Problem</strong><p>Explain why row movement alone does not prove source trust or publication safety.</p></article>
+        <article><span>2</span><strong>Airbyte map</strong><p>Map public registry input, sanitized file input, normalization, and destination artifacts.</p></article>
+        <article><span>3</span><strong>Validation</strong><p>List row counts, malformed values, unresolved identifiers, hashes, manifest checks, and publish guard failures.</p></article>
+        <article><span>4</span><strong>Result</strong><p>Show the safe dashboard and explain what remains local or private.</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
         <p class="eyebrow">Topic-board fit</p>
         <h2>Adaptable proposal, not an issue claim</h2>
         <p class="panel-copy">This review packet does not claim that the topic is assigned to a public Airbyte GitHub issue. It is a proposal based on Airbyte's public writing program, data-integration audience, Connector Builder surface, file-source workflows, and destination validation concerns. If an editor has a more specific content-board topic, the outline can be adapted before a final draft is written.</p>

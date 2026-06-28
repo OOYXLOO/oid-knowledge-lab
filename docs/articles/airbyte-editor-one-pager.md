@@ -35,6 +35,49 @@ After reading the article, a developer should be able to:
 | Review output | Local JSON destination or warehouse table feeding a static dashboard |
 | Release safety | Manifest, row counts, and publish guard before generated artifacts go public |
 
+## Copy-ready application responses
+
+```text
+Short pitch:
+I would like to propose an implementation-backed tutorial about building a safe
+registry evidence dashboard from public metadata and sanitized local inventory
+data. The article would map the workflow to Airbyte-style source, normalization,
+destination, and validation stages, then show how to generate a static review
+surface with a dataset manifest and publish guard.
+```
+
+```text
+Why Airbyte readers care:
+Airbyte readers often need to move data across source boundaries without
+accidentally mixing public evidence, private inventory rows, and publishable
+outputs. This tutorial gives them a small reproducible pattern for source
+separation, validation, destination artifacts, and reviewer handoff.
+```
+
+```text
+Google Doc draft note:
+The initial Google Doc can be a concise outline with bullet points,
+implementation proof links, and editorial boundaries. If accepted, the final
+article should be written freshly in the author's own words for Airbyte's brief
+and terminology.
+```
+
+```text
+Originality boundary:
+The linked pages are implementation proof and topic notes. They should not be
+submitted as an unchanged AI-generated article draft.
+```
+
+## Human-written outline shape
+
+1. Problem: explain why row movement alone does not prove source trust or
+   publication safety.
+2. Airbyte map: map public registry input, sanitized file input, normalization,
+   and destination artifacts.
+3. Validation: list row counts, malformed values, unresolved identifiers,
+   hashes, manifest checks, and publish guard failures.
+4. Result: show the safe dashboard and explain what remains local or private.
+
 ## Implementation proof
 
 - Working dashboard: <https://oid-knowledge-lab.vercel.app/>
