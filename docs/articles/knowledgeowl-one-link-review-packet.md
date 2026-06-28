@@ -14,7 +14,7 @@ The article gives documentation and support teams a small review workflow for AI
 4. Keep sensitive customer or account data out of review artifacts.
 5. Decide whether to publish, revise, hold for SME review, or reject the draft.
 
-The article is practical, documentation-focused, and written for teams that need reviewability without adding a heavy process.
+The article is practical, documentation-focused, and written for teams that need reviewability without adding a heavy process. It is intentionally non-programmer friendly: the workflow fits inside ordinary ticket comments, review notes, or internal handoffs instead of requiring a new engineering system.
 
 ## Best First Links
 
