@@ -204,6 +204,30 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/tutsplus-tutorial-readiness-pack.md
 ```
 
+### Envato Tuts+ instructor pack
+
+Path: `docs/articles/envato-tutsplus-instructor-pack.md`
+
+Best for tutorial and course reviewers interested in:
+
+- a written tutorial pitch,
+- a 30+ minute video-course outline,
+- Node.js static dashboard teaching material,
+- public proof links,
+- and safe submission boundaries.
+
+Public page:
+
+```text
+https://oid-knowledge-lab.vercel.app/envato-tutsplus-instructor-hub.html
+```
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/envato-tutsplus-instructor-pack.md
+```
+
 ### ContentLab writer network readiness pack
 
 Path: `docs/articles/contentlab-writer-network-readiness-pack.md`

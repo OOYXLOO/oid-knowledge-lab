@@ -1730,6 +1730,22 @@ function testBackupPitchPackIsPublicAndBoundarySafe() {
   const hub = fs.readFileSync(path.join(ROOT, "public/tutsplus-tutorial-reviewer-hub.html"), "utf8");
   assert.ok(hub.includes("Tuts+ tutorial reviewer hub"));
   assert.ok(hub.includes("tutsplus-tutorial-readiness-pack.md"));
+  const instructorFiles = [
+    "docs/articles/envato-tutsplus-instructor-pack.md",
+    "public/envato-tutsplus-instructor-hub.html",
+    "public/writing-samples.html",
+    "public/content-backup-pitch-pack.html",
+    "docs/articles/README.md"
+  ];
+  for (const file of instructorFiles) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("Envato Tuts+"), `${file} should include Envato Tuts+`);
+    assert.ok(text.includes("video"), `${file} should include video-course positioning`);
+    assert.ok(text.includes("No credentials"), `${file} should include submission boundaries`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
 }
 
 function testPublicEditorPitchPackHasFieldReadyCopy() {

@@ -142,6 +142,12 @@ function renderEditorReviewPathPanel() {
           <a href="contentlab-writer-network-hub.html">Open ContentLab hub</a>
         </article>
         <article>
+          <span>Tuts+ instructor</span>
+          <strong>Tutorial and video-course pitch</strong>
+          <p>Envato Tuts+ focused review page with a written tutorial angle, 30+ minute course outline, proof links, and safe publication boundaries.</p>
+          <a href="envato-tutsplus-instructor-hub.html">Open instructor hub</a>
+        </article>
+        <article>
           <span>Working proof</span>
           <strong>Public dashboard</strong>
           <p>Runnable data workflow, publishable reports, source boundaries, search surfaces, local audit tools, and release guard checks.</p>
@@ -1537,6 +1543,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "paid-writing-application-desk.html",
     "p1-application-answer-sheet.html",
     "tutsplus-tutorial-reviewer-hub.html",
+    "envato-tutsplus-instructor-hub.html",
     "starter-scope.html",
     "direct-client-fit.html",
     "content-backup-pitch-pack.html"
