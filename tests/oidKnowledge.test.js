@@ -1618,6 +1618,32 @@ function testArticleSampleIndexIncludesSigNozFullDraft() {
   assert.equal(draft.includes("\u8d5a\u94b1"), false);
 }
 
+function testKnowledgeOwlEvidenceLogTemplateIsLinkedAndBoundarySafe() {
+  const files = [
+    "public/knowledgeowl-reviewer-hub.html",
+    "public/writing-samples.html",
+    "docs/articles/README.md"
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("knowledgeowl-evidence-log-template.md"), `${file} should link the KnowledgeOwl evidence log template`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const template = fs.readFileSync(path.join(ROOT, "docs/articles/knowledgeowl-evidence-log-template.md"), "utf8");
+  assert.ok(template.includes("Reader question"));
+  assert.ok(template.includes("Source facts"));
+  assert.ok(template.includes("Draft claims to verify"));
+  assert.ok(template.includes("Publication blockers"));
+  assert.ok(template.includes("Privacy boundary"));
+  assert.ok(template.includes("Decision"));
+  assert.equal(template.includes("money" + "-goal"), false);
+  assert.equal(template.includes("USD " + "200"), false);
+  assert.equal(template.includes("\u8d5a\u94b1"), false);
+}
+
 function testArticleSampleIndexIncludesRealPythonMiniSample() {
   const files = [
     "docs/articles/README.md",
@@ -1960,6 +1986,7 @@ function main() {
   testArticleSampleIndexIncludesDirectusFullDraft();
   testArticleSampleIndexIncludesAppSignalFullDraft();
   testArticleSampleIndexIncludesSigNozFullDraft();
+  testKnowledgeOwlEvidenceLogTemplateIsLinkedAndBoundarySafe();
   testArticleSampleIndexIncludesRealPythonMiniSample();
   testWritingSamplesPageHasEditorDecisionPanel();
   testPaidWritingApplicationDeskIsPublicAndBoundarySafe();

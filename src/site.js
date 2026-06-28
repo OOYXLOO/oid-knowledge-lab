@@ -136,6 +136,18 @@ function renderEditorReviewPathPanel() {
           <a href="realpython-ai-reviewer-hub.html">Open Real Python hub</a>
         </article>
         <article>
+          <span>AI evaluator review</span>
+          <strong>Generated code assessment workflow</strong>
+          <p>Assessment-ready proof page for reviewing generated code with behavior contracts, focused tests, edge cases, unsafe-input checks, and evidence logs.</p>
+          <a href="ai-code-evaluator-portfolio.html">Open evaluator portfolio</a>
+        </article>
+        <article>
+          <span>Mindrift code review</span>
+          <strong>Python evaluator and model-response review</strong>
+          <p>Code-review-focused proof page for generated-code assessment, bug finding, corrected implementations, structured feedback, and task filtering.</p>
+          <a href="mindrift-code-reviewer-hub.html">Open Mindrift hub</a>
+        </article>
+        <article>
           <span>ContentLab review</span>
           <strong>Developer writer network packet</strong>
           <p>ContentLab-focused review page for Cloud, DevOps, AI validation, observability, static dashboards, and implementation-backed developer writing.</p>
@@ -152,6 +164,12 @@ function renderEditorReviewPathPanel() {
           <strong>Browser-only evidence log widget</strong>
           <p>Web tutorial review page for a plain HTML, CSS, and JavaScript widget that exports source-aware Markdown evidence logs.</p>
           <a href="sitepoint-reviewer-hub.html">Open SitePoint hub</a>
+        </article>
+        <article>
+          <span>Slack-style review</span>
+          <strong>Review Log Agent</strong>
+          <p>Product prototype that turns Slack-style documentation or support review threads into source-aware Markdown evidence logs with blockers and safety boundaries.</p>
+          <a href="review-log-agent-hub.html">Open Review Log Agent hub</a>
         </article>
         <article>
           <span>Tuts+ instructor</span>
@@ -379,6 +397,7 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/civo-editor-one-pager.md">Civo editor one-pager</a></td><td>Kubernetes release evidence tutorial idea with static dashboard and release-guard boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/draftdev-writer-profile-one-pager.md">Draft.dev writer profile</a></td><td>Implementation-backed writer-network fit, topic lanes, proof links, and delivery style.</td></tr>
           <tr><td><a href="knowledgeowl-reviewer-hub.html">KnowledgeOwl reviewer hub</a></td><td>Documentation-focused article proposal about evidence logs for AI-assisted knowledge base articles.</td></tr>
+          <tr><td><a href="mindrift-code-reviewer-hub.html">Mindrift code reviewer hub</a></td><td>AI code-review proof path for Python evaluator work, bug finding, model-response comparison, corrected implementations, and structured feedback.</td></tr>
           <tr><td><a href="evidence-log-playground.html">Evidence log playground</a></td><td>Browser-only demo for turning AI-assisted support article drafts into source-aware review handoffs.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/knowledgeowl-documentation-readiness-pack.md">KnowledgeOwl readiness pack</a></td><td>Article promise, short pitch, outline, proof links, and publication boundary for a documentation-team audience.</td></tr>
           <tr><td><a href="sitepoint-reviewer-hub.html">SitePoint reviewer hub</a></td><td>Frontend tutorial proposal for the evidence log widget, with a runnable browser demo and originality boundary.</td></tr>
@@ -617,6 +636,9 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="vultr-creator-reviewer-hub.html">Vultr Creator reviewer hub</a>
         <a href="digitalocean-reviewer-hub.html">DigitalOcean reviewer hub</a>
         <a href="realpython-ai-reviewer-hub.html">Real Python AI reviewer hub</a>
+        <a href="mindrift-code-reviewer-hub.html">Mindrift code reviewer hub</a>
+        <a href="ai-code-evaluator-portfolio.html">AI code evaluator portfolio</a>
+        <a href="review-log-agent-hub.html">Review Log Agent hub</a>
         <a href="contentlab-writer-network-hub.html">ContentLab writer hub</a>
         <a href="implementation-authenticity-proof.html">Implementation proof</a>
       </div>

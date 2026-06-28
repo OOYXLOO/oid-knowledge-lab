@@ -283,6 +283,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/knowledgeowl-documentation-readiness-pack.md
 ```
 
+### KnowledgeOwl evidence log template
+
+Path: `docs/articles/knowledgeowl-evidence-log-template.md`
+
+Best for documentation and support-team editors who want:
+
+- a copyable evidence-log template,
+- a filled article-review example,
+- source-fact and draft-claim separation,
+- publication blocker checks,
+- a privacy boundary for support data,
+- and a clear publish/revise/hold decision frame.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/knowledgeowl-evidence-log-template.md
+```
+
 ### SitePoint evidence log widget readiness pack
 
 Path: `docs/articles/sitepoint-evidence-log-widget-readiness-pack.md`
