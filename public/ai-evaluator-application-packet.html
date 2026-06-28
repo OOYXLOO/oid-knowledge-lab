@@ -71,6 +71,35 @@
 
     <section class="panel">
       <div>
+        <p class="eyebrow">Application answers</p>
+        <h2>Copy-ready short responses</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+        <tbody>
+          <tr><td>What kind of coding tasks fit you best?</td><td>Python and JavaScript code review, debugging, edge-case analysis, test design, and clear explanations of why a generated answer should be accepted, revised, or rejected.</td></tr>
+          <tr><td>How do you evaluate AI-generated code?</td><td>I first define the expected behavior, then check normal cases, boundary cases, invalid inputs, unsafe assumptions, and missing error handling. I prefer runnable tests and concise evidence logs over surface-level explanations.</td></tr>
+          <tr><td>What makes your feedback useful?</td><td>I separate the main issue, concrete evidence, suggested revision, and residual risk so another reviewer or model trainer can see exactly what changed and why.</td></tr>
+          <tr><td>Example project description</td><td>My public OID Knowledge Lab includes small review cases that treat generated code as an untrusted draft, add focused tests, revise unsafe behavior, and publish a clear evidence log.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Assessment readiness</p>
+        <h2>What to show during a coding evaluation</h2>
+      </div>
+      <div class="decision-strip">
+        <article><span>A</span><strong>Find the failure mode</strong><p>Name the bug or missing behavior before rewriting code.</p></article>
+        <article><span>B</span><strong>Add focused checks</strong><p>Use small tests for normal, boundary, invalid, and unsafe inputs.</p></article>
+        <article><span>C</span><strong>Patch narrowly</strong><p>Fix the behavior without rewriting unrelated structure.</p></article>
+        <article><span>D</span><strong>Explain residual risk</strong><p>State what remains unsupported or out of scope.</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
         <p class="eyebrow">Example</p>
         <h2>Verdict frame</h2>
       </div>

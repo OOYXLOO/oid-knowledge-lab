@@ -37,6 +37,42 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-val
 4. Separate source facts, generated claims, reviewer findings, and residual risk.
 5. Give a clear verdict: accept, revise, or reject.
 
+## Copy-Ready Application Answers
+
+```text
+What kind of coding tasks fit you best?
+Python and JavaScript code review, debugging, edge-case analysis, test design,
+and clear explanations of why a generated answer should be accepted, revised,
+or rejected.
+```
+
+```text
+How do you evaluate AI-generated code?
+I first define the expected behavior, then check normal cases, boundary cases,
+invalid inputs, unsafe assumptions, and missing error handling. I prefer
+runnable tests and concise evidence logs over surface-level explanations.
+```
+
+```text
+What makes your feedback useful?
+I separate the main issue, concrete evidence, suggested revision, and residual
+risk so another reviewer or model trainer can see exactly what changed and why.
+```
+
+```text
+Example project description:
+My public OID Knowledge Lab includes small review cases that treat generated
+code as an untrusted draft, add focused tests, revise unsafe behavior, and
+publish a clear evidence log.
+```
+
+## Assessment Readiness
+
+- Find the failure mode before rewriting code.
+- Add focused checks for normal, boundary, invalid, and unsafe inputs.
+- Patch narrowly without rewriting unrelated structure.
+- Explain residual risk and unsupported cases.
+
 ## Example Verdict Frame
 
 ```text
