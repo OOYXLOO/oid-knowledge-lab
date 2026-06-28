@@ -1033,6 +1033,25 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/client-safe-oid-inventory-assessment.md
 ```
 
+### Model Response Comparison Lab
+
+Path: `docs/articles/model-response-comparison-lab.md`
+
+Best for readers interested in:
+
+- AI code evaluator applications,
+- model-response comparison,
+- Candidate A / Candidate B review,
+- pytest-backed verdicts,
+- winning answer decisions,
+- and residual risk notes for generated Python answers.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/model-response-comparison-lab.md
+```
+
 ## Verification
 
 The article samples are part of the same repository release surface as the analysis workspace. Before publishing repository changes, run:

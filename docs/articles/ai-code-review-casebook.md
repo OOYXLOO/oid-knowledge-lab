@@ -63,6 +63,18 @@ about:
 - evidence-backed decisions;
 - concise reviewer handoffs.
 
+Additional comparison sample:
+
+```text
+https://oid-knowledge-lab.vercel.app/model-response-comparison-lab.html
+```
+
+Raw Markdown:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/model-response-comparison-lab.md
+```
+
 ## Boundary
 
 The examples are public, original review artifacts. They do not include private

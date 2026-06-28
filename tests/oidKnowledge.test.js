@@ -2057,6 +2057,38 @@ function testPythonAssessmentDrillIsLinkedAndBoundarySafe() {
   }
 }
 
+function testModelResponseComparisonLabIsLinkedAndBoundarySafe() {
+  const files = [
+    "public/model-response-comparison-lab.html",
+    "docs/articles/model-response-comparison-lab.md"
+  ];
+  const linkSources = [
+    "public/mindrift-code-one-link.html",
+    "public/alignerr-python-one-link.html",
+    "public/ai-code-review-casebook.html",
+    "public/ai-evaluator-application-packet.html",
+    "docs/articles/README.md"
+  ];
+
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("Model Response Comparison Lab"), `${file} should include the lab title`);
+    assert.ok(text.includes("Candidate A"), `${file} should include candidate A`);
+    assert.ok(text.includes("Candidate B"), `${file} should include candidate B`);
+    assert.ok(text.includes("Winning answer"), `${file} should include a winning-answer verdict`);
+    assert.ok(text.includes("pytest"), `${file} should include test-oriented evidence`);
+    assert.ok(text.includes("Residual risk"), `${file} should include residual risk`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  for (const file of linkSources) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("model-response-comparison-lab"), `${file} should link the model response comparison lab`);
+  }
+}
+
 function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -2110,6 +2142,7 @@ function main() {
   testAiCodeReviewCasebookIsLinkedAndBoundarySafe();
   testAiReviewerApplicationSummaryIsLinkedAndBoundarySafe();
   testPythonAssessmentDrillIsLinkedAndBoundarySafe();
+  testModelResponseComparisonLabIsLinkedAndBoundarySafe();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
