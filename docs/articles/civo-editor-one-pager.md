@@ -34,6 +34,47 @@ After reading the tutorial, a developer should be able to:
 6. Add a release guard and verification commands.
 7. Adapt the pattern for Civo Kubernetes release reviews.
 
+## Copy-ready application responses
+
+```text
+Short abstract:
+Cloud-native teams often need to show release evidence without exposing
+kubeconfig files, Kubernetes Secrets, private manifests, or internal hostnames.
+I would like to write a Civo tutorial that walks through a small Node.js
+workflow for collecting safe release status, generating JSON and Markdown review
+artifacts, building a static dashboard, and adding a guard before publication.
+```
+
+```text
+Why Civo readers care:
+The tutorial is practical for Civo Kubernetes users because it avoids a database
+or long-running backend. Readers can adapt it to a release review, migration
+readiness check, or stakeholder handoff using generated files, static hosting,
+and repeatable verification commands.
+```
+
+```text
+Fee confirmation note:
+If this idea fits Civo's current editorial needs, the fee can be confirmed
+before the full Google Doc draft is written.
+```
+
+```text
+Originality boundary:
+The final tutorial should be written freshly for Civo. The linked pages are
+implementation proof and writing samples, not an unchanged AI-generated article
+or a commercial project promotion.
+```
+
+## Co-marketing boundary
+
+- Use: Civo Kubernetes release review, rollout status, Services, Ingress, image
+  references, static review artifacts, and release guards.
+- Avoid: making the article a showcase for OID Knowledge Lab, a commercial
+  product, or an open-source project announcement.
+- Keep out: kubeconfig files, Secrets, private manifests, raw cluster exports,
+  tokens, internal hostnames, and account data.
+
 ## Implementation proof
 
 - Working dashboard: <https://oid-knowledge-lab.vercel.app/>
