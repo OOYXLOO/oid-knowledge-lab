@@ -1,6 +1,6 @@
 {
   "name": "OID Knowledge Lab publishable data manifest",
-  "generated_at": "2026-06-28T21:31:17.677Z",
+  "generated_at": "2026-06-28T21:44:45.567Z",
   "publishable": true,
   "content_boundary": "This manifest covers OID-base sitemap metadata and open IANA PEN aggregate/public data; it does not contain OID-base page bodies, raw page mirrors, private contact fields, credentials, cookies, tokens, or account data.",
   "oid_base": {
@@ -295,12 +295,27 @@
     {
       "path": "reports/qwen-agent-demo.json",
       "bytes": 1978,
-      "sha256": "sha256:3947dd9d164f73c05d70bbf732e0ec2093ae061ca63cb7a7386ff34c2973e26d"
+      "sha256": "sha256:c1e1216979f7926dac5b788b676a6a6f5d3075bd43ca77a65f9f1ff9ec07bccb"
     },
     {
       "path": "reports/qwen-agent-demo.md",
       "bytes": 1556,
-      "sha256": "sha256:70dd39dd6ddba2dd91a9fbd9ae9bc155eb047984d83d5ac66b58fb2f996e9c5e"
+      "sha256": "sha256:ed31586facf2ee4ccca417424ed8dc49c727223ec453ccb255c57806f20f45f9"
+    },
+    {
+      "path": "reports/qwen-submission-pack.json",
+      "bytes": 6596,
+      "sha256": "sha256:b2c471cb4197d8f15e2b1f823bd4a46c75a7e70fe7ae43e422e5407f1eb2d91d"
+    },
+    {
+      "path": "reports/qwen-submission-pack.md",
+      "bytes": 4850,
+      "sha256": "sha256:75e886dd81ccb851f9d767a1fd72416313a8e9b3b0663097325fd8e24cc8e77b"
+    },
+    {
+      "path": "reports/qwen-architecture.mmd",
+      "bytes": 383,
+      "sha256": "sha256:cae15a8a5c4aede42f46f04d85e3b29bdf1e75a93b1f89b1530c6a98a35e6038"
     },
     {
       "path": "reports/source-policy.json",
@@ -333,5 +348,5 @@
       "sha256": "sha256:f81b317749255faa609c44cefbcb06c0e241653b75c6f9c90ab6189be5643091"
     }
   ],
-  "artifact_count": 38
+  "artifact_count": 41
 }

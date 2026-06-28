@@ -1,0 +1,14 @@
+flowchart LR
+  input["Sanitized OID inventory"]
+  parser["Deterministic parser and validators"]
+  registry["Public registry lookup"]
+  qwen["Qwen Cloud reasoning step"]
+  guard["Policy guard"]
+  human["Human approval gate"]
+  outputs["Markdown / CSV / JSON handoff"]
+  input --> parser
+  parser --> registry
+  registry --> qwen
+  qwen --> guard
+  guard --> human
+  human --> outputs

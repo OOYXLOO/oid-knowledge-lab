@@ -48,6 +48,12 @@ const { escapeHtml, percent, renderAppJs, renderDashboard, renderSampleAssessmen
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("../src/sitemap");
 const { buildSourcePolicySnapshot, renderSourcePolicyMarkdown } = require("../src/sourcePolicy");
 const { buildQwenAgentPlan, buildQwenChatRequest, callQwenChat, renderQwenAgentMarkdown, writeQwenAgentDemo } = require("../src/qwenAgent");
+let qwenSubmissionPackModule;
+try {
+  qwenSubmissionPackModule = require("../src/qwenSubmissionPack");
+} catch (error) {
+  qwenSubmissionPackModule = { __loadError: error.message };
+}
 
 const ROOT = path.resolve(__dirname, "..");
 
@@ -2209,6 +2215,76 @@ function testQwenAgentMarkdownAndDemoFilesArePublicSafe() {
   assert.equal(markdown.includes("USD " + "200"), false);
 }
 
+function testQwenSubmissionPackBuildsJudgingAssets() {
+  assert.equal(qwenSubmissionPackModule.__loadError, undefined, qwenSubmissionPackModule.__loadError);
+  const { buildQwenSubmissionPack, renderQwenSubmissionMarkdown, renderQwenArchitectureMermaid } = qwenSubmissionPackModule;
+  const pack = buildQwenSubmissionPack({
+    generatedAt: "2026-06-29T00:00:00.000Z",
+    publicBaseUrl: "https://oid-knowledge-lab.vercel.app"
+  });
+
+  assert.equal(pack.schema_version, "qwen-submission-pack/v1");
+  assert.ok(pack.devpost_fields.project_pitch.includes("OID remediation"));
+  assert.ok(pack.devpost_fields.built_with.includes("Qwen"));
+  assert.ok(pack.demo_script.scenes.length >= 5);
+  assert.ok(pack.proof_checklist.some((item) => item.label === "Live Qwen run"));
+  assert.ok(pack.proof_links.some((item) => item.url === "https://oid-knowledge-lab.vercel.app/qwen-autopilot-agent-one-link.html"));
+  assert.ok(pack.architecture.nodes.some((node) => node.id === "qwen"));
+  assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
+  assert.equal(JSON.stringify(pack).includes("D:\\hks"), false);
+
+  const markdown = renderQwenSubmissionMarkdown(pack);
+  assert.ok(markdown.includes("# Qwen Submission Pack"));
+  assert.ok(markdown.includes("## Devpost Field Draft"));
+  assert.ok(markdown.includes("## Three-Minute Demo Script"));
+  assert.ok(markdown.includes("Live Qwen run"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+
+  const mermaid = renderQwenArchitectureMermaid(pack);
+  assert.ok(mermaid.includes("flowchart LR"));
+  assert.ok(mermaid.includes("Qwen Cloud"));
+  assert.ok(mermaid.includes("Human approval gate"));
+}
+
+function testQwenSubmissionPackWritesPublicSafeFiles() {
+  assert.equal(qwenSubmissionPackModule.__loadError, undefined, qwenSubmissionPackModule.__loadError);
+  const { writeQwenSubmissionPack } = qwenSubmissionPackModule;
+  const outDir = "C:\\Users\\YXL\\.codex\\tmp\\oid-knowledge-lab-test-qwen-submission-pack";
+  fs.rmSync(outDir, { recursive: true, force: true });
+  fs.mkdirSync(outDir, { recursive: true });
+
+  const result = writeQwenSubmissionPack({
+    jsonOutFile: path.join(outDir, "qwen-submission-pack.json"),
+    markdownOutFile: path.join(outDir, "qwen-submission-pack.md"),
+    mermaidOutFile: path.join(outDir, "qwen-architecture.mmd"),
+    generatedAt: "2026-06-29T00:00:00.000Z",
+    publicBaseUrl: "https://oid-knowledge-lab.vercel.app"
+  });
+
+  assert.equal(result.pack.schema_version, "qwen-submission-pack/v1");
+  for (const file of ["qwen-submission-pack.json", "qwen-submission-pack.md", "qwen-architecture.mmd"]) {
+    const text = fs.readFileSync(path.join(outDir, file), "utf8");
+    assert.ok(text.length > 100, `${file} should contain useful content`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("D:\\hks"), false);
+  }
+}
+
+function testQwenOneLinkReferencesSubmissionPack() {
+  const page = fs.readFileSync(path.join(ROOT, "public", "qwen-autopilot-agent-one-link.html"), "utf8");
+  const markdown = fs.readFileSync(path.join(ROOT, "docs", "articles", "qwen-autopilot-agent-one-link.md"), "utf8");
+  for (const text of [page, markdown]) {
+    assert.ok(text.includes("qwen-submission-pack.md"));
+    assert.ok(text.includes("qwen-architecture.mmd"));
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+}
+
 async function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -2268,6 +2344,9 @@ async function main() {
   testQwenChatRequestUsesDashScopeCompatibleMode();
   await testQwenChatCallUsesBearerKeyAndParsesMessage();
   testQwenAgentMarkdownAndDemoFilesArePublicSafe();
+  testQwenSubmissionPackBuildsJudgingAssets();
+  testQwenSubmissionPackWritesPublicSafeFiles();
+  testQwenOneLinkReferencesSubmissionPack();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
