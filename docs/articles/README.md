@@ -747,6 +747,30 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-ai-validation-mini-sample.md
 ```
 
+### Python Assessment Drill
+
+Path: `docs/articles/python-assessment-drill.md`
+
+Best for AI code evaluator and Python workflow reviewers interested in:
+
+- a compact bug triage prompt,
+- `pytest`-oriented assessment proof,
+- a model answer rubric,
+- accept / revise / reject decision framing,
+- and safe public boundaries.
+
+Public page:
+
+```text
+https://oid-knowledge-lab.vercel.app/python-assessment-drill.html
+```
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/python-assessment-drill.md
+```
+
 ### Directus submission brief
 
 Path: `docs/articles/directus-submission-brief.md`

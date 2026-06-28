@@ -2027,6 +2027,36 @@ function testAiReviewerApplicationSummaryIsLinkedAndBoundarySafe() {
   }
 }
 
+function testPythonAssessmentDrillIsLinkedAndBoundarySafe() {
+  const files = [
+    "public/python-assessment-drill.html",
+    "docs/articles/python-assessment-drill.md"
+  ];
+  const linkSources = [
+    "public/mindrift-code-one-link.html",
+    "public/alignerr-python-one-link.html",
+    "public/ai-code-review-casebook.html",
+    "docs/articles/README.md"
+  ];
+
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("Python Assessment Drill"), `${file} should include the drill title`);
+    assert.ok(text.includes("Bug triage prompt"), `${file} should include a bug triage prompt`);
+    assert.ok(text.includes("Model answer rubric"), `${file} should include a model answer rubric`);
+    assert.ok(text.includes("pytest"), `${file} should include pytest-oriented assessment proof`);
+    assert.ok(text.includes("No credentials"), `${file} should include public safety boundaries`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  for (const file of linkSources) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("python-assessment-drill"), `${file} should link the Python assessment drill`);
+  }
+}
+
 function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -2079,6 +2109,7 @@ function main() {
   testAiEvaluatorApplicationPacketIsPublicAndBoundarySafe();
   testAiCodeReviewCasebookIsLinkedAndBoundarySafe();
   testAiReviewerApplicationSummaryIsLinkedAndBoundarySafe();
+  testPythonAssessmentDrillIsLinkedAndBoundarySafe();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }

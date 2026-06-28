@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python Assessment Drill - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Python evaluator drill</p>
+      <h1>Python Assessment Drill</h1>
+      <p class="summary">A compact public sample for AI code evaluator and Python workflow roles: behavior contract, bug triage prompt, pytest checks, model answer rubric, and safe reviewer handoff.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="ai-evaluator-application-packet.html">Application packet</a>
+        <a href="ai-code-review-casebook.html">Code review casebook</a>
+        <a href="mindrift-code-one-link.html">Mindrift one-link</a>
+        <a href="alignerr-python-one-link.html">Alignerr one-link</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/python-assessment-drill.md">Raw drill</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Python assessment drill metrics">
+      <article><span>Task</span><strong>Triage</strong><small>generated Python</small></article>
+      <article><span>Checks</span><strong>pytest</strong><small>normal and invalid inputs</small></article>
+      <article><span>Output</span><strong>Rubric</strong><small>model answer review</small></article>
+      <article><span>Boundary</span><strong>Public</strong><small>No credentials</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Bug triage prompt</p>
+        <h2>Review the generated duration parser</h2>
+      </div>
+      <p class="panel-copy">An AI-generated function parses a duration string such as <code>15m</code>, <code>2h</code>, or <code>1d</code> and returns seconds. The implementation silently returns <code>0</code> when the unit is unknown. Review the answer as if it were submitted for a production utility.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Answer shape</p>
+        <h2>Expected reviewer response</h2>
+      </div>
+      <pre>Verdict: revise before acceptance.
+
+Main issue: the implementation silently accepts unknown units, so invalid input can look like a valid zero-second duration.
+
+Evidence: add tests for known units, whitespace, malformed values, and unsupported units.
+
+Suggested fix: keep a strict unit map and raise ValueError for unsupported or malformed input.
+
+Residual risk: callers still need to decide whether fractional durations, signed values, and localized units are in scope.</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Model answer rubric</p>
+        <h2>What a strong assessment answer covers</h2>
+      </div>
+      <ol class="numbered-list">
+        <li>Restate expected behavior before proposing code.</li>
+        <li>Reject silent fallback behavior for invalid input.</li>
+        <li>Include <code>pytest</code> checks for normal, boundary, malformed, and unsupported inputs.</li>
+        <li>Keep the fix narrow instead of rewriting unrelated behavior.</li>
+        <li>Explain residual risk without overclaiming correctness.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">pytest sketch</p>
+        <h2>Focused checks</h2>
+      </div>
+      <pre>import pytest
+
+from duration_parser import parse_duration
+
+
+def test_parses_supported_units():
+    assert parse_duration("15m") == 900
+    assert parse_duration("2h") == 7200
+    assert parse_duration("1d") == 86400
+
+
+def test_rejects_unknown_unit():
+    with pytest.raises(ValueError, match="unsupported unit"):
+        parse_duration("3w")
+
+
+def test_rejects_malformed_input():
+    with pytest.raises(ValueError, match="duration"):
+        parse_duration("soon")</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Public proof</p>
+        <h2>Related artifacts</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Artifact</th><th>Link</th><th>What it proves</th></tr></thead>
+        <tbody>
+          <tr><td>Runnable case</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review">duration_parser_review</a></td><td>Generated-code review, corrected implementation, and focused tests.</td></tr>
+          <tr><td>Evidence log</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md">duration parser evidence log</a></td><td>Verdict, issue, checks performed, accepted revision, and residual limits.</td></tr>
+          <tr><td>Application packet</td><td><a href="ai-evaluator-application-packet.html">AI evaluator application packet</a></td><td>Copy-ready role summary, review method, and proof order.</td></tr>
+          <tr><td>Casebook</td><td><a href="ai-code-review-casebook.html">AI code review casebook</a></td><td>Reusable accept / revise / reject answer frame.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Boundary</p>
+        <h2>Public and account-safe</h2>
+      </div>
+      <p class="panel-copy">No credentials, private account exports, identity documents, payment data, tax records, private platform messages, copied private assessment prompts, or restricted customer source code are included.</p>
+    </section>
+  </main>
+</body>
+</html>
