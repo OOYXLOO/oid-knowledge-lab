@@ -1895,6 +1895,31 @@ function testAiEvaluatorPortfolioIncludesDurationParserReviewCase() {
   }
 }
 
+function testAiEvaluatorApplicationPacketIsPublicAndBoundarySafe() {
+  const files = [
+    "public/ai-evaluator-application-packet.html",
+    "docs/articles/ai-evaluator-application-one-link.md",
+    "public/ai-code-evaluator-portfolio.html",
+    "public/mindrift-code-reviewer-hub.html"
+  ];
+
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(/AI [Ee]valuator [Aa]pplication [Pp]acket/.test(text), `${file} should include the packet title`);
+    assert.ok(text.includes("duration_parser_review"), `${file} should link the duration parser case`);
+    assert.ok(text.includes("accept/revise/reject") || text.includes("accepted, revised, or rejected"), `${file} should include evaluator verdict framing`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const page = fs.readFileSync(path.join(ROOT, "public/ai-evaluator-application-packet.html"), "utf8");
+  assert.ok(page.includes("Short role summary"));
+  assert.ok(page.includes("Verdict frame"));
+  assert.ok(page.includes("Best-fit tasks"));
+  assert.ok(page.includes("No private data") || page.includes("private account exports"));
+}
+
 function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -1942,6 +1967,7 @@ function main() {
   testPublicEditorPitchPackHasFieldReadyCopy();
   testEditorSubmissionFieldPackIsPublicAndBoundarySafe();
   testAiEvaluatorPortfolioIncludesDurationParserReviewCase();
+  testAiEvaluatorApplicationPacketIsPublicAndBoundarySafe();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
