@@ -1647,6 +1647,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "ai-evaluator-unified-application-desk.html",
     "opentrain-ai-code-evaluation-one-link.html",
     "qwen-autopilot-agent-one-link.html",
+    "qwen-demo-proof.html",
     "qwen-architecture.html",
     "qwen-architecture.svg",
     "evidence-log-playground.html",

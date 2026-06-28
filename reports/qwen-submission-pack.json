@@ -1,6 +1,6 @@
 {
   "schema_version": "qwen-submission-pack/v1",
-  "generated_at": "2026-06-28T22:25:24.834Z",
+  "generated_at": "2026-06-28T22:54:05.834Z",
   "public_base_url": "https://oid-knowledge-lab.vercel.app",
   "project": {
     "name": "OID Knowledge Lab: Qwen Remediation Autopilot",
@@ -113,6 +113,10 @@
     {
       "label": "Qwen one-link packet",
       "url": "https://oid-knowledge-lab.vercel.app/qwen-autopilot-agent-one-link.html"
+    },
+    {
+      "label": "Qwen demo proof page",
+      "url": "https://oid-knowledge-lab.vercel.app/qwen-demo-proof.html"
     },
     {
       "label": "Sample assessment",

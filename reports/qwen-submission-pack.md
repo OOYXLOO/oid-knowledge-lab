@@ -1,6 +1,6 @@
 # Qwen Submission Pack
 
-Generated at: 2026-06-28T22:25:24.834Z
+Generated at: 2026-06-28T22:54:05.834Z
 
 ## Project
 
@@ -67,6 +67,7 @@ flowchart LR
 ## Proof Links
 
 - [Qwen one-link packet](https://oid-knowledge-lab.vercel.app/qwen-autopilot-agent-one-link.html)
+- [Qwen demo proof page](https://oid-knowledge-lab.vercel.app/qwen-demo-proof.html)
 - [Sample assessment](https://oid-knowledge-lab.vercel.app/sample-assessment.html)
 - [Technical rigor proof](https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html)
 - [Qwen agent demo report](https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md)

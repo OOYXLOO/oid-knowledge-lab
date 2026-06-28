@@ -63,6 +63,7 @@ function buildQwenSubmissionPack(options = {}) {
     },
     proof_links: [
       { label: "Qwen one-link packet", url: link(publicBaseUrl, "qwen-autopilot-agent-one-link.html") },
+      { label: "Qwen demo proof page", url: link(publicBaseUrl, "qwen-demo-proof.html") },
       { label: "Sample assessment", url: link(publicBaseUrl, "sample-assessment.html") },
       { label: "Technical rigor proof", url: link(publicBaseUrl, "technical-rigor-proof.html") },
       { label: "Qwen agent demo report", url: "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md" },
