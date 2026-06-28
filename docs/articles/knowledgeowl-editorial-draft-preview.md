@@ -28,16 +28,18 @@ For example:
 
 ```text
 Reader question:
-How do I rotate an integration token without breaking existing jobs?
+Can I change the billing contact on my workspace without changing the account
+owner?
 
 Audience:
-Workspace admins who manage integrations but may not know how scheduled jobs use
-existing tokens.
+Support agents and workspace admins who need a clear answer before changing
+account details.
 ```
 
 That question and audience give the reviewer a target. The draft is not just
-"about token rotation." It needs to explain a safe rotation path for workspace
-admins and warn about anything that could interrupt existing jobs.
+"about billing settings." It needs to explain what the billing contact controls,
+what it does not control, and whether the change affects owner permissions,
+invoices, or payment notifications.
 
 ## Separate Source Facts From Draft Claims
 
@@ -48,19 +50,19 @@ statements that appear in the article but still need review.
 
 ```text
 Source facts:
-- Token rotation is available from the integration settings page.
-- Existing jobs keep using the old token until the new token is saved.
-- The old token should be revoked after dependent jobs are confirmed.
+- The billing contact can receive invoice emails.
+- Changing the billing contact does not transfer workspace ownership.
+- Only owners can change payment methods.
 
 Draft claims to review:
-- "Rotation is instant and never affects running jobs."
-- "Admins can recover a revoked token."
+- "Any admin can update billing information."
+- "Changing the billing contact also changes the account owner."
 ```
 
 This separation matters because fluent writing can hide uncertainty. The phrase
-"never affects running jobs" might be true, partly true, or dangerously
-overbroad. The evidence log gives reviewers a place to test that claim before it
-becomes a published promise.
+"any admin can update billing information" might be true for one field, false
+for payment methods, or dependent on plan permissions. The evidence log gives
+reviewers a place to test that claim before it becomes a published promise.
 
 ## Capture Reviewer Checks
 
@@ -70,9 +72,9 @@ confirmation.
 
 ```text
 Reviewer checks:
-- Confirm whether running jobs can fail during rotation.
-- Confirm whether revoked tokens are recoverable.
-- Add a warning if customers need to update scheduled jobs manually.
+- Confirm which roles can edit the billing contact.
+- Confirm whether payment method access is separate from billing contact access.
+- Add a warning if the workflow differs by plan, workspace role, or region.
 ```
 
 This makes the handoff useful for technical writers, support leads, and SMEs.

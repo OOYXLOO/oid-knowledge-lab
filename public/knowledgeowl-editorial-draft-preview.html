@@ -35,12 +35,13 @@
       <p class="panel-copy">Every review log should begin with purpose and audience. What is the article supposed to help the reader do, and who is the reader? A customer-facing article, an internal support runbook, and an SME handoff can all describe the same feature while needing different context, warnings, and level of detail.</p>
       <p class="panel-copy">A practical way to write this down is to start with the reader question. What was the customer, support agent, or internal user trying to do? A clear question keeps the article from drifting into a general explanation that sounds useful but does not answer the immediate need.</p>
       <pre>Reader question:
-How do I rotate an integration token without breaking existing jobs?
+Can I change the billing contact on my workspace without changing the account
+owner?
 
 Audience:
-Workspace admins who manage integrations but may not know how scheduled jobs use
-existing tokens.</pre>
-      <p class="panel-copy">That question and audience give the reviewer a target. The draft is not just "about token rotation." It needs to explain a safe rotation path for workspace admins and warn about anything that could interrupt existing jobs.</p>
+Support agents and workspace admins who need a clear answer before changing
+account details.</pre>
+      <p class="panel-copy">That question and audience give the reviewer a target. The draft is not just "about billing settings." It needs to explain what the billing contact controls, what it does not control, and whether the change affects owner permissions, invoices, or payment notifications.</p>
     </section>
 
     <section class="panel">
@@ -50,14 +51,14 @@ existing tokens.</pre>
       </div>
       <p class="panel-copy">The next step is to separate what the team knows from what the draft currently says. Source facts might come from a release note, product documentation, an SME comment, a support macro, or an approved internal runbook. Draft claims are statements that appear in the article but still need review.</p>
       <pre>Source facts:
-- Token rotation is available from the integration settings page.
-- Existing jobs keep using the old token until the new token is saved.
-- The old token should be revoked after dependent jobs are confirmed.
+- The billing contact can receive invoice emails.
+- Changing the billing contact does not transfer workspace ownership.
+- Only owners can change payment methods.
 
 Draft claims to review:
-- "Rotation is instant and never affects running jobs."
-- "Admins can recover a revoked token."</pre>
-      <p class="panel-copy">This separation matters because fluent writing can hide uncertainty. The phrase "never affects running jobs" might be true, partly true, or dangerously overbroad. The evidence log gives reviewers a place to test that claim before it becomes a published promise.</p>
+- "Any admin can update billing information."
+- "Changing the billing contact also changes the account owner."</pre>
+      <p class="panel-copy">This separation matters because fluent writing can hide uncertainty. The phrase "any admin can update billing information" might be true for one field, false for payment methods, or dependent on plan permissions. The evidence log gives reviewers a place to test that claim before it becomes a published promise.</p>
     </section>
 
     <section class="panel">
@@ -67,9 +68,9 @@ Draft claims to review:
       </div>
       <p class="panel-copy">Reviewer checks should be specific enough that another person can act on them. Instead of writing "verify accuracy," name the decision that still needs confirmation.</p>
       <pre>Reviewer checks:
-- Confirm whether running jobs can fail during rotation.
-- Confirm whether revoked tokens are recoverable.
-- Add a warning if customers need to update scheduled jobs manually.</pre>
+- Confirm which roles can edit the billing contact.
+- Confirm whether payment method access is separate from billing contact access.
+- Add a warning if the workflow differs by plan, workspace role, or region.</pre>
       <p class="panel-copy">This makes the handoff useful for technical writers, support leads, and SMEs. The writer does not have to guess what the reviewer meant. The SME does not have to re-read the whole draft to find the risky claims. The support lead can see whether the article answers the customer scenario that triggered the update.</p>
     </section>
 
