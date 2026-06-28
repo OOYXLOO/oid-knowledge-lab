@@ -1975,6 +1975,32 @@ function testAiCodeReviewCasebookIsLinkedAndBoundarySafe() {
   }
 }
 
+function testAiReviewerApplicationSummaryIsLinkedAndBoundarySafe() {
+  const summaryPath = path.join(ROOT, "docs", "articles", "ai-reviewer-application-summary.md");
+  const summary = fs.readFileSync(summaryPath, "utf8");
+  const linkSources = [
+    "public/ai-code-review-casebook.html",
+    "public/ai-evaluator-application-packet.html",
+    "public/mindrift-code-one-link.html",
+    "public/alignerr-python-one-link.html"
+  ];
+
+  assert.ok(summary.includes("AI Reviewer Application Summary"));
+  assert.ok(summary.includes("Mindrift Code"));
+  assert.ok(summary.includes("Alignerr Python"));
+  assert.ok(summary.includes("AI Code Review Casebook"));
+  assert.ok(summary.includes("Verdict:"));
+  assert.ok(summary.includes("duration_parser_review"));
+  assert.equal(summary.includes("money" + "-goal"), false);
+  assert.equal(summary.includes("USD " + "200"), false);
+  assert.equal(summary.includes("\u8d5a\u94b1"), false);
+
+  for (const file of linkSources) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("ai-reviewer-application-summary.md"), `${file} should link the AI reviewer application summary`);
+  }
+}
+
 function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -2025,6 +2051,7 @@ function main() {
   testAiEvaluatorPortfolioIncludesDurationParserReviewCase();
   testAiEvaluatorApplicationPacketIsPublicAndBoundarySafe();
   testAiCodeReviewCasebookIsLinkedAndBoundarySafe();
+  testAiReviewerApplicationSummaryIsLinkedAndBoundarySafe();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
