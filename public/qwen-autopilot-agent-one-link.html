@@ -20,6 +20,8 @@
         <a href="consulting-brief.html">Consulting brief</a>
         <a href="starter-scope.html">Starter scope</a>
         <a href="technical-rigor-proof.html">Technical rigor proof</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md">Agent demo report</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/src/qwenAgent.js">Qwen adapter source</a>
         <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Source repository</a>
       </div>
     </section>
@@ -75,6 +77,22 @@
 
     <section class="panel">
       <div>
+        <p class="eyebrow">Runnable adapter</p>
+        <h2>CLI proof and live-call boundary</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Command or file</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><code>npm run agent:qwen:demo</code></td><td>Generates a public-safe offline remediation plan without needing secrets.</td></tr>
+          <tr><td><code>src/qwenAgent.js</code></td><td>Builds the DashScope OpenAI-compatible chat request for <code>qwen-plus</code>.</td></tr>
+          <tr><td><code>DASHSCOPE_API_KEY</code></td><td>Only needed for a live Qwen call; it is never written to GitHub or Vercel pages.</td></tr>
+          <tr><td><code>reports/qwen-agent-demo.md</code></td><td>Shows the generated remediation queue, Qwen role, deterministic guards, and human approval gates.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
         <p class="eyebrow">Judge path</p>
         <h2>Open these proof links first</h2>
       </div>
@@ -86,6 +104,8 @@
           <tr><td>Business value</td><td><a href="direct-client-fit.html">Direct client fit</a></td><td>Explains why PKI, SNMP/MIB, and internal registry owners would pay for scoped OID review.</td></tr>
           <tr><td>Scope</td><td><a href="starter-scope.html">Starter scope</a></td><td>Defines safe first engagement inputs, outputs, and acceptance checks.</td></tr>
           <tr><td>Implementation proof</td><td><a href="technical-rigor-proof.html">Technical rigor proof</a></td><td>Shows reproducible checks and boundary controls rather than a slide-only idea.</td></tr>
+          <tr><td>Agent report</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md">Qwen agent demo report</a></td><td>Generated offline demo of the remediation queue, Qwen role, deterministic guards, and human gates.</td></tr>
+          <tr><td>Adapter</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/src/qwenAgent.js">Qwen adapter source</a></td><td>DashScope OpenAI-compatible request builder using <code>qwen-plus</code> and <code>DASHSCOPE_API_KEY</code>.</td></tr>
           <tr><td>Source</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab">GitHub repository</a></td><td>Public source and generated artifacts for judging and testing.</td></tr>
         </tbody>
       </table>
@@ -97,7 +117,7 @@
         <h2>What still needs to be added before Qwen submission</h2>
       </div>
       <ul>
-        <li>Qwen Cloud API integration or a small adapter file that proves model calls through Qwen Cloud.</li>
+        <li>Live Qwen Cloud run with a real `DASHSCOPE_API_KEY` and saved redacted proof.</li>
         <li>Alibaba Cloud deployment proof recording, separate from the product demo.</li>
         <li>Architecture diagram image for the Devpost submission.</li>
         <li>Public three-minute demo video showing intake, triage, human gate, and export.</li>

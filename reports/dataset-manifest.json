@@ -1,6 +1,6 @@
 {
   "name": "OID Knowledge Lab publishable data manifest",
-  "generated_at": "2026-06-26T00:00:00.000Z",
+  "generated_at": "2026-06-28T21:31:17.677Z",
   "publishable": true,
   "content_boundary": "This manifest covers OID-base sitemap metadata and open IANA PEN aggregate/public data; it does not contain OID-base page bodies, raw page mirrors, private contact fields, credentials, cookies, tokens, or account data.",
   "oid_base": {
@@ -293,6 +293,16 @@
       "sha256": "sha256:9ef6e944b97ea8e8f08e5dc78b5bfebbc3ed4223cd16b3e8d4ecf5b47cc93c6e"
     },
     {
+      "path": "reports/qwen-agent-demo.json",
+      "bytes": 1978,
+      "sha256": "sha256:3947dd9d164f73c05d70bbf732e0ec2093ae061ca63cb7a7386ff34c2973e26d"
+    },
+    {
+      "path": "reports/qwen-agent-demo.md",
+      "bytes": 1556,
+      "sha256": "sha256:70dd39dd6ddba2dd91a9fbd9ae9bc155eb047984d83d5ac66b58fb2f996e9c5e"
+    },
+    {
       "path": "reports/source-policy.json",
       "bytes": 1362,
       "sha256": "sha256:2a65b69999525073ba5df08f799eb874ad331a2c2752d89e405a8cb95094bf88"
@@ -304,8 +314,8 @@
     },
     {
       "path": "public/index.html",
-      "bytes": 30748,
-      "sha256": "sha256:cb289cf18f2e54e0ebcb2c0461fffa395b30ce3ea9d8174e7dc0d1dbfcdd6a5e"
+      "bytes": 44803,
+      "sha256": "sha256:bd2e9647b40dbae4be2afb3790546317138abc7639556be80220ed54511f20e8"
     },
     {
       "path": "public/sample-assessment.html",
@@ -323,5 +333,5 @@
       "sha256": "sha256:f81b317749255faa609c44cefbcb06c0e241653b75c6f9c90ab6189be5643091"
     }
   ],
-  "artifact_count": 36
+  "artifact_count": 38
 }

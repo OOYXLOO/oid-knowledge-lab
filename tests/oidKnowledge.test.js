@@ -47,6 +47,7 @@ const { buildAuthorizedCrawlPlan, renderAuthorizedCrawlPlanMarkdown } = require(
 const { escapeHtml, percent, renderAppJs, renderDashboard, renderSampleAssessmentPage } = require("../src/site");
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("../src/sitemap");
 const { buildSourcePolicySnapshot, renderSourcePolicyMarkdown } = require("../src/sourcePolicy");
+const { buildQwenAgentPlan, buildQwenChatRequest, callQwenChat, renderQwenAgentMarkdown, writeQwenAgentDemo } = require("../src/qwenAgent");
 
 const ROOT = path.resolve(__dirname, "..");
 
@@ -2119,7 +2120,96 @@ function testOpenTrainAiCodeEvaluationOneLinkIsLinkedAndBoundarySafe() {
   }
 }
 
-function main() {
+function testQwenAgentPlanBuildsOfflineRemediationHandoff() {
+  const plan = buildQwenAgentPlan({
+    generatedAt: "2026-06-29T00:00:00.000Z",
+    findings: [
+      { label: "router-core", oid: "1.3.6.1.4.1.9.9.41", status: "known_private_enterprise_oid", risk: "low", enterprise: { organization: "ciscoSystems" } },
+      { label: "bad-row", oid: "not-an-oid", status: "invalid_value", risk: "high" }
+    ],
+    mode: "offline"
+  });
+
+  assert.equal(plan.provider, "qwen-compatible");
+  assert.equal(plan.mode, "offline");
+  assert.equal(plan.summary.total_findings, 2);
+  assert.equal(plan.summary.human_gated_actions, 2);
+  assert.ok(plan.remediation_queue.some((item) => item.action.includes("Correct the malformed OID")));
+  assert.ok(plan.boundaries.includes("No secrets"));
+  assert.equal(JSON.stringify(plan).includes("money" + "-goal"), false);
+}
+
+function testQwenChatRequestUsesDashScopeCompatibleMode() {
+  const request = buildQwenChatRequest({
+    model: "qwen-plus",
+    prompt: "Summarize two OID findings.",
+    plan: { summary: { total_findings: 2 }, remediation_queue: [] }
+  });
+
+  assert.equal(request.url, "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions");
+  assert.equal(request.body.model, "qwen-plus");
+  assert.equal(request.body.messages[0].role, "system");
+  assert.ok(request.body.messages[0].content.includes("human approval gates"));
+  assert.ok(request.body.messages[1].content.includes("Summarize two OID findings."));
+}
+
+async function testQwenChatCallUsesBearerKeyAndParsesMessage() {
+  const originalFetch = global.fetch;
+  let captured = null;
+  global.fetch = async (url, options) => {
+    captured = { url, options };
+    return {
+      ok: true,
+      status: 200,
+      async text() {
+        return JSON.stringify({
+          choices: [
+            { message: { content: "Review summary ready." } }
+          ]
+        });
+      }
+    };
+  };
+
+  try {
+    const result = await callQwenChat({
+      apiKey: "test-key",
+      model: "qwen-plus",
+      prompt: "Summarize.",
+      plan: buildQwenAgentPlan({ generatedAt: "2026-06-29T00:00:00.000Z" })
+    });
+
+    assert.equal(captured.url, "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions");
+    assert.equal(captured.options.method, "POST");
+    assert.equal(captured.options.headers.authorization, "Bearer test-key");
+    assert.equal(JSON.parse(captured.options.body).model, "qwen-plus");
+    assert.equal(result.message, "Review summary ready.");
+  } finally {
+    global.fetch = originalFetch;
+  }
+}
+
+function testQwenAgentMarkdownAndDemoFilesArePublicSafe() {
+  const outDir = "C:\\Users\\YXL\\.codex\\tmp\\oid-knowledge-lab-test-qwen-agent";
+  fs.rmSync(outDir, { recursive: true, force: true });
+  fs.mkdirSync(outDir, { recursive: true });
+
+  const result = writeQwenAgentDemo({
+    jsonOutFile: path.join(outDir, "qwen-agent-demo.json"),
+    markdownOutFile: path.join(outDir, "qwen-agent-demo.md"),
+    generatedAt: "2026-06-29T00:00:00.000Z"
+  });
+  const markdown = renderQwenAgentMarkdown(result.plan);
+
+  assert.ok(fs.existsSync(path.join(outDir, "qwen-agent-demo.json")));
+  assert.ok(fs.existsSync(path.join(outDir, "qwen-agent-demo.md")));
+  assert.ok(markdown.includes("# Qwen Autopilot Agent Demo"));
+  assert.ok(markdown.includes("Human approval gates"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+}
+
+async function main() {
   testSitemapParser();
   testSitemapIndex();
   testSourcePolicySnapshotDocumentsCollectionBoundary();
@@ -2174,8 +2264,15 @@ function main() {
   testPythonAssessmentDrillIsLinkedAndBoundarySafe();
   testModelResponseComparisonLabIsLinkedAndBoundarySafe();
   testOpenTrainAiCodeEvaluationOneLinkIsLinkedAndBoundarySafe();
+  testQwenAgentPlanBuildsOfflineRemediationHandoff();
+  testQwenChatRequestUsesDashScopeCompatibleMode();
+  await testQwenChatCallUsesBearerKeyAndParsesMessage();
+  testQwenAgentMarkdownAndDemoFilesArePublicSafe();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
 
-main();
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

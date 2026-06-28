@@ -38,6 +38,8 @@ Qwen should be used for reasoning and language work, not for unverified final au
 
 - Dashboard: `https://oid-knowledge-lab.vercel.app/`
 - Qwen packet: `https://oid-knowledge-lab.vercel.app/qwen-autopilot-agent-one-link.html`
+- Agent demo report: `https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md`
+- Qwen adapter source: `https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/src/qwenAgent.js`
 - Sample assessment: `https://oid-knowledge-lab.vercel.app/sample-assessment.html`
 - Direct client fit: `https://oid-knowledge-lab.vercel.app/direct-client-fit.html`
 - Consulting brief: `https://oid-knowledge-lab.vercel.app/consulting-brief.html`
@@ -47,7 +49,7 @@ Qwen should be used for reasoning and language work, not for unverified final au
 
 ## Submission gaps before Devpost
 
-- Add a small Qwen Cloud API adapter or deployment proof.
+- Run one live Qwen Cloud call with `DASHSCOPE_API_KEY` and save redacted proof.
 - Record a three-minute public demo video.
 - Add an architecture diagram image.
 - Confirm the required Alibaba Cloud/Qwen Cloud proof format.

@@ -18,6 +18,7 @@ const { ensureDir, fetchText, sleep, writeJson } = require("./net");
 const { parseOidMarkdown } = require("./parser");
 const { auditPublishableTree } = require("./publishGuard");
 const { writeScopeProposalPack } = require("./proposalPack");
+const { writeQwenAgentDemo } = require("./qwenAgent");
 const { writeRemediationBoard } = require("./remediationBoard");
 const { buildReport, readJsonl } = require("./report");
 const { writeStatementOfWorkPack } = require("./statementOfWorkPack");
@@ -449,6 +450,21 @@ function buildStaticSite(args) {
   console.log(`oid-base directory records: ${result.oid_base_directory_count}`);
 }
 
+function qwenAgentDemo(args) {
+  const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/qwen-agent-demo.json"));
+  const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/qwen-agent-demo.md"));
+  const result = writeQwenAgentDemo({
+    jsonOutFile,
+    markdownOutFile,
+    model: argValue(args, "--model", "qwen-plus"),
+    mode: hasFlag(args, "--live") ? "live-ready" : "offline"
+  });
+  console.log(`qwen agent findings: ${result.plan.summary.total_findings}`);
+  console.log(`human gates: ${result.plan.summary.human_gated_actions}`);
+  console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
+  console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
+}
+
 function auditDataset(args) {
   const oidBaseIndexFile = path.resolve(ROOT, argValue(args, "--sitemap", "reports/oid-base-sitemap-index.json"));
   const ianaPenReportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
@@ -482,6 +498,8 @@ function auditDataset(args) {
     path.resolve(ROOT, "reports/client-kickoff-pack.md"),
     path.resolve(ROOT, "reports/buyer-signal-pack.json"),
     path.resolve(ROOT, "reports/buyer-signal-pack.md"),
+    path.resolve(ROOT, "reports/qwen-agent-demo.json"),
+    path.resolve(ROOT, "reports/qwen-agent-demo.md"),
     path.resolve(ROOT, "reports/source-policy.json"),
     path.resolve(ROOT, "reports/source-policy.md"),
     path.resolve(ROOT, "public/index.html"),
@@ -584,10 +602,11 @@ async function main() {
   if (command === "audit-dataset") return auditDataset(args);
   if (command === "source-policy") return sourcePolicy(args);
   if (command === "guard-publishable") return guardPublishable();
+  if (command === "qwen-agent-demo") return qwenAgentDemo(args);
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|statement-of-work-pack|decision-one-pager|client-kickoff-pack|buyer-signal-pack|audit-dataset|source-policy|guard-publishable|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|statement-of-work-pack|decision-one-pager|client-kickoff-pack|buyer-signal-pack|audit-dataset|source-policy|guard-publishable|qwen-agent-demo|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 
