@@ -45,6 +45,7 @@ Real Python readers often need practical depth more than tool hype. This topic g
 
 - Reviewer hub: <https://oid-knowledge-lab.vercel.app/realpython-ai-reviewer-hub.html>
 - Mini sample: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-ai-validation-mini-sample.md>
+- Runnable mini lab: <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python>
 - Tutorial outline: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-ai-validation-tutorial-outline.md>
 - Technical proof: <https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html>
 - Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
@@ -52,4 +53,3 @@ Real Python readers often need practical depth more than tool hype. This topic g
 ## Editorial boundary
 
 These materials are a public review packet and topic proof. If a paid pilot is assigned, the final article should be written freshly for Real Python's accepted topic, style guide, editor feedback, and originality requirements.
-

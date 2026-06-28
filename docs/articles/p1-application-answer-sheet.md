@@ -42,6 +42,7 @@ Best links:
 https://oid-knowledge-lab.vercel.app/realpython-ai-reviewer-hub.html
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-paid-pilot-readiness-pack.md
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-ai-validation-mini-sample.md
+https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python
 ```
 
 ## Vultr Creator Program
