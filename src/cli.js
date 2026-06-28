@@ -470,16 +470,22 @@ function qwenSubmissionPack(args) {
   const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/qwen-submission-pack.json"));
   const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/qwen-submission-pack.md"));
   const mermaidOutFile = path.resolve(ROOT, argValue(args, "--mermaid", "reports/qwen-architecture.mmd"));
+  const svgOutFile = path.resolve(ROOT, argValue(args, "--svg", "public/qwen-architecture.svg"));
+  const htmlOutFile = path.resolve(ROOT, argValue(args, "--html", "public/qwen-architecture.html"));
   const result = writeQwenSubmissionPack({
     jsonOutFile,
     markdownOutFile,
     mermaidOutFile,
+    svgOutFile,
+    htmlOutFile,
     publicBaseUrl: argValue(args, "--public-base-url", "https://oid-knowledge-lab.vercel.app")
   });
   console.log(`qwen submission proof items: ${result.pack.proof_checklist.length}`);
   console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
   console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
   console.log(`mermaid written: ${path.relative(ROOT, mermaidOutFile).replace(/\\/g, "/")}`);
+  console.log(`svg written: ${path.relative(ROOT, svgOutFile).replace(/\\/g, "/")}`);
+  console.log(`html written: ${path.relative(ROOT, htmlOutFile).replace(/\\/g, "/")}`);
 }
 
 function auditDataset(args) {

@@ -97,6 +97,119 @@ function renderQwenArchitectureMermaid(pack) {
   return ["flowchart LR", ...nodeLines, ...edgeLines, ""].join("\n");
 }
 
+function escapeXml(value) {
+  return String(value == null ? "" : value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function renderQwenArchitectureSvg(pack) {
+  const nodePositions = [
+    { id: "input", x: 40, y: 96, width: 170, height: 72 },
+    { id: "parser", x: 250, y: 96, width: 190, height: 72 },
+    { id: "registry", x: 480, y: 96, width: 170, height: 72 },
+    { id: "qwen", x: 690, y: 88, width: 190, height: 88 },
+    { id: "guard", x: 920, y: 96, width: 150, height: 72 },
+    { id: "human", x: 1110, y: 88, width: 170, height: 88 },
+    { id: "outputs", x: 1320, y: 96, width: 190, height: 72 }
+  ];
+  const byId = Object.fromEntries(pack.architecture.nodes.map((node) => [node.id, node]));
+  const posById = Object.fromEntries(nodePositions.map((node) => [node.id, node]));
+  const arrows = pack.architecture.edges.map(([from, to]) => {
+    const start = posById[from];
+    const end = posById[to];
+    return `<path d="M ${start.x + start.width} ${start.y + start.height / 2} L ${end.x - 18} ${end.y + end.height / 2}" class="edge"/><path d="M ${end.x - 18} ${end.y + end.height / 2 - 7} L ${end.x} ${end.y + end.height / 2} L ${end.x - 18} ${end.y + end.height / 2 + 7}" class="arrow"/>`;
+  }).join("\n    ");
+  const cards = nodePositions.map((node, index) => {
+    const source = byId[node.id] || { label: node.id };
+    const className = node.id === "qwen" ? "card qwen" : node.id === "human" ? "card gate" : "card";
+    const lines = String(source.label).split(/ \/ | and /).slice(0, 2);
+    const lineSpans = lines.map((line, lineIndex) => `<tspan x="${node.x + node.width / 2}" dy="${lineIndex === 0 ? 0 : 18}">${escapeXml(line)}</tspan>`).join("");
+    return `<g>
+      <rect x="${node.x}" y="${node.y}" width="${node.width}" height="${node.height}" rx="10" class="${className}"/>
+      <text x="${node.x + node.width / 2}" y="${node.y + node.height / 2 - (lines.length > 1 ? 8 : 0)}" class="label">${lineSpans}</text>
+      <text x="${node.x + 14}" y="${node.y + 22}" class="step">${index + 1}</text>
+    </g>`;
+  }).join("\n    ");
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1560 320" role="img" aria-labelledby="title desc">
+  <title id="title">Qwen Architecture Diagram</title>
+  <desc id="desc">Sanitized OID inventory flows through deterministic checks, Qwen Cloud reasoning, a policy guard, a human approval gate, and generated handoff artifacts.</desc>
+  <style>
+    .bg{fill:#f8fafc}
+    .title{font:700 24px Arial,sans-serif;fill:#111827}
+    .subtitle{font:400 14px Arial,sans-serif;fill:#4b5563}
+    .card{fill:#ffffff;stroke:#1f2937;stroke-width:1.5}
+    .qwen{fill:#eef2ff;stroke:#4f46e5;stroke-width:2}
+    .gate{fill:#ecfdf5;stroke:#047857;stroke-width:2}
+    .label{font:600 14px Arial,sans-serif;fill:#111827;text-anchor:middle}
+    .step{font:700 12px Arial,sans-serif;fill:#6b7280}
+    .edge{stroke:#6b7280;stroke-width:2;fill:none}
+    .arrow{fill:#6b7280}
+    .note{font:400 13px Arial,sans-serif;fill:#374151}
+  </style>
+  <rect width="1560" height="320" class="bg"/>
+  <text x="40" y="44" class="title">Qwen Cloud Autopilot Agent Architecture</text>
+  <text x="40" y="68" class="subtitle">Deterministic OID evidence first; Qwen explains and drafts; humans approve before external action.</text>
+  <g>
+    ${arrows}
+    ${cards}
+  </g>
+  <text x="40" y="268" class="note">Public boundary: no secrets, customer exports, copied OID-base page bodies, payment data, identity documents, cookies, or OTPs.</text>
+</svg>
+`;
+}
+
+function renderQwenArchitectureHtml(pack) {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qwen Architecture Diagram - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Qwen Architecture Diagram</p>
+      <h1>Deterministic checks, Qwen reasoning, human approval</h1>
+      <p class="summary">A submission-ready architecture image for the Qwen Autopilot Agent candidate. It shows the path from sanitized OID input to deterministic registry evidence, Qwen Cloud reasoning, policy guard, human approval gate, and generated handoff artifacts.</p>
+      <div class="links">
+        <a href="qwen-autopilot-agent-one-link.html">Qwen packet</a>
+        <a href="qwen-architecture.svg">Open SVG</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-submission-pack.md">Submission pack</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-architecture.mmd">Mermaid source</a>
+      </div>
+    </section>
+    <section class="panel">
+      <img src="qwen-architecture.svg" alt="Qwen Cloud Autopilot Agent architecture diagram" style="width:100%;height:auto;border:1px solid #d1d5db;border-radius:8px;background:#f8fafc">
+    </section>
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Flow summary</p>
+        <h2>Architecture steps</h2>
+      </div>
+      <ol class="numbered-list">
+        ${pack.architecture.nodes.map((node) => `<li>${escapeXml(node.label)}</li>`).join("\n        ")}
+      </ol>
+    </section>
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Boundary</p>
+        <h2>Public-safe diagram</h2>
+        <p class="panel-copy">The diagram contains only public workflow architecture. No secrets, private account exports, customer inventories, copied OID-base page bodies, payment data, identity documents, cookies, or OTPs are included.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+`;
+}
+
 function renderQwenSubmissionMarkdown(pack) {
   const fields = pack.devpost_fields;
   const scenes = pack.demo_script.scenes.map((scene) => `| ${scene.time} | ${scene.title} | ${scene.narration} |`).join("\n");
@@ -168,11 +281,21 @@ function writeQwenSubmissionPack(options = {}) {
     ensureDir(path.dirname(options.mermaidOutFile));
     fs.writeFileSync(options.mermaidOutFile, renderQwenArchitectureMermaid(pack), "utf8");
   }
+  if (options.svgOutFile) {
+    ensureDir(path.dirname(options.svgOutFile));
+    fs.writeFileSync(options.svgOutFile, renderQwenArchitectureSvg(pack), "utf8");
+  }
+  if (options.htmlOutFile) {
+    ensureDir(path.dirname(options.htmlOutFile));
+    fs.writeFileSync(options.htmlOutFile, renderQwenArchitectureHtml(pack), "utf8");
+  }
   return {
     pack,
     jsonOutFile: options.jsonOutFile,
     markdownOutFile: options.markdownOutFile,
-    mermaidOutFile: options.mermaidOutFile
+    mermaidOutFile: options.mermaidOutFile,
+    svgOutFile: options.svgOutFile,
+    htmlOutFile: options.htmlOutFile
   };
 }
 
@@ -180,6 +303,8 @@ module.exports = {
   DEFAULT_PUBLIC_BASE_URL,
   buildQwenSubmissionPack,
   renderQwenArchitectureMermaid,
+  renderQwenArchitectureSvg,
+  renderQwenArchitectureHtml,
   renderQwenSubmissionMarkdown,
   writeQwenSubmissionPack
 };

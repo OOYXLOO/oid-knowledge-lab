@@ -2270,7 +2270,7 @@ function testQwenAgentMarkdownAndDemoFilesArePublicSafe() {
 
 function testQwenSubmissionPackBuildsJudgingAssets() {
   assert.equal(qwenSubmissionPackModule.__loadError, undefined, qwenSubmissionPackModule.__loadError);
-  const { buildQwenSubmissionPack, renderQwenSubmissionMarkdown, renderQwenArchitectureMermaid } = qwenSubmissionPackModule;
+  const { buildQwenSubmissionPack, renderQwenSubmissionMarkdown, renderQwenArchitectureMermaid, renderQwenArchitectureSvg, renderQwenArchitectureHtml } = qwenSubmissionPackModule;
   const pack = buildQwenSubmissionPack({
     generatedAt: "2026-06-29T00:00:00.000Z",
     publicBaseUrl: "https://oid-knowledge-lab.vercel.app"
@@ -2299,6 +2299,18 @@ function testQwenSubmissionPackBuildsJudgingAssets() {
   assert.ok(mermaid.includes("flowchart LR"));
   assert.ok(mermaid.includes("Qwen Cloud"));
   assert.ok(mermaid.includes("Human approval gate"));
+
+  const svg = renderQwenArchitectureSvg(pack);
+  assert.ok(svg.includes("<svg"));
+  assert.ok(svg.includes("Qwen Cloud reasoning step"));
+  assert.ok(svg.includes("Human approval gate"));
+  assert.equal(svg.includes("money" + "-goal"), false);
+
+  const html = renderQwenArchitectureHtml(pack);
+  assert.ok(html.includes("Qwen Architecture Diagram"));
+  assert.ok(html.includes("qwen-architecture.svg"));
+  assert.ok(html.includes("Qwen Cloud reasoning step"));
+  assert.equal(html.includes("USD " + "200"), false);
 }
 
 function testQwenSubmissionPackWritesPublicSafeFiles() {
@@ -2312,12 +2324,14 @@ function testQwenSubmissionPackWritesPublicSafeFiles() {
     jsonOutFile: path.join(outDir, "qwen-submission-pack.json"),
     markdownOutFile: path.join(outDir, "qwen-submission-pack.md"),
     mermaidOutFile: path.join(outDir, "qwen-architecture.mmd"),
+    svgOutFile: path.join(outDir, "qwen-architecture.svg"),
+    htmlOutFile: path.join(outDir, "qwen-architecture.html"),
     generatedAt: "2026-06-29T00:00:00.000Z",
     publicBaseUrl: "https://oid-knowledge-lab.vercel.app"
   });
 
   assert.equal(result.pack.schema_version, "qwen-submission-pack/v1");
-  for (const file of ["qwen-submission-pack.json", "qwen-submission-pack.md", "qwen-architecture.mmd"]) {
+  for (const file of ["qwen-submission-pack.json", "qwen-submission-pack.md", "qwen-architecture.mmd", "qwen-architecture.svg", "qwen-architecture.html"]) {
     const text = fs.readFileSync(path.join(outDir, file), "utf8");
     assert.ok(text.length > 100, `${file} should contain useful content`);
     assert.equal(text.includes("money" + "-goal"), false);
@@ -2332,6 +2346,8 @@ function testQwenOneLinkReferencesSubmissionPack() {
   for (const text of [page, markdown]) {
     assert.ok(text.includes("qwen-submission-pack.md"));
     assert.ok(text.includes("qwen-architecture.mmd"));
+    assert.ok(text.includes("qwen-architecture.svg"));
+    assert.ok(text.includes("qwen-architecture.html"));
     assert.equal(text.includes("money" + "-goal"), false);
     assert.equal(text.includes("USD " + "200"), false);
     assert.equal(text.includes("\u8d5a\u94b1"), false);

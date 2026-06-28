@@ -40,6 +40,8 @@ Qwen should be used for reasoning and language work, not for unverified final au
 - Qwen packet: `https://oid-knowledge-lab.vercel.app/qwen-autopilot-agent-one-link.html`
 - Agent demo report: `https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md`
 - Submission pack: `https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-submission-pack.md`
+- Rendered architecture page: `https://oid-knowledge-lab.vercel.app/qwen-architecture.html`
+- Architecture SVG: `https://oid-knowledge-lab.vercel.app/qwen-architecture.svg`
 - Architecture diagram source: `https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-architecture.mmd`
 - Qwen adapter source: `https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/src/qwenAgent.js`
 - Sample assessment: `https://oid-knowledge-lab.vercel.app/sample-assessment.html`
@@ -53,6 +55,6 @@ Qwen should be used for reasoning and language work, not for unverified final au
 
 - Run one live Qwen Cloud call with `DASHSCOPE_API_KEY` and save redacted proof.
 - Record a three-minute public demo video.
-- Render the Mermaid architecture diagram into a Devpost-friendly image.
+- Capture a polished screenshot of the rendered architecture image for final Devpost media.
 - Confirm the required Alibaba Cloud/Qwen Cloud proof format.
 - Confirm the license expected by the challenge before final submission.

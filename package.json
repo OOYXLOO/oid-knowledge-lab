@@ -34,7 +34,7 @@
     "audit:local": "npm run check && npm test && npm run audit:assets && npm run audit:certificate-policy && npm run remediation:sample && npm run coverage:oid && npm run delivery:sample && npm run brief:sample && npm run readiness:client && npm run fit:vertical && npm run proposal:scope && npm run sow:oid && npm run decision:one-pager && npm run kickoff:client && npm run signal:buyer && npm run agent:qwen:demo && npm run agent:qwen:submission-pack && npm run build:site && npm run audit:dataset && npm run guard:publishable",
     "audit:local:stable": "node -e \"process.env.OID_KNOWLEDGE_GENERATED_AT='2026-06-26T00:00:00.000Z'; require('child_process').execSync('npm run audit:local',{stdio:'inherit',env:process.env})\"",
     "agent:qwen:demo": "node src/cli.js qwen-agent-demo --out reports/qwen-agent-demo.json --markdown reports/qwen-agent-demo.md",
-    "agent:qwen:submission-pack": "node src/cli.js qwen-submission-pack --out reports/qwen-submission-pack.json --markdown reports/qwen-submission-pack.md --mermaid reports/qwen-architecture.mmd"
+    "agent:qwen:submission-pack": "node src/cli.js qwen-submission-pack --out reports/qwen-submission-pack.json --markdown reports/qwen-submission-pack.md --mermaid reports/qwen-architecture.mmd --svg public/qwen-architecture.svg --html public/qwen-architecture.html"
   },
   "keywords": [
     "oid",
