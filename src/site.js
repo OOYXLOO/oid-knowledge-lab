@@ -399,6 +399,7 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="knowledgeowl-reviewer-hub.html">KnowledgeOwl reviewer hub</a></td><td>Documentation-focused article proposal about evidence logs for AI-assisted knowledge base articles.</td></tr>
           <tr><td><a href="knowledgeowl-one-link.html">KnowledgeOwl one-link packet</a></td><td>Fast editor-first review page with the pitch, draft preview, template, playground, proof links, and publication boundary.</td></tr>
           <tr><td><a href="mindrift-code-reviewer-hub.html">Mindrift code reviewer hub</a></td><td>AI code-review proof path for Python evaluator work, bug finding, model-response comparison, corrected implementations, and structured feedback.</td></tr>
+          <tr><td><a href="mindrift-code-one-link.html">Mindrift code one-link</a></td><td>Fast application link with role summary, proof links, review method, verdict frame, and public safety boundary.</td></tr>
           <tr><td><a href="evidence-log-playground.html">Evidence log playground</a></td><td>Browser-only demo for turning AI-assisted support article drafts into source-aware review handoffs.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/knowledgeowl-documentation-readiness-pack.md">KnowledgeOwl readiness pack</a></td><td>Article promise, short pitch, outline, proof links, and publication boundary for a documentation-team audience.</td></tr>
           <tr><td><a href="sitepoint-reviewer-hub.html">SitePoint reviewer hub</a></td><td>Frontend tutorial proposal for the evidence log widget, with a runnable browser demo and originality boundary.</td></tr>
@@ -1621,6 +1622,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "contentlab-writer-network-hub.html",
     "knowledgeowl-reviewer-hub.html",
     "knowledgeowl-one-link.html",
+    "mindrift-code-one-link.html",
     "evidence-log-playground.html",
     "sitepoint-reviewer-hub.html",
     "writing-samples.html",
