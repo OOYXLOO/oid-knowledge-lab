@@ -1,6 +1,6 @@
 # Qwen Submission Pack
 
-Generated at: 2026-06-28T22:54:05.834Z
+Generated at: 2026-06-28T23:00:57.751Z
 
 ## Project
 
@@ -60,6 +60,7 @@ flowchart LR
 | Offline agent demo | ready | reports/qwen-agent-demo.md |
 | Deterministic dataset audit | ready | reports/dataset-manifest.json |
 | Public one-link page | ready | https://oid-knowledge-lab.vercel.app/qwen-autopilot-agent-one-link.html |
+| Screenshot proof gallery | ready | https://oid-knowledge-lab.vercel.app/qwen-demo-proof.html |
 | Architecture diagram | ready | reports/qwen-architecture.mmd |
 | Live Qwen run | needs_live_key | Requires DASHSCOPE_API_KEY and redacted response receipt |
 | Public demo video | needs_recording | Use the three-minute demo script in this pack |
@@ -68,6 +69,10 @@ flowchart LR
 
 - [Qwen one-link packet](https://oid-knowledge-lab.vercel.app/qwen-autopilot-agent-one-link.html)
 - [Qwen demo proof page](https://oid-knowledge-lab.vercel.app/qwen-demo-proof.html)
+- [Demo proof screenshot](https://oid-knowledge-lab.vercel.app/assets/qwen/demo-proof.png)
+- [One-link packet screenshot](https://oid-knowledge-lab.vercel.app/assets/qwen/one-link.png)
+- [Architecture screenshot](https://oid-knowledge-lab.vercel.app/assets/qwen/architecture.png)
+- [Sample assessment screenshot](https://oid-knowledge-lab.vercel.app/assets/qwen/sample-assessment.png)
 - [Sample assessment](https://oid-knowledge-lab.vercel.app/sample-assessment.html)
 - [Technical rigor proof](https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html)
 - [Qwen agent demo report](https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md)

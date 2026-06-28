@@ -64,6 +64,10 @@ function buildQwenSubmissionPack(options = {}) {
     proof_links: [
       { label: "Qwen one-link packet", url: link(publicBaseUrl, "qwen-autopilot-agent-one-link.html") },
       { label: "Qwen demo proof page", url: link(publicBaseUrl, "qwen-demo-proof.html") },
+      { label: "Demo proof screenshot", url: link(publicBaseUrl, "assets/qwen/demo-proof.png") },
+      { label: "One-link packet screenshot", url: link(publicBaseUrl, "assets/qwen/one-link.png") },
+      { label: "Architecture screenshot", url: link(publicBaseUrl, "assets/qwen/architecture.png") },
+      { label: "Sample assessment screenshot", url: link(publicBaseUrl, "assets/qwen/sample-assessment.png") },
       { label: "Sample assessment", url: link(publicBaseUrl, "sample-assessment.html") },
       { label: "Technical rigor proof", url: link(publicBaseUrl, "technical-rigor-proof.html") },
       { label: "Qwen agent demo report", url: "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md" },
@@ -74,6 +78,7 @@ function buildQwenSubmissionPack(options = {}) {
       { label: "Offline agent demo", status: "ready", evidence: "reports/qwen-agent-demo.md" },
       { label: "Deterministic dataset audit", status: "ready", evidence: "reports/dataset-manifest.json" },
       { label: "Public one-link page", status: "ready", evidence: link(publicBaseUrl, "qwen-autopilot-agent-one-link.html") },
+      { label: "Screenshot proof gallery", status: "ready", evidence: link(publicBaseUrl, "qwen-demo-proof.html") },
       { label: "Architecture diagram", status: "ready", evidence: "reports/qwen-architecture.mmd" },
       { label: "Live Qwen run", status: "needs_live_key", evidence: "Requires DASHSCOPE_API_KEY and redacted response receipt" },
       { label: "Public demo video", status: "needs_recording", evidence: "Use the three-minute demo script in this pack" }

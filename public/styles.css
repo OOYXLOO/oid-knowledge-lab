@@ -282,6 +282,32 @@ a {
   color: var(--muted);
   line-height: 1.45;
 }
+.screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+.screenshot-grid figure {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfd;
+}
+.screenshot-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #f8fafc;
+}
+.screenshot-grid figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
 .decision-strip, .queue-list {
   display: grid;
   gap: 12px;
@@ -387,6 +413,7 @@ code {
   .audit-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mini-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .review-grid { grid-template-columns: 1fr; }
+  .screenshot-grid { grid-template-columns: 1fr; }
   .evidence-grid { grid-template-columns: 1fr; }
   .evidence-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .decision-strip { grid-template-columns: 1fr; }

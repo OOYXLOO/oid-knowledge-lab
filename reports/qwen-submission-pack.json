@@ -1,6 +1,6 @@
 {
   "schema_version": "qwen-submission-pack/v1",
-  "generated_at": "2026-06-28T22:54:05.834Z",
+  "generated_at": "2026-06-28T23:00:57.751Z",
   "public_base_url": "https://oid-knowledge-lab.vercel.app",
   "project": {
     "name": "OID Knowledge Lab: Qwen Remediation Autopilot",
@@ -119,6 +119,22 @@
       "url": "https://oid-knowledge-lab.vercel.app/qwen-demo-proof.html"
     },
     {
+      "label": "Demo proof screenshot",
+      "url": "https://oid-knowledge-lab.vercel.app/assets/qwen/demo-proof.png"
+    },
+    {
+      "label": "One-link packet screenshot",
+      "url": "https://oid-knowledge-lab.vercel.app/assets/qwen/one-link.png"
+    },
+    {
+      "label": "Architecture screenshot",
+      "url": "https://oid-knowledge-lab.vercel.app/assets/qwen/architecture.png"
+    },
+    {
+      "label": "Sample assessment screenshot",
+      "url": "https://oid-knowledge-lab.vercel.app/assets/qwen/sample-assessment.png"
+    },
+    {
       "label": "Sample assessment",
       "url": "https://oid-knowledge-lab.vercel.app/sample-assessment.html"
     },
@@ -154,6 +170,11 @@
       "label": "Public one-link page",
       "status": "ready",
       "evidence": "https://oid-knowledge-lab.vercel.app/qwen-autopilot-agent-one-link.html"
+    },
+    {
+      "label": "Screenshot proof gallery",
+      "status": "ready",
+      "evidence": "https://oid-knowledge-lab.vercel.app/qwen-demo-proof.html"
     },
     {
       "label": "Architecture diagram",
