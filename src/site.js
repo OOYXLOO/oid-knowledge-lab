@@ -130,6 +130,12 @@ function renderEditorReviewPathPanel() {
           <a href="digitalocean-reviewer-hub.html">Open DigitalOcean hub</a>
         </article>
         <article>
+          <span>PHP deployment review</span>
+          <strong>Deployment evidence checklist</strong>
+          <p>PHP and Laravel-focused release checklist with pre-checks, migration evidence, queue restarts, health checks, rollback notes, and no-secret boundaries.</p>
+          <a href="amezmo-php-deployment-one-link.html">Open PHP deployment packet</a>
+        </article>
+        <article>
           <span>Real Python review</span>
           <strong>Python + AI validation workflow</strong>
           <p>Real Python-focused review page with AI-assisted Python development, pytest validation, edge cases, evidence logs, and safe publication boundaries.</p>
@@ -146,6 +152,12 @@ function renderEditorReviewPathPanel() {
           <strong>Python evaluator and model-response review</strong>
           <p>Code-review-focused proof page for generated-code assessment, bug finding, corrected implementations, structured feedback, and task filtering.</p>
           <a href="mindrift-code-reviewer-hub.html">Open Mindrift hub</a>
+        </article>
+        <article>
+          <span>Qwen Cloud candidate</span>
+          <strong>OID remediation autopilot</strong>
+          <p>Hackathon-focused one-link page for turning sanitized OID inventories into evidence-backed remediation queues with Qwen-assisted summaries and human gates.</p>
+          <a href="qwen-autopilot-agent-one-link.html">Open Qwen packet</a>
         </article>
         <article>
           <span>ContentLab review</span>
@@ -401,6 +413,8 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="mindrift-code-reviewer-hub.html">Mindrift code reviewer hub</a></td><td>AI code-review proof path for Python evaluator work, bug finding, model-response comparison, corrected implementations, and structured feedback.</td></tr>
           <tr><td><a href="alignerr-python-one-link.html">Alignerr Python one-link</a></td><td>Fast application link for Python AI workflow validation, tests, data-boundary checks, and evidence-backed review decisions.</td></tr>
           <tr><td><a href="mindrift-code-one-link.html">Mindrift code one-link</a></td><td>Fast application link with role summary, proof links, review method, verdict frame, and public safety boundary.</td></tr>
+          <tr><td><a href="opentrain-ai-code-evaluation-one-link.html">OpenTrain AI code evaluation one-link</a></td><td>AI trainer and Python code-evaluation packet with model-response comparison, pytest evidence, and verdict framing.</td></tr>
+          <tr><td><a href="qwen-autopilot-agent-one-link.html">Qwen Autopilot Agent one-link</a></td><td>Hackathon-focused packet for an OID remediation agent with Qwen Cloud reasoning, deterministic guards, and human approval gates.</td></tr>
           <tr><td><a href="evidence-log-playground.html">Evidence log playground</a></td><td>Browser-only demo for turning AI-assisted support article drafts into source-aware review handoffs.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/knowledgeowl-documentation-readiness-pack.md">KnowledgeOwl readiness pack</a></td><td>Article promise, short pitch, outline, proof links, and publication boundary for a documentation-team audience.</td></tr>
           <tr><td><a href="sitepoint-reviewer-hub.html">SitePoint reviewer hub</a></td><td>Frontend tutorial proposal for the evidence log widget, with a runnable browser demo and originality boundary.</td></tr>
@@ -638,9 +652,12 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="appsignal-reviewer-hub.html">AppSignal reviewer hub</a>
         <a href="vultr-creator-reviewer-hub.html">Vultr Creator reviewer hub</a>
         <a href="digitalocean-reviewer-hub.html">DigitalOcean reviewer hub</a>
+        <a href="amezmo-php-deployment-one-link.html">PHP deployment checklist</a>
         <a href="realpython-ai-reviewer-hub.html">Real Python AI reviewer hub</a>
         <a href="mindrift-code-reviewer-hub.html">Mindrift code reviewer hub</a>
         <a href="ai-code-evaluator-portfolio.html">AI code evaluator portfolio</a>
+        <a href="opentrain-ai-code-evaluation-one-link.html">OpenTrain code evaluation</a>
+        <a href="qwen-autopilot-agent-one-link.html">Qwen Autopilot Agent packet</a>
         <a href="review-log-agent-hub.html">Review Log Agent hub</a>
         <a href="contentlab-writer-network-hub.html">ContentLab writer hub</a>
         <a href="implementation-authenticity-proof.html">Implementation proof</a>
@@ -1619,12 +1636,15 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "appsignal-reviewer-hub.html",
     "vultr-creator-reviewer-hub.html",
     "digitalocean-reviewer-hub.html",
+    "amezmo-php-deployment-one-link.html",
     "realpython-ai-reviewer-hub.html",
     "contentlab-writer-network-hub.html",
     "knowledgeowl-reviewer-hub.html",
     "knowledgeowl-one-link.html",
     "alignerr-python-one-link.html",
     "mindrift-code-one-link.html",
+    "opentrain-ai-code-evaluation-one-link.html",
+    "qwen-autopilot-agent-one-link.html",
     "evidence-log-playground.html",
     "sitepoint-reviewer-hub.html",
     "writing-samples.html",

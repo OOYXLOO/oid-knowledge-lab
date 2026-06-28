@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qwen Autopilot Agent Packet - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Qwen Cloud Autopilot Agent candidate</p>
+      <h1>Turn messy OID inventories into reviewable remediation plans</h1>
+      <p class="summary">A production-minded agent concept for the Qwen Cloud Autopilot Agent track: ingest a sanitized OID inventory, classify evidence gaps, draft a remediation queue, and stop at human approval before any customer-facing change.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="sample-assessment.html">Sample assessment</a>
+        <a href="direct-client-fit.html">Direct client fit</a>
+        <a href="consulting-brief.html">Consulting brief</a>
+        <a href="starter-scope.html">Starter scope</a>
+        <a href="technical-rigor-proof.html">Technical rigor proof</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Source repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Qwen Autopilot submission fit">
+      <article><span>Track</span><strong>Autopilot</strong><small>Business workflow</small></article>
+      <article><span>Workflow</span><strong>OID triage</strong><small>Inventory to action queue</small></article>
+      <article><span>Human gate</span><strong>Required</strong><small>No blind changes</small></article>
+      <article><span>Boundary</span><strong>Public-safe</strong><small>No private exports</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Product angle</p>
+        <h2>What the agent does</h2>
+      </div>
+      <div class="decision-strip">
+        <article><span>1</span><strong>Parse safe input</strong><p>Accepts a sanitized CSV or pasted OID list. Raw customer exports, credentials, and private account pages stay outside the public workflow.</p></article>
+        <article><span>2</span><strong>Classify evidence</strong><p>Compares OIDs against public IANA PEN data and OID-base sitemap metadata without copying OID-base page bodies.</p></article>
+        <article><span>3</span><strong>Draft next actions</strong><p>Produces an evidence-ready handoff: invalid values, known enterprise roots, unresolved items, and suggested remediation steps.</p></article>
+        <article><span>4</span><strong>Ask before acting</strong><p>Stops at human approval before contacting vendors, changing registries, opening tickets, or touching production systems.</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Qwen Cloud fit</p>
+        <h2>How Qwen would be used</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Agent step</th><th>Qwen role</th><th>Deterministic guard</th></tr></thead>
+        <tbody>
+          <tr><td>Intake normalization</td><td>Explain ambiguous spreadsheet fields and ask for missing safe columns.</td><td>Schema parser rejects missing or malformed OID values.</td></tr>
+          <tr><td>Evidence review</td><td>Summarize why an OID is evidence-ready, unresolved, or risky.</td><td>Classification is backed by local registry lookups and generated JSON.</td></tr>
+          <tr><td>Remediation planning</td><td>Draft a concise client-safe action queue and first-response email.</td><td>Blocked actions are labeled as human approval gates.</td></tr>
+          <tr><td>Review handoff</td><td>Turn findings into a stakeholder-readable summary.</td><td>Public guard excludes secrets, private exports, and copied third-party page bodies.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Architecture</p>
+        <h2>Submission-ready architecture outline</h2>
+      </div>
+      <pre>Browser UI / CLI
+  -> sanitized OID inventory
+  -> deterministic parser and registry lookup
+  -> Qwen Cloud reasoning step for summary, triage explanation, and action wording
+  -> policy guard and human approval gate
+  -> Markdown / CSV / JSON remediation package</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Judge path</p>
+        <h2>Open these proof links first</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Need</th><th>Link</th><th>What it proves</th></tr></thead>
+        <tbody>
+          <tr><td>Working dashboard</td><td><a href="./">OID Knowledge Lab</a></td><td>Search, audit, and generated handoff surfaces are already public and runnable.</td></tr>
+          <tr><td>Sample output</td><td><a href="sample-assessment.html">Sample assessment</a></td><td>Shows sanitized findings, risk labels, and remediation-oriented output.</td></tr>
+          <tr><td>Business value</td><td><a href="direct-client-fit.html">Direct client fit</a></td><td>Explains why PKI, SNMP/MIB, and internal registry owners would pay for scoped OID review.</td></tr>
+          <tr><td>Scope</td><td><a href="starter-scope.html">Starter scope</a></td><td>Defines safe first engagement inputs, outputs, and acceptance checks.</td></tr>
+          <tr><td>Implementation proof</td><td><a href="technical-rigor-proof.html">Technical rigor proof</a></td><td>Shows reproducible checks and boundary controls rather than a slide-only idea.</td></tr>
+          <tr><td>Source</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab">GitHub repository</a></td><td>Public source and generated artifacts for judging and testing.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Current gap</p>
+        <h2>What still needs to be added before Qwen submission</h2>
+      </div>
+      <ul>
+        <li>Qwen Cloud API integration or a small adapter file that proves model calls through Qwen Cloud.</li>
+        <li>Alibaba Cloud deployment proof recording, separate from the product demo.</li>
+        <li>Architecture diagram image for the Devpost submission.</li>
+        <li>Public three-minute demo video showing intake, triage, human gate, and export.</li>
+        <li>Open source license visible at the top of the GitHub repository.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Safety boundary</p>
+        <h2>Why this is not a scraper dump</h2>
+      </div>
+      <p class="panel-copy">The public project publishes public IANA-derived data, OID-base sitemap metadata, generated summaries, and local browser audit tools. It does not publish copied OID-base page bodies, raw customer inventories, account exports, secrets, private messages, payment data, tax records, or identity documents.</p>
+    </section>
+  </main>
+</body>
+</html>
