@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Code Review Casebook - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">AI code review casebook</p>
+      <h1>AI Code Review Casebook</h1>
+      <p class="summary">A compact public reference for AI code evaluator, code-review, and Python AI workflow applications. It shows how generated code is reviewed as an untrusted draft with tests, evidence, and explicit verdicts.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="ai-evaluator-application-packet.html">Application packet</a>
+        <a href="mindrift-code-one-link.html">Mindrift one-link</a>
+        <a href="alignerr-python-one-link.html">Alignerr one-link</a>
+        <a href="ai-code-evaluator-portfolio.html">Evaluator portfolio</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/ai-code-review-casebook.md">Raw casebook</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="AI code review casebook metrics">
+      <article><span>Decision</span><strong>Verdict</strong><small>accept / revise / reject</small></article>
+      <article><span>Stack</span><strong>Python</strong><small>focused tests</small></article>
+      <article><span>Case</span><strong>duration_parser_review</strong><small>silent failure</small></article>
+      <article><span>Boundary</span><strong>Public</strong><small>No private data</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Assessment frame</p>
+        <h2>Use this answer shape</h2>
+      </div>
+      <pre>Verdict:
+The solution should be accepted / revised / rejected.
+
+Main issues:
+- ...
+
+Evidence:
+- ...
+
+Suggested fix:
+- ...
+
+Tests I would add:
+- ...
+
+Residual risk:
+- ...</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Review case</p>
+        <h2>duration_parser_review</h2>
+        <p class="panel-copy">This public case starts from a generated duration parser that silently returns <code>0</code> for unknown units. The review rejects that behavior, revises the parser to raise explicit errors, and proves the safer behavior with focused unit tests.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Artifact</th><th>Link</th><th>What it proves</th></tr></thead>
+        <tbody>
+          <tr><td>Runnable case</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review">duration_parser_review</a></td><td>Generated-code review, corrected implementation, and focused tests.</td></tr>
+          <tr><td>Evidence log</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md">duration parser evidence log</a></td><td>Verdict, main issue, checks performed, accepted revision, and residual limitations.</td></tr>
+          <tr><td>Application packet</td><td><a href="ai-evaluator-application-packet.html">AI evaluator application packet</a></td><td>Copy-ready role summary and proof order for AI code-review applications.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Application use</p>
+        <h2>What this casebook supports</h2>
+      </div>
+      <div class="decision-strip">
+        <article><span>1</span><strong>Behavior-first review</strong><p>Judge generated code against expected behavior before style or explanation quality.</p></article>
+        <article><span>2</span><strong>Python test design</strong><p>Use focused checks for normal, boundary, invalid, and unsafe inputs.</p></article>
+        <article><span>3</span><strong>Evidence-backed handoff</strong><p>Explain the accept / revise / reject decision in a format another reviewer can audit.</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Boundary</p>
+        <h2>Public and account-safe</h2>
+      </div>
+      <p class="panel-copy">The examples are public, original review artifacts. They do not include private source code, credentials, account exports, identity documents, payment data, tax records, private platform messages, or restricted assessment content.</p>
+    </section>
+  </main>
+</body>
+</html>
