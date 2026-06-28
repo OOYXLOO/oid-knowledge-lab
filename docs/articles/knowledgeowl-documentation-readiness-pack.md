@@ -69,6 +69,12 @@ Interactive proof:
 https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
 ```
 
+Sample section:
+
+```text
+https://oid-knowledge-lab.vercel.app/knowledgeowl-sample-section.html
+```
+
 AI validation mini lab:
 
 ```text
@@ -100,5 +106,5 @@ that keeps private data and copied third-party page bodies out of public output.
 
 This packet is a review aid, not a final article. The final article should be
 freshly written for KnowledgeOwl's audience and editorial process. It should not
-include private customer content, credentials, payment details, copied full
-third-party article bodies, or account-local screenshots.
+include private customer content, credentials, copied full third-party article
+bodies, account-local screenshots, or other sensitive account data.
