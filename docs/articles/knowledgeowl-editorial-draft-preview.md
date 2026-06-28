@@ -1,4 +1,4 @@
-# Editorial Draft Preview: How to Turn AI-Assisted Documentation Reviews into Evidence Logs
+# Editorial Draft Preview: How to Turn AI-Assisted Knowledge Base Updates into Evidence Logs
 
 AI-assisted drafting can make knowledge base work faster, but speed is not the
 same as reviewability. A draft can sound confident while still mixing verified

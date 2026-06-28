@@ -36,7 +36,7 @@ Short pitch:
 ```text
 I would like to propose a practical documentation article:
 
-How to Turn AI-Assisted Documentation Reviews into Evidence Logs
+How to Turn AI-Assisted Knowledge Base Updates into Evidence Logs
 
 The article would show documentation and support teams how to keep AI-assisted
 knowledge base updates reviewable. Instead of treating AI output as a finished
@@ -152,4 +152,3 @@ be freshly written for the accepting publication's audience and editorial
 process. It should not include passwords, OTPs, API keys, cookies, private
 support tickets, customer data, payment data, KYC/tax material, copied
 third-party article bodies, or account-local screenshots.
-

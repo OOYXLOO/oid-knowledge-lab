@@ -2,7 +2,7 @@
 
 This packet is a compact first link for a KnowledgeOwl editor reviewing the article idea:
 
-**How to Turn AI-Assisted Documentation Reviews into Evidence Logs**
+**How to Turn AI-Assisted Knowledge Base Updates into Evidence Logs**
 
 ## Reader Promise
 
@@ -27,7 +27,7 @@ The article is practical, documentation-focused, and written for teams that need
 
 ## Proposed Article Structure
 
-1. Why AI-assisted drafts need a visible review trail.
+1. Why AI-assisted knowledge base updates need a visible review trail.
 2. How to define the reader question and audience.
 3. How to separate source facts from draft claims.
 4. How to capture reviewer checks and publication blockers.
