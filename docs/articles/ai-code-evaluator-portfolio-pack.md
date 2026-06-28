@@ -22,6 +22,8 @@ https://oid-knowledge-lab.vercel.app/ai-code-evaluator-portfolio.html
 
 ```text
 https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python
+https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md
 https://oid-knowledge-lab.vercel.app/realpython-ai-reviewer-hub.html
 https://oid-knowledge-lab.vercel.app/review-log-agent-hub.html
 https://oid-knowledge-lab.vercel.app/review-log-agent-playground.html
@@ -35,6 +37,15 @@ https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html
 3. Check unsafe inputs, source boundaries, private-data handling, and hidden assumptions.
 4. Compare model outputs against the behavior contract rather than preferring fluent explanations.
 5. Keep a compact evidence log with checks, failures, revisions, and residual limitations.
+
+## Sample Case: Duration parser review
+
+The duration parser case reviews a plausible generated helper that silently returns
+`0` for unknown units. The evaluator decision rejects the draft because swallowed
+invalid input can hide scheduling and timeout bugs. The revised implementation
+raises explicit errors for unknown units, empty values, malformed amounts,
+negative values, and non-string input, then proves the behavior with eight
+focused `unittest` checks.
 
 ## Assessment Notes
 

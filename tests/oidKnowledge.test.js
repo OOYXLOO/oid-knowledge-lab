@@ -1847,6 +1847,40 @@ function testBuyerSignalPackRenderer() {
   assert.equal(markdown.includes("USD " + "200"), false);
 }
 
+function testAiEvaluatorPortfolioIncludesDurationParserReviewCase() {
+  const caseDir = path.join(ROOT, "examples", "ai-validation-python", "duration_parser_review");
+  const readmePath = path.join(caseDir, "README.md");
+  const testPath = path.join(caseDir, "test_duration_parser.py");
+  const evidencePath = path.join(caseDir, "evidence-log.md");
+  const publicFiles = [
+    "public/ai-code-evaluator-portfolio.html",
+    "public/mindrift-code-reviewer-hub.html",
+    "docs/articles/ai-code-evaluator-portfolio-pack.md"
+  ];
+
+  assert.ok(fs.existsSync(readmePath), "duration parser review README should exist");
+  assert.ok(fs.existsSync(testPath), "duration parser review tests should exist");
+  assert.ok(fs.existsSync(evidencePath), "duration parser review evidence log should exist");
+
+  const readme = fs.readFileSync(readmePath, "utf8");
+  const evidence = fs.readFileSync(evidencePath, "utf8");
+
+  assert.ok(readme.includes("AI Coding Evaluator"));
+  assert.ok(readme.includes("silently returns 0 for unknown units"));
+  assert.ok(evidence.includes("Reject the generated implementation as written"));
+  assert.equal(readme.includes("money" + "-goal"), false);
+  assert.equal(evidence.includes("USD " + "200"), false);
+
+  for (const file of publicFiles) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("duration_parser_review"), `${file} should link the duration parser review case`);
+    assert.ok(text.includes("Duration parser review"), `${file} should name the duration parser review case`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+}
+
 function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -1893,6 +1927,7 @@ function main() {
   testBackupPitchPackIsPublicAndBoundarySafe();
   testPublicEditorPitchPackHasFieldReadyCopy();
   testEditorSubmissionFieldPackIsPublicAndBoundarySafe();
+  testAiEvaluatorPortfolioIncludesDurationParserReviewCase();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
