@@ -30,12 +30,17 @@
     <section class="panel">
       <div>
         <p class="eyebrow">Step 1</p>
-        <h2>Start with the reader question</h2>
+        <h2>Start with purpose and audience</h2>
       </div>
-      <p class="panel-copy">Every review log should begin with the reader question. What was the customer, support agent, or internal user trying to do? A clear question keeps the article from drifting into a general explanation that sounds useful but does not answer the immediate need.</p>
+      <p class="panel-copy">Every review log should begin with purpose and audience. What is the article supposed to help the reader do, and who is the reader? A customer-facing article, an internal support runbook, and an SME handoff can all describe the same feature while needing different context, warnings, and level of detail.</p>
+      <p class="panel-copy">A practical way to write this down is to start with the reader question. What was the customer, support agent, or internal user trying to do? A clear question keeps the article from drifting into a general explanation that sounds useful but does not answer the immediate need.</p>
       <pre>Reader question:
-How do I rotate an integration token without breaking existing jobs?</pre>
-      <p class="panel-copy">That question gives the reviewer a target. The draft is not just "about token rotation." It needs to explain a safe rotation path and warn about anything that could interrupt existing jobs.</p>
+How do I rotate an integration token without breaking existing jobs?
+
+Audience:
+Workspace admins who manage integrations but may not know how scheduled jobs use
+existing tokens.</pre>
+      <p class="panel-copy">That question and audience give the reviewer a target. The draft is not just "about token rotation." It needs to explain a safe rotation path for workspace admins and warn about anything that could interrupt existing jobs.</p>
     </section>
 
     <section class="panel">

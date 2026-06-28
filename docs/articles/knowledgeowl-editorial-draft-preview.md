@@ -12,23 +12,32 @@ style guide, editorial judgment, or subject-matter review. It simply makes the
 review trail visible before the article reaches the customer-facing knowledge
 base.
 
-## Start With the Reader Question
+## Start With Purpose and Audience
 
-Every review log should begin with the reader question. What was the customer,
-support agent, or internal user trying to do? A clear question keeps the article
-from drifting into a general explanation that sounds useful but does not answer
-the immediate need.
+Every review log should begin with purpose and audience. What is the article
+supposed to help the reader do, and who is the reader? A customer-facing article,
+an internal support runbook, and an SME handoff can all describe the same feature
+while needing different context, warnings, and level of detail.
+
+A practical way to write this down is to start with the reader question. What
+was the customer, support agent, or internal user trying to do? A clear question
+keeps the article from drifting into a general explanation that sounds useful
+but does not answer the immediate need.
 
 For example:
 
 ```text
 Reader question:
 How do I rotate an integration token without breaking existing jobs?
+
+Audience:
+Workspace admins who manage integrations but may not know how scheduled jobs use
+existing tokens.
 ```
 
-That question gives the reviewer a target. The draft is not just "about token
-rotation." It needs to explain a safe rotation path and warn about anything that
-could interrupt existing jobs.
+That question and audience give the reviewer a target. The draft is not just
+"about token rotation." It needs to explain a safe rotation path for workspace
+admins and warn about anything that could interrupt existing jobs.
 
 ## Separate Source Facts From Draft Claims
 
@@ -118,7 +127,7 @@ confidence."
 
 In practice, the workflow can stay small:
 
-1. Start with the reader question.
+1. Start with purpose, audience, and the reader question.
 2. List the source facts.
 3. List the draft claims that need review.
 4. Capture reviewer checks.
@@ -132,4 +141,3 @@ still need judgment, and what must change before publication.
 AI-assisted documentation does not need a heavy process to become safer. It
 needs a visible review trail. A small evidence log gives documentation and
 support teams a practical way to keep speed without giving up accountability.
-
