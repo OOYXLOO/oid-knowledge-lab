@@ -2525,6 +2525,50 @@ function testMediaProvenancePackWritesPublicSafeFiles() {
   }
 }
 
+function testBackblazeReadinessPackDocumentsCloudGate() {
+  assert.equal(mediaProvenancePackModule.__loadError, undefined, mediaProvenancePackModule.__loadError);
+  const { buildBackblazeReadinessPack, renderBackblazeReadinessMarkdown } = mediaProvenancePackModule;
+  const mediaPack = mediaProvenancePackModule.buildMediaProvenancePack({
+    generatedAt: "2026-06-30T00:00:00.000Z",
+    assets: [
+      {
+        name: "OID Intelligence explainer cover",
+        type: "Image",
+        status: "Approved",
+        modelNote: "Generated cover image draft",
+        evidenceNote: "Prompt summary and final hash recorded.",
+        storageRef: "b2://demo/oid-cover.png",
+        hash: "sha256:cover"
+      }
+    ]
+  });
+
+  const readiness = buildBackblazeReadinessPack({
+    generatedAt: "2026-06-30T00:00:00.000Z",
+    mediaPack,
+    publicBaseUrl: "https://ooyxloo.github.io/oid-knowledge-lab"
+  });
+
+  assert.equal(readiness.schema_version, "backblaze-readiness-pack/v1");
+  assert.equal(readiness.project.title, "Media Provenance Studio");
+  assert.equal(readiness.cloud_integration.status, "prototype_without_live_b2_credentials");
+  assert.ok(readiness.devpost_fields.built_with.includes("Backblaze B2"));
+  assert.ok(readiness.devpost_fields.built_with.includes("Genblaze"));
+  assert.ok(readiness.required_gates.some((gate) => gate.includes("Backblaze B2")));
+  assert.ok(readiness.proof_links.some((link) => link.url.includes("media-provenance-studio.html")));
+  assert.equal(JSON.stringify(readiness).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(readiness).includes("USD " + "200"), false);
+  assert.equal(JSON.stringify(readiness).includes("D:\\hks"), false);
+
+  const markdown = renderBackblazeReadinessMarkdown(readiness);
+  assert.ok(markdown.includes("# Backblaze Generative Media Readiness Pack"));
+  assert.ok(markdown.includes("prototype_without_live_b2_credentials"));
+  assert.ok(markdown.includes("Backblaze B2"));
+  assert.ok(markdown.includes("Genblaze"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+}
+
 async function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -2595,6 +2639,7 @@ async function main() {
   testQwenOneLinkReferencesSubmissionPack();
   testMediaProvenancePackBuildsDeliveryArtifacts();
   testMediaProvenancePackWritesPublicSafeFiles();
+  testBackblazeReadinessPackDocumentsCloudGate();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
