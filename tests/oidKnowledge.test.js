@@ -2125,6 +2125,24 @@ function testCodingEvaluatorOneLinkIsPublicAndBoundarySafe() {
   }
 }
 
+function testAirbyteProofDeskPacketIsPublicAndBoundarySafe() {
+  const page = fs.readFileSync(path.join(ROOT, "public/airbyte-proofdesk-review-packet.html"), "utf8");
+  assert.ok(page.includes("Airbyte article proof packet"));
+  assert.ok(page.includes("ProofDesk"));
+  assert.ok(page.includes("source trust"));
+  assert.ok(page.includes("proofdesk-packet-demo.html"));
+  assert.ok(page.includes("reports/proofdesk-pack.md"));
+  assert.ok(page.includes("No credentials") || page.includes("credentials"));
+  assert.equal(page.includes("money" + "-goal"), false);
+  assert.equal(page.includes("USD " + "200"), false);
+  assert.equal(page.includes("\u8d5a\u94b1"), false);
+
+  for (const file of ["public/index.html", "public/writing-samples.html", "src/site.js"]) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("airbyte-proofdesk-review-packet.html"), `${file} should link the Airbyte ProofDesk review packet`);
+  }
+}
+
 function testAiCodeReviewCasebookIsLinkedAndBoundarySafe() {
   const files = [
     "public/ai-code-review-casebook.html",
@@ -2846,6 +2864,7 @@ async function main() {
   testAiEvaluatorPortfolioIncludesDurationParserReviewCase();
   testAiEvaluatorApplicationPacketIsPublicAndBoundarySafe();
   testCodingEvaluatorOneLinkIsPublicAndBoundarySafe();
+  testAirbyteProofDeskPacketIsPublicAndBoundarySafe();
   testAiCodeReviewCasebookIsLinkedAndBoundarySafe();
   testAiReviewerApplicationSummaryIsLinkedAndBoundarySafe();
   testPythonAssessmentDrillIsLinkedAndBoundarySafe();

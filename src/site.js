@@ -458,6 +458,7 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/directus-editor-one-pager.md">Directus editor one-pager</a></td><td>Registry evidence review hub idea mapped to Directus collections, permissions, and safe proof pages.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/digitalocean-editor-one-pager.md">DigitalOcean editor one-pager</a></td><td>Node.js static evidence dashboard tutorial idea with generated reports and publish guards.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/airbyte-connector-builder-appendix.md">Airbyte Connector Builder appendix</a></td><td>Airbyte-specific adaptation path for Connector Builder, File source, destination shape, and publish-boundary validation.</td></tr>
+          <tr><td><a href="airbyte-proofdesk-review-packet.html">Airbyte ProofDesk review packet</a></td><td>Focused article proof page for turning public data quality checks, blockers, and human gates into reproducible review packets.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/submission-landing.md">Submission landing</a></td><td>One-link review path for editor applications, paid writing forms, proof links, and sample fit.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/oid-assessment-client-one-pager.md">OID assessment one-pager</a></td><td>Buyer-readable assessment scope, safe client inputs, deliverables, and acceptance checks.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/certificate-policy-oid-inventory.md">Certificate policy OID inventory</a></td><td>PKI and certificate lifecycle metadata review, renewal-risk triage, and safe policy-OID evidence handling.</td></tr>
@@ -684,6 +685,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="editor-assignment-fit.html">Assignment fit</a>
         <a href="honeybadger-debugging-one-link.html">Honeybadger packet</a>
         <a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a>
+        <a href="airbyte-proofdesk-review-packet.html">Airbyte ProofDesk packet</a>
         <a href="civo-reviewer-hub.html">Civo reviewer hub</a>
         <a href="directus-reviewer-hub.html">Directus reviewer hub</a>
         <a href="signoz-reviewer-hub.html">SigNoz reviewer hub</a>
@@ -1775,6 +1777,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
   }
   const staticReviewPages = [
     "airbyte-reviewer-hub.html",
+    "airbyte-proofdesk-review-packet.html",
     "civo-reviewer-hub.html",
     "directus-reviewer-hub.html",
     "appsmith-oid-reviewer-hub.html",
