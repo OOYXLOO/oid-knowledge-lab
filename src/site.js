@@ -88,6 +88,12 @@ function renderEditorReviewPathPanel() {
           <a href="direct-client-fit.html">Open fit page</a>
         </article>
         <article>
+          <span>Portfolio console</span>
+          <strong>OID governance risk brief</strong>
+          <p>Browser-only console that turns a small OID inventory into a structured governance brief with severity counts, representative findings, and next-step questions.</p>
+          <a href="oid-portfolio-risk-console.html">Open risk console</a>
+        </article>
+        <article>
           <span>Long-form sample</span>
           <strong>Observability debugging handoffs</strong>
           <p>Logs, metrics, traces, correlation handles, safe evidence boundaries, and acceptance checks for production integration failures.</p>
