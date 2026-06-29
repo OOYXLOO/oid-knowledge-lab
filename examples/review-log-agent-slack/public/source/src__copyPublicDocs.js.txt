@@ -12,6 +12,7 @@ const PUBLIC_DOCS = [
   "devpost-field-pack.md",
   "judge-verification.md",
   "public-verification.md",
+  "reviewer-quickstart.md",
   "slack-app-handler-contract.md",
   "slack-app-manifest.json",
   "submission-pack.md"

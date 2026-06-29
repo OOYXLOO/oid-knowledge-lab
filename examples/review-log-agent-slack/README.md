@@ -116,6 +116,7 @@ For challenge or reviewer handoff material, see:
 
 ```text
 docs/architecture.md
+docs/reviewer-quickstart.md
 docs/demo-video-script.md
 docs/submission-pack.md
 docs/devpost-field-pack.md

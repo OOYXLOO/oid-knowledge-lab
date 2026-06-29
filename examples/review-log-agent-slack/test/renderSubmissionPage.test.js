@@ -12,6 +12,7 @@ function testRendersSubmissionPageWithCoreLinks() {
   assert.match(html, /media\/review-log-agent-slack-demo\.mp4/);
   assert.match(html, /docs\/architecture\.md/);
   assert.match(html, /docs\/devpost-field-pack\.md/);
+  assert.match(html, /docs\/reviewer-quickstart\.md/);
   assert.match(html, /does not require Slack credentials/);
   assert.match(html, /Submission Readiness/);
   assert.match(html, /public video/);

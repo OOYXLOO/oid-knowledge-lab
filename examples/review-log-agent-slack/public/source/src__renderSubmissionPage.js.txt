@@ -149,6 +149,7 @@ function renderSubmissionPage() {
       <ul>
         <li><a href="docs/architecture.md">Architecture notes</a></li>
         <li><a href="docs/devpost-field-pack.md">Devpost field pack</a></li>
+        <li><a href="docs/reviewer-quickstart.md">Reviewer quickstart</a></li>
         <li><a href="docs/demo-video-script.md">Demo video script</a></li>
         <li><a href="docs/submission-pack.md">Submission pack notes</a></li>
         <li><a href="docs/challenge-fit.md">Challenge fit notes</a></li>

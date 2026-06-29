@@ -27,6 +27,7 @@ function testCopiesOnlyPublicSubmissionDocs() {
     "devpost-field-pack.md",
     "judge-verification.md",
     "public-verification.md",
+    "reviewer-quickstart.md",
     "slack-app-handler-contract.md",
     "slack-app-manifest.json",
     "submission-pack.md"
@@ -37,6 +38,7 @@ function testCopiesOnlyPublicSubmissionDocs() {
   assert.ok(fs.existsSync(path.join(outputDir, "submission-pack.md")));
   assert.ok(fs.existsSync(path.join(outputDir, "public-verification.md")));
   assert.ok(fs.existsSync(path.join(outputDir, "judge-verification.md")));
+  assert.ok(fs.existsSync(path.join(outputDir, "reviewer-quickstart.md")));
 }
 
 testCopiesOnlyPublicSubmissionDocs();
