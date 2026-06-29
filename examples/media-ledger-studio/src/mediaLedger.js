@@ -164,7 +164,7 @@ export function createProviderModelList(runs = sampleRuns) {
 export function createDevpostFields({
   appUrl = "https://media-ledger-studio-static.vercel.app",
   sourceRepoUrl = "https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio",
-  videoUrl = "https://media-ledger-studio-static.vercel.app/demo-video.html"
+  videoUrl = "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4"
 } = {}) {
   const pack = createSubmissionPack(sampleRuns);
   return {
@@ -194,7 +194,7 @@ export function createDevpostFields({
       `The bundled manifest covers ${pack.storageHandoffManifest.length} generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision. ` +
       `It also defines ${pack.sidecarMetadataManifest.length} JSON sidecar records that can be uploaded next to the final media objects.`,
     whatIsNext:
-      "Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, add signed sidecar metadata, and optionally replace the public walkthrough page with an uploaded demo video."
+      "Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, and add signed sidecar metadata for production uploads."
   };
 }
 
@@ -305,7 +305,7 @@ export function createReadinessChecklist({
     {
       label: "Demo video",
       status: demoVideoReady ? "ready" : "missing",
-      detail: "The public walkthrough URL is available for reviewers and can be replaced by an uploaded recording later."
+      detail: "A 30-second MP4 walkthrough is available for reviewers, with the browser walkthrough page kept as a readable fallback."
     },
     {
       label: "Backblaze B2 boundary",

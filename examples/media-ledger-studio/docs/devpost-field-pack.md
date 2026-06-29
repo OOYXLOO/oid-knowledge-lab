@@ -12,7 +12,7 @@ An operations ledger for generated media provenance, review, and Backblaze B2 st
 
 - App: https://media-ledger-studio-static.vercel.app
 - Source repository: https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio
-- Demo video: https://media-ledger-studio-static.vercel.app/demo-video.html
+- Demo video: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4
 
 ## Built With
 
@@ -54,4 +54,4 @@ The bundled manifest covers 3 generated assets with bucket, object key, content 
 
 ## What's Next
 
-Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, add signed sidecar metadata, and optionally replace the public walkthrough page with an uploaded demo video.
+Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, and add signed sidecar metadata for production uploads.

@@ -3,7 +3,7 @@
   "tagline": "An operations ledger for generated media provenance, review, and Backblaze B2 storage handoff.",
   "appUrl": "https://media-ledger-studio-static.vercel.app",
   "sourceRepoUrl": "https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio",
-  "videoUrl": "https://media-ledger-studio-static.vercel.app/demo-video.html",
+  "videoUrl": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4",
   "providerAndModels": [
     {
       "provider": "Genblaze",
@@ -29,5 +29,5 @@
   "challengeFit": "The app is built around generated media operations: prompt intake, Genblaze-shaped generation metadata, human review, durable Backblaze B2-shaped object storage, provenance inspection, and client handoff.",
   "challengeReadiness": "Readiness score: 100/100. image run present; video run present; audio run present; B2-shaped storage manifest complete; Genblaze-shaped run metadata complete. Current blocker: No submission blockers in the current checklist.",
   "storageHandoffSummary": "The bundled manifest covers 3 generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision. It also defines 3 JSON sidecar records that can be uploaded next to the final media objects.",
-  "whatIsNext": "Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, add signed sidecar metadata, and optionally replace the public walkthrough page with an uploaded demo video."
+  "whatIsNext": "Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, and add signed sidecar metadata for production uploads."
 }

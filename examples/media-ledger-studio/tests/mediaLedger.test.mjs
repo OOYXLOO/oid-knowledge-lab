@@ -62,7 +62,7 @@ assert.match(devpostFields.challengeReadiness, /Readiness score/);
 assert.match(devpostFields.storageHandoffSummary, /3 generated assets/);
 assert.match(devpostFields.storageHandoffSummary, /JSON sidecar records/);
 assert.equal(devpostFields.appUrl, "https://media-ledger-studio-static.vercel.app");
-assert.equal(devpostFields.videoUrl, "https://media-ledger-studio-static.vercel.app/demo-video.html");
+assert.match(devpostFields.videoUrl, /media-ledger-studio-demo\.mp4$/);
 assert.match(devpostFields.sourceRepoUrl, /github\.com\/OOYXLOO\/oid-knowledge-lab/);
 assert.match(devpostFields.challengeFit, /Backblaze B2/);
 

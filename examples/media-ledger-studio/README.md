@@ -6,6 +6,7 @@ The current build is a static prototype with deterministic sample data. It is de
 
 Public demo: https://media-ledger-studio.vercel.app
 Demo walkthrough: https://media-ledger-studio-static.vercel.app/demo-video
+Demo MP4: `public/media-ledger-studio-demo.mp4`
 
 ## What It Shows
 
@@ -19,6 +20,7 @@ Demo walkthrough: https://media-ledger-studio-static.vercel.app/demo-video
 
 - Devpost field pack: `docs/devpost-field-pack.md`
 - Demo video script: `docs/demo-video-script.md`
+- Demo video file: `public/media-ledger-studio-demo.mp4`
 - Public verification checklist: `docs/public-verification.md`
 - Backblaze and Genblaze integration notes: `docs/backblaze-genblaze-integration.md`
 - Backblaze challenge fit: `docs/backblaze-challenge-fit.md`
