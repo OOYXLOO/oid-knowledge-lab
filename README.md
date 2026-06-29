@@ -14,6 +14,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Technical rigor proof: <https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html>
 - Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
 - OID portfolio risk console: <https://oid-knowledge-lab.vercel.app/oid-portfolio-risk-console.html>
+- Hasura reviewer hub: <https://oid-knowledge-lab.vercel.app/hasura-reviewer-hub.html>
 
 ## Current Publishable Snapshot
 
@@ -26,6 +27,7 @@ Last refreshed on 2026-06-26:
 - Static dashboard: generated under `public/`
 - Assessment brief page: `public/consulting-brief.html` summarizes the client-safe OID inventory assessment path.
 - Portfolio risk console: `public/oid-portfolio-risk-console.html` turns a small local OID inventory into a browser-only governance brief.
+- Hasura reviewer hub: `public/hasura-reviewer-hub.html` supports a GraphQL/Postgres article pitch for OID inventory review workflows.
 - Writing samples review page: `public/writing-samples.html` links editor-facing samples and proof surfaces
 - Technical rigor proof page: `public/technical-rigor-proof.html` maps writing samples to verification commands, generated artifacts, and publication boundaries
 - Dataset manifest: `reports/dataset-manifest.json` with artifact hashes, sizes, source links, and publication boundaries
