@@ -2,6 +2,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { writeAgentSubmissionPack } = require("./agentSubmissionPack");
 const { auditAssetFile } = require("./assetAudit");
 const { writeBuyerSignalPack } = require("./buyerSignalPack");
 const { writeClientReadinessPack } = require("./clientReadinessPack");
@@ -150,6 +151,24 @@ function proofDeskPack(args) {
   console.log(`proofdesk claims: ${result.pack.summary.total_claims}`);
   console.log(`ready claims: ${result.pack.summary.ready_claims}`);
   console.log(`needs human review: ${result.pack.summary.needs_human_review}`);
+  console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
+  console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
+}
+
+function agentSubmissionPack(args) {
+  const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/proofdesk-agent-submission-pack.json"));
+  const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/proofdesk-agent-submission-pack.md"));
+  const generatedAt = argValue(args, "--generated-at", undefined);
+  const publicBaseUrl = argValue(args, "--public-base-url", "https://ooyxloo.github.io/oid-knowledge-lab");
+  const result = writeAgentSubmissionPack({
+    jsonOutFile,
+    markdownOutFile,
+    generatedAt,
+    publicBaseUrl
+  });
+
+  console.log(`agent submission project: ${result.pack.project.name}`);
+  console.log(`proof links: ${result.pack.shared_fields.proof_links.length}`);
   console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
   console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
 }
@@ -693,12 +712,13 @@ async function main() {
   if (command === "media-provenance-pack") return mediaProvenancePack(args);
   if (command === "backblaze-readiness-pack") return backblazeReadinessPack(args);
   if (command === "proofdesk-pack") return proofDeskPack(args);
+  if (command === "agent-submission-pack") return agentSubmissionPack(args);
   if (command === "qwen-agent-demo") return qwenAgentDemo(args);
   if (command === "qwen-submission-pack") return qwenSubmissionPack(args);
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|statement-of-work-pack|decision-one-pager|client-kickoff-pack|buyer-signal-pack|audit-dataset|source-policy|guard-publishable|media-provenance-pack|backblaze-readiness-pack|proofdesk-pack|qwen-agent-demo|qwen-submission-pack|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|statement-of-work-pack|decision-one-pager|client-kickoff-pack|buyer-signal-pack|audit-dataset|source-policy|guard-publishable|media-provenance-pack|backblaze-readiness-pack|proofdesk-pack|agent-submission-pack|qwen-agent-demo|qwen-submission-pack|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

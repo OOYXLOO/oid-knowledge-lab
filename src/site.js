@@ -1738,7 +1738,8 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "direct-client-fit.html",
     "content-backup-pitch-pack.html",
     "proofdesk-slack-workflow.html",
-    "proofdesk-packet-demo.html"
+    "proofdesk-packet-demo.html",
+    "proofdesk-agent-submission-pack.html"
   ];
   for (const file of staticReviewPages) {
     const source = path.join(__dirname, "..", "public", file);

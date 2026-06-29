@@ -4,6 +4,12 @@ const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
 const { analyzeAssetText, buildAssessmentHandoff, renderAssetAuditCsv, renderAssetAuditMarkdown } = require("../src/assetAudit");
+let agentSubmissionPackModule;
+try {
+  agentSubmissionPackModule = require("../src/agentSubmissionPack");
+} catch (error) {
+  agentSubmissionPackModule = { __loadError: error.message };
+}
 const { analyzeCoverage, renderCoverageMarkdown } = require("../src/coverage");
 const { buildClientReadinessPack, renderClientReadinessMarkdown } = require("../src/clientReadinessPack");
 const { buildVerticalUseCasePack, renderVerticalUseCaseMarkdown } = require("../src/verticalUseCasePack");
@@ -2697,6 +2703,68 @@ function testProofDeskPagesArePublicAndBoundarySafe() {
   assert.ok(demo.includes("Nothing is uploaded."));
 }
 
+function testAgentSubmissionPackBuildsHackathonFields() {
+  assert.equal(agentSubmissionPackModule.__loadError, undefined, agentSubmissionPackModule.__loadError);
+  const { buildAgentSubmissionPack, renderAgentSubmissionMarkdown } = agentSubmissionPackModule;
+  const pack = buildAgentSubmissionPack({
+    generatedAt: "2026-06-30T00:00:00.000Z",
+    publicBaseUrl: "https://ooyxloo.github.io/oid-knowledge-lab"
+  });
+
+  assert.equal(pack.schema_version, "agent-submission-pack/v1");
+  assert.equal(pack.project.name, "ProofDesk");
+  assert.ok(pack.shared_fields.what_it_does.includes("proof packets"));
+  assert.ok(pack.slack_agent_builder.future_slack_commands.includes("/proofdesk packet"));
+  assert.ok(pack.google_rapid_agent.agent_behavior.some((item) => item.includes("Classify")));
+  assert.ok(pack.shared_fields.proof_links.some((link) => link.url.includes("proofdesk-packet-demo.html")));
+  assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
+  assert.equal(JSON.stringify(pack).includes("D:\\hks"), false);
+
+  const markdown = renderAgentSubmissionMarkdown(pack);
+  assert.ok(markdown.includes("# ProofDesk Agent Submission Pack"));
+  assert.ok(markdown.includes("## Slack Agent Builder Fit"));
+  assert.ok(markdown.includes("## Google Rapid Agent Fit"));
+  assert.ok(markdown.includes("Interactive ProofDesk packet demo"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+}
+
+function testAgentSubmissionPackWritesPublicSafeFiles() {
+  assert.equal(agentSubmissionPackModule.__loadError, undefined, agentSubmissionPackModule.__loadError);
+  const { writeAgentSubmissionPack } = agentSubmissionPackModule;
+  const outDir = "C:\\Users\\YXL\\.codex\\tmp\\oid-knowledge-lab-test-agent-submission";
+  fs.rmSync(outDir, { recursive: true, force: true });
+  fs.mkdirSync(outDir, { recursive: true });
+
+  const result = writeAgentSubmissionPack({
+    jsonOutFile: path.join(outDir, "agent-submission-pack.json"),
+    markdownOutFile: path.join(outDir, "agent-submission-pack.md"),
+    generatedAt: "2026-06-30T00:00:00.000Z",
+    publicBaseUrl: "https://ooyxloo.github.io/oid-knowledge-lab"
+  });
+
+  assert.equal(result.pack.project.name, "ProofDesk");
+  for (const file of ["agent-submission-pack.json", "agent-submission-pack.md"]) {
+    const text = fs.readFileSync(path.join(outDir, file), "utf8");
+    assert.ok(text.includes("ProofDesk"));
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("D:\\hks"), false);
+  }
+}
+
+function testProofDeskAgentSubmissionPageIsPublicAndBoundarySafe() {
+  const page = fs.readFileSync(path.join(ROOT, "public", "proofdesk-agent-submission-pack.html"), "utf8");
+  assert.ok(page.includes("ProofDesk Agent Submission Pack"));
+  assert.ok(page.includes("Open generated pack"));
+  assert.ok(page.includes("Open interactive demo"));
+  assert.ok(page.includes("Slack"));
+  assert.ok(page.includes("Final approval stays with a human reviewer"));
+  assert.equal(page.includes("money" + "-goal"), false);
+  assert.equal(page.includes("USD " + "200"), false);
+  assert.equal(page.includes("D:\\hks"), false);
+}
+
 async function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -2772,6 +2840,9 @@ async function main() {
   testProofDeskPackBuildsReviewHandoff();
   testProofDeskPackWritesPublicSafeFiles();
   testProofDeskPagesArePublicAndBoundarySafe();
+  testAgentSubmissionPackBuildsHackathonFields();
+  testAgentSubmissionPackWritesPublicSafeFiles();
+  testProofDeskAgentSubmissionPageIsPublicAndBoundarySafe();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }

@@ -1,0 +1,71 @@
+{
+  "schema_version": "agent-submission-pack/v1",
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "project": {
+    "name": "ProofDesk",
+    "tagline": "Turn review claims into source-aware proof packets.",
+    "elevator_pitch": "ProofDesk helps teams turn public or sanitized review claims into source-aware proof packets with evidence links, blocker status, human gates, and a Slack-ready handoff.",
+    "audience": "developer relations teams, documentation teams, launch teams, open-source maintainers, and hackathon teams"
+  },
+  "shared_fields": {
+    "what_it_does": "ProofDesk accepts a public artifact URL or sanitized claim list, normalizes each claim, separates ready items from human-gated items, and generates Markdown plus JSON proof packets that can be shared in review threads.",
+    "inspiration": "Review threads often stall because links, blockers, and final approval notes are scattered. ProofDesk turns that thread into a small packet that a human can inspect quickly.",
+    "how_it_is_built": "The current demo is a dependency-light JavaScript and static HTML workflow. It includes a Node.js packet generator for repeatable reports and a browser-only interactive page for local claim editing and packet export.",
+    "privacy_boundary": "ProofDesk is designed for public or sanitized inputs. It should not collect credentials, tokens, cookies, private exports, private customer data, payment data, identity records, or raw third-party page bodies.",
+    "demo_script": [
+      "Open the ProofDesk packet demo.",
+      "Review the sample claim JSON.",
+      "Add or edit a claim with a public artifact URL.",
+      "Generate a proof packet in the browser.",
+      "Copy Markdown or download JSON.",
+      "Show how ready claims and human-gated claims stay separate."
+    ],
+    "proof_links": [
+      {
+        "label": "Interactive ProofDesk packet demo",
+        "url": "https://ooyxloo.github.io/oid-knowledge-lab/proofdesk-packet-demo.html"
+      },
+      {
+        "label": "ProofDesk workflow brief",
+        "url": "https://ooyxloo.github.io/oid-knowledge-lab/proofdesk-slack-workflow.html"
+      },
+      {
+        "label": "Generated proof packet",
+        "url": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/proofdesk-pack.md"
+      },
+      {
+        "label": "Source repository",
+        "url": "https://github.com/OOYXLOO/oid-knowledge-lab"
+      }
+    ]
+  },
+  "slack_agent_builder": {
+    "fit": "Slack review threads are a natural surface for ProofDesk because the final handoff is already concise, status-oriented, and human-reviewed.",
+    "agent_behavior": [
+      "Read a public URL or pasted claim from a thread.",
+      "Ask for missing source or approval context when evidence is weak.",
+      "Generate a proof packet summary.",
+      "Post a short status message with blockers and next actions."
+    ],
+    "future_slack_commands": [
+      "/proofdesk add <url>",
+      "/proofdesk packet",
+      "/proofdesk blockers",
+      "/proofdesk export"
+    ]
+  },
+  "google_rapid_agent": {
+    "fit": "ProofDesk can be adapted as an agent that turns public artifact claims into auditable packets and routes human approval gates.",
+    "agent_behavior": [
+      "Classify artifact claims.",
+      "Check evidence link completeness.",
+      "Summarize blockers and human gates.",
+      "Produce structured JSON and Markdown for downstream review."
+    ]
+  },
+  "boundaries": [
+    "Use public or sanitized inputs only.",
+    "Keep final approval with a human reviewer.",
+    "Do not imply live third-party integrations until they are implemented and verified."
+  ]
+}
