@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ProofDesk Packet Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <p class="eyebrow">ProofDesk runnable packet</p>
+      <h1>Turn review claims into a source-aware proof packet.</h1>
+      <p class="lede">This demo shows the packet shape a Slack or agent workflow can produce from public artifact claims: status, blockers, evidence links, and a human-ready handoff.</p>
+      <div class="hero-actions">
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/proofdesk-pack.md">Open generated packet</a>
+        <a href="proofdesk-slack-workflow.html">Open workflow brief</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Packet summary</p>
+      <h2>Review-ready claims and gated claims stay separate</h2>
+      <table class="handoff-table">
+        <thead>
+          <tr><th>Claim</th><th>Status</th><th>Next action</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Media Provenance Studio launch packet</td><td>ready</td><td>Review the packet summary and approve the handoff.</td></tr>
+          <tr><td>Backblaze readiness packet</td><td>needs_human_review</td><td>Resolve live storage and submission gates before final claims.</td></tr>
+          <tr><td>OID assessment sample handoff</td><td>ready</td><td>Review the packet summary and approve the handoff.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Agent handoff</p>
+      <h2>Slack-style summary</h2>
+      <pre class="audit-handoff is-visible">[ready] Media Provenance Studio launch packet - Review the packet summary and approve the handoff.
+[needs_human_review] Backblaze readiness packet - Resolve blocker: Connect a real Backblaze B2 bucket before claiming live storage.
+[ready] OID assessment sample handoff - Review the packet summary and approve the handoff.</pre>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Boundary</p>
+      <h2>Public or sanitized inputs only</h2>
+      <p class="panel-copy">The packet generator is designed for public artifact URLs and sanitized review claims. It should not request credentials, tokens, cookies, private exports, private customer data, payment data, identity records, or raw third-party page bodies.</p>
+    </section>
+  </main>
+</body>
+</html>
+
