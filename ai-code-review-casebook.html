@@ -90,6 +90,23 @@ Residual risk:
 
     <section class="panel">
       <div>
+        <p class="eyebrow">Open-source fix case</p>
+        <h2>typeorm_normalize_where_defaults</h2>
+        <p class="panel-copy">This public issue traces a default-behavior bug in <code>OrmUtils.normalizeWhereCriteria</code>. The local fix removes an early return so the existing <code>?? "throw"</code> defaults apply to <code>null</code> and <code>undefined</code> where values, then adds focused unit coverage for default and configured behavior.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Artifact</th><th>Link or check</th><th>What it proves</th></tr></thead>
+        <tbody>
+          <tr><td>Public issue</td><td><a href="https://github.com/typeorm/typeorm/issues/12578">typeorm/typeorm#12578</a></td><td>Root issue and expected behavior are public and reviewable.</td></tr>
+          <tr><td>Root cause</td><td><code>normalizeWhereCriteria</code> early return</td><td>Default invalid where behavior was bypassed when no explicit options object was provided.</td></tr>
+          <tr><td>Fix shape</td><td>Remove early return, preserve explicit behaviors</td><td>Default <code>null</code> and <code>undefined</code> now reach existing <code>?? "throw"</code> fallback logic.</td></tr>
+          <tr><td>Validation</td><td><code>18 passing</code></td><td>Targeted compiled unit test passed after typecheck, compile, Prettier, and diff checks.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
         <p class="eyebrow">Boundary</p>
         <h2>Public and account-safe</h2>
       </div>
