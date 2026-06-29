@@ -1696,6 +1696,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "airbyte-reviewer-hub.html",
     "civo-reviewer-hub.html",
     "directus-reviewer-hub.html",
+    "appsmith-oid-reviewer-hub.html",
     "signoz-reviewer-hub.html",
     "appsignal-reviewer-hub.html",
     "vultr-creator-reviewer-hub.html",

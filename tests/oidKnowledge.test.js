@@ -1813,6 +1813,31 @@ function testPhpDeploymentEvidenceChecklistIsLinkedAndBoundarySafe() {
   assert.ok(page.includes("amezmo-php-deployment-evidence-checklist.md"));
 }
 
+function testAppsmithOidReviewerHubIsPublicAndBoundarySafe() {
+  const files = [
+    "docs/articles/appsmith-oid-review-app-one-pager.md",
+    "public/appsmith-oid-reviewer-hub.html",
+    "public/writing-samples.html",
+    "README.md"
+  ];
+
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("Appsmith"), `${file} should include Appsmith positioning`);
+    assert.ok(text.includes("OID"), `${file} should include OID positioning`);
+    assert.ok(text.includes("review") || text.includes("Review"), `${file} should include review workflow positioning`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+  }
+
+  const page = fs.readFileSync(path.join(ROOT, "public/appsmith-oid-reviewer-hub.html"), "utf8");
+  assert.ok(page.includes("Table"));
+  assert.ok(page.includes("JSObject"));
+  assert.ok(page.includes("Markdown handoff"));
+  assert.ok(page.includes("appsmith-oid-review-app-one-pager.md"));
+}
+
 function testPaidWritingApplicationDeskIsPublicAndBoundarySafe() {
   const files = [
     "docs/articles/README.md",
@@ -2462,6 +2487,7 @@ async function main() {
   testUnleashContinuousDeliveryPacketIsLinkedAndBoundarySafe();
   testHoneybadgerDebuggingPacketIsLinkedAndBoundarySafe();
   testPhpDeploymentEvidenceChecklistIsLinkedAndBoundarySafe();
+  testAppsmithOidReviewerHubIsPublicAndBoundarySafe();
   testPaidWritingApplicationDeskIsPublicAndBoundarySafe();
   testBackupPitchPackIsPublicAndBoundarySafe();
   testPublicEditorPitchPackHasFieldReadyCopy();

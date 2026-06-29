@@ -18,6 +18,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Honeybadger debugging packet: <https://ooyxloo.github.io/oid-knowledge-lab/honeybadger-debugging-one-link.html>
 - OID portfolio risk console: <https://ooyxloo.github.io/oid-knowledge-lab/oid-portfolio-risk-console.html>
 - Hasura reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/hasura-reviewer-hub.html>
+- Appsmith OID reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/appsmith-oid-reviewer-hub.html>
 
 ## Current Publishable Snapshot
 
