@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Media Ledger Sidecar Proof - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Media Ledger Studio proof</p>
+      <h1>Generated media objects need paired metadata sidecars.</h1>
+      <p class="summary">This public proof page shows the storage handoff shape used by Media Ledger Studio: each generated image, video, or audio asset has a Backblaze B2-shaped object record and a JSON sidecar key that can travel with the final media file.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="challenge-readiness-hub.html">Challenge hub</a>
+        <a href="media-provenance-studio.html">Media provenance studio</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio">Source snapshot</a>
+        <a href="https://media-ledger-studio-static.vercel.app">Live app</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Media sidecar summary">
+      <article><span>Assets</span><strong>3</strong><small>Image, video, audio</small></article>
+      <article><span>Sidecars</span><strong>3</strong><small>One JSON sidecar per object</small></article>
+      <article><span>Storage</span><strong>B2-shaped</strong><small>Bucket, key, bytes, checksum</small></article>
+      <article><span>Review</span><strong>Human</strong><small>Decision and safety notes preserved</small></article>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Storage handoff</p>
+      <h2>Object and sidecar pairs</h2>
+      <table class="handoff-table">
+        <thead><tr><th>Run</th><th>Media object</th><th>Metadata sidecar</th><th>Review decision</th></tr></thead>
+        <tbody>
+          <tr><td>run-cover-001</td><td>projects/editorial-cover/run-cover-001/final.png</td><td>projects/editorial-cover/run-cover-001/final.png.metadata.json</td><td>Approved with metadata note</td></tr>
+          <tr><td>run-storyboard-014</td><td>projects/launch-storyboard/run-storyboard-014/storyboard.webm</td><td>projects/launch-storyboard/run-storyboard-014/storyboard.webm.metadata.json</td><td>Hold</td></tr>
+          <tr><td>run-audio-006</td><td>projects/audio-bed/run-audio-006/loop.wav</td><td>projects/audio-bed/run-audio-006/loop.wav.metadata.json</td><td>Archive candidate</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Sidecar body</p>
+      <h2>What the sidecar preserves</h2>
+      <table class="handoff-table">
+        <thead><tr><th>Field</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>objectKey</td><td>Connects the metadata record to the final media object.</td></tr>
+          <tr><td>checksumSha256</td><td>Lets reviewers verify that the reviewed asset is the same stored asset.</td></tr>
+          <tr><td>provider / model / seed</td><td>Keeps generation provenance available after storage handoff.</td></tr>
+          <tr><td>license</td><td>Shows whether the output is production-ready or still needs a rights check.</td></tr>
+          <tr><td>reviewDecision / safetyNotes</td><td>Preserves the human review outcome beside the media object.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Verification</p>
+      <h2>Where to inspect the implementation</h2>
+      <p class="panel-copy">The source snapshot includes the manifest generator, tests, submission pack export, static UI, and audit script. The live adapter can later upload each media object and its sidecar record to a real B2 bucket without changing the reviewer-facing ledger shape.</p>
+      <table class="handoff-table">
+        <thead><tr><th>Artifact</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>Source snapshot</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio">Open GitHub folder</a></td></tr>
+          <tr><td>Submission pack</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/media-ledger-studio/docs/submission-pack.md">Open generated pack</a></td></tr>
+          <tr><td>Devpost fields</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/media-ledger-studio/docs/devpost-field-pack.md">Open field pack</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
