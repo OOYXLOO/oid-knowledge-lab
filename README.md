@@ -19,6 +19,7 @@ The current source adapter targets public OID-base pages through the site's site
 - OID portfolio risk console: <https://ooyxloo.github.io/oid-knowledge-lab/oid-portfolio-risk-console.html>
 - OID Intelligence Lab product brief: <https://ooyxloo.github.io/oid-knowledge-lab/oid-intelligence-lab.html>
 - Media Provenance Studio product brief: <https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-studio.html>
+- Media Provenance tutorial proposal: <https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-tutorial-proposal.html>
 - OpenTrain AI systems and code evaluation packet: <https://ooyxloo.github.io/oid-knowledge-lab/opentrain-ai-code-evaluation-one-link.html>
 - Hasura reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/hasura-reviewer-hub.html>
 - Appsmith OID reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/appsmith-oid-reviewer-hub.html>
