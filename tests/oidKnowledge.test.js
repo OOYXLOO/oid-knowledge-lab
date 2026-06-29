@@ -1807,6 +1807,9 @@ function testPhpDeploymentEvidenceChecklistIsLinkedAndBoundarySafe() {
   assert.ok(page.includes("composer validate --strict"));
   assert.ok(page.includes("php artisan migrate --pretend"));
   assert.ok(page.includes("Rollback"));
+  assert.ok(page.includes("Screenshot storyboard"));
+  assert.ok(page.includes("Pre-flight terminal"));
+  assert.ok(page.includes("Post-release checks"));
   assert.ok(page.includes("amezmo-php-deployment-evidence-checklist.md"));
 }
 

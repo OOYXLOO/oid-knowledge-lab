@@ -130,6 +130,16 @@ Decision deadline:
 
 If a migration is not safely reversible, mark it clearly. The release can still proceed, but reviewers should know that rollback means a forward fix rather than a simple revert.
 
+## Screenshot Storyboard
+
+A finished tutorial should include original screenshots created from a clean demo app. The screenshots should explain the workflow without exposing private systems:
+
+1. Pre-flight terminal: Composer validation, dependency install mode, cached config, route cache, and migration dry-run output.
+2. Deployment evidence log: a sanitized Markdown checklist showing revision, target, migration result, worker restart, health check, and rollback owner.
+3. Post-release checks: health endpoint, failed jobs, and recent log window with secrets redacted and only the operational signal visible.
+
+Do not use private customer consoles, real production logs, account screenshots, payment screens, identity records, or copied third-party images.
+
 ## Privacy Boundary
 
 Deployment evidence should not include:
