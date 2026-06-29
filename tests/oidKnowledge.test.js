@@ -2686,6 +2686,15 @@ function testProofDeskPagesArePublicAndBoundarySafe() {
     assert.equal(text.includes("USD " + "200"), false);
     assert.equal(text.includes("D:\\hks"), false);
   }
+
+  const demo = fs.readFileSync(path.join(ROOT, "public", "proofdesk-packet-demo.html"), "utf8");
+  assert.ok(demo.includes("proofdesk-input"));
+  assert.ok(demo.includes("proofdesk-run"));
+  assert.ok(demo.includes("proofdesk-copy"));
+  assert.ok(demo.includes("proofdesk-download"));
+  assert.ok(demo.includes("function buildPacket"));
+  assert.ok(demo.includes("Packet generated in this browser."));
+  assert.ok(demo.includes("Nothing is uploaded."));
 }
 
 async function main() {
