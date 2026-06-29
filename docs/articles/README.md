@@ -61,6 +61,24 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/editor-pitch-pack.md
 ```
 
+### Release guard for static artifacts
+
+Path: `docs/articles/release-guard-static-artifacts.md`
+
+Best for editors and DevOps readers interested in:
+
+- CI/CD release gates for generated static sites,
+- manifest-driven publication checks,
+- clean worktree and required-file guards,
+- post-deploy public smoke checks,
+- and no-secret boundaries for public reviewer packets.
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/release-guard-static-artifacts.md
+```
+
 ### Editor decision brief
 
 Path: `docs/articles/editor-decision-brief.md`
