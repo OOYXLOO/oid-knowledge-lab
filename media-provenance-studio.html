@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Media Provenance Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .studio-hero {
+      display: grid;
+      gap: 16px;
+      padding: 34px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .studio-hero h1 {
+      max-width: 880px;
+    }
+
+    .studio-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 18px;
+      align-items: start;
+      margin: 24px 0;
+    }
+
+    .asset-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .asset-table th,
+    .asset-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    .asset-table th {
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 9px;
+      border-radius: 999px;
+      background: #eef6f8;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .tag.warning {
+      background: #fff4e5;
+      color: var(--accent-2);
+    }
+
+    .delivery-panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .delivery-panel ul {
+      padding-left: 20px;
+      line-height: 1.7;
+    }
+
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .workflow article {
+      min-height: 132px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .workflow strong {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 860px) {
+      .studio-grid,
+      .workflow {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="studio-hero">
+      <p class="eyebrow">Generated media review workspace</p>
+      <h1>Media Provenance Studio turns AI-generated assets into a reviewable delivery ledger.</h1>
+      <p class="summary">Creative and technical teams can register generated images, clips, diagrams, and campaign assets with prompt summaries, model notes, storage references, license boundaries, reviewer status, and final fingerprints before sharing them with a client or editor.</p>
+      <div class="links">
+        <a href="oid-intelligence-lab.html">OID Intelligence Lab</a>
+        <a href="opentrain-ai-code-evaluation-one-link.html">AI evaluation packet</a>
+        <a href="writing-samples.html">Writing samples</a>
+      </div>
+    </section>
+
+    <section class="workflow" aria-label="Workflow">
+      <article>
+        <strong>1. Register</strong>
+        <p>Capture the asset name, media type, storage URL, creator note, model family, and prompt summary.</p>
+      </article>
+      <article>
+        <strong>2. Fingerprint</strong>
+        <p>Record a stable hash or delivery reference for the approved file instead of relying on filenames.</p>
+      </article>
+      <article>
+        <strong>3. Review</strong>
+        <p>Mark each asset as draft, review, approved, rejected, or archived with a short boundary note.</p>
+      </article>
+      <article>
+        <strong>4. Package</strong>
+        <p>Export a compact handoff sheet with approved assets, unresolved risks, and source notes.</p>
+      </article>
+      <article>
+        <strong>5. Reuse</strong>
+        <p>Keep a clean asset ledger for future ads, docs, short videos, and product pages.</p>
+      </article>
+    </section>
+
+    <section class="studio-grid">
+      <div>
+        <h2>Sample Asset Ledger</h2>
+        <table class="asset-table">
+          <thead>
+            <tr>
+              <th>Asset</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Evidence Note</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>OID Intelligence explainer cover</td>
+              <td>Image</td>
+              <td><span class="tag">Approved</span></td>
+              <td>Prompt summary, model note, storage reference, and final hash are ready for delivery.</td>
+            </tr>
+            <tr>
+              <td>Registry review short ad</td>
+              <td>Video</td>
+              <td><span class="tag warning">Review</span></td>
+              <td>Needs final caption proof and license note before it can be shared outside the team.</td>
+            </tr>
+            <tr>
+              <td>Product architecture diagram</td>
+              <td>Diagram</td>
+              <td><span class="tag">Approved</span></td>
+              <td>Public-source boundaries and generated-asset note are included in the handoff.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="delivery-panel">
+        <h2>Delivery Summary</h2>
+        <p class="summary">The first demo scope stays browser-only and local-first. Cloud storage can be added as an adapter once the project owner connects an account.</p>
+        <ul>
+          <li>3 sample asset records</li>
+          <li>2 approved delivery candidates</li>
+          <li>1 unresolved review item</li>
+          <li>JSON and Markdown handoff format planned</li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
