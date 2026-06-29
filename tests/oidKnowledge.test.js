@@ -2569,6 +2569,30 @@ function testBackblazeReadinessPackDocumentsCloudGate() {
   assert.equal(markdown.includes("USD " + "200"), false);
 }
 
+function testBackblazeReadinessPageIsPublicAndBoundarySafe() {
+  const page = fs.readFileSync(path.join(ROOT, "public", "backblaze-readiness-pack.html"), "utf8");
+  const linkSources = [
+    "public/media-provenance-studio.html",
+    "README.md"
+  ];
+
+  assert.ok(page.includes("Backblaze Generative Media Readiness Pack"));
+  assert.ok(page.includes("Media Provenance Studio"));
+  assert.ok(page.includes("prototype_without_live_b2_credentials"));
+  assert.ok(page.includes("Backblaze B2"));
+  assert.ok(page.includes("Genblaze"));
+  assert.ok(page.includes("reports/backblaze-readiness-pack.md"));
+  assert.ok(page.includes("reports/media-provenance-pack.md"));
+  assert.equal(page.includes("money" + "-goal"), false);
+  assert.equal(page.includes("USD " + "200"), false);
+  assert.equal(page.includes("D:\\hks"), false);
+
+  for (const file of linkSources) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("backblaze-readiness-pack.html"), `${file} should link the Backblaze readiness page`);
+  }
+}
+
 async function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -2640,6 +2664,7 @@ async function main() {
   testMediaProvenancePackBuildsDeliveryArtifacts();
   testMediaProvenancePackWritesPublicSafeFiles();
   testBackblazeReadinessPackDocumentsCloudGate();
+  testBackblazeReadinessPageIsPublicAndBoundarySafe();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }

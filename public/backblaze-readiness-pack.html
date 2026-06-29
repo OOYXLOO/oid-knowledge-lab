@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Backblaze Generative Media Readiness Pack</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .readiness-hero {
+      display: grid;
+      gap: 16px;
+      padding: 34px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .readiness-hero h1 {
+      max-width: 900px;
+    }
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .status-grid article,
+    .readiness-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 18px;
+    }
+
+    .status-grid span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .status-grid strong {
+      display: block;
+      margin-top: 10px;
+      font-size: 1.4rem;
+    }
+
+    .readiness-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.48fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .readiness-panel li {
+      margin: 9px 0;
+      line-height: 1.55;
+    }
+
+    .proof-links {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .proof-links a {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfdfe;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .status-grid,
+      .readiness-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="readiness-hero">
+      <p class="eyebrow">Hackathon readiness</p>
+      <h1>Backblaze Generative Media Readiness Pack for Media Provenance Studio.</h1>
+      <p class="summary">Media Provenance Studio is a generated-media delivery ledger for prompt notes, model notes, B2-ready storage references, review status, and final hashes. This page records the current prototype boundary before any live Backblaze B2 or Genblaze submission.</p>
+      <div class="links">
+        <a href="media-provenance-studio.html">Interactive demo</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/backblaze-readiness-pack.md">Readiness report</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/media-provenance-pack.md">Delivery report</a>
+      </div>
+    </section>
+
+    <section class="status-grid" aria-label="Readiness metrics">
+      <article>
+        <span>Cloud status</span>
+        <strong>prototype_without_live_b2_credentials</strong>
+      </article>
+      <article>
+        <span>Total assets</span>
+        <strong>3</strong>
+      </article>
+      <article>
+        <span>Approved</span>
+        <strong>2</strong>
+      </article>
+      <article>
+        <span>Review required</span>
+        <strong>1</strong>
+      </article>
+    </section>
+
+    <section class="readiness-grid">
+      <article class="readiness-panel">
+        <h2>Submission Pitch</h2>
+        <p>Media Provenance Studio helps teams turn AI-generated images, diagrams, audio, and video into a reviewable delivery ledger with prompt notes, model notes, B2-ready storage references, review status, and final hashes.</p>
+
+        <h2>Backblaze / Genblaze Boundary</h2>
+        <p>The current prototype uses B2-style storage references and is prepared for a real Backblaze B2 bucket integration once account credentials are available. Genblaze details are represented as model notes and generation evidence fields.</p>
+
+        <h2>Required Gates Before Final Submission</h2>
+        <ul>
+          <li>Connect a real Backblaze B2 account before claiming live B2 storage.</li>
+          <li>Record Genblaze-generated asset details before final Devpost submission.</li>
+          <li>Avoid uploading private customer files or credentials.</li>
+        </ul>
+      </article>
+
+      <aside class="readiness-panel">
+        <h2>Built With</h2>
+        <ul>
+          <li>JavaScript</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>Backblaze B2-ready storage references</li>
+          <li>Genblaze-ready generation evidence fields</li>
+        </ul>
+
+        <h2>Proof Links</h2>
+        <ul class="proof-links">
+          <li><a href="media-provenance-studio.html">Interactive demo</a></li>
+          <li><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/backblaze-readiness-pack.md">reports/backblaze-readiness-pack.md</a></li>
+          <li><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/media-provenance-pack.md">reports/media-provenance-pack.md</a></li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
