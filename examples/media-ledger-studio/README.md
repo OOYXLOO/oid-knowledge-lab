@@ -19,6 +19,7 @@ Demo MP4: `public/media-ledger-studio-demo.mp4`
 ## Review Materials
 
 - Devpost field pack: `docs/devpost-field-pack.md`
+- Reviewer quickstart: `docs/reviewer-quickstart.md`
 - Demo video script: `docs/demo-video-script.md`
 - Demo video file: `public/media-ledger-studio-demo.mp4`
 - Public verification checklist: `docs/public-verification.md`
