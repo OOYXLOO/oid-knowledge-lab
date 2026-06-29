@@ -179,6 +179,30 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/reviewer-readiness-one-link.md
 ```
 
+### MonoGame networking bounty application pack
+
+Path: `docs/articles/monogame-networking-bounty-application-pack.md`
+
+Best for bounty reviewers interested in:
+
+- a focused tutorial scope,
+- a proposed schedule,
+- public proof links,
+- beginner-friendly networking and leaderboard boundaries,
+- and an honest separation between a tutorial sample and production multiplayer systems.
+
+Public page:
+
+```text
+https://oid-knowledge-lab.vercel.app/monogame-networking-bounty-application.html
+```
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/monogame-networking-bounty-application-pack.md
+```
+
 ### Tuts+ and TestDriven.io backup pitch pack
 
 Path: `docs/articles/sitepoint-testdriven-backup-pitch-pack.md`

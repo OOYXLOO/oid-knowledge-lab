@@ -70,6 +70,12 @@ function renderEditorReviewPathPanel() {
       </div>
       <div class="review-grid">
         <article>
+          <span>MonoGame bounty</span>
+          <strong>Networking tutorial application pack</strong>
+          <p>Focused public packet for a beginner-friendly MonoGame 2D networking and leaderboard tutorial application with scope, schedule, and proof links.</p>
+          <a href="monogame-networking-bounty-application.html">Open MonoGame packet</a>
+        </article>
+        <article>
           <span>Reviewer readiness</span>
           <strong>One-link application packet</strong>
           <p>Compact entry point for editor, AI evaluator, code-reviewer, and developer-writing reviewers who need proof links, method, and a small trial shape.</p>
@@ -1686,6 +1692,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "paid-writing-editor-brief.html",
     "code-reviewer-portfolio.html",
     "reviewer-readiness-one-link.html",
+    "monogame-networking-bounty-application.html",
     "alignerr-python-one-link.html",
     "mindrift-code-one-link.html",
     "ai-evaluator-unified-application-desk.html",
