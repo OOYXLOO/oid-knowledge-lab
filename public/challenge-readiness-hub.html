@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Challenge Readiness Hub - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Challenge readiness hub</p>
+      <h1>Public proof packets for agent, review, and media provenance challenges.</h1>
+      <p class="summary">A compact index of reusable demos, evidence packets, and implementation trails for reviewers who need to understand what has been built, what is simulated, and what still requires live platform credentials.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="proofdesk-packet-demo.html">ProofDesk demo</a>
+        <a href="communication-review-handoff.html">Communication handoff</a>
+        <a href="review-log-agent-hub.html">Review Log Agent</a>
+        <a href="media-provenance-studio.html">Media provenance</a>
+        <a href="qwen-autopilot-agent-one-link.html">Qwen agent packet</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Challenge readiness summary">
+      <article><span>Assets</span><strong>Public</strong><small>Static demos and source-linked packets</small></article>
+      <article><span>Scope</span><strong>Review</strong><small>Agents, evidence logs, media provenance</small></article>
+      <article><span>Boundary</span><strong>Clear</strong><small>Simulated vs live-platform work marked separately</small></article>
+      <article><span>Handoff</span><strong>Reusable</strong><small>Reviewer pages, reports, and GitHub trail</small></article>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Readiness map</p>
+      <h2>Current public challenge assets</h2>
+      <table class="handoff-table">
+        <thead><tr><th>Track</th><th>Public asset</th><th>Reviewer should inspect</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Agent review workflow</td>
+            <td><a href="review-log-agent-hub.html">Review Log Agent hub</a></td>
+            <td>Conversation-to-evidence-log flow, blocker extraction, handoff summary, and playground behavior.</td>
+          </tr>
+          <tr>
+            <td>Communication handoff</td>
+            <td><a href="communication-review-handoff.html">Communication review handoff</a></td>
+            <td>How a notification workflow can send only a public packet URL and avoid putting private data in the message body.</td>
+          </tr>
+          <tr>
+            <td>Media provenance</td>
+            <td><a href="media-provenance-studio.html">Media Provenance Studio</a></td>
+            <td>Asset records, review status, model notes, provenance fields, and exportable handoff material.</td>
+          </tr>
+          <tr>
+            <td>Qwen/OID agent packet</td>
+            <td><a href="qwen-autopilot-agent-one-link.html">Qwen autopilot agent packet</a></td>
+            <td>Agent architecture, public OID corpus handling, and explicit separation between public demo proof and live model credentials.</td>
+          </tr>
+          <tr>
+            <td>Evidence packet core</td>
+            <td><a href="proofdesk-packet-demo.html">ProofDesk packet demo</a></td>
+            <td>Browser-local packet generation, blockers, evidence links, Markdown export, and command simulation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Boundary notes</p>
+      <h2>What is live, simulated, or gated</h2>
+      <table class="handoff-table">
+        <thead><tr><th>Area</th><th>Status</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td>Static demos</td><td>Live</td><td>The pages are public, browser-readable, and require no login.</td></tr>
+          <tr><td>Generated reports</td><td>Live</td><td>Reports and proof packets are generated from local examples and checked by repository scripts.</td></tr>
+          <tr><td>Slack app behavior</td><td>Simulated until workspace setup</td><td>The review workflow can be demonstrated without reading private Slack messages or storing workspace data.</td></tr>
+          <tr><td>Backblaze storage adapter</td><td>Gated until account credentials exist</td><td>The public prototype avoids embedding provider keys or private bucket data.</td></tr>
+          <tr><td>Qwen/DashScope live run</td><td>Gated until an API key is provided</td><td>The project should not claim live model execution without real run evidence.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Source hygiene</p>
+      <h2>Reviewers can verify the public boundary</h2>
+      <p class="panel-copy">The linked demos are designed around public or sanitized artifacts. They do not require private inboxes, account-local browser storage, cookies, financial records, identity documents, private customer exports, or hidden platform pages.</p>
+    </section>
+  </main>
+</body>
+</html>
