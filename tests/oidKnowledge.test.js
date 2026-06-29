@@ -1736,6 +1736,7 @@ function testEditorAssignmentFitPageIsLinkedAndBoundarySafe() {
   assert.ok(page.includes("Honeybadger"), "assignment fit page should include Honeybadger");
   assert.ok(page.includes("knowledgeowl-one-link.html"), "assignment fit page should link KnowledgeOwl proof");
   assert.ok(page.includes("amezmo-php-deployment-one-link.html"), "assignment fit page should link Amezmo proof");
+  assert.ok(page.includes("honeybadger-debugging-one-link.html"), "assignment fit page should link Honeybadger proof");
   assert.ok(page.includes("writing-samples.html"), "assignment fit page should link writing samples");
   assert.equal(page.includes("money" + "-goal"), false);
   assert.equal(page.includes("USD " + "200"), false);
@@ -1744,6 +1745,25 @@ function testEditorAssignmentFitPageIsLinkedAndBoundarySafe() {
   for (const file of ["public/writing-samples.html", "public/paid-writing-editor-brief.html", "src/site.js", "README.md"]) {
     const text = fs.readFileSync(path.join(ROOT, file), "utf8");
     assert.ok(text.includes("editor-assignment-fit.html"), `${file} should link the assignment fit page`);
+  }
+}
+
+function testHoneybadgerDebuggingPacketIsLinkedAndBoundarySafe() {
+  const page = fs.readFileSync(path.join(ROOT, "public/honeybadger-debugging-one-link.html"), "utf8");
+  assert.ok(page.includes("Reproducible debugging handoffs"), "Honeybadger packet should include debugging positioning");
+  assert.ok(page.includes("Python"), "Honeybadger packet should include Python/backend positioning");
+  assert.ok(page.includes("observability-debugging-handoff-playbook.md"), "Honeybadger packet should link the debugging handoff playbook");
+  assert.ok(page.includes("appsignal-production-integration-debugging-full-draft.md"), "Honeybadger packet should link a long-form debugging draft");
+  assert.ok(page.includes("production-integration-handoff-template.md"), "Honeybadger packet should link the handoff template");
+  assert.ok(page.includes("technical-rigor-proof.html"), "Honeybadger packet should link technical proof");
+  assert.equal(page.includes("money" + "-goal"), false);
+  assert.equal(page.includes("USD " + "200"), false);
+  assert.equal(page.includes("\u8d5a\u94b1"), false);
+  assert.equal(page.includes("D:\\hks"), false);
+
+  for (const file of ["public/editor-assignment-fit.html", "public/writing-samples.html", "public/paid-writing-editor-brief.html", "src/site.js", "README.md"]) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("honeybadger-debugging-one-link.html"), `${file} should link the Honeybadger debugging packet`);
   }
 }
 
@@ -2419,6 +2439,7 @@ async function main() {
   testArticleSampleIndexIncludesRealPythonMiniSample();
   testWritingSamplesPageHasEditorDecisionPanel();
   testEditorAssignmentFitPageIsLinkedAndBoundarySafe();
+  testHoneybadgerDebuggingPacketIsLinkedAndBoundarySafe();
   testPhpDeploymentEvidenceChecklistIsLinkedAndBoundarySafe();
   testPaidWritingApplicationDeskIsPublicAndBoundarySafe();
   testBackupPitchPackIsPublicAndBoundarySafe();
