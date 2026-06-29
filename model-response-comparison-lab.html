@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Model Response Comparison Lab - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Model response comparison</p>
+      <h1>Model Response Comparison Lab</h1>
+      <p class="summary">A public evaluator sample for comparing two generated coding answers with behavior checks, pytest-oriented evidence, a winning answer verdict, and residual risk.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="ai-evaluator-application-packet.html">Application packet</a>
+        <a href="mindrift-code-one-link.html">Mindrift one-link</a>
+        <a href="alignerr-python-one-link.html">Alignerr one-link</a>
+        <a href="ai-code-review-casebook.html">Code review casebook</a>
+        <a href="python-assessment-drill.html">Python assessment drill</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/model-response-comparison-lab.md">Raw Markdown</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Model response comparison metrics">
+      <article><span>Task</span><strong>Compare</strong><small>two answers</small></article>
+      <article><span>Evidence</span><strong>pytest</strong><small>behavior checks</small></article>
+      <article><span>Decision</span><strong>Winner</strong><small>with caveats</small></article>
+      <article><span>Boundary</span><strong>Public</strong><small>No private data</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Prompt</p>
+        <h2>Evaluator task</h2>
+      </div>
+      <pre>Review two generated Python answers for a helper named parse_duration(value).
+The helper should accept strings like "15m", "2h", and "1d" and return seconds.
+It should reject malformed input instead of silently returning a misleading value.</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Candidate A</p>
+        <h2>Plausible but unsafe</h2>
+      </div>
+      <pre>def parse_duration(value):
+    amount = int(value[:-1])
+    unit = value[-1]
+    if unit == "s":
+        return amount
+    if unit == "m":
+        return amount * 60
+    if unit == "h":
+        return amount * 3600
+    return 0</pre>
+      <p class="panel-copy">Candidate A handles common inputs, but it silently returns <code>0</code> for unknown units. That hides invalid input and can make a failed configuration look like an intentional zero-second duration.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Candidate B</p>
+        <h2>Safer behavior boundary</h2>
+      </div>
+      <pre>def parse_duration(value):
+    if not isinstance(value, str) or len(value) < 2:
+        raise ValueError("duration must be a string like '15m'")
+    unit = value[-1]
+    amount_text = value[:-1]
+    if not amount_text.isdigit():
+        raise ValueError("duration amount must be a non-negative integer")
+    factors = {"s": 1, "m": 60, "h": 3600, "d": 86400}
+    if unit not in factors:
+        raise ValueError(f"unsupported duration unit: {unit}")
+    return int(amount_text) * factors[unit]</pre>
+      <p class="panel-copy">Candidate B makes the supported contract explicit and rejects unsupported inputs. It is easier to test, easier to explain, and safer for model-evaluation work.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Evidence</p>
+        <h2>pytest checks I would add</h2>
+      </div>
+      <pre>import pytest
+
+def test_common_units():
+    assert parse_duration("15m") == 900
+    assert parse_duration("2h") == 7200
+    assert parse_duration("1d") == 86400
+
+@pytest.mark.parametrize("value", ["", "abc", "5w", "-1m", 12, None])
+def test_invalid_values_raise(value):
+    with pytest.raises(ValueError):
+        parse_duration(value)</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Verdict</p>
+        <h2>Winning answer</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Criterion</th><th>Candidate A</th><th>Candidate B</th></tr></thead>
+        <tbody>
+          <tr><td>Normal inputs</td><td>Mostly works</td><td>Works</td></tr>
+          <tr><td>Unknown units</td><td>Silently returns 0</td><td>Raises ValueError</td></tr>
+          <tr><td>Malformed amount</td><td>May raise unclear errors</td><td>Raises explicit ValueError</td></tr>
+          <tr><td>Reviewability</td><td>Hidden failure mode</td><td>Clear contract and tests</td></tr>
+        </tbody>
+      </table>
+      <p class="panel-copy"><strong>Winning answer:</strong> Candidate B. Candidate A should be rejected as written because silent fallback behavior is unsafe. Candidate B is acceptable for the stated contract after focused tests are added.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Residual risk</p>
+        <h2>What remains out of scope</h2>
+      </div>
+      <p class="panel-copy">Residual risk: this helper intentionally supports only whole-number values and the units <code>s</code>, <code>m</code>, <code>h</code>, and <code>d</code>. It does not parse compound durations like <code>1h30m</code>, fractional values, ISO-8601 duration strings, or localized unit names. Those should be handled by a separate parser and test set.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Application use</p>
+        <h2>Why this helps evaluator applications</h2>
+      </div>
+      <div class="decision-strip">
+        <article><span>1</span><strong>Compares answers</strong><p>Shows how to judge two plausible model outputs against behavior instead of wording.</p></article>
+        <article><span>2</span><strong>Adds tests</strong><p>Turns the verdict into pytest checks that another reviewer can run or inspect.</p></article>
+        <article><span>3</span><strong>States risk</strong><p>Keeps the accepted scope and residual limitations explicit.</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Boundary</p>
+        <h2>Public and account-safe</h2>
+      </div>
+      <p class="panel-copy">This sample uses original toy code and public review text. It contains no credentials, private source code, account exports, identity records, payment data, tax records, private platform messages, customer data, or restricted assessment content.</p>
+    </section>
+  </main>
+</body>
+</html>

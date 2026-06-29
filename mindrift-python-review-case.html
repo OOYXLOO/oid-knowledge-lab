@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python Review Case - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Python code review case</p>
+      <h1>Evidence-first review of generated Python</h1>
+      <p class="summary">A compact code-review sample for AI code evaluator work. It shows how a generated solution is checked against behavior, edge cases, tests, corrected implementation quality, and residual risk.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="mindrift-code-reviewer-hub.html">Mindrift reviewer hub</a>
+        <a href="ai-code-evaluator-portfolio.html">AI evaluator portfolio</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python">Runnable Python lab</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Python review case metrics">
+      <article><span>Verdict</span><strong>Revise</strong><small>Not accept as-is</small></article>
+      <article><span>Main risk</span><strong>Parsing</strong><small>Invalid package names</small></article>
+      <article><span>Evidence</span><strong>Tests</strong><small>Boundary inputs</small></article>
+      <article><span>Output</span><strong>Fix</strong><small>Small, explainable</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Task</p>
+        <h2>Generated-code review prompt</h2>
+        <p class="panel-copy">Review a generated Python function that normalizes package names before comparing dependency inventories. The function should accept names such as <code>Requests</code>, <code>my_package.tools</code>, and <code>google-cloud-storage</code>, then return a lowercase normalized name that can be used for matching.</p>
+      </div>
+      <pre>def normalize_package_name(name):
+    return name.strip().lower().replace("_", "-").split(".")[0]</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Verdict</p>
+        <h2>Revise before accepting</h2>
+        <p class="panel-copy">The implementation handles simple casing and underscore normalization, but it silently drops everything after the first dot and accepts malformed values. That can merge distinct internal packages, hide invalid inventory rows, and create false confidence in a dependency audit.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Issue</th><th>Evidence</th><th>Impact</th></tr></thead>
+        <tbody>
+          <tr><td>Drops dotted package segments</td><td><code>my_package.tools</code> becomes <code>my-package</code></td><td>Can match the wrong package family.</td></tr>
+          <tr><td>Accepts empty names</td><td><code>"   "</code> returns an empty string</td><td>Invalid records pass through the review.</td></tr>
+          <tr><td>No character boundary</td><td>Spaces, slashes, and shell-like fragments are not rejected</td><td>Unsafe or malformed inventory data becomes normalized output.</td></tr>
+          <tr><td>No type check</td><td><code>None</code> raises an unclear attribute error</td><td>Reviewer cannot distinguish input contract failure from implementation failure.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Correction</p>
+        <h2>Small corrected implementation</h2>
+      </div>
+      <pre>import re
+
+_PACKAGE_RE = re.compile(r"^[a-z0-9]+(?:[._-][a-z0-9]+)*$", re.IGNORECASE)
+
+def normalize_package_name(name):
+    if not isinstance(name, str):
+        raise TypeError("package name must be a string")
+
+    candidate = name.strip()
+    if not candidate:
+        raise ValueError("package name cannot be empty")
+    if not _PACKAGE_RE.fullmatch(candidate):
+        raise ValueError("package name contains unsupported characters")
+
+    return candidate.lower().replace("_", "-")</pre>
+      <p class="panel-copy">This revision keeps dotted segments instead of silently truncating them, rejects empty and malformed inputs, and returns clear errors for contract violations.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Tests</p>
+        <h2>Focused tests I would add</h2>
+      </div>
+      <pre>def test_normalizes_case_and_underscores():
+    assert normalize_package_name(" Requests_Toolkit ") == "requests-toolkit"
+
+def test_preserves_dotted_segments():
+    assert normalize_package_name("my_package.tools") == "my-package.tools"
+
+def test_rejects_empty_names():
+    with pytest.raises(ValueError):
+        normalize_package_name("   ")
+
+def test_rejects_unsafe_characters():
+    with pytest.raises(ValueError):
+        normalize_package_name("pkg; rm -rf /")
+
+def test_rejects_non_string_input():
+    with pytest.raises(TypeError):
+        normalize_package_name(None)</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Handoff</p>
+        <h2>Evaluator response format</h2>
+      </div>
+      <pre>Verdict: Revise.
+
+Main issues:
+- The generated function drops dotted package segments.
+- It accepts empty or malformed values.
+- It has no explicit input contract for non-string values.
+
+Evidence:
+- "my_package.tools" becomes "my-package", losing ".tools".
+- "   " returns "" instead of failing.
+- "pkg; rm -rf /" is not rejected before normalization.
+
+Suggested fix:
+- Validate type and allowed characters.
+- Reject empty input.
+- Preserve dotted segments and normalize underscores to hyphens.
+
+Tests I would add:
+- Case and underscore normalization.
+- Dotted package preservation.
+- Empty input rejection.
+- Unsafe character rejection.
+- Non-string input rejection.
+
+Residual risk:
+- If the platform needs exact Python packaging semantics, compare this
+  lightweight validator against the packaging library's normalized name rules.</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Boundary</p>
+        <h2>Why this sample is safe to review publicly</h2>
+      </div>
+      <p class="panel-copy">This page uses original sample code and synthetic inputs. It does not include private repositories, credentials, customer data, account exports, payment information, identity documents, or copied third-party assessment content.</p>
+    </section>
+  </main>
+</body>
+</html>

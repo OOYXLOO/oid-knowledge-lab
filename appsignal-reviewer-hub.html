@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AppSignal Reviewer Hub - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">AppSignal reviewer hub</p>
+      <h1>Node.js integration debugging article review path</h1>
+      <p class="summary">A compact editor review page for an AppSignal-oriented article about debugging production integration failures with APM, error tracking, custom metrics, namespaces, and safe handoff templates.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="implementation-authenticity-proof.html">Authenticity proof</a>
+        <a href="technical-rigor-proof.html">Technical proof</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="AppSignal review metrics">
+      <article><span>Topic</span><strong>AppSignal</strong><small>APM and error tracking</small></article>
+      <article><span>Reader</span><strong>Backend/SRE</strong><small>Integration debugging</small></article>
+      <article><span>Signals</span><strong>4</strong><small>APM, errors, metrics, logs</small></article>
+      <article><span>Boundary</span><strong>Safe</strong><small>No private payloads</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Article fit</p>
+        <h2>Proposed tutorial</h2>
+        <p class="panel-copy">The article shows how to turn a vague production report such as "the webhook is broken" into a focused AppSignal investigation. It uses a small Node.js webhook-to-worker flow to connect APM events, error tracking, custom metrics, namespaces, safe correlation fields, and acceptance checks.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Reader question</th><th>Review answer</th></tr></thead>
+        <tbody>
+          <tr><td>Why AppSignal?</td><td>The workflow maps directly to APM for worker paths, error tracking for grouped exceptions, custom metrics for retry and queue behavior, and namespaces for web versus background work.</td></tr>
+          <tr><td>What is built?</td><td>A Node.js integration debugging walkthrough with safe event aliases, AppSignal investigation prompts, custom metric ideas, hypotheses, and a copyable handoff template.</td></tr>
+          <tr><td>What stays out?</td><td>Credentials, API keys, raw cookies, private customer payloads, payment data, account exports, raw production logs, and unnecessary private identifiers.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Open first</p>
+        <h2>Primary review links</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Need</th><th>Link</th><th>What it proves</th></tr></thead>
+        <tbody>
+          <tr><td>Submission brief</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsignal-submission-brief.md">AppSignal submission brief</a></td><td>Audience, article promise, AppSignal fit, outline, implementation depth, and publication boundary.</td></tr>
+          <tr><td>Draft sample</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsignal-production-integration-debugging-full-draft.md">Production integration debugging draft</a></td><td>A long-form sample with APM, error tracking, custom metrics, namespaces, and acceptance checks.</td></tr>
+          <tr><td>Handoff playbook</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/observability-debugging-handoff-playbook.md">Observability debugging handoff playbook</a></td><td>Reusable incident handoff structure for logs, metrics, traces, hypotheses, and fix acceptance.</td></tr>
+          <tr><td>Template</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-handoff-template.md">Production integration handoff template</a></td><td>Copyable, safe fields for API, webhook, queue, and SaaS sync failures.</td></tr>
+          <tr><td>Proof</td><td><a href="implementation-authenticity-proof.html">Implementation authenticity proof</a></td><td>Public trail from code to generated artifacts to editorial samples.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">AppSignal map</p>
+        <h2>Article surface</h2>
+      </div>
+      <div class="decision-strip">
+        <article>
+          <span>APM</span>
+          <strong>Worker path</strong>
+          <p>Use namespaces and operation names to separate web requests from background integration jobs.</p>
+        </article>
+        <article>
+          <span>Error tracking</span>
+          <strong>Exception context</strong>
+          <p>Capture safe class, message, integration name, event alias, and job alias without private payloads.</p>
+        </article>
+        <article>
+          <span>Metrics</span>
+          <strong>Failure shape</strong>
+          <p>Track retry count, queue age, downstream latency, and recovery checks before closing the incident.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Reviewer checklist</p>
+        <h2>What to evaluate</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Area</th><th>Expected evidence</th></tr></thead>
+        <tbody>
+          <tr><td>AppSignal specificity</td><td>APM, error tracking, custom metrics, namespaces, deploy context, and AppSignal-oriented investigation prompts.</td></tr>
+          <tr><td>Operational value</td><td>The article starts from a vague integration failure and shows what to capture before querying dashboards.</td></tr>
+          <tr><td>Publication boundary</td><td>The linked material is a review packet and sample set. A final article should be freshly written for AppSignal's accepted topic and product terminology.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

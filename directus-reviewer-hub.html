@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Directus Reviewer Hub - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Directus reviewer hub</p>
+      <h1>Registry evidence review workflow for Directus</h1>
+      <p class="summary">A compact guest-author review page for a Directus tutorial proposal about turning generated JSON reports into reviewable collections, statuses, permissions, and safe public proof links.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="implementation-authenticity-proof.html">Authenticity proof</a>
+        <a href="technical-rigor-proof.html">Technical proof</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Directus review metrics">
+      <article><span>Topic</span><strong>Directus</strong><small>Data Studio and API tutorial</small></article>
+      <article><span>Reader</span><strong>Builder</strong><small>Internal tools and docs teams</small></article>
+      <article><span>Model</span><strong>3 collections</strong><small>Sources, artifacts, remediation</small></article>
+      <article><span>Boundary</span><strong>Safe</strong><small>No private inputs</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Article fit</p>
+        <h2>Proposed tutorial</h2>
+        <p class="panel-copy">The tutorial shows how a team can import generated evidence reports into Directus, review them through Data Studio, control publication with statuses and permissions, and expose only safe proof links to public readers. It uses OID Knowledge Lab as an implementation-backed sample while keeping raw private inputs and local-only crawl output out of the published package.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Reader question</th><th>Review answer</th></tr></thead>
+        <tbody>
+          <tr><td>Why Directus?</td><td>The workflow needs structured collections, relations, review statuses, permissions, API imports, and editorial visibility over generated evidence.</td></tr>
+          <tr><td>What is built?</td><td>A review hub with evidence sources, review artifacts, remediation items, public proof links, hashes, record counts, and acceptance notes.</td></tr>
+          <tr><td>What stays out?</td><td>Credentials, account exports, customer inventories, private contact exports, API tokens, raw third-party page mirrors, and local-only crawl output.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Open first</p>
+        <h2>Primary review links</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Need</th><th>Link</th><th>What it proves</th></tr></thead>
+        <tbody>
+          <tr><td>One-pager</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-editor-one-pager.md">Directus editor one-pager</a></td><td>Fast topic fit, reader outcome, model outline, and publication boundary.</td></tr>
+          <tr><td>Submission brief</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-submission-brief.md">Directus submission brief</a></td><td>Audience, tutorial promise, collection model, outline, proof links, and fit notes.</td></tr>
+          <tr><td>Draft sample</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-registry-evidence-review-hub-full-draft.md">Registry evidence review hub draft</a></td><td>A long-form sample that demonstrates technical depth, not a final submitted article.</td></tr>
+          <tr><td>Proof</td><td><a href="implementation-authenticity-proof.html">Implementation authenticity proof</a></td><td>Public trail from code to generated artifacts to editorial samples.</td></tr>
+          <tr><td>Working site</td><td><a href="./">OID Knowledge Lab dashboard</a></td><td>Searchable public dashboard, local-only audit surface, and generated reports.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Directus model</p>
+        <h2>Collections and workflow</h2>
+      </div>
+      <div class="decision-strip">
+        <article>
+          <span>Collection</span>
+          <strong>evidence_sources</strong>
+          <p>Public URL, source type, boundary note, last checked time, and source notes for the generated evidence pipeline.</p>
+        </article>
+        <article>
+          <span>Collection</span>
+          <strong>review_artifacts</strong>
+          <p>Artifact type, source relation, hash, record count, publishable flag, review status, public proof link, and acceptance note.</p>
+        </article>
+        <article>
+          <span>Collection</span>
+          <strong>remediation_items</strong>
+          <p>Severity, status, related artifact, owner note, and safe next step for records that need human review before publication.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Reviewer checklist</p>
+        <h2>What to evaluate</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Area</th><th>Expected evidence</th></tr></thead>
+        <tbody>
+          <tr><td>Directus specificity</td><td>Collections, relations, roles and permissions, Data Studio review workflow, API or SDK import path, optional Flow notification.</td></tr>
+          <tr><td>Runnable proof</td><td>Repository scripts cover syntax checks, tests, generated reports, site build, dataset manifest, and publish guard.</td></tr>
+          <tr><td>Editorial boundary</td><td>The linked packet is an application and proof surface. A final article should be freshly written for the assigned Directus topic and budget.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Program fit</p>
+        <h2>Application, not an assignment claim</h2>
+        <p class="panel-copy">This review packet is designed for the Directus guest-author application stage. It does not claim that a tutorial has already been assigned or accepted. If accepted into the program, the outline can be adapted to a Directus-assigned tutorial, budget, and review process before final drafting.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

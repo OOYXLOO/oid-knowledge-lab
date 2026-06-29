@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Peer Code Reviewer Portfolio - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Peer code review portfolio</p>
+      <h1>Evidence-backed code review, test design, and reviewer handoffs</h1>
+      <p class="summary">A compact public portfolio for code-review, AI-code-evaluation, and peer-reviewer applications. It shows how generated or submitted code is treated as an untrusted draft and reviewed with behavior contracts, focused tests, edge-case analysis, and clear verdicts.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="ai-code-review-casebook.html">Code review casebook</a>
+        <a href="python-assessment-drill.html">Python drill</a>
+        <a href="model-response-comparison-lab.html">Model comparison</a>
+        <a href="ai-evaluator-application-packet.html">Evaluator packet</a>
+        <a href="mindrift-code-one-link.html">Mindrift one-link</a>
+        <a href="alignerr-python-one-link.html">Alignerr one-link</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/peer-code-reviewer-portfolio.md">Raw portfolio</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Reviewer portfolio metrics">
+      <article><span>Review mode</span><strong>Evidence</strong><small>tests before verdict</small></article>
+      <article><span>Primary stack</span><strong>Python</strong><small>edge cases and safety</small></article>
+      <article><span>Verdict frame</span><strong>3 states</strong><small>accept / revise / reject</small></article>
+      <article><span>Boundary</span><strong>Public</strong><small>no private data</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Review method</p>
+        <h2>How I evaluate code</h2>
+        <p class="panel-copy">The reviewer workflow is intentionally simple: make the expected behavior explicit, identify risky inputs, add focused tests, compare the implementation against those checks, then explain the verdict and remaining risk.</p>
+      </div>
+      <div class="decision-strip">
+        <article><span>1</span><strong>State the contract</strong><p>Restate expected behavior in plain language before judging the implementation.</p></article>
+        <article><span>2</span><strong>Test the boundaries</strong><p>Cover normal, empty, invalid, malformed, and unsafe inputs with focused checks.</p></article>
+        <article><span>3</span><strong>Explain the verdict</strong><p>Give an accept, revise, or reject decision with evidence and residual risk.</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Proof table</p>
+        <h2>Reusable public evidence</h2>
+        <p class="panel-copy">These links are designed for reviewer applications that allow a portfolio, work sample, or proof URL.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Artifact</th><th>Link</th><th>What it proves</th></tr></thead>
+        <tbody>
+          <tr><td>Code review casebook</td><td><a href="ai-code-review-casebook.html">AI Code Review Casebook</a></td><td>Verdict framing, review answer shape, and evidence-backed handoff.</td></tr>
+          <tr><td>Python drill</td><td><a href="python-assessment-drill.html">Python Assessment Drill</a></td><td>Bug triage, pytest sketch, and reviewer rubric for assessment-style tasks.</td></tr>
+          <tr><td>Model comparison</td><td><a href="model-response-comparison-lab.html">Model Response Comparison Lab</a></td><td>Comparing two generated answers and selecting the safer response.</td></tr>
+          <tr><td>Runnable case</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review">duration_parser_review</a></td><td>Corrected implementation, unit tests, and a review evidence log.</td></tr>
+          <tr><td>Evidence log</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md">duration parser evidence log</a></td><td>Main issue, checks performed, accepted revision, and limitations.</td></tr>
+          <tr><td>Raw portfolio</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/peer-code-reviewer-portfolio.md">peer-code-reviewer-portfolio.md</a></td><td>Plain Markdown version for application forms that prefer raw text.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Sample answer</p>
+        <h2>Reviewer verdict shape</h2>
+      </div>
+      <pre>Verdict:
+The solution should be revised.
+
+Main issue:
+It silently accepts unknown duration units and returns 0, which can hide bad input.
+
+Evidence:
+The existing behavior does not distinguish "5 parsecs" from a valid zero-duration input.
+
+Suggested fix:
+Reject unknown units with an explicit error and add tests for invalid units.
+
+Residual risk:
+The parser still needs a product decision for compound durations such as "1h 30m".</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Public boundary</p>
+        <h2>Safe to review without private context</h2>
+      </div>
+      <p class="panel-copy">The examples are public, original review artifacts. They do not include private source code, credentials, account exports, payment data, tax records, platform-restricted assessment content, customer data, private messages, cookies, or account screenshots.</p>
+    </section>
+  </main>
+</body>
+</html>

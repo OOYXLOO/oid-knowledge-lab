@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PHP Deployment Evidence Checklist - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">PHP deployment review</p>
+      <h1>Make PHP releases easier to review with lightweight evidence logs</h1>
+      <p class="summary">A compact review page for a PHP deployment tutorial: article promise, checklist structure, command examples, rollback boundary, and public writing samples.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="implementation-authenticity-proof.html">Implementation proof</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/amezmo-php-deployment-evidence-checklist.md">Raw checklist sample</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="PHP deployment packet metrics">
+      <article><span>Topic</span><strong>PHP</strong><small>Deployment</small></article>
+      <article><span>Reader</span><strong>Small teams</strong><small>Release owners</small></article>
+      <article><span>Format</span><strong>Tutorial</strong><small>Checklist + commands</small></article>
+      <article><span>Boundary</span><strong>Safe</strong><small>No secrets</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Article promise</p>
+        <h2>Turn each PHP deployment into a reviewable handoff</h2>
+        <p class="panel-copy">The proposed article teaches a practical release checklist for PHP, Laravel, Symfony, and CMS-style applications: pre-deployment checks, migration evidence, worker and cache checks, health checks, rollback notes, and privacy boundaries.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Reader value</p>
+        <h2>What the tutorial helps prevent</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Release risk</th><th>Checklist answer</th></tr></thead>
+        <tbody>
+          <tr><td>Missing environment variables</td><td>Record required keys as present without copying secret values.</td></tr>
+          <tr><td>Unsafe database migrations</td><td>Run dry-run or pretend checks and mark whether rollback is reversible.</td></tr>
+          <tr><td>Old background-worker code</td><td>Make queue restart and failed-job checks part of the release evidence.</td></tr>
+          <tr><td>Unclear rollback decision</td><td>Write the previous revision, rollback owner, and decision deadline before deploy.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Tutorial structure</p>
+        <h2>Draft outline</h2>
+      </div>
+      <ol class="numbered-list">
+        <li>Why PHP deployments fail in ordinary ways.</li>
+        <li>Pre-deployment checks for dependencies, config, cache, and migrations.</li>
+        <li>Deployment evidence for revision, target, migrations, workers, and health checks.</li>
+        <li>Post-deployment checks for critical routes, logs, queues, and webhooks.</li>
+        <li>Rollback evidence for revisions, database state, config, and cache.</li>
+        <li>What never belongs in deployment notes: secrets, cookies, private customer data, and payment or identity screenshots.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Sample commands</p>
+        <h2>Practical command frame</h2>
+      </div>
+      <pre>composer validate --strict
+composer install --no-dev --prefer-dist --no-interaction
+php artisan migrate --pretend
+php artisan migrate --force
+php artisan queue:restart
+php artisan optimize:clear
+curl -fsS https://example.com/health</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Editorial boundary</p>
+        <h2>Fresh article, safe proof</h2>
+        <p class="panel-copy">The public sample is a review aid. A final article should be freshly written for the target publication and should not include credentials, private customer exports, copied third-party article bodies, account screenshots, payment details, identity records, or unpublished client code.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

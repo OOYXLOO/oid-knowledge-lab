@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OID Portfolio Risk Console</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .console-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr); gap: 16px; align-items: start; }
+    .console-panel textarea { width: 100%; min-height: 300px; resize: vertical; padding: 12px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: var(--white); font: 0.9rem/1.5 "SFMono-Regular", Consolas, monospace; }
+    .console-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+    .console-actions button { min-height: 38px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: #eef4f6; font: inherit; font-weight: 700; cursor: pointer; }
+    .console-actions button:hover { border-color: var(--accent); }
+    .risk-list { display: grid; gap: 10px; margin-top: 12px; }
+    .risk-card { border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #fbfcfd; }
+    .risk-card strong, .risk-card span { display: block; }
+    .risk-card span { margin-top: 4px; color: var(--muted); font-size: 0.88rem; line-height: 1.45; }
+    .severity-high { border-left: 5px solid #b42318; }
+    .severity-medium { border-left: 5px solid #bf5b04; }
+    .severity-low { border-left: 5px solid var(--accent); }
+    .console-output { max-height: 380px; overflow: auto; margin: 12px 0 0; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: #fbfcfd; white-space: pre-wrap; font: 0.84rem/1.5 "SFMono-Regular", Consolas, monospace; }
+    .opportunity-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+    .opportunity-grid article { min-height: 160px; padding: 14px; border: 1px solid var(--line); border-radius: 8px; background: #fbfcfd; }
+    .opportunity-grid span { display: block; color: var(--accent); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; }
+    .opportunity-grid strong { display: block; margin-top: 8px; }
+    .opportunity-grid p { margin: 8px 0 0; color: var(--muted); line-height: 1.5; }
+    @media (max-width: 860px) { .console-grid, .opportunity-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">OID Portfolio Risk Console</p>
+      <h1>Turn an OID inventory into a reviewable governance brief</h1>
+      <p class="summary">A browser-only demo for screening PKI policy OIDs, SNMP enterprise branches, algorithm identifiers, and local registry notes. It produces a structured Markdown handoff without uploading inventory data.</p>
+      <div class="links">
+        <a href="index.html">Dashboard</a>
+        <a href="direct-client-fit.html">Client fit</a>
+        <a href="sample-assessment.html">Sample assessment</a>
+        <a href="starter-scope.html">Starter scope</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Console metrics">
+      <article><span>Local-only</span><strong>Yes</strong><small>No upload path</small></article>
+      <article><span>Inputs</span><strong>CSV</strong><small>Asset, OID, notes</small></article>
+      <article><span>Outputs</span><strong>MD</strong><small>Brief + next steps</small></article>
+      <article><span>Review fit</span><strong>PKI/SNMP</strong><small>Policy and registry cleanup</small></article>
+    </section>
+
+    <section class="panel console-panel">
+      <div>
+        <p class="eyebrow">Interactive assessment</p>
+        <h2>Paste an OID inventory</h2>
+        <p class="panel-copy">Use comma-separated lines in the form <code>asset,oid,owner,notes</code>. The analyzer classifies likely risk themes and generates a client-safe review brief.</p>
+      </div>
+      <div class="console-grid">
+        <div>
+          <textarea id="inventory" spellcheck="false"></textarea>
+          <div class="console-actions">
+            <button type="button" id="run">Run assessment</button>
+            <button type="button" id="load-sample">Load sample</button>
+            <button type="button" id="copy-md">Copy Markdown</button>
+            <button type="button" id="download-md">Download Markdown</button>
+          </div>
+        </div>
+        <aside>
+          <div class="mini-metrics" id="summary"></div>
+          <div class="risk-list" id="risks"></div>
+        </aside>
+      </div>
+      <pre class="console-output" id="output"></pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Service shape</p>
+        <h2>Where this console helps</h2>
+        <p class="panel-copy">The page is intentionally narrow: it supports a small assessment, an editor-facing technical article sample, and a reusable demo for code-review or data-quality applications.</p>
+      </div>
+      <div class="opportunity-grid">
+        <article>
+          <span>PKI policy cleanup</span>
+          <strong>Find stale or ambiguous certificate policy references</strong>
+          <p>Flags policy arcs, algorithm identifiers, missing owners, and notes that need confirmation before documentation or renewal work.</p>
+        </article>
+        <article>
+          <span>SNMP registry hygiene</span>
+          <strong>Map enterprise branches to accountable owners</strong>
+          <p>Highlights private-enterprise OIDs and turns scattered device or MIB notes into a review queue.</p>
+        </article>
+        <article>
+          <span>Evidence handoff</span>
+          <strong>Create an auditable first-pass brief</strong>
+          <p>Exports Markdown with scope, risk counts, representative findings, and next-step questions that can be reviewed before any private data is shared.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const sample = `asset,oid,owner,notes
+root-ca-policy,2.16.840.1.114412.1.1,Security,Certificate policy OID used in older CP/CPS documents
+router-trap-branch,1.3.6.1.4.1.9.9.41,Network Ops,Cisco syslog MIB trap branch appears in monitoring rules
+custom-device-mib,1.3.6.1.4.1.55555.2.7,,Private enterprise branch with no named owner
+sha256-reference,2.16.840.1.101.3.4.2.1,Platform,Algorithm identifier appears in signing checklist
+legacy-policy,1.2.840.113549.1.9.16.6.1,Compliance,Legacy S/MIME policy reference needs confirmation
+unknown-oid,1.2.3,Unknown,Short arc from imported spreadsheet`;
+
+    const inventory = document.getElementById("inventory");
+    const summary = document.getElementById("summary");
+    const risks = document.getElementById("risks");
+    const output = document.getElementById("output");
+    let latestMarkdown = "";
+
+    function parseRows(text) {
+      return text.split(/\r?\n/)
+        .map((line) => line.trim())
+        .filter(Boolean)
+        .filter((line, index) => !(index === 0 && /asset/i.test(line) && /oid/i.test(line)))
+        .map((line) => {
+          const parts = line.split(",").map((part) => part.trim());
+          return { asset: parts[0] || "unnamed-asset", oid: parts[1] || "", owner: parts[2] || "", notes: parts.slice(3).join(", ") };
+        });
+    }
+
+    function classify(row) {
+      const notes = `${row.asset} ${row.owner} ${row.notes}`.toLowerCase();
+      const findings = [];
+      if (!/^\d+(\.\d+)+$/.test(row.oid)) findings.push(["high", "Invalid OID syntax", "The value is not a dotted numeric OID and needs source confirmation."]);
+      if (!row.owner) findings.push(["high", "Missing accountable owner", "No owner was supplied, so remediation cannot be assigned cleanly."]);
+      if (row.oid.startsWith("1.3.6.1.4.1.")) findings.push(["medium", "Private enterprise branch", "Map the enterprise number to an organization and confirm whether the branch is still active."]);
+      if (row.oid.startsWith("2.16.840") || /certificate|policy|cp\/cps|smime|s\/mime/.test(notes)) findings.push(["medium", "PKI or certificate-policy dependency", "Review CP/CPS, certificate profiles, issuance docs, and renewal ownership."]);
+      if (/legacy|old|deprecated|unknown|spreadsheet/.test(notes)) findings.push(["medium", "Legacy or weak source signal", "Require a primary source before cleanup."]);
+      if (/sha|algorithm|signing/.test(notes)) findings.push(["low", "Algorithm identifier", "Keep it separate from organization-owned policy OIDs."]);
+      if (!findings.length) findings.push(["low", "Reference only", "No immediate issue from the local rules. Keep source and owner evidence attached."]);
+      return { ...row, findings };
+    }
+
+    function severityRank(value) {
+      return { high: 3, medium: 2, low: 1 }[value] || 0;
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    function renderMarkdown(assessed, totals, privateEnterprise, pki) {
+      const lines = ["# OID Portfolio Risk Brief", "", "## Summary", "", `- Assets reviewed: ${assessed.length}`, `- High-review items: ${totals.high}`, `- Medium-review items: ${totals.medium}`, `- Private enterprise branches: ${privateEnterprise}`, `- PKI / certificate-policy signals: ${pki}`, "", "## Representative Findings", ""];
+      for (const row of assessed.slice(0, 12)) {
+        lines.push(`### ${row.asset}`, "", `- OID: ${row.oid || "missing"}`, `- Owner: ${row.owner || "not supplied"}`, `- Notes: ${row.notes || "not supplied"}`);
+        for (const finding of row.findings) lines.push(`- ${finding[0].toUpperCase()}: ${finding[1]} - ${finding[2]}`);
+        lines.push("");
+      }
+      lines.push("## Recommended Next Questions", "", "- Which source is authoritative for each OID: CP/CPS, MIB repository, inventory export, or application config?", "- Who can approve changes to certificate policies, monitoring rules, and registry documentation?", "- Which OIDs are still active in production, and which are only historical references?", "- Which records need private validation before a cleanup plan can be proposed?");
+      return lines.join("\n");
+    }
+
+    function runAssessment() {
+      const assessed = parseRows(inventory.value).map(classify);
+      const totals = assessed.reduce((acc, row) => {
+        const top = row.findings.map((finding) => finding[0]).sort((a, b) => severityRank(b) - severityRank(a))[0] || "low";
+        acc[top] += 1;
+        return acc;
+      }, { high: 0, medium: 0, low: 0 });
+      const privateEnterprise = assessed.filter((row) => row.oid.startsWith("1.3.6.1.4.1.")).length;
+      const pki = assessed.filter((row) => row.findings.some((finding) => finding[1].includes("PKI"))).length;
+      summary.innerHTML = `<span>Total assets<strong>${assessed.length}</strong></span><span>High review<strong>${totals.high}</strong></span><span>Private branches<strong>${privateEnterprise}</strong></span><span>PKI signals<strong>${pki}</strong></span>`;
+      risks.innerHTML = assessed.slice(0, 12).map((row) => {
+        const top = row.findings.map((finding) => finding[0]).sort((a, b) => severityRank(b) - severityRank(a))[0] || "low";
+        const labels = row.findings.map((finding) => finding[1]).join("; ");
+        return `<div class="risk-card severity-${top}"><strong>${escapeHtml(row.asset)} <code>${escapeHtml(row.oid || "missing")}</code></strong><span>${escapeHtml(labels)}</span></div>`;
+      }).join("");
+      latestMarkdown = renderMarkdown(assessed, totals, privateEnterprise, pki);
+      output.textContent = latestMarkdown;
+    }
+
+    function downloadMarkdown() {
+      if (!latestMarkdown) runAssessment();
+      const blob = new Blob([latestMarkdown], { type: "text/markdown" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "oid-portfolio-risk-brief.md";
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    document.getElementById("load-sample").addEventListener("click", () => { inventory.value = sample; runAssessment(); });
+    document.getElementById("run").addEventListener("click", runAssessment);
+    document.getElementById("download-md").addEventListener("click", downloadMarkdown);
+    document.getElementById("copy-md").addEventListener("click", async () => { if (!latestMarkdown) runAssessment(); await navigator.clipboard.writeText(latestMarkdown); });
+    inventory.value = sample;
+    runAssessment();
+  </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review Log Agent - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Review Log Agent</p>
+      <h1>Slack-style review threads into source-aware evidence logs</h1>
+      <p class="summary">A compact product prototype for documentation, support, and AI-assisted writing teams. It turns a messy review discussion into a Markdown handoff with reader questions, source facts, draft claims, reviewer checks, blockers, and a safety boundary.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="review-log-agent-playground.html">Interactive playground</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/review-log-agent-writing-pitch-pack.md">Pitch pack</a>
+        <a href="evidence-log-playground.html">Related evidence-log widget</a>
+        <a href="implementation-authenticity-proof.html">Implementation proof</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Review Log Agent fit">
+      <article><span>Input</span><strong>Slack</strong><small>Thread-shaped JSON</small></article>
+      <article><span>Output</span><strong>Markdown</strong><small>Reviewer handoff</small></article>
+      <article><span>Primary use</span><strong>Docs</strong><small>Source-aware review</small></article>
+      <article><span>Boundary</span><strong>Safe</strong><small>No credentials or private exports</small></article>
+    </section>
+
+    <section class="panel editor-decision-panel">
+      <div>
+        <p class="eyebrow">Reviewer quick decision</p>
+        <h2>What this prototype proves</h2>
+        <p class="panel-copy">The working demo shows a concrete AI-era documentation workflow: capture a team discussion, separate source facts from draft claims, surface reviewer checks and publication blockers, then produce a handoff that an editor or support owner can review before publishing.</p>
+      </div>
+      <div class="decision-strip" aria-label="Prototype evidence">
+        <article>
+          <span>Workflow</span>
+          <strong>Conversation to evidence</strong>
+          <p>Slack-style messages become a structured review log instead of a loose summary.</p>
+        </article>
+        <article>
+          <span>Quality</span>
+          <strong>Blockers stay visible</strong>
+          <p>The handoff preserves publication blockers and reviewer checks instead of smoothing them away.</p>
+        </article>
+        <article>
+          <span>Safety</span>
+          <strong>Boundary-first output</strong>
+          <p>The Markdown explicitly excludes passwords, API tokens, cookies, private tickets, payment data, and copied article bodies.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel submission-queue-panel">
+      <div>
+        <p class="eyebrow">Best use cases</p>
+        <h2>Where this is useful</h2>
+        <p class="panel-copy">This page can support technical writing applications, documentation consulting conversations, and hackathon review where the judging surface needs to show a working product idea without private account data.</p>
+      </div>
+      <div class="queue-list">
+        <article>
+          <span>Documentation teams</span>
+          <strong>Review an AI-assisted article draft</strong>
+          <p>Use the log to separate what came from source material, what came from a draft, and what still needs owner review.</p>
+          <a href="review-log-agent-playground.html">Open playground</a>
+        </article>
+        <article>
+          <span>Support teams</span>
+          <strong>Prepare a safe customer-facing answer</strong>
+          <p>Keep the customer question, verified constraints, rollback notes, and unsafe advice in separate sections.</p>
+          <a href="evidence-log-playground.html">Open related widget</a>
+        </article>
+        <article>
+          <span>Editors</span>
+          <strong>Inspect implementation-backed samples</strong>
+          <p>Review this alongside the writing samples page to evaluate implementation depth and publication safety.</p>
+          <a href="writing-samples.html">Open writing samples</a>
+        </article>
+        <article>
+          <span>Pitch packet</span>
+          <strong>Use it for writing applications</strong>
+          <p>Copy-ready topic angles for documentation, browser tutorials, and developer writing networks.</p>
+          <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/review-log-agent-writing-pitch-pack.md">Open pitch pack</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Sample output shape</p>
+        <h2>Markdown handoff sections</h2>
+        <p class="panel-copy">The prototype emits a readable handoff rather than a raw transcript. It is intentionally small enough to inspect, copy, and adapt.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Section</th><th>Purpose</th><th>Review value</th></tr></thead>
+        <tbody>
+          <tr><td>Reader Questions</td><td>Records what the reader or customer is asking.</td><td>Prevents the answer from drifting away from the user need.</td></tr>
+          <tr><td>Source Facts</td><td>Captures verified facts from docs, policy, or owner comments.</td><td>Makes the factual basis reviewable.</td></tr>
+          <tr><td>Draft Claims</td><td>Separates draft wording from confirmed source material.</td><td>Helps reviewers challenge unsupported claims.</td></tr>
+          <tr><td>Reviewer Checks</td><td>Lists the checks an owner or editor wants performed.</td><td>Keeps acceptance criteria visible.</td></tr>
+          <tr><td>Publication Blockers</td><td>Shows issues that should stop publication.</td><td>Reduces the chance of shipping unsafe advice.</td></tr>
+          <tr><td>Safety Boundary</td><td>Defines what must not be included in the handoff.</td><td>Protects private data and third-party content.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

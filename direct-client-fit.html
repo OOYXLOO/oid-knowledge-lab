@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Direct Client Fit - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Direct client fit</p>
+      <h1>Small OID evidence reviews for teams with messy registry data</h1>
+      <p class="summary">A buyer-facing page for teams that need a practical first pass on PKI policy OIDs, SNMP/MIB enterprise OIDs, or internal OID registry cleanup without handing over private production exports.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="starter-scope.html">Starter scope</a>
+        <a href="consulting-brief.html">Assessment brief</a>
+        <a href="sample-assessment.html">Sample handoff</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Direct client fit metrics">
+      <article><span>Good first ask</span><strong>20-200</strong><small>sanitized OID rows</small></article>
+      <article><span>Turnaround</span><strong>48h</strong><small>first review packet</small></article>
+      <article><span>Review lanes</span><strong>3</strong><small>PKI, SNMP, registry</small></article>
+      <article><span>Private data</span><strong>No</strong><small>raw exports stay out</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">When to use this</p>
+        <h2>Best-fit client situations</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Situation</th><th>Signal</th><th>Useful first result</th></tr></thead>
+        <tbody>
+          <tr><td>Certificate policy cleanup</td><td>Policy OIDs appear in certificates, CPS drafts, renewal notes, or CA migration spreadsheets.</td><td>Evidence-backed rows, owner questions, invalid-looking values, and renewal-risk notes.</td></tr>
+          <tr><td>SNMP / MIB ownership review</td><td>Enterprise OIDs appear in MIB modules, traps, monitoring exports, or device integration docs.</td><td>PEN owner evidence, unknown arcs, duplicate-looking rows, and follow-up questions for device owners.</td></tr>
+          <tr><td>Internal registry maintenance</td><td>An internal spreadsheet contains old owners, unclear arcs, copied labels, or undocumented assignments.</td><td>Cleaned classification table, remediation queue, and repeatable checks for the next batch.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel review-path-panel">
+      <div>
+        <p class="eyebrow">First contact</p>
+        <h2>Copyable short outreach</h2>
+        <p class="panel-copy">Use this when replying to a relevant public request, marketplace lead, or technical owner who already has an OID inventory problem.</p>
+      </div>
+      <pre><code>Hello, I can help with a small first review of your OID inventory.
+
+The safest starting point is a sanitized CSV with 20-200 rows and an oid column.
+I will classify valid/invalid rows, map public evidence where available, separate owner-review questions, and return a Markdown summary plus an importable cleanup CSV.
+
+No credentials, private account exports, customer names, or production hostnames are needed for the first pass.
+Review scope: https://oid-knowledge-lab.vercel.app/starter-scope.html
+Sample handoff: https://oid-knowledge-lab.vercel.app/sample-assessment.html</code></pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Qualification</p>
+        <h2>Accept and reject rules</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Decision</th><th>Rule</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td>Accept</td><td>The client can share a sanitized sample and wants classification, evidence, or cleanup planning.</td><td>The first deliverable is bounded and verifiable.</td></tr>
+          <tr><td>Accept</td><td>The request involves PKI policy OIDs, enterprise OIDs, MIB modules, or an internal registry.</td><td>These match the tool's current proof surface.</td></tr>
+          <tr><td>Reject</td><td>The client requires private account login, production exports, credentials, or urgent live-system changes before scoping.</td><td>That is not a safe first engagement.</td></tr>
+          <tr><td>Reject</td><td>The request is only generic SNMP monitoring setup with no OID evidence or registry cleanup component.</td><td>That is a broader operations job, not this focused service.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Buyer checklist</p>
+        <h2>What to prepare for the first review</h2>
+      </div>
+      <ul>
+        <li>A sanitized CSV, TSV, or text list with one OID per row.</li>
+        <li>Optional safe labels such as certificate profile, device family, MIB module, service, or internal registry id.</li>
+        <li>A short sentence describing the decision the team needs to make after the review.</li>
+        <li>No passwords, tokens, customer names, billing data, private hostnames, or private account exports.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
