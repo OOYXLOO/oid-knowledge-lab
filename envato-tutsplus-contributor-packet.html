@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Envato Tuts+ Code Contributor Packet</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .packet-hero {
+      display: grid;
+      gap: 16px;
+      padding: 34px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .packet-hero h1 {
+      max-width: 880px;
+    }
+
+    .idea-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    .idea-card,
+    .sample-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 18px;
+    }
+
+    .idea-card p,
+    .idea-card li,
+    .sample-panel li {
+      line-height: 1.65;
+    }
+
+    .idea-card ul,
+    .sample-panel ul {
+      padding-left: 22px;
+    }
+
+    .proof-links {
+      display: grid;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .proof-links a {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfdfe;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .idea-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="packet-hero">
+      <p class="eyebrow">Contributor packet</p>
+      <h1>Two practical Code tutorial ideas with working demos and public writing samples.</h1>
+      <p class="summary">This packet collects two developer tutorial pitches built around browser-only JavaScript, evidence-first handoff workflows, and public proof links.</p>
+      <div class="links">
+        <a href="media-provenance-tutorial-proposal.html">Tutorial proposal</a>
+        <a href="media-provenance-studio.html">Interactive media demo</a>
+        <a href="writing-samples.html">Writing samples</a>
+      </div>
+    </section>
+
+    <section class="idea-grid">
+      <article class="idea-card">
+        <h2>Idea 1: Local-First Provenance Ledger</h2>
+        <p>AI-generated images, diagrams, audio, and video assets are easy to create but hard to hand off responsibly. This tutorial shows how to build a browser-only JavaScript ledger with asset records, review status, model notes, search filters, live summary metrics, and JSON or Markdown export.</p>
+        <ul>
+          <li>Design a minimal provenance data model.</li>
+          <li>Build a dependency-free HTML and JavaScript review app.</li>
+          <li>Export a delivery sheet for editors, reviewers, or clients.</li>
+        </ul>
+        <div class="proof-links">
+          <a href="media-provenance-studio.html">Interactive demo</a>
+          <a href="media-provenance-tutorial-proposal.html">Full tutorial proposal</a>
+        </div>
+      </article>
+
+      <article class="idea-card">
+        <h2>Idea 2: Browser-Only Evidence Dashboard</h2>
+        <p>Many developer workflows depend on public registries, but teams often copy identifiers into docs, agents, or dashboards without keeping source links and review notes. This tutorial shows how to build a searchable static evidence dashboard from structured public records.</p>
+        <ul>
+          <li>Convert registry-like records into a searchable static dataset.</li>
+          <li>Link records to public sources and reviewer notes.</li>
+          <li>Keep private data and credentials out of public demos.</li>
+        </ul>
+        <div class="proof-links">
+          <a href="index.html">OID Knowledge Lab</a>
+          <a href="oid-intelligence-lab.html">OID Intelligence Lab</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="sample-panel">
+      <h2>Writing Samples</h2>
+      <ul>
+        <li><a href="media-provenance-tutorial-proposal.html">Media Provenance Tutorial Proposal</a></li>
+        <li><a href="ai-code-review-casebook.html">AI Code Review Casebook</a></li>
+        <li><a href="writing-samples.html">Writing Samples Index</a></li>
+      </ul>
+      <p class="summary">The sample projects avoid private customer data, account credentials, API keys, payment information, personal identifiers, and unpublished third-party content. They are designed as public, reviewable tutorial examples.</p>
+    </section>
+  </main>
+</body>
+</html>
