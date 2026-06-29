@@ -54,6 +54,12 @@ try {
 } catch (error) {
   qwenSubmissionPackModule = { __loadError: error.message };
 }
+let mediaProvenancePackModule;
+try {
+  mediaProvenancePackModule = require("../src/mediaProvenancePack");
+} catch (error) {
+  mediaProvenancePackModule = { __loadError: error.message };
+}
 
 const ROOT = path.resolve(__dirname, "..");
 
@@ -2439,6 +2445,86 @@ function testQwenOneLinkReferencesSubmissionPack() {
   }
 }
 
+function testMediaProvenancePackBuildsDeliveryArtifacts() {
+  assert.equal(mediaProvenancePackModule.__loadError, undefined, mediaProvenancePackModule.__loadError);
+  const { buildMediaProvenancePack, renderMediaProvenanceMarkdown } = mediaProvenancePackModule;
+  const pack = buildMediaProvenancePack({
+    generatedAt: "2026-06-30T00:00:00.000Z",
+    assets: [
+      {
+        name: "OID Intelligence explainer cover",
+        type: "Image",
+        status: "Approved",
+        modelNote: "Generated cover image draft",
+        evidenceNote: "Prompt summary and final hash recorded.",
+        storageRef: "b2://demo/oid-cover.png",
+        hash: "sha256:cover"
+      },
+      {
+        name: "Registry review short ad",
+        type: "Video",
+        status: "Review",
+        modelNote: "Generated storyboard",
+        evidenceNote: "Needs caption proof.",
+        storageRef: "b2://demo/review-ad.mp4",
+        hash: "sha256:video"
+      }
+    ]
+  });
+
+  assert.equal(pack.schema_version, "media-provenance-pack/v1");
+  assert.equal(pack.summary.total_assets, 2);
+  assert.equal(pack.summary.approved_assets, 1);
+  assert.equal(pack.summary.review_required_assets, 1);
+  assert.deepEqual(pack.summary.media_types, ["Image", "Video"]);
+  assert.ok(pack.delivery_sheet.some((item) => item.name === "OID Intelligence explainer cover"));
+  assert.ok(pack.review_queue.some((item) => item.name === "Registry review short ad"));
+  assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
+
+  const markdown = renderMediaProvenanceMarkdown(pack);
+  assert.ok(markdown.includes("# Media Provenance Delivery Sheet"));
+  assert.ok(markdown.includes("Approved assets: `1`"));
+  assert.ok(markdown.includes("Registry review short ad"));
+  assert.ok(markdown.includes("Review queue"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+}
+
+function testMediaProvenancePackWritesPublicSafeFiles() {
+  assert.equal(mediaProvenancePackModule.__loadError, undefined, mediaProvenancePackModule.__loadError);
+  const { writeMediaProvenancePack } = mediaProvenancePackModule;
+  const outDir = "C:\\Users\\YXL\\.codex\\tmp\\oid-knowledge-lab-test-media-provenance";
+  fs.rmSync(outDir, { recursive: true, force: true });
+  fs.mkdirSync(outDir, { recursive: true });
+
+  const result = writeMediaProvenancePack({
+    jsonOutFile: path.join(outDir, "media-provenance-pack.json"),
+    markdownOutFile: path.join(outDir, "media-provenance-pack.md"),
+    generatedAt: "2026-06-30T00:00:00.000Z",
+    assets: [
+      {
+        name: "Product architecture diagram",
+        type: "Diagram",
+        status: "Approved",
+        modelNote: "Architecture diagram from product notes",
+        evidenceNote: "Public-source boundary included.",
+        storageRef: "b2://demo/diagram.png",
+        hash: "sha256:diagram"
+      }
+    ]
+  });
+
+  assert.equal(result.pack.summary.total_assets, 1);
+  for (const file of ["media-provenance-pack.json", "media-provenance-pack.md"]) {
+    const text = fs.readFileSync(path.join(outDir, file), "utf8");
+    assert.ok(text.includes("Product architecture diagram"));
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("D:\\hks"), false);
+  }
+}
+
 async function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -2507,6 +2593,8 @@ async function main() {
   testQwenSubmissionPackBuildsJudgingAssets();
   testQwenSubmissionPackWritesPublicSafeFiles();
   testQwenOneLinkReferencesSubmissionPack();
+  testMediaProvenancePackBuildsDeliveryArtifacts();
+  testMediaProvenancePackWritesPublicSafeFiles();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }

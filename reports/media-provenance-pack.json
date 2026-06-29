@@ -1,0 +1,59 @@
+{
+  "schema_version": "media-provenance-pack/v1",
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "summary": {
+    "total_assets": 3,
+    "approved_assets": 2,
+    "review_required_assets": 1,
+    "media_types": [
+      "Diagram",
+      "Image",
+      "Video"
+    ]
+  },
+  "delivery_sheet": [
+    {
+      "name": "OID Intelligence explainer cover",
+      "type": "Image",
+      "status": "Approved",
+      "model_note": "Generated cover image draft",
+      "evidence_note": "Prompt summary, review status, and final hash recorded.",
+      "storage_ref": "b2://demo/oid-intelligence-cover.png",
+      "hash": "sha256:5fd0-cover-demo"
+    },
+    {
+      "name": "Registry review short ad",
+      "type": "Video",
+      "status": "Review",
+      "model_note": "Generated storyboard and caption pass",
+      "evidence_note": "Needs final caption proof and license note before external delivery.",
+      "storage_ref": "b2://demo/registry-review-short-ad.mp4",
+      "hash": "sha256:3a19-video-demo"
+    },
+    {
+      "name": "Product architecture diagram",
+      "type": "Diagram",
+      "status": "Approved",
+      "model_note": "Diagram rendered from product architecture notes",
+      "evidence_note": "Public-source boundaries and generated-asset note are included.",
+      "storage_ref": "b2://demo/product-architecture-diagram.png",
+      "hash": "sha256:1c84-diagram-demo"
+    }
+  ],
+  "review_queue": [
+    {
+      "name": "Registry review short ad",
+      "type": "Video",
+      "status": "Review",
+      "model_note": "Generated storyboard and caption pass",
+      "evidence_note": "Needs final caption proof and license note before external delivery.",
+      "storage_ref": "b2://demo/registry-review-short-ad.mp4",
+      "hash": "sha256:3a19-video-demo"
+    }
+  ],
+  "boundaries": [
+    "No private customer files are included.",
+    "No account credentials, API keys, payment data, or personal identifiers are included.",
+    "Storage references are examples or non-sensitive delivery references."
+  ]
+}

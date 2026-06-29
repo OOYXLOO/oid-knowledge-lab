@@ -14,6 +14,7 @@ const { writeEngagementBrief } = require("./engagementBrief");
 const { buildIanaPenReport, buildPublicPenIndex, IANA_LICENSE_URL, IANA_PEN_URL, parseEnterpriseNumbers, parseLastUpdated } = require("./ianaPen");
 const { buildClientIntakePack } = require("./intakePack");
 const { buildManifestFromFiles } = require("./manifest");
+const { writeMediaProvenancePack } = require("./mediaProvenancePack");
 const { ensureDir, fetchText, sleep, writeJson } = require("./net");
 const { parseOidMarkdown } = require("./parser");
 const { auditPublishableTree } = require("./publishGuard");
@@ -90,6 +91,25 @@ async function inspectSource() {
     oid_url_count: info.oid_url_count,
     robots_checks: checks
   }, null, 2));
+}
+
+function mediaProvenancePack(args) {
+  const assetsFile = path.resolve(ROOT, argValue(args, "--assets", "examples/media-provenance-assets.json"));
+  const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/media-provenance-pack.json"));
+  const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/media-provenance-pack.md"));
+  const generatedAt = argValue(args, "--generated-at", undefined);
+  const assets = JSON.parse(fs.readFileSync(assetsFile, "utf8"));
+  const result = writeMediaProvenancePack({
+    jsonOutFile,
+    markdownOutFile,
+    generatedAt,
+    assets
+  });
+
+  console.log(`assets: ${result.pack.summary.total_assets}`);
+  console.log(`approved: ${result.pack.summary.approved_assets}`);
+  console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
+  console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
 }
 
 async function exportSitemapIndex(args) {
@@ -628,12 +648,13 @@ async function main() {
   if (command === "audit-dataset") return auditDataset(args);
   if (command === "source-policy") return sourcePolicy(args);
   if (command === "guard-publishable") return guardPublishable();
+  if (command === "media-provenance-pack") return mediaProvenancePack(args);
   if (command === "qwen-agent-demo") return qwenAgentDemo(args);
   if (command === "qwen-submission-pack") return qwenSubmissionPack(args);
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|statement-of-work-pack|decision-one-pager|client-kickoff-pack|buyer-signal-pack|audit-dataset|source-policy|guard-publishable|qwen-agent-demo|qwen-submission-pack|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|statement-of-work-pack|decision-one-pager|client-kickoff-pack|buyer-signal-pack|audit-dataset|source-policy|guard-publishable|media-provenance-pack|qwen-agent-demo|qwen-submission-pack|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 

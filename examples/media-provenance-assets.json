@@ -1,0 +1,29 @@
+[
+  {
+    "name": "OID Intelligence explainer cover",
+    "type": "Image",
+    "status": "Approved",
+    "modelNote": "Generated cover image draft",
+    "evidenceNote": "Prompt summary, review status, and final hash recorded.",
+    "storageRef": "b2://demo/oid-intelligence-cover.png",
+    "hash": "sha256:5fd0-cover-demo"
+  },
+  {
+    "name": "Registry review short ad",
+    "type": "Video",
+    "status": "Review",
+    "modelNote": "Generated storyboard and caption pass",
+    "evidenceNote": "Needs final caption proof and license note before external delivery.",
+    "storageRef": "b2://demo/registry-review-short-ad.mp4",
+    "hash": "sha256:3a19-video-demo"
+  },
+  {
+    "name": "Product architecture diagram",
+    "type": "Diagram",
+    "status": "Approved",
+    "modelNote": "Diagram rendered from product architecture notes",
+    "evidenceNote": "Public-source boundaries and generated-asset note are included.",
+    "storageRef": "b2://demo/product-architecture-diagram.png",
+    "hash": "sha256:1c84-diagram-demo"
+  }
+]

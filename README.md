@@ -56,6 +56,7 @@ Last refreshed on 2026-06-26:
 - Public proof index: the generated dashboard links this project, Signal Garden, Incident Zero Stack, Hanzi Scout, and Helioigma as public review surfaces for editors, reviewers, or technical stakeholders
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 - Stable local audit mode: `npm run audit:local:stable` fixes report timestamps through `OID_KNOWLEDGE_GENERATED_AT` so verification runs do not create noisy timestamp-only diffs
+- Media provenance generator: `npm run media:provenance` builds `reports/media-provenance-pack.json` and `reports/media-provenance-pack.md` from `examples/media-provenance-assets.json`
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
 
