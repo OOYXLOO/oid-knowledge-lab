@@ -215,50 +215,90 @@ If the public site has API endpoints, check those separately. A static page retu
 
 ## Wire It Into CI
 
-The guard should run in the same place developers already look for deployment confidence. A simple GitHub Actions workflow might look like this:
+The guard should run in the same place developers already look for deployment confidence. In CircleCI, keep the release guard in its own job after the build. That makes the failure easy to scan: if `build-static-site` fails, the generator is broken; if `guard-generated-artifacts` fails, the generated release contract is incomplete.
 
 ```yaml
-name: Release Guard
+version: 2.1
 
-on:
-  pull_request:
-  push:
-    branches: [main]
+executors:
+  node-executor:
+    docker:
+      - image: cimg/node:22.11
 
 jobs:
-  release-guard:
-    runs-on: ubuntu-latest
+  build-static-site:
+    executor: node-executor
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
+      - checkout
+      - restore_cache:
+          keys:
+            - npm-v1-{{ checksum "package-lock.json" }}
       - run: npm ci
+      - save_cache:
+          key: npm-v1-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/.npm
       - run: npm run build
-      - run: npm run guard:publishable
+      - persist_to_workspace:
+          root: .
+          paths:
+            - public
+            - reports
+
+  guard-generated-artifacts:
+    executor: node-executor
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - restore_cache:
+          keys:
+            - npm-v1-{{ checksum "package-lock.json" }}
+      - run: npm ci
+      - run:
+          name: Verify publishable generated artifacts
+          command: npm run guard:publishable
+
+workflows:
+  release-guard:
+    jobs:
+      - build-static-site
+      - guard-generated-artifacts:
+          requires:
+            - build-static-site
 ```
 
-For a public smoke check, use a separate job after deployment or a manually triggered workflow:
+The workspace handoff is the key detail. The build job creates `public/` and `reports/`, then the guard job checks those exact generated artifacts. If the guard script expects the generated files but the build never produced them, CircleCI fails before deployment.
+
+For a public smoke check, use a separate workflow after deployment or trigger it manually with the production URL:
 
 ```yaml
-name: Public Smoke
+version: 2.1
 
-on:
-  workflow_dispatch:
+executors:
+  node-executor:
+    docker:
+      - image: cimg/node:22.11
 
 jobs:
   public-smoke:
-    runs-on: ubuntu-latest
+    executor: node-executor
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
+      - checkout
       - run: npm ci
-      - run: npm run smoke:public
+      - run:
+          name: Check production review URLs
+          command: npm run smoke:public -- --base-url "$PUBLIC_BASE_URL"
+
+workflows:
+  public-smoke:
+    jobs:
+      - public-smoke
 ```
 
 Separating local publishability from public smoke checks keeps failures readable. If the local guard fails, the artifact is not ready. If public smoke fails, the artifact may be fine but the deployment, alias, route, or hosting cache needs attention.
+
+The same contract also works in other CI systems. For example, a GitHub Actions job would run `npm run build` followed by `npm run guard:publishable`; the important part is not the CI vendor, but that generated artifacts are checked before publication and public URLs are checked after publication.
 
 ## Keep The Guard Small
 
