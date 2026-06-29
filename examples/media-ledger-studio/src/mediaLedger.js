@@ -140,6 +140,7 @@ export function createSubmissionPack(runs = sampleRuns) {
     sampleObjectKeys: runs.map((run) => run.storage.objectKey),
     providerModels: createProviderModelList(runs),
     storageHandoffManifest: createStorageHandoffManifest(runs),
+    sidecarMetadataManifest: createSidecarMetadataManifest(runs),
     readiness
   };
 }
@@ -190,7 +191,8 @@ export function createDevpostFields({
       `${pack.challengeReadiness.readySignals.join("; ")}. ` +
       `Current blocker: ${pack.challengeReadiness.blockers.join("; ")}.`,
     storageHandoffSummary:
-      `The bundled manifest covers ${pack.storageHandoffManifest.length} generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision.`,
+      `The bundled manifest covers ${pack.storageHandoffManifest.length} generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision. ` +
+      `It also defines ${pack.sidecarMetadataManifest.length} JSON sidecar records that can be uploaded next to the final media objects.`,
     whatIsNext:
       "Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, add signed sidecar metadata, and optionally replace the public walkthrough page with an uploaded demo video."
   };
@@ -211,6 +213,36 @@ export function createStorageHandoffManifest(runs = sampleRuns) {
     reviewDecision: run.review.decision,
     safetyNotes: run.safetyNotes
   }));
+}
+
+export function createSidecarMetadataManifest(runs = sampleRuns) {
+  return runs.map((run) => {
+    const sidecarKey = `${run.storage.objectKey}.metadata.json`;
+    return {
+      runId: run.id,
+      objectKey: run.storage.objectKey,
+      sidecarKey,
+      contentType: "application/json",
+      checksumSha256: run.storage.checksumSha256,
+      provider: run.provider,
+      model: run.model,
+      seed: run.seed,
+      reviewDecision: run.review.decision,
+      requiredUploadPair: [run.storage.objectKey, sidecarKey],
+      sidecarBody: {
+        runId: run.id,
+        title: run.title,
+        objectKey: run.storage.objectKey,
+        checksumSha256: run.storage.checksumSha256,
+        provider: run.provider,
+        model: run.model,
+        seed: run.seed,
+        license: run.license,
+        reviewDecision: run.review.decision,
+        safetyNotes: run.safetyNotes
+      }
+    };
+  });
 }
 
 export function createChallengeReadinessScore(runs = sampleRuns, readiness = createReadinessChecklist()) {

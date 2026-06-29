@@ -28,6 +28,6 @@
   "howGenblazeIsUsed": "The prototype models Genblaze generation runs with provider, model, prompt, negative prompt, seed, duration, retry count, output type, and safety notes. A live Genblaze adapter can replace the deterministic sample runs without changing the dashboard workflow.",
   "challengeFit": "The app is built around generated media operations: prompt intake, Genblaze-shaped generation metadata, human review, durable Backblaze B2-shaped object storage, provenance inspection, and client handoff.",
   "challengeReadiness": "Readiness score: 100/100. image run present; video run present; audio run present; B2-shaped storage manifest complete; Genblaze-shaped run metadata complete. Current blocker: No submission blockers in the current checklist.",
-  "storageHandoffSummary": "The bundled manifest covers 3 generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision.",
+  "storageHandoffSummary": "The bundled manifest covers 3 generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision. It also defines 3 JSON sidecar records that can be uploaded next to the final media objects.",
   "whatIsNext": "Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, add signed sidecar metadata, and optionally replace the public walkthrough page with an uploaded demo video."
 }

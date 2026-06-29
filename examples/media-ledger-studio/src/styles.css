@@ -409,6 +409,10 @@ dd {
   overflow-wrap: anywhere;
 }
 
+.manifest-row.sidecar-row {
+  grid-template-columns: 0.8fr minmax(220px, 1.4fr) minmax(240px, 1.5fr) minmax(140px, 1fr);
+}
+
 .detail-grid h3 {
   font-size: 14px;
   color: #245255;

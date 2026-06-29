@@ -4,6 +4,7 @@ import {
   createDevpostFields,
   createProviderModelList,
   createReadinessChecklist,
+  createSidecarMetadataManifest,
   createStorageHandoffManifest,
   createSubmissionPack,
   findRunById,
@@ -29,6 +30,8 @@ assert.match(pack.requiredTechnology.storage, /Backblaze B2/);
 assert.match(pack.requiredTechnology.generation, /Genblaze/);
 assert.equal(pack.providerModels.length, 3);
 assert.equal(pack.storageHandoffManifest.length, 3);
+assert.equal(pack.sidecarMetadataManifest.length, 3);
+assert.equal(pack.sidecarMetadataManifest[0].sidecarKey.endsWith(".metadata.json"), true);
 assert.equal(pack.challengeReadiness.score >= 90, true);
 assert.equal(pack.readiness.length, 6);
 assert.equal(pack.readiness.filter((item) => item.status === "ready").length, 6);
@@ -42,6 +45,11 @@ const manifest = createStorageHandoffManifest(sampleRuns);
 assert.equal(manifest[0].bucket, "media-ledger-demo");
 assert.match(manifest[0].checksumSha256, /^[a-f0-9]{64}$/);
 
+const sidecars = createSidecarMetadataManifest(sampleRuns);
+assert.equal(sidecars[0].requiredUploadPair.length, 2);
+assert.equal(sidecars[0].sidecarBody.checksumSha256, sampleRuns[0].storage.checksumSha256);
+assert.match(sidecars[0].sidecarKey, /final\.png\.metadata\.json$/);
+
 const completeReadiness = createReadinessChecklist({ sourceRepoReady: true, demoVideoReady: true });
 assert.equal(completeReadiness.every((item) => item.status === "ready"), true);
 const completeScore = createChallengeReadinessScore(sampleRuns, completeReadiness);
@@ -52,6 +60,7 @@ assert.match(devpostFields.howBackblazeB2IsUsed, /object key/);
 assert.match(devpostFields.howGenblazeIsUsed, /prompt/);
 assert.match(devpostFields.challengeReadiness, /Readiness score/);
 assert.match(devpostFields.storageHandoffSummary, /3 generated assets/);
+assert.match(devpostFields.storageHandoffSummary, /JSON sidecar records/);
 assert.equal(devpostFields.appUrl, "https://media-ledger-studio-static.vercel.app");
 assert.equal(devpostFields.videoUrl, "https://media-ledger-studio-static.vercel.app/demo-video.html");
 assert.match(devpostFields.sourceRepoUrl, /github\.com\/OOYXLOO\/oid-knowledge-lab/);

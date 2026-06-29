@@ -25,6 +25,10 @@ ${pack.reviewerPath.map((item, index) => `${index + 1}. ${item}`).join("\n")}
 
 ${pack.sampleObjectKeys.map((key) => `- \`${key}\``).join("\n")}
 
+## Sidecar Metadata Pairs
+
+${pack.sidecarMetadataManifest.map((item) => `- \`${item.objectKey}\` -> \`${item.sidecarKey}\``).join("\n")}
+
 ## Summary
 
 - Runs: ${pack.summary.totalRuns}

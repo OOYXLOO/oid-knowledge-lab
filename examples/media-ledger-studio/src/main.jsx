@@ -233,6 +233,21 @@ function SubmissionView({ fields, pack }) {
           ))}
         </div>
       </article>
+
+      <article className="submission-card wide">
+        <h2>Sidecar metadata manifest</h2>
+        <p>Each generated asset has a paired JSON sidecar key, so a live B2 adapter can upload the media object and its reviewer-facing provenance record together.</p>
+        <div className="manifest-table" role="table" aria-label="Sidecar metadata manifest">
+          {pack.sidecarMetadataManifest.map((sidecar) => (
+            <div className="manifest-row sidecar-row" role="row" key={sidecar.runId}>
+              <span role="cell">{sidecar.runId}</span>
+              <span role="cell">{sidecar.objectKey}</span>
+              <span role="cell">{sidecar.sidecarKey}</span>
+              <span role="cell">{sidecar.reviewDecision}</span>
+            </div>
+          ))}
+        </div>
+      </article>
     </section>
   );
 }

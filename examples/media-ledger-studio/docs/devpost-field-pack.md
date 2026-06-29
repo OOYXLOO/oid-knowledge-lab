@@ -50,7 +50,7 @@ Readiness score: 100/100. image run present; video run present; audio run presen
 
 ## Storage Handoff Summary
 
-The bundled manifest covers 3 generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision.
+The bundled manifest covers 3 generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision. It also defines 3 JSON sidecar records that can be uploaded next to the final media objects.
 
 ## What's Next
 

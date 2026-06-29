@@ -20,6 +20,12 @@ Public demo: https://media-ledger-studio-static.vercel.app
 - `projects/launch-storyboard/run-storyboard-014/storyboard.webm`
 - `projects/audio-bed/run-audio-006/loop.wav`
 
+## Sidecar Metadata Pairs
+
+- `projects/editorial-cover/run-cover-001/final.png` -> `projects/editorial-cover/run-cover-001/final.png.metadata.json`
+- `projects/launch-storyboard/run-storyboard-014/storyboard.webm` -> `projects/launch-storyboard/run-storyboard-014/storyboard.webm.metadata.json`
+- `projects/audio-bed/run-audio-006/loop.wav` -> `projects/audio-bed/run-audio-006/loop.wav.metadata.json`
+
 ## Summary
 
 - Runs: 3

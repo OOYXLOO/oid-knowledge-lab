@@ -108,6 +108,99 @@
       ]
     }
   ],
+  "sidecarMetadataManifest": [
+    {
+      "runId": "run-cover-001",
+      "objectKey": "projects/editorial-cover/run-cover-001/final.png",
+      "sidecarKey": "projects/editorial-cover/run-cover-001/final.png.metadata.json",
+      "contentType": "application/json",
+      "checksumSha256": "9c9f1ee3a4315f8367b39c31d93a4ef5d6a71e9a45c8e66111108b2419a31a77",
+      "provider": "Genblaze",
+      "model": "genblaze-image-studio-v1",
+      "seed": 482910,
+      "reviewDecision": "Approved with metadata note",
+      "requiredUploadPair": [
+        "projects/editorial-cover/run-cover-001/final.png",
+        "projects/editorial-cover/run-cover-001/final.png.metadata.json"
+      ],
+      "sidecarBody": {
+        "runId": "run-cover-001",
+        "title": "Editorial cover image",
+        "objectKey": "projects/editorial-cover/run-cover-001/final.png",
+        "checksumSha256": "9c9f1ee3a4315f8367b39c31d93a4ef5d6a71e9a45c8e66111108b2419a31a77",
+        "provider": "Genblaze",
+        "model": "genblaze-image-studio-v1",
+        "seed": 482910,
+        "license": "Internal demo asset, replace before production",
+        "reviewDecision": "Approved with metadata note",
+        "safetyNotes": [
+          "No likeness request",
+          "No private source files",
+          "Human review required before client delivery"
+        ]
+      }
+    },
+    {
+      "runId": "run-storyboard-014",
+      "objectKey": "projects/launch-storyboard/run-storyboard-014/storyboard.webm",
+      "sidecarKey": "projects/launch-storyboard/run-storyboard-014/storyboard.webm.metadata.json",
+      "contentType": "application/json",
+      "checksumSha256": "4b6e1e673946d762748fbd140af8fd0f7b0fe8de9814be868d77df483cb6a334",
+      "provider": "Genblaze",
+      "model": "genblaze-motion-board-v0",
+      "seed": 771245,
+      "reviewDecision": "Hold",
+      "requiredUploadPair": [
+        "projects/launch-storyboard/run-storyboard-014/storyboard.webm",
+        "projects/launch-storyboard/run-storyboard-014/storyboard.webm.metadata.json"
+      ],
+      "sidecarBody": {
+        "runId": "run-storyboard-014",
+        "title": "Launch storyboard clip",
+        "objectKey": "projects/launch-storyboard/run-storyboard-014/storyboard.webm",
+        "checksumSha256": "4b6e1e673946d762748fbd140af8fd0f7b0fe8de9814be868d77df483cb6a334",
+        "provider": "Genblaze",
+        "model": "genblaze-motion-board-v0",
+        "seed": 771245,
+        "license": "Synthetic storyboard draft",
+        "reviewDecision": "Hold",
+        "safetyNotes": [
+          "Replace placeholder company names",
+          "Confirm music rights before export"
+        ]
+      }
+    },
+    {
+      "runId": "run-audio-006",
+      "objectKey": "projects/audio-bed/run-audio-006/loop.wav",
+      "sidecarKey": "projects/audio-bed/run-audio-006/loop.wav.metadata.json",
+      "contentType": "application/json",
+      "checksumSha256": "683d0ac237fe701b7ad2a7325374388f3d78fb8c8a89a66f8d9b97d7c413f442",
+      "provider": "Genblaze",
+      "model": "genblaze-audio-loop-v2",
+      "seed": 194207,
+      "reviewDecision": "Archive candidate",
+      "requiredUploadPair": [
+        "projects/audio-bed/run-audio-006/loop.wav",
+        "projects/audio-bed/run-audio-006/loop.wav.metadata.json"
+      ],
+      "sidecarBody": {
+        "runId": "run-audio-006",
+        "title": "Ambient audio bed",
+        "objectKey": "projects/audio-bed/run-audio-006/loop.wav",
+        "checksumSha256": "683d0ac237fe701b7ad2a7325374388f3d78fb8c8a89a66f8d9b97d7c413f442",
+        "provider": "Genblaze",
+        "model": "genblaze-audio-loop-v2",
+        "seed": 194207,
+        "license": "Synthetic loop, production license pending",
+        "reviewDecision": "Archive candidate",
+        "safetyNotes": [
+          "Run duplicate melody check",
+          "Keep original prompt in handoff"
+        ]
+      }
+    }
+  ],
   "readiness": [
     {
       "label": "Public app URL",
