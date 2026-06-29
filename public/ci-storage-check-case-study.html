@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CI Storage Check Case Study - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">CI case study</p>
+      <h1>Skip storage-layout checks for brand-new Solidity artifacts</h1>
+      <p class="summary">A compact review page showing how to preserve storage-safety checks for modified upgradeable code while avoiding false CI failures for newly added contracts and libraries.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="ai-code-review-casebook.html">Code review casebook</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/ci-storage-check-case-study.md">Markdown case study</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Case study metrics">
+      <article><span>Surface</span><strong>GitHub Actions</strong><small>Workflow matrix</small></article>
+      <article><span>Risk</span><strong>False CI failure</strong><small>Missing baseline artifact</small></article>
+      <article><span>Fix</span><strong>Modified only</strong><small>Keep existing checks</small></article>
+      <article><span>Scope</span><strong>2 files</strong><small>Small CI patch</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Problem</p>
+        <h2>New files cannot have previous storage artifacts</h2>
+        <p class="panel-copy">The workflow was creating storage-check matrix entries from all changed Solidity files. That means a newly added contract or library could be sent to a storage comparison action even though no prior artifact exists for that file.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Patch</p>
+        <h2>Build the matrix from modified files</h2>
+        <p class="panel-copy">Existing contracts and libraries still run through the storage check. Newly added files are excluded from the matrix because there is no prior storage layout to compare against.</p>
+        <pre><code>if: steps.changed-contracts.outputs.contracts_modified_files != ''
+env:
+  CHANGED_CONTRACTS: ${{ steps.changed-contracts.outputs.contracts_modified_files }}</code></pre>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">QA</p>
+        <h2>Expected behavior by scenario</h2>
+        <table>
+          <tr><th>Scenario</th><th>Expected behavior</th></tr>
+          <tr><td>No storage updates</td><td>No matching modified files, so no storage-check matrix is created.</td></tr>
+          <tr><td>Existing contract updated with no collision</td><td>The modified contract remains in the matrix and is checked.</td></tr>
+          <tr><td>Existing contract updated with collision</td><td>The modified contract remains in the matrix and the existing storage action can fail the workflow.</td></tr>
+          <tr><td>New contract or library added</td><td>The new file is not in the modified-file matrix, so the workflow does not look for a missing baseline artifact.</td></tr>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
