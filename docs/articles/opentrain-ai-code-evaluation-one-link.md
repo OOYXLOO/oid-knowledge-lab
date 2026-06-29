@@ -21,12 +21,13 @@ I evaluate AI-generated code as an untrusted draft. I define expected behavior, 
 - AI Code Review Casebook: <https://ooyxloo.github.io/oid-knowledge-lab/ai-code-review-casebook.html>
 - Python Assessment Drill: <https://ooyxloo.github.io/oid-knowledge-lab/python-assessment-drill.html>
 - Model Response Comparison Lab: <https://ooyxloo.github.io/oid-knowledge-lab/model-response-comparison-lab.html>
+- TypeORM default-behavior review case: <https://github.com/typeorm/typeorm/issues/12578>
 - Duration parser review case: <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review>
 - Duration parser evidence log: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md>
 
 ## Copy-Ready Application Answer
 
-I am a strong fit for AI code evaluation because I review generated code from behavior, tests, and risk rather than surface style alone. I check requirements, edge cases, input validation, error handling, missing tests, maintainability, and explanation quality. My public samples show Python validation tasks, model-response comparison, behavior contracts, and concise accept / revise / reject decisions.
+I am a strong fit for AI code evaluation because I review generated code from behavior, tests, and risk rather than surface style alone. I check requirements, edge cases, input validation, error handling, missing tests, maintainability, and explanation quality. My public samples show Python validation tasks, model-response comparison, behavior contracts, and concise accept / revise / reject decisions. Recent open-source review work includes a focused TypeORM default-behavior fix for `OrmUtils.normalizeWhereCriteria`: root-cause analysis, a narrow code change, recursive/default behavior tests, compile/typecheck, formatting, and a targeted unit test run.
 
 ## Verdict Frame
 
