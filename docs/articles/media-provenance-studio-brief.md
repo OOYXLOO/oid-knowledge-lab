@@ -29,9 +29,9 @@ The shared theme is simple: do not ask a reviewer to trust an output without a t
 
 ## First Demonstration Scope
 
-- A browser-only asset ledger page.
+- A browser-only asset ledger page with working filters.
 - A small sample dataset with generated image, short video, and article-cover asset records.
-- Search and filters by media type, status, model note, and license note.
+- Search and filters by media type, status, model note, and evidence note.
 - A delivery summary panel for approved assets.
 - Exportable JSON and Markdown handoff examples.
 
