@@ -1736,7 +1736,8 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "envato-tutsplus-instructor-hub.html",
     "starter-scope.html",
     "direct-client-fit.html",
-    "content-backup-pitch-pack.html"
+    "content-backup-pitch-pack.html",
+    "proofdesk-slack-workflow.html"
   ];
   for (const file of staticReviewPages) {
     const source = path.join(__dirname, "..", "public", file);
