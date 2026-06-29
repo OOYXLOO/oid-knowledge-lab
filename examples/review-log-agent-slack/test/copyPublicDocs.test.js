@@ -21,6 +21,7 @@ function testCopiesOnlyPublicSubmissionDocs() {
 
   assert.deepStrictEqual(copied.sort(), [
     "architecture.md",
+    "architecture.mmd",
     "challenge-fit.md",
     "demo-video-script.md",
     "devpost-field-pack.md",

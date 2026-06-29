@@ -1,0 +1,38 @@
+flowchart LR
+  subgraph Demo["Public review demo"]
+    A["Synthetic Slack-style thread JSON"]
+    B["Browser playground"]
+    C["Static submission page"]
+  end
+
+  subgraph Core["Review Log Agent core"]
+    D["Message normalizer"]
+    E["Kind classifier"]
+    F["Evidence log model"]
+    G["Markdown handoff"]
+  end
+
+  subgraph Slack["Planned Slack app layer"]
+    H["Slash command or message shortcut"]
+    I["Slack handler"]
+    J["Sanitized thread payload"]
+    K["Ephemeral reviewer response"]
+  end
+
+  subgraph Review["Human review outcomes"]
+    L["Source facts"]
+    M["Draft claims"]
+    N["Reviewer checks"]
+    O["Blockers and boundaries"]
+  end
+
+  A --> D
+  B --> D
+  C --> G
+  H --> I --> J --> D
+  D --> E --> F --> G
+  F --> L
+  F --> M
+  F --> N
+  F --> O
+  G --> K

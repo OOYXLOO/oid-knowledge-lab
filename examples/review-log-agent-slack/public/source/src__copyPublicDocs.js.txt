@@ -6,6 +6,7 @@ const path = require("path");
 
 const PUBLIC_DOCS = [
   "architecture.md",
+  "architecture.mmd",
   "challenge-fit.md",
   "demo-video-script.md",
   "devpost-field-pack.md",

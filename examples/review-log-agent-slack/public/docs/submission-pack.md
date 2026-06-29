@@ -43,6 +43,7 @@ Related public proof:
 ```text
 https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
 https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-architecture.html
 ```
 
 ## What to Show
@@ -88,6 +89,7 @@ Ready:
 - Public Vercel slash-command API endpoint.
 - Public Vercel demo video URL verified as reachable.
 - Public GitHub source snapshot in the OID Knowledge Lab repository.
+- Static architecture SVG and Mermaid source.
 
 Still needed:
 
@@ -113,6 +115,7 @@ https://review-log-agent-slack.vercel.app/submission.html
 https://review-log-agent-slack.vercel.app/media/review-log-agent-slack-demo.mp4
 https://review-log-agent-slack.vercel.app/api/slack/commands/review-log
 https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-architecture.svg
 ```
 
 ## Current Boundary
