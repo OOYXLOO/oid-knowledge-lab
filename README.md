@@ -17,6 +17,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Unleash continuous delivery packet: <https://ooyxloo.github.io/oid-knowledge-lab/unleash-continuous-delivery-one-link.html>
 - Honeybadger debugging packet: <https://ooyxloo.github.io/oid-knowledge-lab/honeybadger-debugging-one-link.html>
 - OID portfolio risk console: <https://ooyxloo.github.io/oid-knowledge-lab/oid-portfolio-risk-console.html>
+- OID Intelligence Lab product brief: <https://ooyxloo.github.io/oid-knowledge-lab/oid-intelligence-lab.html>
 - Hasura reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/hasura-reviewer-hub.html>
 - Appsmith OID reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/appsmith-oid-reviewer-hub.html>
 
