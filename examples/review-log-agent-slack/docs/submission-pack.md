@@ -42,6 +42,7 @@ Related public proof:
 
 ```text
 https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
+https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack
 ```
 
 ## What to Show
@@ -86,12 +87,13 @@ Ready:
 - Slack app handler contract.
 - Public Vercel slash-command API endpoint.
 - Public Vercel demo video URL verified as reachable.
+- Public GitHub source snapshot in the OID Knowledge Lab repository.
 
 Still needed:
 
-- Public GitHub repository URL for the standalone project source.
 - Slack developer sandbox URL.
 - Live Slack app shape, such as a message shortcut, slash command, workflow step, or MCP-backed tool handoff.
+- Optional standalone GitHub repository URL, if a separate project repository is created later.
 
 ## Slack App Setup Assets
 
@@ -110,6 +112,7 @@ https://review-log-agent-slack.vercel.app/playground.html
 https://review-log-agent-slack.vercel.app/submission.html
 https://review-log-agent-slack.vercel.app/media/review-log-agent-slack-demo.mp4
 https://review-log-agent-slack.vercel.app/api/slack/commands/review-log
+https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack
 ```
 
 ## Current Boundary

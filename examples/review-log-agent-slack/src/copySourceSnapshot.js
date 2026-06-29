@@ -53,7 +53,7 @@ function copySourceSnapshot(rootDir, outputDir, docsDir) {
     "# Public Source Snapshot",
     "",
     "This snapshot exposes the reviewable core source files for the public Vercel demo.",
-    "It is not a replacement for the standalone GitHub repository, which is still needed for the final challenge submission.",
+    "A public GitHub source copy is also available in the OID Knowledge Lab repository: https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack",
     "",
     "## Included Files",
     "",

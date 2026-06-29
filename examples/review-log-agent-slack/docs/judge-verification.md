@@ -22,6 +22,9 @@ https://review-log-agent-slack.vercel.app/docs/public-verification.md
 
 Public source snapshot:
 https://review-log-agent-slack.vercel.app/docs/source-snapshot.md
+
+Public GitHub source snapshot:
+https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack
 ```
 
 ## What To Check
@@ -31,7 +34,7 @@ https://review-log-agent-slack.vercel.app/docs/source-snapshot.md
 3. The demo video shows the review flow without using private Slack exports, tokens, customer content, or account screenshots.
 4. The slash-command endpoint returns `405` for a browser `GET`, and returns Slack-compatible JSON for a `POST`.
 5. The public docs clearly state what is implemented now and what still requires a live Slack app or final challenge submission.
-6. The public source snapshot links reviewable source, tests, docs, and manifest files with SHA-256 hashes while the standalone GitHub repository is pending.
+6. The public source snapshot links reviewable source, tests, docs, and manifest files with SHA-256 hashes; the OID Knowledge Lab repository also contains a public source copy.
 
 ## Local Verification Commands
 
@@ -59,7 +62,7 @@ The endpoint returns Slack-compatible JSON with a text response.
 ## Current External Gaps
 
 ```text
-Public GitHub repository URL: not reachable yet
+Public GitHub source snapshot: https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack
 Slack app / sandbox URL: not created or not published yet
 Devpost submission URL: not submitted yet
 ```

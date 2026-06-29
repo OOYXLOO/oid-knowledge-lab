@@ -65,6 +65,7 @@ https://review-log-agent-slack.vercel.app/media/review-log-agent-slack-demo.mp4
 https://review-log-agent-slack.vercel.app/docs/judge-verification.md
 https://review-log-agent-slack.vercel.app/docs/source-snapshot.md
 https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
+https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack
 ```
 
 ## Architecture
@@ -96,7 +97,7 @@ The manifest defines `/review-log`, a `Build review log` message shortcut, and t
 ## Repository Link
 
 ```text
-Add the public GitHub repository URL after the standalone repository is reachable.
+https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack
 ```
 
 ## Verification

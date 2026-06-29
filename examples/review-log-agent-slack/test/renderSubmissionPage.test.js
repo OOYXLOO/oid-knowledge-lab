@@ -16,7 +16,8 @@ function testRendersSubmissionPageWithCoreLinks() {
   assert.match(html, /Submission Readiness/);
   assert.match(html, /public video/);
   assert.match(html, /Slack developer sandbox URL/);
-  assert.match(html, /public GitHub repository URL/);
+  assert.match(html, /github\.com\/OOYXLOO\/oid-knowledge-lab/);
+  assert.match(html, /public GitHub source snapshot/);
   assert.match(html, /Slack app manifest template/);
   assert.match(html, /Slack app handler contract/);
 }
