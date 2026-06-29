@@ -2698,7 +2698,13 @@ function testProofDeskPagesArePublicAndBoundarySafe() {
   assert.ok(demo.includes("proofdesk-run"));
   assert.ok(demo.includes("proofdesk-copy"));
   assert.ok(demo.includes("proofdesk-download"));
+  assert.ok(demo.includes("proofdesk-command-form"));
+  assert.ok(demo.includes("proofdesk-command-log"));
+  assert.ok(demo.includes("/proofdesk add <url>"));
+  assert.ok(demo.includes("/proofdesk packet"));
+  assert.ok(demo.includes("/proofdesk blockers"));
   assert.ok(demo.includes("function buildPacket"));
+  assert.ok(demo.includes("function runCommand"));
   assert.ok(demo.includes("Packet generated in this browser."));
   assert.ok(demo.includes("Nothing is uploaded."));
 }

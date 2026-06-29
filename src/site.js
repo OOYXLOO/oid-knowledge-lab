@@ -994,6 +994,85 @@ a {
 .audit-handoff.is-visible {
   display: block;
 }
+.command-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+.command-presets button,
+.command-row button {
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+.command-presets button:hover,
+.command-row button:hover {
+  border-color: var(--accent);
+}
+.command-shell label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+.command-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+}
+.command-row input {
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+}
+.command-log {
+  display: grid;
+  gap: 10px;
+  max-height: 320px;
+  overflow: auto;
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f8fafc;
+}
+.command-message {
+  max-width: 780px;
+}
+.command-message strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+.command-message pre {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--white);
+  color: var(--ink);
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 0.9rem;
+}
+.command-message-user {
+  justify-self: end;
+}
+.command-message-user pre {
+  border-color: #bfdbfe;
+  background: #eff6ff;
+}
 .audit-summary {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
