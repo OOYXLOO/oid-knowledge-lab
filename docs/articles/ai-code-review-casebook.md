@@ -75,6 +75,43 @@ Raw Markdown:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/model-response-comparison-lab.md
 ```
 
+## Case: typeorm_normalize_where_defaults
+
+Public issue:
+
+```text
+https://github.com/typeorm/typeorm/issues/12578
+```
+
+Why this case matters:
+
+- It starts from a framework utility where a guard clause skipped documented
+  default behavior for invalid `where` values.
+- It traces the root cause to `OrmUtils.normalizeWhereCriteria` returning early
+  when no explicit behavior object was provided.
+- It removes the early return so the existing default `?? "throw"` behavior can
+  run for `null` and `undefined` values.
+- It adds focused unit coverage for default `undefined`, default `null`,
+  recursive nested criteria, and the explicit `{ undefined: "ignore" }` path.
+
+Validation performed:
+
+```text
+node --check src\util\OrmUtils.ts
+node --check test\unit\util\orm-utils.test.ts
+pnpm exec tsc --noEmit --pretty false
+pnpm run compile
+pnpm exec prettier --check src/util/OrmUtils.ts test/unit/util/orm-utils.test.ts
+git diff --check
+node_modules\.bin\mocha.cmd --no-config build/compiled/test/unit/util/orm-utils.test.js
+```
+
+Targeted unit test result:
+
+```text
+18 passing
+```
+
 ## Boundary
 
 The examples are public, original review artifacts. They do not include private
