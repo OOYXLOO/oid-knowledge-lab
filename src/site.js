@@ -148,6 +148,12 @@ function renderEditorReviewPathPanel() {
           <a href="ai-code-evaluator-portfolio.html">Open evaluator portfolio</a>
         </article>
         <article>
+          <span>Peer code review</span>
+          <strong>Evidence-backed reviewer portfolio</strong>
+          <p>Neutral portfolio page for code-review, AI-code-evaluation, and peer-reviewer applications with proof links, verdict shape, and safety boundaries.</p>
+          <a href="code-reviewer-portfolio.html">Open reviewer portfolio</a>
+        </article>
+        <article>
           <span>Mindrift code review</span>
           <strong>Python evaluator and model-response review</strong>
           <p>Code-review-focused proof page for generated-code assessment, bug finding, corrected implementations, structured feedback, and task filtering.</p>
@@ -398,6 +404,7 @@ function renderArticleSamplesPanel() {
         <tbody>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/portfolio-card.md">Portfolio card</a></td><td>Fast writing-positioning overview, best first sample, proof links, and verification boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/editor-brief.md">Editor brief</a></td><td>Quick topic fit, reader outcomes, proof links, and verification boundaries.</td></tr>
+          <tr><td><a href="paid-writing-editor-brief.html">Paid writing editor brief</a></td><td>One-page editorial review path for the KnowledgeOwl documentation proposal and PHP deployment tutorial packet.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/editor-pitch-pack.md">Editor pitch pack</a></td><td>Publication-ready topic angles mapped to samples, proof links, and safe boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/implementation-authenticity-proof.md">Implementation authenticity proof</a></td><td>Public trail from working code to generated artifacts to editorial samples, with reproducible checks.</td></tr>
           <tr><td><a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a></td><td>One-page Airbyte-specific editorial review path with proof links, article fit, implementation boundary, and next-step notes.</td></tr>
@@ -410,6 +417,7 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/draftdev-writer-profile-one-pager.md">Draft.dev writer profile</a></td><td>Implementation-backed writer-network fit, topic lanes, proof links, and delivery style.</td></tr>
           <tr><td><a href="knowledgeowl-reviewer-hub.html">KnowledgeOwl reviewer hub</a></td><td>Documentation-focused article proposal about evidence logs for AI-assisted knowledge base articles.</td></tr>
           <tr><td><a href="knowledgeowl-one-link.html">KnowledgeOwl one-link packet</a></td><td>Fast editor-first review page with the pitch, draft preview, template, playground, proof links, and publication boundary.</td></tr>
+          <tr><td><a href="code-reviewer-portfolio.html">Peer code reviewer portfolio</a></td><td>Neutral proof page for code-review, AI-code-evaluation, and peer-reviewer applications with verdict shape and proof links.</td></tr>
           <tr><td><a href="mindrift-code-reviewer-hub.html">Mindrift code reviewer hub</a></td><td>AI code-review proof path for Python evaluator work, bug finding, model-response comparison, corrected implementations, and structured feedback.</td></tr>
           <tr><td><a href="alignerr-python-one-link.html">Alignerr Python one-link</a></td><td>Fast application link for Python AI workflow validation, tests, data-boundary checks, and evidence-backed review decisions.</td></tr>
           <tr><td><a href="mindrift-code-one-link.html">Mindrift code one-link</a></td><td>Fast application link with role summary, proof links, review method, verdict frame, and public safety boundary.</td></tr>
@@ -1669,6 +1677,8 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "knowledgeowl-reviewer-hub.html",
     "knowledgeowl-one-link.html",
     "knowledgeowl-application-field-pack.html",
+    "paid-writing-editor-brief.html",
+    "code-reviewer-portfolio.html",
     "alignerr-python-one-link.html",
     "mindrift-code-one-link.html",
     "ai-evaluator-unified-application-desk.html",
