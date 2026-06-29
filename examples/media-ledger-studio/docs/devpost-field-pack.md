@@ -1,0 +1,57 @@
+# Media Ledger Studio Devpost Field Pack
+
+## Project Name
+
+Media Ledger Studio
+
+## Tagline
+
+An operations ledger for generated media provenance, review, and Backblaze B2 storage handoff.
+
+## Links
+
+- App: https://media-ledger-studio-static.vercel.app
+- Source repository: https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio
+- Demo video: https://media-ledger-studio-static.vercel.app/demo-video.html
+
+## Built With
+
+React, Vite, deterministic sample media records, Backblaze B2-shaped object manifests, and Genblaze-shaped generation metadata.
+
+## Provider and Model List
+
+- Genblaze / genblaze-image-studio-v1 (image/png)
+- Genblaze / genblaze-motion-board-v0 (video/webm)
+- Genblaze / genblaze-audio-loop-v2 (audio/wav)
+
+## Inspiration
+
+Generated media teams need more than a final image or clip. They need a handoff that explains which prompt, provider, model, storage object, checksum, license note, and human review decision belongs to each asset.
+
+## What It Does
+
+Media Ledger Studio lets a reviewer inspect generated image, video, and audio runs; compare prompt and negative prompt records; verify B2 object keys and checksums; and copy a submission-ready ledger summary.
+
+## How It Uses Backblaze B2
+
+The prototype records a Backblaze B2-style bucket, object key, content type, byte size, storage class, creation time, and SHA-256 checksum for each generated media output. A live adapter can upload final assets and sidecar metadata to B2 while preserving this same reviewer-facing ledger.
+
+## How It Uses Genblaze
+
+The prototype models Genblaze generation runs with provider, model, prompt, negative prompt, seed, duration, retry count, output type, and safety notes. A live Genblaze adapter can replace the deterministic sample runs without changing the dashboard workflow.
+
+## Challenge Fit
+
+The app is built around generated media operations: prompt intake, Genblaze-shaped generation metadata, human review, durable Backblaze B2-shaped object storage, provenance inspection, and client handoff.
+
+## Challenge Readiness
+
+Readiness score: 100/100. image run present; video run present; audio run present; B2-shaped storage manifest complete; Genblaze-shaped run metadata complete. Current blocker: No submission blockers in the current checklist.
+
+## Storage Handoff Summary
+
+The bundled manifest covers 3 generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision.
+
+## What's Next
+
+Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, add signed sidecar metadata, and optionally replace the public walkthrough page with an uploaded demo video.

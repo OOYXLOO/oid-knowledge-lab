@@ -1,0 +1,31 @@
+{
+  "name": "media-ledger-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Creator operations cockpit for generated media provenance and storage handoff.",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 8842",
+    "build": "vite build && node scripts/prepare-static-routes.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 8843",
+    "check": "node --check src/mediaLedger.js && node --check scripts/audit-local.mjs && node --check scripts/export-submission-pack.mjs && node --check scripts/export-devpost-fields.mjs && node --check scripts/prepare-static-routes.mjs && node --check tests/mediaLedger.test.mjs",
+    "test": "node tests/mediaLedger.test.mjs",
+    "audit:local": "node scripts/audit-local.mjs",
+    "export:submission-pack": "node scripts/export-submission-pack.mjs",
+    "export:devpost-fields": "node scripts/export-devpost-fields.mjs"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.1.2",
+    "vite": "^8.0.16",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "generated-media",
+    "provenance",
+    "backblaze-b2",
+    "workflow"
+  ],
+  "license": "UNLICENSED"
+}

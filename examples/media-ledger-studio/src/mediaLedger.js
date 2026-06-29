@@ -1,0 +1,294 @@
+export const sampleRuns = [
+  {
+    id: "run-cover-001",
+    title: "Editorial cover image",
+    status: "Ready for client review",
+    owner: "Mira Chen",
+    brief: "A quiet cinematic cover for an article about resilient cloud storage for generated media teams.",
+    prompt:
+      "A production desk with generated image contact sheets, storage labels, and a calm cloud operations mood.",
+    negativePrompt: "no distorted text, no brand impersonation, no private data",
+    provider: "Genblaze",
+    model: "genblaze-image-studio-v1",
+    seed: 482910,
+    durationMs: 18400,
+    retryCount: 1,
+    license: "Internal demo asset, replace before production",
+    safetyNotes: ["No likeness request", "No private source files", "Human review required before client delivery"],
+    storage: {
+      bucket: "media-ledger-demo",
+      objectKey: "projects/editorial-cover/run-cover-001/final.png",
+      checksumSha256: "9c9f1ee3a4315f8367b39c31d93a4ef5d6a71e9a45c8e66111108b2419a31a77",
+      contentType: "image/png",
+      bytes: 2843920,
+      storageClass: "Backblaze B2 Standard",
+      createdAt: "2026-06-27T08:05:00Z"
+    },
+    review: {
+      score: 92,
+      decision: "Approved with metadata note",
+      notes: "Strong composition. Add final campaign ID before handoff."
+    },
+    thumbnail:
+      "linear-gradient(135deg, #16323b 0%, #1e6c6b 42%, #f2d179 43%, #e86f51 100%)"
+  },
+  {
+    id: "run-storyboard-014",
+    title: "Launch storyboard clip",
+    status: "Needs provenance fix",
+    owner: "Alex Rivera",
+    brief: "A short product explainer storyboard for a generated media archive.",
+    prompt:
+      "Four-panel storyboard showing prompt intake, generated media review, B2 storage, and final client delivery.",
+    negativePrompt: "no fake logos, no real customer names, no private screenshots",
+    provider: "Genblaze",
+    model: "genblaze-motion-board-v0",
+    seed: 771245,
+    durationMs: 31200,
+    retryCount: 2,
+    license: "Synthetic storyboard draft",
+    safetyNotes: ["Replace placeholder company names", "Confirm music rights before export"],
+    storage: {
+      bucket: "media-ledger-demo",
+      objectKey: "projects/launch-storyboard/run-storyboard-014/storyboard.webm",
+      checksumSha256: "4b6e1e673946d762748fbd140af8fd0f7b0fe8de9814be868d77df483cb6a334",
+      contentType: "video/webm",
+      bytes: 9432104,
+      storageClass: "Backblaze B2 Standard",
+      createdAt: "2026-06-27T08:18:00Z"
+    },
+    review: {
+      score: 78,
+      decision: "Hold",
+      notes: "Sidecar metadata is complete, but final transcript needs reviewer initials."
+    },
+    thumbnail:
+      "linear-gradient(135deg, #263238 0%, #42565c 35%, #f4f0e8 36%, #55a6a3 100%)"
+  },
+  {
+    id: "run-audio-006",
+    title: "Ambient audio bed",
+    status: "Archived",
+    owner: "Noor Patel",
+    brief: "A calm ambient background loop for a product walkthrough.",
+    prompt: "Warm minimal ambient audio bed, soft pulse, no vocals, no recognizable melody.",
+    negativePrompt: "no copyrighted melody, no voice, no aggressive percussion",
+    provider: "Genblaze",
+    model: "genblaze-audio-loop-v2",
+    seed: 194207,
+    durationMs: 22600,
+    retryCount: 0,
+    license: "Synthetic loop, production license pending",
+    safetyNotes: ["Run duplicate melody check", "Keep original prompt in handoff"],
+    storage: {
+      bucket: "media-ledger-demo",
+      objectKey: "projects/audio-bed/run-audio-006/loop.wav",
+      checksumSha256: "683d0ac237fe701b7ad2a7325374388f3d78fb8c8a89a66f8d9b97d7c413f442",
+      contentType: "audio/wav",
+      bytes: 5814200,
+      storageClass: "Backblaze B2 Standard",
+      createdAt: "2026-06-27T08:32:00Z"
+    },
+    review: {
+      score: 86,
+      decision: "Archive candidate",
+      notes: "Ready for storage proof. Needs final license check before reuse."
+    },
+    thumbnail:
+      "linear-gradient(135deg, #15292f 0%, #2b7a78 48%, #ffffff 49%, #c9583c 100%)"
+  }
+];
+
+export function summarizeLedger(runs = sampleRuns) {
+  const bytes = runs.reduce((sum, run) => sum + run.storage.bytes, 0);
+  const ready = runs.filter((run) => /ready|archived/i.test(run.status)).length;
+  const needsAction = runs.length - ready;
+  const averageScore = Math.round(
+    runs.reduce((sum, run) => sum + run.review.score, 0) / Math.max(runs.length, 1)
+  );
+
+  return {
+    totalRuns: runs.length,
+    ready,
+    needsAction,
+    averageScore,
+    totalBytes: bytes,
+    totalMegabytes: Number((bytes / 1024 / 1024).toFixed(2))
+  };
+}
+
+export function createSubmissionPack(runs = sampleRuns) {
+  const summary = summarizeLedger(runs);
+  const readiness = createReadinessChecklist();
+  const challengeReadiness = createChallengeReadinessScore(runs, readiness);
+  return {
+    appName: "Media Ledger Studio",
+    publicDemoUrl: "https://media-ledger-studio-static.vercel.app",
+    summary,
+    challengeReadiness,
+    requiredTechnology: {
+      storage: "Backblaze B2-shaped object records are captured per generated asset.",
+      generation:
+        "Genblaze-shaped provider metadata is captured per generation run and linked to stored outputs."
+    },
+    reviewerPath: [
+      "Open the dashboard.",
+      "Select each media run.",
+      "Inspect prompt, provider, model, storage object key, checksum, review status, and safety notes.",
+      "Export or copy the ledger summary for handoff."
+    ],
+    sampleObjectKeys: runs.map((run) => run.storage.objectKey),
+    providerModels: createProviderModelList(runs),
+    storageHandoffManifest: createStorageHandoffManifest(runs),
+    readiness
+  };
+}
+
+export function findRunById(id, runs = sampleRuns) {
+  return runs.find((run) => run.id === id) || runs[0];
+}
+
+export function createProviderModelList(runs = sampleRuns) {
+  const seen = new Set();
+  return runs
+    .map((run) => ({ provider: run.provider, model: run.model, assetType: run.storage.contentType }))
+    .filter((entry) => {
+      const key = `${entry.provider}/${entry.model}/${entry.assetType}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+}
+
+export function createDevpostFields({
+  appUrl = "https://media-ledger-studio-static.vercel.app",
+  sourceRepoUrl = "https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio",
+  videoUrl = "https://media-ledger-studio-static.vercel.app/demo-video.html"
+} = {}) {
+  const pack = createSubmissionPack(sampleRuns);
+  return {
+    projectName: "Media Ledger Studio",
+    tagline: "An operations ledger for generated media provenance, review, and Backblaze B2 storage handoff.",
+    appUrl,
+    sourceRepoUrl,
+    videoUrl,
+    providerAndModels: pack.providerModels,
+    builtWith:
+      "React, Vite, deterministic sample media records, Backblaze B2-shaped object manifests, and Genblaze-shaped generation metadata.",
+    inspiration:
+      "Generated media teams need more than a final image or clip. They need a handoff that explains which prompt, provider, model, storage object, checksum, license note, and human review decision belongs to each asset.",
+    whatItDoes:
+      "Media Ledger Studio lets a reviewer inspect generated image, video, and audio runs; compare prompt and negative prompt records; verify B2 object keys and checksums; and copy a submission-ready ledger summary.",
+    howBackblazeB2IsUsed:
+      "The prototype records a Backblaze B2-style bucket, object key, content type, byte size, storage class, creation time, and SHA-256 checksum for each generated media output. A live adapter can upload final assets and sidecar metadata to B2 while preserving this same reviewer-facing ledger.",
+    howGenblazeIsUsed:
+      "The prototype models Genblaze generation runs with provider, model, prompt, negative prompt, seed, duration, retry count, output type, and safety notes. A live Genblaze adapter can replace the deterministic sample runs without changing the dashboard workflow.",
+    challengeFit:
+      "The app is built around generated media operations: prompt intake, Genblaze-shaped generation metadata, human review, durable Backblaze B2-shaped object storage, provenance inspection, and client handoff.",
+    challengeReadiness:
+      `Readiness score: ${pack.challengeReadiness.score}/100. ` +
+      `${pack.challengeReadiness.readySignals.join("; ")}. ` +
+      `Current blocker: ${pack.challengeReadiness.blockers.join("; ")}.`,
+    storageHandoffSummary:
+      `The bundled manifest covers ${pack.storageHandoffManifest.length} generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision.`,
+    whatIsNext:
+      "Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, add signed sidecar metadata, and optionally replace the public walkthrough page with an uploaded demo video."
+  };
+}
+
+export function createStorageHandoffManifest(runs = sampleRuns) {
+  return runs.map((run) => ({
+    runId: run.id,
+    title: run.title,
+    assetType: run.storage.contentType,
+    bucket: run.storage.bucket,
+    objectKey: run.storage.objectKey,
+    bytes: run.storage.bytes,
+    checksumSha256: run.storage.checksumSha256,
+    provider: run.provider,
+    model: run.model,
+    seed: run.seed,
+    reviewDecision: run.review.decision,
+    safetyNotes: run.safetyNotes
+  }));
+}
+
+export function createChallengeReadinessScore(runs = sampleRuns, readiness = createReadinessChecklist()) {
+  const hasImage = runs.some((run) => run.storage.contentType.startsWith("image/"));
+  const hasVideo = runs.some((run) => run.storage.contentType.startsWith("video/"));
+  const hasAudio = runs.some((run) => run.storage.contentType.startsWith("audio/"));
+  const hasStorageRecords = runs.every((run) =>
+    run.storage.bucket
+    && run.storage.objectKey
+    && run.storage.checksumSha256
+    && run.storage.bytes > 0
+  );
+  const hasGenblazeRecords = runs.every((run) => run.provider && run.model && run.prompt && Number.isInteger(run.seed));
+  const readyCount = readiness.filter((item) => item.status === "ready").length;
+  const score = Math.round(
+    (hasImage ? 12 : 0)
+    + (hasVideo ? 12 : 0)
+    + (hasAudio ? 12 : 0)
+    + (hasStorageRecords ? 24 : 0)
+    + (hasGenblazeRecords ? 24 : 0)
+    + (readyCount / readiness.length) * 16
+  );
+  const blockers = readiness
+    .filter((item) => item.status !== "ready")
+    .map((item) => `${item.label}: ${item.detail}`);
+  return {
+    score,
+    readySignals: [
+      hasImage ? "image run present" : "image run missing",
+      hasVideo ? "video run present" : "video run missing",
+      hasAudio ? "audio run present" : "audio run missing",
+      hasStorageRecords ? "B2-shaped storage manifest complete" : "storage manifest incomplete",
+      hasGenblazeRecords ? "Genblaze-shaped run metadata complete" : "generation metadata incomplete"
+    ],
+    blockers: blockers.length ? blockers : ["No submission blockers in the current checklist"]
+  };
+}
+
+export function createReadinessChecklist({
+  sourceRepoReady = true,
+  publicAppReady = true,
+  demoVideoReady = true,
+  b2BoundaryReady = true,
+  genblazeBoundaryReady = true,
+  privateDataFree = true
+} = {}) {
+  return [
+    {
+      label: "Public app URL",
+      status: publicAppReady ? "ready" : "missing",
+      detail: "The Vercel production app is reachable by reviewers."
+    },
+    {
+      label: "Source repository",
+      status: sourceRepoReady ? "ready" : "blocked",
+      detail: sourceRepoReady
+        ? "A public source snapshot is available in the OID Knowledge Lab repository."
+        : "Create and push the public GitHub repository before final submission."
+    },
+    {
+      label: "Demo video",
+      status: demoVideoReady ? "ready" : "missing",
+      detail: "The public walkthrough URL is available for reviewers and can be replaced by an uploaded recording later."
+    },
+    {
+      label: "Backblaze B2 boundary",
+      status: b2BoundaryReady ? "ready" : "missing",
+      detail: "Each sample asset has a B2-shaped bucket, object key, content type, size, class, and checksum."
+    },
+    {
+      label: "Genblaze boundary",
+      status: genblazeBoundaryReady ? "ready" : "missing",
+      detail: "Each sample asset has provider, model, prompt, seed, retry, and safety metadata."
+    },
+    {
+      label: "Public safety",
+      status: privateDataFree ? "ready" : "blocked",
+      detail: "The public build uses synthetic records and avoids private media or credentials."
+    }
+  ];
+}

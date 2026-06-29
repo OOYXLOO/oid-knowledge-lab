@@ -1,0 +1,143 @@
+{
+  "appName": "Media Ledger Studio",
+  "publicDemoUrl": "https://media-ledger-studio-static.vercel.app",
+  "summary": {
+    "totalRuns": 3,
+    "ready": 2,
+    "needsAction": 1,
+    "averageScore": 85,
+    "totalBytes": 18090224,
+    "totalMegabytes": 17.25
+  },
+  "challengeReadiness": {
+    "score": 100,
+    "readySignals": [
+      "image run present",
+      "video run present",
+      "audio run present",
+      "B2-shaped storage manifest complete",
+      "Genblaze-shaped run metadata complete"
+    ],
+    "blockers": [
+      "No submission blockers in the current checklist"
+    ]
+  },
+  "requiredTechnology": {
+    "storage": "Backblaze B2-shaped object records are captured per generated asset.",
+    "generation": "Genblaze-shaped provider metadata is captured per generation run and linked to stored outputs."
+  },
+  "reviewerPath": [
+    "Open the dashboard.",
+    "Select each media run.",
+    "Inspect prompt, provider, model, storage object key, checksum, review status, and safety notes.",
+    "Export or copy the ledger summary for handoff."
+  ],
+  "sampleObjectKeys": [
+    "projects/editorial-cover/run-cover-001/final.png",
+    "projects/launch-storyboard/run-storyboard-014/storyboard.webm",
+    "projects/audio-bed/run-audio-006/loop.wav"
+  ],
+  "providerModels": [
+    {
+      "provider": "Genblaze",
+      "model": "genblaze-image-studio-v1",
+      "assetType": "image/png"
+    },
+    {
+      "provider": "Genblaze",
+      "model": "genblaze-motion-board-v0",
+      "assetType": "video/webm"
+    },
+    {
+      "provider": "Genblaze",
+      "model": "genblaze-audio-loop-v2",
+      "assetType": "audio/wav"
+    }
+  ],
+  "storageHandoffManifest": [
+    {
+      "runId": "run-cover-001",
+      "title": "Editorial cover image",
+      "assetType": "image/png",
+      "bucket": "media-ledger-demo",
+      "objectKey": "projects/editorial-cover/run-cover-001/final.png",
+      "bytes": 2843920,
+      "checksumSha256": "9c9f1ee3a4315f8367b39c31d93a4ef5d6a71e9a45c8e66111108b2419a31a77",
+      "provider": "Genblaze",
+      "model": "genblaze-image-studio-v1",
+      "seed": 482910,
+      "reviewDecision": "Approved with metadata note",
+      "safetyNotes": [
+        "No likeness request",
+        "No private source files",
+        "Human review required before client delivery"
+      ]
+    },
+    {
+      "runId": "run-storyboard-014",
+      "title": "Launch storyboard clip",
+      "assetType": "video/webm",
+      "bucket": "media-ledger-demo",
+      "objectKey": "projects/launch-storyboard/run-storyboard-014/storyboard.webm",
+      "bytes": 9432104,
+      "checksumSha256": "4b6e1e673946d762748fbd140af8fd0f7b0fe8de9814be868d77df483cb6a334",
+      "provider": "Genblaze",
+      "model": "genblaze-motion-board-v0",
+      "seed": 771245,
+      "reviewDecision": "Hold",
+      "safetyNotes": [
+        "Replace placeholder company names",
+        "Confirm music rights before export"
+      ]
+    },
+    {
+      "runId": "run-audio-006",
+      "title": "Ambient audio bed",
+      "assetType": "audio/wav",
+      "bucket": "media-ledger-demo",
+      "objectKey": "projects/audio-bed/run-audio-006/loop.wav",
+      "bytes": 5814200,
+      "checksumSha256": "683d0ac237fe701b7ad2a7325374388f3d78fb8c8a89a66f8d9b97d7c413f442",
+      "provider": "Genblaze",
+      "model": "genblaze-audio-loop-v2",
+      "seed": 194207,
+      "reviewDecision": "Archive candidate",
+      "safetyNotes": [
+        "Run duplicate melody check",
+        "Keep original prompt in handoff"
+      ]
+    }
+  ],
+  "readiness": [
+    {
+      "label": "Public app URL",
+      "status": "ready",
+      "detail": "The Vercel production app is reachable by reviewers."
+    },
+    {
+      "label": "Source repository",
+      "status": "ready",
+      "detail": "A public source snapshot is available in the OID Knowledge Lab repository."
+    },
+    {
+      "label": "Demo video",
+      "status": "ready",
+      "detail": "The public walkthrough URL is available for reviewers and can be replaced by an uploaded recording later."
+    },
+    {
+      "label": "Backblaze B2 boundary",
+      "status": "ready",
+      "detail": "Each sample asset has a B2-shaped bucket, object key, content type, size, class, and checksum."
+    },
+    {
+      "label": "Genblaze boundary",
+      "status": "ready",
+      "detail": "Each sample asset has provider, model, prompt, seed, retry, and safety metadata."
+    },
+    {
+      "label": "Public safety",
+      "status": "ready",
+      "detail": "The public build uses synthetic records and avoids private media or credentials."
+    }
+  ]
+}
