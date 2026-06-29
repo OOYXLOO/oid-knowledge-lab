@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Review Log Agent architecture</title>
+  <desc id="desc">Architecture diagram for a Slack-style review thread to evidence log workflow.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f6f8fb; }
+      .panel { fill: #ffffff; stroke: #d9deea; stroke-width: 2; rx: 18; }
+      .box { fill: #ffffff; stroke: #126e68; stroke-width: 2; rx: 12; }
+      .box2 { fill: #e8f5f2; stroke: #126e68; stroke-width: 2; rx: 12; }
+      .box3 { fill: #fff7ea; stroke: #d17a22; stroke-width: 2; rx: 12; }
+      .label { fill: #172033; font-family: Inter, Arial, sans-serif; font-size: 22px; font-weight: 700; }
+      .small { fill: #5d667a; font-family: Inter, Arial, sans-serif; font-size: 16px; }
+      .title { fill: #172033; font-family: Inter, Arial, sans-serif; font-size: 36px; font-weight: 800; }
+      .caption { fill: #5d667a; font-family: Inter, Arial, sans-serif; font-size: 18px; }
+      .arrow { stroke: #44515f; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .section { fill: #126e68; font-family: Inter, Arial, sans-serif; font-size: 18px; font-weight: 800; letter-spacing: .04em; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#44515f"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="1280" height="760"/>
+  <text class="title" x="64" y="62">Review Log Agent for Slack</text>
+  <text class="caption" x="64" y="96">A public-safe workflow from Slack-style review threads to evidence logs and human owner decisions.</text>
+
+  <rect class="panel" x="48" y="134" width="296" height="510" rx="18"/>
+  <text class="section" x="76" y="174">PUBLIC DEMO</text>
+  <rect class="box" x="76" y="206" width="240" height="82" rx="12"/>
+  <text class="label" x="96" y="240">Synthetic thread</text>
+  <text class="small" x="96" y="264">Slack-style JSON</text>
+  <rect class="box" x="76" y="330" width="240" height="82" rx="12"/>
+  <text class="label" x="96" y="364">Playground</text>
+  <text class="small" x="96" y="388">Browser-local edits</text>
+  <rect class="box" x="76" y="454" width="240" height="82" rx="12"/>
+  <text class="label" x="96" y="488">Submission page</text>
+  <text class="small" x="96" y="512">Reviewer links</text>
+
+  <rect class="panel" x="392" y="134" width="322" height="510" rx="18"/>
+  <text class="section" x="420" y="174">REVIEW CORE</text>
+  <rect class="box2" x="424" y="206" width="258" height="72" rx="12"/>
+  <text class="label" x="444" y="238">Message normalizer</text>
+  <rect class="box2" x="424" y="314" width="258" height="72" rx="12"/>
+  <text class="label" x="444" y="346">Kind classifier</text>
+  <rect class="box2" x="424" y="422" width="258" height="72" rx="12"/>
+  <text class="label" x="444" y="454">Evidence model</text>
+  <rect class="box2" x="424" y="530" width="258" height="72" rx="12"/>
+  <text class="label" x="444" y="562">Markdown handoff</text>
+
+  <rect class="panel" x="762" y="134" width="228" height="510" rx="18"/>
+  <text class="section" x="790" y="174">SLACK LAYER</text>
+  <rect class="box3" x="790" y="206" width="172" height="82" rx="12"/>
+  <text class="label" x="810" y="240">Command</text>
+  <text class="small" x="810" y="264">or shortcut</text>
+  <rect class="box3" x="790" y="330" width="172" height="82" rx="12"/>
+  <text class="label" x="810" y="364">Handler</text>
+  <text class="small" x="810" y="388">Sanitize input</text>
+  <rect class="box3" x="790" y="454" width="172" height="82" rx="12"/>
+  <text class="label" x="810" y="488">Response</text>
+  <text class="small" x="810" y="512">Ephemeral handoff</text>
+
+  <rect class="panel" x="1038" y="134" width="194" height="510" rx="18"/>
+  <text class="section" x="1062" y="174">OUTPUTS</text>
+  <rect class="box" x="1062" y="206" width="146" height="64" rx="12"/>
+  <text class="small" x="1078" y="244">Source facts</text>
+  <rect class="box" x="1062" y="298" width="146" height="64" rx="12"/>
+  <text class="small" x="1078" y="336">Draft claims</text>
+  <rect class="box" x="1062" y="390" width="146" height="64" rx="12"/>
+  <text class="small" x="1078" y="428">Reviewer checks</text>
+  <rect class="box" x="1062" y="482" width="146" height="64" rx="12"/>
+  <text class="small" x="1078" y="520">Blockers</text>
+  <rect class="box" x="1062" y="574" width="146" height="64" rx="12"/>
+  <text class="small" x="1078" y="612">Boundaries</text>
+
+  <path class="arrow" d="M316 247 C360 247, 370 242, 424 242"/>
+  <path class="arrow" d="M316 371 C360 371, 370 242, 424 242"/>
+  <path class="arrow" d="M316 495 C370 495, 384 566, 424 566"/>
+  <path class="arrow" d="M682 242 L790 242"/>
+  <path class="arrow" d="M876 288 L876 330"/>
+  <path class="arrow" d="M790 371 C744 371, 728 242, 682 242"/>
+  <path class="arrow" d="M553 278 L553 314"/>
+  <path class="arrow" d="M553 386 L553 422"/>
+  <path class="arrow" d="M553 494 L553 530"/>
+  <path class="arrow" d="M682 458 C840 458, 900 238, 1062 238"/>
+  <path class="arrow" d="M682 458 C842 458, 900 330, 1062 330"/>
+  <path class="arrow" d="M682 458 C844 458, 900 422, 1062 422"/>
+  <path class="arrow" d="M682 458 C844 458, 900 514, 1062 514"/>
+  <path class="arrow" d="M682 458 C844 458, 900 606, 1062 606"/>
+  <path class="arrow" d="M682 566 C730 566, 744 495, 790 495"/>
+
+  <text class="caption" x="64" y="704">Boundary: public demos use synthetic or sanitized inputs. Slack credentials, private exports, and workspace data stay outside the public proof.</text>
+</svg>
