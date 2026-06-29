@@ -19,6 +19,50 @@
     </section>
 
     <section class="panel">
+      <p class="eyebrow">Interactive packet builder</p>
+      <h2>Paste review claims and generate a handoff</h2>
+      <p class="panel-copy">Edit the JSON below, then generate a packet in this browser. Nothing is uploaded.</p>
+      <textarea id="proofdesk-input" rows="14" spellcheck="false">[
+  {
+    "title": "Media Provenance Studio launch packet",
+    "artifact_type": "public demo",
+    "source_url": "https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-studio.html",
+    "evidence_links": [
+      {
+        "label": "Interactive demo",
+        "url": "https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-studio.html",
+        "status": "ready"
+      }
+    ],
+    "blockers": [],
+    "human_gates": []
+  },
+  {
+    "title": "Backblaze readiness packet",
+    "artifact_type": "hackathon readiness page",
+    "source_url": "https://ooyxloo.github.io/oid-knowledge-lab/backblaze-readiness-pack.html",
+    "evidence_links": [
+      {
+        "label": "Readiness page",
+        "url": "https://ooyxloo.github.io/oid-knowledge-lab/backblaze-readiness-pack.html",
+        "status": "ready"
+      }
+    ],
+    "blockers": ["Connect a real Backblaze B2 bucket before claiming live storage."],
+    "human_gates": ["Confirm account and submission details before final Devpost submission."]
+  }
+]</textarea>
+      <div class="audit-actions">
+        <button type="button" id="proofdesk-run">Generate packet</button>
+        <button type="button" id="proofdesk-copy">Copy Markdown</button>
+        <button type="button" id="proofdesk-download">Download JSON</button>
+      </div>
+      <p class="audit-status" id="proofdesk-status"></p>
+      <div class="mini-metrics" id="proofdesk-metrics"></div>
+      <pre class="audit-handoff" id="proofdesk-output"></pre>
+    </section>
+
+    <section class="panel">
       <p class="eyebrow">Packet summary</p>
       <h2>Review-ready claims and gated claims stay separate</h2>
       <table class="handoff-table">
@@ -47,6 +91,177 @@
       <p class="panel-copy">The packet generator is designed for public artifact URLs and sanitized review claims. It should not request credentials, tokens, cookies, private exports, private customer data, payment data, identity records, or raw third-party page bodies.</p>
     </section>
   </main>
+  <script>
+    (function () {
+      const input = document.getElementById("proofdesk-input");
+      const run = document.getElementById("proofdesk-run");
+      const copy = document.getElementById("proofdesk-copy");
+      const download = document.getElementById("proofdesk-download");
+      const status = document.getElementById("proofdesk-status");
+      const output = document.getElementById("proofdesk-output");
+      const metrics = document.getElementById("proofdesk-metrics");
+      let latestPacket = null;
+      let latestMarkdown = "";
+
+      function normalizeClaim(claim, index) {
+        return {
+          id: claim.id || "claim-" + (index + 1),
+          title: claim.title || "Untitled review claim",
+          artifact_type: claim.artifact_type || claim.artifactType || "artifact",
+          source_url: claim.source_url || claim.sourceUrl || "",
+          evidence_links: (claim.evidence_links || claim.evidenceLinks || []).map(function (link) {
+            return {
+              label: link.label || "Evidence",
+              url: link.url || "",
+              status: link.status || "needs_review"
+            };
+          }),
+          blockers: claim.blockers || [],
+          human_gates: claim.human_gates || claim.humanGates || []
+        };
+      }
+
+      function claimStatus(claim) {
+        if (claim.blockers.length || claim.human_gates.length) return "needs_human_review";
+        if (!claim.evidence_links.length) return "needs_evidence";
+        if (claim.evidence_links.every(function (link) { return link.status === "ready"; })) return "ready";
+        return "needs_review";
+      }
+
+      function nextAction(claim) {
+        if (claim.blockers.length) return "Resolve blocker: " + claim.blockers[0];
+        if (claim.human_gates.length) return "Ask a human to complete: " + claim.human_gates[0];
+        if (!claim.evidence_links.length) return "Add at least one public evidence link.";
+        return "Review the packet summary and approve the handoff.";
+      }
+
+      function row(values) {
+        return "| " + values.map(function (value) {
+          return String(value == null ? "" : value).replace(/\|/g, "\\|");
+        }).join(" | ") + " |";
+      }
+
+      function buildPacket(claims) {
+        const normalized = claims.map(normalizeClaim).map(function (claim) {
+          const statusValue = claimStatus(claim);
+          return Object.assign({}, claim, {
+            status: statusValue,
+            next_action: nextAction(claim)
+          });
+        });
+        return {
+          schema_version: "proofdesk-pack/v1",
+          generated_at: new Date().toISOString(),
+          summary: {
+            total_claims: normalized.length,
+            ready_claims: normalized.filter(function (claim) { return claim.status === "ready"; }).length,
+            needs_human_review: normalized.filter(function (claim) { return claim.status === "needs_human_review"; }).length,
+            needs_evidence: normalized.filter(function (claim) { return claim.status === "needs_evidence"; }).length
+          },
+          claims: normalized,
+          slack_handoff: normalized.map(function (claim) {
+            return "[" + claim.status + "] " + claim.title + " - " + claim.next_action;
+          })
+        };
+      }
+
+      function renderMarkdown(packet) {
+        const lines = [
+          "# ProofDesk Proof Packet",
+          "",
+          "Generated at: `" + packet.generated_at + "`",
+          "Claims reviewed: `" + packet.summary.total_claims + "`",
+          "Ready claims: `" + packet.summary.ready_claims + "`",
+          "Needs human review: `" + packet.summary.needs_human_review + "`",
+          "Needs evidence: `" + packet.summary.needs_evidence + "`",
+          "",
+          "## Review Queue",
+          "",
+          "| Claim | Type | Status | Next action | Evidence links |",
+          "| --- | --- | --- | --- | --- |"
+        ];
+        packet.claims.forEach(function (claim) {
+          lines.push(row([claim.title, claim.artifact_type, claim.status, claim.next_action, claim.evidence_links.length]));
+        });
+        lines.push("", "## Slack Handoff", "");
+        packet.slack_handoff.forEach(function (message) {
+          lines.push("- " + message);
+        });
+        lines.push("", "## Evidence Links", "");
+        packet.claims.forEach(function (claim) {
+          lines.push("### " + claim.title, "");
+          if (!claim.evidence_links.length) {
+            lines.push("- No evidence links yet.");
+          } else {
+            claim.evidence_links.forEach(function (link) {
+              lines.push("- [" + link.label + "](" + link.url + ") - " + link.status);
+            });
+          }
+          lines.push("");
+        });
+        lines.push("## Boundaries", "", "- Use public or sanitized inputs only.", "- Keep final approval with a human reviewer.");
+        return lines.join("\n");
+      }
+
+      function setStatus(message) {
+        status.textContent = message || "";
+      }
+
+      function generate() {
+        try {
+          const claims = JSON.parse(input.value);
+          if (!Array.isArray(claims)) throw new Error("Input must be a JSON array.");
+          latestPacket = buildPacket(claims);
+          latestMarkdown = renderMarkdown(latestPacket);
+          metrics.innerHTML =
+            "<span>Total<strong>" + latestPacket.summary.total_claims + "</strong></span>" +
+            "<span>Ready<strong>" + latestPacket.summary.ready_claims + "</strong></span>" +
+            "<span>Human review<strong>" + latestPacket.summary.needs_human_review + "</strong></span>" +
+            "<span>Needs evidence<strong>" + latestPacket.summary.needs_evidence + "</strong></span>";
+          output.textContent = latestMarkdown;
+          output.classList.add("is-visible");
+          setStatus("Packet generated in this browser.");
+        } catch (error) {
+          latestPacket = null;
+          latestMarkdown = "";
+          output.textContent = "";
+          output.classList.remove("is-visible");
+          metrics.innerHTML = "";
+          setStatus("Could not generate packet: " + error.message);
+        }
+      }
+
+      function downloadJson() {
+        if (!latestPacket) generate();
+        if (!latestPacket) return;
+        const blob = new Blob([JSON.stringify(latestPacket, null, 2) + "\n"], { type: "application/json;charset=utf-8" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "proofdesk-pack.json";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+      }
+
+      run.addEventListener("click", generate);
+      copy.addEventListener("click", function () {
+        if (!latestMarkdown) generate();
+        if (!latestMarkdown) return;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(latestMarkdown).then(function () {
+            setStatus("Markdown copied to clipboard.");
+          }).catch(function () {
+            setStatus("Copy failed. The generated Markdown remains visible.");
+          });
+        } else {
+          setStatus("Clipboard API unavailable. The generated Markdown remains visible.");
+        }
+      });
+      download.addEventListener("click", downloadJson);
+      generate();
+    }());
+  </script>
 </body>
 </html>
-
