@@ -70,6 +70,12 @@ function renderEditorReviewPathPanel() {
       </div>
       <div class="review-grid">
         <article>
+          <span>Reviewer readiness</span>
+          <strong>One-link application packet</strong>
+          <p>Compact entry point for editor, AI evaluator, code-reviewer, and developer-writing reviewers who need proof links, method, and a small trial shape.</p>
+          <a href="reviewer-readiness-one-link.html">Open readiness packet</a>
+        </article>
+        <article>
           <span>Client service</span>
           <strong>Direct OID review fit</strong>
           <p>Buyer-facing page for PKI policy OIDs, SNMP/MIB enterprise OIDs, and internal registry cleanup requests that need a small first assessment.</p>
@@ -1679,6 +1685,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "knowledgeowl-application-field-pack.html",
     "paid-writing-editor-brief.html",
     "code-reviewer-portfolio.html",
+    "reviewer-readiness-one-link.html",
     "alignerr-python-one-link.html",
     "mindrift-code-one-link.html",
     "ai-evaluator-unified-application-desk.html",

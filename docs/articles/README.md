@@ -155,6 +155,30 @@ Direct raw link:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/p1-application-answer-sheet.md
 ```
 
+### Reviewer readiness one-link
+
+Path: `docs/articles/reviewer-readiness-one-link.md`
+
+Best for editors, AI evaluator reviewers, code-review platforms, and developer-writing programs interested in:
+
+- a single public application link,
+- proof links by reviewer need,
+- a clear review method,
+- good first trial-task shapes,
+- and safe public-data boundaries.
+
+Public page:
+
+```text
+https://oid-knowledge-lab.vercel.app/reviewer-readiness-one-link.html
+```
+
+Direct raw link:
+
+```text
+https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/reviewer-readiness-one-link.md
+```
+
 ### Tuts+ and TestDriven.io backup pitch pack
 
 Path: `docs/articles/sitepoint-testdriven-backup-pitch-pack.md`
