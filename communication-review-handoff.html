@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Communication Review Handoff - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Communication API proof packet</p>
+      <h1>Notify reviewers without putting private data in the message.</h1>
+      <p class="summary">A public-safe tutorial proof page for communication workflows that send a short review notification and link to a static evidence packet instead of copying sensitive details into SMS, email, or voice messages.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="proofdesk-packet-demo.html">ProofDesk demo</a>
+        <a href="airbyte-proofdesk-review-packet.html">Review packet</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Communication handoff fit">
+      <article><span>Pattern</span><strong>Notify</strong><small>Message only the public handoff link</small></article>
+      <article><span>Boundary</span><strong>Public</strong><small>No credentials or account-local data</small></article>
+      <article><span>Runtime</span><strong>Node.js</strong><small>Small API endpoint plus static packet</small></article>
+      <article><span>Reviewer</span><strong>Fast</strong><small>Open link, inspect packet, decide next step</small></article>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Workflow</p>
+      <h2>A minimal communication handoff</h2>
+      <table class="handoff-table">
+        <thead><tr><th>Step</th><th>Implementation idea</th><th>Public boundary</th></tr></thead>
+        <tbody>
+          <tr><td>1. Packet ready</td><td>A local or CI step generates a static review packet with evidence links, blockers, and next actions.</td><td>The packet contains only public or sanitized artifacts.</td></tr>
+          <tr><td>2. Notification request</td><td>A small Node.js endpoint accepts a packet URL, title, and status label.</td><td>The request does not include tokens, private exports, or customer records.</td></tr>
+          <tr><td>3. Communication API</td><td>The endpoint sends a concise SMS, email, or voice notification through the provider API.</td><td>The message body contains a short label and a public review URL.</td></tr>
+          <tr><td>4. Reviewer action</td><td>The reviewer opens the packet, checks evidence, and marks approve, block, or request changes.</td><td>Any private follow-up happens outside the public packet.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Tutorial outline</p>
+      <h2>What a developer would build</h2>
+      <table class="handoff-table">
+        <thead><tr><th>Section</th><th>Reader outcome</th></tr></thead>
+        <tbody>
+          <tr><td>Define the handoff contract</td><td>Separate public packet fields from private implementation details.</td></tr>
+          <tr><td>Create a static evidence packet</td><td>Generate a review page with evidence URLs, blocker notes, and a status summary.</td></tr>
+          <tr><td>Add a notification endpoint</td><td>Validate a packet URL and send a provider-neutral handoff payload.</td></tr>
+          <tr><td>Wire a communication API</td><td>Use environment variables for provider credentials and keep secrets out of the repository.</td></tr>
+          <tr><td>Test the failure path</td><td>Show blocked packets, missing evidence, invalid URLs, and provider errors clearly.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Reusable proof links</p>
+      <h2>Open-source artifacts behind the concept</h2>
+      <table class="handoff-table">
+        <thead><tr><th>Artifact</th><th>What it demonstrates</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>ProofDesk packet demo</td><td>Browser-local packet editing, blocker review, Markdown export, and command simulation.</td><td><a href="proofdesk-packet-demo.html">Open demo</a></td></tr>
+          <tr><td>Airbyte review packet</td><td>A focused editorial proof page for source-boundary review and evidence-first handoffs.</td><td><a href="airbyte-proofdesk-review-packet.html">Open packet</a></td></tr>
+          <tr><td>Agent submission pack</td><td>How packet fields map to review assistant behavior and human approval gates.</td><td><a href="proofdesk-agent-submission-pack.html">Open pack</a></td></tr>
+          <tr><td>Repository</td><td>Static site, reports, examples, tests, and publish guard.</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab">Open repository</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Out of scope</p>
+      <h2>What this page intentionally avoids</h2>
+      <p class="panel-copy">This proof page does not use real phone numbers, provider credentials, cookies, account-local storage, payment data, identity records, private inboxes, private customer data, or hidden platform pages. It is a public demonstration of the boundary and workflow shape.</p>
+    </section>
+  </main>
+</body>
+</html>
