@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review Log Agent Submission Pack</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5d667a;
+      --line: #d9deea;
+      --paper: #f6f8fb;
+      --panel: #ffffff;
+      --accent: #126e68;
+      --accent-soft: #e8f5f2;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+    main {
+      width: min(1080px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 48px;
+    }
+    header, section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    header {
+      padding: 28px;
+      margin-bottom: 16px;
+    }
+    section {
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+    h1, h2, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      font-size: 2.3rem;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    h2 {
+      font-size: 1.1rem;
+      letter-spacing: 0;
+    }
+    p, li {
+      color: var(--muted);
+    }
+    a {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .summary {
+      max-width: 820px;
+      font-size: 1.03rem;
+    }
+    .links, .grid {
+      display: grid;
+      gap: 12px;
+    }
+    .links {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 16px;
+    }
+    .links a, .callout {
+      display: block;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcff;
+      text-decoration: none;
+    }
+    .links span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .callout {
+      background: var(--accent-soft);
+    }
+    .media-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    code {
+      color: var(--ink);
+      font: 0.92rem/1.5 "SFMono-Regular", Consolas, monospace;
+    }
+    @media (max-width: 760px) {
+      main { width: min(100% - 20px, 1080px); padding-top: 20px; }
+      h1 { font-size: 1.75rem; }
+      .links, .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Review Log Agent for Slack Submission Pack</h1>
+      <p class="summary">A compact public index for reviewing the prototype, demo flow, architecture, and Devpost-ready field notes. The prototype runs as a static demo and playground; it does not require Slack credentials for review.</p>
+      <nav class="links" aria-label="Submission links">
+        <a href="index.html">Static demo<span>Generated evidence log from a sample review thread.</span></a>
+        <a href="playground.html">Interactive playground<span>Edit a Slack-style JSON thread and generate a Markdown handoff.</span></a>
+        <a href="media/review-log-agent-slack-demo.mp4">Demo video<span>96-second MP4 walkthrough for reviewers and submission forms.</span></a>
+        <a href="https://oid-knowledge-lab.vercel.app/evidence-log-playground.html">Related proof<span>Adjacent evidence-log validation surface.</span></a>
+      </nav>
+    </header>
+
+    <section>
+      <h2>What This Shows</h2>
+      <div class="grid">
+        <div class="callout">Slack-style review messages become separated source facts, draft claims, reviewer checks, blockers, and privacy boundaries.</div>
+        <div class="callout">The generated Markdown handoff makes publication status visible before an answer or article is shipped.</div>
+        <div class="callout">Inputs stay local to the browser in the playground; no workspace installation is needed for the public demo.</div>
+        <div class="callout">The core parser is also exposed as an MCP-style tool for future assistant and workflow integrations.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Project Materials</h2>
+      <ul>
+        <li><a href="docs/architecture.md">Architecture notes</a></li>
+        <li><a href="docs/devpost-field-pack.md">Devpost field pack</a></li>
+        <li><a href="docs/demo-video-script.md">Demo video script</a></li>
+        <li><a href="docs/submission-pack.md">Submission pack notes</a></li>
+        <li><a href="docs/challenge-fit.md">Challenge fit notes</a></li>
+        <li><a href="docs/slack-app-manifest.json">Slack app manifest template</a></li>
+        <li><a href="docs/slack-app-handler-contract.md">Slack app handler contract</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Submission Readiness</h2>
+      <div class="grid">
+        <div class="callout">Ready: static demo, interactive playground, architecture notes, Devpost field pack, demo script, public video, and publishable public page.</div>
+        <div class="callout">Ready: synthetic Slack-style sample data and browser-local review flow that does not require private workspace content.</div>
+        <div class="callout">Ready: Slack app manifest template with a slash command, message shortcut, and minimum bot scopes.</div>
+        <div class="callout">Needed: public GitHub repository URL for the standalone project source.</div>
+        <div class="callout">Needed: Slack developer sandbox URL, live Slack app shape, and final Devpost submission.</div>
+      </div>
+      <p><a class="media-link" href="media/review-log-agent-slack-demo.mp4">Open the public MP4 demo video</a></p>
+    </section>
+
+    <section>
+      <h2>Verification</h2>
+      <p>Local commands used for review:</p>
+      <p><code>npm run check</code><br><code>npm test</code><br><code>npm run build</code><br><code>npm run demo</code></p>
+    </section>
+  </main>
+</body>
+</html>

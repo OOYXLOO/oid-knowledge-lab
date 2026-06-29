@@ -1,0 +1,37 @@
+{
+  "title": "API token rotation article",
+  "generated_at": "2026-06-28T00:00:00.000Z",
+  "messages": [
+    {
+      "author": "support",
+      "kind": "question",
+      "text": "How do I rotate an API token without breaking active integrations?"
+    },
+    {
+      "author": "docs",
+      "kind": "sourceFact",
+      "text": "Existing tokens stay valid for 24 hours after replacement."
+    },
+    {
+      "author": "assistant",
+      "kind": "draftClaim",
+      "text": "Create a new token, update the secret manager, restart the worker, and delete the old token immediately."
+    },
+    {
+      "author": "reviewer",
+      "kind": "reviewerCheck",
+      "text": "Compare the draft against the 24-hour overlap rule and rollback path."
+    },
+    {
+      "author": "security",
+      "kind": "blocker",
+      "text": "Do not tell readers to delete the old token immediately."
+    },
+    {
+      "author": "security",
+      "kind": "boundary",
+      "text": "Do not include real tokens, account IDs, or screenshots from private consoles."
+    }
+  ]
+}
+

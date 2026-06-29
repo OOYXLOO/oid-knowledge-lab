@@ -1,0 +1,21 @@
+{
+  "name": "review-log-agent-slack",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Prototype core for turning Slack-style review threads into source-aware evidence logs.",
+  "type": "commonjs",
+  "scripts": {
+    "check": "node --check src/reviewLog.js && node --check src/mcpTool.js && node --check src/slackHandler.js && node --check src/cli.js && node --check src/renderDemo.js && node --check src/renderPlayground.js && node --check src/renderSubmissionPage.js && node --check src/copyPublicDocs.js && node --check src/copySourceSnapshot.js && node --check api/slack/commands/review-log.js && node --check api/slack/interactivity.js && node --check test/reviewLog.test.js && node --check test/mcpTool.test.js && node --check test/slackHandler.test.js && node --check test/renderSubmissionPage.test.js && node --check test/copyPublicDocs.test.js",
+    "build": "node src/renderDemo.js examples/slack-thread.json public/index.html && node src/renderPlayground.js public/playground.html && node src/renderSubmissionPage.js public/submission.html && node src/copyPublicDocs.js docs public/docs && node src/copySourceSnapshot.js . public/source public/docs",
+    "test": "node test/reviewLog.test.js && node test/mcpTool.test.js && node test/slackHandler.test.js && node test/renderSubmissionPage.test.js && node test/copyPublicDocs.test.js",
+    "guard:publishable": "node scripts/publishGuard.js",
+    "demo": "node src/cli.js examples/slack-thread.json"
+  },
+  "keywords": [
+    "slack",
+    "agent",
+    "evidence-log",
+    "documentation-review"
+  ],
+  "license": "UNLICENSED"
+}

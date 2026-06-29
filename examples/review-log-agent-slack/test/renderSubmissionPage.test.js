@@ -1,0 +1,35 @@
+"use strict";
+
+const assert = require("assert");
+const { renderSubmissionPage } = require("../src/renderSubmissionPage");
+
+function testRendersSubmissionPageWithCoreLinks() {
+  const html = renderSubmissionPage();
+
+  assert.match(html, /Review Log Agent for Slack/);
+  assert.match(html, /Submission Pack/);
+  assert.match(html, /playground\.html/);
+  assert.match(html, /media\/review-log-agent-slack-demo\.mp4/);
+  assert.match(html, /docs\/architecture\.md/);
+  assert.match(html, /docs\/devpost-field-pack\.md/);
+  assert.match(html, /does not require Slack credentials/);
+  assert.match(html, /Submission Readiness/);
+  assert.match(html, /public video/);
+  assert.match(html, /Slack developer sandbox URL/);
+  assert.match(html, /public GitHub repository URL/);
+  assert.match(html, /Slack app manifest template/);
+  assert.match(html, /Slack app handler contract/);
+}
+
+function testRendersNoPrivateMoneyLanguage() {
+  const html = renderSubmissionPage();
+
+  assert.doesNotMatch(html, new RegExp("money" + "-goal", "i"));
+  assert.doesNotMatch(html, /payout/i);
+  assert.doesNotMatch(html, /KYC/i);
+}
+
+testRendersSubmissionPageWithCoreLinks();
+testRendersNoPrivateMoneyLanguage();
+
+console.log("submission page tests passed");

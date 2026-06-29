@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review Log Agent Playground</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5d667a;
+      --line: #d9deea;
+      --paper: #f6f8fb;
+      --panel: #ffffff;
+      --accent: #126e68;
+      --warn: #9a3412;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 48px;
+    }
+    header, .panel, .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    header {
+      padding: 26px;
+      margin-bottom: 16px;
+    }
+    h1, h2, p { margin-top: 0; }
+    h1 {
+      max-width: 820px;
+      font-size: 2.25rem;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    h2 {
+      font-size: 1.12rem;
+      letter-spacing: 0;
+    }
+    .summary {
+      max-width: 830px;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+    a {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .panel {
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    textarea {
+      width: 100%;
+      min-height: 540px;
+      resize: vertical;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: #fbfcff;
+      font: 0.86rem/1.5 "SFMono-Regular", Consolas, monospace;
+    }
+    pre {
+      max-height: 650px;
+      overflow: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0;
+      padding: 14px;
+      border-radius: 8px;
+      background: #111827;
+      color: #f8fafc;
+      font: 0.86rem/1.5 "SFMono-Regular", Consolas, monospace;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0 0;
+    }
+    button {
+      min-height: 38px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: #eef7f5;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:hover {
+      border-color: var(--accent);
+    }
+    .status {
+      min-height: 22px;
+      margin: 10px 0 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .metric {
+      padding: 12px;
+    }
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .metric strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 1.35rem;
+    }
+    .error {
+      color: var(--warn);
+    }
+    @media (max-width: 860px) {
+      main { width: min(100% - 20px, 1180px); padding-top: 20px; }
+      h1 { font-size: 1.75rem; }
+      .layout { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      textarea { min-height: 360px; }
+    }
+    @media (max-width: 480px) {
+      .metrics { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Review Log Agent Playground</h1>
+      <p class="summary">Paste or edit a Slack-style thread JSON object, then generate a source-aware Markdown evidence log in the browser. This playground does not upload inputs or require Slack credentials.</p>
+      <div class="links">
+        <a href="index.html">Static demo</a>
+        <a href="submission.html">Submission pack</a>
+        <a href="https://oid-knowledge-lab.vercel.app/evidence-log-playground.html">Related evidence-log proof</a>
+      </div>
+    </header>
+
+    <section class="metrics" aria-label="Review log metrics">
+      <article class="metric"><span>Messages</span><strong data-metric="total">0</strong></article>
+      <article class="metric"><span>Source facts</span><strong data-metric="source">0</strong></article>
+      <article class="metric"><span>Checks</span><strong data-metric="checks">0</strong></article>
+      <article class="metric"><span>Blockers</span><strong data-metric="blockers">0</strong></article>
+    </section>
+
+    <div class="layout">
+      <section class="panel">
+        <h2>Slack-style thread JSON</h2>
+        <textarea data-input spellcheck="false"></textarea>
+        <div class="actions">
+          <button type="button" data-generate>Generate log</button>
+          <button type="button" data-reset>Reset sample</button>
+          <button type="button" data-copy>Copy Markdown</button>
+        </div>
+        <p class="status" data-status></p>
+      </section>
+
+      <section class="panel">
+        <h2>Markdown handoff</h2>
+        <pre data-output></pre>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var sample = {
+        "title": "API token rotation article",
+        "generated_at": "2026-06-28T00:00:00.000Z",
+        "messages": [
+                {
+                        "author": "support",
+                        "kind": "question",
+                        "text": "How do I rotate an API token without breaking active integrations?"
+                },
+                {
+                        "author": "docs",
+                        "kind": "sourceFact",
+                        "text": "Existing tokens stay valid for 24 hours after replacement."
+                },
+                {
+                        "author": "assistant",
+                        "kind": "draftClaim",
+                        "text": "Create a new token, update the secret manager, restart the worker, and delete the old token immediately."
+                },
+                {
+                        "author": "reviewer",
+                        "kind": "reviewerCheck",
+                        "text": "Compare the draft against the 24-hour overlap rule and rollback path."
+                },
+                {
+                        "author": "security",
+                        "kind": "blocker",
+                        "text": "Do not tell readers to delete the old token immediately."
+                },
+                {
+                        "author": "security",
+                        "kind": "boundary",
+                        "text": "Do not include real tokens, account IDs, or screenshots from private consoles."
+                }
+        ]
+};
+      var input = document.querySelector("[data-input]");
+      var output = document.querySelector("[data-output]");
+      var status = document.querySelector("[data-status]");
+      var metrics = {
+        total: document.querySelector("[data-metric='total']"),
+        source: document.querySelector("[data-metric='source']"),
+        checks: document.querySelector("[data-metric='checks']"),
+        blockers: document.querySelector("[data-metric='blockers']")
+      };
+
+      function normalizeText(value) {
+        return String(value || "").replace(/\s+/g, " ").trim();
+      }
+
+      function inferKind(message) {
+        var explicit = normalizeText(message.kind || message.type || message.category).toLowerCase();
+        var explicitMap = {
+          question: "question",
+          sourcefact: "sourceFact",
+          source_fact: "sourceFact",
+          draftclaim: "draftClaim",
+          draft_claim: "draftClaim",
+          reviewercheck: "reviewerCheck",
+          reviewer_check: "reviewerCheck",
+          blocker: "blocker",
+          decision: "decision",
+          boundary: "boundary"
+        };
+        if (explicitMap[explicit]) return explicitMap[explicit];
+
+        var text = normalizeText(message.text).toLowerCase();
+        if (text.endsWith("?")) return "question";
+        var tags = {
+          question: ["question", "reader question", "user question", "ask"],
+          sourceFact: ["source", "fact", "verified", "docs say", "policy"],
+          draftClaim: ["draft", "claim", "ai draft", "proposal"],
+          reviewerCheck: ["check", "review", "test", "verify"],
+          blocker: ["blocker", "risk", "do not publish", "unsafe", "wrong"],
+          decision: ["decision", "ship", "revise", "approved", "reject"],
+          boundary: ["private", "secret", "token", "credential", "payment", "screenshot"]
+        };
+        for (var kind in tags) {
+          if (tags[kind].some(function (marker) { return text.indexOf(marker) !== -1; })) return kind;
+        }
+        return "note";
+      }
+
+      function toRecords(thread) {
+        var messages = Array.isArray(thread) ? thread : Array.isArray(thread.messages) ? thread.messages : [];
+        return messages.map(function (message, index) {
+          return {
+            index: index + 1,
+            author: normalizeText(message.author || message.user || "unknown"),
+            text: normalizeText(message.text),
+            kind: inferKind(message)
+          };
+        }).filter(function (message) { return message.text; });
+      }
+
+      function group(records) {
+        return records.reduce(function (groups, message) {
+          if (!groups[message.kind]) groups[message.kind] = [];
+          groups[message.kind].push(message);
+          return groups;
+        }, {});
+      }
+
+      function bullet(message) {
+        var source = message.author && message.author !== "unknown" ? " (" + message.author + ")" : "";
+        return "- " + message.text + source;
+      }
+
+      function section(title, records, fallback) {
+        var lines = records && records.length ? records.map(bullet) : ["- " + fallback];
+        return ["## " + title, "", lines.join("\n"), ""].join("\n");
+      }
+
+      function decision(groups) {
+        if (groups.blocker && groups.blocker.length) return "Revise before publication; blockers are still present.";
+        if (groups.reviewerCheck && groups.reviewerCheck.length && groups.sourceFact && groups.sourceFact.length) {
+          return "Ready for owner review with source facts and reviewer checks attached.";
+        }
+        return "Needs more source facts before publication review.";
+      }
+
+      function renderMarkdown(thread, records, groups) {
+        var title = normalizeText(thread.title || "Slack Review Thread");
+        var generatedAt = normalizeText(thread.generated_at) || new Date().toISOString();
+        return [
+          "# Evidence Log: " + title,
+          "",
+          "Generated at: " + generatedAt,
+          "",
+          "## Summary",
+          "",
+          "- Messages reviewed: " + records.length,
+          "- Source facts: " + ((groups.sourceFact || []).length),
+          "- Reviewer checks: " + ((groups.reviewerCheck || []).length),
+          "- Publication blockers: " + ((groups.blocker || []).length),
+          "",
+          section("Reader Questions", groups.question, "No reader question recorded."),
+          section("Source Facts", groups.sourceFact, "No source facts recorded."),
+          section("Draft Claims", groups.draftClaim, "No draft claims recorded."),
+          section("Reviewer Checks", groups.reviewerCheck, "No reviewer checks recorded."),
+          section("Publication Blockers", groups.blocker, "No blockers recorded."),
+          section("Privacy Boundaries", groups.boundary, "No privacy boundary recorded."),
+          "## Decision",
+          "",
+          "- " + decision(groups),
+          "",
+          "## Safety Boundary",
+          "",
+          "- Do not include passwords, API tokens, cookies, account exports, private support tickets, payment data, or copied third-party article bodies.",
+          ""
+        ].join("\n");
+      }
+
+      function setMetric(name, value) {
+        if (metrics[name]) metrics[name].textContent = String(value);
+      }
+
+      function render() {
+        try {
+          var thread = JSON.parse(input.value);
+          var records = toRecords(thread);
+          var groups = group(records);
+          output.textContent = renderMarkdown(thread, records, groups);
+          setMetric("total", records.length);
+          setMetric("source", (groups.sourceFact || []).length);
+          setMetric("checks", (groups.reviewerCheck || []).length);
+          setMetric("blockers", (groups.blocker || []).length);
+          status.classList.remove("error");
+          status.textContent = "Evidence log ready. Inputs stay in this browser.";
+        } catch (error) {
+          status.classList.add("error");
+          status.textContent = "JSON error: " + error.message;
+        }
+      }
+
+      document.querySelector("[data-generate]").addEventListener("click", render);
+      document.querySelector("[data-reset]").addEventListener("click", function () {
+        input.value = JSON.stringify(sample, null, 2);
+        render();
+      });
+      document.querySelector("[data-copy]").addEventListener("click", function () {
+        var text = output.textContent || "";
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () {
+            status.classList.remove("error");
+            status.textContent = "Markdown copied.";
+          }).catch(function () {
+            status.classList.add("error");
+            status.textContent = "Copy failed. The Markdown remains visible for manual selection.";
+          });
+        } else {
+          status.classList.add("error");
+          status.textContent = "Clipboard unavailable. The Markdown remains visible for manual selection.";
+        }
+      });
+      input.addEventListener("input", render);
+      input.value = JSON.stringify(sample, null, 2);
+      render();
+    }());
+  </script>
+</body>
+</html>

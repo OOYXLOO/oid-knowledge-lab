@@ -1,0 +1,47 @@
+{
+  "display_information": {
+    "name": "Review Log Agent",
+    "description": "Turn sanitized review threads into source-aware evidence logs.",
+    "background_color": "#126e68"
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "Review Log Agent",
+      "always_online": false
+    },
+    "slash_commands": [
+      {
+        "command": "/review-log",
+        "description": "Create a review evidence log from sanitized thread notes.",
+        "usage_hint": "[paste sanitized review notes]",
+        "should_escape": true,
+        "url": "https://review-log-agent-slack.vercel.app/api/slack/commands/review-log"
+      }
+    ],
+    "message_shortcuts": [
+      {
+        "name": "Build review log",
+        "type": "message",
+        "callback_id": "build_review_log",
+        "description": "Summarize a selected review thread into source facts, checks, blockers, and boundaries."
+      }
+    ]
+  },
+  "oauth_config": {
+    "scopes": {
+      "bot": [
+        "commands",
+        "chat:write"
+      ]
+    }
+  },
+  "settings": {
+    "interactivity": {
+      "is_enabled": true,
+      "request_url": "https://review-log-agent-slack.vercel.app/api/slack/interactivity"
+    },
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": false,
+    "token_rotation_enabled": true
+  }
+}

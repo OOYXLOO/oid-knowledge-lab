@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review Log Agent for Slack</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5d667a;
+      --line: #d9deea;
+      --paper: #f6f8fb;
+      --panel: #ffffff;
+      --accent: #126e68;
+      --warn: #9a3412;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+    main {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 48px;
+    }
+    header, .panel, .metric-grid article {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    header {
+      padding: 26px;
+      margin-bottom: 16px;
+    }
+    h1, h2, p { margin-top: 0; }
+    h1 {
+      max-width: 780px;
+      font-size: 2.35rem;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    h2 {
+      font-size: 1.12rem;
+      letter-spacing: 0;
+    }
+    .summary {
+      max-width: 800px;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    a {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .metric-grid article {
+      padding: 16px;
+      min-height: 104px;
+    }
+    .metric-grid span, .metric-grid small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+    .metric-grid strong {
+      display: block;
+      margin-top: 10px;
+      font-size: 1.7rem;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
+      gap: 16px;
+      align-items: start;
+    }
+    .panel {
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .record-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .record-list li {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcff;
+    }
+    .record-list strong {
+      display: block;
+      color: var(--accent);
+      font-size: 0.82rem;
+      margin-bottom: 4px;
+    }
+    .record-list span {
+      color: var(--ink);
+    }
+    .decision {
+      border-color: #f1c9b8;
+      background: #fff8f4;
+    }
+    .decision strong {
+      color: var(--warn);
+    }
+    pre {
+      max-height: 720px;
+      overflow: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0;
+      padding: 14px;
+      border-radius: 8px;
+      background: #111827;
+      color: #f8fafc;
+      font: 0.86rem/1.5 "SFMono-Regular", Consolas, monospace;
+    }
+    @media (max-width: 840px) {
+      main { width: min(100% - 20px, 1120px); padding-top: 20px; }
+      h1 { font-size: 1.8rem; }
+      .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .metric-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Review Log Agent for Slack</h1>
+      <p class="summary">A small prototype that turns Slack-style support or documentation review threads into source-aware evidence logs. It keeps source facts, draft claims, reviewer checks, publication blockers, and private-data boundaries visible before a team publishes an answer.</p>
+      <div class="links">
+        <a href="playground.html">Interactive playground</a>
+        <a href="submission.html">Submission pack</a>
+        <a href="https://oid-knowledge-lab.vercel.app/evidence-log-playground.html">Evidence Log Playground</a>
+      </div>
+    </header>
+
+    <section class="metric-grid" aria-label="Review log metrics">
+      <article><span>Messages</span><strong>6</strong><small>thread items</small></article>
+      <article><span>Source facts</span><strong>1</strong><small>verified inputs</small></article>
+      <article><span>Checks</span><strong>1</strong><small>review steps</small></article>
+      <article><span>Blockers</span><strong>1</strong><small>before publish</small></article>
+    </section>
+
+    <div class="layout">
+      <div>
+        <section class="panel decision">
+          <h2>Decision</h2>
+          <p><strong>Revise before publication; blockers are still present.</strong></p>
+        </section>
+        <section class="panel">
+      <h2>Reader Questions</h2>
+      <ul class="record-list"><li><strong>support</strong><span>How do I rotate an API token without breaking active integrations?</span></li></ul>
+    </section>
+        <section class="panel">
+      <h2>Source Facts</h2>
+      <ul class="record-list"><li><strong>docs</strong><span>Existing tokens stay valid for 24 hours after replacement.</span></li></ul>
+    </section>
+        <section class="panel">
+      <h2>Draft Claims</h2>
+      <ul class="record-list"><li><strong>assistant</strong><span>Create a new token, update the secret manager, restart the worker, and delete the old token immediately.</span></li></ul>
+    </section>
+        <section class="panel">
+      <h2>Reviewer Checks</h2>
+      <ul class="record-list"><li><strong>reviewer</strong><span>Compare the draft against the 24-hour overlap rule and rollback path.</span></li></ul>
+    </section>
+        <section class="panel">
+      <h2>Publication Blockers</h2>
+      <ul class="record-list"><li><strong>security</strong><span>Do not tell readers to delete the old token immediately.</span></li></ul>
+    </section>
+        <section class="panel">
+      <h2>Privacy Boundaries</h2>
+      <ul class="record-list"><li><strong>security</strong><span>Do not include real tokens, account IDs, or screenshots from private consoles.</span></li></ul>
+    </section>
+      </div>
+      <section class="panel">
+        <h2>Generated Markdown Handoff</h2>
+        <pre># Evidence Log: API token rotation article
+
+Generated at: 2026-06-28T00:00:00.000Z
+
+## Summary
+
+- Messages reviewed: 6
+- Source facts: 1
+- Reviewer checks: 1
+- Publication blockers: 1
+
+## Reader Questions
+
+- How do I rotate an API token without breaking active integrations? (support)
+
+## Source Facts
+
+- Existing tokens stay valid for 24 hours after replacement. (docs)
+
+## Draft Claims
+
+- Create a new token, update the secret manager, restart the worker, and delete the old token immediately. (assistant)
+
+## Reviewer Checks
+
+- Compare the draft against the 24-hour overlap rule and rollback path. (reviewer)
+
+## Publication Blockers
+
+- Do not tell readers to delete the old token immediately. (security)
+
+## Privacy Boundaries
+
+- Do not include real tokens, account IDs, or screenshots from private consoles. (security)
+
+## Decision
+
+- Revise before publication; blockers are still present.
+
+## Safety Boundary
+
+- Do not include passwords, API tokens, cookies, account exports, private support tickets, payment data, or copied third-party article bodies.
+</pre>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
