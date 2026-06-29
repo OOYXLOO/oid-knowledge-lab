@@ -1,0 +1,108 @@
+{
+  "schema_version": "proofdesk-pack/v1",
+  "generated_at": "2026-06-30T00:00:00.000Z",
+  "product": {
+    "name": "ProofDesk",
+    "summary": "A review-thread workflow that turns public or sanitized claims into source-aware proof packets."
+  },
+  "summary": {
+    "total_claims": 3,
+    "ready_claims": 2,
+    "needs_human_review": 1,
+    "needs_evidence": 0,
+    "evidence_links": 4
+  },
+  "claims": [
+    {
+      "id": "media-provenance-launch",
+      "title": "Media Provenance Studio launch packet",
+      "source_url": "https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-studio.html",
+      "artifact_type": "public demo",
+      "expected_outcome": "reviewable launch proof",
+      "owner_note": "Prepared as a public generated-media delivery ledger demo.",
+      "evidence_links": [
+        {
+          "label": "Interactive demo",
+          "url": "https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-studio.html",
+          "status": "ready"
+        },
+        {
+          "label": "Generated delivery report",
+          "url": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/media-provenance-pack.md",
+          "status": "ready"
+        }
+      ],
+      "blockers": [],
+      "human_gates": [],
+      "status": "ready",
+      "next_action": "Review the packet summary and approve the handoff."
+    },
+    {
+      "id": "backblaze-readiness",
+      "title": "Backblaze readiness packet",
+      "source_url": "https://ooyxloo.github.io/oid-knowledge-lab/backblaze-readiness-pack.html",
+      "artifact_type": "hackathon readiness page",
+      "expected_outcome": "final submission readiness decision",
+      "owner_note": "Prototype boundary is explicit until a real B2 integration exists.",
+      "evidence_links": [
+        {
+          "label": "Readiness page",
+          "url": "https://ooyxloo.github.io/oid-knowledge-lab/backblaze-readiness-pack.html",
+          "status": "ready"
+        }
+      ],
+      "blockers": [
+        "Connect a real Backblaze B2 bucket before claiming live storage."
+      ],
+      "human_gates": [
+        "Confirm account and submission details before final Devpost submission."
+      ],
+      "status": "needs_human_review",
+      "next_action": "Resolve blocker: Connect a real Backblaze B2 bucket before claiming live storage."
+    },
+    {
+      "id": "oid-assessment-sample",
+      "title": "OID assessment sample handoff",
+      "source_url": "https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html",
+      "artifact_type": "sample evidence handoff",
+      "expected_outcome": "client-safe assessment summary",
+      "owner_note": "Browser-only sample keeps raw inventories local.",
+      "evidence_links": [
+        {
+          "label": "Sample assessment",
+          "url": "https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html",
+          "status": "ready"
+        }
+      ],
+      "blockers": [],
+      "human_gates": [],
+      "status": "ready",
+      "next_action": "Review the packet summary and approve the handoff."
+    }
+  ],
+  "slack_handoff": [
+    {
+      "claim_id": "media-provenance-launch",
+      "title": "Media Provenance Studio launch packet",
+      "status": "ready",
+      "message": "[ready] Media Provenance Studio launch packet - Review the packet summary and approve the handoff."
+    },
+    {
+      "claim_id": "backblaze-readiness",
+      "title": "Backblaze readiness packet",
+      "status": "needs_human_review",
+      "message": "[needs_human_review] Backblaze readiness packet - Resolve blocker: Connect a real Backblaze B2 bucket before claiming live storage."
+    },
+    {
+      "claim_id": "oid-assessment-sample",
+      "title": "OID assessment sample handoff",
+      "status": "ready",
+      "message": "[ready] OID assessment sample handoff - Review the packet summary and approve the handoff."
+    }
+  ],
+  "boundaries": [
+    "Use public or sanitized inputs only.",
+    "Do not request credentials, tokens, cookies, private exports, private customer data, payment data, identity records, or raw third-party page bodies.",
+    "Keep final approval with a human reviewer."
+  ]
+}

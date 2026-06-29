@@ -1,0 +1,63 @@
+[
+  {
+    "id": "media-provenance-launch",
+    "title": "Media Provenance Studio launch packet",
+    "source_url": "https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-studio.html",
+    "artifact_type": "public demo",
+    "expected_outcome": "reviewable launch proof",
+    "owner_note": "Prepared as a public generated-media delivery ledger demo.",
+    "evidence_links": [
+      {
+        "label": "Interactive demo",
+        "url": "https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-studio.html",
+        "status": "ready"
+      },
+      {
+        "label": "Generated delivery report",
+        "url": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/media-provenance-pack.md",
+        "status": "ready"
+      }
+    ],
+    "blockers": [],
+    "human_gates": []
+  },
+  {
+    "id": "backblaze-readiness",
+    "title": "Backblaze readiness packet",
+    "source_url": "https://ooyxloo.github.io/oid-knowledge-lab/backblaze-readiness-pack.html",
+    "artifact_type": "hackathon readiness page",
+    "expected_outcome": "final submission readiness decision",
+    "owner_note": "Prototype boundary is explicit until a real B2 integration exists.",
+    "evidence_links": [
+      {
+        "label": "Readiness page",
+        "url": "https://ooyxloo.github.io/oid-knowledge-lab/backblaze-readiness-pack.html",
+        "status": "ready"
+      }
+    ],
+    "blockers": [
+      "Connect a real Backblaze B2 bucket before claiming live storage."
+    ],
+    "human_gates": [
+      "Confirm account and submission details before final Devpost submission."
+    ]
+  },
+  {
+    "id": "oid-assessment-sample",
+    "title": "OID assessment sample handoff",
+    "source_url": "https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html",
+    "artifact_type": "sample evidence handoff",
+    "expected_outcome": "client-safe assessment summary",
+    "owner_note": "Browser-only sample keeps raw inventories local.",
+    "evidence_links": [
+      {
+        "label": "Sample assessment",
+        "url": "https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html",
+        "status": "ready"
+      }
+    ],
+    "blockers": [],
+    "human_gates": []
+  }
+]
+

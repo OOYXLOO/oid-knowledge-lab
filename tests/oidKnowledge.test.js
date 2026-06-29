@@ -60,6 +60,12 @@ try {
 } catch (error) {
   mediaProvenancePackModule = { __loadError: error.message };
 }
+let proofDeskPackModule;
+try {
+  proofDeskPackModule = require("../src/proofDeskPack");
+} catch (error) {
+  proofDeskPackModule = { __loadError: error.message };
+}
 
 const ROOT = path.resolve(__dirname, "..");
 
@@ -2593,6 +2599,95 @@ function testBackblazeReadinessPageIsPublicAndBoundarySafe() {
   }
 }
 
+function testProofDeskPackBuildsReviewHandoff() {
+  assert.equal(proofDeskPackModule.__loadError, undefined, proofDeskPackModule.__loadError);
+  const { buildProofDeskPack, renderProofDeskMarkdown } = proofDeskPackModule;
+  const pack = buildProofDeskPack({
+    generatedAt: "2026-06-30T00:00:00.000Z",
+    claims: [
+      {
+        title: "Ready launch packet",
+        artifact_type: "public demo",
+        evidence_links: [{ label: "Demo", url: "https://example.com/demo", status: "ready" }]
+      },
+      {
+        title: "Gated cloud integration",
+        artifact_type: "readiness page",
+        evidence_links: [{ label: "Readiness", url: "https://example.com/ready", status: "ready" }],
+        blockers: ["Connect a real storage bucket."],
+        human_gates: ["Confirm final submission details."]
+      }
+    ]
+  });
+
+  assert.equal(pack.schema_version, "proofdesk-pack/v1");
+  assert.equal(pack.summary.total_claims, 2);
+  assert.equal(pack.summary.ready_claims, 1);
+  assert.equal(pack.summary.needs_human_review, 1);
+  assert.ok(pack.slack_handoff[0].message.includes("[ready]"));
+  assert.ok(pack.slack_handoff[1].message.includes("Connect a real storage bucket"));
+  assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
+  assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
+  assert.equal(JSON.stringify(pack).includes("D:\\hks"), false);
+
+  const markdown = renderProofDeskMarkdown(pack);
+  assert.ok(markdown.includes("# ProofDesk Proof Packet"));
+  assert.ok(markdown.includes("## Slack Handoff"));
+  assert.ok(markdown.includes("Ready launch packet"));
+  assert.ok(markdown.includes("Gated cloud integration"));
+  assert.equal(markdown.includes("money" + "-goal"), false);
+  assert.equal(markdown.includes("USD " + "200"), false);
+}
+
+function testProofDeskPackWritesPublicSafeFiles() {
+  assert.equal(proofDeskPackModule.__loadError, undefined, proofDeskPackModule.__loadError);
+  const { writeProofDeskPack } = proofDeskPackModule;
+  const outDir = "C:\\Users\\YXL\\.codex\\tmp\\oid-knowledge-lab-test-proofdesk";
+  fs.rmSync(outDir, { recursive: true, force: true });
+  fs.mkdirSync(outDir, { recursive: true });
+  const claimsFile = path.join(outDir, "claims.json");
+  fs.writeFileSync(claimsFile, JSON.stringify([
+    {
+      title: "Public packet",
+      artifact_type: "demo",
+      evidence_links: [{ label: "Demo", url: "https://example.com", status: "ready" }]
+    }
+  ]), "utf8");
+
+  const result = writeProofDeskPack({
+    claimsFile,
+    jsonOutFile: path.join(outDir, "proofdesk-pack.json"),
+    markdownOutFile: path.join(outDir, "proofdesk-pack.md"),
+    generatedAt: "2026-06-30T00:00:00.000Z"
+  });
+
+  assert.equal(result.pack.summary.total_claims, 1);
+  for (const file of ["proofdesk-pack.json", "proofdesk-pack.md"]) {
+    const text = fs.readFileSync(path.join(outDir, file), "utf8");
+    assert.ok(text.includes("Public packet"));
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("D:\\hks"), false);
+  }
+}
+
+function testProofDeskPagesArePublicAndBoundarySafe() {
+  const files = [
+    "docs/articles/proofdesk-slack-workflow-brief.md",
+    "public/proofdesk-slack-workflow.html",
+    "public/proofdesk-packet-demo.html"
+  ];
+
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("ProofDesk"), `${file} should describe ProofDesk`);
+    assert.ok(text.includes("public") || text.includes("Public"), `${file} should describe public inputs`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("D:\\hks"), false);
+  }
+}
+
 async function main() {
   testSitemapParser();
   testSitemapIndex();
@@ -2665,6 +2760,9 @@ async function main() {
   testMediaProvenancePackWritesPublicSafeFiles();
   testBackblazeReadinessPackDocumentsCloudGate();
   testBackblazeReadinessPageIsPublicAndBoundarySafe();
+  testProofDeskPackBuildsReviewHandoff();
+  testProofDeskPackWritesPublicSafeFiles();
+  testProofDeskPagesArePublicAndBoundarySafe();
   testBuyerSignalPackRenderer();
   console.log("oid knowledge tests passed");
 }
