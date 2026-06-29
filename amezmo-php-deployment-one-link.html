@@ -18,6 +18,7 @@
         <a href="writing-samples.html">Writing samples</a>
         <a href="implementation-authenticity-proof.html">Implementation proof</a>
         <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/amezmo-php-deployment-evidence-checklist.md">Raw checklist sample</a>
+        <a href="#screenshot-storyboard">Screenshot storyboard</a>
         <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
       </div>
     </section>
@@ -80,6 +81,46 @@ php artisan migrate --force
 php artisan queue:restart
 php artisan optimize:clear
 curl -fsS https://example.com/health</pre>
+    </section>
+
+    <section class="panel" id="screenshot-storyboard">
+      <div>
+        <p class="eyebrow">Screenshot storyboard</p>
+        <h2>Article visuals planned before drafting</h2>
+        <p class="panel-copy">Amezmo asks for high-quality screenshots. The final article can include original, recreated screenshots based on a clean demo app rather than private customer consoles or copied production screens.</p>
+      </div>
+      <div class="review-grid">
+        <article>
+          <span>Screenshot 1</span>
+          <strong>Pre-flight terminal</strong>
+          <p>Composer validation, dependency install mode, cached config, route cache, and migration dry-run output in one readable terminal frame.</p>
+        </article>
+        <article>
+          <span>Screenshot 2</span>
+          <strong>Deployment evidence log</strong>
+          <p>A sanitized Markdown checklist showing revision, target, migration result, worker restart, health check, and rollback owner.</p>
+        </article>
+        <article>
+          <span>Screenshot 3</span>
+          <strong>Post-release checks</strong>
+          <p>Health endpoint, failed jobs, and recent log window with secrets redacted and only the operational signal visible.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Demo screenshot copy</p>
+        <h2>Safe visual source for the final tutorial</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Visual</th><th>What it proves</th><th>What stays out</th></tr></thead>
+        <tbody>
+          <tr><td>Terminal frame</td><td>Commands are concrete and reproducible.</td><td>No hostnames, keys, tokens, or client paths.</td></tr>
+          <tr><td>Checklist frame</td><td>The article gives readers a copyable release artifact.</td><td>No customer names, private ticket text, or account screenshots.</td></tr>
+          <tr><td>Health frame</td><td>Post-deploy checks cover app, workers, logs, and rollback.</td><td>No raw production logs, payment data, or identity records.</td></tr>
+        </tbody>
+      </table>
     </section>
 
     <section class="panel">
