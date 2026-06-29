@@ -1708,6 +1708,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "knowledgeowl-application-field-pack.html",
     "paid-writing-editor-brief.html",
     "editor-assignment-fit.html",
+    "unleash-continuous-delivery-one-link.html",
     "honeybadger-debugging-one-link.html",
     "code-reviewer-portfolio.html",
     "reviewer-readiness-one-link.html",

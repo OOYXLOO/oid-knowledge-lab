@@ -14,6 +14,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Technical rigor proof: <https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html>
 - Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
 - Editor assignment fit: <https://oid-knowledge-lab.vercel.app/editor-assignment-fit.html>
+- Unleash continuous delivery packet: <https://oid-knowledge-lab.vercel.app/unleash-continuous-delivery-one-link.html>
 - Honeybadger debugging packet: <https://oid-knowledge-lab.vercel.app/honeybadger-debugging-one-link.html>
 - OID portfolio risk console: <https://oid-knowledge-lab.vercel.app/oid-portfolio-risk-console.html>
 - Hasura reviewer hub: <https://oid-knowledge-lab.vercel.app/hasura-reviewer-hub.html>
@@ -32,7 +33,8 @@ Last refreshed on 2026-06-26:
 - Hasura reviewer hub: `public/hasura-reviewer-hub.html` supports a GraphQL/Postgres article pitch for OID inventory review workflows.
 - Writing samples review page: `public/writing-samples.html` links editor-facing samples and proof surfaces
 - Editor assignment fit page: `public/editor-assignment-fit.html` maps the three strongest paid-writing directions to their proof links and publication boundaries
-- Honeybadger debugging packet: `public/honeybadger-debugging-one-link.html` maps a debugging/reliability article pitch to public proof links and publication boundaries
+- Unleash continuous delivery packet: `public/unleash-continuous-delivery-one-link.html` maps a feature-flag article pitch to public proof links and publication boundaries
+- Honeybadger debugging packet: `public/honeybadger-debugging-one-link.html` remains available as a paused backup debugging/reliability article packet
 - Technical rigor proof page: `public/technical-rigor-proof.html` maps writing samples to verification commands, generated artifacts, and publication boundaries
 - Dataset manifest: `reports/dataset-manifest.json` with artifact hashes, sizes, source links, and publication boundaries
 - Source policy snapshot: `reports/source-policy.md` records robots, terms, sitemap, and hash evidence for the collection boundary

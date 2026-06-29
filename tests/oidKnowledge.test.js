@@ -1733,10 +1733,10 @@ function testEditorAssignmentFitPageIsLinkedAndBoundarySafe() {
   assert.ok(page.includes("Three editor-ready article directions"), "assignment fit page should state the decision purpose");
   assert.ok(page.includes("KnowledgeOwl"), "assignment fit page should include KnowledgeOwl");
   assert.ok(page.includes("Amezmo"), "assignment fit page should include Amezmo");
-  assert.ok(page.includes("Honeybadger"), "assignment fit page should include Honeybadger");
+  assert.ok(page.includes("Unleash"), "assignment fit page should include Unleash");
   assert.ok(page.includes("knowledgeowl-one-link.html"), "assignment fit page should link KnowledgeOwl proof");
   assert.ok(page.includes("amezmo-php-deployment-one-link.html"), "assignment fit page should link Amezmo proof");
-  assert.ok(page.includes("honeybadger-debugging-one-link.html"), "assignment fit page should link Honeybadger proof");
+  assert.ok(page.includes("unleash-continuous-delivery-one-link.html"), "assignment fit page should link Unleash proof");
   assert.ok(page.includes("writing-samples.html"), "assignment fit page should link writing samples");
   assert.equal(page.includes("money" + "-goal"), false);
   assert.equal(page.includes("USD " + "200"), false);
@@ -1745,6 +1745,23 @@ function testEditorAssignmentFitPageIsLinkedAndBoundarySafe() {
   for (const file of ["public/writing-samples.html", "public/paid-writing-editor-brief.html", "src/site.js", "README.md"]) {
     const text = fs.readFileSync(path.join(ROOT, file), "utf8");
     assert.ok(text.includes("editor-assignment-fit.html"), `${file} should link the assignment fit page`);
+  }
+}
+
+function testUnleashContinuousDeliveryPacketIsLinkedAndBoundarySafe() {
+  const page = fs.readFileSync(path.join(ROOT, "public/unleash-continuous-delivery-one-link.html"), "utf8");
+  assert.ok(page.includes("Feature flags as the rollout boundary"), "Unleash packet should include feature-flag positioning");
+  assert.ok(page.includes("continuous delivery"), "Unleash packet should include continuous delivery positioning");
+  assert.ok(page.includes("release-guard-static-artifacts.md"), "Unleash packet should link the release guard sample");
+  assert.ok(page.includes("civo-static-evidence-dashboard-full-draft.md"), "Unleash packet should link a long-form release evidence draft");
+  assert.ok(page.includes("implementation-authenticity-proof.html"), "Unleash packet should link authenticity proof");
+  assert.equal(page.includes("money" + "-goal"), false);
+  assert.equal(page.includes("USD " + "200"), false);
+  assert.equal(page.includes("\u8d5a\u94b1"), false);
+
+  for (const file of ["public/writing-samples.html", "public/editor-assignment-fit.html", "src/site.js", "README.md"]) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("unleash-continuous-delivery-one-link.html"), `${file} should link the Unleash packet`);
   }
 }
 
@@ -1761,7 +1778,7 @@ function testHoneybadgerDebuggingPacketIsLinkedAndBoundarySafe() {
   assert.equal(page.includes("\u8d5a\u94b1"), false);
   assert.equal(page.includes("D:\\hks"), false);
 
-  for (const file of ["public/editor-assignment-fit.html", "public/writing-samples.html", "public/paid-writing-editor-brief.html", "src/site.js", "README.md"]) {
+  for (const file of ["public/writing-samples.html", "public/paid-writing-editor-brief.html", "src/site.js", "README.md"]) {
     const text = fs.readFileSync(path.join(ROOT, file), "utf8");
     assert.ok(text.includes("honeybadger-debugging-one-link.html"), `${file} should link the Honeybadger debugging packet`);
   }
@@ -2439,6 +2456,7 @@ async function main() {
   testArticleSampleIndexIncludesRealPythonMiniSample();
   testWritingSamplesPageHasEditorDecisionPanel();
   testEditorAssignmentFitPageIsLinkedAndBoundarySafe();
+  testUnleashContinuousDeliveryPacketIsLinkedAndBoundarySafe();
   testHoneybadgerDebuggingPacketIsLinkedAndBoundarySafe();
   testPhpDeploymentEvidenceChecklistIsLinkedAndBoundarySafe();
   testPaidWritingApplicationDeskIsPublicAndBoundarySafe();
