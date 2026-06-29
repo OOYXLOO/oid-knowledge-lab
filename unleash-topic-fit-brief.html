@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unleash Topic Fit Brief - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Unleash topic fit</p>
+      <h1>Feature flags as the rollout boundary for continuous delivery</h1>
+      <p class="summary">This brief frames a proposed article for Unleash community content issue #16: how teams can use feature flags to separate build verification from release exposure, keep risky changes behind an internal preview stage, and record the checks required before wider rollout.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="unleash-continuous-delivery-one-link.html">One-link packet</a>
+        <a href="implementation-authenticity-proof.html">Implementation proof</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/unleash-topic-fit-brief.md">Raw brief</a>
+        <a href="https://github.com/Unleash/community-content/issues/16">Target issue</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Unleash topic metrics">
+      <article><span>Topic</span><strong>Flags</strong><small>Continuous delivery</small></article>
+      <article><span>Issue</span><strong>#16</strong><small>Community content</small></article>
+      <article><span>Example</span><strong>Node.js</strong><small>Generated release evidence</small></article>
+      <article><span>Boundary</span><strong>Safe</strong><small>No private deploy data</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Reader promise</p>
+        <h2>Show release teams when a feature flag is ready to move beyond internal preview</h2>
+        <p class="panel-copy">The article would give readers a practical workflow: generate release evidence, render a small review page, run a publish guard, keep the change behind an internal-preview flag, and only broaden exposure after required checks pass.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Why it fits issue #16</p>
+        <h2>It treats feature flags as release controls, not just conditional code paths</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Issue need</th><th>Article fit</th></tr></thead>
+        <tbody>
+          <tr><td>Explain feature flags for continuous delivery.</td><td>Shows how flags separate deploy from release exposure.</td></tr>
+          <tr><td>Give readers a practical implementation angle.</td><td>Uses a Node.js-style example with generated JSON/Markdown evidence and a static review page.</td></tr>
+          <tr><td>Connect flags to risk reduction.</td><td>Uses internal preview, required checks, rollout states, and rollback notes to reduce blast radius.</td></tr>
+          <tr><td>Keep examples publication-safe.</td><td>Uses synthetic release artifacts and avoids credentials, private logs, customer payloads, and account screenshots.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Article outline</p>
+        <h2>Draft sequence</h2>
+      </div>
+      <ol class="numbered-list">
+        <li>Why a green build is not the same as rollout readiness.</li>
+        <li>What feature flags add to continuous delivery: exposure control, blast-radius reduction, and reversible decisions.</li>
+        <li>Generate release evidence as JSON and Markdown.</li>
+        <li>Render a small internal review page.</li>
+        <li>Run a publish guard before enabling broader exposure.</li>
+        <li>Use flag states to pause, roll forward, or roll back without emergency redeploys.</li>
+        <li>Close with a checklist for enabling a feature flag safely.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Proof path</p>
+        <h2>Best links for review</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Link</th><th>What it proves</th></tr></thead>
+        <tbody>
+          <tr><td><a href="unleash-topic-fit-brief.html">Topic fit brief</a></td><td>Shows the issue-specific angle, reader promise, and safe publication boundary.</td></tr>
+          <tr><td><a href="unleash-continuous-delivery-one-link.html">One-link packet</a></td><td>Collects the proposed article structure, implementation proof, and writing samples.</td></tr>
+          <tr><td><a href="implementation-authenticity-proof.html">Implementation proof</a></td><td>Shows public code, generated reports, static pages, CLI checks, and publishable-source guardrails.</td></tr>
+          <tr><td><a href="writing-samples.html">Writing samples</a></td><td>Shows implementation-backed writing range across release safety and documentation workflows.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Publication boundary</p>
+        <h2>Fresh article, public-safe examples</h2>
+        <p class="panel-copy">The final article should be written fresh for Unleash's audience. The linked project is only proof of preparation and does not include credentials, private deployment logs, customer payloads, account screenshots, payment data, identity records, tax records, cookies, one-time codes, or copied third-party article bodies.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
