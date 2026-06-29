@@ -429,6 +429,7 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/portfolio-card.md">Portfolio card</a></td><td>Fast writing-positioning overview, best first sample, proof links, and verification boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/editor-brief.md">Editor brief</a></td><td>Quick topic fit, reader outcomes, proof links, and verification boundaries.</td></tr>
           <tr><td><a href="paid-writing-editor-brief.html">Paid writing editor brief</a></td><td>One-page editorial review path for the KnowledgeOwl documentation proposal and PHP deployment tutorial packet.</td></tr>
+          <tr><td><a href="editor-assignment-fit.html">Editor assignment fit</a></td><td>Maps the three strongest paid-writing directions to their audience, proof link, and publication boundary.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/editor-pitch-pack.md">Editor pitch pack</a></td><td>Publication-ready topic angles mapped to samples, proof links, and safe boundaries.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/release-guard-static-artifacts.md">Release guard tutorial</a></td><td>CI/CD-oriented sample for generated static artifacts, manifest checks, clean worktrees, no-secret scans, and public smoke tests.</td></tr>
           <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/implementation-authenticity-proof.md">Implementation authenticity proof</a></td><td>Public trail from working code to generated artifacts to editorial samples, with reproducible checks.</td></tr>
@@ -678,6 +679,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="starter-scope.html">Starter scope</a>
         <a href="direct-client-fit.html">Direct client fit</a>
         <a href="writing-samples.html">Writing samples</a>
+        <a href="editor-assignment-fit.html">Assignment fit</a>
         <a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a>
         <a href="civo-reviewer-hub.html">Civo reviewer hub</a>
         <a href="directus-reviewer-hub.html">Directus reviewer hub</a>
@@ -1703,6 +1705,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "knowledgeowl-one-link.html",
     "knowledgeowl-application-field-pack.html",
     "paid-writing-editor-brief.html",
+    "editor-assignment-fit.html",
     "code-reviewer-portfolio.html",
     "reviewer-readiness-one-link.html",
     "monogame-networking-bounty-application.html",

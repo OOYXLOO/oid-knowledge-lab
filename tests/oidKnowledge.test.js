@@ -1719,12 +1719,32 @@ function testWritingSamplesPageHasEditorDecisionPanel() {
   assert.ok(text.includes("Editor quick decision"), "writing samples page should include a fast editorial decision panel");
   assert.ok(text.includes("Submission-ready queue"), "writing samples page should show the submission-ready queue");
   assert.ok(text.includes("editor-pitch-pack.html"), "writing samples page should link the field-ready editor pitch pack");
+  assert.ok(text.includes("editor-assignment-fit.html"), "writing samples page should link the assignment fit page");
   for (const platform of ["Airbyte", "Civo", "Draft.dev", "Directus", "AppSignal", "SigNoz"]) {
     assert.ok(text.includes(platform), `writing samples page should include ${platform}`);
   }
   assert.equal(text.includes("money" + "-goal"), false);
   assert.equal(text.includes("USD " + "200"), false);
   assert.equal(text.includes("\u8d5a\u94b1"), false);
+}
+
+function testEditorAssignmentFitPageIsLinkedAndBoundarySafe() {
+  const page = fs.readFileSync(path.join(ROOT, "public/editor-assignment-fit.html"), "utf8");
+  assert.ok(page.includes("Three editor-ready article directions"), "assignment fit page should state the decision purpose");
+  assert.ok(page.includes("KnowledgeOwl"), "assignment fit page should include KnowledgeOwl");
+  assert.ok(page.includes("Amezmo"), "assignment fit page should include Amezmo");
+  assert.ok(page.includes("Honeybadger"), "assignment fit page should include Honeybadger");
+  assert.ok(page.includes("knowledgeowl-one-link.html"), "assignment fit page should link KnowledgeOwl proof");
+  assert.ok(page.includes("amezmo-php-deployment-one-link.html"), "assignment fit page should link Amezmo proof");
+  assert.ok(page.includes("writing-samples.html"), "assignment fit page should link writing samples");
+  assert.equal(page.includes("money" + "-goal"), false);
+  assert.equal(page.includes("USD " + "200"), false);
+  assert.equal(page.includes("\u8d5a\u94b1"), false);
+
+  for (const file of ["public/writing-samples.html", "public/paid-writing-editor-brief.html", "src/site.js", "README.md"]) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("editor-assignment-fit.html"), `${file} should link the assignment fit page`);
+  }
 }
 
 function testPhpDeploymentEvidenceChecklistIsLinkedAndBoundarySafe() {
@@ -2398,6 +2418,7 @@ async function main() {
   testKnowledgeOwlApplicationFieldPackIsPublicAndSubmitReady();
   testArticleSampleIndexIncludesRealPythonMiniSample();
   testWritingSamplesPageHasEditorDecisionPanel();
+  testEditorAssignmentFitPageIsLinkedAndBoundarySafe();
   testPhpDeploymentEvidenceChecklistIsLinkedAndBoundarySafe();
   testPaidWritingApplicationDeskIsPublicAndBoundarySafe();
   testBackupPitchPackIsPublicAndBoundarySafe();
