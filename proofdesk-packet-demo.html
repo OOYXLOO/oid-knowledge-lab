@@ -63,6 +63,25 @@
     </section>
 
     <section class="panel">
+      <p class="eyebrow">Slack-style command simulator</p>
+      <h2>Run review commands against the same packet</h2>
+      <p class="panel-copy">Try a command below. The simulator keeps everything local and mirrors the packet builder state.</p>
+      <div class="command-presets" aria-label="Example ProofDesk commands">
+        <button type="button" data-command="/proofdesk packet">/proofdesk packet</button>
+        <button type="button" data-command="/proofdesk blockers">/proofdesk blockers</button>
+        <button type="button" data-command="/proofdesk add https://ooyxloo.github.io/oid-knowledge-lab/proofdesk-agent-submission-pack.html">/proofdesk add</button>
+      </div>
+      <form class="command-shell" id="proofdesk-command-form">
+        <label for="proofdesk-command">Command</label>
+        <div class="command-row">
+          <input id="proofdesk-command" type="text" value="/proofdesk packet" autocomplete="off" spellcheck="false">
+          <button type="submit">Run</button>
+        </div>
+      </form>
+      <div class="command-log" id="proofdesk-command-log" aria-live="polite"></div>
+    </section>
+
+    <section class="panel">
       <p class="eyebrow">Packet summary</p>
       <h2>Review-ready claims and gated claims stay separate</h2>
       <table class="handoff-table">
@@ -100,6 +119,9 @@
       const status = document.getElementById("proofdesk-status");
       const output = document.getElementById("proofdesk-output");
       const metrics = document.getElementById("proofdesk-metrics");
+      const commandForm = document.getElementById("proofdesk-command-form");
+      const commandInput = document.getElementById("proofdesk-command");
+      const commandLog = document.getElementById("proofdesk-command-log");
       let latestPacket = null;
       let latestMarkdown = "";
 
@@ -207,10 +229,111 @@
         status.textContent = message || "";
       }
 
+      function safeUrl(value) {
+        try {
+          const parsed = new URL(value);
+          if (parsed.protocol !== "https:" && parsed.protocol !== "http:") return "";
+          return parsed.toString();
+        } catch (error) {
+          return "";
+        }
+      }
+
+      function readClaims() {
+        const claims = JSON.parse(input.value);
+        if (!Array.isArray(claims)) throw new Error("Input must be a JSON array.");
+        return claims;
+      }
+
+      function writeClaims(claims) {
+        input.value = JSON.stringify(claims, null, 2);
+      }
+
+      function appendCommandMessage(role, text) {
+        const item = document.createElement("article");
+        item.className = "command-message command-message-" + role;
+        const label = document.createElement("strong");
+        label.textContent = role === "user" ? "You" : "ProofDesk";
+        const body = document.createElement("pre");
+        body.textContent = text;
+        item.appendChild(label);
+        item.appendChild(body);
+        commandLog.appendChild(item);
+        commandLog.scrollTop = commandLog.scrollHeight;
+      }
+
+      function commandSummary(packet) {
+        return [
+          "Packet ready.",
+          "Total claims: " + packet.summary.total_claims,
+          "Ready claims: " + packet.summary.ready_claims,
+          "Human review: " + packet.summary.needs_human_review,
+          "Needs evidence: " + packet.summary.needs_evidence
+        ].join("\n");
+      }
+
+      function commandBlockers(packet) {
+        const blockers = [];
+        packet.claims.forEach(function (claim) {
+          claim.blockers.forEach(function (blocker) {
+            blockers.push("- " + claim.title + ": " + blocker);
+          });
+          claim.human_gates.forEach(function (gate) {
+            blockers.push("- " + claim.title + ": " + gate);
+          });
+        });
+        return blockers.length ? blockers.join("\n") : "No blockers found in the current packet.";
+      }
+
+      function addClaimFromCommand(rawCommand) {
+        const url = safeUrl(rawCommand.replace(/^\/proofdesk\s+add\s+/i, "").trim());
+        if (!url) return "Use /proofdesk add <public-url>.";
+        const claims = readClaims();
+        claims.push({
+          title: "Public artifact review",
+          artifact_type: "public artifact",
+          source_url: url,
+          evidence_links: [
+            {
+              label: "Public artifact",
+              url: url,
+              status: "needs_review"
+            }
+          ],
+          blockers: [],
+          human_gates: ["Review the public artifact before final approval."]
+        });
+        writeClaims(claims);
+        generate();
+        return "Added a new public artifact claim and refreshed the packet.";
+      }
+
+      function runCommand(rawCommand) {
+        const command = rawCommand.trim();
+        if (!command) return;
+        appendCommandMessage("user", command);
+        try {
+          if (/^\/proofdesk\s+add\s+/i.test(command)) {
+            appendCommandMessage("bot", addClaimFromCommand(command));
+            return;
+          }
+          generate();
+          if (!latestPacket) return;
+          if (/^\/proofdesk\s+packet$/i.test(command)) {
+            appendCommandMessage("bot", commandSummary(latestPacket));
+          } else if (/^\/proofdesk\s+blockers$/i.test(command)) {
+            appendCommandMessage("bot", commandBlockers(latestPacket));
+          } else {
+            appendCommandMessage("bot", "Available commands: /proofdesk add <url>, /proofdesk packet, /proofdesk blockers.");
+          }
+        } catch (error) {
+          appendCommandMessage("bot", "Command failed: " + error.message);
+        }
+      }
+
       function generate() {
         try {
-          const claims = JSON.parse(input.value);
-          if (!Array.isArray(claims)) throw new Error("Input must be a JSON array.");
+          const claims = readClaims();
           latestPacket = buildPacket(claims);
           latestMarkdown = renderMarkdown(latestPacket);
           metrics.innerHTML =
@@ -246,6 +369,16 @@
       }
 
       run.addEventListener("click", generate);
+      commandForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        runCommand(commandInput.value);
+      });
+      document.querySelectorAll("[data-command]").forEach(function (button) {
+        button.addEventListener("click", function () {
+          commandInput.value = button.getAttribute("data-command");
+          runCommand(commandInput.value);
+        });
+      });
       copy.addEventListener("click", function () {
         if (!latestMarkdown) generate();
         if (!latestMarkdown) return;
@@ -261,6 +394,7 @@
       });
       download.addEventListener("click", downloadJson);
       generate();
+      runCommand("/proofdesk packet");
     }());
   </script>
 </body>
