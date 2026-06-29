@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Amezmo Submission Fit Brief - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Amezmo submission fit</p>
+      <h1>A 2,000-word PHP deployment tutorial with concrete release evidence</h1>
+      <p class="summary">This brief frames a proposed Amezmo article for PHP developers who need safer deployment handoffs: Composer checks, Laravel and Symfony migration notes, queue restarts, health checks, rollback notes, and no-secret publication boundaries.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="amezmo-php-deployment-one-link.html">One-link packet</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="implementation-authenticity-proof.html">Implementation proof</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/amezmo-submission-fit-brief.md">Raw brief</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/amezmo-php-deployment-evidence-checklist.md">Raw checklist sample</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Amezmo submission metrics">
+      <article><span>Audience</span><strong>PHP</strong><small>Laravel, Symfony, CMS teams</small></article>
+      <article><span>Length fit</span><strong>2,000</strong><small>Word tutorial target</small></article>
+      <article><span>Article type</span><strong>How-to</strong><small>Checklist plus commands</small></article>
+      <article><span>Boundary</span><strong>Safe</strong><small>No secrets or private logs</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Reader promise</p>
+        <h2>Give PHP teams a deployment evidence checklist they can reuse immediately</h2>
+        <p class="panel-copy">The tutorial shows how to turn a routine PHP release into a reviewable handoff: validate dependencies, check config and cache state, dry-run migrations, record the deployed revision, restart workers, confirm health endpoints, review failed jobs, and write rollback notes before the team forgets what changed.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Why it fits Amezmo</p>
+        <h2>It is practical deployment content, not a generic DevOps essay</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Amezmo tutorial need</th><th>Submission fit</th></tr></thead>
+        <tbody>
+          <tr><td>PHP-specific topic.</td><td>Uses Composer, Laravel migration checks, queue restarts, cache commands, and PHP app health checks.</td></tr>
+          <tr><td>Actionable article structure.</td><td>Follows a release sequence: pre-flight, deploy, post-check, rollback, and publication boundary.</td></tr>
+          <tr><td>High-quality screenshots.</td><td>Includes a screenshot storyboard for terminal checks, evidence log, and post-release checks using a clean demo app.</td></tr>
+          <tr><td>Safe public writing.</td><td>Examples avoid credentials, cookies, private hostnames, account screenshots, raw production logs, and customer records.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Article outline</p>
+        <h2>Draft sequence</h2>
+      </div>
+      <ol class="numbered-list">
+        <li>Why ordinary PHP deployments fail in repeatable ways.</li>
+        <li>Pre-deployment checks for dependencies, config, cache, routes, and migrations.</li>
+        <li>Deployment evidence for revision, target, migration result, worker restart, and health check.</li>
+        <li>Post-deployment checks for critical routes, failed jobs, logs, and webhooks.</li>
+        <li>Rollback evidence for revision, database state, config, cache, and owner.</li>
+        <li>No-secret notes: what never belongs in deployment evidence.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Sample commands</p>
+        <h2>Concrete command examples</h2>
+      </div>
+      <pre>composer validate --strict
+composer install --no-dev --prefer-dist --no-interaction
+php artisan migrate --pretend
+php artisan migrate --force
+php artisan queue:restart
+php artisan optimize:clear
+curl -fsS https://example.com/health</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Publication boundary</p>
+        <h2>Fresh article, sanitized proof</h2>
+        <p class="panel-copy">The final article should be written fresh for Amezmo. The public pages are review aids only. They do not include credentials, private customer exports, copied third-party article bodies, account screenshots, payment details, identity records, or unpublished client code.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
