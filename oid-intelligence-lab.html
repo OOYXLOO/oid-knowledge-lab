@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OID Intelligence Lab</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .product-hero {
+      display: grid;
+      gap: 28px;
+      grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+      align-items: center;
+      padding: 42px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: linear-gradient(135deg, #ffffff 0%, #f6f9ff 56%, #f8fff9 100%);
+      box-shadow: var(--shadow);
+    }
+    .product-hero h1 {
+      margin: 0 0 18px;
+      max-width: 780px;
+      font-size: clamp(2.3rem, 5vw, 4.9rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+    .product-hero p {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.72;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .diagram-frame {
+      margin: 0;
+      padding: 16px;
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      border-radius: 20px;
+      background: #ffffff;
+    }
+    .diagram-frame img {
+      display: block;
+      width: 100%;
+      border-radius: 12px;
+    }
+    .three-column {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .signal-card {
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #ffffff;
+      box-shadow: 0 14px 38px rgba(15, 23, 42, 0.06);
+    }
+    .signal-card span {
+      display: block;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+    .signal-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+    }
+    .signal-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.62;
+    }
+    .use-case-list {
+      display: grid;
+      gap: 12px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .use-case-list li {
+      padding: 16px 18px;
+      border-left: 4px solid var(--accent);
+      background: #f8fafc;
+      color: var(--muted);
+    }
+    @media (max-width: 900px) {
+      .product-hero,
+      .three-column,
+      .evidence-grid {
+        grid-template-columns: 1fr;
+      }
+      .product-hero {
+        padding: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="top-nav" aria-label="Project navigation">
+      <a href="index.html">OID Knowledge Lab</a>
+      <a href="writing-samples.html">Writing samples</a>
+      <a href="oid-portfolio-risk-console.html">Risk console</a>
+      <a href="https://github.com/OOYXLOO/oid-knowledge-lab">GitHub</a>
+    </nav>
+
+    <section class="product-hero">
+      <div>
+        <h1>OID Intelligence Lab</h1>
+        <p>
+          A public knowledge graph for safer digital identity infrastructure. The lab turns scattered
+          Object Identifier records into a searchable, source-linked, and validation-ready dataset for
+          PKI review, certificate policy mapping, standards research, and governance workflows.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="index.html">Explore the public browser</a>
+          <a class="button" href="https://github.com/OOYXLOO/oid-knowledge-lab">Review the repository</a>
+        </div>
+      </div>
+      <figure class="diagram-frame">
+        <img src="assets/oid-intelligence-lab-diagram.png" alt="OID Intelligence Lab architecture diagram">
+      </figure>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Problem</p>
+      <h2>OID data is trust infrastructure, but it is rarely reviewable as infrastructure.</h2>
+      <p class="panel-copy">
+        OIDs appear inside certificates, cryptographic algorithms, PKI policies, device identifiers,
+        healthcare standards, enterprise schemas, and integration documents. When an identifier is stale,
+        duplicated, undocumented, or misread, the failure often appears later as a certificate validation
+        bug, an interoperability issue, or a compliance review gap.
+      </p>
+      <div class="three-column">
+        <article class="signal-card">
+          <span>Fragmented</span>
+          <h3>Public records are scattered</h3>
+          <p>Registry pages, sitemap entries, enterprise assignments, and policy references are hard to inspect together.</p>
+        </article>
+        <article class="signal-card">
+          <span>Opaque</span>
+          <h3>Dotted numbers hide ownership</h3>
+          <p>A single OID string rarely explains its parent arc, source reference, neighboring identifiers, or governance context.</p>
+        </article>
+        <article class="signal-card">
+          <span>Costly</span>
+          <h3>Errors surface late</h3>
+          <p>Identifier mismatches can become expensive only after integration, audit, certificate rollout, or standards review.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Solution</p>
+      <h2>A source-linked graph with lightweight validation.</h2>
+      <div class="evidence-grid">
+        <article class="signal-card">
+          <span>Collect</span>
+          <h3>Public source capture</h3>
+          <p>Collect public OID directory metadata, source URLs, hierarchy hints, and registry fields without mirroring private or restricted content.</p>
+        </article>
+        <article class="signal-card">
+          <span>Model</span>
+          <h3>Parent-child graph structure</h3>
+          <p>Represent arcs, owners, namespaces, source references, and neighboring identifiers as a graph instead of isolated strings.</p>
+        </article>
+        <article class="signal-card">
+          <span>Validate</span>
+          <h3>Review-ready signals</h3>
+          <p>Flag malformed arcs, source health gaps, duplicate descriptions, stale references, and clusters that deserve human review.</p>
+        </article>
+        <article class="signal-card">
+          <span>Publish</span>
+          <h3>Static, reproducible outputs</h3>
+          <p>Expose the public browser and generated reports through versioned static artifacts that can be reviewed without server-side secrets.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Use cases</p>
+      <h2>Where the graph helps.</h2>
+      <ul class="use-case-list">
+        <li><strong>PKI and certificate policy review:</strong> map certificate policy OIDs, check references, and prepare safer rollout notes.</li>
+        <li><strong>Standards research:</strong> inspect neighboring arcs and source references before reusing or documenting identifiers.</li>
+        <li><strong>Enterprise registry cleanup:</strong> compare internal inventories against public arc ownership and stale source signals.</li>
+        <li><strong>Integration due diligence:</strong> give engineers a compact evidence trail before schemas, devices, or certificates enter production.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Prototype evidence</p>
+      <h2>Current public artifacts.</h2>
+      <div class="review-grid">
+        <article>
+          <span>Public browser</span>
+          <strong>Searchable OID and PEN index</strong>
+          <p>Static browser for public sitemap-level OID directory metadata and IANA PEN assignments.</p>
+          <a href="index.html">Open browser</a>
+        </article>
+        <article>
+          <span>Risk console</span>
+          <strong>Browser-only assessment tool</strong>
+          <p>Turns a small local OID inventory into a governance brief without uploading sensitive client data.</p>
+          <a href="oid-portfolio-risk-console.html">Open risk console</a>
+        </article>
+        <article>
+          <span>Source policy</span>
+          <strong>Responsible publication boundary</strong>
+          <p>Documents robots, terms, sitemap, and what is intentionally excluded from the published dataset.</p>
+          <a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/source-policy.md">Read policy</a>
+        </article>
+        <article>
+          <span>Dataset manifest</span>
+          <strong>Hash and artifact evidence</strong>
+          <p>Records generated artifact hashes, sizes, source links, and public review boundaries.</p>
+          <a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/dataset-manifest.json">Inspect manifest</a>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
