@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feature Flags for Continuous Delivery Packet - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Continuous delivery article packet</p>
+      <h1>Feature flags as the rollout boundary for release evidence</h1>
+      <p class="summary">A one-link review packet for an article about using feature flags to separate build verification from rollout, keep generated release artifacts behind an internal preview stage, and record the checks that should pass before broader exposure.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="editor-assignment-fit.html">Assignment fit</a>
+        <a href="implementation-authenticity-proof.html">Authenticity proof</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="technical-rigor-proof.html">Technical proof</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Feature flag article packet summary">
+      <article><span>Topic</span><strong>Flags</strong><small>Continuous delivery</small></article>
+      <article><span>Reader</span><strong>DevOps</strong><small>Release owners</small></article>
+      <article><span>Example</span><strong>Node.js</strong><small>Generated evidence</small></article>
+      <article><span>Boundary</span><strong>Safe</strong><small>No private deploy data</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Proposed article</p>
+        <h2>How to use feature flags for continuous delivery without losing release evidence</h2>
+        <p class="panel-copy">The article would show a small delivery workflow: generate JSON and Markdown release evidence, render a static review dashboard, run a publish guard, and use a feature flag as the rollout boundary between internal preview and broader exposure.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Editorial question</th><th>Answer</th></tr></thead>
+        <tbody>
+          <tr><td>Reader fit</td><td>Developers, DevOps engineers, platform teams, and release owners who want continuous delivery without turning every rollout into a last-minute manual decision.</td></tr>
+          <tr><td>Reader outcome</td><td>A practical checklist for deciding when a feature flag can move from internal preview to a wider audience, including release evidence and rollback notes.</td></tr>
+          <tr><td>Implementation depth</td><td>The public sample set includes generated artifacts, static dashboard pages, manifest checks, publish guards, and proof pages that can be inspected without private infrastructure.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel submission-queue-panel">
+      <div>
+        <p class="eyebrow">Best proof path</p>
+        <h2>Open these links in order</h2>
+      </div>
+      <div class="queue-list">
+        <article>
+          <span>1</span>
+          <strong>Implementation authenticity proof</strong>
+          <p>Shows that the article direction is backed by generated reports, public code, CLI checks, release guards, and publication boundaries.</p>
+          <a href="implementation-authenticity-proof.html">Open authenticity proof</a>
+        </article>
+        <article>
+          <span>2</span>
+          <strong>Release guard writing sample</strong>
+          <p>Static artifact release guard sample that maps well to feature-flagged internal preview and broader rollout decisions.</p>
+          <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/release-guard-static-artifacts.md">Open release guard sample</a>
+        </article>
+        <article>
+          <span>3</span>
+          <strong>Civo release evidence draft</strong>
+          <p>Long-form cloud-native release evidence draft with generated review artifacts, publish checks, and safe publication boundaries.</p>
+          <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-static-evidence-dashboard-full-draft.md">Open release evidence draft</a>
+        </article>
+        <article>
+          <span>4</span>
+          <strong>Writing samples</strong>
+          <p>Additional implementation-backed writing samples for DevOps, release guards, observability handoffs, and safe generated artifacts.</p>
+          <a href="writing-samples.html">Open writing samples</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Draft structure</p>
+        <h2>Possible section flow</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Section</th><th>Reader value</th></tr></thead>
+        <tbody>
+          <tr><td>Green build is not rollout readiness</td><td>Explain why continuous delivery still needs a clear exposure boundary and a reviewable decision trail.</td></tr>
+          <tr><td>Generate release evidence</td><td>Create a small JSON and Markdown evidence bundle with revision, artifact, checks, and unresolved blockers.</td></tr>
+          <tr><td>Render an internal preview</td><td>Use a static page as the review surface before exposing generated or partially reviewed artifacts more broadly.</td></tr>
+          <tr><td>Run a publish guard</td><td>Block release when required links, manifests, or proof artifacts are missing or stale.</td></tr>
+          <tr><td>Add the feature flag</td><td>Use the flag to separate internal preview from broader rollout, then record the checks required before enabling it.</td></tr>
+          <tr><td>Pause, roll forward, or roll back</td><td>Show how flag state can reduce rollback pressure and make release decisions explicit.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Publication boundary</p>
+        <h2>Fresh article, public proof only</h2>
+        <p class="panel-copy">The final article can be revised for a feature-flag audience and the publication's editorial guidelines. Public proof pages do not include credentials, deployment secrets, private logs, customer payloads, account screenshots, payment information, identity records, tax records, cookies, one-time codes, or copied third-party article bodies.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
