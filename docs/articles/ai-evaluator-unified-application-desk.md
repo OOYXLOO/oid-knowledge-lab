@@ -1,6 +1,6 @@
 # AI Evaluator Unified Application Desk
 
-This page is a compact application desk for AI evaluator, AI trainer, code reviewer, and model-response evaluation roles across Mindrift, Alignerr, and OpenTrain-style application flows.
+This page is a compact application desk for AI evaluator, AI trainer, code reviewer, and model-response evaluation roles across coding-work and evaluator application flows.
 
 ## Short role summary
 
@@ -10,6 +10,9 @@ I evaluate AI-generated code as an untrusted draft. I restate the expected behav
 
 | Platform | Best-fit role | Primary proof link |
 |---|---|---|
+| DataAnnotation-style coding work | Code evaluator / debugging reviewer | <https://ooyxloo.github.io/oid-knowledge-lab/ai-code-evaluator-portfolio.html> |
+| Mercor-style expert screening | Software engineering expert / model evaluator | <https://ooyxloo.github.io/oid-knowledge-lab/ai-evaluator-application-packet.html> |
+| Outlier-style coding expertise | Remote coding expert / AI trainer | <https://ooyxloo.github.io/oid-knowledge-lab/ai-code-review-casebook.html> |
 | Mindrift | AI evaluator / coding reviewer | <https://ooyxloo.github.io/oid-knowledge-lab/mindrift-code-one-link.html> |
 | Alignerr | Python AI trainer / evaluator | <https://ooyxloo.github.io/oid-knowledge-lab/alignerr-python-one-link.html> |
 | OpenTrain | AI code evaluation profile | <https://ooyxloo.github.io/oid-knowledge-lab/opentrain-ai-code-evaluation-one-link.html> |
@@ -51,6 +54,9 @@ Residual risk:
 
 ## Platform-specific note
 
+- DataAnnotation-style coding work: lead with generated-code review, debugging, tests, and edge-case analysis.
+- Mercor-style expert screening: lead with software engineering judgment, reference-solution quality, and clear technical writing.
+- Outlier-style coding expertise: lead with model-answer comparison, rubric-style verdicts, and practical coding fixes.
 - Mindrift: lead with coding review, test-backed verdicts, and silent-failure detection.
 - Alignerr: lead with Python evaluation, rubric-style answers, and model-response comparison.
 - OpenTrain: lead with a broader AI code evaluation profile and proof links.

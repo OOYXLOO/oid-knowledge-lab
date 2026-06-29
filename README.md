@@ -22,6 +22,9 @@ The current source adapter targets public OID-base pages through the site's site
 - Media Provenance tutorial proposal: <https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-tutorial-proposal.html>
 - Envato Tuts+ contributor packet: <https://ooyxloo.github.io/oid-knowledge-lab/envato-tutsplus-contributor-packet.html>
 - Backblaze readiness pack: <https://ooyxloo.github.io/oid-knowledge-lab/backblaze-readiness-pack.html>
+- AI evaluator unified application desk: <https://ooyxloo.github.io/oid-knowledge-lab/ai-evaluator-unified-application-desk.html>
+- AI code evaluator portfolio: <https://ooyxloo.github.io/oid-knowledge-lab/ai-code-evaluator-portfolio.html>
+- DataAnnotation-style coding proof packet: <https://ooyxloo.github.io/oid-knowledge-lab/dataannotation-coding-one-link.html>
 - OpenTrain AI systems and code evaluation packet: <https://ooyxloo.github.io/oid-knowledge-lab/opentrain-ai-code-evaluation-one-link.html>
 - Hasura reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/hasura-reviewer-hub.html>
 - Appsmith OID reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/appsmith-oid-reviewer-hub.html>
