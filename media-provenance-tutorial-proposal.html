@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Media Provenance Tutorial Proposal</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .proposal {
+      display: grid;
+      gap: 18px;
+      padding: 34px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .proposal h1 {
+      max-width: 900px;
+    }
+
+    .proposal-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+      gap: 18px;
+      align-items: start;
+      margin: 24px 0;
+    }
+
+    .proposal-panel,
+    .outline-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 18px;
+    }
+
+    .proposal-panel p,
+    .outline-panel li {
+      line-height: 1.65;
+    }
+
+    .outline-panel ol {
+      padding-left: 22px;
+    }
+
+    .proof-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .proof-list a {
+      display: block;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfe;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .proposal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="proposal">
+      <p class="eyebrow">Tutorial proposal</p>
+      <h1>Build a Local-First Provenance Ledger for AI-Generated Media Assets</h1>
+      <p class="summary">A practical JavaScript tutorial proposal for building a browser-only asset ledger with review status, model notes, evidence notes, search filters, delivery metrics, and JSON or Markdown export.</p>
+      <div class="links">
+        <a href="media-provenance-studio.html">Interactive demo</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="proposal-grid">
+      <article class="proposal-panel">
+        <h2>Reader Problem</h2>
+        <p>AI media workflows often start with fast generation and end with confusing delivery folders. Teams may know which file looks final, but not which prompt, model note, license boundary, reviewer status, or storage reference belongs to it.</p>
+        <p>This creates friction for documentation teams, agencies, developer relations teams, and product marketers who need to reuse generated assets responsibly.</p>
+
+        <h2>Tutorial Outcome</h2>
+        <p>Readers will build a dependency-free web app that registers generated media assets, filters records by type and review status, computes a live delivery summary, and exports both Markdown and JSON handoff files.</p>
+
+        <h2>Editorial Fit</h2>
+        <p>The topic is concrete enough for a JavaScript tutorial and broad enough for readers interested in AI workflows, content operations, developer tooling, cloud storage handoff patterns, and client-safe asset delivery.</p>
+      </article>
+
+      <aside class="outline-panel">
+        <h2>Proposed Outline</h2>
+        <ol>
+          <li>Why generated media needs provenance</li>
+          <li>Designing the asset record</li>
+          <li>Building the HTML review surface</li>
+          <li>Rendering records from structured data</li>
+          <li>Adding filters and search</li>
+          <li>Computing delivery summary metrics</li>
+          <li>Exporting Markdown and JSON handoff files</li>
+          <li>Where cloud storage and hashes fit in production</li>
+          <li>Final checklist for client-safe asset delivery</li>
+        </ol>
+
+        <h2>Proof Links</h2>
+        <ul class="proof-list">
+          <li><a href="media-provenance-studio.html">Interactive demo</a></li>
+          <li><a href="https://github.com/OOYXLOO/oid-knowledge-lab">Project repository</a></li>
+          <li><a href="writing-samples.html">Writing samples</a></li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
