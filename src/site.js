@@ -445,6 +445,7 @@ function renderArticleSamplesPanel() {
           <tr><td><a href="knowledgeowl-reviewer-hub.html">KnowledgeOwl reviewer hub</a></td><td>Documentation-focused article proposal about evidence logs for AI-assisted knowledge base articles.</td></tr>
           <tr><td><a href="knowledgeowl-one-link.html">KnowledgeOwl one-link packet</a></td><td>Fast editor-first review page with the pitch, draft preview, template, playground, proof links, and publication boundary.</td></tr>
           <tr><td><a href="code-reviewer-portfolio.html">Peer code reviewer portfolio</a></td><td>Neutral proof page for code-review, AI-code-evaluation, and peer-reviewer applications with verdict shape and proof links.</td></tr>
+          <tr><td><a href="dataannotation-coding-one-link.html">Coding evaluator proof packet</a></td><td>One-link portfolio for coding evaluator and AI trainer reviews, with evidence-backed verdict framing and public-safe proof links.</td></tr>
           <tr><td><a href="mindrift-code-reviewer-hub.html">Mindrift code reviewer hub</a></td><td>AI code-review proof path for Python evaluator work, bug finding, model-response comparison, corrected implementations, and structured feedback.</td></tr>
           <tr><td><a href="alignerr-python-one-link.html">Alignerr Python one-link</a></td><td>Fast application link for Python AI workflow validation, tests, data-boundary checks, and evidence-backed review decisions.</td></tr>
           <tr><td><a href="mindrift-code-one-link.html">Mindrift code one-link</a></td><td>Fast application link with role summary, proof links, review method, verdict frame, and public safety boundary.</td></tr>
@@ -693,6 +694,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="realpython-ai-reviewer-hub.html">Real Python AI reviewer hub</a>
         <a href="mindrift-code-reviewer-hub.html">Mindrift code reviewer hub</a>
         <a href="ai-code-evaluator-portfolio.html">AI code evaluator portfolio</a>
+        <a href="dataannotation-coding-one-link.html">Coding evaluator packet</a>
         <a href="opentrain-ai-code-evaluation-one-link.html">OpenTrain code evaluation</a>
         <a href="qwen-autopilot-agent-one-link.html">Qwen Autopilot Agent packet</a>
         <a href="review-log-agent-hub.html">Review Log Agent hub</a>
@@ -1793,6 +1795,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "code-reviewer-portfolio.html",
     "reviewer-readiness-one-link.html",
     "monogame-networking-bounty-application.html",
+    "dataannotation-coding-one-link.html",
     "alignerr-python-one-link.html",
     "mindrift-code-one-link.html",
     "ai-evaluator-unified-application-desk.html",

@@ -2106,6 +2106,25 @@ function testAiEvaluatorApplicationPacketIsPublicAndBoundarySafe() {
   assert.ok(page.includes("No private data") || page.includes("private account exports"));
 }
 
+function testCodingEvaluatorOneLinkIsPublicAndBoundarySafe() {
+  const page = fs.readFileSync(path.join(ROOT, "public/dataannotation-coding-one-link.html"), "utf8");
+  assert.ok(page.includes("Coding evaluator proof packet"));
+  assert.ok(page.includes("Evidence-backed code review"));
+  assert.ok(page.includes("proofdesk-packet-demo.html"));
+  assert.ok(page.includes("ai-evaluator-unified-application-desk.html"));
+  assert.ok(page.includes("ai-code-review-casebook.html"));
+  assert.ok(page.includes("python-assessment-drill.html"));
+  assert.ok(page.includes("No credentials"));
+  assert.equal(page.includes("money" + "-goal"), false);
+  assert.equal(page.includes("USD " + "200"), false);
+  assert.equal(page.includes("\u8d5a\u94b1"), false);
+
+  for (const file of ["public/index.html", "public/writing-samples.html", "src/site.js"]) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("dataannotation-coding-one-link.html"), `${file} should link the coding evaluator proof packet`);
+  }
+}
+
 function testAiCodeReviewCasebookIsLinkedAndBoundarySafe() {
   const files = [
     "public/ai-code-review-casebook.html",
@@ -2826,6 +2845,7 @@ async function main() {
   testEditorSubmissionFieldPackIsPublicAndBoundarySafe();
   testAiEvaluatorPortfolioIncludesDurationParserReviewCase();
   testAiEvaluatorApplicationPacketIsPublicAndBoundarySafe();
+  testCodingEvaluatorOneLinkIsPublicAndBoundarySafe();
   testAiCodeReviewCasebookIsLinkedAndBoundarySafe();
   testAiReviewerApplicationSummaryIsLinkedAndBoundarySafe();
   testPythonAssessmentDrillIsLinkedAndBoundarySafe();
