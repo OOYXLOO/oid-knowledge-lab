@@ -80,9 +80,9 @@ submitted as an unchanged AI-generated article draft.
 
 ## Implementation proof
 
-- Working dashboard: <https://oid-knowledge-lab.vercel.app/>
-- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
-- Implementation proof: <https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html>
+- Working dashboard: <https://ooyxloo.github.io/oid-knowledge-lab/>
+- Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Implementation proof: <https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html>
 - Airbyte submission brief: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-submission-brief.md>
 - Connector Builder appendix: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/airbyte-connector-builder-appendix.md>
 

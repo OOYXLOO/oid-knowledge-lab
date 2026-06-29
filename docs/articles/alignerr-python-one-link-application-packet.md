@@ -17,9 +17,9 @@ I work on Python AI workflow validation: turning generated code, model outputs, 
 
 ## Best First Links
 
-- One-link page: <https://oid-knowledge-lab.vercel.app/alignerr-python-one-link.html>
-- AI evaluator application packet: <https://oid-knowledge-lab.vercel.app/ai-evaluator-application-packet.html>
-- AI code evaluator portfolio: <https://oid-knowledge-lab.vercel.app/ai-code-evaluator-portfolio.html>
+- One-link page: <https://ooyxloo.github.io/oid-knowledge-lab/alignerr-python-one-link.html>
+- AI evaluator application packet: <https://ooyxloo.github.io/oid-knowledge-lab/ai-evaluator-application-packet.html>
+- AI code evaluator portfolio: <https://ooyxloo.github.io/oid-knowledge-lab/ai-code-evaluator-portfolio.html>
 - Runnable Python lab: <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python>
 - Duration parser review case: <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review>
 - Evidence log: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md>

@@ -77,9 +77,9 @@ or a commercial project promotion.
 
 ## Implementation proof
 
-- Working dashboard: <https://oid-knowledge-lab.vercel.app/>
-- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
-- Implementation proof: <https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html>
+- Working dashboard: <https://ooyxloo.github.io/oid-knowledge-lab/>
+- Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Implementation proof: <https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html>
 - Civo submission brief: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/civo-submission-brief.md>
 - Static dashboard sample: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md>
 

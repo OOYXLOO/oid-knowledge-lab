@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/s
 Dashboard:
 
 ```text
-https://oid-knowledge-lab.vercel.app/
+https://ooyxloo.github.io/oid-knowledge-lab/
 ```
 
 Repository:

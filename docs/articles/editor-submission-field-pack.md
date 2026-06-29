@@ -10,7 +10,7 @@ I write implementation-backed developer tutorials about data workflows, observab
 
 ```text
 https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
-https://oid-knowledge-lab.vercel.app/editor-pitch-pack.html
+https://ooyxloo.github.io/oid-knowledge-lab/editor-pitch-pack.html
 ```
 
 ## Platform fields

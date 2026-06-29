@@ -6,18 +6,18 @@ The current source adapter targets public OID-base pages through the site's site
 
 ## Public URLs
 
-- Vercel showcase: <https://oid-knowledge-lab.vercel.app>
+- Primary showcase: <https://ooyxloo.github.io/oid-knowledge-lab>
 - GitHub Pages mirror: <https://ooyxloo.github.io/oid-knowledge-lab/>
-- Editor pitch pack: <https://oid-knowledge-lab.vercel.app/editor-pitch-pack.html>
-- Editor decision brief: <https://oid-knowledge-lab.vercel.app/editor-decision-brief.html>
-- Editor trust packet: <https://oid-knowledge-lab.vercel.app/editor-trust-packet.html>
-- Technical rigor proof: <https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html>
-- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
-- Editor assignment fit: <https://oid-knowledge-lab.vercel.app/editor-assignment-fit.html>
-- Unleash continuous delivery packet: <https://oid-knowledge-lab.vercel.app/unleash-continuous-delivery-one-link.html>
-- Honeybadger debugging packet: <https://oid-knowledge-lab.vercel.app/honeybadger-debugging-one-link.html>
-- OID portfolio risk console: <https://oid-knowledge-lab.vercel.app/oid-portfolio-risk-console.html>
-- Hasura reviewer hub: <https://oid-knowledge-lab.vercel.app/hasura-reviewer-hub.html>
+- Editor pitch pack: <https://ooyxloo.github.io/oid-knowledge-lab/editor-pitch-pack.html>
+- Editor decision brief: <https://ooyxloo.github.io/oid-knowledge-lab/editor-decision-brief.html>
+- Editor trust packet: <https://ooyxloo.github.io/oid-knowledge-lab/editor-trust-packet.html>
+- Technical rigor proof: <https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html>
+- Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Editor assignment fit: <https://ooyxloo.github.io/oid-knowledge-lab/editor-assignment-fit.html>
+- Unleash continuous delivery packet: <https://ooyxloo.github.io/oid-knowledge-lab/unleash-continuous-delivery-one-link.html>
+- Honeybadger debugging packet: <https://ooyxloo.github.io/oid-knowledge-lab/honeybadger-debugging-one-link.html>
+- OID portfolio risk console: <https://ooyxloo.github.io/oid-knowledge-lab/oid-portfolio-risk-console.html>
+- Hasura reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/hasura-reviewer-hub.html>
 
 ## Current Publishable Snapshot
 

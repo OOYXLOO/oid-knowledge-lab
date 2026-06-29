@@ -35,10 +35,10 @@ After reading the tutorial, a developer should be able to:
 ## Proof links
 
 - Directus submission brief: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/directus-submission-brief.md>
-- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
-- Implementation proof: <https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html>
-- Public dashboard: <https://oid-knowledge-lab.vercel.app/>
-- Sample assessment: <https://oid-knowledge-lab.vercel.app/sample-assessment.html>
+- Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Implementation proof: <https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html>
+- Public dashboard: <https://ooyxloo.github.io/oid-knowledge-lab/>
+- Sample assessment: <https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html>
 
 ## Publication boundary
 

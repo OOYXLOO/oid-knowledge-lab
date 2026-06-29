@@ -271,13 +271,13 @@ GitHub Pages is enough for a review surface. The page should include:
 For OID Knowledge Lab, the public dashboard is:
 
 ```text
-https://oid-knowledge-lab.vercel.app/
+https://ooyxloo.github.io/oid-knowledge-lab/
 ```
 
 The sample assessment handoff is:
 
 ```text
-https://oid-knowledge-lab.vercel.app/sample-assessment.html
+https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
 ```
 
 These pages are not a raw mirror. They are derived review artifacts built from public indexes, safe examples, manifests, and generated reports.

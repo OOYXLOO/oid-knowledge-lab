@@ -58,11 +58,11 @@ Target length: 30 to 40 minutes.
 
 ## Proof links
 
-- Instructor reviewer hub: <https://oid-knowledge-lab.vercel.app/envato-tutsplus-instructor-hub.html>
-- Tuts+ tutorial reviewer hub: <https://oid-knowledge-lab.vercel.app/tutsplus-tutorial-reviewer-hub.html>
-- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
-- Technical proof: <https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html>
-- Implementation authenticity proof: <https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html>
+- Instructor reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/envato-tutsplus-instructor-hub.html>
+- Tuts+ tutorial reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/tutsplus-tutorial-reviewer-hub.html>
+- Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Technical proof: <https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html>
+- Implementation authenticity proof: <https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html>
 - Static dashboard sample: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md>
 - Tuts+ tutorial readiness pack: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/tutsplus-tutorial-readiness-pack.md>
 - Source repository: <https://github.com/OOYXLOO/oid-knowledge-lab>

@@ -48,31 +48,31 @@ needs human review before publication.
 Primary portfolio:
 
 ```text
-https://oid-knowledge-lab.vercel.app/writing-samples.html
+https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html
 ```
 
 Implementation proof:
 
 ```text
-https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
 ```
 
 Technical rigor:
 
 ```text
-https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html
 ```
 
 Interactive proof:
 
 ```text
-https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
+https://ooyxloo.github.io/oid-knowledge-lab/evidence-log-playground.html
 ```
 
 Sample section:
 
 ```text
-https://oid-knowledge-lab.vercel.app/knowledgeowl-sample-section.html
+https://ooyxloo.github.io/oid-knowledge-lab/knowledgeowl-sample-section.html
 ```
 
 AI validation mini lab:

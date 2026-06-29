@@ -18,13 +18,13 @@ The article is practical, documentation-focused, and written for teams that need
 
 ## Best First Links
 
-- One-link reviewer page: <https://oid-knowledge-lab.vercel.app/knowledgeowl-one-link.html>
-- Application field pack: <https://oid-knowledge-lab.vercel.app/knowledgeowl-application-field-pack.html>
-- Editorial draft preview: <https://oid-knowledge-lab.vercel.app/knowledgeowl-editorial-draft-preview.html>
+- One-link reviewer page: <https://ooyxloo.github.io/oid-knowledge-lab/knowledgeowl-one-link.html>
+- Application field pack: <https://ooyxloo.github.io/oid-knowledge-lab/knowledgeowl-application-field-pack.html>
+- Editorial draft preview: <https://ooyxloo.github.io/oid-knowledge-lab/knowledgeowl-editorial-draft-preview.html>
 - Evidence log template: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/knowledgeowl-evidence-log-template.md>
-- Evidence log playground: <https://oid-knowledge-lab.vercel.app/evidence-log-playground.html>
-- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
-- Technical proof: <https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html>
+- Evidence log playground: <https://ooyxloo.github.io/oid-knowledge-lab/evidence-log-playground.html>
+- Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Technical proof: <https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html>
 
 ## Proposed Article Structure
 

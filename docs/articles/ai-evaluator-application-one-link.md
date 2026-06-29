@@ -15,15 +15,15 @@ when needed, and explain accept/revise/reject decisions with evidence logs.
 ## Strongest First Link
 
 ```text
-https://oid-knowledge-lab.vercel.app/ai-evaluator-application-packet.html
+https://ooyxloo.github.io/oid-knowledge-lab/ai-evaluator-application-packet.html
 ```
 
 ## Public Proof Links
 
 ```text
-https://oid-knowledge-lab.vercel.app/ai-code-evaluator-portfolio.html
-https://oid-knowledge-lab.vercel.app/mindrift-code-reviewer-hub.html
-https://oid-knowledge-lab.vercel.app/realpython-ai-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/ai-code-evaluator-portfolio.html
+https://ooyxloo.github.io/oid-knowledge-lab/mindrift-code-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/realpython-ai-reviewer-hub.html
 https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python
 https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md

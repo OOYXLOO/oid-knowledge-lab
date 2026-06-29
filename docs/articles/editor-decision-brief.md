@@ -16,9 +16,9 @@ Best-fit assignments:
 
 ## Fast Review Path
 
-1. Open the writing samples page: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
-2. Open the editor pitch pack: <https://oid-knowledge-lab.vercel.app/editor-pitch-pack.html>
-3. Inspect the working dashboard: <https://oid-knowledge-lab.vercel.app/>
+1. Open the writing samples page: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+2. Open the editor pitch pack: <https://ooyxloo.github.io/oid-knowledge-lab/editor-pitch-pack.html>
+3. Inspect the working dashboard: <https://ooyxloo.github.io/oid-knowledge-lab/>
 4. Check the repository trail: <https://github.com/OOYXLOO/oid-knowledge-lab>
 
 ## Originality Boundary

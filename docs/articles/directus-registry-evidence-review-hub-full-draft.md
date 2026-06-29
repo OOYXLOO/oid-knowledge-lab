@@ -64,7 +64,7 @@ reports/source-policy.json
 The static proof page can be published separately:
 
 ```text
-https://oid-knowledge-lab.vercel.app/sample-assessment.html
+https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
 ```
 
 The Directus hub does not need to copy every line from every report. It should import the fields reviewers need.
@@ -92,7 +92,7 @@ Example source record:
 {
   "title": "OID Knowledge Lab sample assessment",
   "source_type": "static proof page",
-  "public_url": "https://oid-knowledge-lab.vercel.app/sample-assessment.html",
+  "public_url": "https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html",
   "source_boundary": "Derived findings only; raw inventories and copied page bodies are excluded.",
   "last_checked_at": "2026-06-27T00:00:00.000Z",
   "notes": "Public review page for a sanitized OID inventory assessment."
@@ -227,13 +227,13 @@ Not every reviewer needs Directus access. The public proof page should show the 
 For the sample project, the proof page is:
 
 ```text
-https://oid-knowledge-lab.vercel.app/
+https://ooyxloo.github.io/oid-knowledge-lab/
 ```
 
 The sample assessment is:
 
 ```text
-https://oid-knowledge-lab.vercel.app/sample-assessment.html
+https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
 ```
 
 Directus is the internal review layer. The static page is the public evidence layer.

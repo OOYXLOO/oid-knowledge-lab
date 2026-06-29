@@ -66,7 +66,7 @@ about:
 Additional comparison sample:
 
 ```text
-https://oid-knowledge-lab.vercel.app/model-response-comparison-lab.html
+https://ooyxloo.github.io/oid-knowledge-lab/model-response-comparison-lab.html
 ```
 
 Raw Markdown:

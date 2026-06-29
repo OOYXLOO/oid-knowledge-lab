@@ -36,8 +36,8 @@ The proposed tutorial would extend a beginner-friendly 2D game path with a small
 
 | Artifact | Link | Why it matters |
 | --- | --- | --- |
-| Reviewer readiness packet | https://oid-knowledge-lab.vercel.app/reviewer-readiness-one-link.html | One-page public proof of review method, writing samples, and small-trial shape. |
-| Writing sample index | https://oid-knowledge-lab.vercel.app/writing-samples.html | Implementation-backed developer writing samples and publication boundaries. |
+| Reviewer readiness packet | https://ooyxloo.github.io/oid-knowledge-lab/reviewer-readiness-one-link.html | One-page public proof of review method, writing samples, and small-trial shape. |
+| Writing sample index | https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html | Implementation-backed developer writing samples and publication boundaries. |
 | OID Knowledge Lab repository | https://github.com/OOYXLOO/oid-knowledge-lab | Public repository with generated reports, site build, tests, and publish guard. |
 | Helioigma game demo | https://ooyxloo.github.io/helioigma/ | Public game-oriented demo work. |
 | Helioigma repository | https://github.com/OOYXLOO/helioigma | Public source for a small game project. |

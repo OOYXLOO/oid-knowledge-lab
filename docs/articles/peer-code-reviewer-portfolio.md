@@ -14,10 +14,10 @@ This portfolio is a compact public reference for code-review, AI-code-evaluation
 
 | Artifact | Link | What it proves |
 | --- | --- | --- |
-| AI code review casebook | https://oid-knowledge-lab.vercel.app/ai-code-review-casebook.html | Review answer shape, verdict framing, and evidence-backed handoff. |
-| Python assessment drill | https://oid-knowledge-lab.vercel.app/python-assessment-drill.html | Bug triage, pytest sketch, and reviewer rubric. |
-| Model response comparison lab | https://oid-knowledge-lab.vercel.app/model-response-comparison-lab.html | Comparing two generated answers and selecting the safer response. |
-| AI evaluator application packet | https://oid-knowledge-lab.vercel.app/ai-evaluator-application-packet.html | Copy-ready role summary and proof order for AI evaluator applications. |
+| AI code review casebook | https://ooyxloo.github.io/oid-knowledge-lab/ai-code-review-casebook.html | Review answer shape, verdict framing, and evidence-backed handoff. |
+| Python assessment drill | https://ooyxloo.github.io/oid-knowledge-lab/python-assessment-drill.html | Bug triage, pytest sketch, and reviewer rubric. |
+| Model response comparison lab | https://ooyxloo.github.io/oid-knowledge-lab/model-response-comparison-lab.html | Comparing two generated answers and selecting the safer response. |
+| AI evaluator application packet | https://ooyxloo.github.io/oid-knowledge-lab/ai-evaluator-application-packet.html | Copy-ready role summary and proof order for AI evaluator applications. |
 | Runnable Python review case | https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review | Corrected implementation, tests, and evidence log. |
 | Evidence log | https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md | Main issue, checks performed, accepted revision, and limitations. |
 

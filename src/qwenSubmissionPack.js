@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { ensureDir, writeJson } = require("./net");
 
-const DEFAULT_PUBLIC_BASE_URL = "https://oid-knowledge-lab.vercel.app";
+const DEFAULT_PUBLIC_BASE_URL = "https://ooyxloo.github.io/oid-knowledge-lab";
 
 function link(publicBaseUrl, pathname) {
   return `${String(publicBaseUrl || DEFAULT_PUBLIC_BASE_URL).replace(/\/+$/, "")}/${String(pathname).replace(/^\/+/, "")}`;

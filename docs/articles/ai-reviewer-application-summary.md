@@ -17,13 +17,13 @@ Best fit:
 Primary link:
 
 ```text
-https://oid-knowledge-lab.vercel.app/mindrift-code-one-link.html
+https://ooyxloo.github.io/oid-knowledge-lab/mindrift-code-one-link.html
 ```
 
 Supplemental proof:
 
 ```text
-https://oid-knowledge-lab.vercel.app/ai-code-review-casebook.html
+https://ooyxloo.github.io/oid-knowledge-lab/ai-code-review-casebook.html
 ```
 
 ### Alignerr Python
@@ -37,13 +37,13 @@ Best fit:
 Primary link:
 
 ```text
-https://oid-knowledge-lab.vercel.app/alignerr-python-one-link.html
+https://ooyxloo.github.io/oid-knowledge-lab/alignerr-python-one-link.html
 ```
 
 Supplemental proof:
 
 ```text
-https://oid-knowledge-lab.vercel.app/ai-code-review-casebook.html
+https://ooyxloo.github.io/oid-knowledge-lab/ai-code-review-casebook.html
 ```
 
 ## Short Role Summary
@@ -88,13 +88,13 @@ Residual risk:
 ## Strongest Public Proof
 
 - AI Code Review Casebook:
-  <https://oid-knowledge-lab.vercel.app/ai-code-review-casebook.html>
+  <https://ooyxloo.github.io/oid-knowledge-lab/ai-code-review-casebook.html>
 - AI Evaluator Application Packet:
-  <https://oid-knowledge-lab.vercel.app/ai-evaluator-application-packet.html>
+  <https://ooyxloo.github.io/oid-knowledge-lab/ai-evaluator-application-packet.html>
 - Mindrift Code One-Link:
-  <https://oid-knowledge-lab.vercel.app/mindrift-code-one-link.html>
+  <https://ooyxloo.github.io/oid-knowledge-lab/mindrift-code-one-link.html>
 - Alignerr Python One-Link:
-  <https://oid-knowledge-lab.vercel.app/alignerr-python-one-link.html>
+  <https://ooyxloo.github.io/oid-knowledge-lab/alignerr-python-one-link.html>
 - duration_parser_review:
   <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review>
 

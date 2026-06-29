@@ -5,15 +5,15 @@ This sheet collects short, copy-ready public answers for the strongest first tec
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/p1-application-answer-sheet.html
+https://ooyxloo.github.io/oid-knowledge-lab/p1-application-answer-sheet.html
 ```
 
 Portfolio:
 
 ```text
-https://oid-knowledge-lab.vercel.app/editor-trust-packet.html
-https://oid-knowledge-lab.vercel.app/writing-samples.html
-https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/editor-trust-packet.html
+https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
 ```
 
 ## Universal short bio
@@ -39,7 +39,7 @@ I would like to write practical Python + AI tutorials that show readers how to v
 Best links:
 
 ```text
-https://oid-knowledge-lab.vercel.app/realpython-ai-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/realpython-ai-reviewer-hub.html
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-paid-pilot-readiness-pack.md
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/realpython-ai-validation-mini-sample.md
 https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python
@@ -62,7 +62,7 @@ I would like to create a practical Vultr tutorial showing developers how to gene
 Best links:
 
 ```text
-https://oid-knowledge-lab.vercel.app/vultr-creator-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/vultr-creator-reviewer-hub.html
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/vultr-creator-readiness-pack.md
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/vultr-creator-editor-one-pager.md
 ```
@@ -84,7 +84,7 @@ I would like to apply to the Draft.dev technical writer network. I work best fro
 Best links:
 
 ```text
-https://oid-knowledge-lab.vercel.app/editor-trust-packet.html
+https://ooyxloo.github.io/oid-knowledge-lab/editor-trust-packet.html
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-writer-network-readiness-pack.md
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-writer-profile-one-pager.md
 ```
@@ -106,7 +106,7 @@ If the current contributor intake is open, I would like to propose a practical D
 Best links:
 
 ```text
-https://oid-knowledge-lab.vercel.app/digitalocean-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/digitalocean-reviewer-hub.html
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/digitalocean-topic-proposal-readiness-pack.md
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/digitalocean-editor-one-pager.md
 ```

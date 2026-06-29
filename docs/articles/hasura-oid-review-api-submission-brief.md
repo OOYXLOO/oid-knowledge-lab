@@ -82,19 +82,19 @@ query ReviewQueue {
 Reviewer readiness:
 
 ```text
-https://oid-knowledge-lab.vercel.app/reviewer-readiness-one-link.html
+https://ooyxloo.github.io/oid-knowledge-lab/reviewer-readiness-one-link.html
 ```
 
 OID portfolio risk console:
 
 ```text
-https://oid-knowledge-lab.vercel.app/oid-portfolio-risk-console.html
+https://ooyxloo.github.io/oid-knowledge-lab/oid-portfolio-risk-console.html
 ```
 
 Implementation authenticity proof:
 
 ```text
-https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
 ```
 
 Repository:

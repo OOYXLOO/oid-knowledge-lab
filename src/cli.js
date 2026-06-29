@@ -478,7 +478,7 @@ function qwenSubmissionPack(args) {
     mermaidOutFile,
     svgOutFile,
     htmlOutFile,
-    publicBaseUrl: argValue(args, "--public-base-url", "https://oid-knowledge-lab.vercel.app")
+    publicBaseUrl: argValue(args, "--public-base-url", "https://ooyxloo.github.io/oid-knowledge-lab")
   });
   console.log(`qwen submission proof items: ${result.pack.proof_checklist.length}`);
   console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);

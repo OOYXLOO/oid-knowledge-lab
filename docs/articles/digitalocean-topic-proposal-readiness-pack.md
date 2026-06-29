@@ -43,11 +43,11 @@ By the end of the tutorial, a reader should know how to:
 
 ## Existing review materials
 
-- Reviewer hub: <https://oid-knowledge-lab.vercel.app/digitalocean-reviewer-hub.html>
+- Reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/digitalocean-reviewer-hub.html>
 - Editor one-pager: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/digitalocean-editor-one-pager.md>
-- Editor trust packet: <https://oid-knowledge-lab.vercel.app/editor-trust-packet.html>
-- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
-- Implementation proof: <https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html>
+- Editor trust packet: <https://ooyxloo.github.io/oid-knowledge-lab/editor-trust-packet.html>
+- Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Implementation proof: <https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html>
 
 ## Submission boundary
 

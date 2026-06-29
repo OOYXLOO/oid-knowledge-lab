@@ -74,7 +74,7 @@ The sample repository shows the same workflow on public or synthetic data:
 
 ```text
 Dashboard:
-https://oid-knowledge-lab.vercel.app/
+https://ooyxloo.github.io/oid-knowledge-lab/
 
 PKI lifecycle assessment:
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/pki-certificate-lifecycle-assessment.md

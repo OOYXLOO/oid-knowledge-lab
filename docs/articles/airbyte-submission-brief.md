@@ -58,7 +58,7 @@ For a reviewer-friendly first version, the destination can be a Local JSON desti
 Implementation authenticity proof:
 
 ```text
-https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
 ```
 
 Airbyte editor one-pager:
@@ -94,13 +94,13 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/a
 Working dashboard:
 
 ```text
-https://oid-knowledge-lab.vercel.app/
+https://ooyxloo.github.io/oid-knowledge-lab/
 ```
 
 Sample assessment:
 
 ```text
-https://oid-knowledge-lab.vercel.app/sample-assessment.html
+https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
 ```
 
 Buyer signal pack:

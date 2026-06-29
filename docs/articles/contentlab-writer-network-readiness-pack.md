@@ -43,13 +43,13 @@ Node.js, JavaScript, Python, pytest, static sites, GitHub Pages, Vercel, JSON/Ma
 1. Public portfolio:
 
 ```text
-https://oid-knowledge-lab.vercel.app/writing-samples.html
+https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html
 ```
 
 2. Technical proof:
 
 ```text
-https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html
 ```
 
 3. Real Python-style AI validation sample:

@@ -15,7 +15,7 @@ I review AI-generated code as an untrusted draft. I define expected behavior, wr
 AI Code Evaluator Portfolio:
 
 ```text
-https://oid-knowledge-lab.vercel.app/ai-code-evaluator-portfolio.html
+https://ooyxloo.github.io/oid-knowledge-lab/ai-code-evaluator-portfolio.html
 ```
 
 ## Public Proof Links
@@ -24,10 +24,10 @@ https://oid-knowledge-lab.vercel.app/ai-code-evaluator-portfolio.html
 https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python
 https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md
-https://oid-knowledge-lab.vercel.app/realpython-ai-reviewer-hub.html
-https://oid-knowledge-lab.vercel.app/review-log-agent-hub.html
-https://oid-knowledge-lab.vercel.app/review-log-agent-playground.html
-https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/realpython-ai-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-playground.html
+https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html
 ```
 
 ## Evaluation Approach

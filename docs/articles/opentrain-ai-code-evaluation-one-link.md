@@ -16,11 +16,11 @@ I evaluate AI-generated code as an untrusted draft. I define expected behavior, 
 
 ## Primary Proof Links
 
-- OpenTrain one-link: <https://oid-knowledge-lab.vercel.app/opentrain-ai-code-evaluation-one-link.html>
-- AI evaluator application packet: <https://oid-knowledge-lab.vercel.app/ai-evaluator-application-packet.html>
-- AI Code Review Casebook: <https://oid-knowledge-lab.vercel.app/ai-code-review-casebook.html>
-- Python Assessment Drill: <https://oid-knowledge-lab.vercel.app/python-assessment-drill.html>
-- Model Response Comparison Lab: <https://oid-knowledge-lab.vercel.app/model-response-comparison-lab.html>
+- OpenTrain one-link: <https://ooyxloo.github.io/oid-knowledge-lab/opentrain-ai-code-evaluation-one-link.html>
+- AI evaluator application packet: <https://ooyxloo.github.io/oid-knowledge-lab/ai-evaluator-application-packet.html>
+- AI Code Review Casebook: <https://ooyxloo.github.io/oid-knowledge-lab/ai-code-review-casebook.html>
+- Python Assessment Drill: <https://ooyxloo.github.io/oid-knowledge-lab/python-assessment-drill.html>
+- Model Response Comparison Lab: <https://ooyxloo.github.io/oid-knowledge-lab/model-response-comparison-lab.html>
 - Duration parser review case: <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review>
 - Duration parser evidence log: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md>
 

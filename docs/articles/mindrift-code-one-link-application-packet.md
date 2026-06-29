@@ -18,11 +18,11 @@ I review AI-generated code as an untrusted draft. I define expected behavior, ru
 
 ## Best First Links
 
-- One-link page: <https://oid-knowledge-lab.vercel.app/mindrift-code-one-link.html>
-- Application packet: <https://oid-knowledge-lab.vercel.app/ai-evaluator-application-packet.html>
-- Code reviewer hub: <https://oid-knowledge-lab.vercel.app/mindrift-code-reviewer-hub.html>
-- Python review case: <https://oid-knowledge-lab.vercel.app/mindrift-python-review-case.html>
-- AI code evaluator portfolio: <https://oid-knowledge-lab.vercel.app/ai-code-evaluator-portfolio.html>
+- One-link page: <https://ooyxloo.github.io/oid-knowledge-lab/mindrift-code-one-link.html>
+- Application packet: <https://ooyxloo.github.io/oid-knowledge-lab/ai-evaluator-application-packet.html>
+- Code reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/mindrift-code-reviewer-hub.html>
+- Python review case: <https://ooyxloo.github.io/oid-knowledge-lab/mindrift-python-review-case.html>
+- AI code evaluator portfolio: <https://ooyxloo.github.io/oid-knowledge-lab/ai-code-evaluator-portfolio.html>
 - Duration parser evidence log: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md>
 
 ## Review Method

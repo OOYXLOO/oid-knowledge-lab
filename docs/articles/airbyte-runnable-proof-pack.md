@@ -83,7 +83,7 @@ These artifacts demonstrate source boundaries, row normalization, classification
 Open the public hub first:
 
 ```text
-https://oid-knowledge-lab.vercel.app/airbyte-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/airbyte-reviewer-hub.html
 ```
 
 Then inspect the runnable source and generated artifacts:

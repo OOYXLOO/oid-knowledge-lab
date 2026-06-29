@@ -8,8 +8,8 @@ applications that need a concise topic idea plus public proof.
 The proposed article/tutorial is based on a working public prototype:
 
 ```text
-https://oid-knowledge-lab.vercel.app/review-log-agent-hub.html
-https://oid-knowledge-lab.vercel.app/review-log-agent-playground.html
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-playground.html
 ```
 
 ## Best-Fit Routes
@@ -43,8 +43,8 @@ knowledge base updates reviewable. Instead of treating AI output as a finished
 article, the workflow separates reader questions, source facts, draft claims,
 reviewer checks, publication blockers, and safety boundaries into a compact
 Markdown evidence log. I can support the idea with a working public prototype:
-https://oid-knowledge-lab.vercel.app/review-log-agent-hub.html
-https://oid-knowledge-lab.vercel.app/review-log-agent-playground.html
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-playground.html
 ```
 
 Outline:
@@ -86,7 +86,7 @@ that converts a Slack-style documentation review thread into a source-aware
 Markdown handoff. It would parse a local JSON thread, count messages, source
 facts, reviewer checks, and blockers, then render an evidence log with a safety
 boundary. The working demo is public:
-https://oid-knowledge-lab.vercel.app/review-log-agent-playground.html
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-playground.html
 ```
 
 Outline:
@@ -124,7 +124,7 @@ documentation systems, and safe publication boundaries. One recent example is a
 Review Log Agent prototype that turns Slack-style review threads into
 source-aware Markdown evidence logs with reader questions, source facts,
 reviewer checks, blockers, and a safety boundary:
-https://oid-knowledge-lab.vercel.app/review-log-agent-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-hub.html
 ```
 
 ## Public Links to Attach
@@ -132,16 +132,16 @@ https://oid-knowledge-lab.vercel.app/review-log-agent-hub.html
 Best single link:
 
 ```text
-https://oid-knowledge-lab.vercel.app/review-log-agent-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-hub.html
 ```
 
 If multiple links are allowed:
 
 ```text
-https://oid-knowledge-lab.vercel.app/review-log-agent-hub.html
-https://oid-knowledge-lab.vercel.app/review-log-agent-playground.html
-https://oid-knowledge-lab.vercel.app/writing-samples.html
-https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-playground.html
+https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/review-log-agent-writing-pitch-pack.md
 ```
 

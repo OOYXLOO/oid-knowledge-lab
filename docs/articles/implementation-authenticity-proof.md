@@ -9,10 +9,10 @@ The OID Knowledge Lab writing samples are implementation-backed. The project was
 ## Public proof trail
 
 - Repository: `https://github.com/OOYXLOO/oid-knowledge-lab`
-- Technical proof page: `https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html`
-- Writing samples: `https://oid-knowledge-lab.vercel.app/writing-samples.html`
-- Editor pitch pack: `https://oid-knowledge-lab.vercel.app/editor-pitch-pack.html`
-- Sample assessment: `https://oid-knowledge-lab.vercel.app/sample-assessment.html`
+- Technical proof page: `https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html`
+- Writing samples: `https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html`
+- Editor pitch pack: `https://ooyxloo.github.io/oid-knowledge-lab/editor-pitch-pack.html`
+- Sample assessment: `https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html`
 
 ## Reproducible checks
 

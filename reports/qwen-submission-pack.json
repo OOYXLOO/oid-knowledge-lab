@@ -1,7 +1,7 @@
 {
   "schema_version": "qwen-submission-pack/v1",
   "generated_at": "2026-06-28T23:00:57.751Z",
-  "public_base_url": "https://oid-knowledge-lab.vercel.app",
+  "public_base_url": "https://ooyxloo.github.io/oid-knowledge-lab",
   "project": {
     "name": "OID Knowledge Lab: Qwen Remediation Autopilot",
     "category": "business workflow agent",
@@ -112,35 +112,35 @@
   "proof_links": [
     {
       "label": "Qwen one-link packet",
-      "url": "https://oid-knowledge-lab.vercel.app/qwen-autopilot-agent-one-link.html"
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html"
     },
     {
       "label": "Qwen demo proof page",
-      "url": "https://oid-knowledge-lab.vercel.app/qwen-demo-proof.html"
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-proof.html"
     },
     {
       "label": "Demo proof screenshot",
-      "url": "https://oid-knowledge-lab.vercel.app/assets/qwen/demo-proof.png"
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/assets/qwen/demo-proof.png"
     },
     {
       "label": "One-link packet screenshot",
-      "url": "https://oid-knowledge-lab.vercel.app/assets/qwen/one-link.png"
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/assets/qwen/one-link.png"
     },
     {
       "label": "Architecture screenshot",
-      "url": "https://oid-knowledge-lab.vercel.app/assets/qwen/architecture.png"
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/assets/qwen/architecture.png"
     },
     {
       "label": "Sample assessment screenshot",
-      "url": "https://oid-knowledge-lab.vercel.app/assets/qwen/sample-assessment.png"
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/assets/qwen/sample-assessment.png"
     },
     {
       "label": "Sample assessment",
-      "url": "https://oid-knowledge-lab.vercel.app/sample-assessment.html"
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html"
     },
     {
       "label": "Technical rigor proof",
-      "url": "https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html"
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html"
     },
     {
       "label": "Qwen agent demo report",
@@ -169,12 +169,12 @@
     {
       "label": "Public one-link page",
       "status": "ready",
-      "evidence": "https://oid-knowledge-lab.vercel.app/qwen-autopilot-agent-one-link.html"
+      "evidence": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html"
     },
     {
       "label": "Screenshot proof gallery",
       "status": "ready",
-      "evidence": "https://oid-knowledge-lab.vercel.app/qwen-demo-proof.html"
+      "evidence": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-proof.html"
     },
     {
       "label": "Architecture diagram",

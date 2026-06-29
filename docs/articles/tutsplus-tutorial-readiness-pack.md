@@ -42,12 +42,12 @@ By the end of the tutorial, readers should know how to:
 
 ## Existing review materials
 
-- Reviewer hub: <https://oid-knowledge-lab.vercel.app/tutsplus-tutorial-reviewer-hub.html>
+- Reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/tutsplus-tutorial-reviewer-hub.html>
 - Static dashboard sample: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md>
-- Editor trust packet: <https://oid-knowledge-lab.vercel.app/editor-trust-packet.html>
-- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
-- Implementation proof: <https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html>
-- Working dashboard: <https://oid-knowledge-lab.vercel.app/>
+- Editor trust packet: <https://ooyxloo.github.io/oid-knowledge-lab/editor-trust-packet.html>
+- Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Implementation proof: <https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html>
+- Working dashboard: <https://ooyxloo.github.io/oid-knowledge-lab/>
 
 ## Submission boundary
 

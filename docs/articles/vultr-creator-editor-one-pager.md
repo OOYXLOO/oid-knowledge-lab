@@ -40,10 +40,10 @@ After reading the tutorial, a developer should be able to:
 
 ## Proof links
 
-- Working dashboard: <https://oid-knowledge-lab.vercel.app/>
-- Vultr reviewer hub: <https://oid-knowledge-lab.vercel.app/vultr-creator-reviewer-hub.html>
-- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
-- Implementation proof: <https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html>
+- Working dashboard: <https://ooyxloo.github.io/oid-knowledge-lab/>
+- Vultr reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/vultr-creator-reviewer-hub.html>
+- Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Implementation proof: <https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html>
 - Source repository: <https://github.com/OOYXLOO/oid-knowledge-lab>
 
 ## Publication boundary

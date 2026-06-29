@@ -1363,7 +1363,7 @@ function testArticleSampleIndexIncludesOidAssessmentProposal() {
 
   const proposal = fs.readFileSync(path.join(ROOT, "docs/articles/publication-proposal-oid-inventory-assessment.md"), "utf8");
   assert.ok(proposal.includes("Turn a messy OID inventory into a safe review package"));
-  assert.ok(proposal.includes("https://oid-knowledge-lab.vercel.app/consulting-brief.html"));
+  assert.ok(proposal.includes("https://ooyxloo.github.io/oid-knowledge-lab/consulting-brief.html"));
   assert.ok(proposal.includes("npm run guard:publishable"));
 }
 
@@ -1398,7 +1398,7 @@ function testArticleSampleIndexIncludesAirbytePipelineProof() {
   assert.ok(brief.includes("Airbyte-style pipeline map"));
   assert.ok(brief.includes("Connector Builder"));
   assert.ok(brief.includes("Local JSON destination"));
-  assert.ok(brief.includes("https://oid-knowledge-lab.vercel.app/sample-assessment.html"));
+  assert.ok(brief.includes("https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html"));
   assert.equal(brief.includes("money" + "-goal"), false);
   assert.equal(brief.includes("USD " + "200"), false);
   assert.equal(brief.includes("\u8d5a\u94b1"), false);
@@ -1427,7 +1427,7 @@ function testArticleSampleIndexIncludesAirbyteFullDraft() {
   assert.ok(draft.includes("File source"));
   assert.ok(draft.includes("Local JSON destination"));
   assert.ok(draft.includes("publish guard"));
-  assert.ok(draft.includes("https://oid-knowledge-lab.vercel.app/sample-assessment.html"));
+  assert.ok(draft.includes("https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html"));
   assert.equal(draft.includes("money" + "-goal"), false);
   assert.equal(draft.includes("USD " + "200"), false);
   assert.equal(draft.includes("\u8d5a\u94b1"), false);
@@ -1485,7 +1485,7 @@ function testArticleSampleIndexIncludesCivoSubmissionBrief() {
   assert.ok(brief.includes("GitHub Pages"));
   assert.ok(brief.includes("release guard"));
   assert.ok(brief.includes("npm run guard:publishable"));
-  assert.ok(brief.includes("https://oid-knowledge-lab.vercel.app/"));
+  assert.ok(brief.includes("https://ooyxloo.github.io/oid-knowledge-lab/"));
   assert.equal(brief.includes("money" + "-goal"), false);
   assert.equal(brief.includes("USD " + "200"), false);
   assert.equal(brief.includes("\u8d5a\u94b1"), false);
@@ -1825,7 +1825,7 @@ function testPaidWritingApplicationDeskIsPublicAndBoundarySafe() {
       assert.ok(text.includes(platform), `${file} should include ${platform}`);
     }
     assert.ok(
-      text.includes("https://oid-knowledge-lab.vercel.app/writing-samples.html") ||
+      text.includes("https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html") ||
         text.includes("writing-samples.html"),
       `${file} should link to the writing samples portfolio`
     );
@@ -1932,7 +1932,7 @@ function testEditorSubmissionFieldPackIsPublicAndBoundarySafe() {
     assert.ok(text.includes("Directus"));
     assert.ok(text.includes("AppSignal"));
     assert.ok(text.includes("SigNoz"));
-    assert.ok(text.includes("https://oid-knowledge-lab.vercel.app/editor-pitch-pack.html"));
+    assert.ok(text.includes("https://ooyxloo.github.io/oid-knowledge-lab/editor-pitch-pack.html"));
     assert.ok(text.includes("No credentials"));
     assert.equal(text.includes("money" + "-goal"), false);
     assert.equal(text.includes("USD " + "200"), false);
@@ -2330,7 +2330,7 @@ function testQwenSubmissionPackBuildsJudgingAssets() {
   const { buildQwenSubmissionPack, renderQwenSubmissionMarkdown, renderQwenArchitectureMermaid, renderQwenArchitectureSvg, renderQwenArchitectureHtml } = qwenSubmissionPackModule;
   const pack = buildQwenSubmissionPack({
     generatedAt: "2026-06-29T00:00:00.000Z",
-    publicBaseUrl: "https://oid-knowledge-lab.vercel.app"
+    publicBaseUrl: "https://ooyxloo.github.io/oid-knowledge-lab"
   });
 
   assert.equal(pack.schema_version, "qwen-submission-pack/v1");
@@ -2338,7 +2338,7 @@ function testQwenSubmissionPackBuildsJudgingAssets() {
   assert.ok(pack.devpost_fields.built_with.includes("Qwen"));
   assert.ok(pack.demo_script.scenes.length >= 5);
   assert.ok(pack.proof_checklist.some((item) => item.label === "Live Qwen run"));
-  assert.ok(pack.proof_links.some((item) => item.url === "https://oid-knowledge-lab.vercel.app/qwen-autopilot-agent-one-link.html"));
+  assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html"));
   assert.ok(pack.architecture.nodes.some((node) => node.id === "qwen"));
   assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
   assert.equal(JSON.stringify(pack).includes("USD " + "200"), false);
@@ -2384,7 +2384,7 @@ function testQwenSubmissionPackWritesPublicSafeFiles() {
     svgOutFile: path.join(outDir, "qwen-architecture.svg"),
     htmlOutFile: path.join(outDir, "qwen-architecture.html"),
     generatedAt: "2026-06-29T00:00:00.000Z",
-    publicBaseUrl: "https://oid-knowledge-lab.vercel.app"
+    publicBaseUrl: "https://ooyxloo.github.io/oid-knowledge-lab"
   });
 
   assert.equal(result.pack.schema_version, "qwen-submission-pack/v1");

@@ -35,8 +35,8 @@ The article should help a developer do something concrete:
 
 ## Best public samples
 
-- Editor trust packet: <https://oid-knowledge-lab.vercel.app/editor-trust-packet.html>
-- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
+- Editor trust packet: <https://ooyxloo.github.io/oid-knowledge-lab/editor-trust-packet.html>
+- Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
 - Writer profile: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-writer-profile-one-pager.md>
 - Editorial fit brief: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-editorial-fit-brief.md>
 - Observability handoff sample: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-debug-handoff.md>

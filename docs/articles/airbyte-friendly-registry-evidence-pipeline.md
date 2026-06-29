@@ -111,9 +111,9 @@ The destination should be more than a table dump. A useful package includes:
 OID Knowledge Lab publishes examples of those artifacts:
 
 ```text
-https://oid-knowledge-lab.vercel.app/
+https://ooyxloo.github.io/oid-knowledge-lab/
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/buyer-signal-pack.md
-https://oid-knowledge-lab.vercel.app/sample-assessment.html
+https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
 ```
 
 ## Validation checks

@@ -22,7 +22,7 @@ By the end of the article, a reader should understand how to design a small, ver
 
 Use OID Knowledge Lab as the example surface:
 
-- Public dashboard: <https://oid-knowledge-lab.vercel.app/>
+- Public dashboard: <https://ooyxloo.github.io/oid-knowledge-lab/>
 - Repository: <https://github.com/OOYXLOO/oid-knowledge-lab>
 - Publishable-source guard: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/src/publishGuard.js>
 - Dataset manifest concept: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/dataset-manifest.json>

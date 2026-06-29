@@ -40,9 +40,9 @@ After reading the tutorial, a developer should be able to:
 
 ## Proof links
 
-- Working dashboard: <https://oid-knowledge-lab.vercel.app/>
-- Writing samples: <https://oid-knowledge-lab.vercel.app/writing-samples.html>
-- Implementation proof: <https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html>
+- Working dashboard: <https://ooyxloo.github.io/oid-knowledge-lab/>
+- Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Implementation proof: <https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html>
 - Static dashboard sample: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md>
 - Source repository: <https://github.com/OOYXLOO/oid-knowledge-lab>
 

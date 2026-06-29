@@ -36,19 +36,19 @@ Qwen should be used for reasoning and language work, not for unverified final au
 
 ## Public proof links
 
-- Dashboard: `https://oid-knowledge-lab.vercel.app/`
-- Qwen packet: `https://oid-knowledge-lab.vercel.app/qwen-autopilot-agent-one-link.html`
+- Dashboard: `https://ooyxloo.github.io/oid-knowledge-lab/`
+- Qwen packet: `https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html`
 - Agent demo report: `https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md`
 - Submission pack: `https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-submission-pack.md`
-- Rendered architecture page: `https://oid-knowledge-lab.vercel.app/qwen-architecture.html`
-- Architecture SVG: `https://oid-knowledge-lab.vercel.app/qwen-architecture.svg`
+- Rendered architecture page: `https://ooyxloo.github.io/oid-knowledge-lab/qwen-architecture.html`
+- Architecture SVG: `https://ooyxloo.github.io/oid-knowledge-lab/qwen-architecture.svg`
 - Architecture diagram source: `https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-architecture.mmd`
 - Qwen adapter source: `https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/src/qwenAgent.js`
-- Sample assessment: `https://oid-knowledge-lab.vercel.app/sample-assessment.html`
-- Direct client fit: `https://oid-knowledge-lab.vercel.app/direct-client-fit.html`
-- Consulting brief: `https://oid-knowledge-lab.vercel.app/consulting-brief.html`
-- Starter scope: `https://oid-knowledge-lab.vercel.app/starter-scope.html`
-- Technical rigor proof: `https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html`
+- Sample assessment: `https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html`
+- Direct client fit: `https://ooyxloo.github.io/oid-knowledge-lab/direct-client-fit.html`
+- Consulting brief: `https://ooyxloo.github.io/oid-knowledge-lab/consulting-brief.html`
+- Starter scope: `https://ooyxloo.github.io/oid-knowledge-lab/starter-scope.html`
+- Technical rigor proof: `https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html`
 - Source repository: `https://github.com/OOYXLOO/oid-knowledge-lab`
 
 ## Submission gaps before Devpost

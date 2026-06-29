@@ -5,13 +5,13 @@ This pack gives editors a compact way to review two smaller, implementation-back
 Public portfolio:
 
 ```text
-https://oid-knowledge-lab.vercel.app/writing-samples.html
+https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html
 ```
 
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/content-backup-pitch-pack.html
+https://ooyxloo.github.io/oid-knowledge-lab/content-backup-pitch-pack.html
 ```
 
 Repository:
@@ -41,7 +41,7 @@ This tutorial shows how to turn a small public dataset and a sanitized local inp
 Best first sample:
 
 ```text
-https://oid-knowledge-lab.vercel.app/tutsplus-tutorial-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/tutsplus-tutorial-reviewer-hub.html
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/tutsplus-tutorial-readiness-pack.md
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md
 ```
@@ -49,8 +49,8 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/s
 Proof links:
 
 ```text
-https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html
-https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
 ```
 
 Why it fits:
@@ -84,8 +84,8 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/r
 Proof links:
 
 ```text
-https://oid-knowledge-lab.vercel.app/realpython-ai-reviewer-hub.html
-https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/realpython-ai-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
 ```
 
 Why it fits:

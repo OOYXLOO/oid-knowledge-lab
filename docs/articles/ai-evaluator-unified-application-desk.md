@@ -10,9 +10,9 @@ I evaluate AI-generated code as an untrusted draft. I restate the expected behav
 
 | Platform | Best-fit role | Primary proof link |
 |---|---|---|
-| Mindrift | AI evaluator / coding reviewer | <https://oid-knowledge-lab.vercel.app/mindrift-code-one-link.html> |
-| Alignerr | Python AI trainer / evaluator | <https://oid-knowledge-lab.vercel.app/alignerr-python-one-link.html> |
-| OpenTrain | AI code evaluation profile | <https://oid-knowledge-lab.vercel.app/opentrain-ai-code-evaluation-one-link.html> |
+| Mindrift | AI evaluator / coding reviewer | <https://ooyxloo.github.io/oid-knowledge-lab/mindrift-code-one-link.html> |
+| Alignerr | Python AI trainer / evaluator | <https://ooyxloo.github.io/oid-knowledge-lab/alignerr-python-one-link.html> |
+| OpenTrain | AI code evaluation profile | <https://ooyxloo.github.io/oid-knowledge-lab/opentrain-ai-code-evaluation-one-link.html> |
 
 ## Copy-ready application answer
 
@@ -42,10 +42,10 @@ Residual risk:
 
 ## Proof order
 
-1. AI evaluator application packet: <https://oid-knowledge-lab.vercel.app/ai-evaluator-application-packet.html>
-2. AI Code Review Casebook: <https://oid-knowledge-lab.vercel.app/ai-code-review-casebook.html>
-3. Python Assessment Drill: <https://oid-knowledge-lab.vercel.app/python-assessment-drill.html>
-4. Model Response Comparison Lab: <https://oid-knowledge-lab.vercel.app/model-response-comparison-lab.html>
+1. AI evaluator application packet: <https://ooyxloo.github.io/oid-knowledge-lab/ai-evaluator-application-packet.html>
+2. AI Code Review Casebook: <https://ooyxloo.github.io/oid-knowledge-lab/ai-code-review-casebook.html>
+3. Python Assessment Drill: <https://ooyxloo.github.io/oid-knowledge-lab/python-assessment-drill.html>
+4. Model Response Comparison Lab: <https://ooyxloo.github.io/oid-knowledge-lab/model-response-comparison-lab.html>
 5. Duration parser review case: <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python/duration_parser_review>
 6. Evidence log: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/ai-validation-python/duration_parser_review/evidence-log.md>
 

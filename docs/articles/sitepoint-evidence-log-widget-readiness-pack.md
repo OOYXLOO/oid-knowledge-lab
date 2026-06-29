@@ -50,25 +50,25 @@ then exports a Markdown evidence log without uploading private inputs.
 Interactive demo:
 
 ```text
-https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
+https://ooyxloo.github.io/oid-knowledge-lab/evidence-log-playground.html
 ```
 
 KnowledgeOwl-focused review hub:
 
 ```text
-https://oid-knowledge-lab.vercel.app/knowledgeowl-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/knowledgeowl-reviewer-hub.html
 ```
 
 Writing samples:
 
 ```text
-https://oid-knowledge-lab.vercel.app/writing-samples.html
+https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html
 ```
 
 Implementation proof:
 
 ```text
-https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
 ```
 
 ## Short Pitch

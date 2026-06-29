@@ -43,10 +43,10 @@ The OID Knowledge Lab repository is a public proof surface for the same style of
 
 ## First links for review
 
-- Reviewer hub: `https://oid-knowledge-lab.vercel.app/realpython-ai-reviewer-hub.html`
-- Writing samples: `https://oid-knowledge-lab.vercel.app/writing-samples.html`
-- Technical proof: `https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html`
-- Implementation proof: `https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html`
+- Reviewer hub: `https://ooyxloo.github.io/oid-knowledge-lab/realpython-ai-reviewer-hub.html`
+- Writing samples: `https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html`
+- Technical proof: `https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html`
+- Implementation proof: `https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html`
 - Repository: `https://github.com/OOYXLOO/oid-knowledge-lab`
 
 ## Publication boundary

@@ -11,11 +11,11 @@ I write practical developer tutorials from runnable implementations, not from ab
 | Check | Public evidence |
 | --- | --- |
 | Runnable implementation exists | <https://github.com/OOYXLOO/oid-knowledge-lab> |
-| Portfolio and samples are public | <https://oid-knowledge-lab.vercel.app/writing-samples.html> |
-| Python + AI sample has test-oriented framing | <https://oid-knowledge-lab.vercel.app/realpython-ai-reviewer-hub.html> |
-| Airbyte idea maps to data integration concepts | <https://oid-knowledge-lab.vercel.app/airbyte-reviewer-hub.html> |
-| Civo idea maps to cloud release evidence | <https://oid-knowledge-lab.vercel.app/civo-reviewer-hub.html> |
-| Publication boundary is explicit | <https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html> |
+| Portfolio and samples are public | <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html> |
+| Python + AI sample has test-oriented framing | <https://ooyxloo.github.io/oid-knowledge-lab/realpython-ai-reviewer-hub.html> |
+| Airbyte idea maps to data integration concepts | <https://ooyxloo.github.io/oid-knowledge-lab/airbyte-reviewer-hub.html> |
+| Civo idea maps to cloud release evidence | <https://ooyxloo.github.io/oid-knowledge-lab/civo-reviewer-hub.html> |
+| Publication boundary is explicit | <https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html> |
 
 ## How I use AI assistance
 
@@ -33,7 +33,7 @@ AI assistance is used for drafting, refactoring, checklists, and review scaffold
 Use this when an application form allows only one portfolio URL:
 
 ```text
-https://oid-knowledge-lab.vercel.app/editor-trust-packet.html
+https://ooyxloo.github.io/oid-knowledge-lab/editor-trust-packet.html
 ```
 
 ## Suggested short note
@@ -41,5 +41,5 @@ https://oid-knowledge-lab.vercel.app/editor-trust-packet.html
 ```text
 I build technical articles from runnable examples. The link below is a compact editor packet with portfolio samples, repository evidence, and publication boundaries. If the topic is accepted, I will adapt the final draft to your editorial brief rather than paste a generic generated draft.
 
-https://oid-knowledge-lab.vercel.app/editor-trust-packet.html
+https://ooyxloo.github.io/oid-knowledge-lab/editor-trust-packet.html
 ```

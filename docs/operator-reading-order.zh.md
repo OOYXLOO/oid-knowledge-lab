@@ -31,7 +31,7 @@
 
 当前公开演示入口：
 
-- `https://oid-knowledge-lab.vercel.app/`
-- `https://oid-knowledge-lab.vercel.app/direct-client-fit.html`
-- `https://oid-knowledge-lab.vercel.app/consulting-brief.html`
-- `https://oid-knowledge-lab.vercel.app/starter-scope.html`
+- `https://ooyxloo.github.io/oid-knowledge-lab/`
+- `https://ooyxloo.github.io/oid-knowledge-lab/direct-client-fit.html`
+- `https://ooyxloo.github.io/oid-knowledge-lab/consulting-brief.html`
+- `https://ooyxloo.github.io/oid-knowledge-lab/starter-scope.html`

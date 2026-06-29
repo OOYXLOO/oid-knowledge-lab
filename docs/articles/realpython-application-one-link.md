@@ -13,7 +13,7 @@ I write practical Python and AI-assisted development tutorials that treat genera
 ## Best first links
 
 1. Reviewer hub:  
-   <https://oid-knowledge-lab.vercel.app/realpython-ai-reviewer-hub.html>
+   <https://ooyxloo.github.io/oid-knowledge-lab/realpython-ai-reviewer-hub.html>
 
 2. Runnable Python mini lab:  
    <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/ai-validation-python>

@@ -32,7 +32,7 @@ The strongest fit is developer education for teams that care about:
 Implementation authenticity proof:
 
 ```text
-https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html
+https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
 ```
 
 Draft.dev writer profile one-pager:
@@ -62,7 +62,7 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/o
 Working public proof:
 
 ```text
-https://oid-knowledge-lab.vercel.app/writing-samples.html
+https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html
 ```
 
 Repository:

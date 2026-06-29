@@ -63,7 +63,7 @@ Do not include:
 Public sample artifacts:
 
 ```text
-https://oid-knowledge-lab.vercel.app/
+https://ooyxloo.github.io/oid-knowledge-lab/
 ```
 
 Client readiness pack:

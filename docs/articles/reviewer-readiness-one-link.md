@@ -16,12 +16,12 @@ I review technical work by turning ambiguous claims into behavior contracts, foc
 
 | Reviewer need | Open first | What it shows |
 | --- | --- | --- |
-| AI code evaluation | https://oid-knowledge-lab.vercel.app/code-reviewer-portfolio.html | Verdict shape, test-first review, residual risk notes, and public code-review artifacts. |
-| Python validation | https://oid-knowledge-lab.vercel.app/python-assessment-drill.html | Bug triage, pytest-style checks, model answer rubric, and safe rejection criteria. |
-| Developer writing | https://oid-knowledge-lab.vercel.app/writing-samples.html | Implementation-backed writing samples with public proof and publication boundaries. |
+| AI code evaluation | https://ooyxloo.github.io/oid-knowledge-lab/code-reviewer-portfolio.html | Verdict shape, test-first review, residual risk notes, and public code-review artifacts. |
+| Python validation | https://ooyxloo.github.io/oid-knowledge-lab/python-assessment-drill.html | Bug triage, pytest-style checks, model answer rubric, and safe rejection criteria. |
+| Developer writing | https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html | Implementation-backed writing samples with public proof and publication boundaries. |
 | CI/CD writing | https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/release-guard-static-artifacts.md | Release-guard tutorial sample for generated static artifacts, manifests, clean-tree checks, and public smoke tests. |
-| Knowledge base review | https://oid-knowledge-lab.vercel.app/knowledgeowl-one-link.html | Evidence-log workflow for AI-assisted knowledge-base drafts. |
-| PHP deployment writing | https://oid-knowledge-lab.vercel.app/amezmo-php-deployment-one-link.html | Deployment checklist, migration evidence, rollback notes, and no-secret release boundaries. |
+| Knowledge base review | https://ooyxloo.github.io/oid-knowledge-lab/knowledgeowl-one-link.html | Evidence-log workflow for AI-assisted knowledge-base drafts. |
+| PHP deployment writing | https://ooyxloo.github.io/oid-knowledge-lab/amezmo-php-deployment-one-link.html | Deployment checklist, migration evidence, rollback notes, and no-secret release boundaries. |
 | Public repository proof | https://github.com/OOYXLOO/oid-knowledge-lab | Source, generated reports, site build, tests, and publish guard. |
 
 ## Review Method

@@ -65,7 +65,7 @@ A scoped engagement can produce:
 The public OID Knowledge Lab sample shows the same structure on a certificate policy OID subset:
 
 ```text
-https://oid-knowledge-lab.vercel.app/
+https://ooyxloo.github.io/oid-knowledge-lab/
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/certificate-policy-assets.csv
 https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/certificate-policy-oid-audit.md
 ```

@@ -134,13 +134,13 @@ Boundary note: No credentials, no private account exports, no private customer i
 Public portfolio:
 
 ```text
-https://oid-knowledge-lab.vercel.app/writing-samples.html
+https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html
 ```
 
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/paid-writing-application-desk.html
+https://ooyxloo.github.io/oid-knowledge-lab/paid-writing-application-desk.html
 ```
 
 Direct raw link:
@@ -164,7 +164,7 @@ Best for editor and writer-network application forms interested in:
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/p1-application-answer-sheet.html
+https://ooyxloo.github.io/oid-knowledge-lab/p1-application-answer-sheet.html
 ```
 
 Direct raw link:
@@ -188,7 +188,7 @@ Best for editors, AI evaluator reviewers, code-review platforms, and developer-w
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/reviewer-readiness-one-link.html
+https://ooyxloo.github.io/oid-knowledge-lab/reviewer-readiness-one-link.html
 ```
 
 Direct raw link:
@@ -212,7 +212,7 @@ Best for bounty reviewers interested in:
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/monogame-networking-bounty-application.html
+https://ooyxloo.github.io/oid-knowledge-lab/monogame-networking-bounty-application.html
 ```
 
 Direct raw link:
@@ -236,7 +236,7 @@ Best for editors interested in:
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/content-backup-pitch-pack.html
+https://ooyxloo.github.io/oid-knowledge-lab/content-backup-pitch-pack.html
 ```
 
 Direct raw link:
@@ -261,7 +261,7 @@ Best for tutorial editors interested in:
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/tutsplus-tutorial-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/tutsplus-tutorial-reviewer-hub.html
 ```
 
 Direct raw link:
@@ -285,7 +285,7 @@ Best for tutorial and course reviewers interested in:
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/envato-tutsplus-instructor-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/envato-tutsplus-instructor-hub.html
 ```
 
 Direct raw link:
@@ -309,7 +309,7 @@ Best for writer-network reviewers interested in:
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/contentlab-writer-network-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/contentlab-writer-network-hub.html
 ```
 
 Direct raw link:
@@ -334,13 +334,13 @@ Best for documentation and knowledge-base editors interested in:
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/knowledgeowl-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/knowledgeowl-reviewer-hub.html
 ```
 
 Interactive proof:
 
 ```text
-https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
+https://ooyxloo.github.io/oid-knowledge-lab/evidence-log-playground.html
 ```
 
 Direct raw link:
@@ -384,7 +384,7 @@ Best for PHP hosting and deployment editors interested in:
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/amezmo-php-deployment-one-link.html
+https://ooyxloo.github.io/oid-knowledge-lab/amezmo-php-deployment-one-link.html
 ```
 
 Direct raw link:
@@ -409,13 +409,13 @@ Best for web-development editors interested in:
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/sitepoint-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/sitepoint-reviewer-hub.html
 ```
 
 Interactive proof:
 
 ```text
-https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
+https://ooyxloo.github.io/oid-knowledge-lab/evidence-log-playground.html
 ```
 
 Direct raw link:
@@ -828,7 +828,7 @@ Best for AI code evaluator and Python workflow reviewers interested in:
 Public page:
 
 ```text
-https://oid-knowledge-lab.vercel.app/python-assessment-drill.html
+https://ooyxloo.github.io/oid-knowledge-lab/python-assessment-drill.html
 ```
 
 Direct raw link:

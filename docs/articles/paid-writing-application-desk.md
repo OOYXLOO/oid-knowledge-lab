@@ -5,13 +5,13 @@ This desk is a copy-ready application surface for editor and writer-network form
 Public portfolio:
 
 ```text
-https://oid-knowledge-lab.vercel.app/writing-samples.html
+https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html
 ```
 
 Public desk:
 
 ```text
-https://oid-knowledge-lab.vercel.app/paid-writing-application-desk.html
+https://ooyxloo.github.io/oid-knowledge-lab/paid-writing-application-desk.html
 ```
 
 Repository:
@@ -53,7 +53,7 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/r
 Reviewer hub:
 
 ```text
-https://oid-knowledge-lab.vercel.app/realpython-ai-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/realpython-ai-reviewer-hub.html
 ```
 
 Short pitch:
@@ -81,7 +81,7 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/v
 Reviewer hub:
 
 ```text
-https://oid-knowledge-lab.vercel.app/vultr-creator-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/vultr-creator-reviewer-hub.html
 ```
 
 Short pitch:
@@ -149,7 +149,7 @@ https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/d
 Reviewer hub:
 
 ```text
-https://oid-knowledge-lab.vercel.app/digitalocean-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/digitalocean-reviewer-hub.html
 ```
 
 Short pitch:
@@ -178,7 +178,7 @@ Best fit:
 First link:
 
 ```text
-https://oid-knowledge-lab.vercel.app/contentlab-writer-network-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/contentlab-writer-network-hub.html
 ```
 
 Readiness pack:
@@ -204,7 +204,7 @@ I would like to be considered for ContentLab's technical author network. I am st
 
 ## Strongest proof links
 
-- `https://oid-knowledge-lab.vercel.app/writing-samples.html`
-- `https://oid-knowledge-lab.vercel.app/technical-rigor-proof.html`
-- `https://oid-knowledge-lab.vercel.app/implementation-authenticity-proof.html`
+- `https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html`
+- `https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html`
+- `https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html`
 - `https://github.com/OOYXLOO/oid-knowledge-lab`

@@ -69,19 +69,19 @@ bad-row,not-an-oid
 Public assessment brief:
 
 ```text
-https://oid-knowledge-lab.vercel.app/consulting-brief.html
+https://ooyxloo.github.io/oid-knowledge-lab/consulting-brief.html
 ```
 
 Public dashboard:
 
 ```text
-https://oid-knowledge-lab.vercel.app/
+https://ooyxloo.github.io/oid-knowledge-lab/
 ```
 
 Sample assessment handoff:
 
 ```text
-https://oid-knowledge-lab.vercel.app/sample-assessment.html
+https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html
 ```
 
 Source repository:
