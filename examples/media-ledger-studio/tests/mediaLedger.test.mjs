@@ -60,12 +60,15 @@ assert.equal(completeScore.score, 100);
 const devpostFields = createDevpostFields();
 assert.match(devpostFields.howBackblazeB2IsUsed, /object key/);
 assert.match(devpostFields.howGenblazeIsUsed, /prompt/);
-assert.match(devpostFields.challengeReadiness, /Readiness score/);
+assert.match(devpostFields.challengeReadiness, /Dry-run readiness is verified/);
+assert.doesNotMatch(devpostFields.challengeReadiness, /Readiness score/);
+assert.doesNotMatch(devpostFields.challengeReadiness, /No submission blockers/);
 assert.match(devpostFields.storageHandoffSummary, /3 generated assets/);
 assert.match(devpostFields.storageHandoffSummary, /JSON sidecar records/);
 assert.equal(devpostFields.appUrl, "https://media-ledger-studio-static.vercel.app");
 assert.match(devpostFields.videoUrl, /media-ledger-studio-demo\.mp4$/);
 assert.match(devpostFields.sourceRepoUrl, /github\.com\/OOYXLOO\/oid-knowledge-lab/);
+assert.match(devpostFields.integrationAdapterVerificationUrl, /integration-adapter-verification\.json$/);
 assert.match(devpostFields.challengeFit, /Backblaze B2/);
 
 const liveBundle = createLiveIntegrationBundle(sampleRuns, {

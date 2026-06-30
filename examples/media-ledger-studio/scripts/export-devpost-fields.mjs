@@ -23,6 +23,9 @@ ${fields.tagline}
 - App: ${fields.appUrl}
 - Source repository: ${fields.sourceRepoUrl}
 - Demo video: ${fields.videoUrl}
+- Integration readiness: ${fields.integrationReadinessUrl}
+- Sidecar integrity report: ${fields.sidecarIntegrityReportUrl}
+- Integration adapter verification: ${fields.integrationAdapterVerificationUrl}
 
 ## Built With
 

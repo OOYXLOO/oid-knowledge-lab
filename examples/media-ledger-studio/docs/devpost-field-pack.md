@@ -49,14 +49,7 @@ The app is built around generated media operations: prompt intake, Genblaze-shap
 
 ## Challenge Readiness
 
-Dry-run readiness is verified. The project includes an image run, video run, audio run, B2-shaped storage manifest, Genblaze-shaped run metadata, sidecar records, and adapter verification. The current live-integration blocker is missing real B2 and Genblaze environment variables, so the submission should be described as a dry-run prototype unless live proof is added.
-
-Latest local checks:
-
-- `npm run check`: passed.
-- `npm test`: passed.
-- `npm run verify:sidecars`: `ok: true`, `mode: dry-run`, 3 media objects, 3 sidecars, 3 linked pairs.
-- `npm run verify:integration`: `ok: true`, `mode: dry-run`, `readyForLiveRun: false`.
+Dry-run readiness is verified. The project includes an image run, video run, audio run, B2-shaped storage manifest, Genblaze-shaped run metadata, sidecar records, and adapter verification. The current live-integration blocker is missing real B2 and Genblaze environment variables, so the submission should be described as a dry-run prototype unless live proof is added. Latest local checks: npm run check passed; npm test passed; npm run verify:sidecars returned ok true, mode dry-run, 3 media objects, 3 sidecars, 3 linked pairs; npm run verify:integration returned ok true, mode dry-run, readyForLiveRun false.
 
 ## Storage Handoff Summary
 

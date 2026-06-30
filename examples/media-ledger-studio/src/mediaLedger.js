@@ -166,7 +166,10 @@ export function createProviderModelList(runs = sampleRuns) {
 export function createDevpostFields({
   appUrl = "https://media-ledger-studio-static.vercel.app",
   sourceRepoUrl = "https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio",
-  videoUrl = "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4"
+  videoUrl = "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4",
+  integrationReadinessUrl = "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-integration-readiness.html",
+  sidecarIntegrityReportUrl = "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/sidecar-integrity-report.json",
+  integrationAdapterVerificationUrl = "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/integration-adapter-verification.json"
 } = {}) {
   const pack = createSubmissionPack(sampleRuns);
   return {
@@ -175,6 +178,9 @@ export function createDevpostFields({
     appUrl,
     sourceRepoUrl,
     videoUrl,
+    integrationReadinessUrl,
+    sidecarIntegrityReportUrl,
+    integrationAdapterVerificationUrl,
     providerAndModels: pack.providerModels,
     builtWith:
       "React, Vite, deterministic sample media records, Backblaze B2-shaped object manifests, and Genblaze-shaped generation metadata.",
@@ -189,14 +195,12 @@ export function createDevpostFields({
     challengeFit:
       "The app is built around generated media operations: prompt intake, Genblaze-shaped generation metadata, human review, durable Backblaze B2-shaped object storage, provenance inspection, and client handoff.",
     challengeReadiness:
-      `Readiness score: ${pack.challengeReadiness.score}/100. ` +
-      `${pack.challengeReadiness.readySignals.join("; ")}. ` +
-      `Current blocker: ${pack.challengeReadiness.blockers.join("; ")}.`,
+      "Dry-run readiness is verified. The project includes an image run, video run, audio run, B2-shaped storage manifest, Genblaze-shaped run metadata, sidecar records, and adapter verification. The current live-integration blocker is missing real B2 and Genblaze environment variables, so the submission should be described as a dry-run prototype unless live proof is added. Latest local checks: npm run check passed; npm test passed; npm run verify:sidecars returned ok true, mode dry-run, 3 media objects, 3 sidecars, 3 linked pairs; npm run verify:integration returned ok true, mode dry-run, readyForLiveRun false.",
     storageHandoffSummary:
       `The bundled manifest covers ${pack.storageHandoffManifest.length} generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision. ` +
       `It also defines ${pack.sidecarMetadataManifest.length} JSON sidecar records that can be uploaded next to the final media objects.`,
     whatIsNext:
-      "Set the live Backblaze B2 and Genblaze environment variables, run the dry-run adapter bundle, then switch the adapter mode from dry-run to live uploads."
+      "Set the live Backblaze B2 and Genblaze environment variables, run the adapter without printing or storing secrets, capture a safe proof summary, and then upgrade the submission wording from dry-run prototype to live integration."
   };
 }
 
