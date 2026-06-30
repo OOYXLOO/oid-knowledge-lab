@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   createChallengeReadinessScore,
   createDevpostFields,
+  createIntegrationReadinessReport,
   createProviderModelList,
   createReadinessChecklist,
   createSidecarMetadataManifest,
@@ -86,5 +87,20 @@ assert.deepEqual(liveBundle.publicReviewLinks[0].requiredUploadPair, [
   liveBundle.b2UploadPlan[0].objectKey,
   liveBundle.b2UploadPlan[1].objectKey
 ]);
+
+const readinessReport = createIntegrationReadinessReport(sampleRuns, {
+  publicBaseUrl: "https://media-ledger-studio-static.vercel.app",
+  b2Prefix: "challenge-dry-run"
+});
+assert.equal(readinessReport.mode, "dry-run");
+assert.equal(readinessReport.readyForLiveRun, false);
+assert.equal(readinessReport.totals.mediaUploads, sampleRuns.length);
+assert.equal(readinessReport.totals.sidecarUploads, sampleRuns.length);
+assert.equal(readinessReport.totals.genblazeRequests, sampleRuns.length);
+assert.equal(readinessReport.totals.reviewLinks, sampleRuns.length);
+assert.equal(readinessReport.totals.totalMediaBytes, summary.totalBytes);
+assert.match(readinessReport.firstB2MediaObject, /^challenge-dry-run\//);
+assert.match(readinessReport.firstB2SidecarObject, /^challenge-dry-run\//);
+assert.match(readinessReport.blockerSummary, /Missing 5 live environment variable/);
 
 console.log("mediaLedger tests passed");

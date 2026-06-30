@@ -315,6 +315,36 @@ export function createLiveIntegrationBundle(runs = sampleRuns, {
   };
 }
 
+export function createIntegrationReadinessReport(runs = sampleRuns, options = {}) {
+  const bundle = createLiveIntegrationBundle(runs, options);
+  const mediaUploads = bundle.b2UploadPlan.filter((item) => item.kind === "media");
+  const sidecarUploads = bundle.b2UploadPlan.filter((item) => item.kind === "sidecar");
+  const totalMediaBytes = mediaUploads.reduce((sum, item) => sum + item.bytes, 0);
+  const uploadPairsReady = bundle.publicReviewLinks.every((link) => link.requiredUploadPair.length === 2);
+  return {
+    mode: bundle.mode,
+    readyForLiveRun: bundle.mode === "live-ready" && uploadPairsReady,
+    missingEnv: bundle.missingEnv,
+    requiredEnv: bundle.requiredEnv,
+    totals: {
+      runs: runs.length,
+      mediaUploads: mediaUploads.length,
+      sidecarUploads: sidecarUploads.length,
+      genblazeRequests: bundle.genblazeRequestPlan.length,
+      reviewLinks: bundle.publicReviewLinks.length,
+      totalMediaBytes,
+      totalMediaMegabytes: Number((totalMediaBytes / 1024 / 1024).toFixed(2))
+    },
+    firstB2MediaObject: mediaUploads[0]?.objectKey || null,
+    firstB2SidecarObject: sidecarUploads[0]?.objectKey || null,
+    firstGenblazeModel: bundle.genblazeRequestPlan[0]?.model || null,
+    publicReviewLinks: bundle.publicReviewLinks,
+    blockerSummary: bundle.missingEnv.length
+      ? `Missing ${bundle.missingEnv.length} live environment variable(s): ${bundle.missingEnv.join(", ")}`
+      : "All live environment variables are present for a live adapter run."
+  };
+}
+
 function joinObjectKey(prefix, objectKey) {
   return [prefix, objectKey]
     .map((part) => String(part || "").replace(/^\/+|\/+$/g, ""))

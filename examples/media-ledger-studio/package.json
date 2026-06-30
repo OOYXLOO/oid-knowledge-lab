@@ -8,11 +8,12 @@
     "dev": "vite --host 127.0.0.1 --port 8842",
     "build": "vite build && node scripts/prepare-static-routes.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 8843",
-    "check": "node --check src/mediaLedger.js && node --check scripts/audit-local.mjs && node --check scripts/export-submission-pack.mjs && node --check scripts/export-devpost-fields.mjs && node --check scripts/prepare-static-routes.mjs && node --check tests/mediaLedger.test.mjs",
+    "check": "node --check src/mediaLedger.js && node --check scripts/audit-local.mjs && node --check scripts/export-submission-pack.mjs && node --check scripts/export-devpost-fields.mjs && node --check scripts/export-integration-readiness.mjs && node --check scripts/prepare-static-routes.mjs && node --check tests/mediaLedger.test.mjs",
     "test": "node tests/mediaLedger.test.mjs",
     "audit:local": "node scripts/audit-local.mjs",
     "export:submission-pack": "node scripts/export-submission-pack.mjs",
-    "export:devpost-fields": "node scripts/export-devpost-fields.mjs"
+    "export:devpost-fields": "node scripts/export-devpost-fields.mjs",
+    "export:integration-readiness": "node scripts/export-integration-readiness.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.1.2",

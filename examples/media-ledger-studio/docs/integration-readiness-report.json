@@ -1,0 +1,57 @@
+{
+  "mode": "dry-run",
+  "readyForLiveRun": false,
+  "missingEnv": [
+    "B2_APP_ID",
+    "B2_APP_VALUE",
+    "B2_BUCKET_NAME",
+    "GENBLAZE_AUTH_VALUE",
+    "GENBLAZE_ENDPOINT"
+  ],
+  "requiredEnv": [
+    "B2_APP_ID",
+    "B2_APP_VALUE",
+    "B2_BUCKET_NAME",
+    "GENBLAZE_AUTH_VALUE",
+    "GENBLAZE_ENDPOINT"
+  ],
+  "totals": {
+    "runs": 3,
+    "mediaUploads": 3,
+    "sidecarUploads": 3,
+    "genblazeRequests": 3,
+    "reviewLinks": 3,
+    "totalMediaBytes": 18090224,
+    "totalMediaMegabytes": 17.25
+  },
+  "firstB2MediaObject": "challenge-dry-run/projects/editorial-cover/run-cover-001/final.png",
+  "firstB2SidecarObject": "challenge-dry-run/projects/editorial-cover/run-cover-001/final.png.metadata.json",
+  "firstGenblazeModel": "genblaze-image-studio-v1",
+  "publicReviewLinks": [
+    {
+      "runId": "run-cover-001",
+      "reviewUrl": "https://media-ledger-studio-static.vercel.app/?run=run-cover-001",
+      "requiredUploadPair": [
+        "challenge-dry-run/projects/editorial-cover/run-cover-001/final.png",
+        "challenge-dry-run/projects/editorial-cover/run-cover-001/final.png.metadata.json"
+      ]
+    },
+    {
+      "runId": "run-storyboard-014",
+      "reviewUrl": "https://media-ledger-studio-static.vercel.app/?run=run-storyboard-014",
+      "requiredUploadPair": [
+        "challenge-dry-run/projects/launch-storyboard/run-storyboard-014/storyboard.webm",
+        "challenge-dry-run/projects/launch-storyboard/run-storyboard-014/storyboard.webm.metadata.json"
+      ]
+    },
+    {
+      "runId": "run-audio-006",
+      "reviewUrl": "https://media-ledger-studio-static.vercel.app/?run=run-audio-006",
+      "requiredUploadPair": [
+        "challenge-dry-run/projects/audio-bed/run-audio-006/loop.wav",
+        "challenge-dry-run/projects/audio-bed/run-audio-006/loop.wav.metadata.json"
+      ]
+    }
+  ],
+  "blockerSummary": "Missing 5 live environment variable(s): B2_APP_ID, B2_APP_VALUE, B2_BUCKET_NAME, GENBLAZE_AUTH_VALUE, GENBLAZE_ENDPOINT"
+}
