@@ -1,6 +1,6 @@
 # OID Buyer Signal Pack
 
-Generated: `2026-06-26T00:00:00.000Z`
+Generated: `2026-06-30T17:14:41.460Z`
 
 Audience: technical buyer, DevRel editor, PKI owner, SNMP/MIB owner, or internal registry maintainer
 
@@ -20,6 +20,29 @@ A sanitized review of 4 sanitized OID assets found 2 evidence-ready rows, 2 unre
 ## First Scope Offer
 
 Run a small sanitized OID inventory assessment: classify each row, preserve public registry evidence, identify unresolved owners, and return a remediation board plus re-run checks.
+
+## Pilot Scope
+
+- Name: Sanitized OID inventory pilot
+- Entry condition: The owner can share a small CSV or TSV with an `oid` column and non-sensitive asset labels.
+- Sample size: 20 to 100 sanitized rows, enough to expose malformed values, known enterprise roots, and owner-review gaps without handling private exports.
+
+Reviewer inputs:
+
+- sanitized OID list with safe labels
+- review lane: SNMP/MIB, PKI policy, monitoring, or internal registry cleanup
+- preferred handoff format: Markdown, CSV, or one-page decision summary
+
+Outputs:
+
+- classification summary with quality score and unresolved counts
+- owner-ready remediation queue with next actions
+- public-source evidence map that avoids copied page bodies
+- re-run command notes so the owner can verify fixes
+
+Acceptance gate: Every input row is classified, unresolved rows have owner actions, and the handoff excludes raw private inventories, secrets, and copied OID-base page bodies.
+
+Expansion path: If the pilot shows unresolved owner gaps, expand only after the owner approves a larger sanitized export and a private delivery location.
 
 ## Qualifying Questions
 

@@ -62,6 +62,24 @@ function buildBuyerSignalPack({
       }
     ],
     first_scope_offer: "Run a small sanitized OID inventory assessment: classify each row, preserve public registry evidence, identify unresolved owners, and return a remediation board plus re-run checks.",
+    pilot_scope: {
+      name: "Sanitized OID inventory pilot",
+      entry_condition: "The owner can share a small CSV or TSV with an `oid` column and non-sensitive asset labels.",
+      sample_size: "20 to 100 sanitized rows, enough to expose malformed values, known enterprise roots, and owner-review gaps without handling private exports.",
+      reviewer_inputs: [
+        "sanitized OID list with safe labels",
+        "review lane: SNMP/MIB, PKI policy, monitoring, or internal registry cleanup",
+        "preferred handoff format: Markdown, CSV, or one-page decision summary"
+      ],
+      outputs: [
+        "classification summary with quality score and unresolved counts",
+        "owner-ready remediation queue with next actions",
+        "public-source evidence map that avoids copied page bodies",
+        "re-run command notes so the owner can verify fixes"
+      ],
+      acceptance_gate: "Every input row is classified, unresolved rows have owner actions, and the handoff excludes raw private inventories, secrets, and copied OID-base page bodies.",
+      expansion_path: "If the pilot shows unresolved owner gaps, expand only after the owner approves a larger sanitized export and a private delivery location."
+    },
     qualifying_questions: [
       "Is the OID list primarily from SNMP/MIB files, certificate policy metadata, monitoring integrations, or an internal registry export?",
       "Can the first sample be shared as CSV or TSV with an `oid` column and sanitized asset labels?",
@@ -97,6 +115,7 @@ function buildBuyerSignalPack({
 function renderBuyerSignalMarkdown(pack) {
   const signalRows = pack.buyer_signals.map((item) => row([item.signal, item.why_it_matters])).join("\n");
   const proofRows = pack.proof_links.map((item) => row([item.path, item.purpose])).join("\n");
+  const pilot = pack.pilot_scope || {};
 
   return `# ${pack.title}
 
@@ -117,6 +136,24 @@ ${signalRows}
 ## First Scope Offer
 
 ${pack.first_scope_offer}
+
+## Pilot Scope
+
+- Name: ${pilot.name}
+- Entry condition: ${pilot.entry_condition}
+- Sample size: ${pilot.sample_size}
+
+Reviewer inputs:
+
+${(pilot.reviewer_inputs || []).map((item) => `- ${item}`).join("\n")}
+
+Outputs:
+
+${(pilot.outputs || []).map((item) => `- ${item}`).join("\n")}
+
+Acceptance gate: ${pilot.acceptance_gate}
+
+Expansion path: ${pilot.expansion_path}
 
 ## Qualifying Questions
 

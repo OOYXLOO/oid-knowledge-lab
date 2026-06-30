@@ -2032,6 +2032,9 @@ function testBuyerSignalPackRenderer() {
   assert.ok(pack.buyer_signals.some((item) => item.signal.includes("6 unresolved")));
   assert.ok(pack.qualifying_questions.some((item) => item.includes("SNMP")));
   assert.ok(pack.first_scope_offer.includes("sanitized OID inventory"));
+  assert.equal(pack.pilot_scope.name, "Sanitized OID inventory pilot");
+  assert.ok(pack.pilot_scope.outputs.some((item) => item.includes("remediation queue")));
+  assert.ok(pack.pilot_scope.acceptance_gate.includes("Every input row is classified"));
   assert.ok(pack.subject_lines.length >= 3);
   assert.ok(pack.proof_links.some((item) => item.path === "reports/remediation-board.md"));
   assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
@@ -2042,6 +2045,8 @@ function testBuyerSignalPackRenderer() {
   assert.ok(markdown.includes("# OID Buyer Signal Pack"));
   assert.ok(markdown.includes("## Buyer Signals"));
   assert.ok(markdown.includes("## First Scope Offer"));
+  assert.ok(markdown.includes("## Pilot Scope"));
+  assert.ok(markdown.includes("20 to 100 sanitized rows"));
   assert.ok(markdown.includes("reports/remediation-board.md"));
   assert.equal(markdown.includes("money" + "-goal"), false);
   assert.equal(markdown.includes("USD " + "200"), false);
