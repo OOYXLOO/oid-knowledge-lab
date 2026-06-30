@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Honeybadger Pitch: Express Auth Regression Tests</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .pitch-hero {
+      border-bottom: 1px solid var(--line);
+      padding: 34px 0 22px;
+    }
+
+    .pitch-hero h1 {
+      max-width: 940px;
+    }
+
+    .pitch-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+      gap: 18px;
+      align-items: start;
+      margin: 24px 0;
+    }
+
+    .pitch-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 18px;
+    }
+
+    .pitch-panel p,
+    .pitch-panel li {
+      line-height: 1.65;
+    }
+
+    .pitch-panel ol,
+    .pitch-panel ul {
+      padding-left: 22px;
+    }
+
+    .proof-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .proof-list a {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfdfe;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .pitch-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="pitch-hero">
+      <p class="eyebrow">Honeybadger article pitch</p>
+      <h1>Catch Missing Auth in Express APIs with Regression Tests</h1>
+      <p class="summary">A practical JavaScript testing tutorial for proving anonymous requests are rejected and authenticated requests still work when Express APIs grow across many routers.</p>
+      <div class="links">
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="ai-code-review-casebook.html">API review casebook</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="pitch-grid">
+      <article class="pitch-panel">
+        <h2>Reader Problem</h2>
+        <p>Many Express applications start with a few routes and grow into many routers: auth, users, uploads, notifications, admin, search, billing, and more. It is easy for one route to miss authentication middleware while the rest of the app appears secure.</p>
+
+        <h2>Tutorial Outcome</h2>
+        <p>Readers will build a small Express API and a focused test suite using Node's built-in test runner. The pattern proves anonymous requests receive 401 responses while authenticated requests still pass.</p>
+
+        <h2>Honeybadger Fit</h2>
+        <p>Honeybadger readers care about production failures, observability, debugging, and defensive engineering. This article is a practical testing tutorial that helps developers catch a common class of security and reliability bugs before they become incidents.</p>
+      </article>
+
+      <aside class="pitch-panel">
+        <h2>Outline</h2>
+        <ol>
+          <li>Why missing-auth bugs survive code review</li>
+          <li>A small Express app with public and protected routers</li>
+          <li>Writing the first regression test for anonymous access</li>
+          <li>Watching the test fail for the right reason</li>
+          <li>Applying auth middleware at the router boundary</li>
+          <li>Testing the authenticated success path</li>
+          <li>Extending the pattern to upload, notification, and admin routes</li>
+          <li>CI tips and route inventories</li>
+          <li>Final checklist for Express auth boundary reviews</li>
+        </ol>
+
+        <h2>Proof Links</h2>
+        <ul class="proof-list">
+          <li><a href="writing-samples.html">Writing samples</a></li>
+          <li><a href="ai-code-review-casebook.html">API review casebook</a></li>
+          <li><a href="https://github.com/OOYXLOO/oid-knowledge-lab">Public repository</a></li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>

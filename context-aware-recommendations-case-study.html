@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Context-aware Recommendations - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Engineering Case Study</p>
+      <h1>Context-aware contributor recommendations</h1>
+      <p class="summary">A focused ranking improvement that combines semantic similarity with repository context, so same-project experience can outrank unrelated high-similarity matches.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/context-aware-recommendations-case-study.md">Markdown case study</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Case study metrics">
+      <article><span>Signal</span><strong>Context</strong><small>Repo and owner</small></article>
+      <article><span>Change size</span><strong>Small</strong><small>Ranking layer only</small></article>
+      <article><span>Proof</span><strong>Tested</strong><small>Regression coverage</small></article>
+      <article><span>Risk</span><strong>Low</strong><small>No schema change</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Problem</p>
+        <h2>Semantic similarity alone can recommend the wrong contributor</h2>
+        <p class="panel-copy">A highly similar issue from a different organization may be less useful than a slightly less similar issue from the same repository. The recommendation should preserve broad semantic search while allowing project context to influence the final order.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Solution</p>
+        <h2>Apply lightweight repository-context weighting</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Match context</th><th>Multiplier</th><th>Reason</th></tr></thead>
+        <tbody>
+          <tr><td>Same repository</td><td>100%</td><td>Most likely to reflect relevant local knowledge.</td></tr>
+          <tr><td>Same owner or organization</td><td>75%</td><td>Still likely to share conventions, stack, or review expectations.</td></tr>
+          <tr><td>Different owner or organization</td><td>50%</td><td>Useful semantic signal, but weaker project fit.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Regression Test</p>
+        <h2>Same-repository experience ranks first</h2>
+        <p class="panel-copy">The test compares a 98% cross-organization match with an 82% same-repository match. After context weighting, the same-repository contributor remains at 82%, while the cross-organization contributor drops to 49%.</p>
+        <pre><code>npx --yes bun test tests/main.test.ts --test-name-pattern "same repository context"</code></pre>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Takeaway</p>
+        <h2>Use business context after broad retrieval</h2>
+        <p class="panel-copy">Embedding search is a strong retrieval signal, but final ranking should reflect how the result will be used. A simple context multiplier improved recommendation relevance without adding a new model, changing storage, or narrowing retrieval too early.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

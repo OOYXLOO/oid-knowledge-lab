@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Proposal Router Prototype - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Engineering Case Study</p>
+      <h1>Proposal Router prototype</h1>
+      <p class="summary">A dependency-free static prototype that discovers public repositories, then turns free-form proposal text into ranked targets with confidence, reasons, and parsed delivery hints.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/proposal-router-case-study.md">Markdown case study</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Case study metrics">
+      <article><span>Surface</span><strong>Static UI</strong><small>No backend needed</small></article>
+      <article><span>Routing</span><strong>Live</strong><small>Updates while typing</small></article>
+      <article><span>Signals</span><strong>Reasons</strong><small>Aliases and topics</small></article>
+      <article><span>Catalog</span><strong>96+</strong><small>Public repos loaded</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Problem</p>
+        <h2>Proposal text needs a target repository before it becomes useful work</h2>
+        <p class="panel-copy">When an organization has many repositories, a contributor may describe the right task but file it in the wrong place. A small routing layer can reduce triage work and give automation a cleaner starting point.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Prototype</p>
+        <h2>A compact workspace for proposal routing</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Area</th><th>Purpose</th><th>Implementation</th></tr></thead>
+        <tbody>
+          <tr><td>Proposal editor</td><td>Capture the raw task description.</td><td>Static textarea with live word count.</td></tr>
+          <tr><td>Repository catalog</td><td>Find current public repositories.</td><td>GitHub organization API discovery with curated fallback.</td></tr>
+          <tr><td>Ranked matches</td><td>Show likely target repositories.</td><td>Discovered metadata, curated aliases, phrases, keyword overlap, and domain boosts.</td></tr>
+          <tr><td>Reasons</td><td>Explain why each repository appears.</td><td>Top matched terms and phrases rendered as compact tags.</td></tr>
+          <tr><td>Parsed hints</td><td>Preview routing metadata.</td><td>Priority, time, price, and target organization heuristics.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Verification</p>
+        <h2>Deterministic tests before embeddings</h2>
+        <p class="panel-copy">The first version uses deterministic scoring so the behavior is easy to review. Tests cover payment UI, Telegram transcription, plugin configuration, urgent hints, token normalization, public repository profile conversion, catalog merging, and fallback behavior.</p>
+        <pre><code>npm run check
+git diff --check</code></pre>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
