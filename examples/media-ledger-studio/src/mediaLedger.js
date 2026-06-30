@@ -388,7 +388,9 @@ export function createChallengeReadinessScore(runs = sampleRuns, readiness = cre
       hasStorageRecords ? "B2-shaped storage manifest complete" : "storage manifest incomplete",
       hasGenblazeRecords ? "Genblaze-shaped run metadata complete" : "generation metadata incomplete"
     ],
-    blockers: blockers.length ? blockers : ["No submission blockers in the current checklist"]
+    blockers: blockers.length
+      ? blockers
+      : ["No dry-run blockers; live B2 and Genblaze proof still requires real environment variables."]
   };
 }
 

@@ -56,6 +56,8 @@ const completeReadiness = createReadinessChecklist({ sourceRepoReady: true, demo
 assert.equal(completeReadiness.every((item) => item.status === "ready"), true);
 const completeScore = createChallengeReadinessScore(sampleRuns, completeReadiness);
 assert.equal(completeScore.score, 100);
+assert.match(completeScore.blockers[0], /No dry-run blockers/);
+assert.doesNotMatch(completeScore.blockers[0], /No submission blockers/);
 
 const devpostFields = createDevpostFields();
 assert.match(devpostFields.howBackblazeB2IsUsed, /object key/);
