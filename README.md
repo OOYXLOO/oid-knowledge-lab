@@ -13,6 +13,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Editor trust packet: <https://ooyxloo.github.io/oid-knowledge-lab/editor-trust-packet.html>
 - Technical rigor proof: <https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Pilot engagement page: <https://ooyxloo.github.io/oid-knowledge-lab/pilot-engagement.html>
 - CI storage check case study: <https://ooyxloo.github.io/oid-knowledge-lab/ci-storage-check-case-study.html>
 - Premade plugin config case study: <https://ooyxloo.github.io/oid-knowledge-lab/premade-plugin-config-case-study.html>
 - Context-aware recommendations case study: <https://ooyxloo.github.io/oid-knowledge-lab/context-aware-recommendations-case-study.html>

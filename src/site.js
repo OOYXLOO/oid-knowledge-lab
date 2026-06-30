@@ -214,6 +214,12 @@ function renderEditorReviewPathPanel() {
           <a href="review-log-agent-hub.html">Open Review Log Agent hub</a>
         </article>
         <article>
+          <span>Pilot engagement</span>
+          <strong>Evidence workflow pilot</strong>
+          <p>Buyer-facing package that combines Review Log Agent, media provenance review, and OID assessment into one small public-safe pilot surface.</p>
+          <a href="pilot-engagement.html">Open pilot page</a>
+        </article>
+        <article>
           <span>Tuts+ instructor</span>
           <strong>Tutorial and video-course pitch</strong>
           <p>Envato Tuts+ focused review page with a written tutorial angle, 30+ minute course outline, proof links, and safe publication boundaries.</p>
@@ -1826,7 +1832,8 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "content-backup-pitch-pack.html",
     "proofdesk-slack-workflow.html",
     "proofdesk-packet-demo.html",
-    "proofdesk-agent-submission-pack.html"
+    "proofdesk-agent-submission-pack.html",
+    "pilot-engagement.html"
   ];
   for (const file of staticReviewPages) {
     const source = path.join(__dirname, "..", "public", file);
