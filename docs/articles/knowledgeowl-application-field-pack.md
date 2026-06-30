@@ -11,24 +11,24 @@ This is a submit-ready field pack for the KnowledgeOwl paid guest blogging oppor
 
 ## Email Subject
 
-Guest article pitch: Evidence logs for AI-assisted knowledge base updates
+Guest post pitch: Evidence logs for AI-assisted help content reviews
 
 ## Short Pitch
 
-Hello KnowledgeOwl team,
+Hi KnowledgeOwl team,
 
-I would like to pitch a practical guest article for the KnowledgeOwl blog:
+I would like to pitch a paid guest post for the KnowledgeOwl blog.
 
-**How to Turn AI-Assisted Knowledge Base Updates into Evidence Logs**
+**How to Turn AI-Assisted Help Content Reviews into Evidence Logs**
 
-The article would give documentation and support teams a lightweight review workflow for AI-assisted knowledge base updates: define the reader question, separate source facts from draft claims, record reviewer checks, mark publication blockers, and keep sensitive customer or account data out of the handoff.
+The article would give knowledge base owners, support leads, and documentation writers a lightweight way to review AI-assisted help content before it reaches customers. The workflow is designed for documentarian quality of life: state the reader question, separate source facts from draft claims, record reviewer checks, mark publication blockers, and keep private customer or account context out of the editorial handoff.
 
-My proposed rate is USD 250 for one 1200-1600 word article, with the final outline adapted to your editorial guidance.
+I am an independent writer, not an agency, and I am not asking for a required backlink or anchor text. My proposed rate is USD 250 for one 1200-1600 word article, with the final outline adjusted to your editorial guidance.
 
 ## topic ideas
 
-1. **How to Turn AI-Assisted Knowledge Base Updates into Evidence Logs**
-   - Best fit for KnowledgeOwl's audience because it is documentation-team focused and gives a repeatable review workflow.
+1. **How to Turn AI-Assisted Help Content Reviews into Evidence Logs**
+   - Best fit for KnowledgeOwl's audience because it is documentation-team focused and gives a repeatable review workflow for non-programmer reviewers.
 2. **A Lightweight Review Checklist for AI-Drafted Help Articles**
    - A more checklist-oriented version for teams that want a fast approval process.
 3. **How Support and Documentation Teams Can Review AI Drafts Without Copying Customer Data**
@@ -36,7 +36,7 @@ My proposed rate is USD 250 for one 1200-1600 word article, with the final outli
 
 ## brief outline
 
-1. Why AI-assisted knowledge base updates need a visible review trail.
+1. Why confident AI-assisted help drafts still need a visible review trail.
 2. Define the reader question and audience before reviewing the draft.
 3. Separate source facts from draft claims.
 4. Capture reviewer checks, blockers, and missing subject-matter review.
@@ -48,8 +48,9 @@ My proposed rate is USD 250 for one 1200-1600 word article, with the final outli
 - One-link reviewer page: <https://ooyxloo.github.io/oid-knowledge-lab/knowledgeowl-one-link.html>
 - Editorial draft preview: <https://ooyxloo.github.io/oid-knowledge-lab/knowledgeowl-editorial-draft-preview.html>
 - Evidence log template: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/knowledgeowl-evidence-log-template.md>
-- Evidence log playground: <https://ooyxloo.github.io/oid-knowledge-lab/evidence-log-playground.html>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+
+For the first email, use only the three shortest review links unless the editor asks for more detail. The evidence log template is included here as supplemental proof of structure.
 
 ## Editorial Boundary
 
