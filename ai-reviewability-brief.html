@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Reviewability Brief - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">AI reviewability brief</p>
+      <h1>Design reviewable interfaces for AI-assisted content</h1>
+      <p class="summary">A compact editorial and product brief for teams that need AI-assisted drafts to remain inspectable before publication. It separates source facts, generated claims, missing evidence, privacy boundaries, and final reviewer decisions.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="evidence-log-playground.html">Evidence log demo</a>
+        <a href="knowledgeowl-editor-fit-brief.html">Editorial fit brief</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="implementation-authenticity-proof.html">Implementation proof</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Reviewability brief metrics">
+      <article><span>Audience</span><strong>UX</strong><small>Design, docs, product</small></article>
+      <article><span>Artifact</span><strong>Brief</strong><small>Article-ready outline</small></article>
+      <article><span>Demo</span><strong>Local</strong><small>Browser-only evidence log</small></article>
+      <article><span>Boundary</span><strong>Public</strong><small>No private account data</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Problem</p>
+        <h2>AI drafts often look finished before they are reviewable</h2>
+        <p class="panel-copy">A polished paragraph can hide unsupported claims, inferred steps, stale source material, private details, and unresolved publication blockers. Reviewability treats those risks as interface requirements rather than editorial cleanup.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Design model</p>
+        <h2>Separate the draft from the decision trail</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Layer</th><th>Interface responsibility</th></tr></thead>
+        <tbody>
+          <tr><td>Source facts</td><td>Name the source material and keep it visible near the generated claim.</td></tr>
+          <tr><td>Generated claims</td><td>Show which statements were drafted by an AI-assisted process and still need review.</td></tr>
+          <tr><td>Missing evidence</td><td>Surface blockers instead of allowing a smooth draft to pass quietly.</td></tr>
+          <tr><td>Privacy boundary</td><td>Keep credentials, account pages, private tickets, payment details, and customer exports out of the publication flow.</td></tr>
+          <tr><td>Reviewer decision</td><td>Record whether the content is approved, revised, held, or blocked, with an owner.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Article outline</p>
+        <h2>Fresh long-form writing shape</h2>
+      </div>
+      <ol class="numbered-list">
+        <li>Why AI-generated prose can mislead reviewers by looking complete too early.</li>
+        <li>How to treat reviewability as a UX and product requirement.</li>
+        <li>How to distinguish confirmed facts from generated or inferred claims.</li>
+        <li>How to design reviewer paths for confirm, revise, block, and publish decisions.</li>
+        <li>Practical patterns: source-linked claim cards, blocker banners, privacy checks, and publish-readiness summaries.</li>
+        <li>A small knowledge-base update example with visible evidence and publication boundaries.</li>
+        <li>Anti-patterns: one-click publish flows, unexplained confidence scores, hidden evidence, and vague disclaimers.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Reusable proof</p>
+        <h2>Small public demo, no private data</h2>
+        <p class="panel-copy">The linked evidence-log playground runs entirely in the browser. It demonstrates the review shape with synthetic examples only: reader question, source facts, draft claim, reviewer checks, decision markers, and a copyable Markdown handoff.</p>
+        <p class="panel-copy"><a href="evidence-log-playground.html">Open the browser-only evidence log demo</a></p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
