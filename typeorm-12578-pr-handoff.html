@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TypeORM 12578 PR Handoff - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">OSS contribution handoff</p>
+      <h1>TypeORM 12578 fix packet for default where-value behavior.</h1>
+      <p class="summary">A compact handoff for reviewing a local TypeORM branch that removes an early return in <code>OrmUtils.normalizeWhereCriteria</code> and adds unit tests for default null and undefined handling.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="https://github.com/typeorm/typeorm/issues/12578">Upstream issue</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/docs/oss-contributions/typeorm-12578">Contribution notes</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/oss-contributions/typeorm-12578/pr-description.md">PR description draft</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="TypeORM handoff summary">
+      <article><span>Branch</span><strong>Ready</strong><small>fix-12578-normalize-where-defaults</small></article>
+      <article><span>Patch</span><strong>Small</strong><small>2 files changed</small></article>
+      <article><span>Tests</span><strong>Added</strong><small>Default null / undefined behavior</small></article>
+      <article><span>PR</span><strong>Gated</strong><small>Fork and upstream PR still needed</small></article>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">What changed</p>
+      <h2>Remove the options early return</h2>
+      <p>The local branch removes the early return that skipped normalization when <code>invalidWhereValuesBehavior</code> options were omitted. That lets the existing default branches apply consistently to top-level and nested where criteria.</p>
+      <pre><code>-        if (!options) {
+-            return criteria
+-        }</code></pre>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Coverage</p>
+      <h2>Unit tests added</h2>
+      <table class="handoff-table">
+        <thead><tr><th>Case</th><th>Expected behavior</th></tr></thead>
+        <tbody>
+          <tr><td>undefined value by default</td><td>Throws a TypeORMError with the default undefined guidance.</td></tr>
+          <tr><td>null value by default</td><td>Throws a TypeORMError with the default null guidance.</td></tr>
+          <tr><td>nested where criteria</td><td>Applies the same default behavior recursively.</td></tr>
+          <tr><td>configured undefined ignore</td><td>Still skips undefined when explicitly configured.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Commands</p>
+      <h2>Fork-to-PR sequence</h2>
+      <pre><code>git remote add ooyxloo https://github.com/OOYXLOO/typeorm.git
+git push ooyxloo fix-12578-normalize-where-defaults</code></pre>
+      <p>Then open a pull request from <code>OOYXLOO:typeorm/fix-12578-normalize-where-defaults</code> into <code>typeorm/typeorm:master</code>.</p>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">PR text</p>
+      <h2>Use this draft</h2>
+      <p>Current PR title:</p>
+      <pre><code>fix: apply default invalid where behavior in OrmUtils</code></pre>
+      <p>Current PR body:</p>
+      <p><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/oss-contributions/typeorm-12578/pr-description.md">Open the PR description draft</a></p>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Verification</p>
+      <h2>Local evidence</h2>
+      <pre><code>pnpm run compile
+node_modules\.bin\mocha.cmd --no-config build/compiled/test/unit/util/orm-utils.test.js
+
+Targeted result:
+18 passing</code></pre>
+      <p>The broader test command can load unrelated compiled functional tests from the full test tree, so the targeted command runs the affected unit file directly after compilation.</p>
+    </section>
+  </main>
+</body>
+</html>
