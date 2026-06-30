@@ -64,6 +64,7 @@ https://review-log-agent-slack.vercel.app/submission.html
 https://review-log-agent-slack.vercel.app/media/review-log-agent-slack-demo.mp4
 https://review-log-agent-slack.vercel.app/docs/judge-verification.md
 https://review-log-agent-slack.vercel.app/docs/source-snapshot.md
+https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/review-log-agent-slack/docs/github-source-fallback.md
 https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
 https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack
 https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-architecture.html
@@ -76,6 +77,7 @@ https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-architecture.svg
 https://ooyxloo.github.io/oid-knowledge-lab/review-log-agent-architecture.svg
 https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/review-log-agent-slack/docs/architecture.md
 https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/review-log-agent-slack/docs/architecture.mmd
+https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack/public/media
 ```
 
 ## Demo Video Script

@@ -10,6 +10,7 @@ const PUBLIC_DOCS = [
   "challenge-fit.md",
   "demo-video-script.md",
   "devpost-field-pack.md",
+  "github-source-fallback.md",
   "judge-verification.md",
   "public-verification.md",
   "reviewer-quickstart.md",

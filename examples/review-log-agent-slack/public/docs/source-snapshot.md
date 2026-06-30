@@ -13,7 +13,7 @@ A public GitHub source copy is also available in the OID Knowledge Lab repositor
 | `src/slackHandler.js` | [source/src__slackHandler.js.txt](../source/src__slackHandler.js.txt) | 5167 | `ff5197be6d52713fdc4a7707e9a5565d1ee562074356727bcd06d1788e786127` |
 | `src/mcpTool.js` | [source/src__mcpTool.js.txt](../source/src__mcpTool.js.txt) | 869 | `e721f4831c6de4836e9e25ff14ada3c0ae12eb6199330e697fd8de5ca687ccc8` |
 | `src/renderSubmissionPage.js` | [source/src__renderSubmissionPage.js.txt](../source/src__renderSubmissionPage.js.txt) | 6961 | `12d2613a38c46b89aea1575fccfbe533afb9fd126b234596f8ba492f9eb43ac6` |
-| `src/copyPublicDocs.js` | [source/src__copyPublicDocs.js.txt](../source/src__copyPublicDocs.js.txt) | 1218 | `7293cf146077ebad73d077a654de95f3ac4d641b1b1abfc28a405c6013f963fe` |
+| `src/copyPublicDocs.js` | [source/src__copyPublicDocs.js.txt](../source/src__copyPublicDocs.js.txt) | 1249 | `10e4caad35c2985092e34ad7381a867bce3b05267df1d39ddab0d5d9d5b0dd2a` |
 | `api/slack/commands/review-log.js` | [source/api__slack__commands__review-log.js.txt](../source/api__slack__commands__review-log.js.txt) | 814 | `4080a1d7f4fa9ceeed43ce83b230112c0c45bcee045ef9c694b11a99848d2f7c` |
 | `api/slack/interactivity.js` | [source/api__slack__interactivity.js.txt](../source/api__slack__interactivity.js.txt) | 813 | `dd50061064e72b1cdd988f3a6468c4859aa01b627f7e6cdb93b555d8303efa2d` |
 | `test/reviewLog.test.js` | [source/test__reviewLog.test.js.txt](../source/test__reviewLog.test.js.txt) | 2371 | `11e9b78f0095bcbde3e8e4364d617d257c80a3c4ce9e8788c84fd4345f4d92fb` |
