@@ -98,6 +98,24 @@
       gap: 8px;
       margin-top: 8px;
     }
+    .fit-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      list-style: none;
+    }
+    .fit-list li {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcff;
+    }
+    .fit-list strong {
+      color: var(--ink);
+    }
     code {
       color: var(--ink);
       font: 0.92rem/1.5 "SFMono-Regular", Consolas, monospace;
@@ -106,6 +124,7 @@
       main { width: min(100% - 20px, 1080px); padding-top: 20px; }
       h1 { font-size: 1.75rem; }
       .links, .grid { grid-template-columns: 1fr; }
+      .fit-list li { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -138,12 +157,25 @@
       <ul>
         <li><a href="docs/architecture.md">Architecture notes</a></li>
         <li><a href="docs/devpost-field-pack.md">Devpost field pack</a></li>
+        <li><a href="docs/judge-verification.md">Judge verification checklist</a></li>
         <li><a href="docs/reviewer-quickstart.md">Reviewer quickstart</a></li>
         <li><a href="docs/demo-video-script.md">Demo video script</a></li>
         <li><a href="docs/submission-pack.md">Submission pack notes</a></li>
         <li><a href="docs/challenge-fit.md">Challenge fit notes</a></li>
         <li><a href="docs/slack-app-manifest.json">Slack app manifest template</a></li>
         <li><a href="docs/slack-app-handler-contract.md">Slack app handler contract</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Judge Fit Checklist</h2>
+      <ul class="fit-list">
+        <li><strong>Track</strong><span>New Slack Agent: a review agent that turns Slack-style conversations into source-aware publication handoffs.</span></li>
+        <li><strong>Required tech</strong><span>MCP-style tool wrapper today, with Slack slash command and message shortcut handlers prepared for sandbox installation.</span></li>
+        <li><strong>Functionality</strong><span>Static demo, browser playground, CLI, API handler, and tests all exercise the same dependency-free review-log core.</span></li>
+        <li><strong>Demo video</strong><span>Public MP4 is under three minutes and uses synthetic review data only.</span></li>
+        <li><strong>Architecture</strong><span>Architecture notes and diagram explain the Slack surface, core classifier, renderer, and reviewer handoff boundary.</span></li>
+        <li><strong>Testing access</strong><span>Sandbox URL and reviewer access remain the final external setup items before Devpost submission.</span></li>
       </ul>
     </section>
 

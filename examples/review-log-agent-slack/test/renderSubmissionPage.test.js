@@ -12,6 +12,7 @@ function testRendersSubmissionPageWithCoreLinks() {
   assert.match(html, /media\/review-log-agent-slack-demo\.mp4/);
   assert.match(html, /docs\/architecture\.md/);
   assert.match(html, /docs\/devpost-field-pack\.md/);
+  assert.match(html, /docs\/judge-verification\.md/);
   assert.match(html, /docs\/reviewer-quickstart\.md/);
   assert.match(html, /does not require Slack credentials/);
   assert.match(html, /Submission Readiness/);
@@ -21,6 +22,10 @@ function testRendersSubmissionPageWithCoreLinks() {
   assert.match(html, /public GitHub source snapshot/);
   assert.match(html, /Slack app manifest template/);
   assert.match(html, /Slack app handler contract/);
+  assert.match(html, /Judge Fit Checklist/);
+  assert.match(html, /New Slack Agent/);
+  assert.match(html, /MCP-style tool wrapper/);
+  assert.match(html, /Sandbox URL/);
 }
 
 function testRendersNoPrivateMoneyLanguage() {
