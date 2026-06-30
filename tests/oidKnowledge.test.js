@@ -2052,6 +2052,26 @@ function testBuyerSignalPackRenderer() {
   assert.equal(markdown.includes("USD " + "200"), false);
 }
 
+function testOidPilotScopePageIsPublicAndBoundarySafe() {
+  const page = fs.readFileSync(path.join(ROOT, "public", "oid-pilot-scope.html"), "utf8");
+  const index = fs.readFileSync(path.join(ROOT, "public", "index.html"), "utf8");
+  const readme = fs.readFileSync(path.join(ROOT, "README.md"), "utf8");
+
+  assert.ok(page.includes("OID Pilot Scope"));
+  assert.ok(page.includes("20-100"));
+  assert.ok(page.includes("Every row has a status and a next action"));
+  assert.ok(page.includes("sample-assessment.html"));
+  assert.ok(page.includes("buyer-signal-pack.md"));
+  assert.ok(index.includes("oid-pilot-scope.html"));
+  assert.ok(readme.includes("oid-pilot-scope.html"));
+  for (const text of [page, index, readme]) {
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+    assert.equal(text.includes("D:\\hks"), false);
+  }
+}
+
 function testAiEvaluatorPortfolioIncludesDurationParserReviewCase() {
   const caseDir = path.join(ROOT, "examples", "ai-validation-python", "duration_parser_review");
   const readmePath = path.join(caseDir, "README.md");
@@ -2894,6 +2914,7 @@ async function main() {
   testAgentSubmissionPackWritesPublicSafeFiles();
   testProofDeskAgentSubmissionPageIsPublicAndBoundarySafe();
   testBuyerSignalPackRenderer();
+  testOidPilotScopePageIsPublicAndBoundarySafe();
   console.log("oid knowledge tests passed");
 }
 

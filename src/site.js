@@ -88,6 +88,12 @@ function renderEditorReviewPathPanel() {
           <a href="direct-client-fit.html">Open fit page</a>
         </article>
         <article>
+          <span>Pilot scope</span>
+          <strong>20-100 row OID review</strong>
+          <p>Concrete first-scope handoff for sanitized OID inventories with acceptance gates, expansion rules, and copyable first-response text.</p>
+          <a href="oid-pilot-scope.html">Open pilot scope</a>
+        </article>
+        <article>
           <span>Portfolio console</span>
           <strong>OID governance risk brief</strong>
           <p>Browser-only console that turns a small OID inventory into a structured governance brief with severity counts, representative findings, and next-step questions.</p>
@@ -686,6 +692,7 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="${escapeHtml(report.license_url)}">Licensing terms</a>
         <a href="https://oid-base.com/sitemap.xml">OID-base sitemap</a>
         <a href="consulting-brief.html">Assessment brief</a>
+        <a href="oid-pilot-scope.html">OID pilot scope</a>
         <a href="starter-scope.html">Starter scope</a>
         <a href="direct-client-fit.html">Direct client fit</a>
         <a href="writing-samples.html">Writing samples</a>
@@ -1278,6 +1285,15 @@ code {
   font-family: "SFMono-Regular", Consolas, monospace;
   font-size: 0.9em;
 }
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+pre code {
+  white-space: inherit;
+}
 .note {
   color: var(--muted);
 }
@@ -1828,6 +1844,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "tutsplus-tutorial-reviewer-hub.html",
     "envato-tutsplus-instructor-hub.html",
     "starter-scope.html",
+    "oid-pilot-scope.html",
     "direct-client-fit.html",
     "content-backup-pitch-pack.html",
     "proofdesk-slack-workflow.html",

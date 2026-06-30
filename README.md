@@ -14,6 +14,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Technical rigor proof: <https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
 - Pilot engagement page: <https://ooyxloo.github.io/oid-knowledge-lab/pilot-engagement.html>
+- OID pilot scope: <https://ooyxloo.github.io/oid-knowledge-lab/oid-pilot-scope.html>
 - CI storage check case study: <https://ooyxloo.github.io/oid-knowledge-lab/ci-storage-check-case-study.html>
 - Premade plugin config case study: <https://ooyxloo.github.io/oid-knowledge-lab/premade-plugin-config-case-study.html>
 - Context-aware recommendations case study: <https://ooyxloo.github.io/oid-knowledge-lab/context-aware-recommendations-case-study.html>
@@ -62,6 +63,7 @@ Last refreshed on 2026-06-26:
 - Decision one-pager: `reports/decision-one-pager.md` compresses the approval question, next step, safe inputs, boundaries, and proof links into a buyer-readable first page
 - Client kickoff pack: `reports/client-kickoff-pack.md` turns the decision one-pager into an initial reply, safe intake request, first-call agenda, deliverables preview, acceptance preview, and proof links
 - Buyer signal pack: `reports/buyer-signal-pack.md` turns the sanitized sample assessment into buyer signals, qualifying questions, subject lines, a first-scope offer, proof points, and source-boundary notes
+- OID pilot scope page: `public/oid-pilot-scope.html` turns the buyer signal pack into a concrete 20-100 row pilot scope with acceptance gates, expansion rules, and copyable first-response text
 - Public proof index: the generated dashboard links this project, Signal Garden, Incident Zero Stack, Hanzi Scout, and Helioigma as public review surfaces for editors, reviewers, or technical stakeholders
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 - Stable local audit mode: `npm run audit:local:stable` fixes report timestamps through `OID_KNOWLEDGE_GENERATED_AT` so verification runs do not create noisy timestamp-only diffs
