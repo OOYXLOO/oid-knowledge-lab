@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript Reviewer Drill - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">JavaScript reviewer drill</p>
+      <h1>Reviewing an invoice total calculator before it reaches customers</h1>
+      <p class="summary">A public reviewer drill for JavaScript, TypeScript, and Node.js assessment workflows. It shows a contract, candidate code, findings, tests, suggested revision, and residual product question.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="js-review-sample.html">Retry-limit review sample</a>
+        <a href="geektastic-reviewer-readiness.html">Reviewer readiness</a>
+        <a href="code-reviewer-portfolio.html">Reviewer portfolio</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/js-reviewer-drill-invoice-total.md">Raw drill</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Reviewer drill metrics">
+      <article><span>Stack</span><strong>JS</strong><small>Node-style module</small></article>
+      <article><span>Domain</span><strong>Billing</strong><small>invoice total</small></article>
+      <article><span>Verdict</span><strong>Revise</strong><small>input validation risk</small></article>
+      <article><span>Output</span><strong>Tests</strong><small>failure cases included</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Candidate code</p>
+        <h2>Invoice total calculator</h2>
+      </div>
+      <pre><code>export function calculateInvoiceTotal(items, discountPercent = 0) {
+  const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const discount = subtotal * discountPercent / 100;
+  return Math.round((subtotal - discount) * 100) / 100;
+}</code></pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Review verdict</p>
+        <h2>Revise before acceptance</h2>
+        <p class="panel-copy">The implementation is readable and handles the happy path, but it trusts every input. That is risky for customer-facing billing, invoice previews, and checkout flows because invalid values can produce <code>NaN</code>, negative totals, or accidental fractional quantities.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Findings</p>
+        <h2>Issues I would raise</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Severity</th><th>Finding</th><th>Evidence</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td>High</td><td>Invalid item values can produce <code>NaN</code>.</td><td><code>"abc" * 2</code> becomes <code>NaN</code>.</td><td>Validate every price and quantity before calculating.</td></tr>
+          <tr><td>High</td><td>Negative values can create impossible invoices.</td><td>Negative price or quantity can produce a negative or misleading total.</td><td>Reject negative prices and quantities.</td></tr>
+          <tr><td>Medium</td><td>Discount is not bounded.</td><td>A discount of 150 percent returns a negative total.</td><td>Require discount from 0 to 100.</td></tr>
+          <tr><td>Medium</td><td>Non-integer quantities are accepted.</td><td><code>quantity: 1.5</code> works accidentally.</td><td>Require integer quantity unless the product intentionally supports fractional billing.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Test plan</p>
+        <h2>Focused cases</h2>
+      </div>
+      <pre><code>assert.equal(calculateInvoiceTotal([{ price: 10, quantity: 2 }]), 20);
+assert.equal(calculateInvoiceTotal([{ price: 19.99, quantity: 2 }], 10), 35.98);
+assert.throws(() => calculateInvoiceTotal(null), /items must be an array/);
+assert.throws(() => calculateInvoiceTotal([{ price: "abc", quantity: 2 }]), /price/);
+assert.throws(() => calculateInvoiceTotal([{ price: -1, quantity: 2 }]), /price/);
+assert.throws(() => calculateInvoiceTotal([{ price: 10, quantity: -1 }]), /quantity/);
+assert.throws(() => calculateInvoiceTotal([{ price: 10, quantity: 1.5 }]), /quantity/);
+assert.throws(() => calculateInvoiceTotal([{ price: 10, quantity: 1 }], 150), /discount/);</code></pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Boundary</p>
+        <h2>Public sample only</h2>
+        <p class="panel-copy">This drill is synthetic and original. It does not include private candidate code, private assessment prompts, customer data, credentials, payment records, or platform screenshots.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
