@@ -11,8 +11,8 @@ Public demo: https://media-ledger-studio-static.vercel.app
 
 ## Technology Fit
 
-- Storage: Backblaze B2-shaped object records are captured per generated asset.
-- Generation: Genblaze-shaped provider metadata is captured per generation run and linked to stored outputs.
+- Storage: Backblaze B2-shaped object records and dry-run upload plans are captured per generated asset.
+- Generation: Genblaze-shaped provider metadata and dry-run request plans are captured per generation run and linked to stored outputs.
 
 ## Sample Object Keys
 

@@ -121,15 +121,17 @@ export function createSubmissionPack(runs = sampleRuns) {
   const summary = summarizeLedger(runs);
   const readiness = createReadinessChecklist();
   const challengeReadiness = createChallengeReadinessScore(runs, readiness);
+  const liveIntegration = createLiveIntegrationBundle(runs);
   return {
     appName: "Media Ledger Studio",
     publicDemoUrl: "https://media-ledger-studio-static.vercel.app",
     summary,
     challengeReadiness,
+    liveIntegration,
     requiredTechnology: {
-      storage: "Backblaze B2-shaped object records are captured per generated asset.",
+      storage: "Backblaze B2-shaped object records and dry-run upload plans are captured per generated asset.",
       generation:
-        "Genblaze-shaped provider metadata is captured per generation run and linked to stored outputs."
+        "Genblaze-shaped provider metadata and dry-run request plans are captured per generation run and linked to stored outputs."
     },
     reviewerPath: [
       "Open the dashboard.",
@@ -194,7 +196,7 @@ export function createDevpostFields({
       `The bundled manifest covers ${pack.storageHandoffManifest.length} generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision. ` +
       `It also defines ${pack.sidecarMetadataManifest.length} JSON sidecar records that can be uploaded next to the final media objects.`,
     whatIsNext:
-      "Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, and add signed sidecar metadata for production uploads."
+      "Set the live Backblaze B2 and Genblaze environment variables, run the dry-run adapter bundle, then switch the adapter mode from dry-run to live uploads."
   };
 }
 
@@ -243,6 +245,81 @@ export function createSidecarMetadataManifest(runs = sampleRuns) {
       }
     };
   });
+}
+
+export function createLiveIntegrationBundle(runs = sampleRuns, {
+  publicBaseUrl = "https://media-ledger-studio-static.vercel.app",
+  b2BucketName = "media-ledger-demo",
+  b2Prefix = "generated-media-ledger",
+  genblazeEndpoint = "https://api.genblaze.example/v1/generate",
+  env = {}
+} = {}) {
+  const requiredEnv = [
+    "B2_APP_ID",
+    "B2_APP_VALUE",
+    "B2_BUCKET_NAME",
+    "GENBLAZE_AUTH_VALUE",
+    "GENBLAZE_ENDPOINT"
+  ];
+  const missingEnv = requiredEnv.filter((name) => !env[name]);
+  const sidecars = createSidecarMetadataManifest(runs);
+  const b2UploadPlan = runs.flatMap((run, index) => {
+    const mediaKey = joinObjectKey(b2Prefix, run.storage.objectKey);
+    const sidecarKey = joinObjectKey(b2Prefix, sidecars[index].sidecarKey);
+    return [
+      {
+        runId: run.id,
+        kind: "media",
+        bucket: env.B2_BUCKET_NAME || b2BucketName,
+        objectKey: mediaKey,
+        contentType: run.storage.contentType,
+        checksumSha256: run.storage.checksumSha256,
+        bytes: run.storage.bytes
+      },
+      {
+        runId: run.id,
+        kind: "sidecar",
+        bucket: env.B2_BUCKET_NAME || b2BucketName,
+        objectKey: sidecarKey,
+        contentType: "application/json",
+        checksumSha256: run.storage.checksumSha256,
+        bodyPreview: sidecars[index].sidecarBody
+      }
+    ];
+  });
+  const genblazeRequestPlan = runs.map((run) => ({
+    runId: run.id,
+    endpoint: env.GENBLAZE_ENDPOINT || genblazeEndpoint,
+    model: run.model,
+    prompt: run.prompt,
+    negativePrompt: run.negativePrompt,
+    seed: run.seed,
+    outputType: run.storage.contentType,
+    safetyNotes: run.safetyNotes
+  }));
+  const publicReviewLinks = sidecars.map((sidecar, index) => ({
+    runId: sidecar.runId,
+    reviewUrl: `${publicBaseUrl}/?run=${encodeURIComponent(sidecar.runId)}`,
+    requiredUploadPair: [
+      b2UploadPlan[index * 2].objectKey,
+      b2UploadPlan[index * 2 + 1].objectKey
+    ]
+  }));
+  return {
+    mode: missingEnv.length ? "dry-run" : "live-ready",
+    requiredEnv,
+    missingEnv,
+    b2UploadPlan,
+    genblazeRequestPlan,
+    publicReviewLinks
+  };
+}
+
+function joinObjectKey(prefix, objectKey) {
+  return [prefix, objectKey]
+    .map((part) => String(part || "").replace(/^\/+|\/+$/g, ""))
+    .filter(Boolean)
+    .join("/");
 }
 
 export function createChallengeReadinessScore(runs = sampleRuns, readiness = createReadinessChecklist()) {

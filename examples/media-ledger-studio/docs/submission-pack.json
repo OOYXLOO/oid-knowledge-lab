@@ -22,9 +22,193 @@
       "No submission blockers in the current checklist"
     ]
   },
+  "liveIntegration": {
+    "mode": "dry-run",
+    "requiredEnv": [
+      "B2_APP_ID",
+      "B2_APP_VALUE",
+      "B2_BUCKET_NAME",
+      "GENBLAZE_AUTH_VALUE",
+      "GENBLAZE_ENDPOINT"
+    ],
+    "missingEnv": [
+      "B2_APP_ID",
+      "B2_APP_VALUE",
+      "B2_BUCKET_NAME",
+      "GENBLAZE_AUTH_VALUE",
+      "GENBLAZE_ENDPOINT"
+    ],
+    "b2UploadPlan": [
+      {
+        "runId": "run-cover-001",
+        "kind": "media",
+        "bucket": "media-ledger-demo",
+        "objectKey": "generated-media-ledger/projects/editorial-cover/run-cover-001/final.png",
+        "contentType": "image/png",
+        "checksumSha256": "9c9f1ee3a4315f8367b39c31d93a4ef5d6a71e9a45c8e66111108b2419a31a77",
+        "bytes": 2843920
+      },
+      {
+        "runId": "run-cover-001",
+        "kind": "sidecar",
+        "bucket": "media-ledger-demo",
+        "objectKey": "generated-media-ledger/projects/editorial-cover/run-cover-001/final.png.metadata.json",
+        "contentType": "application/json",
+        "checksumSha256": "9c9f1ee3a4315f8367b39c31d93a4ef5d6a71e9a45c8e66111108b2419a31a77",
+        "bodyPreview": {
+          "runId": "run-cover-001",
+          "title": "Editorial cover image",
+          "objectKey": "projects/editorial-cover/run-cover-001/final.png",
+          "checksumSha256": "9c9f1ee3a4315f8367b39c31d93a4ef5d6a71e9a45c8e66111108b2419a31a77",
+          "provider": "Genblaze",
+          "model": "genblaze-image-studio-v1",
+          "seed": 482910,
+          "license": "Internal demo asset, replace before production",
+          "reviewDecision": "Approved with metadata note",
+          "safetyNotes": [
+            "No likeness request",
+            "No private source files",
+            "Human review required before client delivery"
+          ]
+        }
+      },
+      {
+        "runId": "run-storyboard-014",
+        "kind": "media",
+        "bucket": "media-ledger-demo",
+        "objectKey": "generated-media-ledger/projects/launch-storyboard/run-storyboard-014/storyboard.webm",
+        "contentType": "video/webm",
+        "checksumSha256": "4b6e1e673946d762748fbd140af8fd0f7b0fe8de9814be868d77df483cb6a334",
+        "bytes": 9432104
+      },
+      {
+        "runId": "run-storyboard-014",
+        "kind": "sidecar",
+        "bucket": "media-ledger-demo",
+        "objectKey": "generated-media-ledger/projects/launch-storyboard/run-storyboard-014/storyboard.webm.metadata.json",
+        "contentType": "application/json",
+        "checksumSha256": "4b6e1e673946d762748fbd140af8fd0f7b0fe8de9814be868d77df483cb6a334",
+        "bodyPreview": {
+          "runId": "run-storyboard-014",
+          "title": "Launch storyboard clip",
+          "objectKey": "projects/launch-storyboard/run-storyboard-014/storyboard.webm",
+          "checksumSha256": "4b6e1e673946d762748fbd140af8fd0f7b0fe8de9814be868d77df483cb6a334",
+          "provider": "Genblaze",
+          "model": "genblaze-motion-board-v0",
+          "seed": 771245,
+          "license": "Synthetic storyboard draft",
+          "reviewDecision": "Hold",
+          "safetyNotes": [
+            "Replace placeholder company names",
+            "Confirm music rights before export"
+          ]
+        }
+      },
+      {
+        "runId": "run-audio-006",
+        "kind": "media",
+        "bucket": "media-ledger-demo",
+        "objectKey": "generated-media-ledger/projects/audio-bed/run-audio-006/loop.wav",
+        "contentType": "audio/wav",
+        "checksumSha256": "683d0ac237fe701b7ad2a7325374388f3d78fb8c8a89a66f8d9b97d7c413f442",
+        "bytes": 5814200
+      },
+      {
+        "runId": "run-audio-006",
+        "kind": "sidecar",
+        "bucket": "media-ledger-demo",
+        "objectKey": "generated-media-ledger/projects/audio-bed/run-audio-006/loop.wav.metadata.json",
+        "contentType": "application/json",
+        "checksumSha256": "683d0ac237fe701b7ad2a7325374388f3d78fb8c8a89a66f8d9b97d7c413f442",
+        "bodyPreview": {
+          "runId": "run-audio-006",
+          "title": "Ambient audio bed",
+          "objectKey": "projects/audio-bed/run-audio-006/loop.wav",
+          "checksumSha256": "683d0ac237fe701b7ad2a7325374388f3d78fb8c8a89a66f8d9b97d7c413f442",
+          "provider": "Genblaze",
+          "model": "genblaze-audio-loop-v2",
+          "seed": 194207,
+          "license": "Synthetic loop, production license pending",
+          "reviewDecision": "Archive candidate",
+          "safetyNotes": [
+            "Run duplicate melody check",
+            "Keep original prompt in handoff"
+          ]
+        }
+      }
+    ],
+    "genblazeRequestPlan": [
+      {
+        "runId": "run-cover-001",
+        "endpoint": "https://api.genblaze.example/v1/generate",
+        "model": "genblaze-image-studio-v1",
+        "prompt": "A production desk with generated image contact sheets, storage labels, and a calm cloud operations mood.",
+        "negativePrompt": "no distorted text, no brand impersonation, no private data",
+        "seed": 482910,
+        "outputType": "image/png",
+        "safetyNotes": [
+          "No likeness request",
+          "No private source files",
+          "Human review required before client delivery"
+        ]
+      },
+      {
+        "runId": "run-storyboard-014",
+        "endpoint": "https://api.genblaze.example/v1/generate",
+        "model": "genblaze-motion-board-v0",
+        "prompt": "Four-panel storyboard showing prompt intake, generated media review, B2 storage, and final client delivery.",
+        "negativePrompt": "no fake logos, no real customer names, no private screenshots",
+        "seed": 771245,
+        "outputType": "video/webm",
+        "safetyNotes": [
+          "Replace placeholder company names",
+          "Confirm music rights before export"
+        ]
+      },
+      {
+        "runId": "run-audio-006",
+        "endpoint": "https://api.genblaze.example/v1/generate",
+        "model": "genblaze-audio-loop-v2",
+        "prompt": "Warm minimal ambient audio bed, soft pulse, no vocals, no recognizable melody.",
+        "negativePrompt": "no copyrighted melody, no voice, no aggressive percussion",
+        "seed": 194207,
+        "outputType": "audio/wav",
+        "safetyNotes": [
+          "Run duplicate melody check",
+          "Keep original prompt in handoff"
+        ]
+      }
+    ],
+    "publicReviewLinks": [
+      {
+        "runId": "run-cover-001",
+        "reviewUrl": "https://media-ledger-studio-static.vercel.app/?run=run-cover-001",
+        "requiredUploadPair": [
+          "generated-media-ledger/projects/editorial-cover/run-cover-001/final.png",
+          "generated-media-ledger/projects/editorial-cover/run-cover-001/final.png.metadata.json"
+        ]
+      },
+      {
+        "runId": "run-storyboard-014",
+        "reviewUrl": "https://media-ledger-studio-static.vercel.app/?run=run-storyboard-014",
+        "requiredUploadPair": [
+          "generated-media-ledger/projects/launch-storyboard/run-storyboard-014/storyboard.webm",
+          "generated-media-ledger/projects/launch-storyboard/run-storyboard-014/storyboard.webm.metadata.json"
+        ]
+      },
+      {
+        "runId": "run-audio-006",
+        "reviewUrl": "https://media-ledger-studio-static.vercel.app/?run=run-audio-006",
+        "requiredUploadPair": [
+          "generated-media-ledger/projects/audio-bed/run-audio-006/loop.wav",
+          "generated-media-ledger/projects/audio-bed/run-audio-006/loop.wav.metadata.json"
+        ]
+      }
+    ]
+  },
   "requiredTechnology": {
-    "storage": "Backblaze B2-shaped object records are captured per generated asset.",
-    "generation": "Genblaze-shaped provider metadata is captured per generation run and linked to stored outputs."
+    "storage": "Backblaze B2-shaped object records and dry-run upload plans are captured per generated asset.",
+    "generation": "Genblaze-shaped provider metadata and dry-run request plans are captured per generation run and linked to stored outputs."
   },
   "reviewerPath": [
     "Open the dashboard.",
@@ -215,7 +399,7 @@
     {
       "label": "Demo video",
       "status": "ready",
-      "detail": "The public walkthrough URL is available for reviewers and can be replaced by an uploaded recording later."
+      "detail": "A 30-second MP4 walkthrough is available for reviewers, with the browser walkthrough page kept as a readable fallback."
     },
     {
       "label": "Backblaze B2 boundary",

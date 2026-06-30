@@ -54,4 +54,4 @@ The bundled manifest covers 3 generated assets with bucket, object key, content 
 
 ## What's Next
 
-Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, and add signed sidecar metadata for production uploads.
+Set the live Backblaze B2 and Genblaze environment variables, run the dry-run adapter bundle, then switch the adapter mode from dry-run to live uploads.

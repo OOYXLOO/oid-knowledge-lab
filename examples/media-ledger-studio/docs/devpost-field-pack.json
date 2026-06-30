@@ -29,5 +29,5 @@
   "challengeFit": "The app is built around generated media operations: prompt intake, Genblaze-shaped generation metadata, human review, durable Backblaze B2-shaped object storage, provenance inspection, and client handoff.",
   "challengeReadiness": "Readiness score: 100/100. image run present; video run present; audio run present; B2-shaped storage manifest complete; Genblaze-shaped run metadata complete. Current blocker: No submission blockers in the current checklist.",
   "storageHandoffSummary": "The bundled manifest covers 3 generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision. It also defines 3 JSON sidecar records that can be uploaded next to the final media objects.",
-  "whatIsNext": "Connect live Backblaze B2 upload credentials, replace sample Genblaze-shaped runs with real provider responses, and add signed sidecar metadata for production uploads."
+  "whatIsNext": "Set the live Backblaze B2 and Genblaze environment variables, run the dry-run adapter bundle, then switch the adapter mode from dry-run to live uploads."
 }

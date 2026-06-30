@@ -7,6 +7,7 @@ import {
   createSidecarMetadataManifest,
   createStorageHandoffManifest,
   createSubmissionPack,
+  createLiveIntegrationBundle,
   findRunById,
   sampleRuns,
   summarizeLedger
@@ -65,5 +66,25 @@ assert.equal(devpostFields.appUrl, "https://media-ledger-studio-static.vercel.ap
 assert.match(devpostFields.videoUrl, /media-ledger-studio-demo\.mp4$/);
 assert.match(devpostFields.sourceRepoUrl, /github\.com\/OOYXLOO\/oid-knowledge-lab/);
 assert.match(devpostFields.challengeFit, /Backblaze B2/);
+
+const liveBundle = createLiveIntegrationBundle(sampleRuns, {
+  publicBaseUrl: "https://media-ledger-studio-static.vercel.app",
+  b2BucketName: "media-ledger-demo",
+  b2Prefix: "challenge-dry-run",
+  genblazeEndpoint: "https://api.genblaze.example/v1/generate"
+});
+assert.equal(liveBundle.mode, "dry-run");
+assert.equal(liveBundle.b2UploadPlan.length, sampleRuns.length * 2);
+assert.equal(liveBundle.genblazeRequestPlan.length, sampleRuns.length);
+assert.equal(liveBundle.requiredEnv.length, 5);
+assert.equal(liveBundle.missingEnv.length, 5);
+assert.equal(liveBundle.requiredEnv.includes("GENBLAZE_AUTH_VALUE"), true);
+assert.match(liveBundle.b2UploadPlan[0].objectKey, /^challenge-dry-run\//);
+assert.equal(liveBundle.b2UploadPlan[1].contentType, "application/json");
+assert.equal(liveBundle.genblazeRequestPlan[0].endpoint, "https://api.genblaze.example/v1/generate");
+assert.deepEqual(liveBundle.publicReviewLinks[0].requiredUploadPair, [
+  liveBundle.b2UploadPlan[0].objectKey,
+  liveBundle.b2UploadPlan[1].objectKey
+]);
 
 console.log("mediaLedger tests passed");
