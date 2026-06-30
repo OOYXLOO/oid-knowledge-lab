@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OID Intelligence Lab Ad</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #071013;
+      --ink: #eef7f1;
+      --muted: #9fb8ad;
+      --line: rgba(169, 217, 191, 0.22);
+      --green: #44c281;
+      --yellow: #f3c969;
+      --red: #ff6f61;
+      --blue: #7bb7ff;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    main {
+      display: grid;
+      min-height: 100%;
+      place-items: center;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    canvas {
+      width: min(100%, 1280px);
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #071013;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.36);
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    button,
+    a {
+      border: 1px solid rgba(68, 194, 129, 0.55);
+      border-radius: 7px;
+      background: rgba(68, 194, 129, 0.14);
+      color: var(--ink);
+      cursor: pointer;
+      font: 700 14px/1 system-ui, sans-serif;
+      padding: 10px 12px;
+      text-decoration: none;
+    }
+
+    p {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <canvas id="stage" width="1920" height="1080"></canvas>
+    <div class="controls">
+      <button id="play" type="button">Play Preview</button>
+      <button id="record" type="button">Record WebM</button>
+      <a id="download" download="oid-intelligence-lab-ad.webm" hidden>Download WebM</a>
+    </div>
+    <p>30-second canvas ad prototype. No account data, private records, credentials, or customer records are used.</p>
+  </main>
+
+  <script>
+    const canvas = document.getElementById('stage');
+    const ctx = canvas.getContext('2d');
+    const playButton = document.getElementById('play');
+    const recordButton = document.getElementById('record');
+    const downloadLink = document.getElementById('download');
+    const W = canvas.width;
+    const H = canvas.height;
+    const duration = 30;
+
+    const scenes = [
+      { start: 0, end: 5, title: 'AI answers need trusted identifiers.', sub: 'Can your team verify where an OID came from?', mode: 'chaos' },
+      { start: 5, end: 12, title: 'Source links. Status checks. Evidence trails.', sub: 'OID Intelligence Lab turns uncertainty into a reviewable trail.', mode: 'product' },
+      { start: 12, end: 22, title: 'Review before reuse.', sub: 'Inspect sources, compare registry evidence, flag inconsistencies, and export proof.', mode: 'proof' },
+      { start: 22, end: 30, title: 'Trust the identifier before you trust the answer.', sub: 'OID Intelligence Lab', mode: 'final' }
+    ];
+
+    const oids = [
+      '1.3.6.1.4.1.311',
+      '2.16.840.1.101.3.4.2.1',
+      '1.2.840.113549.1.1.11',
+      '1.3.6.1.5.5.7.3.1',
+      '2.5.4.3',
+      '1.3.6.1.4.1.8072.3.2.10'
+    ];
+
+    const rows = [
+      ['identifier', 'source', 'status', 'evidence'],
+      ['1.3.6.1.4.1.311', 'registry', 'verified', '2 links'],
+      ['2.5.4.3', 'standard', 'stable', '1 link'],
+      ['1.2.840.113549.1.1.11', 'docs', 'conflict', 'review'],
+      ['1.3.6.1.5.5.7.3.1', 'registry', 'verified', '3 links']
+    ];
+
+    function ease(x) {
+      return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+    }
+
+    function clamp01(x) {
+      return Math.max(0, Math.min(1, x));
+    }
+
+    function sceneAt(t) {
+      return scenes.find((scene) => t >= scene.start && t < scene.end) || scenes[scenes.length - 1];
+    }
+
+    function drawBackground(t) {
+      const g = ctx.createLinearGradient(0, 0, W, H);
+      g.addColorStop(0, '#071013');
+      g.addColorStop(0.55, '#0c1f1c');
+      g.addColorStop(1, '#102329');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.save();
+      ctx.globalAlpha = 0.12;
+      ctx.strokeStyle = '#9ee6bd';
+      ctx.lineWidth = 1;
+      for (let x = -120 + (t * 18) % 80; x < W + 120; x += 80) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x - 300, H);
+        ctx.stroke();
+      }
+      for (let y = -80 + (t * 12) % 64; y < H + 80; y += 64) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(W, y + 120);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function drawText(scene, p) {
+      const appear = ease(clamp01(p * 1.8));
+      ctx.save();
+      ctx.globalAlpha = appear;
+      ctx.fillStyle = '#eef7f1';
+      ctx.font = '700 74px Inter, Segoe UI, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
+      wrapText(scene.title, 110, 92, 1260, 86);
+
+      ctx.fillStyle = '#9fb8ad';
+      ctx.font = '400 34px Inter, Segoe UI, sans-serif';
+      wrapText(scene.sub, 116, 284, 1040, 44);
+      ctx.restore();
+    }
+
+    function wrapText(text, x, y, maxWidth, lineHeight) {
+      const words = text.split(' ');
+      let line = '';
+      for (const word of words) {
+        const test = line ? `${line} ${word}` : word;
+        if (ctx.measureText(test).width > maxWidth && line) {
+          ctx.fillText(line, x, y);
+          line = word;
+          y += lineHeight;
+        } else {
+          line = test;
+        }
+      }
+      ctx.fillText(line, x, y);
+    }
+
+    function pill(x, y, text, color) {
+      ctx.save();
+      ctx.font = '700 25px Inter, Segoe UI, sans-serif';
+      const width = ctx.measureText(text).width + 38;
+      ctx.fillStyle = color;
+      roundRect(x, y, width, 46, 23);
+      ctx.fill();
+      ctx.fillStyle = '#071013';
+      ctx.fillText(text, x + 19, y + 12);
+      ctx.restore();
+    }
+
+    function roundRect(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    function drawChaos(t, p) {
+      ctx.save();
+      ctx.translate(1040, 320);
+      for (let i = 0; i < oids.length; i++) {
+        const y = i * 76 + Math.sin(t * 2 + i) * 10;
+        const x = Math.sin(t * 0.8 + i) * 30;
+        ctx.globalAlpha = 0.18 + 0.11 * i;
+        ctx.fillStyle = '#102a28';
+        roundRect(x, y, 630, 54, 10);
+        ctx.fill();
+        ctx.globalAlpha = 0.92;
+        ctx.fillStyle = '#d9f3e2';
+        ctx.font = '700 28px Consolas, monospace';
+        ctx.fillText(oids[i], x + 24, y + 15);
+        if (i === 1 || i === 3) pill(x + 390, y + 6, i === 1 ? 'missing source' : 'conflict', i === 1 ? '#f3c969' : '#ff6f61');
+      }
+      ctx.restore();
+    }
+
+    function drawProduct(t, p) {
+      const x = 1020;
+      const y = 300;
+      ctx.save();
+      ctx.fillStyle = 'rgba(238, 247, 241, 0.05)';
+      ctx.strokeStyle = 'rgba(158, 230, 189, 0.28)';
+      ctx.lineWidth = 2;
+      roundRect(x, y, 710, 500, 24);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = '#eef7f1';
+      ctx.font = '700 32px Inter, Segoe UI, sans-serif';
+      ctx.fillText('OID Intelligence Lab', x + 34, y + 34);
+      ctx.fillStyle = '#9fb8ad';
+      ctx.font = '400 24px Inter, Segoe UI, sans-serif';
+      ctx.fillText('identifier review packet', x + 34, y + 76);
+
+      const labels = ['identifier', 'source', 'status', 'evidence'];
+      for (let i = 0; i < labels.length; i++) {
+        const yy = y + 142 + i * 72;
+        ctx.fillStyle = 'rgba(12, 44, 39, 0.78)';
+        roundRect(x + 34, yy, 642, 48, 12);
+        ctx.fill();
+        ctx.fillStyle = '#9fb8ad';
+        ctx.font = '700 20px Inter, Segoe UI, sans-serif';
+        ctx.fillText(labels[i], x + 56, yy + 14);
+        ctx.fillStyle = i === 2 ? '#44c281' : '#eef7f1';
+        ctx.font = '700 23px Inter, Segoe UI, sans-serif';
+        const values = ['1.3.6.1.4.1.311', 'IANA + vendor registry', 'verified', '3 source links'];
+        ctx.fillText(values[i], x + 250, yy + 13);
+      }
+      ctx.restore();
+    }
+
+    function drawProof(t, p) {
+      ctx.save();
+      const x = 980;
+      const y = 280;
+      ctx.font = '700 25px Inter, Segoe UI, sans-serif';
+      for (let r = 0; r < rows.length; r++) {
+        for (let c = 0; c < rows[r].length; c++) {
+          const xx = x + c * 175;
+          const yy = y + r * 68;
+          ctx.fillStyle = r === 0 ? 'rgba(68, 194, 129, 0.22)' : 'rgba(238, 247, 241, 0.045)';
+          roundRect(xx, yy, 160, 50, 8);
+          ctx.fill();
+          ctx.fillStyle = rows[r][c] === 'conflict' ? '#ff6f61' : rows[r][c] === 'verified' ? '#44c281' : '#eef7f1';
+          ctx.font = r === 0 ? '700 20px Inter, sans-serif' : '600 18px Inter, sans-serif';
+          ctx.fillText(rows[r][c], xx + 12, yy + 17);
+        }
+      }
+      pill(1060, 680, 'source verified', '#44c281');
+      pill(1304, 680, 'conflict flagged', '#ff6f61');
+      pill(1554, 680, 'proof exported', '#7bb7ff');
+      ctx.restore();
+    }
+
+    function drawFinal(t, p) {
+      ctx.save();
+      const alpha = ease(clamp01((p - 0.1) * 1.6));
+      ctx.globalAlpha = alpha;
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#eef7f1';
+      ctx.font = '800 84px Inter, Segoe UI, sans-serif';
+      ctx.fillText('OID Intelligence Lab', W / 2, 490);
+      ctx.fillStyle = '#44c281';
+      ctx.font = '700 36px Inter, Segoe UI, sans-serif';
+      ctx.fillText('ooyxloo.github.io/oid-knowledge-lab', W / 2, 568);
+      ctx.fillStyle = '#9fb8ad';
+      ctx.font = '500 26px Inter, Segoe UI, sans-serif';
+      ctx.fillText('Source links. Status checks. Evidence trails.', W / 2, 632);
+      ctx.restore();
+    }
+
+    function draw(t) {
+      const scene = sceneAt(t);
+      const p = clamp01((t - scene.start) / (scene.end - scene.start));
+      drawBackground(t);
+      if (scene.mode !== 'final') drawText(scene, p);
+      if (scene.mode === 'chaos') drawChaos(t, p);
+      if (scene.mode === 'product') drawProduct(t, p);
+      if (scene.mode === 'proof') drawProof(t, p);
+      if (scene.mode === 'final') {
+        drawText(scene, p);
+        drawFinal(t, p);
+      }
+      ctx.fillStyle = 'rgba(238, 247, 241, 0.45)';
+      ctx.font = '600 20px Inter, sans-serif';
+      ctx.fillText(`${Math.min(duration, t).toFixed(1)}s / 30.0s`, 110, 1005);
+      ctx.fillStyle = 'rgba(68, 194, 129, 0.72)';
+      roundRect(110, 1030, (W - 220) * clamp01(t / duration), 12, 6);
+      ctx.fill();
+    }
+
+    function play() {
+      const start = performance.now();
+      function frame(now) {
+        const t = (now - start) / 1000;
+        draw(Math.min(t, duration));
+        if (t < duration) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    async function record() {
+      downloadLink.hidden = true;
+      recordButton.disabled = true;
+      recordButton.textContent = 'Recording...';
+      const stream = canvas.captureStream(30);
+      const recorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9' });
+      const chunks = [];
+      recorder.ondataavailable = (event) => {
+        if (event.data.size > 0) chunks.push(event.data);
+      };
+      const done = new Promise((resolve) => {
+        recorder.onstop = resolve;
+      });
+      recorder.start(250);
+      const start = performance.now();
+      function frame(now) {
+        const t = (now - start) / 1000;
+        draw(Math.min(t, duration));
+        if (t < duration) {
+          requestAnimationFrame(frame);
+        } else {
+          recorder.stop();
+        }
+      }
+      requestAnimationFrame(frame);
+      await done;
+      const blob = new Blob(chunks, { type: 'video/webm' });
+      const url = URL.createObjectURL(blob);
+      downloadLink.href = url;
+      downloadLink.hidden = false;
+      recordButton.disabled = false;
+      recordButton.textContent = 'Record WebM';
+      window.__recordingDone = true;
+      window.__recordingSize = blob.size;
+      window.__recordingUrl = url;
+      window.__recordingBlob = blob;
+    }
+
+    playButton.addEventListener('click', play);
+    recordButton.addEventListener('click', () => void record());
+    draw(0);
+  </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "oid-intelligence-lab-ad-video",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "record": "node scripts/record-webm.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.61.0"
+  }
+}
