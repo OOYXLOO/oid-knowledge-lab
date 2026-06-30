@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Premade Plugin Config Case Study - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Product configuration case study</p>
+      <h1>Turn low-level plugin defaults into named premade configurations</h1>
+      <p class="summary">A small installer UX change that makes partner onboarding less ambiguous: show a named standard configuration first, while preserving custom editing for installed plugins.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="ci-storage-check-case-study.html">CI storage case</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/premade-plugin-config-case-study.md">Markdown case study</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Case study metrics">
+      <article><span>Surface</span><strong>Plugin installer</strong><small>Template selector</small></article>
+      <article><span>Problem</span><strong>Decision load</strong><small>Too many defaults</small></article>
+      <article><span>Fix</span><strong>Named premade</strong><small>Metadata plus plugins</small></article>
+      <article><span>Scope</span><strong>3 files</strong><small>Small UX patch</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Configuration shape</p>
+        <h2>Make the product promise explicit</h2>
+        <p class="panel-copy">The standard configuration now has a name, description, and version. That gives the UI a product-level label instead of exposing an implementation-level template name.</p>
+        <pre><code>interface PremadeConfig {
+  metadata: { name: string; description: string; version: string };
+  plugins: Record&lt;string, { yamlConfig: string }&gt;;
+}</code></pre>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Review frame</p>
+        <h2>Default path without removing control</h2>
+        <p class="panel-copy">The primary selector can show `UbiquityOS Standard Config` and `Custom`. New partners get a clear recommended path; experienced teams can still edit installed plugin configuration directly.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+

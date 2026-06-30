@@ -14,6 +14,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Technical rigor proof: <https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
 - CI storage check case study: <https://ooyxloo.github.io/oid-knowledge-lab/ci-storage-check-case-study.html>
+- Premade plugin config case study: <https://ooyxloo.github.io/oid-knowledge-lab/premade-plugin-config-case-study.html>
 - Editor assignment fit: <https://ooyxloo.github.io/oid-knowledge-lab/editor-assignment-fit.html>
 - Unleash continuous delivery packet: <https://ooyxloo.github.io/oid-knowledge-lab/unleash-continuous-delivery-one-link.html>
 - Honeybadger debugging packet: <https://ooyxloo.github.io/oid-knowledge-lab/honeybadger-debugging-one-link.html>
