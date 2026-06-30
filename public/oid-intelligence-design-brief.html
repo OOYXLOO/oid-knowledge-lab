@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OID Intelligence Lab Design Brief</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .brief-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.78fr);
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+    .brief-hero h1 {
+      max-width: 860px;
+      margin-bottom: 16px;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 0.98;
+    }
+    .brief-hero p {
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+    .brief-figure {
+      margin: 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfe;
+    }
+    .brief-figure img {
+      display: block;
+      width: 100%;
+      border-radius: 6px;
+    }
+    .brief-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .brief-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdfe;
+    }
+    .brief-card span {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .brief-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+    .brief-card p,
+    .flow-list li {
+      color: var(--muted);
+      line-height: 1.58;
+    }
+    .flow-list {
+      display: grid;
+      gap: 10px;
+      padding-left: 20px;
+    }
+    .callout {
+      border-left: 4px solid var(--accent);
+      padding: 16px 18px;
+      background: #eef6f8;
+      color: var(--ink);
+      line-height: 1.62;
+    }
+    @media (max-width: 880px) {
+      .brief-hero,
+      .brief-grid {
+        grid-template-columns: 1fr;
+      }
+      .brief-hero {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <nav class="top-nav" aria-label="Project navigation">
+      <a href="index.html">OID Knowledge Lab</a>
+      <a href="oid-intelligence-lab.html">Product page</a>
+      <a href="oid-portfolio-risk-console.html">Risk console</a>
+      <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+    </nav>
+
+    <section class="brief-hero">
+      <div>
+        <h1>OID Intelligence Lab Design Brief</h1>
+        <p>
+          A public knowledge graph and validation workflow for Object Identifiers used in
+          certificates, PKI policies, cryptography, healthcare, telecom, device schemas, and
+          enterprise identity infrastructure.
+        </p>
+        <div class="links">
+          <a href="oid-intelligence-lab.html">Open product page</a>
+          <a href="index.html">Explore data browser</a>
+          <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Review source</a>
+        </div>
+      </div>
+      <figure class="brief-figure">
+        <img src="assets/oid-intelligence-design-brief-diagram.png" alt="OID Intelligence Lab architecture and evidence workflow">
+      </figure>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Design problem</p>
+      <h2>Critical identifiers are treated like opaque strings.</h2>
+      <p class="panel-copy">
+        Object Identifiers quietly define trust boundaries across certificates, algorithms,
+        policy documents, standards, device schemas, and enterprise integrations. Public data exists,
+        but it is fragmented across directory pages, registry references, and specification documents.
+        Teams usually see a dotted number, not a reviewable map of source, ownership, neighboring arcs,
+        hierarchy, and change risk.
+      </p>
+      <div class="brief-grid">
+        <article class="brief-card">
+          <span>Hidden cost</span>
+          <strong>Late discovery</strong>
+          <p>Identifier mistakes often appear after integration, certificate rollout, audit review, or standards mapping.</p>
+        </article>
+        <article class="brief-card">
+          <span>Data gap</span>
+          <strong>No shared review surface</strong>
+          <p>Engineers, security reviewers, and standards researchers lack one compact place to inspect public evidence.</p>
+        </article>
+        <article class="brief-card">
+          <span>Design need</span>
+          <strong>Traceable confidence</strong>
+          <p>A useful tool must show not just an OID value, but where it came from and why it should be trusted.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Proposed solution</p>
+      <h2>A lightweight OID risk-intelligence layer.</h2>
+      <ol class="flow-list">
+        <li><strong>Collect public records:</strong> source-linked OID directory metadata, parent arcs, labels, descriptions, and references.</li>
+        <li><strong>Model the graph:</strong> turn isolated dotted identifiers into a navigable relationship map.</li>
+        <li><strong>Validate evidence:</strong> flag malformed arcs, missing hierarchy links, duplicated descriptions, stale source URLs, and suspicious neighboring patterns.</li>
+        <li><strong>Publish reproducibly:</strong> generate static pages and report artifacts that can be reviewed without server secrets or private customer data.</li>
+      </ol>
+      <p class="callout">
+        The prototype favors transparency over black-box automation: every useful claim should point back to a public source, generated artifact, or reproducible repository path.
+      </p>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Why it matters</p>
+      <h2>Better identifier visibility reduces avoidable engineering and compliance risk.</h2>
+      <div class="brief-grid">
+        <article class="brief-card">
+          <span>Security</span>
+          <strong>PKI and certificate review</strong>
+          <p>Map certificate policy OIDs, check source references, and prepare safer rollout notes before production use.</p>
+        </article>
+        <article class="brief-card">
+          <span>Standards</span>
+          <strong>Namespace research</strong>
+          <p>Compare neighboring arcs and public evidence before documenting or reusing an identifier.</p>
+        </article>
+        <article class="brief-card">
+          <span>Operations</span>
+          <strong>Governance exports</strong>
+          <p>Provide compact, source-linked evidence pages for internal review, audits, and AI-assisted documentation workflows.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Prototype evidence</p>
+      <h2>Public review links.</h2>
+      <table class="handoff-table">
+        <tbody>
+          <tr><td><a href="oid-intelligence-lab.html">Product page</a></td><td>Problem statement, architecture, use cases, and prototype evidence.</td></tr>
+          <tr><td><a href="index.html">Public browser</a></td><td>Static OID and PEN browsing surface with generated search artifacts.</td></tr>
+          <tr><td><a href="oid-portfolio-risk-console.html">Risk console</a></td><td>Browser-only assessment workflow for small OID inventories.</td></tr>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a></td><td>Versioned source, generated assets, and reproducibility trail.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
