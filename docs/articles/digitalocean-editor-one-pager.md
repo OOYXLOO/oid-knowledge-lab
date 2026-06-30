@@ -1,53 +1,58 @@
-# DigitalOcean editor one-pager: static evidence dashboard with Node.js
+# DigitalOcean editor one-pager: generated media provenance ledger
 
-This one-pager supports a DigitalOcean Community tutorial idea. It is not a finished publication draft.
+This one-pager supports a DigitalOcean Community tutorial topic proposal. It is not a finished publication draft.
 
 ## Working title
 
-Build a Static Evidence Dashboard with Node.js, GitHub Pages, and a Publish Guard
+How To Build a Static Generated-Media Provenance Ledger with Node.js and Object-Storage Manifests
 
 ## One-sentence pitch
 
-Show developers how to generate JSON and Markdown review artifacts with Node.js, publish them as a small static dashboard, and block unsafe generated files before release.
+Show developers how to model generated media runs as auditable JSON records, pair media objects with sidecar metadata, verify object keys and checksums with Node.js, and publish a static reviewer dashboard that can later be adapted to object storage such as DigitalOcean Spaces.
 
 ## Why this fits DigitalOcean Community readers
 
-DigitalOcean tutorials work best when readers can follow a practical, reproducible workflow. This article focuses on a small Node.js project that requires no database, no long-running backend, and no private cloud credentials. Readers can adapt it for release notes, audit summaries, data-quality checks, documentation review packs, or small internal reporting surfaces.
+DigitalOcean readers often need practical cloud-friendly workflows rather than abstract architecture notes. This tutorial would teach a small, reproducible pattern for AI media operations:
+
+- keep prompt, model, seed, review, and safety metadata beside each asset;
+- generate media-object and JSON sidecar manifests;
+- verify object-key uniqueness and media/sidecar pairing;
+- publish a static reviewer dashboard without storing credentials in the public site;
+- explain how the same manifest shape can be connected to object storage in production.
 
 ## Proposed reader outcome
 
 After reading the tutorial, a developer should be able to:
 
-1. Create a small Node.js reporting project.
-2. Convert safe local input into JSON and Markdown artifacts.
-3. Generate an HTML dashboard from the derived reports.
-4. Add a manifest with file hashes, record counts, and source-boundary notes.
-5. Add a publish guard that blocks secrets, raw mirrors, private inventories, and local-only output.
-6. Deploy the static site through GitHub Pages or another static host.
+1. Define a generated-media ledger data model.
+2. Create deterministic sample image, video, and audio run records.
+3. Generate media object manifests and JSON sidecar metadata.
+4. Verify the manifest with a Node.js script.
+5. Render a static React/Vite reviewer dashboard.
+6. Keep the public demo credential-free while leaving a clear path to a live storage adapter.
 
 ## Proposed outline
 
-1. Introduction: why generated reports need a publish boundary.
-2. Prerequisites: Node.js, npm, Git, and a GitHub repository.
-3. Create the project structure.
-4. Add a safe sample input file.
-5. Write a Node.js report generator.
-6. Generate JSON, Markdown, and HTML output.
-7. Add a manifest and publish guard.
-8. Deploy the static dashboard.
-9. Verify the workflow with tests and expected output.
-10. Extend the pattern for other review workflows.
+1. Introduction: generated media needs provenance, not just file previews.
+2. Prerequisites: Node.js, npm, Git, and a static host.
+3. Define the ledger schema.
+4. Add sample generated image, video, and audio runs.
+5. Generate media and sidecar object manifests.
+6. Verify object keys, checksums, and media/sidecar pairing.
+7. Build the reviewer dashboard.
+8. Publish the static site.
+9. Discuss how to connect the manifest shape to object storage such as DigitalOcean Spaces.
 
 ## Proof links
 
-- Working dashboard: <https://ooyxloo.github.io/oid-knowledge-lab/>
+- Reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/digitalocean-reviewer-hub.html>
+- Working app: <https://media-ledger-studio-static.vercel.app/>
+- Source snapshot: <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio>
+- Adapter verification report: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/integration-adapter-verification.json>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
-- Implementation proof: <https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html>
-- Static dashboard sample: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/static-evidence-dashboard-github-pages.md>
-- Source repository: <https://github.com/OOYXLOO/oid-knowledge-lab>
 
 ## Publication boundary
 
-The public sample contains derived reports, safe example inputs, public proof links, and generated dashboard artifacts. It does not publish credentials, customer inventories, account exports, payment data, API tokens, cookies, raw third-party page-body mirrors, contact-level exports, or local-only crawl output.
+The current proof-of-work uses deterministic synthetic records and a dry-run adapter verification script. The submitted tutorial should be honest about that boundary. It should only describe live DigitalOcean Spaces usage if a live Spaces-backed implementation is added and verified before drafting.
 
-If accepted, the final tutorial should be freshly written for DigitalOcean's tutorial format, style guide, and technical review process.
+If accepted, the final tutorial should be freshly written for DigitalOcean's tutorial format, style guide, originality requirements, and technical review process.
