@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Civo Tutorial Proposal: Cloud-Native Media Provenance</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .pitch-hero {
+      border-bottom: 1px solid var(--line);
+      padding: 34px 0 22px;
+    }
+
+    .pitch-hero h1 {
+      max-width: 940px;
+    }
+
+    .pitch-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+      gap: 18px;
+      align-items: start;
+      margin: 24px 0;
+    }
+
+    .pitch-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 18px;
+    }
+
+    .pitch-panel p,
+    .pitch-panel li {
+      line-height: 1.65;
+    }
+
+    .pitch-panel ol,
+    .pitch-panel ul {
+      padding-left: 22px;
+    }
+
+    .proof-list {
+      display: grid;
+      gap: 12px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .proof-list a {
+      display: block;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfdfe;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .pitch-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="pitch-hero">
+      <p class="eyebrow">Civo tutorial proposal</p>
+      <h1>Build a Cloud-Native Provenance Ledger for AI-Generated Media Assets</h1>
+      <p class="summary">A practical tutorial pitch for building a small cloud-native workflow that tracks generated media records, review status, storage object keys, hashes, and delivery notes before public reuse.</p>
+      <div class="links">
+        <a href="media-provenance-studio.html">Public demo</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio">Related source snapshot</a>
+      </div>
+    </section>
+
+    <section class="pitch-grid">
+      <article class="pitch-panel">
+        <h2>Reader Problem</h2>
+        <p>Generated media workflows often break down after the asset is created. The final file may look ready, but the team still needs prompt summary, model note, storage location, review status, license notes, and a checksum or object key that proves the handoff.</p>
+
+        <h2>Tutorial Outcome</h2>
+        <p>Readers will build a small provenance workflow that can run as a simple web application and later connect to cloud object storage. The tutorial will define an asset record, build a review UI, model storage metadata, export delivery sheets, and add review checkpoints before public reuse.</p>
+
+        <h2>Civo Fit</h2>
+        <p>This is not a vendor promotion or project announcement. The article would be an original Civo tutorial that connects practical web development with deployable cloud architecture: a containerizable app, an API boundary, object-storage-ready metadata, and a security-minded review workflow.</p>
+      </article>
+
+      <aside class="pitch-panel">
+        <h2>Outline</h2>
+        <ol>
+          <li>Why generated media handoff needs provenance</li>
+          <li>The minimum useful asset record</li>
+          <li>Modeling review state and storage metadata</li>
+          <li>Building the small review UI</li>
+          <li>Designing the API boundary before connecting object storage</li>
+          <li>Exporting JSON and Markdown delivery sheets</li>
+          <li>Adding a publication checklist</li>
+          <li>Deployment notes for a cloud-native Civo workflow</li>
+          <li>Common mistakes and final checklist</li>
+        </ol>
+
+        <h2>Proof Links</h2>
+        <ul class="proof-list">
+          <li><a href="media-provenance-studio.html">Generated media provenance demo</a></li>
+          <li><a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio">Related source snapshot</a></li>
+          <li><a href="writing-samples.html">Writing samples</a></li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
