@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "mode": "dry-run",
+  "readyForLiveRun": false,
+  "missingEnv": [
+    "B2_APP_ID",
+    "B2_APP_VALUE",
+    "B2_BUCKET_NAME",
+    "GENBLAZE_AUTH_VALUE",
+    "GENBLAZE_ENDPOINT"
+  ],
+  "checks": {
+    "uploadPairsMatch": true,
+    "objectKeysUnique": true,
+    "genblazeRequestsComplete": true,
+    "mediaUploads": 3,
+    "sidecarUploads": 3,
+    "genblazeRequests": 3
+  },
+  "firstObjects": {
+    "media": "challenge-dry-run/projects/editorial-cover/run-cover-001/final.png",
+    "sidecar": "challenge-dry-run/projects/editorial-cover/run-cover-001/final.png.metadata.json",
+    "model": "genblaze-image-studio-v1"
+  }
+}

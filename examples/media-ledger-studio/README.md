@@ -36,6 +36,8 @@ npm test
 npm run build
 npm run audit:local
 npm run export:devpost-fields
+npm run export:integration-readiness
+npm run verify:integration
 ```
 
 ```bash
@@ -45,3 +47,5 @@ npm run dev
 ## Public Safety
 
 This repository does not include credentials, private media, user account data, payment data, or API keys. All bundled records are synthetic examples.
+
+`npm run verify:integration` writes `docs/integration-adapter-verification.json`. With no live credentials it verifies the dry-run B2 object plan, JSON sidecar pairing, Genblaze request plan, and missing environment checklist. With the required environment variables set, it switches the report to `live-ready` without printing credential values.

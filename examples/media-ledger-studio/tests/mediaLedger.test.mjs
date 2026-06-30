@@ -88,6 +88,23 @@ assert.deepEqual(liveBundle.publicReviewLinks[0].requiredUploadPair, [
   liveBundle.b2UploadPlan[1].objectKey
 ]);
 
+const liveReadyBundle = createLiveIntegrationBundle(sampleRuns, {
+  env: {
+    B2_APP_ID: "demo-app-id",
+    B2_APP_VALUE: "demo-app-value",
+    B2_BUCKET_NAME: "live-bucket",
+    GENBLAZE_AUTH_VALUE: "demo-auth-value",
+    GENBLAZE_ENDPOINT: "https://genblaze.example.test/v1/generate"
+  }
+});
+assert.equal(liveReadyBundle.mode, "live-ready");
+assert.equal(liveReadyBundle.missingEnv.length, 0);
+assert.equal(liveReadyBundle.b2UploadPlan.every((item) => item.bucket === "live-bucket"), true);
+assert.equal(
+  liveReadyBundle.genblazeRequestPlan.every((request) => request.endpoint === "https://genblaze.example.test/v1/generate"),
+  true
+);
+
 const readinessReport = createIntegrationReadinessReport(sampleRuns, {
   publicBaseUrl: "https://media-ledger-studio-static.vercel.app",
   b2Prefix: "challenge-dry-run"
@@ -102,5 +119,18 @@ assert.equal(readinessReport.totals.totalMediaBytes, summary.totalBytes);
 assert.match(readinessReport.firstB2MediaObject, /^challenge-dry-run\//);
 assert.match(readinessReport.firstB2SidecarObject, /^challenge-dry-run\//);
 assert.match(readinessReport.blockerSummary, /Missing 5 live environment variable/);
+
+const liveReadyReport = createIntegrationReadinessReport(sampleRuns, {
+  env: {
+    B2_APP_ID: "demo-app-id",
+    B2_APP_VALUE: "demo-app-value",
+    B2_BUCKET_NAME: "live-bucket",
+    GENBLAZE_AUTH_VALUE: "demo-auth-value",
+    GENBLAZE_ENDPOINT: "https://genblaze.example.test/v1/generate"
+  }
+});
+assert.equal(liveReadyReport.mode, "live-ready");
+assert.equal(liveReadyReport.readyForLiveRun, true);
+assert.match(liveReadyReport.blockerSummary, /All live environment variables are present/);
 
 console.log("mediaLedger tests passed");
