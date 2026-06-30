@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Reviewer Readiness - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Code reviewer readiness</p>
+      <h1>Practical review signals for JavaScript, TypeScript, and Node.js work</h1>
+      <p class="summary">A neutral public packet for teams evaluating code-review judgment: correctness, edge cases, maintainability, test evidence, source boundaries, and clear written feedback.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="code-reviewer-portfolio.html">Code reviewer portfolio</a>
+        <a href="technical-rigor-proof.html">Technical rigor proof</a>
+        <a href="ai-reviewability-brief.html">AI reviewability brief</a>
+        <a href="evidence-log-playground.html">Evidence log demo</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Reviewer readiness metrics">
+      <article><span>Stack</span><strong>JS/TS</strong><small>Node and browser tools</small></article>
+      <article><span>Focus</span><strong>Risk</strong><small>Edges and defaults</small></article>
+      <article><span>Output</span><strong>Clear</strong><small>Actionable written feedback</small></article>
+      <article><span>Boundary</span><strong>Clean</strong><small>No private assessment data</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Review approach</p>
+        <h2>Separate confirmed behavior from likely risk</h2>
+        <p class="panel-copy">The review style is evidence-first: identify the intended behavior, inspect the implementation path, check untested or surprising defaults, and write feedback that another engineer can act on without guessing the reviewer's reasoning.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Assessment fit</p>
+        <h2>What this packet is meant to demonstrate</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Signal</th><th>What to look for</th></tr></thead>
+        <tbody>
+          <tr><td>Correctness</td><td>Does the implementation match the stated behavior, including defaults and error paths?</td></tr>
+          <tr><td>Edge cases</td><td>Are null, undefined, empty input, nested data, async failure, and invalid state considered?</td></tr>
+          <tr><td>Maintainability</td><td>Is the code easy to read, scoped to the problem, and consistent with local patterns?</td></tr>
+          <tr><td>Test evidence</td><td>Do the tests prove the behavior that matters, or only exercise the happy path?</td></tr>
+          <tr><td>Written feedback</td><td>Can the recipient understand severity, impact, and next action quickly?</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Public examples</p>
+        <h2>Related proof artifacts</h2>
+      </div>
+      <ol class="numbered-list">
+        <li><a href="code-reviewer-portfolio.html">Code reviewer portfolio</a>: compact code-review positioning and sample review themes.</li>
+        <li><a href="technical-rigor-proof.html">Technical rigor proof</a>: public verification and implementation notes for this workspace.</li>
+        <li><a href="ai-reviewability-brief.html">AI reviewability brief</a>: method for separating generated claims, source evidence, blockers, and final decisions.</li>
+        <li><a href="evidence-log-playground.html">Evidence log playground</a>: browser-only handoff pattern for source facts, draft claims, reviewer checks, and decisions.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Privacy boundary</p>
+        <h2>Assessment-safe handling</h2>
+        <p class="panel-copy">This public packet does not include private assessment prompts, candidate code, platform screenshots, credentials, account data, payment details, contracts, or copied third-party material. Private review work should stay inside the platform that owns it.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
