@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OID Intelligence Lab Entry Field Card</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Design entry field card</p>
+      <h1>OID Intelligence Lab: A Public Knowledge Graph for Safer Digital Identity Infrastructure</h1>
+      <p class="summary">A copy-ready project summary for design review forms, focused on public Object Identifier data, certificate and identity infrastructure, source-linked evidence, and reproducible analysis.</p>
+      <div class="links">
+        <a href="oid-intelligence-design-brief.html">Design brief</a>
+        <a href="oid-intelligence-lab.html">Product page</a>
+        <a href="./">Public browser</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Entry summary">
+      <article><span>Suggested category</span><strong>Electronics</strong><small>Sensors / IoT / identity infrastructure</small></article>
+      <article><span>Stage</span><strong>Prototype</strong><small>Public site and reproducible workflow</small></article>
+      <article><span>Core users</span><strong>PKI teams</strong><small>Security, standards, compliance</small></article>
+      <article><span>Boundary</span><strong>Public data</strong><small>No private inventories or credentials</small></article>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Short summary</p>
+      <p class="panel-copy">OID Intelligence Lab turns scattered public Object Identifier data into a searchable, verifiable knowledge graph for digital identity infrastructure. OIDs define certificate policies, cryptographic algorithms, PKI extensions, medical identifiers, enterprise schemas, and other trust-critical systems, yet public data is hard to inspect or audit. The Lab collects public OID references, preserves source links, validates hierarchy and metadata, and presents the result through a lightweight browser and analysis pipeline. Security teams, standards researchers, and developers can use it to discover duplicated arcs, stale references, suspicious naming patterns, and infrastructure dependencies before they become costly integration or compliance failures.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Form fields</p>
+        <h2>Problem, solution, and benefits</h2>
+      </div>
+      <table class="handoff-table">
+        <tbody>
+          <tr><td>Problem</td><td>Object Identifiers are critical to PKI, certificates, cryptography, healthcare, telecom, device schemas, and enterprise identity infrastructure, but public OID information is fragmented and difficult to audit as a connected infrastructure graph.</td></tr>
+          <tr><td>Solution</td><td>OID Intelligence Lab collects public OID records, preserves source references, models parent-child relationships as a knowledge graph, and provides validation plus a searchable public browser. It turns opaque dotted numbers into a reviewable map of source, ownership, neighboring arcs, hierarchy, and change risk.</td></tr>
+          <tr><td>Benefits</td><td>The system can support faster standards research, better certificate and PKI review, earlier detection of stale or duplicated identifiers, and lower integration or compliance risk.</td></tr>
+          <tr><td>Development stage</td><td>Working public prototype and reproducible analysis workflow. The current build is a static browser, source repository, generated public data artifacts, a risk console, and design brief.</td></tr>
+          <tr><td>Novelty</td><td>Most tools treat Object Identifiers as opaque dotted strings or isolated registry rows. OID Intelligence Lab treats them as a reviewable knowledge graph with source references, hierarchy, neighboring arcs, validation checks, and governance-oriented review surfaces.</td></tr>
+          <tr><td>Potential users</td><td>PKI and certificate teams, security reviewers, standards researchers, healthcare and telecom integration teams, device and enterprise identity schema maintainers, and compliance or documentation groups that need source-linked identifier evidence.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Image caption</p>
+      <h2>Architecture diagram</h2>
+      <figure class="note">
+        <img src="assets/oid-intelligence-design-brief-diagram.png" alt="OID Intelligence Lab architecture and evidence workflow" style="width:100%;border-radius:8px;border:1px solid var(--line);">
+      </figure>
+      <p class="panel-copy">OID Intelligence Lab architecture: public OID records are collected with source references, modeled as a graph, validated for hierarchy and metadata quality, and published as a searchable review surface.</p>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Public boundary</p>
+      <p class="panel-copy">The prototype uses public OID and registry references plus generated analysis artifacts. It does not include private customer inventories, credentials, tokens, payment data, account exports, or proprietary third-party datasets.</p>
+    </section>
+  </main>
+</body>
+</html>
