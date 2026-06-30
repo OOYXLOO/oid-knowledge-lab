@@ -13,6 +13,9 @@ An operations ledger for generated media provenance, review, and Backblaze B2 st
 - App: https://media-ledger-studio-static.vercel.app
 - Source repository: https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio
 - Demo video: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4
+- Integration readiness: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-integration-readiness.html
+- Sidecar integrity report: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/sidecar-integrity-report.json
+- Integration adapter verification: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/integration-adapter-verification.json
 
 ## Built With
 
@@ -46,7 +49,14 @@ The app is built around generated media operations: prompt intake, Genblaze-shap
 
 ## Challenge Readiness
 
-Readiness score: 100/100. image run present; video run present; audio run present; B2-shaped storage manifest complete; Genblaze-shaped run metadata complete. Current blocker: No submission blockers in the current checklist.
+Dry-run readiness is verified. The project includes an image run, video run, audio run, B2-shaped storage manifest, Genblaze-shaped run metadata, sidecar records, and adapter verification. The current live-integration blocker is missing real B2 and Genblaze environment variables, so the submission should be described as a dry-run prototype unless live proof is added.
+
+Latest local checks:
+
+- `npm run check`: passed.
+- `npm test`: passed.
+- `npm run verify:sidecars`: `ok: true`, `mode: dry-run`, 3 media objects, 3 sidecars, 3 linked pairs.
+- `npm run verify:integration`: `ok: true`, `mode: dry-run`, `readyForLiveRun: false`.
 
 ## Storage Handoff Summary
 
@@ -54,4 +64,4 @@ The bundled manifest covers 3 generated assets with bucket, object key, content 
 
 ## What's Next
 
-Set the live Backblaze B2 and Genblaze environment variables, run the dry-run adapter bundle, then switch the adapter mode from dry-run to live uploads.
+Set the live Backblaze B2 and Genblaze environment variables, run the adapter without printing or storing secrets, capture a safe proof summary, and then upgrade the submission wording from dry-run prototype to live integration.
