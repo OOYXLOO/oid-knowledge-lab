@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QA Bug Handoff Playbook</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .handoff-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(340px, 1.1fr);
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .bug-card,
+    .evidence-card {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: #fff;
+    }
+    .bug-card h3,
+    .evidence-card h3 {
+      margin: 0 0 10px;
+    }
+    .bug-card p,
+    .evidence-card p {
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #fff3d4;
+      color: #7a4a00;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .checklist {
+      display: grid;
+      gap: 12px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .checklist li {
+      padding: 14px 16px;
+      border-left: 4px solid var(--accent);
+      background: #f8fafc;
+      color: var(--muted);
+    }
+    .console-box {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 14px;
+      background: #0f172a;
+      color: #dbeafe;
+      font: 0.88rem/1.55 "SFMono-Regular", Consolas, monospace;
+      overflow-x: auto;
+    }
+    .handoff-table td:first-child {
+      width: 160px;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    @media (max-width: 880px) {
+      .handoff-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="top-nav" aria-label="Project navigation">
+      <a href="index.html">OID Knowledge Lab</a>
+      <a href="writing-samples.html">Writing samples</a>
+      <a href="editor-trust-packet.html">Editor trust packet</a>
+      <a href="implementation-authenticity-proof.html">Implementation proof</a>
+    </nav>
+
+    <section class="hero">
+      <p class="eyebrow">QA and developer handoff sample</p>
+      <h1>Turn a vague bug report into reproducible evidence.</h1>
+      <p class="summary">
+        A practical article sample showing how a frontend bug report can move from "checkout is broken"
+        to a concise QA handoff with reproduction steps, browser evidence, Playwright checks, and acceptance criteria.
+      </p>
+      <div class="links">
+        <a href="#handoff">Read handoff</a>
+        <a href="#playwright">Playwright evidence</a>
+        <a href="writing-samples.html">More samples</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Before</p>
+      <h2>The vague report.</h2>
+      <div class="handoff-layout">
+        <article class="bug-card">
+          <span class="status-pill">Weak report</span>
+          <h3>"Checkout is broken on Chrome."</h3>
+          <p>
+            This tells engineering almost nothing. The report lacks environment, steps, expected result,
+            actual result, visible screenshot, console context, network context, and a way to verify the fix.
+          </p>
+        </article>
+        <article class="evidence-card">
+          <h3>What a useful report must answer</h3>
+          <ul class="checklist">
+            <li><strong>Where did it fail?</strong> Browser, route, viewport, user state, and test data.</li>
+            <li><strong>How do we reproduce it?</strong> Short deterministic steps, not a story.</li>
+            <li><strong>What should have happened?</strong> A specific expected outcome.</li>
+            <li><strong>What actually happened?</strong> Screenshot, console message, network clue, or state mismatch.</li>
+            <li><strong>How do we know it is fixed?</strong> Acceptance checks and a repeatable verification path.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="handoff" class="panel">
+      <p class="eyebrow">After</p>
+      <h2>A developer-ready QA handoff.</h2>
+      <table class="handoff-table">
+        <tbody>
+          <tr><td>Title</td><td>Checkout submit button stays disabled after valid coupon removal.</td></tr>
+          <tr><td>Environment</td><td>Chrome stable, desktop viewport, staging checkout, test cart with one item.</td></tr>
+          <tr><td>Steps</td><td>Open checkout, add coupon `SAVE10`, remove coupon, fill required fields, observe submit button.</td></tr>
+          <tr><td>Expected</td><td>Submit button re-enables when all required fields are valid and coupon state is cleared.</td></tr>
+          <tr><td>Actual</td><td>Submit button remains disabled; console shows stale coupon validation state.</td></tr>
+          <tr><td>Evidence</td><td>Screenshot of disabled button, console warning, network response for coupon removal, Playwright check.</td></tr>
+          <tr><td>Acceptance</td><td>Button becomes enabled after coupon removal and required fields are valid; no stale coupon warning remains.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="playwright" class="panel">
+      <p class="eyebrow">Automation evidence</p>
+      <h2>Use Playwright to preserve the failure path.</h2>
+      <p class="panel-copy">
+        The goal is not to replace a visual bug report. It is to add a deterministic check that confirms the
+        reproduction path and gives engineering a fast way to validate the fix.
+      </p>
+      <div class="console-box">test('checkout submit re-enables after coupon removal', async ({ page }) => {
+  await page.goto('/checkout');
+  await page.getByLabel('Coupon').fill('SAVE10');
+  await page.getByRole('button', { name: 'Apply coupon' }).click();
+  await page.getByRole('button', { name: 'Remove coupon' }).click();
+  await page.getByLabel('Email').fill('buyer@example.com');
+  await page.getByLabel('Card number').fill('4242424242424242');
+  await expect(page.getByRole('button', { name: 'Place order' })).toBeEnabled();
+});</div>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Article outline</p>
+      <h2>Proposed tutorial flow.</h2>
+      <ol class="checklist">
+        <li>Why vague bug reports waste engineering time.</li>
+        <li>Define the minimum useful QA handoff fields.</li>
+        <li>Build a small reproducible checkout bug scenario.</li>
+        <li>Capture screenshot, console, and network evidence without leaking private data.</li>
+        <li>Use Playwright to turn the reproduction into a verification check.</li>
+        <li>Package expected behavior, actual behavior, evidence, and acceptance criteria.</li>
+        <li>Close the loop after the fix: rerun, attach proof, and update the handoff.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Safety boundary</p>
+      <h2>Evidence without sensitive data.</h2>
+      <p class="panel-copy">
+        The handoff should never include credentials, cookies, payment data, identity documents, raw production logs,
+        private customer records, or internal account pages. Use sanitized test data and capture only the context needed
+        to reproduce and verify the bug.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
