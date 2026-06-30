@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Media Ledger Integration Readiness - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Media Ledger Studio readiness</p>
+      <h1>Dry-run integration plan for generated media storage handoff.</h1>
+      <p class="summary">This page summarizes the credential-free adapter report behind Media Ledger Studio. It shows the planned Backblaze B2 media objects, JSON sidecars, Genblaze generation requests, and public review links without exposing or requiring live provider credentials.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="media-ledger-sidecar-proof.html">Sidecar proof</a>
+        <a href="media-provenance-studio.html">Media provenance studio</a>
+        <a href="https://media-ledger-studio-static.vercel.app">Live app</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio">Source snapshot</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Integration readiness summary">
+      <article><span>Mode</span><strong>Dry-run</strong><small>No live credentials included</small></article>
+      <article><span>Media uploads</span><strong>3</strong><small>Image, video, audio objects</small></article>
+      <article><span>Sidecars</span><strong>3</strong><small>JSON metadata records</small></article>
+      <article><span>Genblaze requests</span><strong>3</strong><small>Provider-shaped request plans</small></article>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Adapter boundary</p>
+      <h2>What the dry-run proves</h2>
+      <p class="panel-copy">The export confirms that every generated media run has a planned B2 media object, a paired JSON sidecar, a Genblaze-shaped request, and a public review URL. A live run can replace the dry-run environment with real provider credentials while preserving the same review ledger shape.</p>
+      <table class="handoff-table">
+        <thead><tr><th>Signal</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Mode</td><td>dry-run</td></tr>
+          <tr><td>Ready for live run</td><td>false, because provider credentials are intentionally absent from the public build</td></tr>
+          <tr><td>Total media bytes</td><td>18,090,224 bytes / 17.25 MB</td></tr>
+          <tr><td>First B2 media object</td><td>challenge-dry-run/projects/editorial-cover/run-cover-001/final.png</td></tr>
+          <tr><td>First B2 sidecar object</td><td>challenge-dry-run/projects/editorial-cover/run-cover-001/final.png.metadata.json</td></tr>
+          <tr><td>First Genblaze model</td><td>genblaze-image-studio-v1</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Review links</p>
+      <h2>Planned upload pairs and public review URLs</h2>
+      <table class="handoff-table">
+        <thead><tr><th>Run</th><th>Required upload pair</th><th>Review URL</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>run-cover-001</td>
+            <td>final.png + final.png.metadata.json</td>
+            <td><a href="https://media-ledger-studio-static.vercel.app/?run=run-cover-001">Open review</a></td>
+          </tr>
+          <tr>
+            <td>run-storyboard-014</td>
+            <td>storyboard.webm + storyboard.webm.metadata.json</td>
+            <td><a href="https://media-ledger-studio-static.vercel.app/?run=run-storyboard-014">Open review</a></td>
+          </tr>
+          <tr>
+            <td>run-audio-006</td>
+            <td>loop.wav + loop.wav.metadata.json</td>
+            <td><a href="https://media-ledger-studio-static.vercel.app/?run=run-audio-006">Open review</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Live-run checklist</p>
+      <h2>What remains before real provider execution</h2>
+      <p class="panel-copy">The public repository stays credential-free. A live adapter run would require the following environment variables to be present in a private execution environment, not committed to source control.</p>
+      <table class="handoff-table">
+        <thead><tr><th>Variable</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>B2_APP_ID</td><td>Backblaze B2 application key id</td></tr>
+          <tr><td>B2_APP_VALUE</td><td>Backblaze B2 application key value</td></tr>
+          <tr><td>B2_BUCKET_NAME</td><td>Target B2 bucket for media and sidecar objects</td></tr>
+          <tr><td>GENBLAZE_AUTH_VALUE</td><td>Genblaze authorization value</td></tr>
+          <tr><td>GENBLAZE_ENDPOINT</td><td>Genblaze generation endpoint</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Artifacts</p>
+      <h2>Where to inspect the implementation</h2>
+      <table class="handoff-table">
+        <thead><tr><th>Artifact</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>Integration readiness JSON</td><td><a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/integration-readiness-report.json">Open raw report</a></td></tr>
+          <tr><td>Export script</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/media-ledger-studio/scripts/export-integration-readiness.mjs">Open script</a></td></tr>
+          <tr><td>Core ledger model</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/media-ledger-studio/src/mediaLedger.js">Open source</a></td></tr>
+          <tr><td>Tests</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/media-ledger-studio/tests/mediaLedger.test.mjs">Open tests</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
