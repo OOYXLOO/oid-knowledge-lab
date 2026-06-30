@@ -482,6 +482,15 @@ code {
   font-family: "SFMono-Regular", Consolas, monospace;
   font-size: 0.9em;
 }
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+pre code {
+  white-space: inherit;
+}
 .note {
   color: var(--muted);
 }
