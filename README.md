@@ -14,6 +14,7 @@ The current source adapter targets public OID-base pages through the site's site
 - AI reviewability brief: <https://ooyxloo.github.io/oid-knowledge-lab/ai-reviewability-brief.html>
 - Identity research readiness: <https://ooyxloo.github.io/oid-knowledge-lab/auth0-research-readiness.html>
 - Code reviewer readiness: <https://ooyxloo.github.io/oid-knowledge-lab/geektastic-reviewer-readiness.html>
+- JavaScript review sample: <https://ooyxloo.github.io/oid-knowledge-lab/js-review-sample.html>
 - Technical rigor proof: <https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
 - Pilot engagement page: <https://ooyxloo.github.io/oid-knowledge-lab/pilot-engagement.html>
