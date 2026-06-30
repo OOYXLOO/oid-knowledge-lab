@@ -38,6 +38,7 @@ npm run audit:local
 npm run export:devpost-fields
 npm run export:integration-readiness
 npm run verify:integration
+npm run verify:sidecars
 ```
 
 ```bash
@@ -49,3 +50,5 @@ npm run dev
 This repository does not include credentials, private media, user account data, payment data, or API keys. All bundled records are synthetic examples.
 
 `npm run verify:integration` writes `docs/integration-adapter-verification.json`. With no live credentials it verifies the dry-run B2 object plan, JSON sidecar pairing, Genblaze request plan, and missing environment checklist. With the required environment variables set, it switches the report to `live-ready` without printing credential values.
+
+`npm run verify:sidecars` writes `docs/sidecar-integrity-report.json`. It recomputes a SHA-256 digest for each canonical JSON sidecar body and verifies that every sidecar links back to its paired media object key and media checksum.

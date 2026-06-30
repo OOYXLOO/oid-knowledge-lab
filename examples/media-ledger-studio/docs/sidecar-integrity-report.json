@@ -1,0 +1,41 @@
+{
+  "ok": true,
+  "mode": "dry-run",
+  "totals": {
+    "mediaObjects": 3,
+    "sidecars": 3,
+    "linkedPairs": 3
+  },
+  "records": [
+    {
+      "runId": "run-cover-001",
+      "mediaObjectKey": "challenge-dry-run/projects/editorial-cover/run-cover-001/final.png",
+      "sidecarObjectKey": "challenge-dry-run/projects/editorial-cover/run-cover-001/final.png.metadata.json",
+      "mediaChecksumSha256": "9c9f1ee3a4315f8367b39c31d93a4ef5d6a71e9a45c8e66111108b2419a31a77",
+      "sidecarBodySha256": "e15285a9a8858d09d464fa9a35a3c31c8ba5fc396761c31188cc09cba8a3d3ab",
+      "sidecarBytes": 492,
+      "bodyLinksToMediaChecksum": true,
+      "bodyLinksToMediaObject": true
+    },
+    {
+      "runId": "run-storyboard-014",
+      "mediaObjectKey": "challenge-dry-run/projects/launch-storyboard/run-storyboard-014/storyboard.webm",
+      "sidecarObjectKey": "challenge-dry-run/projects/launch-storyboard/run-storyboard-014/storyboard.webm.metadata.json",
+      "mediaChecksumSha256": "4b6e1e673946d762748fbd140af8fd0f7b0fe8de9814be868d77df483cb6a334",
+      "sidecarBodySha256": "54d842c5baea4b9e88cee417fecce770898210ea67b72f6ff3d172116f9359e2",
+      "sidecarBytes": 446,
+      "bodyLinksToMediaChecksum": true,
+      "bodyLinksToMediaObject": true
+    },
+    {
+      "runId": "run-audio-006",
+      "mediaObjectKey": "challenge-dry-run/projects/audio-bed/run-audio-006/loop.wav",
+      "sidecarObjectKey": "challenge-dry-run/projects/audio-bed/run-audio-006/loop.wav.metadata.json",
+      "mediaChecksumSha256": "683d0ac237fe701b7ad2a7325374388f3d78fb8c8a89a66f8d9b97d7c413f442",
+      "sidecarBodySha256": "471f08893f7bc2e3d0abe0ce3d234c302d526aecc79ceaec930ae01703a4c0fd",
+      "sidecarBytes": 433,
+      "bodyLinksToMediaChecksum": true,
+      "bodyLinksToMediaObject": true
+    }
+  ]
+}
