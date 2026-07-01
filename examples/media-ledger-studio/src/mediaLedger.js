@@ -176,7 +176,8 @@ export function createDevpostFields({
     appUrl,
     sourceRepoUrl,
     videoUrl,
-    walkthroughUrl: "https://media-ledger-studio-static.vercel.app/demo-video.html",
+    walkthroughUrl: "https://ooyxloo.github.io/oid-knowledge-lab/demo-video.html",
+    walkthroughRawUrl: "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/gh-pages/demo-video.html",
     providerAndModels: pack.providerModels,
     builtWith:
       "React, Vite, deterministic sample media records, Backblaze B2-shaped object manifests, and Genblaze-shaped generation metadata.",

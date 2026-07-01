@@ -4,7 +4,8 @@
   "appUrl": "https://media-ledger-studio-static.vercel.app",
   "sourceRepoUrl": "https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio",
   "videoUrl": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4",
-  "walkthroughUrl": "https://media-ledger-studio-static.vercel.app/demo-video.html",
+  "walkthroughUrl": "https://ooyxloo.github.io/oid-knowledge-lab/demo-video.html",
+  "walkthroughRawUrl": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/gh-pages/demo-video.html",
   "providerAndModels": [
     {
       "provider": "Genblaze",

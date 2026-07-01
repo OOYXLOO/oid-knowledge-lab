@@ -67,7 +67,8 @@ assert.match(devpostFields.challengeReadiness, /Do not describe this as a live B
 assert.match(devpostFields.storageHandoffSummary, /3 generated assets/);
 assert.match(devpostFields.storageHandoffSummary, /JSON sidecar records/);
 assert.equal(devpostFields.appUrl, "https://media-ledger-studio-static.vercel.app");
-assert.equal(devpostFields.walkthroughUrl, "https://media-ledger-studio-static.vercel.app/demo-video.html");
+assert.equal(devpostFields.walkthroughUrl, "https://ooyxloo.github.io/oid-knowledge-lab/demo-video.html");
+assert.equal(devpostFields.walkthroughRawUrl, "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/gh-pages/demo-video.html");
 assert.match(devpostFields.videoUrl, /media-ledger-studio-demo\.mp4$/);
 assert.match(devpostFields.sourceRepoUrl, /github\.com\/OOYXLOO\/oid-knowledge-lab/);
 assert.match(devpostFields.challengeFit, /Backblaze B2/);
