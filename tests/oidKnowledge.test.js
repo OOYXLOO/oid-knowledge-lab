@@ -2536,6 +2536,17 @@ function testQwenSubmissionPackBuildsJudgingAssets() {
   assert.equal(html.includes("USD " + "200"), false);
 }
 
+function testRepositoryHasOpenSourceLicenseForHackathonSubmission() {
+  const licenseFile = path.join(ROOT, "LICENSE");
+  const packageJson = JSON.parse(fs.readFileSync(path.join(ROOT, "package.json"), "utf8"));
+  const readme = fs.readFileSync(path.join(ROOT, "README.md"), "utf8");
+
+  assert.ok(fs.existsSync(licenseFile), "Top-level LICENSE should exist for hackathon judging.");
+  assert.equal(packageJson.license, "MIT");
+  assert.ok(readme.includes("MIT"));
+  assert.ok(readme.includes("Third-party source data"));
+}
+
 function testQwenSubmissionPackWritesPublicSafeFiles() {
   assert.equal(qwenSubmissionPackModule.__loadError, undefined, qwenSubmissionPackModule.__loadError);
   const { writeQwenSubmissionPack } = qwenSubmissionPackModule;
@@ -2961,6 +2972,7 @@ async function main() {
   testAlibabaFunctionComputeQwenHandlerSanitizesInput();
   testQwenRunReceiptRedactsLiveRunArtifacts();
   testQwenSubmissionPackBuildsJudgingAssets();
+  testRepositoryHasOpenSourceLicenseForHackathonSubmission();
   testQwenSubmissionPackWritesPublicSafeFiles();
   testQwenOneLinkReferencesSubmissionPack();
   testMediaProvenancePackBuildsDeliveryArtifacts();

@@ -127,6 +127,8 @@ Article samples:
 
 ## Compliance Boundary
 
+The source code and original project documentation in this repository are released under the MIT License. Third-party source data, public registry materials, screenshots, trademarks, and externally sourced content remain subject to their respective owners' terms and licenses.
+
 OID-base publishes a robots file and terms of use. The terms say that downloading, printing, or copying from the site must be noncommercial, personal, and limited to a small part of the data unless specific authorization is granted by the site owner.
 
 For that reason this repository does not include a full OID-base mirror. The default command collects only a small sample for parser validation and data-model design. Full collection mode is blocked unless an operator explicitly records that authorization has been granted.
