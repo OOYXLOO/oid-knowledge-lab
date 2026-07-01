@@ -18,6 +18,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Technical rigor proof: <https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
 - Developer docs trial pack: <https://ooyxloo.github.io/oid-knowledge-lab/developer-docs-trial-pack.html>
+- Developer docs sample diagnosis: <https://ooyxloo.github.io/oid-knowledge-lab/developer-docs-sample-diagnosis.html>
 - Technical writing editorial packet: <https://ooyxloo.github.io/oid-knowledge-lab/technical-writing-editorial-packet.html>
 - Launch proof sprint scope: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-sprint-scope.html>
 - Launch proof readiness checklist: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-readiness-checklist.html>
@@ -68,6 +69,7 @@ Last refreshed on 2026-06-26:
 - Hasura reviewer hub: `public/hasura-reviewer-hub.html` supports a GraphQL/Postgres article pitch for OID inventory review workflows.
 - Writing samples review page: `public/writing-samples.html` links editor-facing samples and proof surfaces
 - Developer docs trial pack: `public/developer-docs-trial-pack.html` defines a small, measurable README/quickstart/launch-copy trial for developer-tool teams
+- Developer docs sample diagnosis: `public/developer-docs-sample-diagnosis.html` shows a before/after README opening diagnosis and proof-boundary critique
 - Technical writing editorial packet: `public/technical-writing-editorial-packet.html` groups the strongest article direction, PHP deployment backup sample, proof links, and publication boundaries for editor review
 - Launch proof sprint scope: `public/launch-proof-sprint-scope.html` defines the fixed-scope deliverables, acceptance criteria, safe inputs, and exclusions for a prototype launch proof pass
 - Launch proof readiness checklist: `public/launch-proof-readiness-checklist.html` gives builders a public-safe first-minute review checklist before a demo, README, hackathon submission, or developer-tool launch
