@@ -2502,6 +2502,7 @@ function testQwenSubmissionPackBuildsJudgingAssets() {
   assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-reel.html"));
+  assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-final-submission-overview.html"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-run-receipt.md"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html"));
   assert.ok(pack.architecture.nodes.some((node) => node.id === "qwen"));

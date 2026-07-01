@@ -63,6 +63,7 @@ function buildQwenSubmissionPack(options = {}) {
     },
     proof_links: [
       { label: "Qwen one-link packet", url: link(publicBaseUrl, "qwen-autopilot-agent-one-link.html") },
+      { label: "Qwen final submission overview", url: link(publicBaseUrl, "qwen-final-submission-overview.html") },
       { label: "Qwen demo proof page", url: link(publicBaseUrl, "qwen-demo-proof.html") },
       { label: "Qwen demo reel", url: link(publicBaseUrl, "qwen-demo-reel.html") },
       { label: "Qwen 3-minute walkthrough", url: link(publicBaseUrl, "qwen-3-minute-walkthrough.html") },
@@ -82,6 +83,7 @@ function buildQwenSubmissionPack(options = {}) {
     proof_checklist: [
       { label: "Offline agent demo", status: "ready", evidence: "reports/qwen-agent-demo.md" },
       { label: "Deterministic dataset audit", status: "ready", evidence: "reports/dataset-manifest.json" },
+      { label: "Final submission overview", status: "ready", evidence: link(publicBaseUrl, "qwen-final-submission-overview.html") },
       { label: "Public one-link page", status: "ready", evidence: link(publicBaseUrl, "qwen-autopilot-agent-one-link.html") },
       { label: "Three-minute walkthrough page", status: "ready", evidence: link(publicBaseUrl, "qwen-3-minute-walkthrough.html") },
       { label: "Autoplay demo reel page", status: "ready", evidence: link(publicBaseUrl, "qwen-demo-reel.html") },

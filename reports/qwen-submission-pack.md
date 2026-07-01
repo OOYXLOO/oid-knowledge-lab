@@ -1,6 +1,6 @@
 # Qwen Submission Pack
 
-Generated at: 2026-07-01T18:12:47.529Z
+Generated at: 2026-07-01T18:20:17.000Z
 
 ## Project
 
@@ -59,6 +59,7 @@ flowchart LR
 |---|---|---|
 | Offline agent demo | ready | reports/qwen-agent-demo.md |
 | Deterministic dataset audit | ready | reports/dataset-manifest.json |
+| Final submission overview | ready | https://ooyxloo.github.io/oid-knowledge-lab/qwen-final-submission-overview.html |
 | Public one-link page | ready | https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html |
 | Three-minute walkthrough page | ready | https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html |
 | Autoplay demo reel page | ready | https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-reel.html |
@@ -72,6 +73,7 @@ flowchart LR
 ## Proof Links
 
 - [Qwen one-link packet](https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html)
+- [Qwen final submission overview](https://ooyxloo.github.io/oid-knowledge-lab/qwen-final-submission-overview.html)
 - [Qwen demo proof page](https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-proof.html)
 - [Qwen demo reel](https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-reel.html)
 - [Qwen 3-minute walkthrough](https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html)

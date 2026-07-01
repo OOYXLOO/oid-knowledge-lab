@@ -1,6 +1,6 @@
 {
   "schema_version": "qwen-submission-pack/v1",
-  "generated_at": "2026-07-01T18:12:47.529Z",
+  "generated_at": "2026-07-01T18:20:17.000Z",
   "public_base_url": "https://ooyxloo.github.io/oid-knowledge-lab",
   "project": {
     "name": "OID Knowledge Lab: Qwen Remediation Autopilot",
@@ -115,6 +115,10 @@
       "url": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html"
     },
     {
+      "label": "Qwen final submission overview",
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-final-submission-overview.html"
+    },
+    {
       "label": "Qwen demo proof page",
       "url": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-proof.html"
     },
@@ -185,6 +189,11 @@
       "label": "Deterministic dataset audit",
       "status": "ready",
       "evidence": "reports/dataset-manifest.json"
+    },
+    {
+      "label": "Final submission overview",
+      "status": "ready",
+      "evidence": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-final-submission-overview.html"
     },
     {
       "label": "Public one-link page",
