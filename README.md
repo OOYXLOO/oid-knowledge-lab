@@ -17,6 +17,7 @@ The current source adapter targets public OID-base pages through the site's site
 - JavaScript review sample: <https://ooyxloo.github.io/oid-knowledge-lab/js-review-sample.html>
 - Technical rigor proof: <https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Developer docs trial pack: <https://ooyxloo.github.io/oid-knowledge-lab/developer-docs-trial-pack.html>
 - Technical writing editorial packet: <https://ooyxloo.github.io/oid-knowledge-lab/technical-writing-editorial-packet.html>
 - Launch proof sprint scope: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-sprint-scope.html>
 - Launch proof readiness checklist: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-readiness-checklist.html>
@@ -66,6 +67,7 @@ Last refreshed on 2026-06-26:
 - Portfolio risk console: `public/oid-portfolio-risk-console.html` turns a small local OID inventory into a browser-only governance brief.
 - Hasura reviewer hub: `public/hasura-reviewer-hub.html` supports a GraphQL/Postgres article pitch for OID inventory review workflows.
 - Writing samples review page: `public/writing-samples.html` links editor-facing samples and proof surfaces
+- Developer docs trial pack: `public/developer-docs-trial-pack.html` defines a small, measurable README/quickstart/launch-copy trial for developer-tool teams
 - Technical writing editorial packet: `public/technical-writing-editorial-packet.html` groups the strongest article direction, PHP deployment backup sample, proof links, and publication boundaries for editor review
 - Launch proof sprint scope: `public/launch-proof-sprint-scope.html` defines the fixed-scope deliverables, acceptance criteria, safe inputs, and exclusions for a prototype launch proof pass
 - Launch proof readiness checklist: `public/launch-proof-readiness-checklist.html` gives builders a public-safe first-minute review checklist before a demo, README, hackathon submission, or developer-tool launch
