@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Media Ledger Studio - Judging Evidence</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #162023;
+        --muted: #5e6c70;
+        --line: #dbe4e6;
+        --panel: #f7faf9;
+        --accent: #0f766e;
+        --warm: #b45309;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: #ffffff;
+      }
+      main {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 40px 20px 56px;
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 24px;
+      }
+      h1 {
+        margin: 0 0 12px;
+        font-size: 42px;
+        line-height: 1.05;
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 22px;
+      }
+      p {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      a {
+        color: var(--accent);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+      section {
+        margin-top: 28px;
+      }
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+      }
+      .metric {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        border-bottom: 1px solid var(--line);
+        padding: 10px 0;
+      }
+      .metric:last-child {
+        border-bottom: 0;
+      }
+      .metric strong {
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .metric span {
+        text-align: right;
+        font-weight: 700;
+      }
+      ul {
+        margin: 0;
+        padding-left: 20px;
+      }
+      li {
+        margin: 8px 0;
+        line-height: 1.55;
+      }
+      .status {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 3px 9px;
+        font-size: 12px;
+        font-weight: 700;
+        background: #e7f8f4;
+        color: #0f766e;
+      }
+      .status.warn {
+        background: #fff4df;
+        color: var(--warm);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow-wrap: anywhere;
+      }
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      @media (max-width: 640px) {
+        h1 {
+          font-size: 32px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Media Ledger Studio judging evidence</h1>
+        <p>
+          Media Ledger Studio is a generated-media operations ledger. It links prompts, model metadata,
+          review decisions, Backblaze B2-shaped object records, checksums, and sidecar JSON so assets can be
+          inspected before handoff.
+        </p>
+        <p>
+          <a href="https://media-ledger-studio-static.vercel.app">Open app</a> ·
+          <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio">Source snapshot</a> ·
+          <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/judging-evidence-pack.json">Raw evidence JSON</a>
+        </p>
+      </header>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Metrics</h2>
+          <div class="metric"><strong>Runs</strong><span>3</span></div>
+          <div class="metric"><strong>Asset types</strong><span>image, video, audio</span></div>
+          <div class="metric"><strong>Media size</strong><span>17.25 MB</span></div>
+          <div class="metric"><strong>Readiness score</strong><span>100/100</span></div>
+          <div class="metric"><strong>B2 upload plans</strong><span>3 media + 3 sidecars</span></div>
+          <div class="metric"><strong>Genblaze request plans</strong><span>3</span></div>
+        </article>
+
+        <article class="panel">
+          <h2>Differentiation</h2>
+          <ul>
+            <li>Covers image, video, and audio runs in one reviewer-facing workflow.</li>
+            <li>Pairs each media object with a sidecar metadata object that can travel with the file in B2.</li>
+            <li>Keeps dry-run evidence honest and does not claim live uploads when credentials are absent.</li>
+            <li>Turns generated-media provenance into operational handoff fields a production lead can audit.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Judging checklist</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Criterion</th>
+              <th>Status</th>
+              <th>Evidence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Working application</td>
+              <td><span class="status">ready</span></td>
+              <td>https://media-ledger-studio-static.vercel.app</td>
+            </tr>
+            <tr>
+              <td>Source snapshot</td>
+              <td><span class="status">ready</span></td>
+              <td>https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio</td>
+            </tr>
+            <tr>
+              <td>Backblaze B2 usage</td>
+              <td><span class="status warn">dry-run-ready</span></td>
+              <td>3 B2-shaped media records and 3 sidecar records.</td>
+            </tr>
+            <tr>
+              <td>Genblaze usage</td>
+              <td><span class="status warn">dry-run-ready</span></td>
+              <td>3 Genblaze-shaped provider/model records.</td>
+            </tr>
+            <tr>
+              <td>Integrity evidence</td>
+              <td><span class="status">ready</span></td>
+              <td>SHA-256 media checksums plus sidecar-to-media pairing checks.</td>
+            </tr>
+            <tr>
+              <td>Live adapter boundary</td>
+              <td><span class="status warn">blocked-on-env</span></td>
+              <td>Missing live Backblaze B2 and Genblaze environment variables.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel">
+        <h2>Honest boundary</h2>
+        <p>
+          This public build is a dry-run prototype. It does not claim real B2 uploads or real Genblaze calls
+          until live credentials and provider access are supplied. Credential values are never stored in this
+          repository or printed in public reports.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
