@@ -1695,6 +1695,17 @@ function testKnowledgeOwlApplicationFieldPackIsPublicAndSubmitReady() {
   }
 }
 
+function testKnowledgeOwlFinalEditorPacketKeepsEditorControlBoundary() {
+  const text = fs.readFileSync(path.join(ROOT, "public/knowledgeowl-final-editor-packet.html"), "utf8");
+  assert.ok(text.includes("Editor-controlled publication decision"));
+  assert.ok(text.includes("not required placements"));
+  assert.ok(text.includes("revised, de-linked, shortened, or restructured"));
+  assert.equal(text.includes("money" + "-goal"), false);
+  assert.equal(text.includes("USD " + "200"), false);
+  assert.equal(text.includes("\u8d5a\u94b1"), false);
+  assert.equal(text.includes("D:\\hks"), false);
+}
+
 function testArticleSampleIndexIncludesRealPythonMiniSample() {
   const files = [
     "docs/articles/README.md",
@@ -2944,6 +2955,7 @@ async function main() {
   testArticleSampleIndexIncludesSigNozFullDraft();
   testKnowledgeOwlEvidenceLogTemplateIsLinkedAndBoundarySafe();
   testKnowledgeOwlApplicationFieldPackIsPublicAndSubmitReady();
+  testKnowledgeOwlFinalEditorPacketKeepsEditorControlBoundary();
   testArticleSampleIndexIncludesRealPythonMiniSample();
   testWritingSamplesPageHasEditorDecisionPanel();
   testEditorAssignmentFitPageIsLinkedAndBoundarySafe();
