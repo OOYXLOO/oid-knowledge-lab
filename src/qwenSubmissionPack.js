@@ -70,8 +70,10 @@ function buildQwenSubmissionPack(options = {}) {
       { label: "Sample assessment screenshot", url: link(publicBaseUrl, "assets/qwen/sample-assessment.png") },
       { label: "Sample assessment", url: link(publicBaseUrl, "sample-assessment.html") },
       { label: "Technical rigor proof", url: link(publicBaseUrl, "technical-rigor-proof.html") },
+      { label: "Qwen Blog Post Award draft", url: link(publicBaseUrl, "qwen-blog-post-award-draft.html") },
       { label: "Qwen agent demo report", url: "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md" },
       { label: "Qwen adapter source", url: "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/src/qwenAgent.js" },
+      { label: "Alibaba Function Compute handler source", url: "https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/deploy/alibaba-function-compute-qwen-handler.js" },
       { label: "Source repository", url: "https://github.com/OOYXLOO/oid-knowledge-lab" }
     ],
     proof_checklist: [
@@ -80,6 +82,7 @@ function buildQwenSubmissionPack(options = {}) {
       { label: "Public one-link page", status: "ready", evidence: link(publicBaseUrl, "qwen-autopilot-agent-one-link.html") },
       { label: "Screenshot proof gallery", status: "ready", evidence: link(publicBaseUrl, "qwen-demo-proof.html") },
       { label: "Architecture diagram", status: "ready", evidence: "reports/qwen-architecture.mmd" },
+      { label: "Alibaba Function Compute handler", status: "ready_source_only", evidence: "deploy/alibaba-function-compute-qwen-handler.js" },
       { label: "Live Qwen run", status: "needs_live_key", evidence: "Requires DASHSCOPE_API_KEY and redacted response receipt" },
       { label: "Public demo video", status: "needs_recording", evidence: "Use the three-minute demo script in this pack" }
     ],

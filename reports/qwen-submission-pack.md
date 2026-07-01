@@ -1,6 +1,6 @@
 # Qwen Submission Pack
 
-Generated at: 2026-06-28T23:00:57.751Z
+Generated at: 2026-07-01T17:46:11.865Z
 
 ## Project
 
@@ -62,6 +62,7 @@ flowchart LR
 | Public one-link page | ready | https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html |
 | Screenshot proof gallery | ready | https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-proof.html |
 | Architecture diagram | ready | reports/qwen-architecture.mmd |
+| Alibaba Function Compute handler | ready_source_only | deploy/alibaba-function-compute-qwen-handler.js |
 | Live Qwen run | needs_live_key | Requires DASHSCOPE_API_KEY and redacted response receipt |
 | Public demo video | needs_recording | Use the three-minute demo script in this pack |
 
@@ -75,8 +76,10 @@ flowchart LR
 - [Sample assessment screenshot](https://ooyxloo.github.io/oid-knowledge-lab/assets/qwen/sample-assessment.png)
 - [Sample assessment](https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html)
 - [Technical rigor proof](https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html)
+- [Qwen Blog Post Award draft](https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html)
 - [Qwen agent demo report](https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md)
 - [Qwen adapter source](https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/src/qwenAgent.js)
+- [Alibaba Function Compute handler source](https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/deploy/alibaba-function-compute-qwen-handler.js)
 - [Source repository](https://github.com/OOYXLOO/oid-knowledge-lab)
 
 ## Public Boundaries

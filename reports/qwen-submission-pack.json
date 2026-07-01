@@ -1,6 +1,6 @@
 {
   "schema_version": "qwen-submission-pack/v1",
-  "generated_at": "2026-06-28T23:00:57.751Z",
+  "generated_at": "2026-07-01T17:46:11.865Z",
   "public_base_url": "https://ooyxloo.github.io/oid-knowledge-lab",
   "project": {
     "name": "OID Knowledge Lab: Qwen Remediation Autopilot",
@@ -143,12 +143,20 @@
       "url": "https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html"
     },
     {
+      "label": "Qwen Blog Post Award draft",
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html"
+    },
+    {
       "label": "Qwen agent demo report",
       "url": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md"
     },
     {
       "label": "Qwen adapter source",
       "url": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/src/qwenAgent.js"
+    },
+    {
+      "label": "Alibaba Function Compute handler source",
+      "url": "https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/deploy/alibaba-function-compute-qwen-handler.js"
     },
     {
       "label": "Source repository",
@@ -180,6 +188,11 @@
       "label": "Architecture diagram",
       "status": "ready",
       "evidence": "reports/qwen-architecture.mmd"
+    },
+    {
+      "label": "Alibaba Function Compute handler",
+      "status": "ready_source_only",
+      "evidence": "deploy/alibaba-function-compute-qwen-handler.js"
     },
     {
       "label": "Live Qwen run",
