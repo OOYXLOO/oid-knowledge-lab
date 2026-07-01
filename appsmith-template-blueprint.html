@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Appsmith Template Blueprint - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Appsmith template blueprint</p>
+      <h1>Forkable internal review queue for sanitized OID inventories</h1>
+      <p class="summary">A neutral implementation plan for an Appsmith Writers Program article: build a review app with intake validation, risk filters, reviewer decisions, and a safe Markdown handoff.</p>
+      <div class="links">
+        <a href="appsmith-oid-reviewer-hub.html">Reviewer hub</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsmith-forkable-template-blueprint.md">Raw blueprint</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Template metrics">
+      <article><span>Surface</span><strong>4 pages</strong><small>Intake, queue, evidence, handoff</small></article>
+      <article><span>Widgets</span><strong>5 core</strong><small>Table, tabs, select, input, button</small></article>
+      <article><span>Data</span><strong>CSV/JSON</strong><small>Sanitized deterministic seed rows</small></article>
+      <article><span>Output</span><strong>Markdown</strong><small>Copyable remediation handoff</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Article angle</p>
+        <h2>Build a template, not only a walkthrough</h2>
+        <p class="panel-copy">The proposed article can teach Appsmith readers how to assemble a reusable internal tool: paste or load sanitized OID records, classify review risk, capture reviewer decisions, and export a stakeholder-safe handoff without exposing private inventory data.</p>
+      </div>
+      <div class="decision-strip">
+        <article>
+          <span>Page 1</span>
+          <strong>Intake</strong>
+          <p>Validate required columns and block obvious secrets or customer identifiers before review starts.</p>
+        </article>
+        <article>
+          <span>Page 2</span>
+          <strong>Review queue</strong>
+          <p>Use a Table widget, Tabs, Select filters, and status controls for invalid, unknown, policy, accepted, and blocked rows.</p>
+        </article>
+        <article>
+          <span>Page 3</span>
+          <strong>Handoff</strong>
+          <p>Use a JSObject to render copyable Markdown containing only public evidence summaries and reviewer decisions.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Seed data</p>
+        <h2>Sanitized sample schema</h2>
+        <p class="panel-copy">The article can start with a small deterministic dataset so reviewers can reproduce the app without customer exports or private system names.</p>
+      </div>
+      <pre><code>asset_label,oid,source,severity,owner_hint
+sample-router-policy,1.3.6.1.4.1.9.9.43,snmp-export,medium,network
+sample-certificate-policy,2.23.140.1.2.1,certificate-policy,low,pki
+sample-invalid-oid,1.3.6.1.bad.7,manual-review,high,unknown</code></pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Implementation map</p>
+        <h2>Queries and JSObjects planned for the article</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Name</th><th>Purpose</th><th>Boundary</th></tr></thead>
+        <tbody>
+          <tr><td><code>loadInventory</code></td><td>Read sanitized CSV or JSON sample rows.</td><td>No raw customer exports.</td></tr>
+          <tr><td><code>classifyRows</code></td><td>Validate syntax and map rows to public registry evidence summaries.</td><td>No copied third-party page bodies.</td></tr>
+          <tr><td><code>updateReviewDecision</code></td><td>Store status, reviewer note, and timestamp.</td><td>No credentials or account data.</td></tr>
+          <tr><td><code>exportMarkdownHandoff</code></td><td>Render accepted findings and blocked follow-ups as Markdown.</td><td>Only sanitized fields.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Acceptance checks</p>
+        <h2>What the finished tutorial should prove</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Check</th><th>Expected result</th></tr></thead>
+        <tbody>
+          <tr><td>Buildability</td><td>A reader can create the Appsmith app from the article steps.</td></tr>
+          <tr><td>Review flow</td><td>Rows can move through accepted, needs context, and blocked states.</td></tr>
+          <tr><td>Export safety</td><td>The handoff output excludes secrets, private URLs, and customer identifiers.</td></tr>
+          <tr><td>Editorial honesty</td><td>The article distinguishes this blueprint from a finished accepted Appsmith submission.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
