@@ -1759,6 +1759,21 @@ function testWritingSamplesPageHasEditorDecisionPanel() {
   assert.equal(text.includes("\u8d5a\u94b1"), false);
 }
 
+function testTechnicalLaunchProofSprintIsPublicAndServiceReady() {
+  const page = fs.readFileSync(path.join(ROOT, "public/technical-launch-proof-sprint.html"), "utf8");
+  const index = fs.readFileSync(path.join(ROOT, "public/index.html"), "utf8");
+  assert.ok(index.includes("technical-launch-proof-sprint.html"), "dashboard should link launch proof sprint");
+  assert.ok(page.includes("Technical Launch Proof Sprint"));
+  assert.ok(page.includes("USD 200"), "service page should include the public fixed-scope price");
+  assert.ok(page.includes("24-48h"), "service page should include the delivery window");
+  assert.ok(page.includes("Submission field draft"));
+  assert.ok(page.includes("Missing-evidence checklist"));
+  assert.ok(page.includes("not pretending an unfinished product is complete") || page.includes("what should not be claimed publicly yet"));
+  assert.equal(page.includes("money" + "-goal"), false);
+  assert.equal(page.includes("\u8d5a\u94b1"), false);
+  assert.equal(page.includes("D:\\hks"), false);
+}
+
 function testEditorAssignmentFitPageIsLinkedAndBoundarySafe() {
   const page = fs.readFileSync(path.join(ROOT, "public/editor-assignment-fit.html"), "utf8");
   assert.ok(page.includes("Three editor-ready article directions"), "assignment fit page should state the decision purpose");
@@ -2958,6 +2973,7 @@ async function main() {
   testKnowledgeOwlFinalEditorPacketKeepsEditorControlBoundary();
   testArticleSampleIndexIncludesRealPythonMiniSample();
   testWritingSamplesPageHasEditorDecisionPanel();
+  testTechnicalLaunchProofSprintIsPublicAndServiceReady();
   testEditorAssignmentFitPageIsLinkedAndBoundarySafe();
   testUnleashContinuousDeliveryPacketIsLinkedAndBoundarySafe();
   testHoneybadgerDebuggingPacketIsLinkedAndBoundarySafe();
