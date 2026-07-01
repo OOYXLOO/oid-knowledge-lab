@@ -226,5 +226,6 @@ module.exports = {
   buildQwenChatRequest,
   callQwenChat,
   renderQwenAgentMarkdown,
+  extractQwenMessage,
   writeQwenAgentDemo
 };

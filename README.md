@@ -81,6 +81,7 @@ Last refreshed on 2026-06-26:
 - Stable local audit mode: `npm run audit:local:stable` fixes report timestamps through `OID_KNOWLEDGE_GENERATED_AT` so verification runs do not create noisy timestamp-only diffs
 - Media provenance generator: `npm run media:provenance` builds `reports/media-provenance-pack.json` and `reports/media-provenance-pack.md` from `examples/media-provenance-assets.json`
 - Qwen Blog Post Award draft: `docs/articles/qwen-source-grounded-autopilot-agent.md` and `public/qwen-blog-post-award-draft.html` provide a publication-ready article path without claiming live cloud proof.
+- Alibaba Function Compute Qwen handler: `deploy/alibaba-function-compute-qwen-handler.js` shows the private deployment entrypoint for a DashScope-compatible Qwen call without storing secrets or claiming a live deployment.
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
 

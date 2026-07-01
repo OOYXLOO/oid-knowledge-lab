@@ -54,6 +54,7 @@ const { escapeHtml, percent, renderAppJs, renderDashboard, renderSampleAssessmen
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("../src/sitemap");
 const { buildSourcePolicySnapshot, renderSourcePolicyMarkdown } = require("../src/sourcePolicy");
 const { buildQwenAgentPlan, buildQwenChatRequest, callQwenChat, renderQwenAgentMarkdown, writeQwenAgentDemo } = require("../src/qwenAgent");
+const { safeEvidencePacket } = require("../deploy/alibaba-function-compute-qwen-handler");
 let qwenSubmissionPackModule;
 try {
   qwenSubmissionPackModule = require("../src/qwenSubmissionPack");
@@ -2433,6 +2434,26 @@ function testQwenAgentMarkdownAndDemoFilesArePublicSafe() {
   assert.equal(markdown.includes("USD " + "200"), false);
 }
 
+function testAlibabaFunctionComputeQwenHandlerSanitizesInput() {
+  const packet = safeEvidencePacket({
+    request_id: "demo-run",
+    findings: [
+      {
+        label: "x".repeat(120),
+        oid: "1.3.6.1.4.1.9.9.41",
+        status: "known_private_enterprise_oid",
+        risk: "low"
+      }
+    ]
+  });
+
+  assert.equal(packet.schema_version, "oid-qwen-fc-request/v1");
+  assert.equal(packet.request_id, "demo-run");
+  assert.equal(packet.findings.length, 1);
+  assert.equal(packet.findings[0].label.length, 80);
+  assert.equal(packet.findings[0].oid, "1.3.6.1.4.1.9.9.41");
+}
+
 function testQwenSubmissionPackBuildsJudgingAssets() {
   assert.equal(qwenSubmissionPackModule.__loadError, undefined, qwenSubmissionPackModule.__loadError);
   const { buildQwenSubmissionPack, renderQwenSubmissionMarkdown, renderQwenArchitectureMermaid, renderQwenArchitectureSvg, renderQwenArchitectureHtml } = qwenSubmissionPackModule;
@@ -2900,6 +2921,7 @@ async function main() {
   testQwenChatRequestUsesDashScopeCompatibleMode();
   await testQwenChatCallUsesBearerKeyAndParsesMessage();
   testQwenAgentMarkdownAndDemoFilesArePublicSafe();
+  testAlibabaFunctionComputeQwenHandlerSanitizesInput();
   testQwenSubmissionPackBuildsJudgingAssets();
   testQwenSubmissionPackWritesPublicSafeFiles();
   testQwenOneLinkReferencesSubmissionPack();
