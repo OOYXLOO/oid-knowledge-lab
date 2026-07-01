@@ -25,5 +25,8 @@ This directory stores aggregate reports that are safe to publish.
 - `statement-of-work-pack.md`: work boundary with deliverables, client responsibilities, acceptance checks, change control, and exclusions.
 - `decision-one-pager.md`: first-page decision summary for approving a small sanitized OID inventory review.
 - `client-kickoff-pack.md`: initial reply, safe intake request, first-call agenda, deliverables preview, acceptance preview, boundary notes, and proof links.
+- `qwen-submission-pack.md`: Qwen Cloud Hackathon proof links, field draft, architecture diagram, demo script, and honest proof checklist.
+- `qwen-devpost-field-pack.md`: compact Devpost copy/paste field pack for the Qwen remediation autopilot submission.
+- `qwen-run-receipt.md`: redacted run receipt template for future live Qwen evidence, without secrets or private account details.
 
 Full JSONL imports and raw source files stay under ignored `data/` paths unless the source authorization explicitly allows publication.
