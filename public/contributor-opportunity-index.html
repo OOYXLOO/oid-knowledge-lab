@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contributor Opportunity Index</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .index-hero {
+      display: grid;
+      gap: 14px;
+      padding: 34px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .packet-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    .packet-card,
+    .boundary-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 18px;
+    }
+
+    .packet-card p,
+    .packet-card li,
+    .boundary-panel li {
+      line-height: 1.65;
+    }
+
+    .packet-card ul,
+    .boundary-panel ul {
+      padding-left: 22px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .links a {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: #fbfdfe;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    @media (max-width: 860px) {
+      .packet-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="index-hero">
+      <p class="eyebrow">Contributor index</p>
+      <h1>Implementation-backed writing samples and tutorial packets.</h1>
+      <p class="summary">A compact index of public, editor-ready materials for developer tutorials, product education, and evidence-first workflow writing.</p>
+      <div class="links">
+        <a href="envato-tutsplus-contributor-packet.html">Envato packet</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="review-log-agent-hub.html">Review Log Agent</a>
+        <a href="index.html">OID Knowledge Lab</a>
+      </div>
+    </section>
+
+    <section class="packet-grid" aria-label="Contributor packets">
+      <article class="packet-card">
+        <h2>Envato Tuts+ Code Contributor Packet</h2>
+        <p>Two browser-only JavaScript tutorial ideas with working demos, proof links, and source-boundary notes.</p>
+        <ul>
+          <li>Local-first media provenance ledger.</li>
+          <li>Browser-only evidence dashboard for public registry data.</li>
+        </ul>
+        <p><a href="envato-tutsplus-contributor-packet.html">Open packet</a></p>
+      </article>
+
+      <article class="packet-card">
+        <h2>Unleash Topic Fit Brief</h2>
+        <p>A feature-flag tutorial framing focused on continuous delivery, reviewable rollout checks, and safe implementation boundaries.</p>
+        <p><a href="unleash-topic-fit-brief.html">Open brief</a></p>
+      </article>
+
+      <article class="packet-card">
+        <h2>Appsmith Template Blueprint</h2>
+        <p>A compact internal-tool pattern that can be adapted into a tutorial or implementation example.</p>
+        <p><a href="appsmith-template-blueprint.html">Open blueprint</a></p>
+      </article>
+
+      <article class="packet-card">
+        <h2>Earthly Build Workflow Proof</h2>
+        <p>A reproducible build and artifact review workflow sample for developer productivity and release-quality writing.</p>
+        <p><a href="earthly-build-workflow-proof.html">Open proof</a></p>
+      </article>
+
+      <article class="packet-card">
+        <h2>KnowledgeOwl Editorial Fit Brief</h2>
+        <p>An evidence-log workflow for reviewing AI-assisted help content before publication.</p>
+        <p><a href="knowledgeowl-editor-fit-brief.html">Open brief</a></p>
+      </article>
+
+      <article class="packet-card">
+        <h2>Review Log Agent Hub</h2>
+        <p>A public-safe implementation hub for review handoffs, structured outputs, and workflow documentation samples.</p>
+        <p><a href="review-log-agent-hub.html">Open hub</a></p>
+      </article>
+    </section>
+
+    <section class="boundary-panel">
+      <h2>Publication Boundaries</h2>
+      <ul>
+        <li>No credentials, private customer data, account screenshots, payment information, personal identifiers, unpublished client code, or copied third-party article bodies.</li>
+        <li>Examples are designed as public portfolio materials and can be reviewed without logging into private systems.</li>
+        <li>Each packet favors small working demos, clear source boundaries, and editor-friendly handoff notes.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
