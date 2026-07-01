@@ -54,6 +54,7 @@ const { escapeHtml, percent, renderAppJs, renderDashboard, renderSampleAssessmen
 const { buildSitemapIndex, getOidEntries, parseSitemap } = require("../src/sitemap");
 const { buildSourcePolicySnapshot, renderSourcePolicyMarkdown } = require("../src/sourcePolicy");
 const { buildQwenAgentPlan, buildQwenChatRequest, callQwenChat, renderQwenAgentMarkdown, writeQwenAgentDemo } = require("../src/qwenAgent");
+const { buildQwenRunReceipt, renderQwenRunReceiptMarkdown } = require("../src/qwenReceipt");
 const { safeEvidencePacket } = require("../deploy/alibaba-function-compute-qwen-handler");
 let qwenSubmissionPackModule;
 try {
@@ -2454,6 +2455,34 @@ function testAlibabaFunctionComputeQwenHandlerSanitizesInput() {
   assert.equal(packet.findings[0].oid, "1.3.6.1.4.1.9.9.41");
 }
 
+function testQwenRunReceiptRedactsLiveRunArtifacts() {
+  const receipt = buildQwenRunReceipt({
+    generatedAt: "2026-07-02T00:00:00.000Z",
+    provider: "Alibaba Cloud DashScope compatible mode",
+    model: "qwen-plus",
+    status: "ok",
+    request: {
+      messages: [
+        { role: "user", content: "secret prompt text with customer rows" }
+      ]
+    },
+    message: "full model output that should not be published",
+    publicNotes: ["Private run completed in a controlled environment."]
+  });
+  const serialized = JSON.stringify(receipt);
+  const markdown = renderQwenRunReceiptMarkdown(receipt);
+
+  assert.equal(receipt.schema_version, "qwen-run-receipt/v1");
+  assert.equal(receipt.status, "ok");
+  assert.ok(receipt.input_hash.startsWith("sha256:"));
+  assert.ok(receipt.output_hash.startsWith("sha256:"));
+  assert.equal(serialized.includes("secret prompt text"), false);
+  assert.equal(serialized.includes("full model output"), false);
+  assert.equal(markdown.includes("DASHSCOPE_API_KEY"), false);
+  assert.ok(markdown.includes("qwen-plus"));
+  assert.ok(markdown.includes("Private run completed"));
+}
+
 function testQwenSubmissionPackBuildsJudgingAssets() {
   assert.equal(qwenSubmissionPackModule.__loadError, undefined, qwenSubmissionPackModule.__loadError);
   const { buildQwenSubmissionPack, renderQwenSubmissionMarkdown, renderQwenArchitectureMermaid, renderQwenArchitectureSvg, renderQwenArchitectureHtml } = qwenSubmissionPackModule;
@@ -2468,9 +2497,11 @@ function testQwenSubmissionPackBuildsJudgingAssets() {
   assert.ok(pack.demo_script.scenes.length >= 5);
   assert.ok(pack.proof_checklist.some((item) => item.label === "Live Qwen run"));
   assert.ok(pack.proof_checklist.some((item) => item.label === "Alibaba Function Compute handler"));
+  assert.ok(pack.proof_checklist.some((item) => item.label === "Redacted Qwen run receipt generator"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/deploy/alibaba-function-compute-qwen-handler.js"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html"));
+  assert.ok(pack.proof_links.some((item) => item.url === "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-run-receipt.md"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html"));
   assert.ok(pack.architecture.nodes.some((node) => node.id === "qwen"));
   assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
@@ -2926,6 +2957,7 @@ async function main() {
   await testQwenChatCallUsesBearerKeyAndParsesMessage();
   testQwenAgentMarkdownAndDemoFilesArePublicSafe();
   testAlibabaFunctionComputeQwenHandlerSanitizesInput();
+  testQwenRunReceiptRedactsLiveRunArtifacts();
   testQwenSubmissionPackBuildsJudgingAssets();
   testQwenSubmissionPackWritesPublicSafeFiles();
   testQwenOneLinkReferencesSubmissionPack();

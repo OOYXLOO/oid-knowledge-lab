@@ -1,0 +1,21 @@
+{
+  "schema_version": "qwen-run-receipt/v1",
+  "generated_at": "2026-07-01T18:07:48.099Z",
+  "provider": "Alibaba Cloud DashScope compatible mode",
+  "model": "qwen-plus",
+  "status": "prepared",
+  "input_hash": "sha256:6c2b387b52fa323f0d5b93466d6311aac805fdd4c3e50b24625a49fd4fc578de",
+  "output_hash": "sha256:72f7846da325783a2c941ac6e56a755e858b2eea4bfca74d7fc50321d1eec88e",
+  "redaction_boundary": [
+    "No API keys",
+    "No prompt body",
+    "No complete response body",
+    "No account screenshots",
+    "No billing data",
+    "No cookies or tokens"
+  ],
+  "public_notes": [
+    "This receipt is a template until a private live run is completed.",
+    "Do not publish secrets, account screenshots, billing data, cookies, tokens, prompt bodies, or complete response bodies."
+  ]
+}

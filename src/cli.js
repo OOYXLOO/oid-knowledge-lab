@@ -22,6 +22,7 @@ const { writeProofDeskPack } = require("./proofDeskPack");
 const { auditPublishableTree } = require("./publishGuard");
 const { writeScopeProposalPack } = require("./proposalPack");
 const { writeQwenAgentDemo } = require("./qwenAgent");
+const { writeQwenRunReceipt } = require("./qwenReceipt");
 const { writeQwenSubmissionPack } = require("./qwenSubmissionPack");
 const { writeRemediationBoard } = require("./remediationBoard");
 const { buildReport, readJsonl } = require("./report");
@@ -569,6 +570,36 @@ function qwenSubmissionPack(args) {
   console.log(`html written: ${path.relative(ROOT, htmlOutFile).replace(/\\/g, "/")}`);
 }
 
+function qwenRunReceipt(args) {
+  const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/qwen-run-receipt.json"));
+  const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/qwen-run-receipt.md"));
+  const generatedAt = argValue(args, "--generated-at", undefined);
+  const model = argValue(args, "--model", "qwen-plus");
+  const status = argValue(args, "--status", "prepared");
+  const request = {
+    source: "redacted-live-run-placeholder",
+    note: "Replace with the sanitized request metadata from a private run before claiming live proof."
+  };
+  const result = writeQwenRunReceipt({
+    jsonOutFile,
+    markdownOutFile,
+    generatedAt,
+    model,
+    status,
+    request,
+    message: "redacted-output-placeholder",
+    publicNotes: [
+      "This receipt is a template until a private live run is completed.",
+      "Do not publish secrets, account screenshots, billing data, cookies, tokens, prompt bodies, or complete response bodies."
+    ]
+  });
+
+  console.log(`qwen receipt status: ${result.receipt.status}`);
+  console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
+  console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
+}
+
+
 function auditDataset(args) {
   const oidBaseIndexFile = path.resolve(ROOT, argValue(args, "--sitemap", "reports/oid-base-sitemap-index.json"));
   const ianaPenReportFile = path.resolve(ROOT, argValue(args, "--report", "reports/iana-pen-summary.json"));
@@ -714,11 +745,12 @@ async function main() {
   if (command === "proofdesk-pack") return proofDeskPack(args);
   if (command === "agent-submission-pack") return agentSubmissionPack(args);
   if (command === "qwen-agent-demo") return qwenAgentDemo(args);
+  if (command === "qwen-run-receipt") return qwenRunReceipt(args);
   if (command === "qwen-submission-pack") return qwenSubmissionPack(args);
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|statement-of-work-pack|decision-one-pager|client-kickoff-pack|buyer-signal-pack|audit-dataset|source-policy|guard-publishable|media-provenance-pack|backblaze-readiness-pack|proofdesk-pack|agent-submission-pack|qwen-agent-demo|qwen-submission-pack|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|statement-of-work-pack|decision-one-pager|client-kickoff-pack|buyer-signal-pack|audit-dataset|source-policy|guard-publishable|media-provenance-pack|backblaze-readiness-pack|proofdesk-pack|agent-submission-pack|qwen-agent-demo|qwen-run-receipt|qwen-submission-pack|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 
