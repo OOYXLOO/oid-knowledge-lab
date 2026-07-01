@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signal Garden Readiness Brief</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .brief-hero {
+      display: grid;
+      gap: 14px;
+      padding: 34px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brief-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 24px 0;
+    }
+
+    .brief-card,
+    .brief-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      padding: 18px;
+    }
+
+    .brief-card p,
+    .brief-card li,
+    .brief-panel li {
+      line-height: 1.65;
+    }
+
+    .brief-card ul,
+    .brief-panel ul {
+      padding-left: 22px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .links a {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: #fbfdfe;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    @media (max-width: 860px) {
+      .brief-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="brief-hero">
+      <p class="eyebrow">Readiness brief</p>
+      <h1>Signal Garden is a daily community route puzzle with a Devvit-ready shell.</h1>
+      <p class="summary">This brief collects public demo links, local verification, and remaining public launch items for reviewer handoff.</p>
+      <div class="links">
+        <a href="signal-garden-demo.html">Demo page</a>
+        <a href="assets/signal-garden-demo.webm">Demo video</a>
+        <a href="assets/signal-garden-game.png">Screenshot</a>
+        <a href="https://github.com/OOYXLOO/signal-garden">Source repository</a>
+      </div>
+    </section>
+
+    <section class="brief-grid" aria-label="Signal Garden readiness details">
+      <article class="brief-card">
+        <h2>Verification</h2>
+        <p>Local verification on 2026-07-01 passed for the web build and Devvit-ready build path.</p>
+        <ul>
+          <li><code>npm run check</code> passed.</li>
+          <li><code>npm test</code> passed.</li>
+          <li><code>npm run build:all</code> passed.</li>
+          <li><code>npx devvit --version</code> returned <code>@devvit/cli/0.13.6</code>.</li>
+        </ul>
+      </article>
+
+      <article class="brief-card">
+        <h2>Product Fit</h2>
+        <p>The game is built around a daily board, community route proposals, replayable review links, and a daily recap.</p>
+        <ul>
+          <li>Daily return loop.</li>
+          <li>User contribution through route suggestions.</li>
+          <li>Shareable review links for comparing routes.</li>
+          <li>Top-route ghost and rationale for community feedback.</li>
+        </ul>
+      </article>
+
+      <article class="brief-card">
+        <h2>Public Materials</h2>
+        <ul>
+          <li><a href="signal-garden-demo.html">Demo page</a></li>
+          <li><a href="assets/signal-garden-demo.webm">Demo video</a></li>
+          <li><a href="assets/signal-garden-game.png">Screenshot</a></li>
+          <li><a href="https://github.com/OOYXLOO/signal-garden">Source repository</a></li>
+        </ul>
+      </article>
+
+      <article class="brief-card">
+        <h2>Remaining Launch Items</h2>
+        <ul>
+          <li>Developer app listing URL.</li>
+          <li>Public demo post URL.</li>
+          <li>Final submission URL.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="brief-panel">
+      <h2>Public Boundary</h2>
+      <p>No credentials, private messages, private account pages, account-local storage, payment data, identity records, or private platform screenshots are part of this public brief.</p>
+    </section>
+  </main>
+</body>
+</html>
