@@ -64,6 +64,7 @@ function buildQwenSubmissionPack(options = {}) {
     proof_links: [
       { label: "Qwen one-link packet", url: link(publicBaseUrl, "qwen-autopilot-agent-one-link.html") },
       { label: "Qwen demo proof page", url: link(publicBaseUrl, "qwen-demo-proof.html") },
+      { label: "Qwen 3-minute walkthrough", url: link(publicBaseUrl, "qwen-3-minute-walkthrough.html") },
       { label: "Demo proof screenshot", url: link(publicBaseUrl, "assets/qwen/demo-proof.png") },
       { label: "One-link packet screenshot", url: link(publicBaseUrl, "assets/qwen/one-link.png") },
       { label: "Architecture screenshot", url: link(publicBaseUrl, "assets/qwen/architecture.png") },
@@ -80,6 +81,7 @@ function buildQwenSubmissionPack(options = {}) {
       { label: "Offline agent demo", status: "ready", evidence: "reports/qwen-agent-demo.md" },
       { label: "Deterministic dataset audit", status: "ready", evidence: "reports/dataset-manifest.json" },
       { label: "Public one-link page", status: "ready", evidence: link(publicBaseUrl, "qwen-autopilot-agent-one-link.html") },
+      { label: "Three-minute walkthrough page", status: "ready", evidence: link(publicBaseUrl, "qwen-3-minute-walkthrough.html") },
       { label: "Screenshot proof gallery", status: "ready", evidence: link(publicBaseUrl, "qwen-demo-proof.html") },
       { label: "Architecture diagram", status: "ready", evidence: "reports/qwen-architecture.mmd" },
       { label: "Alibaba Function Compute handler", status: "ready_source_only", evidence: "deploy/alibaba-function-compute-qwen-handler.js" },

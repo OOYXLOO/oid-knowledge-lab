@@ -2470,6 +2470,7 @@ function testQwenSubmissionPackBuildsJudgingAssets() {
   assert.ok(pack.proof_checklist.some((item) => item.label === "Alibaba Function Compute handler"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/deploy/alibaba-function-compute-qwen-handler.js"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html"));
+  assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html"));
   assert.ok(pack.architecture.nodes.some((node) => node.id === "qwen"));
   assert.equal(JSON.stringify(pack).includes("money" + "-goal"), false);
