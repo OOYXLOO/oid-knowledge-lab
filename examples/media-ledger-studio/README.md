@@ -4,8 +4,8 @@ Media Ledger Studio is a browser-based operations cockpit for generated media te
 
 The current build is a static prototype with deterministic sample data. It is designed so a future deployment can attach real Backblaze B2 storage credentials and a Genblaze generation provider without changing the reviewer-facing workflow.
 
-Public demo: https://media-ledger-studio.vercel.app
-Demo walkthrough: https://media-ledger-studio-static.vercel.app/demo-video
+Public demo: https://media-ledger-studio-static.vercel.app
+3-minute demo walkthrough: https://media-ledger-studio-static.vercel.app/demo-video.html
 Demo MP4: `public/media-ledger-studio-demo.mp4`
 
 ## What It Shows

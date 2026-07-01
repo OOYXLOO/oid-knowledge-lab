@@ -98,23 +98,27 @@
         align-items: center;
         opacity: 0;
         transform: translateY(18px);
-        animation: sceneCycle 30s infinite;
+        animation: sceneCycle 180s infinite;
       }
 
       .scene:nth-child(2) {
-        animation-delay: 6s;
+        animation-delay: 30s;
       }
 
       .scene:nth-child(3) {
-        animation-delay: 12s;
+        animation-delay: 60s;
       }
 
       .scene:nth-child(4) {
-        animation-delay: 18s;
+        animation-delay: 90s;
       }
 
       .scene:nth-child(5) {
-        animation-delay: 24s;
+        animation-delay: 120s;
+      }
+
+      .scene:nth-child(6) {
+        animation-delay: 150s;
       }
 
       .scene-copy {
@@ -195,7 +199,7 @@
         height: 100%;
         background: #2a8f8a;
         transform-origin: left center;
-        animation: progress 30s linear infinite;
+        animation: progress 180s linear infinite;
       }
 
       @keyframes sceneCycle {
@@ -203,11 +207,11 @@
           opacity: 1;
           transform: translateY(0);
         }
-        18% {
+        15% {
           opacity: 1;
           transform: translateY(0);
         }
-        21%,
+        16.5%,
         100% {
           opacity: 0;
           transform: translateY(-10px);
@@ -251,7 +255,7 @@
             <div class="meta">Generated media provenance walkthrough</div>
           </div>
         </div>
-        <div class="meta">30-second loop for reviewers</div>
+        <div class="meta">3-minute guided walkthrough for reviewers</div>
       </header>
 
       <section class="stage" aria-label="Media Ledger Studio demo walkthrough">
@@ -260,7 +264,7 @@
             <h1>Generated media needs an operations ledger.</h1>
             <p>
               Media Ledger Studio connects prompts, model runs, review notes, storage objects, and handoff evidence in one
-              reviewer-facing dashboard.
+              reviewer-facing dashboard. The goal is to make generated-media delivery inspectable before a file leaves the team.
             </p>
           </div>
           <div class="panel">
@@ -275,7 +279,7 @@
             <h2>Every output carries generation context.</h2>
             <p>
               The ledger records provider, model, prompt, negative prompt, seed, duration, retry count, and safety notes
-              for image, video, and audio outputs.
+              for image, video, and audio outputs. A reviewer can understand how an asset was produced, not only what it looks like.
             </p>
           </div>
           <div class="panel">
@@ -290,7 +294,7 @@
             <h2>Backblaze B2 is the storage handoff layer.</h2>
             <p>
               Each asset has a B2-shaped bucket, object key, content type, byte size, storage class, timestamp, and
-              SHA-256 checksum.
+              SHA-256 checksum. The same object records can be used by a live adapter when private B2 credentials are available.
             </p>
           </div>
           <div class="panel">
@@ -305,7 +309,7 @@
             <h2>Reviewers get the submission story inside the app.</h2>
             <p>
               The Submission view exposes readiness, Devpost links, Provider/Model details, B2 usage, and Genblaze usage
-              without asking judges to hunt through repository files.
+              without asking judges to hunt through repository files. The Evidence view adds a judging checklist and honest boundary.
             </p>
           </div>
           <div>
@@ -320,10 +324,25 @@
 
         <article class="scene">
           <div class="scene-copy">
+            <h2>Sidecar metadata keeps files and proof together.</h2>
+            <p>
+              Every media object has a paired JSON sidecar record. The sidecar links back to the media object key, checksum,
+              provider, model, seed, license note, review decision, and safety notes.
+            </p>
+          </div>
+          <div class="panel">
+            <div class="panel-row"><span>Media</span><code>final.png</code></div>
+            <div class="panel-row"><span>Sidecar</span><code>final.png.metadata.json</code></div>
+            <div class="panel-row"><span>Verifier</span><strong>3 linked pairs checked</strong></div>
+          </div>
+        </article>
+
+        <article class="scene">
+          <div class="scene-copy">
             <h2>Next: live adapters and signed sidecar metadata.</h2>
             <p>
               The current build is credential-free and reviewable. The next production step is to connect real B2 uploads,
-              live Genblaze responses, and signed metadata exports.
+              live Genblaze responses, and signed metadata exports without printing or storing secrets in public artifacts.
             </p>
           </div>
           <div class="panel">
@@ -335,7 +354,7 @@
       </section>
 
       <footer>
-        <span>Media Ledger Studio demo walkthrough</span>
+        <span>Media Ledger Studio 3-minute demo walkthrough</span>
         <div class="progress" aria-hidden="true"><span></span></div>
       </footer>
     </main>

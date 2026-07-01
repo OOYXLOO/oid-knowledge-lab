@@ -23,6 +23,7 @@ ${fields.tagline}
 - App: ${fields.appUrl}
 - Source repository: ${fields.sourceRepoUrl}
 - Demo video: ${fields.videoUrl}
+- 3-minute walkthrough: ${fields.walkthroughUrl}
 - Integration readiness: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-integration-readiness.html
 - Sidecar integrity report: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/sidecar-integrity-report.json
 - Integration adapter verification: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/integration-adapter-verification.json

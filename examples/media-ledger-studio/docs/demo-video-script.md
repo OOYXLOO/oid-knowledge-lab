@@ -4,6 +4,8 @@ Target length: about 3 minutes for a full narration recording.
 
 Public browser walkthrough: https://media-ledger-studio-static.vercel.app/demo-video.html
 
+Current public page mode: 3-minute guided loop with six 30-second scenes.
+
 ## 0:00 - 0:20 Opening
 
 Media Ledger Studio is an operations cockpit for generated media teams. It turns image, video, and audio generation runs into an auditable ledger that connects prompts, model metadata, review notes, and Backblaze B2 storage records.
