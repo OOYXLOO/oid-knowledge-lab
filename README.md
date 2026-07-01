@@ -18,6 +18,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Technical rigor proof: <https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
 - Technical writing editorial packet: <https://ooyxloo.github.io/oid-knowledge-lab/technical-writing-editorial-packet.html>
+- Launch proof readiness checklist: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-readiness-checklist.html>
 - PHP deployment writing sample: <https://ooyxloo.github.io/oid-knowledge-lab/amezmo-php-deployment-one-link.html>
 - PHP deployment fit brief: <https://ooyxloo.github.io/oid-knowledge-lab/amezmo-submission-fit-brief.html>
 - Pilot engagement page: <https://ooyxloo.github.io/oid-knowledge-lab/pilot-engagement.html>
@@ -65,6 +66,7 @@ Last refreshed on 2026-06-26:
 - Hasura reviewer hub: `public/hasura-reviewer-hub.html` supports a GraphQL/Postgres article pitch for OID inventory review workflows.
 - Writing samples review page: `public/writing-samples.html` links editor-facing samples and proof surfaces
 - Technical writing editorial packet: `public/technical-writing-editorial-packet.html` groups the strongest article direction, PHP deployment backup sample, proof links, and publication boundaries for editor review
+- Launch proof readiness checklist: `public/launch-proof-readiness-checklist.html` gives builders a public-safe first-minute review checklist before a demo, README, hackathon submission, or developer-tool launch
 - Editor assignment fit page: `public/editor-assignment-fit.html` maps the three strongest paid-writing directions to their proof links and publication boundaries
 - Unleash continuous delivery packet: `public/unleash-continuous-delivery-one-link.html` maps a feature-flag article pitch to public proof links and publication boundaries
 - Honeybadger debugging packet: `public/honeybadger-debugging-one-link.html` remains available as a paused backup debugging/reliability article packet
