@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Media Ledger Studio - Final Submission Overview</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #142326;
+        --muted: #5d6b70;
+        --line: #d8e2e4;
+        --panel: #f7faf9;
+        --accent: #0f766e;
+        --warn: #9a5b12;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: #ffffff;
+      }
+      main {
+        width: min(1120px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 40px 0 56px;
+      }
+      header {
+        display: grid;
+        gap: 14px;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 24px;
+      }
+      h1 {
+        margin: 0;
+        max-width: 880px;
+        font-size: clamp(36px, 7vw, 76px);
+        line-height: 0.95;
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 24px;
+      }
+      h3 {
+        margin: 0 0 8px;
+        font-size: 17px;
+      }
+      p,
+      li {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      a {
+        color: var(--accent);
+        font-weight: 700;
+      }
+      code {
+        overflow-wrap: anywhere;
+      }
+      section {
+        margin-top: 28px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+      }
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 18px;
+      }
+      .hero-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .hero-links a,
+      .pill {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 12px;
+        background: #ffffff;
+        text-decoration: none;
+      }
+      .metric {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        border-bottom: 1px solid var(--line);
+        padding: 10px 0;
+      }
+      .metric:last-child {
+        border-bottom: 0;
+      }
+      .metric strong {
+        color: var(--muted);
+        font-weight: 650;
+      }
+      .metric span {
+        text-align: right;
+        font-weight: 800;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow-wrap: anywhere;
+      }
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .status {
+        display: inline-flex;
+        border-radius: 999px;
+        padding: 3px 9px;
+        font-size: 12px;
+        font-weight: 800;
+        background: #e7f8f4;
+        color: var(--accent);
+      }
+      .status.warn {
+        background: #fff4df;
+        color: var(--warn);
+      }
+      .copy {
+        white-space: pre-wrap;
+        color: var(--ink);
+        background: #ffffff;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+      }
+      @media (max-width: 720px) {
+        main {
+          width: min(100vw - 20px, 1120px);
+          padding-top: 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="pill">Backblaze Generative Media Hackathon submission overview</p>
+        <h1>Media Ledger Studio</h1>
+        <p>
+          An operations ledger for generated media provenance, review, and Backblaze B2 storage handoff.
+          The public build is a dry-run prototype with synthetic records and no bundled credentials.
+        </p>
+        <nav class="hero-links" aria-label="Primary submission links">
+          <a href="https://media-ledger-studio-static.vercel.app">Open app</a>
+          <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio">Source snapshot</a>
+          <a href="https://ooyxloo.github.io/oid-knowledge-lab/demo-video.html">3-minute walkthrough</a>
+          <a href="https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-judging-evidence.html">Judging evidence</a>
+        </nav>
+      </header>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>What It Does</h2>
+          <p>
+            Media Ledger Studio lets a reviewer inspect generated image, video, and audio runs; compare prompt
+            and negative prompt records; verify B2 object keys and checksums; and copy a submission-ready ledger summary.
+          </p>
+        </article>
+        <article class="panel">
+          <h2>Why It Fits</h2>
+          <p>
+            The app is built around generated media operations: prompt intake, Genblaze-shaped generation metadata,
+            human review, durable Backblaze B2-shaped object storage, provenance inspection, and client handoff.
+          </p>
+        </article>
+        <article class="panel">
+          <h2>Honest Boundary</h2>
+          <p>
+            This submission should be described as a dry-run prototype. It does not claim real B2 uploads or real
+            Genblaze calls until a private live adapter run is completed.
+          </p>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <h2>Metrics</h2>
+          <div class="metric"><strong>Generated media records</strong><span>3</span></div>
+          <div class="metric"><strong>Asset types</strong><span>image, video, audio</span></div>
+          <div class="metric"><strong>Tracked media size</strong><span>17.25 MB</span></div>
+          <div class="metric"><strong>Media upload plans</strong><span>3</span></div>
+          <div class="metric"><strong>Sidecar upload plans</strong><span>3</span></div>
+          <div class="metric"><strong>Genblaze request plans</strong><span>3</span></div>
+        </article>
+        <article class="panel">
+          <h2>Required Links</h2>
+          <ul>
+            <li>App: <a href="https://media-ledger-studio-static.vercel.app">media-ledger-studio-static.vercel.app</a></li>
+            <li>Source: <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio">GitHub source snapshot</a></li>
+            <li>Walkthrough: <a href="https://ooyxloo.github.io/oid-knowledge-lab/demo-video.html">3-minute guided page</a></li>
+            <li>MP4 fallback: <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4">short MP4 walkthrough</a></li>
+            <li>Field pack: <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/devpost-field-pack.md">Devpost copy pack</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>Judging Checklist</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Criterion</th>
+              <th>Status</th>
+              <th>Evidence</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Working application</td>
+              <td><span class="status">ready</span></td>
+              <td><a href="https://media-ledger-studio-static.vercel.app">Public Vercel app</a></td>
+            </tr>
+            <tr>
+              <td>GitHub repository</td>
+              <td><span class="status">ready</span></td>
+              <td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio">Public source snapshot</a></td>
+            </tr>
+            <tr>
+              <td>Demo</td>
+              <td><span class="status">ready</span></td>
+              <td><a href="https://ooyxloo.github.io/oid-knowledge-lab/demo-video.html">3-minute walkthrough</a></td>
+            </tr>
+            <tr>
+              <td>Backblaze B2 usage</td>
+              <td><span class="status warn">dry-run-ready</span></td>
+              <td>3 B2-shaped media object records plus 3 paired sidecar metadata records.</td>
+            </tr>
+            <tr>
+              <td>Genblaze usage</td>
+              <td><span class="status warn">dry-run-ready</span></td>
+              <td>3 Genblaze-shaped provider/model records with prompts, seeds, retries, and safety notes.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel">
+        <h2>Copyable Summary</h2>
+        <div class="copy">Media Ledger Studio turns generated image, video, and audio runs into a reviewer-facing operations ledger. It connects prompts, model metadata, review decisions, Backblaze B2-shaped object records, checksums, and sidecar metadata so teams can hand off generated media with provenance instead of loose files.</div>
+      </section>
+    </main>
+  </body>
+</html>
