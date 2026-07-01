@@ -4,6 +4,14 @@
 
 Unleash community content issue #16: "How to Use Feature Flags for Continuous Delivery."
 
+## Official Program Context
+
+- Program page: <https://www.getunleash.io/blog/get-published-through-unleashs-community-content-program>
+- Content repository: <https://github.com/Unleash/community-content>
+- Target issue: <https://github.com/Unleash/community-content/issues/16>
+- Official program page states a flat rate of USD 200 per accepted submission when checked.
+- Flow: register as a writer, join Slack, receive topic feedback, submit a first draft, revise, publish, and invoice after publication.
+
 ## Reader Promise
 
 The proposed article shows how release teams can use feature flags as the rollout boundary for continuous delivery:
@@ -36,6 +44,8 @@ The final article should be written fresh for Unleash's audience. It should not 
 
 ## Public Review Links
 
+- Official program: https://www.getunleash.io/blog/get-published-through-unleashs-community-content-program
+- Target issue: https://github.com/Unleash/community-content/issues/16
 - Topic fit brief: https://ooyxloo.github.io/oid-knowledge-lab/unleash-topic-fit-brief.html
 - One-link packet: https://ooyxloo.github.io/oid-knowledge-lab/unleash-continuous-delivery-one-link.html
 - Implementation proof: https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html
