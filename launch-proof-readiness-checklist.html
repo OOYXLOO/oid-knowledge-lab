@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Launch Proof Readiness Checklist - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Launch proof readiness</p>
+      <h1>A practical checklist for making a technical demo easier to review</h1>
+      <p class="summary">Use this page before publishing a hackathon entry, open-source launch, developer-tool README, or customer-facing prototype. It separates real proof from rough edges, so reviewers can understand the project quickly without guessing what works.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="technical-launch-proof-sprint.html">Launch proof sprint</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="implementation-authenticity-proof.html">Implementation proof</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Readiness summary">
+      <article><span>Best time to use</span><strong>Before</strong><small>public submission</small></article>
+      <article><span>Expected input</span><strong>Demo</strong><small>repo, link, or prototype</small></article>
+      <article><span>Main risk</span><strong>Claims</strong><small>that proof does not support</small></article>
+      <article><span>Goal</span><strong>Clarity</strong><small>for the first minute</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Quick pass</p>
+        <h2>Five questions a reviewer should not have to ask</h2>
+        <p class="panel-copy">If any answer is missing, the launch package needs tightening before it is shown to judges, sponsors, users, maintainers, or customers.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Question</th><th>Strong answer</th><th>Weak signal</th></tr></thead>
+        <tbody>
+          <tr><td>What should I open first?</td><td>One primary demo, README, or proof page is clearly marked.</td><td>Several links compete for attention.</td></tr>
+          <tr><td>What works today?</td><td>Working behavior is separated from mock data, dry runs, and future plans.</td><td>The page implies production readiness without evidence.</td></tr>
+          <tr><td>Why does this matter?</td><td>The audience, problem, and first use case are stated in plain language.</td><td>The copy lists features but not the user's reason to care.</td></tr>
+          <tr><td>How can I verify it?</td><td>Public links, logs, screenshots, manifests, tests, or reproducible steps are available.</td><td>Proof only exists in private messages or local screenshots.</td></tr>
+          <tr><td>What is intentionally out of scope?</td><td>Known limits are explicit and do not undermine the core promise.</td><td>Limitations appear only after someone asks.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Evidence ladder</p>
+        <h2>Rank proof by how easy it is to verify</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Level</th><th>Example</th><th>Use it for</th></tr></thead>
+        <tbody>
+          <tr><td>Public live proof</td><td>Hosted demo, public endpoint, replayable workflow, or published report.</td><td>Main claims and first-minute review path.</td></tr>
+          <tr><td>Reproducible source proof</td><td>Repository, tests, CLI output, sample data, or deterministic build steps.</td><td>Technical credibility and maintainer review.</td></tr>
+          <tr><td>Static evidence proof</td><td>Screenshots, manifests, logs, diagrams, or generated field packs.</td><td>Submission forms, blog pitches, and handoff docs.</td></tr>
+          <tr><td>Boundary proof</td><td>Known gaps, privacy notes, unsupported integrations, and non-claims.</td><td>Trust and risk reduction.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Safe intake</p>
+        <h2>What to prepare before asking for a launch proof pass</h2>
+        <p class="panel-copy">Share public or sanitized materials only: repository link, demo URL, existing README, screenshots, short video draft, submission fields, and a short note about what reviewers should understand in the first minute. Remove credentials, API keys, private tokens, customer data, payment details, and unreleased confidential material.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Related service</p>
+        <h2>When a focused sprint is enough</h2>
+        <p class="panel-copy">A launch proof sprint is useful when the prototype already exists, but the public story, README, demo path, screenshots, submission fields, or evidence boundary are scattered. It is not a replacement for building the whole product from scratch.</p>
+        <p><a href="technical-launch-proof-sprint.html">Open the Technical Launch Proof Sprint page</a></p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
