@@ -19,14 +19,23 @@ The article would show how to turn a sanitized OID inventory export into a revie
 3. Add filters for invalid syntax, unknown enterprise numbers, and policy-related OIDs.
 4. Let reviewers mark records as accepted, needs context, or blocked.
 5. Export a safe Markdown handoff that excludes secrets, account exports, copied third-party page bodies, and private customer data.
+6. Package the workflow as a reusable template blueprint that readers can adapt for their own sanitized inventories.
 
 ## Why this fits Appsmith
 
 Appsmith is a good fit because the tutorial is about a real internal-tool pattern: review queue, data table, filters, status updates, safe notes, and exportable handoff text. The final article can focus on Appsmith widgets, queries, JSObjects, form validation, and role-aware review boundaries.
 
+## Template blueprint
+
+The supporting blueprint outlines the Appsmith pages, widgets, sample data, query names, JSObject formatter, and acceptance checks:
+
+- Public page: <https://ooyxloo.github.io/oid-knowledge-lab/appsmith-template-blueprint.html>
+- Raw markdown: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsmith-forkable-template-blueprint.md>
+
 ## Public proof links
 
 - Reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/appsmith-oid-reviewer-hub.html>
+- Template blueprint: <https://ooyxloo.github.io/oid-knowledge-lab/appsmith-template-blueprint.html>
 - Working dashboard: <https://ooyxloo.github.io/oid-knowledge-lab/>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
 - Implementation proof: <https://ooyxloo.github.io/oid-knowledge-lab/implementation-authenticity-proof.html>
