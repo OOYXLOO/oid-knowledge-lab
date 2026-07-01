@@ -17,6 +17,7 @@ The current source adapter targets public OID-base pages through the site's site
 - JavaScript review sample: <https://ooyxloo.github.io/oid-knowledge-lab/js-review-sample.html>
 - Technical rigor proof: <https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Technical writing editorial packet: <https://ooyxloo.github.io/oid-knowledge-lab/technical-writing-editorial-packet.html>
 - Pilot engagement page: <https://ooyxloo.github.io/oid-knowledge-lab/pilot-engagement.html>
 - OID pilot scope: <https://ooyxloo.github.io/oid-knowledge-lab/oid-pilot-scope.html>
 - CI storage check case study: <https://ooyxloo.github.io/oid-knowledge-lab/ci-storage-check-case-study.html>
@@ -57,6 +58,7 @@ Last refreshed on 2026-06-26:
 - Portfolio risk console: `public/oid-portfolio-risk-console.html` turns a small local OID inventory into a browser-only governance brief.
 - Hasura reviewer hub: `public/hasura-reviewer-hub.html` supports a GraphQL/Postgres article pitch for OID inventory review workflows.
 - Writing samples review page: `public/writing-samples.html` links editor-facing samples and proof surfaces
+- Technical writing editorial packet: `public/technical-writing-editorial-packet.html` groups the strongest article direction, proof links, and publication boundaries for editor review
 - Editor assignment fit page: `public/editor-assignment-fit.html` maps the three strongest paid-writing directions to their proof links and publication boundaries
 - Unleash continuous delivery packet: `public/unleash-continuous-delivery-one-link.html` maps a feature-flag article pitch to public proof links and publication boundaries
 - Honeybadger debugging packet: `public/honeybadger-debugging-one-link.html` remains available as a paused backup debugging/reliability article packet
