@@ -34,6 +34,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Media Ledger judging evidence: <https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-judging-evidence.html>
 - Media Ledger final submission overview: <https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-final-submission.html>
 - Envato Tuts+ contributor packet: <https://ooyxloo.github.io/oid-knowledge-lab/envato-tutsplus-contributor-packet.html>
+- Qwen Blog Post Award draft: <https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html>
 - Backblaze readiness pack: <https://ooyxloo.github.io/oid-knowledge-lab/backblaze-readiness-pack.html>
 - AI evaluator unified application desk: <https://ooyxloo.github.io/oid-knowledge-lab/ai-evaluator-unified-application-desk.html>
 - AI code evaluator portfolio: <https://ooyxloo.github.io/oid-knowledge-lab/ai-code-evaluator-portfolio.html>
@@ -79,6 +80,7 @@ Last refreshed on 2026-06-26:
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 - Stable local audit mode: `npm run audit:local:stable` fixes report timestamps through `OID_KNOWLEDGE_GENERATED_AT` so verification runs do not create noisy timestamp-only diffs
 - Media provenance generator: `npm run media:provenance` builds `reports/media-provenance-pack.json` and `reports/media-provenance-pack.md` from `examples/media-provenance-assets.json`
+- Qwen Blog Post Award draft: `docs/articles/qwen-source-grounded-autopilot-agent.md` and `public/qwen-blog-post-award-draft.html` provide a publication-ready article path without claiming live cloud proof.
 
 This repository stores the complete OID-base sitemap-level directory observed during the refresh. It does not store OID-base page bodies or raw Markdown/HTML mirrors.
 
