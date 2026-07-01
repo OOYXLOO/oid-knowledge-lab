@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Qwen Demo Reel - OID Knowledge Lab</title>
+    <style>
+      :root { --ink:#17202a; --muted:#52616f; --line:#d8dee9; --paper:#f7f9fb; --panel:#fff; --accent:#146c43; --blue:#1959a6; }
+      * { box-sizing:border-box; }
+      body { margin:0; background:var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+      main { width:min(1120px,calc(100% - 32px)); margin:0 auto; padding:28px 0 40px; }
+      header { display:flex; justify-content:space-between; gap:18px; align-items:flex-end; margin-bottom:18px; }
+      h1 { margin:0; font-size:clamp(2rem,5vw,4.4rem); line-height:1; letter-spacing:0; }
+      p { line-height:1.6; }
+      .tag { display:inline-flex; min-height:28px; align-items:center; padding:4px 10px; border-radius:999px; background:#e9f7ef; color:var(--accent); font-weight:800; font-size:.82rem; }
+      .deck { position:relative; min-height:540px; border:1px solid var(--line); border-radius:8px; background:#0b1220; overflow:hidden; }
+      .slide { position:absolute; inset:0; padding:44px; display:grid; grid-template-columns:1.05fr .95fr; gap:30px; align-items:center; opacity:0; animation:show 72s linear infinite; }
+      .slide:nth-child(1){ animation-delay:0s; }
+      .slide:nth-child(2){ animation-delay:12s; }
+      .slide:nth-child(3){ animation-delay:24s; }
+      .slide:nth-child(4){ animation-delay:36s; }
+      .slide:nth-child(5){ animation-delay:48s; }
+      .slide:nth-child(6){ animation-delay:60s; }
+      @keyframes show {
+        0%, 14% { opacity:1; transform:translateX(0); }
+        16%, 100% { opacity:0; transform:translateX(-18px); }
+      }
+      .copy { color:#f8fafc; }
+      .copy h2 { margin:8px 0 16px; font-size:clamp(1.8rem,4vw,3.4rem); line-height:1.05; letter-spacing:0; }
+      .copy p { color:#cbd5e1; font-size:1.05rem; }
+      .visual { min-height:330px; border:1px solid rgba(255,255,255,.18); border-radius:8px; background:#111c32; padding:20px; display:grid; align-content:center; gap:12px; }
+      .row { display:flex; justify-content:space-between; gap:12px; align-items:center; min-height:46px; padding:10px 12px; border:1px solid rgba(255,255,255,.14); border-radius:7px; color:#e5edf8; background:rgba(255,255,255,.05); }
+      .pill { color:#d1fae5; background:rgba(20,108,67,.35); border:1px solid rgba(110,231,183,.35); border-radius:999px; padding:4px 8px; font-weight:800; font-size:.78rem; white-space:nowrap; }
+      .warn { color:#fde68a; background:rgba(146,64,14,.32); border-color:rgba(253,230,138,.35); }
+      .blue { color:#bfdbfe; background:rgba(25,89,166,.35); border-color:rgba(147,197,253,.35); }
+      .footer { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-top:12px; color:var(--muted); font-size:.92rem; }
+      a { color:#0f6674; font-weight:800; }
+      @media (max-width:760px) {
+        .slide { grid-template-columns:1fr; padding:26px; }
+        .deck { min-height:760px; }
+        header { display:block; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <span class="tag">Autoplay demo reel</span>
+          <h1>Qwen Remediation Autopilot</h1>
+        </div>
+        <p>72-second judge reel for screen recording. No live deployment claim.</p>
+      </header>
+
+      <section class="deck" aria-label="Qwen demo reel">
+        <article class="slide">
+          <div class="copy">
+            <span class="tag">Problem</span>
+            <h2>OID inventories are quiet until review day.</h2>
+            <p>Certificate policy, SNMP/MIB, IAM, and private enterprise references need source-backed status before a team can safely act.</p>
+          </div>
+          <div class="visual">
+            <div class="row"><strong>router-core</strong><span>1.3.6.1.4.1.9.9.41</span><span class="pill">known</span></div>
+            <div class="row"><strong>sha256-policy</strong><span>2.16.840.1.101.3.4.2.1</span><span class="pill warn">verify</span></div>
+            <div class="row"><strong>bad-row</strong><span>not-an-oid</span><span class="pill warn">blocked</span></div>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="copy">
+            <span class="tag">Deterministic first</span>
+            <h2>Source checks happen before model prose.</h2>
+            <p>The local engine parses OID-like values, checks public registry evidence, and separates source facts from unresolved claims.</p>
+          </div>
+          <div class="visual">
+            <div class="row"><strong>Parser</strong><span class="pill blue">validates values</span></div>
+            <div class="row"><strong>IANA PEN import</strong><span class="pill blue">public evidence</span></div>
+            <div class="row"><strong>Publish guard</strong><span class="pill">safe artifacts</span></div>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="copy">
+            <span class="tag">Qwen role</span>
+            <h2>Qwen drafts reviewer-readable next actions.</h2>
+            <p>The model summarizes evidence, explains uncertain rows, and writes remediation notes from a sanitized packet.</p>
+          </div>
+          <div class="visual">
+            <div class="row"><strong>Input</strong><span>sanitized evidence packet</span></div>
+            <div class="row"><strong>Qwen</strong><span>language and reasoning layer</span></div>
+            <div class="row"><strong>Output</strong><span>draft notes, not source truth</span></div>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="copy">
+            <span class="tag">Human gate</span>
+            <h2>The agent stops before external action.</h2>
+            <p>No vendor contact, customer handoff, production ticket, registry edit, or publication happens without approval.</p>
+          </div>
+          <div class="visual">
+            <div class="row"><strong>Policy guard</strong><span class="pill">checks boundary</span></div>
+            <div class="row"><strong>Reviewer</strong><span class="pill warn">approval required</span></div>
+            <div class="row"><strong>Handoff</strong><span>Markdown / CSV / JSON</span></div>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="copy">
+            <span class="tag">Alibaba entrypoint</span>
+            <h2>Function Compute handler is ready for a private run.</h2>
+            <p>The repository includes a DashScope-compatible Qwen handler that reads a private API key from environment variables and publishes no secrets.</p>
+          </div>
+          <div class="visual">
+            <div class="row"><strong>deploy/handler</strong><span class="pill blue">source ready</span></div>
+            <div class="row"><strong>Private environment</strong><span class="pill warn">key required</span></div>
+            <div class="row"><strong>Receipt</strong><span>hashes and status only</span></div>
+          </div>
+        </article>
+
+        <article class="slide">
+          <div class="copy">
+            <span class="tag">Boundary</span>
+            <h2>Current proof is honest and submission-ready.</h2>
+            <p>It shows source-level integration, proof pages, a walkthrough, and a redacted receipt mechanism without claiming live cloud proof before it exists.</p>
+          </div>
+          <div class="visual">
+            <div class="row"><strong>Blog draft</strong><span class="pill">ready</span></div>
+            <div class="row"><strong>Submission pack</strong><span class="pill">ready</span></div>
+            <div class="row"><strong>Live run</strong><span class="pill warn">pending private receipt</span></div>
+          </div>
+        </article>
+      </section>
+
+      <div class="footer">
+        <span>Links: <a href="./qwen-autopilot-agent-one-link.html">packet</a> · <a href="./qwen-3-minute-walkthrough.html">walkthrough</a> · <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-submission-pack.md">submission pack</a></span>
+        <span>Record this page for a lightweight demo video.</span>
+      </div>
+    </main>
+  </body>
+</html>
