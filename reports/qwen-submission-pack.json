@@ -1,6 +1,6 @@
 {
   "schema_version": "qwen-submission-pack/v1",
-  "generated_at": "2026-07-01T18:07:48.096Z",
+  "generated_at": "2026-07-01T18:12:47.529Z",
   "public_base_url": "https://ooyxloo.github.io/oid-knowledge-lab",
   "project": {
     "name": "OID Knowledge Lab: Qwen Remediation Autopilot",
@@ -119,6 +119,10 @@
       "url": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-proof.html"
     },
     {
+      "label": "Qwen demo reel",
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-reel.html"
+    },
+    {
       "label": "Qwen 3-minute walkthrough",
       "url": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html"
     },
@@ -191,6 +195,11 @@
       "label": "Three-minute walkthrough page",
       "status": "ready",
       "evidence": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html"
+    },
+    {
+      "label": "Autoplay demo reel page",
+      "status": "ready",
+      "evidence": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-reel.html"
     },
     {
       "label": "Screenshot proof gallery",

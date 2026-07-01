@@ -1,6 +1,6 @@
 # Qwen Submission Pack
 
-Generated at: 2026-07-01T18:07:48.096Z
+Generated at: 2026-07-01T18:12:47.529Z
 
 ## Project
 
@@ -61,6 +61,7 @@ flowchart LR
 | Deterministic dataset audit | ready | reports/dataset-manifest.json |
 | Public one-link page | ready | https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html |
 | Three-minute walkthrough page | ready | https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html |
+| Autoplay demo reel page | ready | https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-reel.html |
 | Screenshot proof gallery | ready | https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-proof.html |
 | Architecture diagram | ready | reports/qwen-architecture.mmd |
 | Alibaba Function Compute handler | ready_source_only | deploy/alibaba-function-compute-qwen-handler.js |
@@ -72,6 +73,7 @@ flowchart LR
 
 - [Qwen one-link packet](https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html)
 - [Qwen demo proof page](https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-proof.html)
+- [Qwen demo reel](https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-reel.html)
 - [Qwen 3-minute walkthrough](https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html)
 - [Demo proof screenshot](https://ooyxloo.github.io/oid-knowledge-lab/assets/qwen/demo-proof.png)
 - [One-link packet screenshot](https://ooyxloo.github.io/oid-knowledge-lab/assets/qwen/one-link.png)

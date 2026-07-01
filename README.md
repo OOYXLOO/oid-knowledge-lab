@@ -35,6 +35,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Media Ledger final submission overview: <https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-final-submission.html>
 - Envato Tuts+ contributor packet: <https://ooyxloo.github.io/oid-knowledge-lab/envato-tutsplus-contributor-packet.html>
 - Qwen Blog Post Award draft: <https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html>
+- Qwen demo reel: <https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-reel.html>
 - Qwen 3-minute walkthrough: <https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html>
 - Backblaze readiness pack: <https://ooyxloo.github.io/oid-knowledge-lab/backblaze-readiness-pack.html>
 - AI evaluator unified application desk: <https://ooyxloo.github.io/oid-knowledge-lab/ai-evaluator-unified-application-desk.html>
@@ -82,6 +83,7 @@ Last refreshed on 2026-06-26:
 - Stable local audit mode: `npm run audit:local:stable` fixes report timestamps through `OID_KNOWLEDGE_GENERATED_AT` so verification runs do not create noisy timestamp-only diffs
 - Media provenance generator: `npm run media:provenance` builds `reports/media-provenance-pack.json` and `reports/media-provenance-pack.md` from `examples/media-provenance-assets.json`
 - Qwen Blog Post Award draft: `docs/articles/qwen-source-grounded-autopilot-agent.md` and `public/qwen-blog-post-award-draft.html` provide a publication-ready article path without claiming live cloud proof.
+- Qwen demo reel: `public/qwen-demo-reel.html` provides an autoplay screen-recording page for judges without claiming live cloud proof.
 - Qwen 3-minute walkthrough: `public/qwen-3-minute-walkthrough.html` provides a recording-ready judge walkthrough for the Qwen project without claiming live cloud proof.
 - Alibaba Function Compute Qwen handler: `deploy/alibaba-function-compute-qwen-handler.js` shows the private deployment entrypoint for a DashScope-compatible Qwen call without storing secrets or claiming a live deployment.
 
