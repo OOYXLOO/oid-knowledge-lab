@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reviewable Interfaces for AI-Assisted Content</title>
+  <style>
+    :root { --ink:#17202a; --muted:#52616f; --line:#d8dee9; --paper:#f7f9fb; --panel:#fff; --accent:#1f7a8c; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { width:min(980px,calc(100% - 32px)); margin:0 auto; padding:40px 0 64px; }
+    h1 { margin:0 0 10px; font-size:clamp(2rem,5vw,3.6rem); line-height:1.05; letter-spacing:0; }
+    h2 { margin:0 0 10px; font-size:1.22rem; }
+    p,li { line-height:1.65; }
+    .lede { color:var(--muted); max-width:820px; font-size:1.05rem; }
+    .tag { display:inline-flex; min-height:28px; align-items:center; padding:4px 10px; border-radius:999px; background:#e8f4f6; color:var(--accent); font-size:.82rem; font-weight:800; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; margin:22px 0; }
+    section,.card { border:1px solid var(--line); border-radius:8px; background:var(--panel); padding:18px; }
+    section { margin-top:14px; }
+    a { color:#0f6674; font-weight:800; }
+    code { background:#eef3f7; padding:2px 5px; border-radius:5px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="tag">Article proposal</span>
+      <h1>Designing Reviewable Interfaces for AI-Assisted Content</h1>
+      <p class="lede">A publication proposal about making AI-assisted drafts inspectable before they become published content. The focus is UX, evidence boundaries, and reviewer decision paths rather than model hype.</p>
+    </header>
+
+    <div class="grid">
+      <article class="card">
+        <h2>Reader</h2>
+        <p>Designers, front-end developers, content designers, UX writers, and product teams building AI-assisted writing or documentation workflows.</p>
+      </article>
+      <article class="card">
+        <h2>Promise</h2>
+        <p>Show how to separate source facts, generated claims, inferred claims, missing evidence, and privacy blockers inside the interface.</p>
+      </article>
+      <article class="card">
+        <h2>Example</h2>
+        <p>A knowledge-base update where the UI reveals which steps are sourced, which claims need confirmation, and what must stay out of publication.</p>
+      </article>
+    </div>
+
+    <section>
+      <h2>Proposed Outline</h2>
+      <ol>
+        <li>Why AI drafts look finished too early.</li>
+        <li>Reviewability as a UX and product requirement.</li>
+        <li>Separating source facts from generated claims.</li>
+        <li>Making the reviewer path visible.</li>
+        <li>Practical design patterns: source-linked claim cards, blocker banners, privacy checks, explained confidence labels, and publish-readiness summaries.</li>
+        <li>A small knowledge-base update example.</li>
+        <li>Anti-patterns: one-click publish flows, unexplained scores, hidden evidence, and easy approval without inspection.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Relevant Samples</h2>
+      <p><a href="evidence-log-playground.html">Evidence log playground</a></p>
+      <p><a href="writing-samples.html">Writing samples</a></p>
+      <p><a href="knowledgeowl-one-link.html">KnowledgeOwl evidence-log packet</a></p>
+    </section>
+
+    <section>
+      <h2>Boundary</h2>
+      <p>The final article would be freshly written for the publication. It would not be a product announcement, a tool walkthrough, a scraped summary, or a promotional post. It would avoid credentials, private customer data, private account screenshots, payment records, tax data, KYC data, and unpublished client code.</p>
+    </section>
+  </main>
+</body>
+</html>

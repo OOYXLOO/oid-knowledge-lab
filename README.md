@@ -49,6 +49,7 @@ Last refreshed on 2026-06-26:
 - Coverage report: `reports/coverage-report.md` compares IANA PEN records with the OID-base sitemap directory
 - Static dashboard: generated under `public/`
 - Qwen build journal: `public/qwen-build-journal.html` and `reports/qwen-build-journal.md` describe the source-grounded autopilot-agent candidate without claiming live Qwen Cloud or Alibaba Cloud deployment proof.
+- Reviewable AI interface proposal: `public/smashing-reviewable-ai-interface.html` and `docs/articles/smashing-reviewable-ai-interface.md` outline an editorial UX article on making AI-assisted content reviewable before publication.
 - Assessment brief page: `public/consulting-brief.html` summarizes the client-safe OID inventory assessment path.
 - Portfolio risk console: `public/oid-portfolio-risk-console.html` turns a small local OID inventory into a browser-only governance brief.
 - Hasura reviewer hub: `public/hasura-reviewer-hub.html` supports a GraphQL/Postgres article pitch for OID inventory review workflows.
