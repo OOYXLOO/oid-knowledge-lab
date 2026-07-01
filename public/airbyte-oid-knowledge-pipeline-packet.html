@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Airbyte OID Knowledge Pipeline Packet - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Airbyte article packet</p>
+      <h1>Build an AI-ready OID knowledge pipeline with Airbyte and Postgres</h1>
+      <p class="summary">A focused editor-review packet for a developer tutorial about turning a public standards-style registry into a structured, refreshable, query-ready knowledge base with safe source boundaries.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a>
+        <a href="airbyte-proofdesk-review-packet.html">Airbyte ProofDesk packet</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="technical-rigor-proof.html">Technical proof</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/airbyte-oid-knowledge-pipeline-packet.md">Markdown source</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Airbyte OID pipeline fit">
+      <article><span>Topic</span><strong>Airbyte</strong><small>Data integration tutorial</small></article>
+      <article><span>Dataset</span><strong>OID</strong><small>Public registry metadata</small></article>
+      <article><span>Output</span><strong>Postgres</strong><small>Search and hierarchy queries</small></article>
+      <article><span>Boundary</span><strong>Safe</strong><small>No private credentials or mirrors</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Article fit</p>
+        <h2>A real data movement problem, not a generic overview</h2>
+        <p class="panel-copy">OID registries are public, hierarchical, and useful for security, PKI, network, and compliance tooling, but they are awkward to query directly. The article can show an Airbyte-style path from public source records to normalized Postgres tables, changed-record detection, and search-ready context for developer tools or AI agents.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Airbyte reader concern</th><th>Packet answer</th></tr></thead>
+        <tbody>
+          <tr><td>Source boundary</td><td>Use public registry URLs and retrieval metadata; do not require credentials, account exports, or private customer data.</td></tr>
+          <tr><td>Schema design</td><td>Model OID nodes, parent-child edges, source metadata, and changed-record status separately.</td></tr>
+          <tr><td>Incremental updates</td><td>Use stable URL keys plus content hashes or timestamps to classify changed, unchanged, and failed records.</td></tr>
+          <tr><td>Downstream value</td><td>Expose hierarchy queries, full-text search, and context packets that a developer tool or AI agent can consume.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Tutorial map</p>
+        <h2>How the article maps to Airbyte concepts</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Article section</th><th>Airbyte framing</th></tr></thead>
+        <tbody>
+          <tr><td>Public OID source</td><td>HTTP/API source or low-code source prototype.</td></tr>
+          <tr><td>Raw capture boundary</td><td>Public URL, retrieval timestamp, content hash, attribution, and no secret-bearing input.</td></tr>
+          <tr><td>Normalization</td><td>OID node table, edge table, source metadata table, and validation status fields.</td></tr>
+          <tr><td>Destination</td><td>Postgres tables plus materialized search views or exportable review artifacts.</td></tr>
+          <tr><td>Incremental sync</td><td>URL key plus hash comparison, changed/unchanged/error status, and manifest checks.</td></tr>
+          <tr><td>AI-ready output</td><td>Search endpoint, subtree query, context packet, and reproducible evidence manifest.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Copy-ready pitch</p>
+        <h2>Email or form body</h2>
+      </div>
+      <pre>Hi Airbyte team,
+
+I would like to pitch a hands-on technical article for the Airbyte community:
+
+Build an AI-ready OID Knowledge Pipeline with Airbyte, Postgres, and Full-Text Search
+
+The article would show how to turn a public standards-style knowledge source into a structured, refreshable data product. The walkthrough would cover extracting public OID registry pages, modeling OID hierarchy in Postgres, detecting changed records with content hashes, and exposing practical full-text and hierarchy queries that can feed developer tools or AI agents.
+
+Why I think it fits Airbyte:
+
+- It is a real data-integration tutorial, not a generic overview.
+- It connects with Airbyte's current context-for-AI-agents direction.
+- It includes a concrete dataset, schema, sync strategy, and query examples.
+- It gives readers a reusable pattern for turning public registries, docs, and knowledge bases into reliable context stores.
+
+I can include runnable code, SQL migrations, and a small public demo repository.
+
+Best,
+YXL</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Proof links</p>
+        <h2>Open these first</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Proof</th><th>Link</th><th>What it shows</th></tr></thead>
+        <tbody>
+          <tr><td>Working dashboard</td><td><a href="./">OID Knowledge Lab</a></td><td>Static public review surface, source boundaries, generated reports, and local-only audit tooling.</td></tr>
+          <tr><td>Data model</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/data-model.md">docs/data-model.md</a></td><td>OID record shape, source metadata, and report artifact model.</td></tr>
+          <tr><td>Compliance boundary</td><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/compliance.md">docs/compliance.md</a></td><td>Public-source policy, attribution, and no-private-data publication boundary.</td></tr>
+          <tr><td>Existing Airbyte hub</td><td><a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a></td><td>Prior article-fit review path and public proof links.</td></tr>
+          <tr><td>Writing samples</td><td><a href="writing-samples.html">Writing samples</a></td><td>Implementation-backed editorial samples and review packets.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Outline</p>
+        <h2>Proposed article structure</h2>
+      </div>
+      <div class="decision-strip">
+        <article><span>1</span><strong>Problem</strong><p>Why public registries are useful but hard to consume programmatically.</p></article>
+        <article><span>2</span><strong>Schema</strong><p>Design OID node, edge, source metadata, and validation-status tables.</p></article>
+        <article><span>3</span><strong>Ingestion</strong><p>Build an Airbyte-style public-source path with stable keys and safe attribution.</p></article>
+        <article><span>4</span><strong>Queries</strong><p>Add Postgres full-text search, subtree lookups, and context-ready exports.</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Publication boundary</p>
+        <h2>Fresh article, safe inputs</h2>
+        <p class="panel-copy">This page is an editor-review packet and implementation proof, not a finished publication draft. A final article should be freshly written for Airbyte's editorial requirements and should not include private data, credentials, account pages, copied third-party article bodies, payment data, or raw full-site mirrors.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -19,6 +19,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
 - Developer docs trial pack: <https://ooyxloo.github.io/oid-knowledge-lab/developer-docs-trial-pack.html>
 - Developer docs sample diagnosis: <https://ooyxloo.github.io/oid-knowledge-lab/developer-docs-sample-diagnosis.html>
+- Airbyte OID knowledge pipeline packet: <https://ooyxloo.github.io/oid-knowledge-lab/airbyte-oid-knowledge-pipeline-packet.html>
 - Technical writing editorial packet: <https://ooyxloo.github.io/oid-knowledge-lab/technical-writing-editorial-packet.html>
 - Launch proof sprint scope: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-sprint-scope.html>
 - Launch proof readiness checklist: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-readiness-checklist.html>
