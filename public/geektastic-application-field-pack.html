@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Reviewer Application Field Pack - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Code reviewer application field pack</p>
+      <h1>JavaScript, TypeScript, and Node.js review profile</h1>
+      <p class="summary">A compact public application packet for code-reviewer roles: reviewer positioning, written-feedback style, public samples, and private-assessment boundaries.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="geektastic-reviewer-readiness.html">Reviewer readiness</a>
+        <a href="js-review-sample.html">JS review sample</a>
+        <a href="js-reviewer-drill-invoice-total.html">Invoice reviewer drill</a>
+        <a href="code-reviewer-portfolio.html">Portfolio</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/geektastic-reviewer-application-pack.md">Raw application pack</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Code reviewer application fields">
+      <article><span>Stack</span><strong>JS/TS</strong><small>Node.js and browser code</small></article>
+      <article><span>Review lens</span><strong>Behavior</strong><small>Contracts and edge cases</small></article>
+      <article><span>Output</span><strong>Actionable</strong><small>Concise written feedback</small></article>
+      <article><span>Boundary</span><strong>Private-safe</strong><small>No assessment leaks</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Reviewer positioning</p>
+        <h2>JavaScript, TypeScript, and Node.js reviewer focused on correctness, edge cases, maintainability, tests, and clear written feedback.</h2>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Short profile</p>
+        <h2>Copy-ready application text</h2>
+      </div>
+      <pre>I review JavaScript, TypeScript, and Node.js work with attention to behavior contracts, boundary cases, implementation clarity, maintainability, and whether the final feedback is useful to another engineer. My public samples show how I separate expected behavior from likely risk, propose focused tests, and write concise revision guidance.</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Review strengths</p>
+        <h2>What the samples demonstrate</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Signal</th><th>Review behavior</th></tr></thead>
+        <tbody>
+          <tr><td>Correctness</td><td>Compare implementation behavior against the stated contract.</td></tr>
+          <tr><td>Edge cases</td><td>Check null, undefined, empty input, invalid state, coercion, async failure, partial parsing, and surprising defaults.</td></tr>
+          <tr><td>Maintainability</td><td>Prefer small, locally consistent changes over broad rewrites.</td></tr>
+          <tr><td>Testing</td><td>Suggest cases that prove the risky behavior, not only happy-path coverage.</td></tr>
+          <tr><td>Written feedback</td><td>Make severity, impact, evidence, and next action easy to understand.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Public samples</p>
+        <h2>Review evidence links</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Sample</th><th>Link</th></tr></thead>
+        <tbody>
+          <tr><td>JavaScript review sample</td><td><a href="js-review-sample.html">js-review-sample.html</a></td></tr>
+          <tr><td>Invoice reviewer drill</td><td><a href="js-reviewer-drill-invoice-total.html">js-reviewer-drill-invoice-total.html</a></td></tr>
+          <tr><td>Reviewer readiness</td><td><a href="geektastic-reviewer-readiness.html">geektastic-reviewer-readiness.html</a></td></tr>
+          <tr><td>Code reviewer portfolio</td><td><a href="code-reviewer-portfolio.html">code-reviewer-portfolio.html</a></td></tr>
+          <tr><td>Technical rigor proof</td><td><a href="technical-rigor-proof.html">technical-rigor-proof.html</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Sample verdict shape</p>
+        <h2>Concise review feedback format</h2>
+      </div>
+      <pre>Verdict:
+Revise before acceptance.
+
+Main issue:
+The implementation silently accepts invalid input and can return NaN.
+
+Evidence:
+parseInt("abc", 10) returns NaN, and the current comparison checks do not catch it.
+
+Impact:
+The caller may treat an invalid retry-limit configuration as valid, which can affect backoff and failure behavior.
+
+Suggested fix:
+Use full-string numeric validation, reject non-integer input, and add tests for empty input, "0", invalid strings, partial numeric strings, and out-of-range values.
+
+Residual risk:
+The product should still decide whether user-facing forms should clamp values or reject them with validation errors.</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Private assessment boundary</p>
+        <h2>Assessment-safe handling</h2>
+        <p class="panel-copy">This public packet does not include private assessment prompts, candidate code, platform screenshots, credentials, account data, payment details, private messages, cookies, or copied third-party material. Private review work should stay inside the platform that owns it.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
