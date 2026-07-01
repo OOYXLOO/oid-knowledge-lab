@@ -35,7 +35,7 @@
     },
     {
       "label": "Live adapter boundary",
-      "evidence": "Missing 5 live environment variable(s): B2_APP_ID, B2_APP_VALUE, B2_BUCKET_NAME, GENBLAZE_AUTH_VALUE, GENBLAZE_ENDPOINT",
+      "evidence": "Missing 4 live environment variable(s): B2_KEY_ID, B2_APP_KEY, B2_BUCKET, GMI_API_KEY",
       "status": "blocked-on-env"
     }
   ],

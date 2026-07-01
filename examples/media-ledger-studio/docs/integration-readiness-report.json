@@ -2,18 +2,16 @@
   "mode": "dry-run",
   "readyForLiveRun": false,
   "missingEnv": [
-    "B2_APP_ID",
-    "B2_APP_VALUE",
-    "B2_BUCKET_NAME",
-    "GENBLAZE_AUTH_VALUE",
-    "GENBLAZE_ENDPOINT"
+    "B2_KEY_ID",
+    "B2_APP_KEY",
+    "B2_BUCKET",
+    "GMI_API_KEY"
   ],
   "requiredEnv": [
-    "B2_APP_ID",
-    "B2_APP_VALUE",
-    "B2_BUCKET_NAME",
-    "GENBLAZE_AUTH_VALUE",
-    "GENBLAZE_ENDPOINT"
+    "B2_KEY_ID",
+    "B2_APP_KEY",
+    "B2_BUCKET",
+    "GMI_API_KEY"
   ],
   "totals": {
     "runs": 3,
@@ -53,5 +51,5 @@
       ]
     }
   ],
-  "blockerSummary": "Missing 5 live environment variable(s): B2_APP_ID, B2_APP_VALUE, B2_BUCKET_NAME, GENBLAZE_AUTH_VALUE, GENBLAZE_ENDPOINT"
+  "blockerSummary": "Missing 4 live environment variable(s): B2_KEY_ID, B2_APP_KEY, B2_BUCKET, GMI_API_KEY"
 }

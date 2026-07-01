@@ -6,18 +6,16 @@ import {
 } from "../src/mediaLedger.js";
 
 const env = {
-  B2_APP_ID: process.env.B2_APP_ID,
-  B2_APP_VALUE: process.env.B2_APP_VALUE,
-  B2_BUCKET_NAME: process.env.B2_BUCKET_NAME,
-  GENBLAZE_AUTH_VALUE: process.env.GENBLAZE_AUTH_VALUE,
-  GENBLAZE_ENDPOINT: process.env.GENBLAZE_ENDPOINT
+  B2_KEY_ID: process.env.B2_KEY_ID,
+  B2_APP_KEY: process.env.B2_APP_KEY,
+  B2_BUCKET: process.env.B2_BUCKET,
+  GMI_API_KEY: process.env.GMI_API_KEY
 };
 
 const options = {
   publicBaseUrl: process.env.PUBLIC_APP_URL || "https://media-ledger-studio-static.vercel.app",
-  b2BucketName: process.env.B2_BUCKET_NAME || "media-ledger-demo",
+  b2BucketName: process.env.B2_BUCKET || "media-ledger-demo",
   b2Prefix: process.env.B2_PREFIX || "challenge-dry-run",
-  genblazeEndpoint: process.env.GENBLAZE_ENDPOINT || "https://api.genblaze.example/v1/generate",
   env
 };
 
@@ -36,7 +34,8 @@ const uploadPairsMatch = bundle.publicReviewLinks.every((link, index) => {
 const objectKeysUnique = new Set(bundle.b2UploadPlan.map((item) => item.objectKey)).size
   === bundle.b2UploadPlan.length;
 const genblazeRequestsComplete = bundle.genblazeRequestPlan.every((request) =>
-  request.endpoint
+  request.provider
+  && request.credentialEnv
   && request.model
   && request.prompt
   && request.negativePrompt

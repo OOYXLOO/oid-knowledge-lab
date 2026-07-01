@@ -3,11 +3,10 @@
   "mode": "dry-run",
   "readyForLiveRun": false,
   "missingEnv": [
-    "B2_APP_ID",
-    "B2_APP_VALUE",
-    "B2_BUCKET_NAME",
-    "GENBLAZE_AUTH_VALUE",
-    "GENBLAZE_ENDPOINT"
+    "B2_KEY_ID",
+    "B2_APP_KEY",
+    "B2_BUCKET",
+    "GMI_API_KEY"
   ],
   "checks": {
     "uploadPairsMatch": true,

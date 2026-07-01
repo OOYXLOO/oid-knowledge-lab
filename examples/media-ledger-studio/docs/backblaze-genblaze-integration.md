@@ -44,11 +44,10 @@ The static prototype uses sample Genblaze-shaped runs so reviewers can inspect t
 
 Required live environment variables:
 
-- `B2_APP_ID`
-- `B2_APP_VALUE`
-- `B2_BUCKET_NAME`
-- `GENBLAZE_AUTH_VALUE`
-- `GENBLAZE_ENDPOINT`
+- `B2_KEY_ID`
+- `B2_APP_KEY`
+- `B2_BUCKET`
+- `GMI_API_KEY`
 
 The public build intentionally leaves those values unset. That keeps the repository credential-free while showing exactly what would be sent to B2 and Genblaze during a live challenge run.
 

@@ -319,15 +319,14 @@ export function createLiveIntegrationBundle(runs = sampleRuns, {
   publicBaseUrl = "https://media-ledger-studio-static.vercel.app",
   b2BucketName = "media-ledger-demo",
   b2Prefix = "generated-media-ledger",
-  genblazeEndpoint = "https://api.genblaze.example/v1/generate",
+  genblazeProvider = "gmi",
   env = {}
 } = {}) {
   const requiredEnv = [
-    "B2_APP_ID",
-    "B2_APP_VALUE",
-    "B2_BUCKET_NAME",
-    "GENBLAZE_AUTH_VALUE",
-    "GENBLAZE_ENDPOINT"
+    "B2_KEY_ID",
+    "B2_APP_KEY",
+    "B2_BUCKET",
+    "GMI_API_KEY"
   ];
   const missingEnv = requiredEnv.filter((name) => !env[name]);
   const sidecars = createSidecarMetadataManifest(runs);
@@ -338,7 +337,7 @@ export function createLiveIntegrationBundle(runs = sampleRuns, {
       {
         runId: run.id,
         kind: "media",
-        bucket: env.B2_BUCKET_NAME || b2BucketName,
+        bucket: env.B2_BUCKET || b2BucketName,
         objectKey: mediaKey,
         contentType: run.storage.contentType,
         checksumSha256: run.storage.checksumSha256,
@@ -347,7 +346,7 @@ export function createLiveIntegrationBundle(runs = sampleRuns, {
       {
         runId: run.id,
         kind: "sidecar",
-        bucket: env.B2_BUCKET_NAME || b2BucketName,
+        bucket: env.B2_BUCKET || b2BucketName,
         objectKey: sidecarKey,
         contentType: "application/json",
         checksumSha256: run.storage.checksumSha256,
@@ -357,7 +356,8 @@ export function createLiveIntegrationBundle(runs = sampleRuns, {
   });
   const genblazeRequestPlan = runs.map((run) => ({
     runId: run.id,
-    endpoint: env.GENBLAZE_ENDPOINT || genblazeEndpoint,
+    provider: genblazeProvider,
+    credentialEnv: "GMI_API_KEY",
     model: run.model,
     prompt: run.prompt,
     negativePrompt: run.negativePrompt,

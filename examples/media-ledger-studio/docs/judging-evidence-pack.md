@@ -28,7 +28,7 @@ Generated-media teams need a durable review ledger, not only final files. Media 
 - Backblaze B2 usage [dry-run-ready]: 3 B2-shaped media records and 3 sidecar records
 - Genblaze usage [dry-run-ready]: 3 Genblaze-shaped provider/model records
 - Integrity evidence [ready]: SHA-256 media checksums plus sidecar-to-media pairing checks
-- Live adapter boundary [blocked-on-env]: Missing 5 live environment variable(s): B2_APP_ID, B2_APP_VALUE, B2_BUCKET_NAME, GENBLAZE_AUTH_VALUE, GENBLAZE_ENDPOINT
+- Live adapter boundary [blocked-on-env]: Missing 4 live environment variable(s): B2_KEY_ID, B2_APP_KEY, B2_BUCKET, GMI_API_KEY
 
 ## Honest Boundary
 

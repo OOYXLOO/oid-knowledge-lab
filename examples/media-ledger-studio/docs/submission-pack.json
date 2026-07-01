@@ -25,18 +25,16 @@
   "liveIntegration": {
     "mode": "dry-run",
     "requiredEnv": [
-      "B2_APP_ID",
-      "B2_APP_VALUE",
-      "B2_BUCKET_NAME",
-      "GENBLAZE_AUTH_VALUE",
-      "GENBLAZE_ENDPOINT"
+      "B2_KEY_ID",
+      "B2_APP_KEY",
+      "B2_BUCKET",
+      "GMI_API_KEY"
     ],
     "missingEnv": [
-      "B2_APP_ID",
-      "B2_APP_VALUE",
-      "B2_BUCKET_NAME",
-      "GENBLAZE_AUTH_VALUE",
-      "GENBLAZE_ENDPOINT"
+      "B2_KEY_ID",
+      "B2_APP_KEY",
+      "B2_BUCKET",
+      "GMI_API_KEY"
     ],
     "b2UploadPlan": [
       {
@@ -140,7 +138,8 @@
     "genblazeRequestPlan": [
       {
         "runId": "run-cover-001",
-        "endpoint": "https://api.genblaze.example/v1/generate",
+        "provider": "gmi",
+        "credentialEnv": "GMI_API_KEY",
         "model": "genblaze-image-studio-v1",
         "prompt": "A production desk with generated image contact sheets, storage labels, and a calm cloud operations mood.",
         "negativePrompt": "no distorted text, no brand impersonation, no private data",
@@ -154,7 +153,8 @@
       },
       {
         "runId": "run-storyboard-014",
-        "endpoint": "https://api.genblaze.example/v1/generate",
+        "provider": "gmi",
+        "credentialEnv": "GMI_API_KEY",
         "model": "genblaze-motion-board-v0",
         "prompt": "Four-panel storyboard showing prompt intake, generated media review, B2 storage, and final client delivery.",
         "negativePrompt": "no fake logos, no real customer names, no private screenshots",
@@ -167,7 +167,8 @@
       },
       {
         "runId": "run-audio-006",
-        "endpoint": "https://api.genblaze.example/v1/generate",
+        "provider": "gmi",
+        "credentialEnv": "GMI_API_KEY",
         "model": "genblaze-audio-loop-v2",
         "prompt": "Warm minimal ambient audio bed, soft pulse, no vocals, no recognizable melody.",
         "negativePrompt": "no copyrighted melody, no voice, no aggressive percussion",

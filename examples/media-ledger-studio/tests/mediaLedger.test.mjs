@@ -76,18 +76,18 @@ assert.match(devpostFields.challengeFit, /Backblaze B2/);
 const liveBundle = createLiveIntegrationBundle(sampleRuns, {
   publicBaseUrl: "https://media-ledger-studio-static.vercel.app",
   b2BucketName: "media-ledger-demo",
-  b2Prefix: "challenge-dry-run",
-  genblazeEndpoint: "https://api.genblaze.example/v1/generate"
+  b2Prefix: "challenge-dry-run"
 });
 assert.equal(liveBundle.mode, "dry-run");
 assert.equal(liveBundle.b2UploadPlan.length, sampleRuns.length * 2);
 assert.equal(liveBundle.genblazeRequestPlan.length, sampleRuns.length);
-assert.equal(liveBundle.requiredEnv.length, 5);
-assert.equal(liveBundle.missingEnv.length, 5);
-assert.equal(liveBundle.requiredEnv.includes("GENBLAZE_AUTH_VALUE"), true);
+assert.equal(liveBundle.requiredEnv.length, 4);
+assert.equal(liveBundle.missingEnv.length, 4);
+assert.equal(liveBundle.requiredEnv.includes("GMI_API_KEY"), true);
 assert.match(liveBundle.b2UploadPlan[0].objectKey, /^challenge-dry-run\//);
 assert.equal(liveBundle.b2UploadPlan[1].contentType, "application/json");
-assert.equal(liveBundle.genblazeRequestPlan[0].endpoint, "https://api.genblaze.example/v1/generate");
+assert.equal(liveBundle.genblazeRequestPlan[0].provider, "gmi");
+assert.equal(liveBundle.genblazeRequestPlan[0].credentialEnv, "GMI_API_KEY");
 assert.deepEqual(liveBundle.publicReviewLinks[0].requiredUploadPair, [
   liveBundle.b2UploadPlan[0].objectKey,
   liveBundle.b2UploadPlan[1].objectKey
@@ -95,18 +95,17 @@ assert.deepEqual(liveBundle.publicReviewLinks[0].requiredUploadPair, [
 
 const liveReadyBundle = createLiveIntegrationBundle(sampleRuns, {
   env: {
-    B2_APP_ID: "demo-app-id",
-    B2_APP_VALUE: "demo-app-value",
-    B2_BUCKET_NAME: "live-bucket",
-    GENBLAZE_AUTH_VALUE: "demo-auth-value",
-    GENBLAZE_ENDPOINT: "https://genblaze.example.test/v1/generate"
+    B2_KEY_ID: "demo-key-id",
+    B2_APP_KEY: "demo-app-key",
+    B2_BUCKET: "live-bucket",
+    GMI_API_KEY: "demo-gmi-key"
   }
 });
 assert.equal(liveReadyBundle.mode, "live-ready");
 assert.equal(liveReadyBundle.missingEnv.length, 0);
 assert.equal(liveReadyBundle.b2UploadPlan.every((item) => item.bucket === "live-bucket"), true);
 assert.equal(
-  liveReadyBundle.genblazeRequestPlan.every((request) => request.endpoint === "https://genblaze.example.test/v1/generate"),
+  liveReadyBundle.genblazeRequestPlan.every((request) => request.credentialEnv === "GMI_API_KEY"),
   true
 );
 
@@ -123,15 +122,14 @@ assert.equal(readinessReport.totals.reviewLinks, sampleRuns.length);
 assert.equal(readinessReport.totals.totalMediaBytes, summary.totalBytes);
 assert.match(readinessReport.firstB2MediaObject, /^challenge-dry-run\//);
 assert.match(readinessReport.firstB2SidecarObject, /^challenge-dry-run\//);
-assert.match(readinessReport.blockerSummary, /Missing 5 live environment variable/);
+assert.match(readinessReport.blockerSummary, /Missing 4 live environment variable/);
 
 const liveReadyReport = createIntegrationReadinessReport(sampleRuns, {
   env: {
-    B2_APP_ID: "demo-app-id",
-    B2_APP_VALUE: "demo-app-value",
-    B2_BUCKET_NAME: "live-bucket",
-    GENBLAZE_AUTH_VALUE: "demo-auth-value",
-    GENBLAZE_ENDPOINT: "https://genblaze.example.test/v1/generate"
+    B2_KEY_ID: "demo-key-id",
+    B2_APP_KEY: "demo-app-key",
+    B2_BUCKET: "live-bucket",
+    GMI_API_KEY: "demo-gmi-key"
   }
 });
 assert.equal(liveReadyReport.mode, "live-ready");

@@ -52,7 +52,7 @@ The app is built around generated media operations: prompt intake, Genblaze-shap
 
 ## Challenge Readiness
 
-Dry-run readiness score: 100/100. image run present; video run present; audio run present; B2-shaped storage manifest complete; Genblaze-shaped run metadata complete. Adapter verification remains dry-run; Missing 5 live environment variable(s): B2_APP_ID, B2_APP_VALUE, B2_BUCKET_NAME, GENBLAZE_AUTH_VALUE, GENBLAZE_ENDPOINT. Do not describe this as a live B2 upload or live Genblaze run until a private live adapter run is completed.
+Dry-run readiness score: 100/100. image run present; video run present; audio run present; B2-shaped storage manifest complete; Genblaze-shaped run metadata complete. Adapter verification remains dry-run; Missing 4 live environment variable(s): B2_KEY_ID, B2_APP_KEY, B2_BUCKET, GMI_API_KEY. Do not describe this as a live B2 upload or live Genblaze run until a private live adapter run is completed.
 
 ## Storage Handoff Summary
 
