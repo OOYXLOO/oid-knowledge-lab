@@ -48,6 +48,7 @@ Last refreshed on 2026-06-26:
 - Public IANA PEN search index: 65,959 records after excluding contact-level noise
 - Coverage report: `reports/coverage-report.md` compares IANA PEN records with the OID-base sitemap directory
 - Static dashboard: generated under `public/`
+- Qwen build journal: `public/qwen-build-journal.html` and `reports/qwen-build-journal.md` describe the source-grounded autopilot-agent candidate without claiming live Qwen Cloud or Alibaba Cloud deployment proof.
 - Assessment brief page: `public/consulting-brief.html` summarizes the client-safe OID inventory assessment path.
 - Portfolio risk console: `public/oid-portfolio-risk-console.html` turns a small local OID inventory into a browser-only governance brief.
 - Hasura reviewer hub: `public/hasura-reviewer-hub.html` supports a GraphQL/Postgres article pitch for OID inventory review workflows.
