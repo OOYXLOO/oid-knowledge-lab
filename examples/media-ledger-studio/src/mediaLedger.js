@@ -166,21 +166,16 @@ export function createProviderModelList(runs = sampleRuns) {
 export function createDevpostFields({
   appUrl = "https://media-ledger-studio-static.vercel.app",
   sourceRepoUrl = "https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio",
-  videoUrl = "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4",
-  integrationReadinessUrl = "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-integration-readiness.html",
-  sidecarIntegrityReportUrl = "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/sidecar-integrity-report.json",
-  integrationAdapterVerificationUrl = "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/integration-adapter-verification.json"
+  videoUrl = "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4"
 } = {}) {
   const pack = createSubmissionPack(sampleRuns);
+  const integration = createIntegrationReadinessReport(sampleRuns);
   return {
     projectName: "Media Ledger Studio",
     tagline: "An operations ledger for generated media provenance, review, and Backblaze B2 storage handoff.",
     appUrl,
     sourceRepoUrl,
     videoUrl,
-    integrationReadinessUrl,
-    sidecarIntegrityReportUrl,
-    integrationAdapterVerificationUrl,
     providerAndModels: pack.providerModels,
     builtWith:
       "React, Vite, deterministic sample media records, Backblaze B2-shaped object manifests, and Genblaze-shaped generation metadata.",
@@ -195,12 +190,79 @@ export function createDevpostFields({
     challengeFit:
       "The app is built around generated media operations: prompt intake, Genblaze-shaped generation metadata, human review, durable Backblaze B2-shaped object storage, provenance inspection, and client handoff.",
     challengeReadiness:
-      "Dry-run readiness is verified. The project includes an image run, video run, audio run, B2-shaped storage manifest, Genblaze-shaped run metadata, sidecar records, and adapter verification. The current live-integration blocker is missing real B2 and Genblaze environment variables, so the submission should be described as a dry-run prototype unless live proof is added. Latest local checks: npm run check passed; npm test passed; npm run verify:sidecars returned ok true, mode dry-run, 3 media objects, 3 sidecars, 3 linked pairs; npm run verify:integration returned ok true, mode dry-run, readyForLiveRun false.",
+      `Dry-run readiness score: ${pack.challengeReadiness.score}/100. ` +
+      `${pack.challengeReadiness.readySignals.join("; ")}. ` +
+      `Adapter verification remains ${integration.mode}; ${integration.blockerSummary}. ` +
+      "Do not describe this as a live B2 upload or live Genblaze run until a private live adapter run is completed.",
     storageHandoffSummary:
       `The bundled manifest covers ${pack.storageHandoffManifest.length} generated assets with bucket, object key, content type, byte size, SHA-256 checksum, provider, model, seed, and review decision. ` +
       `It also defines ${pack.sidecarMetadataManifest.length} JSON sidecar records that can be uploaded next to the final media objects.`,
     whatIsNext:
-      "Set the live Backblaze B2 and Genblaze environment variables, run the adapter without printing or storing secrets, capture a safe proof summary, and then upgrade the submission wording from dry-run prototype to live integration."
+      "Set the live Backblaze B2 and Genblaze environment variables in a private environment, run the adapter verification without printing secrets, then update the public evidence from dry-run to live-ready only if the verification report supports it."
+  };
+}
+
+export function createJudgingEvidencePack(runs = sampleRuns) {
+  const pack = createSubmissionPack(runs);
+  const integration = createIntegrationReadinessReport(runs);
+  const assetTypes = [...new Set(runs.map((run) => run.storage.contentType.split("/")[0]))];
+  return {
+    projectName: "Media Ledger Studio",
+    thesis:
+      "Generated-media teams need a durable review ledger, not only final files. Media Ledger Studio links prompts, model metadata, reviewer decisions, Backblaze B2-shaped object records, checksums, and sidecar JSON so a generated asset can be inspected before handoff.",
+    differentiation: [
+      "Covers image, video, and audio runs in one reviewer-facing workflow.",
+      "Pairs each media object with a sidecar metadata object that can travel with the file in B2.",
+      "Keeps dry-run evidence honest: the app shows storage and provider plans without claiming live uploads when credentials are absent.",
+      "Turns generated-media provenance into operational handoff fields a production lead can copy or audit."
+    ],
+    judgingChecklist: [
+      {
+        label: "Working application",
+        evidence: pack.publicDemoUrl,
+        status: "ready"
+      },
+      {
+        label: "Source snapshot",
+        evidence: "https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio",
+        status: "ready"
+      },
+      {
+        label: "Backblaze B2 usage",
+        evidence: `${pack.storageHandoffManifest.length} B2-shaped media records and ${pack.sidecarMetadataManifest.length} sidecar records`,
+        status: "dry-run-ready"
+      },
+      {
+        label: "Genblaze usage",
+        evidence: `${pack.providerModels.length} Genblaze-shaped provider/model records`,
+        status: "dry-run-ready"
+      },
+      {
+        label: "Integrity evidence",
+        evidence: "SHA-256 media checksums plus sidecar-to-media pairing checks",
+        status: "ready"
+      },
+      {
+        label: "Live adapter boundary",
+        evidence: integration.blockerSummary,
+        status: integration.readyForLiveRun ? "live-ready" : "blocked-on-env"
+      }
+    ],
+    metrics: {
+      runs: runs.length,
+      assetTypes,
+      totalMegabytes: pack.summary.totalMegabytes,
+      readinessScore: pack.challengeReadiness.score,
+      mediaUploadPlans: integration.totals.mediaUploads,
+      sidecarUploadPlans: integration.totals.sidecarUploads,
+      genblazeRequestPlans: integration.totals.genblazeRequests
+    },
+    honestBoundary:
+      integration.readyForLiveRun
+        ? "All required live environment variables are present for an adapter run. Credential values are never printed."
+        : "This public build is a dry-run prototype. It does not claim real B2 uploads or real Genblaze calls until live credentials and provider access are supplied.",
+    nextUpgrade:
+      "Connect live B2 and Genblaze credentials in a private environment, run the adapter verification, and replace the dry-run blocker summary with a live-ready report."
   };
 }
 
@@ -388,9 +450,7 @@ export function createChallengeReadinessScore(runs = sampleRuns, readiness = cre
       hasStorageRecords ? "B2-shaped storage manifest complete" : "storage manifest incomplete",
       hasGenblazeRecords ? "Genblaze-shaped run metadata complete" : "generation metadata incomplete"
     ],
-    blockers: blockers.length
-      ? blockers
-      : ["No dry-run blockers; live B2 and Genblaze proof still requires real environment variables."]
+    blockers: blockers.length ? blockers : ["No submission blockers in the current checklist"]
   };
 }
 

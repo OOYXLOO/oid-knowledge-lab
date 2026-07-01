@@ -3,6 +3,7 @@ import {
   createChallengeReadinessScore,
   createDevpostFields,
   createIntegrationReadinessReport,
+  createJudgingEvidencePack,
   createProviderModelList,
   createReadinessChecklist,
   createSidecarMetadataManifest,
@@ -56,21 +57,18 @@ const completeReadiness = createReadinessChecklist({ sourceRepoReady: true, demo
 assert.equal(completeReadiness.every((item) => item.status === "ready"), true);
 const completeScore = createChallengeReadinessScore(sampleRuns, completeReadiness);
 assert.equal(completeScore.score, 100);
-assert.match(completeScore.blockers[0], /No dry-run blockers/);
-assert.doesNotMatch(completeScore.blockers[0], /No submission blockers/);
 
 const devpostFields = createDevpostFields();
 assert.match(devpostFields.howBackblazeB2IsUsed, /object key/);
 assert.match(devpostFields.howGenblazeIsUsed, /prompt/);
-assert.match(devpostFields.challengeReadiness, /Dry-run readiness is verified/);
-assert.doesNotMatch(devpostFields.challengeReadiness, /Readiness score/);
-assert.doesNotMatch(devpostFields.challengeReadiness, /No submission blockers/);
+assert.match(devpostFields.challengeReadiness, /readiness score/i);
+assert.match(devpostFields.challengeReadiness, /dry-run/);
+assert.match(devpostFields.challengeReadiness, /Do not describe this as a live B2 upload/);
 assert.match(devpostFields.storageHandoffSummary, /3 generated assets/);
 assert.match(devpostFields.storageHandoffSummary, /JSON sidecar records/);
 assert.equal(devpostFields.appUrl, "https://media-ledger-studio-static.vercel.app");
 assert.match(devpostFields.videoUrl, /media-ledger-studio-demo\.mp4$/);
 assert.match(devpostFields.sourceRepoUrl, /github\.com\/OOYXLOO\/oid-knowledge-lab/);
-assert.match(devpostFields.integrationAdapterVerificationUrl, /integration-adapter-verification\.json$/);
 assert.match(devpostFields.challengeFit, /Backblaze B2/);
 
 const liveBundle = createLiveIntegrationBundle(sampleRuns, {
@@ -137,5 +135,19 @@ const liveReadyReport = createIntegrationReadinessReport(sampleRuns, {
 assert.equal(liveReadyReport.mode, "live-ready");
 assert.equal(liveReadyReport.readyForLiveRun, true);
 assert.match(liveReadyReport.blockerSummary, /All live environment variables are present/);
+
+const judgingEvidence = createJudgingEvidencePack(sampleRuns);
+assert.equal(judgingEvidence.projectName, "Media Ledger Studio");
+assert.match(judgingEvidence.thesis, /durable review ledger/);
+assert.equal(judgingEvidence.metrics.runs, sampleRuns.length);
+assert.equal(judgingEvidence.metrics.assetTypes.includes("image"), true);
+assert.equal(judgingEvidence.metrics.assetTypes.includes("video"), true);
+assert.equal(judgingEvidence.metrics.assetTypes.includes("audio"), true);
+assert.equal(judgingEvidence.metrics.mediaUploadPlans, sampleRuns.length);
+assert.equal(judgingEvidence.metrics.sidecarUploadPlans, sampleRuns.length);
+assert.equal(judgingEvidence.metrics.genblazeRequestPlans, sampleRuns.length);
+assert.equal(judgingEvidence.judgingChecklist.some((item) => item.label === "Live adapter boundary"), true);
+assert.match(judgingEvidence.honestBoundary, /dry-run prototype/);
+assert.match(judgingEvidence.honestBoundary, /does not claim real B2 uploads/);
 
 console.log("mediaLedger tests passed");

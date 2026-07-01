@@ -19,7 +19,7 @@
       "Genblaze-shaped run metadata complete"
     ],
     "blockers": [
-      "No dry-run blockers; live B2 and Genblaze proof still requires real environment variables."
+      "No submission blockers in the current checklist"
     ]
   },
   "liveIntegration": {

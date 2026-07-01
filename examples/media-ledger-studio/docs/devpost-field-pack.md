@@ -16,6 +16,7 @@ An operations ledger for generated media provenance, review, and Backblaze B2 st
 - Integration readiness: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-integration-readiness.html
 - Sidecar integrity report: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/sidecar-integrity-report.json
 - Integration adapter verification: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/integration-adapter-verification.json
+- Judging evidence: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-judging-evidence.html
 
 ## Built With
 
@@ -49,7 +50,7 @@ The app is built around generated media operations: prompt intake, Genblaze-shap
 
 ## Challenge Readiness
 
-Dry-run readiness is verified. The project includes an image run, video run, audio run, B2-shaped storage manifest, Genblaze-shaped run metadata, sidecar records, and adapter verification. The current live-integration blocker is missing real B2 and Genblaze environment variables, so the submission should be described as a dry-run prototype unless live proof is added. Latest local checks: npm run check passed; npm test passed; npm run verify:sidecars returned ok true, mode dry-run, 3 media objects, 3 sidecars, 3 linked pairs; npm run verify:integration returned ok true, mode dry-run, readyForLiveRun false.
+Dry-run readiness score: 100/100. image run present; video run present; audio run present; B2-shaped storage manifest complete; Genblaze-shaped run metadata complete. Adapter verification remains dry-run; Missing 5 live environment variable(s): B2_APP_ID, B2_APP_VALUE, B2_BUCKET_NAME, GENBLAZE_AUTH_VALUE, GENBLAZE_ENDPOINT. Do not describe this as a live B2 upload or live Genblaze run until a private live adapter run is completed.
 
 ## Storage Handoff Summary
 
@@ -57,4 +58,4 @@ The bundled manifest covers 3 generated assets with bucket, object key, content 
 
 ## What's Next
 
-Set the live Backblaze B2 and Genblaze environment variables, run the adapter without printing or storing secrets, capture a safe proof summary, and then upgrade the submission wording from dry-run prototype to live integration.
+Set the live Backblaze B2 and Genblaze environment variables in a private environment, run the adapter verification without printing secrets, then update the public evidence from dry-run to live-ready only if the verification report supports it.

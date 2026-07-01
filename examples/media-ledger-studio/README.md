@@ -19,6 +19,7 @@ Demo MP4: `public/media-ledger-studio-demo.mp4`
 ## Review Materials
 
 - Devpost field pack: `docs/devpost-field-pack.md`
+- Judging evidence pack: `docs/judging-evidence-pack.md`
 - Reviewer quickstart: `docs/reviewer-quickstart.md`
 - Demo video script: `docs/demo-video-script.md`
 - Demo video file: `public/media-ledger-studio-demo.mp4`
@@ -36,6 +37,7 @@ npm test
 npm run build
 npm run audit:local
 npm run export:devpost-fields
+npm run export:judging-evidence
 npm run export:integration-readiness
 npm run verify:integration
 npm run verify:sidecars

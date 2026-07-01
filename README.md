@@ -30,6 +30,7 @@ The current source adapter targets public OID-base pages through the site's site
 - OID Intelligence Lab product brief: <https://ooyxloo.github.io/oid-knowledge-lab/oid-intelligence-lab.html>
 - Media Provenance Studio product brief: <https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-studio.html>
 - Media Provenance tutorial proposal: <https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-tutorial-proposal.html>
+- Media Ledger judging evidence: <https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-judging-evidence.html>
 - Envato Tuts+ contributor packet: <https://ooyxloo.github.io/oid-knowledge-lab/envato-tutsplus-contributor-packet.html>
 - Backblaze readiness pack: <https://ooyxloo.github.io/oid-knowledge-lab/backblaze-readiness-pack.html>
 - AI evaluator unified application desk: <https://ooyxloo.github.io/oid-knowledge-lab/ai-evaluator-unified-application-desk.html>

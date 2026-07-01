@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   createDevpostFields,
+  createJudgingEvidencePack,
   createSubmissionPack,
   findRunById,
   sampleRuns,
@@ -20,6 +21,7 @@ function App() {
   const summary = useMemo(() => summarizeLedger(sampleRuns), []);
   const pack = useMemo(() => createSubmissionPack(sampleRuns), []);
   const fields = useMemo(() => createDevpostFields(), []);
+  const evidence = useMemo(() => createJudgingEvidencePack(sampleRuns), []);
 
   return (
     <main className="app-shell">
@@ -35,6 +37,7 @@ function App() {
           {[
             ["pipeline", "Pipeline"],
             ["submission", "Submission"],
+            ["evidence", "Evidence"],
             ["storage", "Storage"],
             ["review", "Review"],
             ["exports", "Exports"]
@@ -74,7 +77,8 @@ function App() {
           <PipelineView selected={selected} selectedId={selectedId} setSelectedId={setSelectedId} />
         )}
         {view === "submission" && <SubmissionView fields={fields} pack={pack} />}
-        {view !== "pipeline" && view !== "submission" && <PlaceholderView view={view} />}
+        {view === "evidence" && <EvidenceView evidence={evidence} />}
+        {view !== "pipeline" && view !== "submission" && view !== "evidence" && <PlaceholderView view={view} />}
       </section>
     </main>
   );
@@ -156,6 +160,64 @@ function PipelineView({ selected, selectedId, setSelectedId }) {
         </article>
       </section>
     </>
+  );
+}
+
+function EvidenceView({ evidence }) {
+  return (
+    <section className="submission-grid">
+      <article className="submission-card wide">
+        <div className="panel-heading">
+          <h2>Judging evidence</h2>
+          <span>{evidence.projectName}</span>
+        </div>
+        <p>{evidence.thesis}</p>
+      </article>
+
+      <article className="submission-card">
+        <h2>Differentiation</h2>
+        <ul className="model-list compact">
+          {evidence.differentiation.map((item) => (
+            <li key={item}>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
+
+      <article className="submission-card">
+        <h2>Metrics</h2>
+        <dl>
+          <Field label="Runs" value={evidence.metrics.runs} />
+          <Field label="Asset types" value={evidence.metrics.assetTypes.join(", ")} />
+          <Field label="Stored" value={`${evidence.metrics.totalMegabytes} MB`} />
+          <Field label="Readiness" value={`${evidence.metrics.readinessScore}%`} />
+          <Field label="B2 plans" value={evidence.metrics.mediaUploadPlans} />
+          <Field label="Sidecar plans" value={evidence.metrics.sidecarUploadPlans} />
+          <Field label="Genblaze plans" value={evidence.metrics.genblazeRequestPlans} />
+        </dl>
+      </article>
+
+      <article className="submission-card wide">
+        <h2>Checklist</h2>
+        <div className="readiness-list">
+          {evidence.judgingChecklist.map((item) => (
+            <div className={`readiness-row ${item.status}`} key={item.label}>
+              <strong>{item.label}</strong>
+              <span>{item.status}</span>
+              <p>{item.evidence}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <article className="submission-card wide">
+        <h2>Boundary</h2>
+        <p>{evidence.honestBoundary}</p>
+        <h2>Next upgrade</h2>
+        <p>{evidence.nextUpgrade}</p>
+      </article>
+    </section>
   );
 }
 
