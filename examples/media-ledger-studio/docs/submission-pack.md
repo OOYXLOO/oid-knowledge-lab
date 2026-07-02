@@ -1,6 +1,6 @@
 # Media Ledger Studio Submission Pack
 
-Public demo: https://media-ledger-studio-static.vercel.app
+Public demo: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/
 
 ## Reviewer Path
 

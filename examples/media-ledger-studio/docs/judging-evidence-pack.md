@@ -23,7 +23,7 @@ Generated-media teams need a durable review ledger, not only final files. Media 
 
 ## Judging Checklist
 
-- Working application [ready]: https://media-ledger-studio-static.vercel.app
+- Working application [ready]: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/
 - Source snapshot [ready]: https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio
 - Backblaze B2 usage [dry-run-ready]: 3 B2-shaped media records and 3 sidecar records
 - Genblaze usage [dry-run-ready]: 3 Genblaze-shaped provider/model records

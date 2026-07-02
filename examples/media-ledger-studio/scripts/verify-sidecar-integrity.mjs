@@ -20,7 +20,7 @@ function sha256Hex(text) {
 }
 
 const bundle = createLiveIntegrationBundle(sampleRuns, {
-  publicBaseUrl: process.env.PUBLIC_APP_URL || "https://media-ledger-studio-static.vercel.app",
+  publicBaseUrl: process.env.PUBLIC_APP_URL || "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/",
   b2BucketName: process.env.B2_BUCKET || "media-ledger-demo",
   b2Prefix: process.env.B2_PREFIX || "challenge-dry-run",
   env: {

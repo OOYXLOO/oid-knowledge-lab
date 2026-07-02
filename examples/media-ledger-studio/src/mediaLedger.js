@@ -124,7 +124,7 @@ export function createSubmissionPack(runs = sampleRuns) {
   const liveIntegration = createLiveIntegrationBundle(runs);
   return {
     appName: "Media Ledger Studio",
-    publicDemoUrl: "https://media-ledger-studio-static.vercel.app",
+    publicDemoUrl: "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/",
     summary,
     challengeReadiness,
     liveIntegration,
@@ -164,7 +164,7 @@ export function createProviderModelList(runs = sampleRuns) {
 }
 
 export function createDevpostFields({
-  appUrl = "https://media-ledger-studio-static.vercel.app",
+  appUrl = "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/",
   sourceRepoUrl = "https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio",
   videoUrl = "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4"
 } = {}) {
@@ -176,8 +176,8 @@ export function createDevpostFields({
     appUrl,
     sourceRepoUrl,
     videoUrl,
-    walkthroughUrl: "https://ooyxloo.github.io/oid-knowledge-lab/demo-video.html",
-    walkthroughRawUrl: "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/gh-pages/demo-video.html",
+    walkthroughUrl: "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/demo-video/",
+    walkthroughRawUrl: "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/gh-pages/media-ledger-studio/demo-video.html",
     providerAndModels: pack.providerModels,
     builtWith:
       "React, Vite, deterministic sample media records, Backblaze B2-shaped object manifests, and Genblaze-shaped generation metadata.",
@@ -388,7 +388,7 @@ export function createSidecarMetadataManifest(runs = sampleRuns) {
 }
 
 export function createLiveIntegrationBundle(runs = sampleRuns, {
-  publicBaseUrl = "https://media-ledger-studio-static.vercel.app",
+  publicBaseUrl = "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/",
   b2BucketName = "media-ledger-demo",
   b2Prefix = "generated-media-ledger",
   genblazeProvider = "gmi",
@@ -439,7 +439,7 @@ export function createLiveIntegrationBundle(runs = sampleRuns, {
   }));
   const publicReviewLinks = sidecars.map((sidecar, index) => ({
     runId: sidecar.runId,
-    reviewUrl: `${publicBaseUrl}/?run=${encodeURIComponent(sidecar.runId)}`,
+    reviewUrl: `${publicBaseUrl.replace(/\/+$/g, "")}/?run=${encodeURIComponent(sidecar.runId)}`,
     requiredUploadPair: [
       b2UploadPlan[index * 2].objectKey,
       b2UploadPlan[index * 2 + 1].objectKey

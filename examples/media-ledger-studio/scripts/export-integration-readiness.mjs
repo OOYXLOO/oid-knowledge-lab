@@ -2,7 +2,7 @@ import { writeFileSync } from "node:fs";
 import { createIntegrationReadinessReport, sampleRuns } from "../src/mediaLedger.js";
 
 const report = createIntegrationReadinessReport(sampleRuns, {
-  publicBaseUrl: "https://media-ledger-studio-static.vercel.app",
+  publicBaseUrl: "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/",
   b2BucketName: "media-ledger-demo",
   b2Prefix: "challenge-dry-run",
   env: {

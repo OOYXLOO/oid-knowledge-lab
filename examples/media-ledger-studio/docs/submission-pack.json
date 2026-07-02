@@ -1,6 +1,6 @@
 {
   "appName": "Media Ledger Studio",
-  "publicDemoUrl": "https://media-ledger-studio-static.vercel.app",
+  "publicDemoUrl": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/",
   "summary": {
     "totalRuns": 3,
     "ready": 2,
@@ -183,7 +183,7 @@
     "publicReviewLinks": [
       {
         "runId": "run-cover-001",
-        "reviewUrl": "https://media-ledger-studio-static.vercel.app/?run=run-cover-001",
+        "reviewUrl": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?run=run-cover-001",
         "requiredUploadPair": [
           "generated-media-ledger/projects/editorial-cover/run-cover-001/final.png",
           "generated-media-ledger/projects/editorial-cover/run-cover-001/final.png.metadata.json"
@@ -191,7 +191,7 @@
       },
       {
         "runId": "run-storyboard-014",
-        "reviewUrl": "https://media-ledger-studio-static.vercel.app/?run=run-storyboard-014",
+        "reviewUrl": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?run=run-storyboard-014",
         "requiredUploadPair": [
           "generated-media-ledger/projects/launch-storyboard/run-storyboard-014/storyboard.webm",
           "generated-media-ledger/projects/launch-storyboard/run-storyboard-014/storyboard.webm.metadata.json"
@@ -199,7 +199,7 @@
       },
       {
         "runId": "run-audio-006",
-        "reviewUrl": "https://media-ledger-studio-static.vercel.app/?run=run-audio-006",
+        "reviewUrl": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?run=run-audio-006",
         "requiredUploadPair": [
           "generated-media-ledger/projects/audio-bed/run-audio-006/loop.wav",
           "generated-media-ledger/projects/audio-bed/run-audio-006/loop.wav.metadata.json"

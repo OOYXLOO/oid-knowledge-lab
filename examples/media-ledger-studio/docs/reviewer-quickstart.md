@@ -1,11 +1,11 @@
-# Reviewer Quickstart
+﻿# Reviewer Quickstart
 
 This quickstart gives reviewers a short path through Media Ledger Studio without requiring Backblaze B2 credentials, Genblaze credentials, private media, or account screenshots.
 
 ## 60-Second Review Path
 
-1. Open the public app: <https://media-ledger-studio-static.vercel.app>
-2. Open the walkthrough page: <https://media-ledger-studio-static.vercel.app/demo-video.html>
+1. Open the public app: <https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/>
+2. Open the walkthrough page: <https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/demo-video/>
 3. Watch the MP4 walkthrough: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4>
 4. Review the source snapshot: <https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio>
 5. Open the sidecar proof: <https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-sidecar-proof.html>

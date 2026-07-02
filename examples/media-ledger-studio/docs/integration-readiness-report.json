@@ -28,7 +28,7 @@
   "publicReviewLinks": [
     {
       "runId": "run-cover-001",
-      "reviewUrl": "https://media-ledger-studio-static.vercel.app/?run=run-cover-001",
+      "reviewUrl": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?run=run-cover-001",
       "requiredUploadPair": [
         "challenge-dry-run/projects/editorial-cover/run-cover-001/final.png",
         "challenge-dry-run/projects/editorial-cover/run-cover-001/final.png.metadata.json"
@@ -36,7 +36,7 @@
     },
     {
       "runId": "run-storyboard-014",
-      "reviewUrl": "https://media-ledger-studio-static.vercel.app/?run=run-storyboard-014",
+      "reviewUrl": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?run=run-storyboard-014",
       "requiredUploadPair": [
         "challenge-dry-run/projects/launch-storyboard/run-storyboard-014/storyboard.webm",
         "challenge-dry-run/projects/launch-storyboard/run-storyboard-014/storyboard.webm.metadata.json"
@@ -44,7 +44,7 @@
     },
     {
       "runId": "run-audio-006",
-      "reviewUrl": "https://media-ledger-studio-static.vercel.app/?run=run-audio-006",
+      "reviewUrl": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?run=run-audio-006",
       "requiredUploadPair": [
         "challenge-dry-run/projects/audio-bed/run-audio-006/loop.wav",
         "challenge-dry-run/projects/audio-bed/run-audio-006/loop.wav.metadata.json"

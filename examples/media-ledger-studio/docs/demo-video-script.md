@@ -1,8 +1,8 @@
-# Media Ledger Studio Demo Video Script
+﻿# Media Ledger Studio Demo Video Script
 
 Target length: about 3 minutes for a full narration recording.
 
-Public browser walkthrough: https://media-ledger-studio-static.vercel.app/demo-video.html
+Public browser walkthrough: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/demo-video/
 
 Current public page mode: 3-minute guided loop with six 30-second scenes.
 

@@ -1,4 +1,4 @@
-# Backblaze Generative Media Challenge Fit
+﻿# Backblaze Generative Media Challenge Fit
 
 Media Ledger Studio is a generated-media operations cockpit for teams that need to track prompts, model outputs, review decisions, and durable storage records before assets are handed to clients.
 
@@ -11,8 +11,8 @@ Media Ledger Studio is a generated-media operations cockpit for teams that need 
 
 ## Current Public State
 
-- Public app: `https://media-ledger-studio-static.vercel.app`
-- Demo walkthrough: `https://media-ledger-studio-static.vercel.app/demo-video.html`
+- Public app: `https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/`
+- Demo walkthrough: `https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/demo-video/`
 - Source repository: https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio
 - Public data boundary: synthetic records only; no credentials, private media, customer data, payment data, cookies, or account-local storage.
 

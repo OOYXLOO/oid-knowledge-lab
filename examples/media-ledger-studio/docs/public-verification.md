@@ -1,8 +1,8 @@
-# Public Verification
+﻿# Public Verification
 
 ## Public App
 
-- Production app: https://media-ledger-studio-static.vercel.app
+- Production app: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/
 - Expected signal: HTTP 200 and page title `Media Ledger Studio`.
 - Latest verified asset should include `Submission readiness`, `Provider and model list`, and `Backblaze B2 usage`.
 
@@ -15,7 +15,7 @@
 
 - Deployment URL: https://dist-96lc6cnk7-c4ppp.vercel.app
 - Inspector: https://vercel.com/c4ppp/dist/Asb2tLw8cp18zE9WbzXqVqVqxhW9
-- Alias: https://media-ledger-studio-static.vercel.app
+- Alias: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/
 
 ## Local Verification Commands
 

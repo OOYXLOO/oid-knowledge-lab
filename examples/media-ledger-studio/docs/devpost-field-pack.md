@@ -10,11 +10,11 @@ An operations ledger for generated media provenance, review, and Backblaze B2 st
 
 ## Links
 
-- App: https://media-ledger-studio-static.vercel.app
+- App: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/
 - Source repository: https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio
 - Demo video: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4
-- 3-minute walkthrough: https://ooyxloo.github.io/oid-knowledge-lab/demo-video.html
-- 3-minute walkthrough raw backup: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/gh-pages/demo-video.html
+- 3-minute walkthrough: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/demo-video/
+- 3-minute walkthrough raw backup: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/gh-pages/media-ledger-studio/demo-video.html
 - Integration readiness: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-integration-readiness.html
 - Sidecar integrity report: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/sidecar-integrity-report.json
 - Integration adapter verification: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/integration-adapter-verification.json
