@@ -50,6 +50,19 @@ function main() {
       ok: includes("public/index.html", ["DataHub Context Compass", "metadata risk brief", "CHG-1002"]).every((item) => item.ok)
     },
     {
+      name: "demo-video",
+      ok: fileExists("public/media/datahub-context-compass-demo.mp4") &&
+        fs.statSync(path.join(root, "public", "media", "datahub-context-compass-demo.mp4")).size > 1000000
+    },
+    {
+      name: "video-source",
+      ok: [
+        "video/demo-submission/index.html",
+        "video/demo-submission/DESIGN.md",
+        "video/demo-submission/renders/datahub-context-compass-demo.mp4"
+      ].every(fileExists)
+    },
+    {
       name: "source-and-tests",
       ok: [
         "src/analyze.js",

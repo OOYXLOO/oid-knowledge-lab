@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #091014;
+      }
+      body {
+        color: #e7fff4;
+        font-family: "IBM Plex Mono", monospace;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #091014;
+      }
+      .grid {
+        position: absolute;
+        inset: 0;
+        opacity: 0.24;
+        background-image:
+          linear-gradient(90deg, rgba(34, 197, 94, 0.18) 2px, rgba(34, 197, 94, 0) 2px),
+          linear-gradient(0deg, rgba(231, 255, 244, 0.12) 1px, rgba(231, 255, 244, 0) 1px);
+        background-size: 96px 96px, 48px 48px;
+      }
+      .scan {
+        position: absolute;
+        inset: 0;
+        opacity: 0.13;
+        background: repeating-linear-gradient(0deg, rgba(231,255,244,0.18) 0 1px, rgba(231,255,244,0) 1px 7px);
+      }
+      .edge {
+        position: absolute;
+        left: 70px;
+        right: 70px;
+        top: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: rgba(231,255,244,0.72);
+        font-size: 22px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        z-index: 10;
+      }
+      .edge::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -18px;
+        height: 3px;
+        background: #22c55e;
+        box-shadow: 0 0 18px rgba(34,197,94,0.75);
+      }
+      .sweep {
+        position: absolute;
+        top: 0;
+        left: -360px;
+        width: 260px;
+        height: 1080px;
+        background: rgba(34,197,94,0.36);
+        box-shadow: 0 0 70px rgba(34,197,94,0.48);
+        transform: skewX(-10deg);
+        opacity: 0;
+        z-index: 30;
+      }
+      .scene {
+        position: absolute;
+        inset: 0;
+        padding: 142px 120px 92px;
+        opacity: 0;
+        display: grid;
+        gap: 34px;
+        align-content: center;
+        background-color: #091014;
+      }
+      .scene.active { opacity: 1; }
+      .kicker {
+        color: #22c55e;
+        font-size: 25px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      h1, h2 {
+        margin: 0;
+        font-family: "League Gothic", sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        text-transform: uppercase;
+        line-height: 0.86;
+      }
+      h1 {
+        max-width: 1320px;
+        font-size: 142px;
+      }
+      h2 {
+        max-width: 1220px;
+        font-size: 112px;
+      }
+      .caption {
+        max-width: 1160px;
+        color: #b9dccd;
+        font-size: 34px;
+        line-height: 1.32;
+      }
+      .split {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 52px;
+        align-items: center;
+      }
+      .stack { display: grid; gap: 28px; }
+      .panel {
+        border: 3px solid rgba(34,197,94,0.58);
+        background: rgba(231,255,244,0.07);
+        box-shadow: 0 0 44px rgba(34,197,94,0.15), inset 0 0 0 1px rgba(231,255,244,0.08);
+        padding: 32px;
+        border-radius: 6px;
+      }
+      .dataset {
+        display: grid;
+        gap: 18px;
+      }
+      .dataset-row, .mcp-row {
+        display: grid;
+        grid-template-columns: 210px 1fr 150px;
+        gap: 18px;
+        align-items: center;
+        min-height: 76px;
+        padding: 16px 18px;
+        border: 2px solid rgba(231,255,244,0.14);
+        background: rgba(9,16,20,0.78);
+      }
+      .dataset-row b, .mcp-row b {
+        color: #e7fff4;
+        font-size: 24px;
+      }
+      .dataset-row span, .mcp-row span {
+        color: #b9dccd;
+        font-size: 23px;
+        line-height: 1.25;
+      }
+      .badge {
+        justify-self: end;
+        padding: 10px 14px;
+        color: #091014;
+        background: #22c55e;
+        font-size: 20px;
+        text-transform: uppercase;
+      }
+      .badge.warn { background: #f59e0b; }
+      .badge.danger { background: #ef4444; color: #fff2f2; }
+      .risk-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .risk {
+        min-height: 205px;
+        padding: 22px;
+        display: grid;
+        align-content: space-between;
+        border: 2px solid rgba(231,255,244,0.16);
+        background: rgba(231,255,244,0.06);
+      }
+      .risk strong {
+        font-family: "League Gothic", sans-serif;
+        font-size: 72px;
+        font-weight: 400;
+        line-height: 0.9;
+      }
+      .risk span {
+        color: #b9dccd;
+        font-size: 22px;
+        line-height: 1.22;
+      }
+      .risk.danger { border-color: rgba(239,68,68,0.78); }
+      .risk.warn { border-color: rgba(245,158,11,0.78); }
+      .meter {
+        height: 18px;
+        background: rgba(231,255,244,0.1);
+        overflow: hidden;
+      }
+      .fill {
+        width: 0%;
+        height: 100%;
+        background: #22c55e;
+      }
+      .fill.warn { background: #f59e0b; }
+      .fill.danger { background: #ef4444; }
+      .proof {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+      .proof-card {
+        min-height: 225px;
+        padding: 26px;
+        border: 3px solid rgba(34,197,94,0.45);
+        background: rgba(231,255,244,0.08);
+      }
+      .proof-card b {
+        display: block;
+        margin-bottom: 20px;
+        color: #22c55e;
+        font-size: 26px;
+        text-transform: uppercase;
+      }
+      .proof-card span {
+        color: #e7fff4;
+        font-size: 34px;
+        line-height: 1.14;
+      }
+      .footer-note {
+        position: absolute;
+        left: 120px;
+        bottom: 54px;
+        color: rgba(231,255,244,0.58);
+        font-size: 21px;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="105" data-width="1920" data-height="1080">
+      <div class="grid" data-layout-ignore></div>
+      <div class="scan" data-layout-ignore></div>
+      <div class="edge"><span>DataHub Context Compass</span><span>Agent risk brief / public demo</span></div>
+      <div class="sweep" id="sweep" data-layout-ignore></div>
+
+      <section class="scene active" id="s1">
+        <div class="kicker">Problem</div>
+        <h1>Agents should not touch data pipelines while blind.</h1>
+        <div class="caption">A useful data agent needs catalog context first: owners, schema fields, sensitive tags, lineage, freshness, and active incidents.</div>
+        <div class="footer-note">Sanitized metadata only. No private catalog export, tokens, cookies, or customer records.</div>
+      </section>
+
+      <section class="scene" id="s2">
+        <div class="split">
+          <div class="stack">
+            <div class="kicker">Input</div>
+            <h2>A DataHub-style snapshot becomes reviewable evidence.</h2>
+            <div class="caption">The demo reads proposed changes beside metadata context, then explains what is safe, blocked, or needs a human reviewer.</div>
+          </div>
+          <div class="panel dataset">
+            <div class="dataset-row"><b>owner</b><span>data-platform@example.com</span><div class="badge">known</div></div>
+            <div class="dataset-row"><b>field</b><span>customer_email tagged as PII</span><div class="badge warn">sensitive</div></div>
+            <div class="dataset-row"><b>lineage</b><span>finance.daily_revenue downstream</span><div class="badge warn">critical</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene" id="s3">
+        <div class="kicker">Change CHG-1001</div>
+        <h2>Schema removal is not auto-approved.</h2>
+        <div class="risk-grid">
+          <div class="risk warn"><strong>40</strong><span>risk score</span><div class="meter"><div class="fill warn" data-fill="40"></div></div></div>
+          <div class="risk"><strong>1</strong><span>owner present</span><div class="meter"><div class="fill" data-fill="100"></div></div></div>
+          <div class="risk warn"><strong>1</strong><span>high-criticality downstream asset</span><div class="meter"><div class="fill warn" data-fill="75"></div></div></div>
+          <div class="risk warn"><strong>review</strong><span>human compatibility check required</span><div class="meter"><div class="fill warn" data-fill="55"></div></div></div>
+        </div>
+      </section>
+
+      <section class="scene" id="s4">
+        <div class="kicker">Change CHG-1002</div>
+        <h2>The support summary agent is blocked.</h2>
+        <div class="risk-grid">
+          <div class="risk danger"><strong>105</strong><span>risk score</span><div class="meter"><div class="fill danger" data-fill="100"></div></div></div>
+          <div class="risk danger"><strong>0</strong><span>dataset owners listed</span><div class="meter"><div class="fill danger" data-fill="88"></div></div></div>
+          <div class="risk danger"><strong>2</strong><span>sensitive fields touched</span><div class="meter"><div class="fill danger" data-fill="92"></div></div></div>
+          <div class="risk danger"><strong>38h</strong><span>freshness plus open incident</span><div class="meter"><div class="fill danger" data-fill="96"></div></div></div>
+        </div>
+      </section>
+
+      <section class="scene" id="s5">
+        <div class="split">
+          <div class="stack">
+            <div class="kicker">DataHub MCP alignment</div>
+            <h2>The live version can stay read-only before approval.</h2>
+            <div class="caption">The generated MCP plan says exactly which catalog context the agent would fetch before scoring risk.</div>
+          </div>
+          <div class="panel dataset">
+            <div class="mcp-row"><b>search</b><span>resolve dataset names to entities</span><div class="badge">read</div></div>
+            <div class="mcp-row"><b>get_lineage</b><span>inspect downstream impact</span><div class="badge">read</div></div>
+            <div class="mcp-row"><b>list_schema_fields</b><span>check touched fields and tags</span><div class="badge">read</div></div>
+            <div class="mcp-row"><b>pending</b><span>avoid conflicting proposals</span><div class="badge warn">guard</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene" id="s6">
+        <div class="kicker">Public proof</div>
+        <h2>The submission package is reproducible.</h2>
+        <div class="proof">
+          <div class="proof-card"><b>source</b><span>Apache-2.0 repository with source, tests, and reports</span></div>
+          <div class="proof-card"><b>demo</b><span>Static page shows risk results without accounts</span></div>
+          <div class="proof-card"><b>verifier</b><span>submission-verification.json returns ok: true</span></div>
+        </div>
+      </section>
+
+      <section class="scene" id="s7">
+        <div class="kicker">Why this is an agent</div>
+        <h2>It prevents bad automation before it ships.</h2>
+        <div class="caption">DataHub Context Compass turns metadata into an action gate: ready, review, or blocked. The next step is connecting the same scoring loop to DataHub MCP Server and writing governed notes back after reviewer approval.</div>
+      </section>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true, defaults: { duration: 0.62, ease: "power2.out" } });
+      const scenes = ["#s1", "#s2", "#s3", "#s4", "#s5", "#s6", "#s7"];
+
+      function targets(selector) {
+        return Array.from(document.querySelectorAll(selector));
+      }
+
+      function tweenIn(selector, from, to, at) {
+        const els = targets(selector);
+        if (els.length > 0) tl.fromTo(els, from, to, at);
+      }
+
+      function enter(scene, at) {
+        tl.set(scene, { opacity: 1, x: 0, y: 0, filter: "blur(0px)" }, at);
+        tweenIn(`${scene} .kicker`, { y: -24, opacity: 0 }, { y: 0, opacity: 1, ease: "power3.out", overwrite: "auto" }, at + 0.18);
+        tweenIn(`${scene} h1, ${scene} h2`, { x: -70, opacity: 0 }, { x: 0, opacity: 1, duration: 0.82, ease: "expo.out", overwrite: "auto" }, at + 0.38);
+        tweenIn(`${scene} .caption, ${scene} .panel, ${scene} .risk, ${scene} .proof-card`, { y: 48, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.08, ease: "power2.out", overwrite: "auto" }, at + 0.8);
+        tweenIn(`${scene} .fill`, { width: "0%" }, { width: (i, el) => `${el.dataset.fill || 70}%`, duration: 0.85, stagger: 0.06, ease: "power3.out", overwrite: "auto" }, at + 1.35);
+      }
+
+      function move(fromScene, toScene, at) {
+        tl.to("#sweep", { opacity: 1, x: 2300, duration: 0.46, ease: "power4.inOut" }, at);
+        tl.to(fromScene, { x: -90, opacity: 0.1, filter: "blur(8px)", duration: 0.46, ease: "power3.inOut" }, at);
+        tl.set(fromScene, { opacity: 0, x: 0, filter: "blur(0px)" }, at + 0.5);
+        tl.set("#sweep", { opacity: 0, x: 0 }, at + 0.54);
+        enter(toScene, at + 0.24);
+      }
+
+      tl.to(".grid", { backgroundPosition: "192px 96px, 96px 48px", duration: 105, ease: "none" }, 0);
+      tl.to(".scan", { y: 18, duration: 2.8, repeat: 37, yoyo: true, ease: "sine.inOut" }, 0);
+      enter("#s1", 0);
+      move("#s1", "#s2", 14);
+      move("#s2", "#s3", 29);
+      move("#s3", "#s4", 44);
+      move("#s4", "#s5", 59);
+      move("#s5", "#s6", 74);
+      move("#s6", "#s7", 89);
+      tl.to("#s7", { opacity: 0, duration: 1.2, ease: "sine.inOut" }, 103.2);
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

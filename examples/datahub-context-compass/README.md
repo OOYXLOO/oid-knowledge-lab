@@ -40,6 +40,7 @@ reports/datahub-mcp-read-plan.md
 reports/datahub-mcp-read-plan.json
 reports/submission-verification.json
 public/index.html
+public/media/datahub-context-compass-demo.mp4
 ```
 
 ## Input Shape

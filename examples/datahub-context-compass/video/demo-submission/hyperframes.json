@@ -1,0 +1,11 @@
+{
+  "compositions": [
+    {
+      "id": "main",
+      "entry": "index.html",
+      "width": 1920,
+      "height": 1080,
+      "duration": 105
+    }
+  ]
+}

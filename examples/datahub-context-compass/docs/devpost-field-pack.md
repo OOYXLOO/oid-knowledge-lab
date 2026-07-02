@@ -42,6 +42,7 @@ It scores each change with explainable rules and outputs:
 ## Public Links
 
 - Demo: https://ooyxloo.github.io/oid-knowledge-lab/datahub-context-compass/
+- Demo video: https://ooyxloo.github.io/oid-knowledge-lab/datahub-context-compass/media/datahub-context-compass-demo.mp4
 - Source: https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/datahub-context-compass
 - Sample report: https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/datahub-context-compass/reports/sample-risk-brief.md
 - MCP read plan: https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/datahub-context-compass/reports/datahub-mcp-read-plan.md
