@@ -20,6 +20,7 @@
         <a href="writing-samples.html">Writing samples</a>
         <a href="technical-rigor-proof.html">Technical proof</a>
         <a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/amezmo-laravel-certificate-oid-packet.md">Markdown source</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/laravel-certificate-oid-inspector">Sample code</a>
       </div>
     </section>
 
@@ -71,6 +72,22 @@
       <pre>php artisan make:command InspectCertificateOid
 php artisan cert:oid-inspect storage/app/samples/example.pem --format=markdown
 php artisan test --filter=CertificateOidInspectorTest</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Sample implementation</p>
+        <h2>Copyable article code is available</h2>
+        <p class="panel-copy">The repository now includes a small Laravel command sample, a Pest/PHPUnit-style feature test, and a sanitized Markdown output example. The local workspace does not include PHP, so this packet presents the code as article sample material rather than claiming a local Laravel execution.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/laravel-certificate-oid-inspector/app/Console/Commands/InspectCertificateOid.php">InspectCertificateOid.php</a></td><td>Artisan command that reads public certificate metadata and emits table or Markdown output.</td></tr>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/laravel-certificate-oid-inspector/tests/Feature/CertificateOidInspectorTest.php">CertificateOidInspectorTest.php</a></td><td>Feature-test sketch for successful Markdown output and missing-file handling.</td></tr>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/laravel-certificate-oid-inspector/sample-output/certificate-oid-review.md">certificate-oid-review.md</a></td><td>Sanitized report shape for deployment or vendor handoff notes.</td></tr>
+        </tbody>
+      </table>
     </section>
 
     <section class="panel">
