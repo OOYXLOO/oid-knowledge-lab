@@ -37,6 +37,9 @@ The article should help a developer do something concrete:
 
 - Editor trust packet: <https://ooyxloo.github.io/oid-knowledge-lab/editor-trust-packet.html>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Review-log workflow outline: <https://ooyxloo.github.io/oid-knowledge-lab/mattermost-review-log-workflow-outline.html>
+- CI workflow case study: <https://ooyxloo.github.io/oid-knowledge-lab/ci-storage-check-case-study.html>
+- Appsmith internal tool tutorial sample: <https://ooyxloo.github.io/oid-knowledge-lab/appsmith-full-draft-ready.html>
 - Writer profile: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-writer-profile-one-pager.md>
 - Editorial fit brief: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/draftdev-editorial-fit-brief.md>
 - Observability handoff sample: <https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/production-integration-debug-handoff.md>
@@ -45,4 +48,3 @@ The article should help a developer do something concrete:
 ## Assignment boundary
 
 These materials are portfolio samples and implementation proof. Any client assignment should be written freshly for the accepted brief, client requirements, originality policy, disclosure policy, and editorial feedback.
-
