@@ -170,6 +170,7 @@ function renderSubmissionPage() {
       <h2>Project Materials</h2>
       <ul>
         <li><a href="docs/architecture.md">Architecture notes</a></li>
+        <li><a href="docs/devpost-copy-paste-submit.zh.md">Devpost copy-paste submit pack</a></li>
         <li><a href="docs/devpost-field-pack.md">Devpost field pack</a></li>
         <li><a href="docs/judge-verification.md">Judge verification checklist</a></li>
         <li><a href="docs/official-submission-requirements.md">Official submission requirements map</a></li>

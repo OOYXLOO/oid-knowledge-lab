@@ -9,6 +9,7 @@ const PUBLIC_DOCS = [
   "architecture.mmd",
   "challenge-fit.md",
   "demo-video-script.md",
+  "devpost-copy-paste-submit.zh.md",
   "devpost-field-pack.md",
   "github-source-fallback.md",
   "judge-verification.md",

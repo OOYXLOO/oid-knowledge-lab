@@ -24,6 +24,7 @@ function testCopiesOnlyPublicSubmissionDocs() {
     "architecture.mmd",
     "challenge-fit.md",
     "demo-video-script.md",
+    "devpost-copy-paste-submit.zh.md",
     "devpost-field-pack.md",
     "github-source-fallback.md",
     "judge-verification.md",
@@ -42,6 +43,7 @@ function testCopiesOnlyPublicSubmissionDocs() {
   assert.ok(fs.existsSync(path.join(outputDir, "public-verification.md")));
   assert.ok(fs.existsSync(path.join(outputDir, "judge-verification.md")));
   assert.ok(fs.existsSync(path.join(outputDir, "official-submission-requirements.md")));
+  assert.ok(fs.existsSync(path.join(outputDir, "devpost-copy-paste-submit.zh.md")));
   assert.ok(fs.existsSync(path.join(outputDir, "github-source-fallback.md")));
   assert.ok(fs.existsSync(path.join(outputDir, "reviewer-quickstart.md")));
   assert.ok(fs.existsSync(path.join(outputDir, "slack-sandbox-setup-card.md")));

@@ -119,5 +119,6 @@ docs/architecture.md
 docs/reviewer-quickstart.md
 docs/demo-video-script.md
 docs/submission-pack.md
+docs/devpost-copy-paste-submit.zh.md
 docs/devpost-field-pack.md
 ```

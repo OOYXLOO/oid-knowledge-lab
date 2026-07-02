@@ -79,6 +79,7 @@ Ready:
 - Static demo.
 - Interactive playground.
 - Architecture notes.
+- Devpost copy-paste submit pack.
 - Devpost field pack.
 - Demo video script.
 - Rendered demo video, 96 seconds, H.264 MP4, under three minutes.
@@ -102,6 +103,7 @@ Still needed:
 ```text
 docs/slack-app-manifest.json
 docs/slack-app-handler-contract.md
+docs/devpost-copy-paste-submit.zh.md
 ```
 
 The manifest points to the stable Vercel API endpoints. Replace the URLs only if the live handler is moved to another deployment.
