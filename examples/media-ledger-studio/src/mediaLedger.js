@@ -158,6 +158,13 @@ export function resolveInitialRunId(search = "", runs = sampleRuns) {
   return runs.some((run) => run.id === requestedId) ? requestedId : fallbackId;
 }
 
+export function resolveInitialView(search = "") {
+  const validViews = new Set(["pipeline", "submission", "evidence", "storage", "review", "exports"]);
+  const params = new URLSearchParams(search.startsWith("?") ? search : `?${search}`);
+  const requestedView = params.get("view");
+  return validViews.has(requestedView) ? requestedView : "pipeline";
+}
+
 export function createProviderModelList(runs = sampleRuns) {
   const seen = new Set();
   return runs

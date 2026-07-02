@@ -13,6 +13,7 @@ import {
   createLiveIntegrationBundle,
   findRunById,
   resolveInitialRunId,
+  resolveInitialView,
   sampleRuns,
   summarizeLedger
 } from "../src/mediaLedger.js";
@@ -30,6 +31,10 @@ assert.equal(selected.storage.storageClass, "Backblaze B2 Standard");
 assert.equal(resolveInitialRunId("?run=run-storyboard-014", sampleRuns), "run-storyboard-014");
 assert.equal(resolveInitialRunId("?run=missing-run", sampleRuns), "run-cover-001");
 assert.equal(resolveInitialRunId("", sampleRuns), "run-cover-001");
+assert.equal(resolveInitialView("?view=review"), "review");
+assert.equal(resolveInitialView("?view=evidence"), "evidence");
+assert.equal(resolveInitialView("?view=not-real"), "pipeline");
+assert.equal(resolveInitialView(""), "pipeline");
 
 const pack = createSubmissionPack(sampleRuns);
 assert.equal(pack.appName, "Media Ledger Studio");

@@ -7,6 +7,7 @@ import {
   createSubmissionPack,
   findRunById,
   resolveInitialRunId,
+  resolveInitialView,
   sampleRuns,
   summarizeLedger
 } from "./mediaLedger.js";
@@ -18,7 +19,7 @@ function formatBytes(bytes) {
 
 function App() {
   const [selectedId, setSelectedId] = useState(() => resolveInitialRunId(window.location.search, sampleRuns));
-  const [view, setView] = useState("pipeline");
+  const [view, setView] = useState(() => resolveInitialView(window.location.search));
   const selected = findRunById(selectedId);
   const summary = useMemo(() => summarizeLedger(sampleRuns), []);
   const pack = useMemo(() => createSubmissionPack(sampleRuns), []);
