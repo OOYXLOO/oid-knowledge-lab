@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arm Create Submission Field Pack - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Arm Create field pack</p>
+      <h1>Copy-ready submission fields for Arm64 Cloud AI Evidence Pipeline</h1>
+      <p class="summary">A neutral field pack for the Arm Create AI Optimization Challenge. This is not a submitted Devpost entry. It prepares the project title, tagline, description, proof links, reproduction steps, and the required Arm64 verification gate.</p>
+      <div class="links">
+        <a href="arm64-ai-evidence-pipeline.html">Arm64 proof page</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/arm64-ai-evidence-pipeline">Source example</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/arm-create-submission-field-pack.md">Raw field pack</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/actions/workflows/arm-benchmark.yml">Benchmark workflow</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/actions/runs/28568753640">Baseline run</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Arm submission readiness">
+      <article><span>Submission</span><strong>Draft</strong><small>Not submitted yet</small></article>
+      <article><span>Current result</span><strong>x64</strong><small>Baseline only</small></article>
+      <article><span>Verifier</span><strong>Strict</strong><small>Arm64 gate required</small></article>
+      <article><span>Track</span><strong>Cloud AI</strong><small>Recommended fit</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Project title</p>
+        <h2>Arm64 Cloud AI Evidence Pipeline</h2>
+      </div>
+      <p class="panel-copy">A reproducible evidence-log benchmark that turns repeated AI review questions into measurable scan-versus-index optimization proof, with an explicit Arm64 verification gate.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">What it does</p>
+        <h2>Benchmark repeated evidence questions</h2>
+      </div>
+      <p class="panel-copy">The project compares a baseline path that normalizes and scans every event for every question against an indexed path that builds a normalized token index once and reuses it across repeated evidence questions. It outputs JSON and Markdown reports with runtime, memory, platform, architecture, Node.js version, and a clear claim boundary.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Reproduction</p>
+        <h2>Commands</h2>
+      </div>
+      <pre><code>npm install
+npm run arm:benchmark
+npm run arm:verify
+
+# Real Arm64 submission gate
+npm run arm:benchmark -- --platform-note "Arm64 environment"
+npm run arm:verify -- --require-arm64</code></pre>
+      <p class="panel-copy">The strict verifier fails on non-Arm64 reports. The current public report is a local x64 baseline and must not be claimed as Arm64 optimization evidence.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Devpost description draft</p>
+        <h2>Long description</h2>
+      </div>
+      <p class="panel-copy">AI agents and review assistants often generate evidence logs repeatedly: what happened, which source supports it, what should be excluded, and which handoff fields are safe to share. If that workflow scans every event for every question, it wastes time and makes optimization hard to prove.</p>
+      <p class="panel-copy">Arm64 Cloud AI Evidence Pipeline turns that workflow into a measurable benchmark. It compares a simple repeated scan with an indexed evidence lookup path, then emits JSON and Markdown reports with runtime, memory, platform, architecture, and a strict claim boundary.</p>
+      <p class="panel-copy">The current version is deliberately honest: it publishes a local x64 baseline and a GitHub Actions baseline run, but it does not claim Arm64 optimization yet. The verifier includes a <code>--require-arm64</code> mode that fails unless the report is generated on an Arm64 environment.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Before submission</p>
+        <h2>Required gate</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Gate</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Local benchmark</td><td>Complete, x64 baseline</td></tr>
+          <tr><td>CI baseline</td><td>Complete, ubuntu-latest</td></tr>
+          <tr><td>Arm64 benchmark</td><td>Pending</td></tr>
+          <tr><td><code>--require-arm64</code> verifier</td><td>Pending real Arm64 run</td></tr>
+          <tr><td>Devpost submission</td><td>Not submitted</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>
