@@ -1,0 +1,179 @@
+{
+  "generated_at": "2026-07-02T05:44:24.572Z",
+  "platform_note": "local baseline; rerun on an Arm64 environment before challenge submission",
+  "environment": {
+    "node": "v24.13.0",
+    "platform": "win32",
+    "release": "10.0.26200",
+    "arch": "x64",
+    "cpu_model": "Intel(R) Core(TM) i7-14650HX"
+  },
+  "workload": {
+    "events": 5,
+    "questions": 4,
+    "iterations": 1200
+  },
+  "results": {
+    "baseline": {
+      "label": "baseline",
+      "duration_ms": 51.339,
+      "avg_iteration_ms": 0.042782,
+      "heap_delta_bytes": 638344,
+      "result": [
+        {
+          "question": "Which events explain webhook retry trace latency?",
+          "matches": [
+            {
+              "id": "evt-001",
+              "score": 4,
+              "severity": "high"
+            }
+          ]
+        },
+        {
+          "question": "Which notes mention privacy boundary and credentials?",
+          "matches": [
+            {
+              "id": "evt-004",
+              "score": 3,
+              "severity": "low"
+            },
+            {
+              "id": "evt-003",
+              "score": 2,
+              "severity": "medium"
+            },
+            {
+              "id": "evt-001",
+              "score": 1,
+              "severity": "high"
+            }
+          ]
+        },
+        {
+          "question": "Which evidence points should be included in editor handoff?",
+          "matches": [
+            {
+              "id": "evt-003",
+              "score": 2,
+              "severity": "medium"
+            },
+            {
+              "id": "evt-005",
+              "score": 2,
+              "severity": "high"
+            },
+            {
+              "id": "evt-001",
+              "score": 1,
+              "severity": "high"
+            }
+          ]
+        },
+        {
+          "question": "Which optimization uses cache and query planning?",
+          "matches": [
+            {
+              "id": "evt-005",
+              "score": 4,
+              "severity": "high"
+            },
+            {
+              "id": "evt-001",
+              "score": 1,
+              "severity": "high"
+            },
+            {
+              "id": "evt-004",
+              "score": 1,
+              "severity": "low"
+            }
+          ]
+        }
+      ]
+    },
+    "optimized": {
+      "label": "optimized",
+      "duration_ms": 32.347,
+      "avg_iteration_ms": 0.026956,
+      "heap_delta_bytes": 1047136,
+      "result": [
+        {
+          "question": "Which events explain webhook retry trace latency?",
+          "matches": [
+            {
+              "id": "evt-001",
+              "score": 4,
+              "severity": "high"
+            }
+          ]
+        },
+        {
+          "question": "Which notes mention privacy boundary and credentials?",
+          "matches": [
+            {
+              "id": "evt-004",
+              "score": 3,
+              "severity": "low"
+            },
+            {
+              "id": "evt-003",
+              "score": 2,
+              "severity": "medium"
+            },
+            {
+              "id": "evt-001",
+              "score": 1,
+              "severity": "high"
+            }
+          ]
+        },
+        {
+          "question": "Which evidence points should be included in editor handoff?",
+          "matches": [
+            {
+              "id": "evt-003",
+              "score": 2,
+              "severity": "medium"
+            },
+            {
+              "id": "evt-005",
+              "score": 2,
+              "severity": "high"
+            },
+            {
+              "id": "evt-002",
+              "score": 1,
+              "severity": "medium"
+            }
+          ]
+        },
+        {
+          "question": "Which optimization uses cache and query planning?",
+          "matches": [
+            {
+              "id": "evt-005",
+              "score": 4,
+              "severity": "high"
+            },
+            {
+              "id": "evt-001",
+              "score": 1,
+              "severity": "high"
+            },
+            {
+              "id": "evt-004",
+              "score": 1,
+              "severity": "low"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "summary": {
+    "speedup": 1.59,
+    "arm64_ready": false,
+    "claim_boundary": "Do not claim Arm64 optimization until this benchmark is rerun on Arm64."
+  }
+}

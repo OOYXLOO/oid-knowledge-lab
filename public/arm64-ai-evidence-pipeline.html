@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Arm64 AI Evidence Pipeline - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Arm64 AI evidence pipeline</p>
+      <h1>Reproducible evidence-log benchmark for Arm AI optimization</h1>
+      <p class="summary">A small benchmark proof for comparing repeated evidence-log scans against an indexed query path. The current report is a local baseline and must be rerun on Arm64 before any challenge submission claims Arm platform optimization.</p>
+      <div class="links">
+        <a href="editor-review-start-here.html">Editor review start here</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/arm64-ai-evidence-pipeline">Source example</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/arm64-ai-evidence-pipeline/reports/benchmark.json">Benchmark JSON</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/arm64-ai-evidence-pipeline/reports/benchmark.md">Benchmark Markdown</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Arm benchmark status">
+      <article><span>Route</span><strong>Arm P1</strong><small>Challenge proof asset</small></article>
+      <article><span>Current proof</span><strong>Local</strong><small>Needs Arm64 rerun</small></article>
+      <article><span>Workload</span><strong>Evidence</strong><small>Repeated review questions</small></article>
+      <article><span>Boundary</span><strong>Honest</strong><small>No Arm64 claim yet</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">What is measured</p>
+        <h2>Baseline scan versus indexed evidence lookup</h2>
+      </div>
+      <p class="panel-copy">The benchmark loads a small public-safe review-event fixture, runs repeated evidence questions, and compares a simple scan path with an indexed path that caches normalized tokens. It records runtime, average iteration time, heap delta, platform, architecture, Node.js version, and a clear claim boundary.</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Why it helps the challenge route</p>
+        <h2>From idea to measurable optimization</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Need</th><th>Current artifact</th><th>Next Arm64 step</th></tr></thead>
+        <tbody>
+          <tr><td>Reproducible command</td><td><code>npm run arm:benchmark</code></td><td>Run the same command on an Arm64 environment.</td></tr>
+          <tr><td>Benchmark evidence</td><td>JSON and Markdown reports</td><td>Commit an Arm64 report with platform evidence.</td></tr>
+          <tr><td>Optimization story</td><td>Scan versus token index</td><td>Expand workload size and compare cold/warm behavior.</td></tr>
+          <tr><td>Submission boundary</td><td>No private data, no Arm64 claim yet</td><td>Only claim results proven by the Arm64 report.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</body>
+</html>

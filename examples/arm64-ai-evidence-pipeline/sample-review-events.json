@@ -1,0 +1,37 @@
+[
+  {
+    "id": "evt-001",
+    "source": "review-thread",
+    "severity": "high",
+    "text": "Webhook retries increased after deployment. Trace id trc-1001 shows queue publish latency and downstream timeout. No tokens or raw payloads are included.",
+    "tags": ["webhook", "retry", "trace", "queue"]
+  },
+  {
+    "id": "evt-002",
+    "source": "build-log",
+    "severity": "medium",
+    "text": "Static proof page build passed but manifest check warned about missing evidence link for customer-safe screenshots.",
+    "tags": ["manifest", "static-proof", "screenshot"]
+  },
+  {
+    "id": "evt-003",
+    "source": "incident-note",
+    "severity": "medium",
+    "text": "Reviewer asked for source boundary notes before sharing generated evidence logs with external editors.",
+    "tags": ["source-boundary", "evidence-log", "editor"]
+  },
+  {
+    "id": "evt-004",
+    "source": "agent-run",
+    "severity": "low",
+    "text": "Agent summarized public OID references and excluded credentials, cookies, OTPs, payment data, and private account exports.",
+    "tags": ["oid", "privacy", "agent"]
+  },
+  {
+    "id": "evt-005",
+    "source": "benchmark-note",
+    "severity": "high",
+    "text": "Optimized evidence pipeline should cache normalized tokens and reuse query plans across repeated review questions.",
+    "tags": ["benchmark", "optimization", "cache"]
+  }
+]
