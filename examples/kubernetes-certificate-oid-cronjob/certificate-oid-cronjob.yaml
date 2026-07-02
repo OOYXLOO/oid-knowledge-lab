@@ -1,0 +1,43 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: certificate-oid-review
+spec:
+  schedule: "0 9 * * 1"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: certificate-oid-review
+              image: python:3.12-slim
+              command:
+                - /bin/sh
+                - -lc
+              args:
+                - |
+                  python -m pip install --no-cache-dir cryptography &&
+                  python /app/certificate_oid_inspector.py /certs/example.pem --format markdown > /reports/certificate-oid-review.md &&
+                  cat /reports/certificate-oid-review.md
+              volumeMounts:
+                - name: certificate
+                  mountPath: /certs
+                  readOnly: true
+                - name: inspector
+                  mountPath: /app
+                  readOnly: true
+                - name: reports
+                  mountPath: /reports
+          volumes:
+            - name: certificate
+              configMap:
+                name: sample-public-certificate
+            - name: inspector
+              configMap:
+                name: certificate-oid-inspector
+            - name: reports
+              emptyDir: {}
+

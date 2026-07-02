@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: sample-public-certificate
+data:
+  README: |
+    Replace example.pem with a public test certificate before running the CronJob.
+    Do not store private keys, customer certificates, tokens, or production logs here.
+  example.pem: |
+    -----BEGIN CERTIFICATE-----
+    MIIBlDCCATqgAwIBAgIUZmFrZS1jZXJ0LWZpeHR1cmUtZm9yLWFydGljbGUwCgYI
+    KoZIzj0EAwIwEjEQMA4GA1UEAwwHZXhhbXBsZTAeFw0yNjAxMDEwMDAwMDBaFw0y
+    NjAxMDIwMDAwMDBaMBIxEDAOBgNVBAMMB2V4YW1wbGUwWTATBgcqhkjOPQIBBggq
+    hkjOPQMBBwNCAATfakePlaceholderNotARealCertificateBodyForArticleUseOnly
+    RmFrZVB1YmxpY0NlcnRpZmljYXRlUGxhY2Vob2xkZXIwCgYIKoZIzj0EAwIDSQAw
+    RgIhAIfakePlaceholderSignatureValueForArticleUseOnlyAiEAfakePlaceholder
+    SignatureValueForArticleUseOnly
+    -----END CERTIFICATE-----
+

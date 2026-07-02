@@ -24,6 +24,8 @@ The current source adapter targets public OID-base pages through the site's site
 - Laravel certificate OID sample code: `examples/laravel-certificate-oid-inspector/`
 - Python certificate OID inspector: <https://ooyxloo.github.io/oid-knowledge-lab/python-certificate-oid-inspector.html>
 - Python certificate OID sample code: `examples/python-certificate-oid-inspector/`
+- Civo certificate OID CronJob packet: <https://ooyxloo.github.io/oid-knowledge-lab/civo-certificate-oid-cronjob-packet.html>
+- Kubernetes certificate OID CronJob sample: `examples/kubernetes-certificate-oid-cronjob/`
 - Technical writing editorial packet: <https://ooyxloo.github.io/oid-knowledge-lab/technical-writing-editorial-packet.html>
 - Launch proof sprint scope: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-sprint-scope.html>
 - Launch proof readiness checklist: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-readiness-checklist.html>
