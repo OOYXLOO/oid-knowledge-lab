@@ -35,6 +35,20 @@ The public demo keeps that boundary honest. It shows the intended adapter shape 
 
 No API key, billing screen, account identifier, private console view, customer spreadsheet, cookie, or token belongs in the public artifact.
 
+## The Build Decisions That Matter
+
+The most important engineering work was deciding what the model should not do.
+
+The deterministic layer owns parsing, validation, public-source status, and export shape. It can say whether an input looks like an OID, whether a private enterprise root appears in a public index, and whether a row should be marked as unresolved. The Qwen-facing layer receives that structured packet and turns it into clearer language for a reviewer.
+
+That separation creates three practical benefits:
+
+1. A reviewer can audit the source data without trusting the model output first.
+2. A model-generated note can be regenerated or edited without changing the underlying evidence.
+3. A team can publish a safe proof page while keeping private inventories, API keys, account screens, and customer context out of the artifact.
+
+In other words, Qwen is valuable because it makes a bounded review queue easier to understand. It is not being used as a hidden registry authority.
+
 ## Why This Is an Agent Problem
 
 OID cleanup often fails because the work is small enough to postpone and specialized enough to confuse non-specialists. An autopilot queue helps by creating momentum:
@@ -70,6 +84,30 @@ The build journal is available at:
 https://ooyxloo.github.io/oid-knowledge-lab/qwen-build-journal.html
 ```
 
+## What I Would Show in the Final Demo
+
+The strongest demo path is short:
+
+1. Start with a sanitized inventory containing valid OIDs, malformed values, known enterprise roots, and unresolved rows.
+2. Run the deterministic check and show the generated remediation queue.
+3. Show the Qwen adapter request shape, emphasizing that the input is already bounded and redacted.
+4. Show the draft reviewer summary that Qwen would produce from the packet.
+5. Stop at the human approval gate before any ticket, vendor message, registry edit, or customer-facing publication.
+
+This demo path is intentionally less flashy than a fully autonomous agent. That is the point. For infrastructure review, trust comes from visible boundaries.
+
+## Why This Fits the Blog Post Award
+
+The story is not just "I added AI to a dataset." It is about building an agent-shaped workflow around a real review problem while keeping the proof boundary honest.
+
+The post can teach three reusable lessons:
+
+- Put deterministic checks before model-written explanations.
+- Publish proof that reviewers can inspect without exposing private systems.
+- Treat human approval as a product feature, not a limitation.
+
+Those lessons apply beyond OIDs: certificate policy reviews, integration inventories, compliance spreadsheets, developer documentation reviews, and internal migration checklists all have the same pattern.
+
 ## Next Build Step
 
 The next meaningful step is not a bigger landing page. It is a small live adapter run with a redacted receipt:
@@ -81,4 +119,3 @@ The next meaningful step is not a bigger landing page. It is a small live adapte
 5. keep the human approval gate visible in the demo
 
 That would turn the project from a source-grounded candidate into a stronger Qwen Cloud hackathon submission without weakening the publication boundary.
-
