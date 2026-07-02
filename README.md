@@ -69,6 +69,7 @@ The current source adapter targets public OID-base pages through the site's site
 - OpenTrain AI systems and code evaluation packet: <https://ooyxloo.github.io/oid-knowledge-lab/opentrain-ai-code-evaluation-one-link.html>
 - Hasura reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/hasura-reviewer-hub.html>
 - Appsmith OID reviewer hub: <https://ooyxloo.github.io/oid-knowledge-lab/appsmith-oid-reviewer-hub.html>
+- Appsmith email field pack: <https://ooyxloo.github.io/oid-knowledge-lab/appsmith-email-field-pack.html>
 - Editorial sample index: `docs/articles/editorial-sample-index-20260701.md`
 
 ## Current Publishable Snapshot
