@@ -5,9 +5,9 @@
   "description": "Metadata risk brief generator for DataHub-style context snapshots.",
   "type": "commonjs",
   "scripts": {
-    "check": "node --check src/analyze.js && node --check src/cli.js && node --check src/renderSite.js && node --check test/analyze.test.js",
-    "test": "node test/analyze.test.js",
-    "build": "node src/cli.js examples/metadata-snapshot.json reports/sample-risk-brief.md reports/sample-risk-brief.json && node src/renderSite.js reports/sample-risk-brief.json public/index.html",
+    "check": "node --check src/analyze.js && node --check src/cli.js && node --check src/exportMcpPlan.js && node --check src/mcpPlan.js && node --check src/renderSite.js && node --check test/analyze.test.js && node --check test/mcpPlan.test.js",
+    "test": "node test/analyze.test.js && node test/mcpPlan.test.js",
+    "build": "node src/cli.js examples/metadata-snapshot.json reports/sample-risk-brief.md reports/sample-risk-brief.json && node src/exportMcpPlan.js examples/metadata-snapshot.json reports/datahub-mcp-read-plan.md reports/datahub-mcp-read-plan.json && node src/renderSite.js reports/sample-risk-brief.json public/index.html",
     "demo": "node src/cli.js examples/metadata-snapshot.json"
   },
   "keywords": [

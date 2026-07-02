@@ -1,0 +1,88 @@
+{
+  "purpose": "Collect read-only DataHub context before scoring proposed data changes.",
+  "safety": "Read-only plan. Do not call mutation tools until a reviewer approves the brief.",
+  "tools": [
+    {
+      "tool": "search",
+      "reason": "Resolve dataset name to DataHub entity URN",
+      "input": {
+        "query": "analytics.customer_orders",
+        "entityTypes": [
+          "DATASET"
+        ]
+      }
+    },
+    {
+      "tool": "get_entities",
+      "reason": "Read ownership, tags, domain, freshness, and documentation",
+      "input": {
+        "names": [
+          "analytics.customer_orders"
+        ]
+      }
+    },
+    {
+      "tool": "get_lineage",
+      "reason": "Check downstream impact before approving an automated change",
+      "input": {
+        "entity": "analytics.customer_orders",
+        "direction": "DOWNSTREAM",
+        "hops": 2
+      }
+    },
+    {
+      "tool": "search",
+      "reason": "Resolve dataset name to DataHub entity URN",
+      "input": {
+        "query": "raw.support_tickets",
+        "entityTypes": [
+          "DATASET"
+        ]
+      }
+    },
+    {
+      "tool": "get_entities",
+      "reason": "Read ownership, tags, domain, freshness, and documentation",
+      "input": {
+        "names": [
+          "raw.support_tickets"
+        ]
+      }
+    },
+    {
+      "tool": "get_lineage",
+      "reason": "Check downstream impact before approving an automated change",
+      "input": {
+        "entity": "raw.support_tickets",
+        "direction": "DOWNSTREAM",
+        "hops": 2
+      }
+    },
+    {
+      "tool": "list_schema_fields",
+      "reason": "Inspect fields touched by CHG-1001",
+      "input": {
+        "dataset": "analytics.customer_orders",
+        "keywords": [
+          "coupon_code"
+        ]
+      }
+    },
+    {
+      "tool": "list_schema_fields",
+      "reason": "Inspect fields touched by CHG-1002",
+      "input": {
+        "dataset": "raw.support_tickets",
+        "keywords": [
+          "body",
+          "requester_email"
+        ]
+      }
+    },
+    {
+      "tool": "list_pending_proposals",
+      "reason": "Avoid conflicting with governance changes already awaiting review",
+      "input": {}
+    }
+  ]
+}

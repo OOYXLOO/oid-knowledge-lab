@@ -35,6 +35,8 @@ Outputs:
 ```text
 reports/sample-risk-brief.md
 reports/sample-risk-brief.json
+reports/datahub-mcp-read-plan.md
+reports/datahub-mcp-read-plan.json
 public/index.html
 ```
 
@@ -53,3 +55,7 @@ See `examples/metadata-snapshot.json`. The sample includes:
 This is a product prototype, not a production DataHub plugin yet. A future version
 can replace the local JSON snapshot with DataHub MCP Server or Agent Context Kit
 calls, then write the resulting decision notes back to DataHub.
+
+The generated MCP read plan in `reports/datahub-mcp-read-plan.md` shows the
+read-only DataHub context calls the agent would make before scoring a proposed
+change.
