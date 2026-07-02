@@ -1751,12 +1751,41 @@ function testWritingSamplesPageHasEditorDecisionPanel() {
   assert.ok(text.includes("Submission-ready queue"), "writing samples page should show the submission-ready queue");
   assert.ok(text.includes("editor-pitch-pack.html"), "writing samples page should link the field-ready editor pitch pack");
   assert.ok(text.includes("editor-assignment-fit.html"), "writing samples page should link the assignment fit page");
+  assert.ok(text.includes("evidence-log-agent-writing-sample.html"), "writing samples page should link the evidence log agent sample page");
+  assert.ok(text.includes("build-an-evidence-log-agent-for-slack-review-threads.md"), "writing samples page should link the full evidence log agent Markdown sample");
   for (const platform of ["Airbyte", "Civo", "Draft.dev", "Directus", "AppSignal", "SigNoz"]) {
     assert.ok(text.includes(platform), `writing samples page should include ${platform}`);
   }
   assert.equal(text.includes("money" + "-goal"), false);
   assert.equal(text.includes("USD " + "200"), false);
   assert.equal(text.includes("\u8d5a\u94b1"), false);
+}
+
+function testEvidenceLogAgentWritingSamplePageIsPublicAndBoundarySafe() {
+  const files = [
+    "public/evidence-log-agent-writing-sample.html",
+    "public/draftdev-writer-network-hub.html",
+    "public/editor-portfolio-p0.html",
+    "README.md"
+  ];
+  for (const file of files) {
+    const text = fs.readFileSync(path.join(ROOT, file), "utf8");
+    assert.ok(text.includes("evidence-log-agent-writing-sample.html"), `${file} should link the evidence log agent writing sample page`);
+    assert.ok(text.includes("build-an-evidence-log-agent-for-slack-review-threads.md"), `${file} should link the full Markdown sample`);
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+    assert.equal(text.includes("D:\\hks"), false);
+  }
+
+  const sample = fs.readFileSync(path.join(ROOT, "writing-samples/build-an-evidence-log-agent-for-slack-review-threads.md"), "utf8");
+  assert.ok(sample.includes("Build an Evidence Log Agent for Slack Review Threads"));
+  assert.ok(sample.includes("Node.js evidence-log agent"));
+  assert.ok(sample.includes("Slack slash command"));
+  assert.ok(sample.includes("tests"));
+  assert.equal(sample.includes("money" + "-goal"), false);
+  assert.equal(sample.includes("USD " + "200"), false);
+  assert.equal(sample.includes("\u8d5a\u94b1"), false);
 }
 
 function testTechnicalLaunchProofSprintIsPublicAndServiceReady() {
@@ -2973,6 +3002,7 @@ async function main() {
   testKnowledgeOwlFinalEditorPacketKeepsEditorControlBoundary();
   testArticleSampleIndexIncludesRealPythonMiniSample();
   testWritingSamplesPageHasEditorDecisionPanel();
+  testEvidenceLogAgentWritingSamplePageIsPublicAndBoundarySafe();
   testTechnicalLaunchProofSprintIsPublicAndServiceReady();
   testEditorAssignmentFitPageIsLinkedAndBoundarySafe();
   testUnleashContinuousDeliveryPacketIsLinkedAndBoundarySafe();

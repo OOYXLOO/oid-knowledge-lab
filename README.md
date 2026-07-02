@@ -17,6 +17,8 @@ The current source adapter targets public OID-base pages through the site's site
 - JavaScript review sample: <https://ooyxloo.github.io/oid-knowledge-lab/js-review-sample.html>
 - Technical rigor proof: <https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html>
 - Writing samples: <https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html>
+- Evidence Log Agent writing sample: <https://ooyxloo.github.io/oid-knowledge-lab/evidence-log-agent-writing-sample.html>
+- Full Evidence Log Agent Markdown sample: `writing-samples/build-an-evidence-log-agent-for-slack-review-threads.md`
 - Developer docs trial pack: <https://ooyxloo.github.io/oid-knowledge-lab/developer-docs-trial-pack.html>
 - Developer docs sample diagnosis: <https://ooyxloo.github.io/oid-knowledge-lab/developer-docs-sample-diagnosis.html>
 - Airbyte OID knowledge pipeline packet: <https://ooyxloo.github.io/oid-knowledge-lab/airbyte-oid-knowledge-pipeline-packet.html>

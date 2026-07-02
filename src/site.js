@@ -1832,6 +1832,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "qwen-architecture.html",
     "qwen-architecture.svg",
     "evidence-log-playground.html",
+    "evidence-log-agent-writing-sample.html",
     "sitepoint-reviewer-hub.html",
     "writing-samples.html",
     "implementation-authenticity-proof.html",
