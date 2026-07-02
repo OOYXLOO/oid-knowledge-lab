@@ -20,6 +20,9 @@ https://review-log-agent-slack.vercel.app/api/slack/commands/review-log
 Public verification:
 https://review-log-agent-slack.vercel.app/docs/public-verification.md
 
+Official submission requirements:
+https://review-log-agent-slack.vercel.app/docs/official-submission-requirements.md
+
 Public source snapshot:
 https://review-log-agent-slack.vercel.app/docs/source-snapshot.md
 
@@ -33,8 +36,9 @@ https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent
 2. The playground regenerates a Markdown evidence log from synthetic Slack-style input in the browser.
 3. The demo video shows the review flow without using private Slack exports, tokens, customer content, or account screenshots.
 4. The slash-command endpoint returns `405` for a browser `GET`, and returns Slack-compatible JSON for a `POST`.
-5. The public docs clearly state what is implemented now and what still requires a live Slack app or final challenge submission.
-6. The public source snapshot links reviewable source, tests, docs, and manifest files with SHA-256 hashes; the OID Knowledge Lab repository also contains a public source copy.
+5. The official requirements map connects the demo video, architecture, source, Slack endpoint, and remaining sandbox URL field.
+6. The public docs clearly state what is implemented now and what still requires a live Slack app or final challenge submission.
+7. The public source snapshot links reviewable source, tests, docs, and manifest files with SHA-256 hashes; the OID Knowledge Lab repository also contains a public source copy.
 
 ## Local Verification Commands
 

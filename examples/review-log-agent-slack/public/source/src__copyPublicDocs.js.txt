@@ -12,6 +12,7 @@ const PUBLIC_DOCS = [
   "devpost-field-pack.md",
   "github-source-fallback.md",
   "judge-verification.md",
+  "official-submission-requirements.md",
   "public-verification.md",
   "reviewer-quickstart.md",
   "slack-app-handler-contract.md",
