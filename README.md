@@ -53,7 +53,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Media Ledger judging evidence: <https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-judging-evidence.html>
 - Media Ledger final submission overview: <https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-final-submission.html>
 - Envato Tuts+ contributor packet: <https://ooyxloo.github.io/oid-knowledge-lab/envato-tutsplus-contributor-packet.html>
-- Qwen Blog Post Award draft: <https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html>
+- Qwen build article / Blog Post Award URL: <https://ooyxloo.github.io/oid-knowledge-lab/qwen-build-article.html>
 - Qwen final submission overview: <https://ooyxloo.github.io/oid-knowledge-lab/qwen-final-submission-overview.html>
 - Qwen demo reel: <https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-reel.html>
 - Qwen 3-minute walkthrough: <https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html>
@@ -106,7 +106,7 @@ Last refreshed on 2026-06-26:
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
 - Stable local audit mode: `npm run audit:local:stable` fixes report timestamps through `OID_KNOWLEDGE_GENERATED_AT` so verification runs do not create noisy timestamp-only diffs
 - Media provenance generator: `npm run media:provenance` builds `reports/media-provenance-pack.json` and `reports/media-provenance-pack.md` from `examples/media-provenance-assets.json`
-- Qwen Blog Post Award draft: `docs/articles/qwen-source-grounded-autopilot-agent.md` and `public/qwen-blog-post-award-draft.html` provide a publication-ready article path without claiming live cloud proof.
+- Qwen build article / Blog Post Award URL: `docs/articles/qwen-source-grounded-autopilot-agent.md` and `public/qwen-build-article.html` provide a public article path without claiming live cloud proof.
 - Qwen final submission overview: `public/qwen-final-submission-overview.html` consolidates the judging links and proof boundary for Devpost-style submission.
 - Qwen demo reel: `public/qwen-demo-reel.html` provides an autoplay screen-recording page for judges without claiming live cloud proof.
 - Qwen 3-minute walkthrough: `public/qwen-3-minute-walkthrough.html` provides a recording-ready judge walkthrough for the Qwen project without claiming live cloud proof.

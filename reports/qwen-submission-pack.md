@@ -1,6 +1,6 @@
 # Qwen Submission Pack
 
-Generated at: 2026-07-01T18:20:17.000Z
+Generated at: 2026-07-02T10:09:37.557Z
 
 ## Project
 
@@ -83,7 +83,7 @@ flowchart LR
 - [Sample assessment screenshot](https://ooyxloo.github.io/oid-knowledge-lab/assets/qwen/sample-assessment.png)
 - [Sample assessment](https://ooyxloo.github.io/oid-knowledge-lab/sample-assessment.html)
 - [Technical rigor proof](https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html)
-- [Qwen Blog Post Award draft](https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html)
+- [Published Qwen build article](https://ooyxloo.github.io/oid-knowledge-lab/qwen-build-article.html)
 - [Qwen agent demo report](https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md)
 - [Redacted Qwen run receipt template](https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-run-receipt.md)
 - [Qwen adapter source](https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/src/qwenAgent.js)

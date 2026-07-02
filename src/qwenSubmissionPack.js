@@ -73,7 +73,7 @@ function buildQwenSubmissionPack(options = {}) {
       { label: "Sample assessment screenshot", url: link(publicBaseUrl, "assets/qwen/sample-assessment.png") },
       { label: "Sample assessment", url: link(publicBaseUrl, "sample-assessment.html") },
       { label: "Technical rigor proof", url: link(publicBaseUrl, "technical-rigor-proof.html") },
-      { label: "Qwen Blog Post Award draft", url: link(publicBaseUrl, "qwen-blog-post-award-draft.html") },
+      { label: "Published Qwen build article", url: link(publicBaseUrl, "qwen-build-article.html") },
       { label: "Qwen agent demo report", url: "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-agent-demo.md" },
       { label: "Redacted Qwen run receipt template", url: "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-run-receipt.md" },
       { label: "Qwen adapter source", url: "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/src/qwenAgent.js" },

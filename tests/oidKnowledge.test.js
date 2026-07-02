@@ -2554,7 +2554,7 @@ function testQwenSubmissionPackBuildsJudgingAssets() {
   assert.ok(pack.proof_checklist.some((item) => item.label === "Alibaba Function Compute handler"));
   assert.ok(pack.proof_checklist.some((item) => item.label === "Redacted Qwen run receipt generator"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/deploy/alibaba-function-compute-qwen-handler.js"));
-  assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html"));
+  assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-build-article.html"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-reel.html"));
   assert.ok(pack.proof_links.some((item) => item.url === "https://ooyxloo.github.io/oid-knowledge-lab/qwen-final-submission-overview.html"));

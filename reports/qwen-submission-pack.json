@@ -1,6 +1,6 @@
 {
   "schema_version": "qwen-submission-pack/v1",
-  "generated_at": "2026-07-01T18:20:17.000Z",
+  "generated_at": "2026-07-02T10:09:37.557Z",
   "public_base_url": "https://ooyxloo.github.io/oid-knowledge-lab",
   "project": {
     "name": "OID Knowledge Lab: Qwen Remediation Autopilot",
@@ -155,8 +155,8 @@
       "url": "https://ooyxloo.github.io/oid-knowledge-lab/technical-rigor-proof.html"
     },
     {
-      "label": "Qwen Blog Post Award draft",
-      "url": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html"
+      "label": "Published Qwen build article",
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-build-article.html"
     },
     {
       "label": "Qwen agent demo report",

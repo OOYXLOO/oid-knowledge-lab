@@ -19,7 +19,7 @@
     "repository": "https://github.com/OOYXLOO/oid-knowledge-lab",
     "demoReel": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-reel.html",
     "threeMinuteWalkthrough": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html",
-    "blogAwardDraft": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html",
+    "publishedBuildArticle": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-build-article.html",
     "oneLinkPacket": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html",
     "buildJournal": "https://ooyxloo.github.io/oid-knowledge-lab/qwen-build-journal.html",
     "submissionPack": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-submission-pack.md",
@@ -27,5 +27,5 @@
     "functionComputeHandler": "https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/deploy/alibaba-function-compute-qwen-handler.js",
     "license": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/LICENSE"
   },
-  "honestProofBoundary": "This public draft describes a source-grounded Qwen Cloud candidate and its proof boundary. It does not claim a live Qwen Cloud deployment, a live Alibaba Cloud backend, or a production customer workflow. A live-run claim should only be added after a private run produces a redacted receipt with no secrets, account screenshots, private console details, or account-specific metadata."
+  "honestProofBoundary": "This public build article describes a source-grounded Qwen Cloud candidate and its proof boundary. It does not claim a live Qwen Cloud deployment, a live Alibaba Cloud backend, or a production customer workflow. A live-run claim should only be added after a private run produces a redacted receipt with no secrets, account screenshots, private console details, or account-specific metadata."
 }

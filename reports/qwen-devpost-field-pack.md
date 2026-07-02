@@ -34,7 +34,7 @@ Node.js, static HTML/CSS/JavaScript, public IANA PEN data, OID-base sitemap meta
 - Repository: https://github.com/OOYXLOO/oid-knowledge-lab
 - Demo reel: https://ooyxloo.github.io/oid-knowledge-lab/qwen-demo-reel.html
 - Three-minute walkthrough: https://ooyxloo.github.io/oid-knowledge-lab/qwen-3-minute-walkthrough.html
-- Blog award draft: https://ooyxloo.github.io/oid-knowledge-lab/qwen-blog-post-award-draft.html
+- Published build article / Blog Post Award URL: https://ooyxloo.github.io/oid-knowledge-lab/qwen-build-article.html
 - One-link packet: https://ooyxloo.github.io/oid-knowledge-lab/qwen-autopilot-agent-one-link.html
 - Build journal: https://ooyxloo.github.io/oid-knowledge-lab/qwen-build-journal.html
 - Submission pack: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/reports/qwen-submission-pack.md
@@ -44,7 +44,7 @@ Node.js, static HTML/CSS/JavaScript, public IANA PEN data, OID-base sitemap meta
 
 ## Honest proof boundary
 
-This public draft describes a source-grounded Qwen Cloud candidate and its proof boundary. It does not claim a live Qwen Cloud deployment, a live Alibaba Cloud backend, or a production customer workflow. A live-run claim should only be added after a private run produces a redacted receipt with no secrets, account screenshots, private console details, or account-specific metadata.
+This public build article describes a source-grounded Qwen Cloud candidate and its proof boundary. It does not claim a live Qwen Cloud deployment, a live Alibaba Cloud backend, or a production customer workflow. A live-run claim should only be added after a private run produces a redacted receipt with no secrets, account screenshots, private console details, or account-specific metadata.
 
 ## Suggested Devpost challenge notes
 
