@@ -32,6 +32,7 @@ function testCopiesOnlyPublicSubmissionDocs() {
     "reviewer-quickstart.md",
     "slack-app-handler-contract.md",
     "slack-app-manifest.json",
+    "slack-sandbox-setup-card.md",
     "submission-pack.md"
   ]);
   assert.ok(fs.existsSync(path.join(outputDir, "architecture.md")));
@@ -43,6 +44,7 @@ function testCopiesOnlyPublicSubmissionDocs() {
   assert.ok(fs.existsSync(path.join(outputDir, "official-submission-requirements.md")));
   assert.ok(fs.existsSync(path.join(outputDir, "github-source-fallback.md")));
   assert.ok(fs.existsSync(path.join(outputDir, "reviewer-quickstart.md")));
+  assert.ok(fs.existsSync(path.join(outputDir, "slack-sandbox-setup-card.md")));
 }
 
 testCopiesOnlyPublicSubmissionDocs();

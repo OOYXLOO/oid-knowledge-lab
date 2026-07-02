@@ -15,6 +15,8 @@ function testRendersSubmissionPageWithCoreLinks() {
   assert.match(html, /docs\/judge-verification\.md/);
   assert.match(html, /docs\/official-submission-requirements\.md/);
   assert.match(html, /Official submission requirements map/);
+  assert.match(html, /docs\/slack-sandbox-setup-card\.md/);
+  assert.match(html, /Slack sandbox setup card/);
   assert.match(html, /api\/agent\/tools/);
   assert.match(html, /Agent tools API/);
   assert.match(html, /docs\/reviewer-quickstart\.md/);

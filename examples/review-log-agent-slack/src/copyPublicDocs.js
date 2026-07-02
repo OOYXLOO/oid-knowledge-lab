@@ -15,6 +15,7 @@ const PUBLIC_DOCS = [
   "official-submission-requirements.md",
   "public-verification.md",
   "reviewer-quickstart.md",
+  "slack-sandbox-setup-card.md",
   "slack-app-handler-contract.md",
   "slack-app-manifest.json",
   "submission-pack.md"

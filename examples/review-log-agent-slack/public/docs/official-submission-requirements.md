@@ -60,6 +60,12 @@ The current project demonstrates three Slack Challenge-relevant integration shap
 
 The only required field still missing is the Slack developer sandbox URL. This is account-side platform evidence, not a code gap. The current implementation should not store Slack credentials, tokens, cookies, private workspace exports, or account-local data.
 
+Setup aid:
+
+```text
+https://review-log-agent-slack.vercel.app/docs/slack-sandbox-setup-card.md
+```
+
 ## Recommended Track Positioning
 
 Primary track:

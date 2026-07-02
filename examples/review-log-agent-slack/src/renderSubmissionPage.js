@@ -149,6 +149,7 @@ function renderSubmissionPage() {
         <a href="playground.html">Interactive playground<span>Edit a Slack-style JSON thread and generate a Markdown handoff.</span></a>
         <a href="media/review-log-agent-slack-demo.mp4">Demo video<span>96-second MP4 walkthrough for reviewers and submission forms.</span></a>
         <a href="docs/official-submission-requirements.md">Requirements map<span>Official submission items mapped to current evidence.</span></a>
+        <a href="docs/slack-sandbox-setup-card.md">Slack setup card<span>Shortest path for the sandbox URL field.</span></a>
         <a href="api/agent/tools">Agent tools API<span>Public endpoint listing the review-log tool contract.</span></a>
         <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack">Source snapshot<span>Public GitHub source copy for review.</span></a>
         <a href="https://oid-knowledge-lab.vercel.app/evidence-log-playground.html">Related proof<span>Adjacent evidence-log validation surface.</span></a>
@@ -173,6 +174,7 @@ function renderSubmissionPage() {
         <li><a href="docs/judge-verification.md">Judge verification checklist</a></li>
         <li><a href="docs/official-submission-requirements.md">Official submission requirements map</a></li>
         <li><a href="docs/reviewer-quickstart.md">Reviewer quickstart</a></li>
+        <li><a href="docs/slack-sandbox-setup-card.md">Slack sandbox setup card</a></li>
         <li><a href="docs/demo-video-script.md">Demo video script</a></li>
         <li><a href="docs/submission-pack.md">Submission pack notes</a></li>
         <li><a href="docs/challenge-fit.md">Challenge fit notes</a></li>

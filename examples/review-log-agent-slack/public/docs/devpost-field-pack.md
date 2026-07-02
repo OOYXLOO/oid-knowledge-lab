@@ -78,6 +78,7 @@ https://review-log-agent-slack.vercel.app/submission.html
 https://review-log-agent-slack.vercel.app/media/review-log-agent-slack-demo.mp4
 https://review-log-agent-slack.vercel.app/docs/judge-verification.md
 https://review-log-agent-slack.vercel.app/docs/official-submission-requirements.md
+https://review-log-agent-slack.vercel.app/docs/slack-sandbox-setup-card.md
 https://review-log-agent-slack.vercel.app/docs/source-snapshot.md
 https://review-log-agent-slack.vercel.app/api/agent/tools
 https://review-log-agent-slack.vercel.app/api/agent/call
@@ -108,6 +109,12 @@ docs/demo-video-script.md
 
 ```text
 Add the Slack developer sandbox URL after the Slack app or sandbox is created.
+```
+
+Setup card:
+
+```text
+https://review-log-agent-slack.vercel.app/docs/slack-sandbox-setup-card.md
 ```
 
 ## Slack App Manifest

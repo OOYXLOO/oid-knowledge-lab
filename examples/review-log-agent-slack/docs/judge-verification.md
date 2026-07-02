@@ -26,6 +26,9 @@ https://review-log-agent-slack.vercel.app/docs/public-verification.md
 Official submission requirements:
 https://review-log-agent-slack.vercel.app/docs/official-submission-requirements.md
 
+Slack sandbox setup card:
+https://review-log-agent-slack.vercel.app/docs/slack-sandbox-setup-card.md
+
 Public source snapshot:
 https://review-log-agent-slack.vercel.app/docs/source-snapshot.md
 
