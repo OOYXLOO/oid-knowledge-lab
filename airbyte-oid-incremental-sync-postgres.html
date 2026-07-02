@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Build an Incremental OID Knowledge Pipeline - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Writing sample</p>
+      <h1>Build an incremental OID knowledge pipeline with Airbyte and Postgres</h1>
+      <p class="summary">A developer tutorial sample showing source boundaries, incremental capture, Postgres schema design, graph normalization, and quality checks for a public OID knowledge base.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="airbyte-oid-knowledge-pipeline-packet.html">Airbyte article packet</a>
+        <a href="paid-writing-p0-editor-quickstart.html">Paid writing quickstart</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/writing-samples/airbyte-oid-incremental-sync-postgres.md">Markdown source</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Article qualities">
+      <article><span>Reader</span><strong>Data teams</strong><small>Integration and search workflows</small></article>
+      <article><span>Stack</span><strong>Airbyte</strong><small>Public source to Postgres</small></article>
+      <article><span>Pattern</span><strong>Incremental</strong><small>Hash-based change detection</small></article>
+      <article><span>Boundary</span><strong>Public</strong><small>No private account data</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Sample excerpt</p>
+        <h2>What the tutorial teaches</h2>
+        <p class="panel-copy">Public registries are useful when they are searchable, refreshable, and easy to join with operational data. OIDs appear in certificate policies, private enterprise numbers, SNMP metadata, ASN.1 modules, healthcare identifiers, and vendor-specific protocol documentation, but many teams still inspect them by opening registry pages one at a time.</p>
+        <p class="panel-copy">The sample models an OID registry as an incremental data pipeline: discover public records, capture retrieval metadata and content hashes, normalize OID nodes and parent-child edges, then classify records as new, changed, unchanged, failed, or removed from the public index.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Destination schema</p>
+        <h2>Raw source evidence stays separate from normalized graph data</h2>
+      </div>
+      <pre><code>create table oid_source_records (
+  source_url text primary key,
+  oid text not null,
+  title text,
+  body_text text,
+  content_hash text not null,
+  http_status integer not null,
+  fetched_at timestamptz not null,
+  sync_status text not null check (
+    sync_status in ('new', 'changed', 'unchanged', 'failed', 'removed')
+  )
+);
+
+create table oid_nodes (
+  oid text primary key,
+  label text,
+  description text,
+  source_url text references oid_source_records(source_url),
+  updated_at timestamptz not null
+);</code></pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Incremental sync</p>
+        <h2>Use the public URL as the key and content hash as the change detector</h2>
+      </div>
+      <pre><code>function classifySync(previous, next) {
+  if (!previous) return "new";
+  if (previous.http_status !== 200 && next.http_status === 200) return "changed";
+  if (previous.content_hash !== next.content_hash) return "changed";
+  return "unchanged";
+}</code></pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Quality checks</p>
+        <h2>Make parser failures and source drift visible</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Check</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>Captured but not normalized</td><td>Find pages the extractor fetched but the parser failed to model.</td></tr>
+          <tr><td>Nodes without parent edges</td><td>Catch broken OID hierarchy or missing source branches.</td></tr>
+          <tr><td>Recently changed records</td><td>Give reviewers a small daily queue instead of a full re-read.</td></tr>
+          <tr><td>Source URL on every edge</td><td>Keep derived graph facts traceable to public evidence.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="note">
+      <strong>Editorial fit:</strong> this is a complete technical-writing sample for data integration, public-source boundaries, and reviewable AI-ready knowledge bases.
+    </section>
+  </main>
+</body>
+</html>
