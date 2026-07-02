@@ -2166,6 +2166,25 @@ function testOidPilotScopePageIsPublicAndBoundarySafe() {
   }
 }
 
+function testEnterpriseMarketBriefPageIsPublicAndBoundarySafe() {
+  const page = fs.readFileSync(path.join(ROOT, "public", "enterprise-market-brief.html"), "utf8");
+  const index = fs.readFileSync(path.join(ROOT, "public", "index.html"), "utf8");
+  const readme = fs.readFileSync(path.join(ROOT, "README.md"), "utf8");
+
+  assert.ok(page.includes("OID enterprise market brief"));
+  assert.ok(page.includes("High-signal enterprises"));
+  assert.ok(page.includes("enterprise-market-leads.csv"));
+  assert.ok(page.includes("Publication boundary"));
+  assert.ok(index.includes("enterprise-market-brief.html"));
+  assert.ok(readme.includes("enterprise-market-brief.html"));
+  for (const text of [page, index, readme]) {
+    assert.equal(text.includes("money" + "-goal"), false);
+    assert.equal(text.includes("USD " + "200"), false);
+    assert.equal(text.includes("\u8d5a\u94b1"), false);
+    assert.equal(text.includes("D:\\hks"), false);
+  }
+}
+
 function testAiEvaluatorPortfolioIncludesDurationParserReviewCase() {
   const caseDir = path.join(ROOT, "examples", "ai-validation-python", "duration_parser_review");
   const readmePath = path.join(caseDir, "README.md");
@@ -3083,6 +3102,7 @@ async function main() {
   testBuyerSignalPackRenderer();
   testEnterpriseMarketBriefRanksBuyerSignals();
   testOidPilotScopePageIsPublicAndBoundarySafe();
+  testEnterpriseMarketBriefPageIsPublicAndBoundarySafe();
   console.log("oid knowledge tests passed");
 }
 

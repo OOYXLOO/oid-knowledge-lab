@@ -31,3 +31,5 @@ jobs:
           grep -q "editor-pitch-pack.html" public/writing-samples.html
           test -f public/editor-pitch-pack.html
           grep -q "Field-ready editor pitch pack" public/editor-pitch-pack.html
+          test -f public/enterprise-market-brief.html
+          grep -q "OID enterprise market brief" public/enterprise-market-brief.html

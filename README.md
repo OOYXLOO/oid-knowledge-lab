@@ -48,6 +48,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Unleash continuous delivery packet: <https://ooyxloo.github.io/oid-knowledge-lab/unleash-continuous-delivery-one-link.html>
 - Honeybadger debugging packet: <https://ooyxloo.github.io/oid-knowledge-lab/honeybadger-debugging-one-link.html>
 - OID portfolio risk console: <https://ooyxloo.github.io/oid-knowledge-lab/oid-portfolio-risk-console.html>
+- OID enterprise market brief: <https://ooyxloo.github.io/oid-knowledge-lab/enterprise-market-brief.html>
 - OID Intelligence Lab product brief: <https://ooyxloo.github.io/oid-knowledge-lab/oid-intelligence-lab.html>
 - Media Provenance Studio product brief: <https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-studio.html>
 - Media Provenance tutorial proposal: <https://ooyxloo.github.io/oid-knowledge-lab/media-provenance-tutorial-proposal.html>
@@ -102,6 +103,7 @@ Last refreshed on 2026-06-26:
 - Decision one-pager: `reports/decision-one-pager.md` compresses the approval question, next step, safe inputs, boundaries, and proof links into a buyer-readable first page
 - Client kickoff pack: `reports/client-kickoff-pack.md` turns the decision one-pager into an initial reply, safe intake request, first-call agenda, deliverables preview, acceptance preview, and proof links
 - Buyer signal pack: `reports/buyer-signal-pack.md` turns the sanitized sample assessment into buyer signals, qualifying questions, subject lines, a first-scope offer, proof points, and source-boundary notes
+- Enterprise market brief: `reports/enterprise-market-brief.md`, `reports/enterprise-market-brief.json`, and `reports/enterprise-market-leads.csv` rank public IANA PEN entries by OID/SNMP/PKI application signals
 - OID pilot scope page: `public/oid-pilot-scope.html` turns the buyer signal pack into a concrete 20-100 row pilot scope with acceptance gates, expansion rules, and copyable first-response text
 - Public proof index: the generated dashboard links this project, Signal Garden, Incident Zero Stack, Hanzi Scout, and Helioigma as public review surfaces for editors, reviewers, or technical stakeholders
 - GitHub Pages workflow: `.github/workflows/pages.yml` publishes the generated static dashboard from `public/`
@@ -185,6 +187,7 @@ npm run sow:oid
 npm run decision:one-pager
 npm run kickoff:client
 npm run signal:buyer
+npm run brief:enterprise-market
 npm run guard:publishable
 npm run crawl:sample
 npm run crawl:sample:resume

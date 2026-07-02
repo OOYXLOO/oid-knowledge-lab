@@ -658,6 +658,108 @@ function renderSampleAssessmentPage({ assetAudit, coverageReport }) {
 </html>`;
 }
 
+function renderEnterpriseMarketBriefPage(brief) {
+  const summary = brief.summary || {};
+  const tagRows = (brief.top_signal_tags || []).slice(0, 12).map((item) => `<tr>
+    <td>${escapeHtml(item.key)}</td>
+    <td>${formatNumber(item.count)}</td>
+  </tr>`).join("\n");
+  const domainRows = (brief.top_contact_domains || []).slice(0, 12).map((item) => `<tr>
+    <td>${escapeHtml(item.key)}</td>
+    <td>${formatNumber(item.count)}</td>
+  </tr>`).join("\n");
+  const leadRows = (brief.lead_rows || []).slice(0, 25).map((item) => `<tr>
+    <td>${escapeHtml(item.score)}</td>
+    <td><code>${escapeHtml(item.oid)}</code></td>
+    <td>${escapeHtml(item.organization)}</td>
+    <td>${escapeHtml((item.signal_tags || []).join(", "))}</td>
+    <td>${escapeHtml(item.contact_domain)}</td>
+  </tr>`).join("\n");
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OID Enterprise Market Brief</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">OID Knowledge Lab</p>
+      <h1>OID enterprise market brief</h1>
+      <p class="summary">A public-data research brief that ranks IANA Private Enterprise Number entries by OID, SNMP, PKI, and registry-maintenance signals. It uses aggregate registry data and avoids copied OID-base page bodies.</p>
+      <div class="links">
+        <a href="index.html">Dashboard</a>
+        <a href="sample-assessment.html">Sample assessment</a>
+        <a href="oid-pilot-scope.html">Pilot scope</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/enterprise-market-brief.md">Markdown report</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/reports/enterprise-market-leads.csv">Lead CSV</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Enterprise signal metrics">
+      <article><span>Assigned enterprises</span><strong>${formatNumber(summary.assigned_enterprises)}</strong></article>
+      <article><span>High-signal enterprises</span><strong>${formatNumber(summary.high_signal_enterprises)}</strong></article>
+      <article><span>Exported leads</span><strong>${formatNumber(summary.exported_leads)}</strong></article>
+      <article><span>Signal terms</span><strong>${formatNumber((brief.high_value_terms || []).length)}</strong></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Application angles</p>
+        <h2>How this brief can be used</h2>
+      </div>
+      <ul>
+        ${(brief.application_angles || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("\n")}
+      </ul>
+      <p class="panel-copy">${escapeHtml(summary.scoring_note || "")}</p>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Signal tags</p>
+        <h2>Top public registry signals</h2>
+      </div>
+      <table>
+        <thead><tr><th>Tag</th><th>Count</th></tr></thead>
+        <tbody>${tagRows}</tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Contact-domain aggregate</p>
+        <h2>Top domains in ranked entries</h2>
+      </div>
+      <table>
+        <thead><tr><th>Domain</th><th>Count</th></tr></thead>
+        <tbody>${domainRows}</tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Ranked sample</p>
+        <h2>First 25 lead rows</h2>
+      </div>
+      <table>
+        <thead><tr><th>Score</th><th>OID</th><th>Organization</th><th>Tags</th><th>Domain</th></tr></thead>
+        <tbody>${leadRows}</tbody>
+      </table>
+    </section>
+
+    <section class="note">
+      <h2>Publication boundary</h2>
+      <p>This page is derived from the public IANA PEN registry and local aggregate analysis. It does not publish private inventories, credentials, personal outreach notes, or copied OID-base page bodies.</p>
+    </section>
+  </main>
+</body>
+</html>`;
+}
+
 function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = null) {
   const assigned = Number(report.assigned_count || 0);
   const total = Number(report.record_count || 0);
@@ -693,10 +795,12 @@ function renderDashboard(report, oidBaseDirectoryCount = 0, sampleAssessment = n
         <a href="https://oid-base.com/sitemap.xml">OID-base sitemap</a>
         <a href="consulting-brief.html">Assessment brief</a>
         <a href="oid-pilot-scope.html">OID pilot scope</a>
+        <a href="enterprise-market-brief.html">Enterprise market brief</a>
         <a href="starter-scope.html">Starter scope</a>
         <a href="direct-client-fit.html">Direct client fit</a>
         <a href="writing-samples.html">Writing samples</a>
         <a href="editor-assignment-fit.html">Assignment fit</a>
+        <a href="technical-launch-proof-sprint.html">Launch proof sprint</a>
         <a href="honeybadger-debugging-one-link.html">Honeybadger packet</a>
         <a href="airbyte-reviewer-hub.html">Airbyte reviewer hub</a>
         <a href="airbyte-proofdesk-review-packet.html">Airbyte ProofDesk packet</a>
@@ -1781,6 +1885,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     assetAudit: readOptionalJson(assetAuditFile),
     coverageReport: readOptionalJson(coverageReportFile)
   };
+  const enterpriseMarketBrief = readOptionalJson(path.join(__dirname, "..", "reports", "enterprise-market-brief.json"));
   const intakePack = buildClientIntakePack({ generatedAt: report.generated_at });
   intakePack.markdown = renderClientIntakeMarkdown(intakePack);
   report.search_index_count = searchIndex.length;
@@ -1817,6 +1922,7 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     "knowledgeowl-editor-handoff.html",
     "paid-writing-editor-brief.html",
     "editor-assignment-fit.html",
+    "technical-launch-proof-sprint.html",
     "unleash-continuous-delivery-one-link.html",
     "honeybadger-debugging-one-link.html",
     "code-reviewer-portfolio.html",
@@ -1865,6 +1971,10 @@ function buildSite({ indexFile, reportFile, sitemapFile, assetAuditFile, coverag
     fs.writeFileSync(path.join(outDir, "sample-assessment.html"), renderSampleAssessmentPage(sampleAssessment), "utf8");
     outputFiles.push("sample-assessment.html");
   }
+  if (enterpriseMarketBrief) {
+    fs.writeFileSync(path.join(outDir, "enterprise-market-brief.html"), renderEnterpriseMarketBriefPage(enterpriseMarketBrief), "utf8");
+    outputFiles.push("enterprise-market-brief.html");
+  }
   return {
     output_files: outputFiles.map((file) => path.join(outDir, file)),
     record_count: report.record_count,
@@ -1881,6 +1991,7 @@ module.exports = {
   percent,
   renderAuditPanel,
   renderDashboard,
+  renderEnterpriseMarketBriefPage,
   renderEditorReviewPathPanel,
   renderClientReadinessPanel,
   renderVerticalUseCasePanel,
