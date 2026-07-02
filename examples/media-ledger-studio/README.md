@@ -7,6 +7,8 @@ The current build is a static prototype with deterministic sample data. It is de
 Public demo: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/
 3-minute demo walkthrough: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/demo-video/
 Demo MP4: `public/media-ledger-studio-demo.mp4`
+Review risk matrix: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?view=review
+Judging evidence view: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?view=evidence
 
 ## What It Shows
 
@@ -19,9 +21,11 @@ Demo MP4: `public/media-ledger-studio-demo.mp4`
 ## Review Materials
 
 - Devpost field pack: `docs/devpost-field-pack.md`
+- Copy-paste Devpost text: `docs/devpost-submission-copy.txt`
 - Judging evidence pack: `docs/judging-evidence-pack.md`
 - Reviewer quickstart: `docs/reviewer-quickstart.md`
 - Demo video script: `docs/demo-video-script.md`
+- Final Backblaze checklist: `docs/backblaze-final-submission-checklist.md`
 - Demo video file: `public/media-ledger-studio-demo.mp4`
 - Public verification checklist: `docs/public-verification.md`
 - Backblaze and Genblaze integration notes: `docs/backblaze-genblaze-integration.md`

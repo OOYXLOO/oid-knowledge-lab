@@ -12,6 +12,15 @@ Deadline: 2026-08-03 5:00pm EDT.
 - Demo MP4: `https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4`
 - Providers and models: see `docs/devpost-field-pack.md`
 - B2 and Genblaze usage: see `docs/devpost-field-pack.md`
+- Copy-paste submission text: see `docs/devpost-submission-copy.txt`
+
+## Official Requirement Coverage
+
+- Working app: `https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/`
+- GitHub repo: `https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio`
+- Providers and models: `docs/devpost-field-pack.md`
+- B2 and Genblaze usage: `docs/devpost-field-pack.md`
+- Demo video / walkthrough: `https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/demo-video/`
 
 ## Fit Against Judging Criteria
 
