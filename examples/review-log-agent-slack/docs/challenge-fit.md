@@ -30,9 +30,16 @@ Possible integration shapes:
 - Workflow step that receives a thread export from a trusted internal process.
 - Agent action that returns a Markdown handoff and asks for owner review.
 
+## Official Submission Notes
+
+- Track: New Slack Agent.
+- Required technology angle: MCP server integration through the `build_review_log` tool boundary, plus a Slack slash command endpoint.
+- Slack sandbox event code: `SABC-7X2K-M9PL-4QFN`.
+- Judges must be able to access the sandbox through `slackhack@salesforce.com` and `testing@devpost.com`.
+- Demo video should be under three minutes and hosted on an accepted public video platform for final Devpost submission.
+
 ## Safety Boundary
 
 This project should not store Slack credentials, tokens, cookies, private
 workspace exports, account screenshots, payment data, or customer support
 content. Demo inputs must remain synthetic or explicitly sanitized.
-

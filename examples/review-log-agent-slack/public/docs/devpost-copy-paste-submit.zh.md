@@ -82,6 +82,8 @@ https://review-log-agent-slack.vercel.app/
 
 ## 12. Video URL
 
+Devpost 规则要求视频公开上传到 YouTube、Vimeo、Facebook Video 或 Youku。下面的 MP4 可以先用于预览；最终提交时如果 Devpost 表单不接受直接 MP4，请先上传到允许的平台，再填平台 URL。
+
 ```text
 https://review-log-agent-slack.vercel.app/media/review-log-agent-slack-demo.mp4
 ```
@@ -121,6 +123,15 @@ https://review-log-agent-slack.vercel.app/api/agent/call
 这里必须等 Slack Developer Sandbox 或 Slack app 创建后再填。创建时可以使用：
 
 ```text
+Sandbox event code:
+SABC-7X2K-M9PL-4QFN
+
+Judge access:
+slackhack@salesforce.com
+testing@devpost.com
+```
+
+```text
 https://review-log-agent-slack.vercel.app/docs/slack-sandbox-setup-card.md
 ```
 
@@ -132,4 +143,3 @@ https://review-log-agent-slack.vercel.app/docs/slack-sandbox-setup-card.md
 4. 复制本文件第 1 到第 15 节的内容。
 5. Source URL 如果独立仓库还不存在，先用 OID source snapshot。
 6. 提交后，把 Devpost submission URL 记回本地路线卡。
-
