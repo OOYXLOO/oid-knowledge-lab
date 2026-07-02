@@ -22,6 +22,8 @@ The current source adapter targets public OID-base pages through the site's site
 - Airbyte OID knowledge pipeline packet: <https://ooyxloo.github.io/oid-knowledge-lab/airbyte-oid-knowledge-pipeline-packet.html>
 - Laravel certificate OID article packet: <https://ooyxloo.github.io/oid-knowledge-lab/amezmo-laravel-certificate-oid-packet.html>
 - Laravel certificate OID sample code: `examples/laravel-certificate-oid-inspector/`
+- Python certificate OID inspector: <https://ooyxloo.github.io/oid-knowledge-lab/python-certificate-oid-inspector.html>
+- Python certificate OID sample code: `examples/python-certificate-oid-inspector/`
 - Technical writing editorial packet: <https://ooyxloo.github.io/oid-knowledge-lab/technical-writing-editorial-packet.html>
 - Launch proof sprint scope: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-sprint-scope.html>
 - Launch proof readiness checklist: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-readiness-checklist.html>

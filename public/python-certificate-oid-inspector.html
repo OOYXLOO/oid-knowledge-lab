@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Python Certificate OID Inspector - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Python article sample</p>
+      <h1>Inspect certificate OIDs with a small Python CLI</h1>
+      <p class="summary">A runnable example for turning public certificate metadata into a safe Markdown review note without private keys, account screenshots, or production logs.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="technical-rigor-proof.html">Technical proof</a>
+        <a href="amezmo-laravel-certificate-oid-packet.html">Laravel companion packet</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/python-certificate-oid-inspector">Sample code</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Python certificate OID sample">
+      <article><span>Language</span><strong>Python</strong><small>CLI + unittest</small></article>
+      <article><span>Input</span><strong>Public cert</strong><small>PEM or DER</small></article>
+      <article><span>Output</span><strong>Markdown</strong><small>Review note</small></article>
+      <article><span>Boundary</span><strong>No secrets</strong><small>No private keys</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Why it exists</p>
+        <h2>A small, testable proof for Python writing and DevRel pitches</h2>
+        <p class="panel-copy">The sample demonstrates a practical OID workflow with real code: parse a public certificate, enumerate extension and usage OIDs, map friendly names, and render a sanitized Markdown handoff. It supports Python-focused article pitches and technical writing samples without relying on private data.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Run it</p>
+        <h2>Minimal command path</h2>
+      </div>
+      <pre>python -m pip install cryptography
+python certificate_oid_inspector.py path/to/public-certificate.pem --format markdown
+python test_certificate_oid_inspector.py</pre>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Proof files</p>
+        <h2>Repository links</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/python-certificate-oid-inspector/certificate_oid_inspector.py">certificate_oid_inspector.py</a></td><td>CLI that parses public certificate OID metadata and renders table or Markdown output.</td></tr>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/python-certificate-oid-inspector/test_certificate_oid_inspector.py">test_certificate_oid_inspector.py</a></td><td>Unit test that creates a temporary public certificate and checks key OID rows.</td></tr>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/python-certificate-oid-inspector">Example folder</a></td><td>README, CLI, and tests in one copyable folder.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Publication boundary</p>
+        <h2>Safe inputs only</h2>
+        <p class="panel-copy">The sample uses public certificate metadata only. It should not be used with private keys, customer certificates, account screenshots, cookies, tokens, payment data, identity records, KYC/tax data, or production logs.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
