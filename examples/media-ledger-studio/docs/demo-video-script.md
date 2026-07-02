@@ -18,14 +18,16 @@ Generated media teams often produce assets quickly, but the handoff becomes mess
 
 Open the dashboard. The queue shows three generated media records: an editorial cover image, a storyboard clip, and an audio loop. Selecting a record updates the provenance inspector with owner, provider, model, seed, retry count, bucket, object key, checksum, file size, and license note.
 
-## 1:35 - 2:10 Backblaze B2 Fit
+## 1:35 - 2:00 Backblaze B2 and Genblaze Fit
 
 Each media run stores a Backblaze B2-shaped record: bucket, object key, content type, byte size, storage class, creation timestamp, and SHA-256 checksum. The static demo uses deterministic records, but the adapter boundary is ready for real B2 uploads and sidecar metadata.
 
-## 2:10 - 2:35 Genblaze Fit
+Each generated asset also carries a Genblaze-shaped generation run: provider, model, prompt, negative prompt, seed, duration, retry count, and safety notes.
 
-Each generated asset also carries a Genblaze-shaped generation run: provider, model, prompt, negative prompt, seed, duration, retry count, and safety notes. This lets reviewers understand how the asset was produced, not just where it is stored.
+## 2:00 - 2:35 Review and Judging Flow
+
+The Review view turns scattered notes into a client handoff risk matrix. It separates client-ready assets from items that need transcript, license, score, or campaign metadata follow-up. Judges can also open direct links like `?view=review`, `?view=evidence`, or `?run=run-storyboard-014`.
 
 ## 2:35 - 3:00 Close
 
-The result is a practical generated media handoff: reviewers can inspect provenance, storage, safety, and approval status from one place. Next steps are live B2 uploads, real Genblaze responses, signed metadata, and team review permissions.
+The result is a practical generated media handoff: reviewers can inspect provenance, storage, safety, approval status, and submission evidence from one place. The dashboard also includes a Copy Devpost fields action, so the remaining work is account-side Devpost submission and optional private live adapter proof.

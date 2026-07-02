@@ -306,49 +306,49 @@
 
         <article class="scene">
           <div class="scene-copy">
-            <h2>Reviewers get the submission story inside the app.</h2>
+            <h2>Review risk is visible before client handoff.</h2>
             <p>
-              The Submission view exposes readiness, Devpost links, Provider/Model details, B2 usage, and Genblaze usage
-              without asking judges to hunt through repository files. The Evidence view adds a judging checklist and honest boundary.
+              The Review view turns scattered notes into a client handoff matrix. It separates client-ready assets from
+              items that need transcript, license, score, or campaign metadata follow-up before delivery.
             </p>
           </div>
           <div>
             <div class="pill-row">
-              <span class="pill">Public app ready</span>
-              <span class="pill">B2 boundary ready</span>
-              <span class="pill">Genblaze boundary ready</span>
-              <span class="pill">Demo video page ready</span>
+              <span class="pill">1 client-ready</span>
+              <span class="pill">2 need review</span>
+              <span class="pill">1 high-risk</span>
+              <span class="pill">Next action per asset</span>
             </div>
           </div>
         </article>
 
         <article class="scene">
           <div class="scene-copy">
-            <h2>Sidecar metadata keeps files and proof together.</h2>
+            <h2>Judges can jump straight to the important views.</h2>
             <p>
-              Every media object has a paired JSON sidecar record. The sidecar links back to the media object key, checksum,
-              provider, model, seed, license note, review decision, and safety notes.
+              Submission links can open the risk matrix, evidence view, or a specific media run through URL parameters.
+              That keeps the review path short and makes the project easier to judge without a guided call.
             </p>
           </div>
           <div class="panel">
-            <div class="panel-row"><span>Media</span><code>final.png</code></div>
-            <div class="panel-row"><span>Sidecar</span><code>final.png.metadata.json</code></div>
-            <div class="panel-row"><span>Verifier</span><strong>3 linked pairs checked</strong></div>
+            <div class="panel-row"><span>Risk view</span><code>?view=review</code></div>
+            <div class="panel-row"><span>Evidence</span><code>?view=evidence</code></div>
+            <div class="panel-row"><span>Run link</span><code>?run=run-storyboard-014</code></div>
           </div>
         </article>
 
         <article class="scene">
           <div class="scene-copy">
-            <h2>Next: live adapters and signed sidecar metadata.</h2>
+            <h2>The submission package is ready to copy.</h2>
             <p>
-              The current build is credential-free and reviewable. The next production step is to connect real B2 uploads,
-              live Genblaze responses, and signed metadata exports without printing or storing secrets in public artifacts.
+              The dashboard includes a Copy Devpost fields action, plus a plain-text submission pack in the repository.
+              The remaining step is account-side Devpost submission, and live adapter proof if private B2 and Genblaze credentials are available.
             </p>
           </div>
           <div class="panel">
             <div class="panel-row"><span>App</span><strong class="accent">ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio</strong></div>
-            <div class="panel-row"><span>Mode</span><strong>Public static prototype</strong></div>
-            <div class="panel-row"><span>Safety</span><strong>No private media bundled</strong></div>
+            <div class="panel-row"><span>Copy action</span><strong>Devpost fields</strong></div>
+            <div class="panel-row"><span>Safety</span><strong>No private media or credentials bundled</strong></div>
           </div>
         </article>
       </section>
