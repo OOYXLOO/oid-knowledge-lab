@@ -1,5 +1,7 @@
 # Arm64 AI Evidence Pipeline
 
+[![Arm evidence benchmark](https://github.com/OOYXLOO/oid-knowledge-lab/workflows/Arm%20evidence%20benchmark/badge.svg)](https://github.com/OOYXLOO/oid-knowledge-lab/actions/workflows/arm-benchmark.yml)
+
 This example is a small benchmark harness for the Arm Create AI Optimization Challenge route.
 
 It compares two ways to answer repeated evidence-log questions:
@@ -40,3 +42,15 @@ npm run arm:verify -- --require-arm64
 ```
 
 The GitHub Actions workflow `.github/workflows/arm-benchmark.yml` is intentionally a baseline verifier by default. It does not create an Arm64 claim on `ubuntu-latest`.
+
+Latest public baseline run:
+
+```text
+https://github.com/OOYXLOO/oid-knowledge-lab/actions/runs/28568753640
+```
+
+Latest public job:
+
+```text
+https://github.com/OOYXLOO/oid-knowledge-lab/actions/runs/28568753640/job/84701531693
+```
