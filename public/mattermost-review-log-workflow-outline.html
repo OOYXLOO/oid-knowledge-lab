@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review-Log Workflow Outline - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Developer Workflow Outline</p>
+      <h1>Build a Lightweight Review-Log Workflow for Engineering Teams</h1>
+      <p class="summary">A public editorial outline for developer workflow, ChatOps, and engineering collaboration review. It is backed by the Review Log Agent demo and source snapshot.</p>
+      <div class="links">
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="review-log-agent-hub.html">Review Log Agent hub</a>
+        <a href="evidence-log-agent-writing-sample.html">Existing writing sample</a>
+        <a href="https://review-log-agent-slack.vercel.app/">Demo</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack">Source snapshot</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Reader</p>
+        <h2>Engineering teams that need a repeatable review handoff</h2>
+        <p class="panel-copy">This outline is for engineering leads, developer advocates, DevOps engineers, and platform teams who need a small workflow for capturing review notes, follow-ups, release checks, and incident decisions without turning every discussion into a heavy ticketing process.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Thesis</p>
+        <h2>Review context should survive the thread</h2>
+        <p class="panel-copy">Review notes are useful during the original discussion, but they often become hard to reuse after the thread moves on. A lightweight review-log workflow can preserve owner, status, risk, source link, and decision context so teams can review work asynchronously and export a clean summary.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Outline</p>
+        <h2>Article structure</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Section</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Why review context disappears</td><td>Explain how code review comments, incident notes, and release checks scatter across threads.</td></tr>
+          <tr><td>Define the review-log item</td><td>Keep the schema small: title, source, owner, risk, status, blocker, next action, and decision note.</td></tr>
+          <tr><td>Build the review queue</td><td>Render a compact list with status filters, risk labels, and source links.</td></tr>
+          <tr><td>Make asynchronous review useful</td><td>Separate facts, assumptions, decisions, and unresolved blockers.</td></tr>
+          <tr><td>Export a clean handoff</td><td>Produce Markdown for release notes, incident follow-up, or documentation review.</td></tr>
+          <tr><td>Where ChatOps fits</td><td>Show how chat can collect notes while a lightweight dashboard keeps state reviewable.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Proof links</p>
+        <h2>Implementation-backed sample</h2>
+        <p class="panel-copy">The public sample uses synthetic review examples and safe public artifacts. It does not include private team workspaces, private messages, credentials, account exports, or customer data.</p>
+        <p><a href="https://review-log-agent-slack.vercel.app/">Open Review Log Agent demo</a></p>
+        <p><a href="https://review-log-agent-slack.vercel.app/playground.html">Open playground</a></p>
+        <p><a href="https://review-log-agent-slack.vercel.app/submission.html">Open submission page</a></p>
+        <p><a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack">Open source snapshot</a></p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
