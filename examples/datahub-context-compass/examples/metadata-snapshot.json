@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-07-03T05:30:00+08:00",
+  "workspace": "sanitized-retail-demo",
+  "datasets": [
+    {
+      "urn": "urn:li:dataset:(urn:li:dataPlatform:snowflake,analytics.customer_orders,PROD)",
+      "name": "analytics.customer_orders",
+      "domain": "Revenue Analytics",
+      "owners": ["data-platform@example.com"],
+      "freshnessHours": 2,
+      "fields": [
+        {"name": "order_id", "type": "string", "tags": ["primary_key"]},
+        {"name": "customer_email", "type": "string", "tags": ["pii"]},
+        {"name": "gross_amount", "type": "decimal", "tags": ["finance"]},
+        {"name": "coupon_code", "type": "string", "tags": []}
+      ],
+      "downstream": [
+        {"name": "finance.daily_revenue", "criticality": "high"},
+        {"name": "ml.churn_features", "criticality": "medium"}
+      ],
+      "incidents": []
+    },
+    {
+      "urn": "urn:li:dataset:(urn:li:dataPlatform:postgres,raw.support_tickets,PROD)",
+      "name": "raw.support_tickets",
+      "domain": "Support",
+      "owners": [],
+      "freshnessHours": 38,
+      "fields": [
+        {"name": "ticket_id", "type": "string", "tags": ["primary_key"]},
+        {"name": "requester_email", "type": "string", "tags": ["pii"]},
+        {"name": "body", "type": "text", "tags": ["sensitive"]},
+        {"name": "status", "type": "string", "tags": []}
+      ],
+      "downstream": [
+        {"name": "support.exec_dashboard", "criticality": "high"}
+      ],
+      "incidents": [
+        {"id": "INC-2041", "status": "open", "summary": "Delayed ingestion from support export"}
+      ]
+    }
+  ],
+  "proposedChanges": [
+    {
+      "id": "CHG-1001",
+      "dataset": "analytics.customer_orders",
+      "type": "schema_removal",
+      "summary": "Remove coupon_code after marketing migration",
+      "fields": ["coupon_code"]
+    },
+    {
+      "id": "CHG-1002",
+      "dataset": "raw.support_tickets",
+      "type": "new_agent_summary",
+      "summary": "Generate daily support theme summaries from ticket body",
+      "fields": ["body", "requester_email"]
+    }
+  ]
+}

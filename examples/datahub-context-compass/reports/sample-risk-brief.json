@@ -1,0 +1,43 @@
+{
+  "generatedAt": "2026-07-03T05:30:00+08:00",
+  "workspace": "sanitized-retail-demo",
+  "summary": {
+    "total": 2,
+    "blocked": 1,
+    "review": 1,
+    "ready": 0
+  },
+  "changes": [
+    {
+      "id": "CHG-1001",
+      "status": "review",
+      "score": 40,
+      "title": "Remove coupon_code after marketing migration",
+      "dataset": "analytics.customer_orders",
+      "domain": "Revenue Analytics",
+      "findings": [
+        "Owner: data-platform@example.com",
+        "Schema removal requires downstream compatibility review.",
+        "High-criticality downstream assets: finance.daily_revenue"
+      ],
+      "blockers": []
+    },
+    {
+      "id": "CHG-1002",
+      "status": "blocked",
+      "score": 105,
+      "title": "Generate daily support theme summaries from ticket body",
+      "dataset": "raw.support_tickets",
+      "domain": "Support",
+      "findings": [
+        "High-criticality downstream assets: support.exec_dashboard"
+      ],
+      "blockers": [
+        "No dataset owner is listed",
+        "Sensitive fields touched: requester_email:pii, body:sensitive",
+        "Open incidents: INC-2041",
+        "Freshness is stale at 38 hours"
+      ]
+    }
+  ]
+}
