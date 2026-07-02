@@ -47,6 +47,7 @@ The final article should be freshly written for Amezmo. It should not include pr
 ## Public Review Links
 
 - Proof packet: https://ooyxloo.github.io/oid-knowledge-lab/amezmo-laravel-certificate-oid-packet.html
+- Sample code: https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/laravel-certificate-oid-inspector
 - Existing PHP deployment sample: https://ooyxloo.github.io/oid-knowledge-lab/amezmo-php-deployment-one-link.html
 - Writing samples: https://ooyxloo.github.io/oid-knowledge-lab/writing-samples.html
 - Data model: https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/data-model.md
