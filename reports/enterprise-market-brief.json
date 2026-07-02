@@ -1,0 +1,583 @@
+{
+  "schema_version": "oid-enterprise-market-brief/v1",
+  "generated_at": "2026-07-02T17:07:09.754Z",
+  "source": "IANA Private Enterprise Numbers public registry",
+  "summary": {
+    "assigned_enterprises": 65977,
+    "high_signal_enterprises": 5641,
+    "exported_leads": 40,
+    "scoring_note": "Scores favor public enterprise entries with high-value OID/SNMP/PKI buyer terms and usable contact-domain hints."
+  },
+  "high_value_terms": [
+    "bank",
+    "capital",
+    "certificate",
+    "cloud",
+    "cyber",
+    "defense",
+    "finance",
+    "health",
+    "hospital",
+    "identity",
+    "insurance",
+    "network",
+    "security",
+    "telecom",
+    "trust"
+  ],
+  "top_signal_tags": [
+    {
+      "key": "network",
+      "count": 2353
+    },
+    {
+      "key": "telecom",
+      "count": 687
+    },
+    {
+      "key": "security",
+      "count": 546
+    },
+    {
+      "key": "health",
+      "count": 510
+    },
+    {
+      "key": "bank",
+      "count": 486
+    },
+    {
+      "key": "cloud",
+      "count": 280
+    },
+    {
+      "key": "trust",
+      "count": 260
+    },
+    {
+      "key": "hospital",
+      "count": 222
+    },
+    {
+      "key": "cyber",
+      "count": 213
+    },
+    {
+      "key": "insurance",
+      "count": 86
+    },
+    {
+      "key": "capital",
+      "count": 71
+    },
+    {
+      "key": "identity",
+      "count": 51
+    }
+  ],
+  "top_contact_domains": [
+    {
+      "key": "gmail.com",
+      "count": 85
+    },
+    {
+      "key": "icloud.com",
+      "count": 35
+    },
+    {
+      "key": "yahoo.com",
+      "count": 34
+    },
+    {
+      "key": "163.com",
+      "count": 18
+    },
+    {
+      "key": "nhs.net",
+      "count": 18
+    },
+    {
+      "key": "hotmail.com",
+      "count": 15
+    },
+    {
+      "key": "lhsc.on.ca",
+      "count": 13
+    },
+    {
+      "key": "unknown",
+      "count": 13
+    },
+    {
+      "key": "qq.com",
+      "count": 12
+    },
+    {
+      "key": "126.com",
+      "count": 10
+    },
+    {
+      "key": "nortelnetworks.com",
+      "count": 8
+    },
+    {
+      "key": "sina.com",
+      "count": 8
+    }
+  ],
+  "application_angles": [
+    "Technical article: explain why PEN/OID ownership drift matters for SNMP, PKI policy OIDs, and vendor integrations.",
+    "Consulting pilot: offer a sanitized OID inventory review against public PEN ownership signals.",
+    "Data product: provide a ranked lead sheet for registry cleanup, certificate policy review, or monitoring namespace audits."
+  ],
+  "lead_rows": [
+    {
+      "enterprise_number": 27284,
+      "oid": "1.3.6.1.4.1.27284",
+      "organization": "Daon Trusted Identity Services (formerly 'Security Biometric Clearing Network')",
+      "contact_domain": "aaae.org",
+      "signal_tags": [
+        "identity",
+        "network",
+        "security",
+        "trust"
+      ],
+      "score": 94
+    },
+    {
+      "enterprise_number": 54825,
+      "oid": "1.3.6.1.4.1.54825",
+      "organization": "Frimley Health NHS Foundation Trust",
+      "contact_domain": "nhs.net",
+      "signal_tags": [
+        "cyber",
+        "health",
+        "security",
+        "trust"
+      ],
+      "score": 94
+    },
+    {
+      "enterprise_number": 46532,
+      "oid": "1.3.6.1.4.1.46532",
+      "organization": "Hinchingbrooke Hospital NHS Health Care Trust",
+      "contact_domain": "nhs.net",
+      "signal_tags": [
+        "health",
+        "hospital",
+        "trust"
+      ],
+      "score": 84
+    },
+    {
+      "enterprise_number": 56804,
+      "oid": "1.3.6.1.4.1.56804",
+      "organization": "Norfolk and Norwich University Hospitals NHS Foundation Trust",
+      "contact_domain": "nnuh.nhs.uk",
+      "signal_tags": [
+        "hospital",
+        "security",
+        "trust"
+      ],
+      "score": 84
+    },
+    {
+      "enterprise_number": 48298,
+      "oid": "1.3.6.1.4.1.48298",
+      "organization": "Health Choice Management Company",
+      "contact_domain": "iasishealthcare.com",
+      "signal_tags": [
+        "health",
+        "network",
+        "security"
+      ],
+      "score": 76
+    },
+    {
+      "enterprise_number": 66071,
+      "oid": "1.3.6.1.4.1.66071",
+      "organization": "China Telecom Cybersecurity Technology",
+      "contact_domain": "damddos.com",
+      "signal_tags": [
+        "cyber",
+        "security",
+        "telecom"
+      ],
+      "score": 76
+    },
+    {
+      "enterprise_number": 177,
+      "oid": "1.3.6.1.4.1.177",
+      "organization": "Sonus Networks, Inc.",
+      "contact_domain": "sonusnet.com",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 562,
+      "oid": "1.3.6.1.4.1.562",
+      "organization": "Northern Telecom, Ltd.",
+      "contact_domain": "notelnetworks.com",
+      "signal_tags": [
+        "network",
+        "telecom"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 740,
+      "oid": "1.3.6.1.4.1.740",
+      "organization": "Network Security Systems, Inc.",
+      "contact_domain": "nic.cerf.net",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 1556,
+      "oid": "1.3.6.1.4.1.1556",
+      "organization": "Sonus Networks, Inc.",
+      "contact_domain": "sonusnet.com",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 1645,
+      "oid": "1.3.6.1.4.1.1645",
+      "organization": "United States Cellular Corp.",
+      "contact_domain": "uscellular.com",
+      "signal_tags": [
+        "identity",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 2127,
+      "oid": "1.3.6.1.4.1.2127",
+      "organization": "Sonus Networks, Inc.",
+      "contact_domain": "sonusnet.com",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 2879,
+      "oid": "1.3.6.1.4.1.2879",
+      "organization": "Sonus Networks, Inc.",
+      "contact_domain": "sonusnet.com",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 3109,
+      "oid": "1.3.6.1.4.1.3109",
+      "organization": "TradeWeb LLC.",
+      "contact_domain": "tradeweb.com",
+      "signal_tags": [
+        "cyber",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 3401,
+      "oid": "1.3.6.1.4.1.3401",
+      "organization": "McAfee Inc. (formerly 'Network Associates, Inc.')",
+      "contact_domain": "mcafee.com",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 3706,
+      "oid": "1.3.6.1.4.1.3706",
+      "organization": "ADiTel Telekommunikation Network GmbH",
+      "contact_domain": "cybertron.at",
+      "signal_tags": [
+        "cyber",
+        "network"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 3948,
+      "oid": "1.3.6.1.4.1.3948",
+      "organization": "Sonus Networks, Inc.",
+      "contact_domain": "sonusnet.com",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 5173,
+      "oid": "1.3.6.1.4.1.5173",
+      "organization": "Sonus Networks, Inc.",
+      "contact_domain": "sonusnet.com",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 6618,
+      "oid": "1.3.6.1.4.1.6618",
+      "organization": "Sonus Networks, Inc.",
+      "contact_domain": "sonusnet.com",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 6909,
+      "oid": "1.3.6.1.4.1.6909",
+      "organization": "Network Security Technologies, Inc.",
+      "contact_domain": "netsec.net",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 7607,
+      "oid": "1.3.6.1.4.1.7607",
+      "organization": "Appgate Cybersecurity, Inc.",
+      "contact_domain": "appgate.com",
+      "signal_tags": [
+        "cyber",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 9019,
+      "oid": "1.3.6.1.4.1.9019",
+      "organization": "Cap Gemini Telecom Media & Networks Deutschland GmbH",
+      "contact_domain": "capgemini.de",
+      "signal_tags": [
+        "network",
+        "telecom"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 9668,
+      "oid": "1.3.6.1.4.1.9668",
+      "organization": "Talent Network Security Technology Co., Ltd.",
+      "contact_domain": "263.net",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 11222,
+      "oid": "1.3.6.1.4.1.11222",
+      "organization": "Rochester General Hospital",
+      "contact_domain": "viahealth.org",
+      "signal_tags": [
+        "health",
+        "hospital"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 11505,
+      "oid": "1.3.6.1.4.1.11505",
+      "organization": "Network-1 Security Solutions, Inc.",
+      "contact_domain": "network-1.com",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 11657,
+      "oid": "1.3.6.1.4.1.11657",
+      "organization": "Taiwan Telecommunication Network Services Co., Ltd.",
+      "contact_domain": "ttn.com.tw",
+      "signal_tags": [
+        "network",
+        "telecom"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 12201,
+      "oid": "1.3.6.1.4.1.12201",
+      "organization": "University Health Network",
+      "contact_domain": "uhn.ca",
+      "signal_tags": [
+        "health",
+        "network"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 13747,
+      "oid": "1.3.6.1.4.1.13747",
+      "organization": "Virtual Health Networks, Inc.",
+      "contact_domain": "hc-vita.com",
+      "signal_tags": [
+        "health",
+        "network"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 14331,
+      "oid": "1.3.6.1.4.1.14331",
+      "organization": "Beijing Topsec Network Security Technology Co., Ltd.",
+      "contact_domain": "ccert.com",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 17014,
+      "oid": "1.3.6.1.4.1.17014",
+      "organization": "Izumi Cyber Networks Inc.",
+      "contact_domain": "izumi-si.co.jp",
+      "signal_tags": [
+        "cyber",
+        "network"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 17134,
+      "oid": "1.3.6.1.4.1.17134",
+      "organization": "Good Health Network, Inc",
+      "contact_domain": "ix.netcom.com",
+      "signal_tags": [
+        "health",
+        "network"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 17700,
+      "oid": "1.3.6.1.4.1.17700",
+      "organization": "PowerWallz Network Security Inc.",
+      "contact_domain": "powerwallz.com",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 18268,
+      "oid": "1.3.6.1.4.1.18268",
+      "organization": "SkyNet Network Security System Integration co.,Ltd.",
+      "contact_domain": "sns.net.cn",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 18956,
+      "oid": "1.3.6.1.4.1.18956",
+      "organization": "Trusted Network Technologies, Inc.",
+      "contact_domain": "trustednetworktech.com",
+      "signal_tags": [
+        "network",
+        "trust"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 19501,
+      "oid": "1.3.6.1.4.1.19501",
+      "organization": "Trust Investment Bank, JSB",
+      "contact_domain": "trust.ru",
+      "signal_tags": [
+        "bank",
+        "trust"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 20419,
+      "oid": "1.3.6.1.4.1.20419",
+      "organization": "Security Certificates UK ltd",
+      "contact_domain": "securitycertificates.co.uk",
+      "signal_tags": [
+        "certificate",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 21126,
+      "oid": "1.3.6.1.4.1.21126",
+      "organization": "vFortress Network Security Pvt. Ltd.",
+      "contact_domain": "vfortress.com",
+      "signal_tags": [
+        "network",
+        "security"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 21368,
+      "oid": "1.3.6.1.4.1.21368",
+      "organization": "The Cloud Networks Ltd.",
+      "contact_domain": "thecloud.net",
+      "signal_tags": [
+        "cloud",
+        "network"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 22201,
+      "oid": "1.3.6.1.4.1.22201",
+      "organization": "Research Center of NetWork Techology Nanjing University Of Posts And Telecommunication Inc.",
+      "contact_domain": "njupt.edu.cn",
+      "signal_tags": [
+        "network",
+        "telecom"
+      ],
+      "score": 66
+    },
+    {
+      "enterprise_number": 23458,
+      "oid": "1.3.6.1.4.1.23458",
+      "organization": "National Cybernet Security LTD",
+      "contact_domain": "ncs-cyber.com.cn",
+      "signal_tags": [
+        "cyber",
+        "security"
+      ],
+      "score": 66
+    }
+  ]
+}

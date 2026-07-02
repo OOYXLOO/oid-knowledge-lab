@@ -41,6 +41,7 @@ try {
 const { renderDeliveryPack } = require("../src/deliveryPack");
 const { buildIanaPenReport, buildPublicPenIndex, emailDomain, hasPublicContactNoise, parseEnterpriseNumbers, parseLastUpdated } = require("../src/ianaPen");
 const { renderEngagementBrief } = require("../src/engagementBrief");
+const { buildEnterpriseMarketBrief, renderEnterpriseMarketBriefCsv, renderEnterpriseMarketBriefMarkdown } = require("../src/enterpriseMarketBrief");
 const { buildClientIntakePack, renderClientIntakeMarkdown } = require("../src/intakePack");
 const { assertPublishableManifest, buildDatasetManifest } = require("../src/manifest");
 const { parseOidMarkdown } = require("../src/parser");
@@ -190,6 +191,42 @@ function testSourcePolicyMarkdownAvoidsFullTermsMirror() {
   assert.ok(markdown.includes("Effective user-agent: `oid-knowledge-lab`"));
   assert.ok(markdown.includes("sha256:terms"));
   assert.equal(markdown.includes("All rights reserved."), false);
+}
+
+function testEnterpriseMarketBriefRanksBuyerSignals() {
+  const brief = buildEnterpriseMarketBrief([
+    {
+      enterprise_number: 1,
+      oid: "1.3.6.1.4.1.1",
+      organization: "Example Security Cloud Inc",
+      contact: "Registry Owner",
+      email_obfuscated: "registry&example.com",
+      notes: []
+    },
+    {
+      enterprise_number: 2,
+      oid: "1.3.6.1.4.1.2",
+      organization: "Reserved",
+      contact: "",
+      email_obfuscated: "",
+      notes: []
+    },
+    {
+      enterprise_number: 3,
+      oid: "1.3.6.1.4.1.3",
+      organization: "Plain Vendor",
+      contact: "Ops",
+      email_obfuscated: "ops&plain.example",
+      notes: []
+    }
+  ], { generatedAt: "2026-07-03T00:00:00.000Z", limit: 10 });
+
+  assert.equal(brief.summary.assigned_enterprises, 2);
+  assert.equal(brief.summary.high_signal_enterprises, 1);
+  assert.equal(brief.lead_rows[0].organization, "Example Security Cloud Inc");
+  assert.ok(brief.lead_rows[0].signal_tags.includes("security"));
+  assert.ok(renderEnterpriseMarketBriefMarkdown(brief).includes("OID Enterprise Market Brief"));
+  assert.ok(renderEnterpriseMarketBriefCsv(brief).includes("Example Security Cloud Inc"));
 }
 
 function testRobots() {
@@ -3044,6 +3081,7 @@ async function main() {
   testAgentSubmissionPackWritesPublicSafeFiles();
   testProofDeskAgentSubmissionPageIsPublicAndBoundarySafe();
   testBuyerSignalPackRenderer();
+  testEnterpriseMarketBriefRanksBuyerSignals();
   testOidPilotScopePageIsPublicAndBoundarySafe();
   console.log("oid knowledge tests passed");
 }

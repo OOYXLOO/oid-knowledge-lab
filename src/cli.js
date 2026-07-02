@@ -12,6 +12,7 @@ const { buildAuthorizedCrawlPlan, renderAuthorizedCrawlPlanMarkdown } = require(
 const { writeDecisionOnePager } = require("./decisionOnePager");
 const { writeDeliveryPack } = require("./deliveryPack");
 const { writeEngagementBrief } = require("./engagementBrief");
+const { writeEnterpriseMarketBrief } = require("./enterpriseMarketBrief");
 const { buildIanaPenReport, buildPublicPenIndex, IANA_LICENSE_URL, IANA_PEN_URL, parseEnterpriseNumbers, parseLastUpdated } = require("./ianaPen");
 const { buildClientIntakePack } = require("./intakePack");
 const { buildManifestFromFiles } = require("./manifest");
@@ -100,7 +101,7 @@ function mediaProvenancePack(args) {
   const assetsFile = path.resolve(ROOT, argValue(args, "--assets", "examples/media-provenance-assets.json"));
   const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/media-provenance-pack.json"));
   const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/media-provenance-pack.md"));
-  const generatedAt = argValue(args, "--generated-at", undefined);
+  const generatedAt = argValue(args, "--generated-at") || undefined;
   const assets = JSON.parse(fs.readFileSync(assetsFile, "utf8"));
   const result = writeMediaProvenancePack({
     jsonOutFile,
@@ -172,6 +173,29 @@ function agentSubmissionPack(args) {
   console.log(`proof links: ${result.pack.shared_fields.proof_links.length}`);
   console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
   console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
+}
+
+function enterpriseMarketBrief(args) {
+  const recordsFile = path.resolve(ROOT, argValue(args, "--records", "data/iana/enterprise-numbers.jsonl"));
+  const jsonOutFile = path.resolve(ROOT, argValue(args, "--out", "reports/enterprise-market-brief.json"));
+  const markdownOutFile = path.resolve(ROOT, argValue(args, "--markdown", "reports/enterprise-market-brief.md"));
+  const csvOutFile = path.resolve(ROOT, argValue(args, "--csv", "reports/enterprise-market-leads.csv"));
+  const generatedAt = argValue(args, "--generated-at") || undefined;
+  const limit = numberArg(args, "--limit", 40);
+  const brief = writeEnterpriseMarketBrief({
+    recordsFile,
+    jsonOutFile,
+    markdownOutFile,
+    csvOutFile,
+    generatedAt,
+    limit
+  });
+
+  console.log(`high-signal enterprises: ${brief.summary.high_signal_enterprises}`);
+  console.log(`exported leads: ${brief.summary.exported_leads}`);
+  console.log(`json written: ${path.relative(ROOT, jsonOutFile).replace(/\\/g, "/")}`);
+  console.log(`markdown written: ${path.relative(ROOT, markdownOutFile).replace(/\\/g, "/")}`);
+  console.log(`csv written: ${path.relative(ROOT, csvOutFile).replace(/\\/g, "/")}`);
 }
 
 async function exportSitemapIndex(args) {
@@ -744,13 +768,14 @@ async function main() {
   if (command === "backblaze-readiness-pack") return backblazeReadinessPack(args);
   if (command === "proofdesk-pack") return proofDeskPack(args);
   if (command === "agent-submission-pack") return agentSubmissionPack(args);
+  if (command === "enterprise-market-brief") return enterpriseMarketBrief(args);
   if (command === "qwen-agent-demo") return qwenAgentDemo(args);
   if (command === "qwen-run-receipt") return qwenRunReceipt(args);
   if (command === "qwen-submission-pack") return qwenSubmissionPack(args);
   if (command === "build-site") return buildStaticSite(args);
   if (command === "import-iana-pen") return importIanaPen(args);
   if (command === "report") return report(args);
-  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|statement-of-work-pack|decision-one-pager|client-kickoff-pack|buyer-signal-pack|audit-dataset|source-policy|guard-publishable|media-provenance-pack|backblaze-readiness-pack|proofdesk-pack|agent-submission-pack|qwen-agent-demo|qwen-run-receipt|qwen-submission-pack|build-site|crawl|import-iana-pen|report> [options]");
+  console.error("Usage: node src/cli.js <inspect-source|export-sitemap-index|plan-full-crawl|audit-assets|coverage-report|delivery-pack|remediation-board|engagement-brief|client-readiness-pack|vertical-use-case-pack|scope-proposal-pack|statement-of-work-pack|decision-one-pager|client-kickoff-pack|buyer-signal-pack|audit-dataset|source-policy|guard-publishable|media-provenance-pack|backblaze-readiness-pack|proofdesk-pack|agent-submission-pack|enterprise-market-brief|qwen-agent-demo|qwen-run-receipt|qwen-submission-pack|build-site|crawl|import-iana-pen|report> [options]");
   process.exitCode = 1;
 }
 
