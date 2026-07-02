@@ -1,0 +1,54 @@
+{
+  "name": "tsperf-type-lens",
+  "displayName": "TSPerf Type Lens",
+  "description": "Prototype VS Code extension that surfaces expensive TypeScript type declarations as CodeLens hints.",
+  "version": "0.1.0",
+  "publisher": "ooyxloo",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters"
+  ],
+  "activationEvents": [
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact",
+    "onCommand:tsperfTypeLens.openReport"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tsperfTypeLens.openReport",
+        "title": "TSPerf Type Lens: Open Report"
+      }
+    ],
+    "configuration": {
+      "title": "TSPerf Type Lens",
+      "properties": {
+        "tsperfTypeLens.minimumScore": {
+          "type": "number",
+          "default": 20,
+          "description": "Minimum complexity score needed before a CodeLens is shown."
+        },
+        "tsperfTypeLens.maximumItems": {
+          "type": "number",
+          "default": 50,
+          "description": "Maximum type declarations shown per file."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "analyze": "node scripts/analyze-sample.js",
+    "analyze:many": "node scripts/analyze-many.js",
+    "check": "node --check src/analyzer.js && node --check src/extension.js && node --check scripts/smoke-test.js && node --check scripts/analyze-sample.js && node --check scripts/analyze-many.js",
+    "verify": "npm run check && npm run smoke",
+    "smoke": "node scripts/smoke-test.js"
+  },
+  "dependencies": {
+    "typescript": "^5.9.3"
+  }
+}
