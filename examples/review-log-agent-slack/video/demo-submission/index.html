@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #111315;
+      }
+
+      body {
+        color: #f3eee2;
+        font-family: Arial, sans-serif;
+      }
+
+      #root {
+        width: 1920px;
+        height: 1080px;
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 13% 18%, rgba(214, 165, 72, 0.24), rgba(214, 165, 72, 0) 32%),
+          radial-gradient(circle at 82% 78%, rgba(77, 139, 111, 0.18), rgba(77, 139, 111, 0) 34%),
+          #111315;
+      }
+
+      .grain {
+        position: absolute;
+        inset: 0;
+        opacity: 0.08;
+        pointer-events: none;
+        background-image:
+          linear-gradient(90deg, rgba(243, 238, 226, 0.06) 1px, transparent 1px),
+          linear-gradient(0deg, rgba(243, 238, 226, 0.04) 1px, transparent 1px);
+        background-size: 64px 64px;
+      }
+
+      .accent-line {
+        position: absolute;
+        left: 110px;
+        right: 110px;
+        top: 88px;
+        height: 2px;
+        background: linear-gradient(90deg, rgba(214, 165, 72, 0), #d6a548, rgba(214, 165, 72, 0));
+        opacity: 0.72;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        padding: 130px 140px 118px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 34px;
+        opacity: 0;
+      }
+
+      .scene.active {
+        opacity: 1;
+      }
+
+      .kicker {
+        font-family: Consolas, monospace;
+        color: #d6a548;
+        font-size: 24px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2 {
+        font-family: Georgia, serif;
+        margin: 0;
+        letter-spacing: 0;
+        line-height: 0.98;
+      }
+
+      h1 {
+        max-width: 1340px;
+        font-size: 108px;
+        font-weight: 900;
+      }
+
+      h2 {
+        max-width: 1180px;
+        font-size: 80px;
+        font-weight: 850;
+      }
+
+      .body {
+        max-width: 1060px;
+        color: #d9d0bd;
+        font-size: 36px;
+        line-height: 1.28;
+        font-weight: 350;
+      }
+
+      .layout-two {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 56px;
+        align-items: center;
+      }
+
+      .copy-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .panel {
+        color: #161718;
+        background: #f3eee2;
+        border: 1px solid rgba(214, 165, 72, 0.55);
+        border-radius: 28px;
+        padding: 34px;
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+      }
+
+      .panel.dark {
+        color: #f3eee2;
+        background: rgba(22, 23, 24, 0.74);
+        border-color: rgba(243, 238, 226, 0.18);
+      }
+
+      .thread {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .message {
+        padding: 18px 20px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.72);
+        font-size: 24px;
+        line-height: 1.28;
+      }
+
+      .message strong,
+      .label {
+        font-family: Consolas, monospace;
+        font-size: 18px;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .label {
+        color: #7c7568;
+        margin-bottom: 8px;
+      }
+
+      .source {
+        border-left: 8px solid #4d8b6f;
+      }
+
+      .claim {
+        border-left: 8px solid #d6a548;
+      }
+
+      .blocker {
+        border-left: 8px solid #b85c4d;
+      }
+
+      .log-card {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .log-item {
+        min-height: 124px;
+        padding: 22px;
+        border-radius: 18px;
+        background: rgba(243, 238, 226, 0.08);
+        border: 1px solid rgba(243, 238, 226, 0.14);
+      }
+
+      .log-item b {
+        display: block;
+        margin-bottom: 8px;
+        color: #f3eee2;
+        font-family: Consolas, monospace;
+        font-size: 20px;
+        text-transform: uppercase;
+      }
+
+      .log-item span {
+        color: #d9d0bd;
+        font-size: 25px;
+        line-height: 1.22;
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .metric {
+        min-height: 170px;
+        padding: 28px;
+        border-radius: 24px;
+        background: #f3eee2;
+        color: #161718;
+      }
+
+      .metric .number {
+        font-family: Consolas, monospace;
+        font-variant-numeric: tabular-nums;
+        font-size: 58px;
+        color: #4d8b6f;
+      }
+
+      .metric .caption {
+        margin-top: 12px;
+        font-size: 26px;
+        line-height: 1.2;
+      }
+
+      .api-box {
+        display: grid;
+        gap: 18px;
+        font-family: Consolas, monospace;
+        font-size: 26px;
+        line-height: 1.25;
+      }
+
+      .api-row {
+        padding: 22px 24px;
+        border-radius: 18px;
+        background: rgba(243, 238, 226, 0.08);
+        border: 1px solid rgba(243, 238, 226, 0.18);
+      }
+
+      .api-row .ok {
+        color: #4d8b6f;
+      }
+
+      .api-row .warn {
+        color: #d6a548;
+      }
+
+      .diagram {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 18px;
+        align-items: center;
+      }
+
+      .node {
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 18px;
+        border-radius: 22px;
+        background: rgba(243, 238, 226, 0.1);
+        border: 1px solid rgba(243, 238, 226, 0.16);
+        color: #f3eee2;
+        font-size: 25px;
+        line-height: 1.18;
+      }
+
+      .arrow {
+        color: #d6a548;
+        font-size: 48px;
+        text-align: center;
+      }
+
+      .footer-note {
+        position: absolute;
+        left: 140px;
+        bottom: 70px;
+        font-family: Consolas, monospace;
+        color: rgba(243, 238, 226, 0.64);
+        font-size: 20px;
+      }
+
+      .sweep {
+        position: absolute;
+        left: -20%;
+        top: 0;
+        width: 20%;
+        height: 100%;
+        background: linear-gradient(90deg, rgba(214, 165, 72, 0), rgba(214, 165, 72, 0.3), rgba(214, 165, 72, 0));
+        opacity: 0;
+        transform: skewX(-12deg);
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="96"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div class="grain" data-layout-ignore></div>
+      <div class="accent-line" data-layout-ignore></div>
+      <div class="sweep" id="sweep" data-layout-ignore></div>
+
+      <section class="scene active" id="scene-1">
+        <div class="kicker">Review Log Agent for Slack</div>
+        <h1>Source-aware handoffs for AI-assisted Slack reviews</h1>
+        <div class="body">
+          Turn a sanitized Slack-style review thread into a Markdown evidence log before a support answer, runbook update, or knowledge base article goes live.
+        </div>
+        <div class="footer-note">Synthetic demo data only. No private workspace, tokens, or customer records.</div>
+      </section>
+
+      <section class="scene" id="scene-2">
+        <div class="layout-two">
+          <div class="copy-stack">
+            <div class="kicker">The review problem</div>
+            <h2>AI drafts faster than teams can verify.</h2>
+            <div class="body">
+              The risk is not drafting. The risk is publishing without knowing which source facts support the answer and what still blocks release.
+            </div>
+          </div>
+          <div class="panel">
+            <div class="thread">
+              <div class="message source"><strong>source fact</strong><br />Existing tokens stay valid for 24 hours after replacement.</div>
+              <div class="message claim"><strong>draft claim</strong><br />Delete the old token immediately after creating the new one.</div>
+              <div class="message blocker"><strong>blocker</strong><br />Do not publish guidance that breaks active integrations.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene" id="scene-3">
+        <div class="kicker">Evidence log output</div>
+        <h2>Separate facts, claims, checks, blockers, and boundaries.</h2>
+        <div class="log-card">
+          <div class="log-item"><b>Reader question</b><span>How do I rotate an API token without breaking integrations?</span></div>
+          <div class="log-item"><b>Source fact</b><span>Old tokens remain valid for 24 hours.</span></div>
+          <div class="log-item"><b>Reviewer check</b><span>Compare the draft against the overlap rule.</span></div>
+          <div class="log-item"><b>Publication blocker</b><span>Do not tell readers to delete the old token immediately.</span></div>
+        </div>
+      </section>
+
+      <section class="scene" id="scene-4">
+        <div class="kicker">Live deployment check</div>
+        <h2>The demo now has public API endpoints.</h2>
+        <div class="api-box">
+          <div class="api-row"><span class="warn">GET</span> /api/slack/commands/review-log -> 405 method boundary</div>
+          <div class="api-row"><span class="ok">POST</span> /api/slack/commands/review-log -> 200 Slack JSON</div>
+          <div class="api-row"><span class="ok">POST</span> returns an ephemeral Markdown evidence handoff</div>
+        </div>
+      </section>
+
+      <section class="scene" id="scene-5">
+        <div class="kicker">Integration shape</div>
+        <h2>A thin Slack layer can call the tested review core.</h2>
+        <div class="diagram">
+          <div class="node">Slash command or shortcut</div>
+          <div class="arrow">-></div>
+          <div class="node">Sanitized thread payload</div>
+          <div class="arrow">-></div>
+          <div class="node">Markdown evidence log</div>
+        </div>
+        <div class="body">
+          The core stays testable without OAuth or private exports. The Slack app layer only receives selected text, sanitizes it, and returns an owner-review handoff.
+        </div>
+      </section>
+
+      <section class="scene" id="scene-6">
+        <div class="kicker">Submission boundary</div>
+        <h2>Ready demo assets. Clear remaining gates.</h2>
+        <div class="metrics">
+          <div class="metric"><div class="number">200</div><div class="caption">Stable demo page HTTP status</div></div>
+          <div class="metric"><div class="number">2</div><div class="caption">Vercel API functions live</div></div>
+          <div class="metric"><div class="number">3</div><div class="caption">Remaining gates: GitHub repo, Slack sandbox, Devpost submit</div></div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      const scenes = ["#scene-1", "#scene-2", "#scene-3", "#scene-4", "#scene-5", "#scene-6"];
+      const starts = [0, 15, 31, 47, 63, 79];
+
+      function enter(scene, at) {
+        tl.set(scene, { opacity: 1 }, at);
+        tl.from(`${scene} .kicker`, { y: 26, opacity: 0, duration: 0.55, ease: "power3.out", overwrite: "auto" }, at + 0.25);
+        tl.from(`${scene} h1, ${scene} h2`, { y: 42, opacity: 0, duration: 0.72, ease: "expo.out", overwrite: "auto" }, at + 0.48);
+        tl.from(`${scene} .body, ${scene} .panel, ${scene} .log-card, ${scene} .api-box, ${scene} .diagram, ${scene} .metrics`, { y: 30, opacity: 0, duration: 0.66, ease: "power2.out", overwrite: "auto" }, at + 0.92);
+      }
+
+      function transition(fromScene, toScene, at) {
+        tl.to("#sweep", { opacity: 1, x: 2300, duration: 0.62, ease: "power2.inOut" }, at);
+        tl.to(fromScene, { opacity: 0.08, filter: "blur(10px)", duration: 0.58, ease: "sine.inOut" }, at + 0.04);
+        tl.set(fromScene, { opacity: 0, filter: "blur(0px)" }, at + 0.64);
+        tl.set("#sweep", { opacity: 0, x: 0 }, at + 0.7);
+        enter(toScene, at + 0.34);
+      }
+
+      enter("#scene-1", 0);
+      transition("#scene-1", "#scene-2", 14.2);
+      transition("#scene-2", "#scene-3", 30.2);
+      transition("#scene-3", "#scene-4", 46.2);
+      transition("#scene-4", "#scene-5", 62.2);
+      transition("#scene-5", "#scene-6", 78.2);
+      tl.to("#scene-6", { opacity: 0, duration: 1.1, ease: "sine.inOut" }, 94.6);
+      tl.to(".accent-line", { opacity: 0.25, duration: 1.1, ease: "sine.inOut" }, 94.6);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
