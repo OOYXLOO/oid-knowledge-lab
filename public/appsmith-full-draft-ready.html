@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Appsmith Full Draft Ready - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Appsmith full draft</p>
+      <h1>Build a Client-Safe OID Inventory Review App with Appsmith</h1>
+      <p class="summary">A complete Appsmith article draft for an internal-tool tutorial: sanitized seed data, review queue, evidence panel, reviewer decisions, and safe Markdown export.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="appsmith-oid-reviewer-hub.html">Reviewer hub</a>
+        <a href="appsmith-template-blueprint.html">Template blueprint</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/appsmith-full-draft-ready.md">Markdown draft</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <p class="panel-copy">Internal teams often collect Object Identifier values from SNMP exports, MIB files, certificate policies, healthcare mappings, standards registries, vendor integrations, or legacy configuration records. The data looks simple at first: an asset label, an OID, a source, and maybe a severity. The review workflow is the hard part.</p>
+      <p class="panel-copy">A reviewer needs to know whether an OID is syntactically valid, whether it belongs to a known enterprise number or policy arc, whether the finding should be accepted, and what can safely be shared with another team. At the same time, the review app should not become a new place where customer exports, private URLs, copied third-party registry pages, credentials, or account-specific evidence are pasted and forgotten.</p>
+      <p class="panel-copy">This tutorial shows how to design a small Appsmith internal tool for that review process. The app uses sanitized sample data, a review queue, a public evidence panel, reviewer decisions, and a safe Markdown export.</p>
+    </section>
+
+    <section class="panel"><h2>What the app will do</h2><table class="handoff-table"><thead><tr><th>Surface</th><th>Purpose</th></tr></thead><tbody><tr><td>Intake</td><td>Load or paste sanitized inventory rows.</td></tr><tr><td>Review Queue</td><td>Inspect OID rows, filter risk states, and assign a review decision.</td></tr><tr><td>Evidence Panel</td><td>Show public evidence summaries and reviewer notes.</td></tr><tr><td>Handoff</td><td>Export a copyable Markdown summary with only safe fields.</td></tr></tbody></table></section>
+    <section class="panel"><h2>Start with sanitized seed data</h2><p class="panel-copy">Before building widgets, define the data the app is allowed to handle. A safe tutorial should not require private exports, real customer inventory, raw screenshots, or account-local system names.</p><pre><code>asset_label,oid,source,severity,owner_hint
+sample-router-policy,1.3.6.1.4.1.9.9.43,snmp-export,medium,network
+sample-certificate-policy,2.23.140.1.2.1,certificate-policy,low,pki
+sample-invalid-oid,1.3.6.1.bad.7,manual-review,high,unknown</code></pre></section>
+    <section class="panel"><h2>Create the Appsmith pages</h2><p class="panel-copy">Create a new Appsmith app and add four pages: Intake, Review Queue, Evidence Panel, and Handoff. The Review Queue page is the main working surface. Add a Table widget and bind it to sanitized rows. Add Tabs or Button groups for common filters: all rows, invalid syntax, unknown public evidence, policy OIDs, accepted, and blocked.</p><p class="panel-copy">The Evidence Panel page can display details for the selected row. It should show the OID, asset label, source type, severity, public evidence summary, reviewer note, and current decision. It should not show raw third-party page mirrors or private inventory context.</p></section>
+    <section class="panel"><h2>Add a row classifier</h2><p class="panel-copy">Create a JSObject named <code>OidReview</code>. Add a small helper that validates syntax and assigns an initial status.</p><pre><code>export default {
+  isValidOid(oid) {
+    return /^\d+(\.\d+)+$/.test(String(oid || ""));
+  },
+  classifyRow(row) {
+    const valid = this.isValidOid(row.oid);
+    if (!valid) {
+      return { ...row, review_status: "blocked", public_evidence_summary: "Invalid OID syntax.", next_step: "Fix or remove this row before sharing." };
+    }
+    if (String(row.oid).startsWith("1.3.6.1.4.1.")) {
+      return { ...row, review_status: "needs_context", public_evidence_summary: "Private Enterprise Number subtree.", next_step: "Confirm enterprise owner and asset context." };
+    }
+    return { ...row, review_status: "needs_context", public_evidence_summary: "No local public evidence summary yet.", next_step: "Add a reviewed public evidence note." };
+  }
+};</code></pre></section>
+    <section class="panel"><h2>Wire the review queue</h2><p class="panel-copy">Bind the Table widget to classified rows. Add columns for asset label, OID, source, severity, review status, public evidence summary, and next step. Use Table row selection to drive the Evidence Panel.</p><p class="panel-copy">Add a Select widget for reviewer decision with values such as accepted, needs_context, and blocked. Add an Input widget for reviewer notes. Keep the note field short and validate it so obvious secrets and private URLs do not enter the exported handoff.</p></section>
+    <section class="panel"><h2>Choose where reviewer decisions live</h2><p class="panel-copy">For a tutorial, temporary app state is enough to demonstrate the workflow. For a team app, reviewer decisions should live in a database table so that the queue is not reset when a browser session ends.</p><pre><code>oid
+asset_label
+review_status
+reviewer_note
+reviewed_by
+reviewed_at</code></pre><p class="panel-copy">In Appsmith, you can connect this table through a Postgres datasource, a Google Sheets datasource, or another supported backend. The important design choice is to store only the reviewed decision and safe context. Avoid storing raw inventory exports, private screenshots, copied support cases, or account-specific identifiers in the review table.</p><p class="panel-copy">Add a Query named saveReviewDecision that updates the selected row. Then connect the Save button to that query. A reviewer should be able to select a row, choose accepted, needs_context, or blocked, add a short note, and save the decision without leaving the app.</p></section>
+    <section class="panel"><h2>Make filters useful for reviewers</h2><p class="panel-copy">A review queue becomes much easier to use when filters match how people actually triage work. Instead of giving reviewers one long table, add a set of filter buttons or tabs: Blocked, Needs context, Accepted, High severity, and Policy.</p><p class="panel-copy">These filters can be implemented in a JSObject function that reads a selected tab value and returns filtered rows. The Table widget then binds to that function instead of the raw dataset. This keeps the UI simple and makes it obvious what the reviewer should do next.</p><p class="panel-copy">The filter names should be operational, not clever. A reviewer should not need to understand the entire OID hierarchy to know that Blocked means "do not export this yet."</p></section>
+    <section class="panel"><h2>Export a safe Markdown handoff</h2><p class="panel-copy">The handoff is where the app becomes useful. Instead of sending a screenshot or a raw spreadsheet, the reviewer can export a clean Markdown summary.</p><pre><code>export default {
+  buildHandoff(rows) {
+    return rows
+      .filter((row) => row.review_status !== "draft")
+      .map((row) => [
+        `## ${row.asset_label}`,
+        `- OID: ${row.oid}`,
+        `- Severity: ${row.severity}`,
+        `- Review status: ${row.review_status}`,
+        `- Public evidence: ${row.public_evidence_summary}`,
+        `- Next step: ${row.next_step}`
+      ].join("\n"))
+      .join("\n\n");
+  }
+};</code></pre><p class="panel-copy">Add a preview step before copying the handoff. A Text widget can show the generated Markdown, while a small warning message reminds the reviewer what should not appear in the output. This final pause helps catch accidental private notes before the handoff is sent to another team.</p></section>
+    <section class="panel"><h2>Add acceptance checks</h2><table class="handoff-table"><thead><tr><th>Check</th><th>Expected result</th></tr></thead><tbody><tr><td>Load sample data</td><td>The app displays deterministic rows without private exports.</td></tr><tr><td>Classify invalid OID</td><td>The invalid row becomes blocked.</td></tr><tr><td>Review enterprise number</td><td>The enterprise-number row requires context.</td></tr><tr><td>Export handoff</td><td>The Markdown excludes private identifiers and raw exports.</td></tr></tbody></table><p class="panel-copy">It is also worth testing the negative path. Paste a row with an invalid OID, a note that mentions a fake token, or an internal URL placeholder. The app should block or flag the row before export. This gives the tutorial a concrete quality bar and shows readers how to adapt the same pattern to their own internal tools.</p></section>
+    <section class="panel"><h2>Conclusion</h2><p class="panel-copy">Appsmith is a strong fit for this workflow because the problem is mostly an internal review interface: tables, filters, status updates, validation, and handoff output. The OID data gives the app a concrete technical shape, but the pattern applies to many review queues where teams need to turn messy internal findings into safe, actionable summaries.</p><p class="panel-copy">By starting with sanitized data, adding a clear review queue, validating reviewer notes, and exporting a safe Markdown handoff, you can build an internal tool that helps teams move faster without turning the review app into another sensitive-data sink.</p></section>
+  </main>
+</body>
+</html>
