@@ -1,6 +1,8 @@
-# Paid writing application desk
+# Technical writing review desk
 
-This desk is a copy-ready application surface for editor and writer-network forms. It keeps the strongest public samples, topic fit, and safety boundary in one place.
+Legacy page name: Paid writing application desk.
+
+This desk is a copy-ready review surface for editor and writer-network forms. It keeps the strongest public samples, topic fit, implementation proof, and safety boundary in one place.
 
 Public portfolio:
 
@@ -20,7 +22,17 @@ Repository:
 https://github.com/OOYXLOO/oid-knowledge-lab
 ```
 
-## Best first application order
+## Current strongest review order
+
+| Priority | Program or editor lane | First proof link | Review angle |
+| --- | --- | --- | --- |
+| 1 | KnowledgeOwl | `knowledgeowl-full-draft-ready.html` | Finished knowledge-base article draft, editor packet, source-boundary notes |
+| 2 | Appsmith Writers Program | `appsmith-full-draft-ready.html` | Finished internal-tool tutorial draft, reviewer hub, template workflow proof |
+| 3 | Airbyte / data integration editors | `airbyte-oid-knowledge-pipeline-packet.html` | OID knowledge pipeline, connector-style data modeling, publication-safe outputs |
+| 4 | Civo / cloud-native editors | `civo-certificate-oid-cronjob-packet.html` | Kubernetes CronJob workflow for certificate OID review, runnable artifact boundary |
+| 5 | Qwen build article reviewers | `qwen-build-article.html` | Source-grounded agent writeup, architecture proof, Devpost-ready judging links |
+
+## Backup application order
 
 | Priority | Program | First sample | Application angle |
 | --- | --- | --- | --- |
@@ -33,6 +45,17 @@ https://github.com/OOYXLOO/oid-knowledge-lab
 ## Copyable short bio
 
 I write implementation-backed developer tutorials. My strongest samples cover Python + AI validation with `pytest`, Node.js static evidence dashboards, data integration pipelines, observability debugging handoffs, and publish-safety checks. Each sample is tied to a public repository, reproducible commands, and a clear boundary around credentials, private data, and copied third-party content.
+
+## Current strongest packet links
+
+```text
+https://ooyxloo.github.io/oid-knowledge-lab/editor-portfolio-p0.html
+https://ooyxloo.github.io/oid-knowledge-lab/knowledgeowl-full-draft-ready.html
+https://ooyxloo.github.io/oid-knowledge-lab/knowledgeowl-final-editor-packet.html
+https://ooyxloo.github.io/oid-knowledge-lab/appsmith-full-draft-ready.html
+https://ooyxloo.github.io/oid-knowledge-lab/appsmith-oid-reviewer-hub.html
+https://ooyxloo.github.io/oid-knowledge-lab/qwen-build-article.html
+```
 
 ## Real Python
 
