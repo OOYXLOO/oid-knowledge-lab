@@ -138,6 +138,7 @@
         <a href="playground.html">Interactive playground<span>Edit a Slack-style JSON thread and generate a Markdown handoff.</span></a>
         <a href="media/review-log-agent-slack-demo.mp4">Demo video<span>96-second MP4 walkthrough for reviewers and submission forms.</span></a>
         <a href="docs/official-submission-requirements.md">Requirements map<span>Official submission items mapped to current evidence.</span></a>
+        <a href="api/agent/tools">Agent tools API<span>Public endpoint listing the review-log tool contract.</span></a>
         <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack">Source snapshot<span>Public GitHub source copy for review.</span></a>
         <a href="https://oid-knowledge-lab.vercel.app/evidence-log-playground.html">Related proof<span>Adjacent evidence-log validation surface.</span></a>
       </nav>
@@ -166,6 +167,7 @@
         <li><a href="docs/challenge-fit.md">Challenge fit notes</a></li>
         <li><a href="docs/slack-app-manifest.json">Slack app manifest template</a></li>
         <li><a href="docs/slack-app-handler-contract.md">Slack app handler contract</a></li>
+        <li><a href="api/agent/tools">Agent tools API</a></li>
       </ul>
     </section>
 
@@ -174,6 +176,7 @@
       <ul class="fit-list">
         <li><strong>Track</strong><span>New Slack Agent: a review agent that turns Slack-style conversations into source-aware publication handoffs.</span></li>
         <li><strong>Required tech</strong><span>MCP-style tool wrapper today, with Slack slash command and message shortcut handlers prepared for sandbox installation.</span></li>
+        <li><strong>Agent API</strong><span><code>GET /api/agent/tools</code> lists the tool contract and <code>POST /api/agent/call</code> invokes <code>build_review_log</code> with sanitized input.</span></li>
         <li><strong>Functionality</strong><span>Static demo, browser playground, CLI, API handler, and tests all exercise the same dependency-free review-log core.</span></li>
         <li><strong>Demo video</strong><span>Public MP4 is under three minutes and uses synthetic review data only.</span></li>
         <li><strong>Architecture</strong><span>Architecture notes and diagram explain the Slack surface, core classifier, renderer, and reviewer handoff boundary.</span></li>

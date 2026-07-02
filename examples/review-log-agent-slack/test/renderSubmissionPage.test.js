@@ -15,6 +15,8 @@ function testRendersSubmissionPageWithCoreLinks() {
   assert.match(html, /docs\/judge-verification\.md/);
   assert.match(html, /docs\/official-submission-requirements\.md/);
   assert.match(html, /Official submission requirements map/);
+  assert.match(html, /api\/agent\/tools/);
+  assert.match(html, /Agent tools API/);
   assert.match(html, /docs\/reviewer-quickstart\.md/);
   assert.match(html, /does not require Slack credentials/);
   assert.match(html, /Submission Readiness/);
@@ -27,6 +29,7 @@ function testRendersSubmissionPageWithCoreLinks() {
   assert.match(html, /Judge Fit Checklist/);
   assert.match(html, /New Slack Agent/);
   assert.match(html, /MCP-style tool wrapper/);
+  assert.match(html, /POST \/api\/agent\/call/);
   assert.match(html, /Sandbox URL/);
   assert.match(html, /remaining account-side field, not a code gap/);
 }

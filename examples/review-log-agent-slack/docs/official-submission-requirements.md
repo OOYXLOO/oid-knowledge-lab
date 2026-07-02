@@ -12,6 +12,7 @@ This file maps Slack Agent Builder Challenge submission requirements to current 
 | Slack developer sandbox URL | Must be added after creating or confirming the Slack app/sandbox | Missing account-side field |
 | Source code | `https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack` | Ready as source snapshot |
 | Slack platform technology | Slash command endpoint plus MCP-style tool wrapper | Ready prototype |
+| Public agent tool API | `/api/agent/tools` and `/api/agent/call` | Ready prototype |
 | Public verification page | `https://review-log-agent-slack.vercel.app/submission.html` | Ready |
 
 ## Slack Technology Mapping
@@ -27,6 +28,11 @@ The current project demonstrates two Slack Challenge-relevant integration shapes
    - Purpose: receives a synthetic or sanitized Slack-style review thread and returns a Markdown evidence log.
    - File: `src/mcpTool.js`
 
+3. Public agent tool API
+   - Tools endpoint: `https://review-log-agent-slack.vercel.app/api/agent/tools`
+   - Call endpoint: `https://review-log-agent-slack.vercel.app/api/agent/call`
+   - Purpose: lets judges inspect and invoke the same `build_review_log` tool boundary without workspace credentials.
+
 ## Judge Verification Path
 
 1. Open the public demo page.
@@ -36,6 +42,7 @@ The current project demonstrates two Slack Challenge-relevant integration shapes
 5. Review `docs/architecture.md`.
 6. Review the source snapshot in OID Knowledge Lab.
 7. Optionally POST a form body to the slash command endpoint and confirm a Slack-compatible JSON response.
+8. Optionally GET `/api/agent/tools` and POST `/api/agent/call` with sanitized JSON input.
 
 ## Current Missing Item
 
