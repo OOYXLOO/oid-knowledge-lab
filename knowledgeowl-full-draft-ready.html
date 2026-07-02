@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KnowledgeOwl Full Draft Ready - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">KnowledgeOwl full draft</p>
+      <h1>How to Turn AI-Assisted Help Content Reviews into Evidence Logs</h1>
+      <p class="summary">A complete editor-ready draft for a documentation audience. It focuses on making AI-assisted help content reviewable without adding heavy process or exposing private support context.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="knowledgeowl-final-editor-packet.html">Editor packet</a>
+        <a href="knowledgeowl-editorial-draft-preview.html">Short draft preview</a>
+        <a href="evidence-log-playground.html">Evidence log playground</a>
+        <a href="https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/docs/articles/knowledgeowl-full-draft-ready.md">Markdown draft</a>
+      </div>
+    </section>
+
+    <article class="panel">
+      <p class="panel-copy">AI-assisted drafting can make knowledge base work faster, but speed is not the same as reviewability. A draft can sound confident while still mixing verified source facts, guessed details, product assumptions, and reviewer notes in the same paragraph. For documentation teams, that is the real risk: not that a model helped write a sentence, but that nobody can easily tell which parts of the article are ready to publish.</p>
+      <p class="panel-copy">A lightweight evidence log gives the team a safer handoff. It does not replace a style guide, editorial judgment, or subject-matter review. It simply makes the review trail visible before the article reaches the customer-facing knowledge base.</p>
+      <p class="panel-copy">The goal is not to create more process. The goal is to answer one practical question before publishing: can another reviewer see what was checked, what still needs a decision, and what must not be included in the final article?</p>
+    </article>
+
+    <section class="panel"><h2>Start with the reader question</h2><p class="panel-copy">Every review log should begin with purpose and audience. What is the article supposed to help the reader do, and who is the reader? A customer-facing article, an internal support runbook, and a subject-matter expert handoff can all describe the same feature while needing different context, warnings, and level of detail.</p><pre>Reader question:
+Can I change the billing contact on my workspace without changing the account owner?
+
+Audience:
+Support agents and workspace admins who need a clear answer before changing account details.</pre><p class="panel-copy">That question and audience give the reviewer a target. The draft is not just "about billing settings." It needs to explain what the billing contact controls, what it does not control, and whether the change affects owner permissions, invoices, payment notifications, or account recovery.</p><p class="panel-copy">This first step is especially useful when AI-assisted drafting is involved. A model may produce a broad explanation that sounds complete, but the reader may only need one narrow answer. Naming the reader question keeps the review focused on the actual knowledge base need.</p></section>
+
+    <section class="panel"><h2>Separate source facts from draft claims</h2><p class="panel-copy">The next step is to separate what the team knows from what the draft currently says. Source facts might come from a release note, product documentation, an approved support macro, a product manager comment, or a subject-matter expert review. Draft claims are statements that appear in the article but still need confirmation.</p><pre>Source facts:
+- The billing contact can receive invoice emails.
+- Changing the billing contact does not transfer workspace ownership.
+- Only owners can change payment methods.
+
+Draft claims to review:
+- "Any admin can update billing information."
+- "Changing the billing contact also changes the account owner."</pre><p class="panel-copy">This separation matters because fluent writing can hide uncertainty. The phrase "any admin can update billing information" might be true for one field, false for payment methods, or dependent on workspace role settings. The evidence log gives reviewers a place to test that claim before it becomes a published promise.</p><p class="panel-copy">It also helps reviewers avoid rewriting the whole article when only one claim is risky. Instead of saying "this section is wrong," the reviewer can point to the exact sentence that needs product confirmation.</p></section>
+
+    <section class="panel"><h2>Capture reviewer checks</h2><p class="panel-copy">Reviewer checks should be specific enough that another person can act on them. Instead of writing "verify accuracy," name the decision that still needs confirmation.</p><pre>Reviewer checks:
+- Confirm which roles can edit the billing contact.
+- Confirm whether payment method access is separate from billing contact access.
+- Add a warning if the workflow differs by plan, workspace role, or region.</pre><p class="panel-copy">This makes the handoff useful for technical writers, support leads, and subject-matter experts. The writer does not have to guess what the reviewer meant. The expert does not have to re-read the whole draft to find the risky claims. The support lead can see whether the article answers the customer scenario that triggered the update.</p><p class="panel-copy">Good reviewer checks are small and decision-shaped. They should point to an action: confirm, remove, narrow, add a warning, link to an approved reference, or block publication until someone resolves the issue.</p></section>
+
+    <section class="panel"><h2>Mark publication blockers</h2><p class="panel-copy">Some issues should block publication. A blocker is not a general improvement idea; it is a reason the article should not go live yet.</p><table class="handoff-table"><thead><tr><th>Blocker</th><th>Why it matters</th></tr></thead><tbody><tr><td>Irreversible action without a warning</td><td>Readers may lose access, data, or configuration without realizing the risk.</td></tr><tr><td>Unconfirmed product behavior</td><td>The article can become a public promise the product does not keep.</td></tr><tr><td>Private support details</td><td>Review artifacts should not spread sensitive customer context.</td></tr><tr><td>Copied third-party paragraph</td><td>Unreviewed copied text creates editorial and legal risk.</td></tr><tr><td>Missing feature, region, plan, or permission boundary</td><td>The answer may be correct only for a subset of readers.</td></tr></tbody></table><p class="panel-copy">Blockers help the team avoid a common failure mode: publishing a polished article that is still unsafe, incomplete, or unsupported. This is different from ordinary editing. A typo, a clumsy transition, or a missing screenshot may need improvement, but it may not block publication. An unconfirmed permission claim should.</p><p class="panel-copy">The distinction keeps reviews calmer. Instead of treating every comment as equally urgent, the evidence log separates "must fix before publish" from "nice to improve."</p><p class="panel-copy">If the team already uses a ticketing or project-management tool, the blocker list can live inside the existing workflow. It does not have to be a separate system. The important part is that the blocker is visible, named, and resolved before the article moves to the published state.</p></section>
+
+    <section class="panel"><h2>Keep private data out of the handoff</h2><p class="panel-copy">An evidence log should make review easier without spreading sensitive data. Support teams often work near private customer details, screenshots, logs, billing information, access tokens, account identifiers, and internal notes. Those details should not be copied into a general review artifact unless the team has a clear policy and a need to include them.</p><pre>Safety boundary:
+- Do not include customer account screenshots.
+- Do not paste tokens, cookies, one-time codes, or private URLs.
+- Summarize the support case without copying private identifiers.
+- Link only to approved internal references when private context is required.</pre><p class="panel-copy">This keeps the evidence log useful while reducing the chance that a review workflow becomes a new place where sensitive material spreads. The log can still say that private context exists. It just should not become a pastebin for that context.</p><p class="panel-copy">For public knowledge base work, this boundary also protects the final article. If the review handoff is already clean, the writer is less likely to accidentally preserve private details while revising.</p></section>
+
+    <section class="panel"><h2>Add a short publication decision</h2><p class="panel-copy">At the end of the review, add a short decision summary. This does not need to be formal. It just needs to say what happened next.</p><pre>Decision:
+Ready after role-permission wording is narrowed.
+
+Required edits:
+- Replace "any admin" with "workspace owners."
+- Add one note that billing contact changes do not transfer ownership.
+- Remove the pasted support-case screenshot from the draft.</pre><p class="panel-copy">This gives the next person a clean starting point. If the draft returns to the queue a week later, the team does not have to reconstruct the review from scattered comments. The decision summary shows whether the article is ready, blocked, or waiting for a specific answer.</p><p class="panel-copy">It also helps when the same topic appears again. A future update can reuse the old review trail as context, while still checking whether the product behavior has changed.</p></section>
+
+    <section class="panel"><h2>Use the log as a bridge, not the final article</h2><p class="panel-copy">The evidence log is not meant to appear in the final article. Customers should see a clear, concise help page. The log is the internal bridge between "an AI-assisted draft sounds plausible" and "a human reviewer can approve this update with confidence."</p><p class="panel-copy">In practice, the workflow can stay small: start with purpose, audience, and the reader question; list the source facts; list the draft claims that need review; capture reviewer checks; mark publication blockers; keep sensitive data out of the handoff; and add a short publication decision.</p><p class="panel-copy">That is enough to make an AI-assisted draft easier to inspect. The team can see what the article is trying to answer, what facts support it, which statements still need judgment, and what must change before publication.</p><p class="panel-copy">AI-assisted documentation does not need a heavy process to become safer. It needs a visible review trail. A small evidence log gives documentation and support teams a practical way to keep speed without giving up accountability.</p></section>
+  </main>
+</body>
+</html>
