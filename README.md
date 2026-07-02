@@ -28,6 +28,8 @@ The current source adapter targets public OID-base pages through the site's site
 - Kubernetes certificate OID CronJob sample: `examples/kubernetes-certificate-oid-cronjob/`
 - Hasura OID GraphQL review API packet: <https://ooyxloo.github.io/oid-knowledge-lab/hasura-oid-graphql-review-api-packet.html>
 - Hasura OID GraphQL review API sample: `examples/hasura-oid-graphql-review-api/`
+- AppSignal Node OID health monitor packet: <https://ooyxloo.github.io/oid-knowledge-lab/appsignal-node-oid-health-monitor-packet.html>
+- Node OID health monitor sample: `examples/node-oid-health-monitor/`
 - Technical writing editorial packet: <https://ooyxloo.github.io/oid-knowledge-lab/technical-writing-editorial-packet.html>
 - Launch proof sprint scope: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-sprint-scope.html>
 - Launch proof readiness checklist: <https://ooyxloo.github.io/oid-knowledge-lab/launch-proof-readiness-checklist.html>
