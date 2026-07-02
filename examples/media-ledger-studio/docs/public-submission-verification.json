@@ -1,0 +1,70 @@
+{
+  "ok": true,
+  "checkedAt": "2026-07-02T21:09:53.334Z",
+  "results": [
+    {
+      "name": "appShell",
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/",
+      "status": 200,
+      "ok": true,
+      "expectedTextFound": true,
+      "bytes": 480
+    },
+    {
+      "name": "reviewRiskShell",
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?view=review",
+      "status": 200,
+      "ok": true,
+      "expectedTextFound": true,
+      "bytes": 480
+    },
+    {
+      "name": "judgingEvidenceShell",
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?view=evidence",
+      "status": 200,
+      "ok": true,
+      "expectedTextFound": true,
+      "bytes": 480
+    },
+    {
+      "name": "appBundle",
+      "url": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/assets/index-Dq2H2znL.js",
+      "status": 200,
+      "ok": true,
+      "expectedTextFound": true,
+      "bytes": 220417
+    },
+    {
+      "name": "walkthroughRaw",
+      "url": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/gh-pages/media-ledger-studio/demo-video.html",
+      "status": 200,
+      "ok": true,
+      "expectedTextFound": true,
+      "bytes": 10422
+    },
+    {
+      "name": "sourceRepo",
+      "url": "https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio",
+      "status": 200,
+      "ok": true,
+      "expectedTextFound": true,
+      "bytes": 274338
+    },
+    {
+      "name": "devpostCopyText",
+      "url": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/devpost-submission-copy.txt",
+      "status": 200,
+      "ok": true,
+      "expectedTextFound": true,
+      "bytes": 3131
+    },
+    {
+      "name": "checklist",
+      "url": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/docs/backblaze-final-submission-checklist.md",
+      "status": 200,
+      "ok": true,
+      "expectedTextFound": true,
+      "bytes": 2521
+    }
+  ]
+}
