@@ -1,0 +1,163 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slack Agent Submit Console</title>
+  <style>
+    :root { color-scheme: light; --ink:#172033; --muted:#5c667a; --line:#d9deea; --paper:#f6f8fb; --panel:#fff; --accent:#126e68; }
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);line-height:1.5} main{width:min(1120px,calc(100% - 28px));margin:0 auto;padding:28px 0 44px} header,.panel,.field-card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px;margin-bottom:14px} h1{margin:0 0 10px;font-size:2rem;letter-spacing:0} h2{margin:0;font-size:1.05rem;letter-spacing:0} p,li{color:var(--muted)} .links,.button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px} a,button{border:1px solid var(--line);border-radius:8px;padding:9px 11px;background:#fbfcff;color:var(--accent);font-weight:700;text-decoration:none;cursor:pointer;font:inherit} button:hover,a:hover{border-color:var(--accent)} .field-card>div{display:flex;align-items:center;justify-content:space-between;gap:12px} textarea{width:100%;min-height:100px;resize:vertical;margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:8px;font:0.92rem/1.45 Consolas,"SFMono-Regular",monospace;color:var(--ink);background:#fbfcff}.long textarea{min-height:180px}.toast{position:fixed;right:18px;bottom:18px;background:#10201e;color:white;padding:10px 13px;border-radius:8px;opacity:0;transform:translateY(8px);transition:.18s ease}.toast.show{opacity:1;transform:translateY(0)} @media(max-width:720px){main{width:min(100% - 18px,1120px);padding-top:18px}h1{font-size:1.55rem}.field-card>div{display:block}button{margin-top:8px}}
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p>Slack Agent Builder Challenge</p>
+      <h1>Review Log Agent submission console</h1>
+      <p>This local console does not publish, submit, upload, invite, or change account settings. It only gathers copy-ready fields, links, sandbox requirements, and video metadata for the account-side Devpost pass.</p>
+      <div class="links"><a href="https://slackhack.devpost.com/" target="_blank" rel="noopener">Devpost challenge</a>
+<a href="https://review-log-agent-slack.vercel.app/" target="_blank" rel="noopener">Demo</a>
+<a href="https://review-log-agent-slack.vercel.app/playground.html" target="_blank" rel="noopener">Playground</a>
+<a href="https://review-log-agent-slack.vercel.app/submission.html" target="_blank" rel="noopener">Submission page</a>
+<a href="https://review-log-agent-slack.vercel.app/media/review-log-agent-slack-demo.mp4" target="_blank" rel="noopener">Demo video MP4</a>
+<a href="https://review-log-agent-slack.vercel.app/docs/official-submission-requirements.md" target="_blank" rel="noopener">Requirements map</a>
+<a href="https://review-log-agent-slack.vercel.app/docs/slack-sandbox-setup-card.md" target="_blank" rel="noopener">Sandbox setup card</a>
+<a href="https://review-log-agent-slack.vercel.app/docs/slack-app-manifest.json" target="_blank" rel="noopener">Slack app manifest</a>
+<a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack" target="_blank" rel="noopener">Source snapshot</a>
+<a href="https://review-log-agent-slack.vercel.app/api/agent/tools" target="_blank" rel="noopener">Agent tools API</a></div>
+    </header>
+    <section class="panel">
+      <h2>Remaining account-side gates</h2>
+      <ol>
+        <li>Create or confirm the Slack developer sandbox with event code <strong>SABC-7X2K-M9PL-4QFN</strong>.</li>
+        <li>Add <strong>slackhack@salesforce.com</strong> and <strong>testing@devpost.com</strong> as sandbox Members.</li>
+        <li>Upload the MP4 demo to an accepted public video platform if Devpost rejects direct MP4.</li>
+        <li>Submit the Devpost form and record the final submission URL locally.</li>
+      </ol>
+    </section>
+    <section class="panel long">
+      <h2>Video upload metadata</h2>
+      <div class="button-row">
+        <button type="button" class="copy-value" data-copy="Review Log Agent for Slack - Slack Agent Builder Challenge Demo">Copy video title</button>
+        <button type="button" class="copy-near">Copy video description</button>
+        <button type="button" class="copy-value" data-copy="Slack, agent, Devpost, evidence log, review workflow, MCP, documentation, support">Copy tags</button>
+      </div>
+      <textarea readonly>A short demo of Review Log Agent for Slack, a prototype that turns Slack-style review threads into source-aware evidence logs. The demo uses synthetic data only and shows the public playground, slash-command response shape, agent-tool API, and reviewer handoff boundary.
+
+Demo: https://review-log-agent-slack.vercel.app/
+Submission page: https://review-log-agent-slack.vercel.app/submission.html
+Source snapshot: https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack</textarea>
+    </section>
+    
+        <article class="field-card">
+          <div><h2>Project title</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>Review Log Agent for Slack</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>Tagline</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>Turn messy Slack review threads into source-aware evidence logs, judge-ready summaries, and safer follow-up actions.</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>Inspiration</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>Review work often happens in fast Slack threads, but the durable evidence gets lost: who asked for what, which source link supports a claim, which risk was accepted, and what the next action should be. Review Log Agent turns those threads into structured evidence logs that teams can audit later.</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>What it does</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>Review Log Agent accepts Slack-style review messages, extracts decisions and source references, scores evidence quality, and generates a concise handoff log. The demo includes a slash command endpoint, an interactive playground, a submission page, public documentation, a demo video, and a source snapshot.</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>How we built it</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>The project is a small Node.js and Vercel app with a Slack slash command handler, a review-log core, an MCP-style tool boundary, static demo pages, publish-safety guardrails, and tests for the review logic, Slack response contract, generated submission page, and public docs copy step. The public playground uses synthetic Slack-style data so judges can try the workflow without private workspace access.</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>Challenges we ran into</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>The main challenge was keeping the agent useful without letting it overclaim. The implementation focuses on source-aware summaries, explicit uncertainty, safe publication boundaries, and Slack-compatible response shapes rather than pretending to fully automate human judgment.</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>Accomplishments that we are proud of</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>- Working public demo and browser playground.
+- Slack slash command endpoint that returns Slack-compatible JSON.
+- Public agent-tool API with a build_review_log tool contract.
+- Demo video and submission page.
+- Public source snapshot.
+- Slack app manifest template for a slash command and message shortcut.
+- Publish guard that checks public files for unsafe content before release.
+- Local tests for review logic, MCP-style tool output, Slack handler behavior, submission rendering, agent API behavior, and public docs copying.</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>What we learned</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>The useful part of a Slack agent is not only generating an answer. For review-heavy teams, the agent also needs to preserve evidence, uncertainty, source boundaries, and unresolved blockers. A compact evidence log makes the human decision easier to inspect.</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>What is next</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>Next steps are a real Slack app installation, richer Slack interactivity, workspace-specific review templates, and optional export to GitHub issues or documentation pull requests.</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>Built with</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>JavaScript
+Node.js
+Vercel
+Slack API
+MCP-style tool interface
+Static HTML/CSS</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>Demo URL</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>https://review-log-agent-slack.vercel.app/</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>Source URL</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>Current MP4 preview URL</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>https://review-log-agent-slack.vercel.app/media/review-log-agent-slack-demo.mp4</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>Sandbox event code</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>SABC-7X2K-M9PL-4QFN</textarea>
+        </article>
+
+        <article class="field-card">
+          <div><h2>Judge access emails</h2><button type="button" class="copy-near">Copy</button></div>
+          <textarea readonly>slackhack@salesforce.com
+testing@devpost.com</textarea>
+        </article>
+    <section class="panel">
+      <h2>Safety boundary</h2>
+      <ul>
+        <li>No Slack tokens, signing secrets, private workspace exports, cookies, local storage, customer data, payment data, KYC, tax, bank, card, wallet, or private keys are stored here.</li>
+        <li>The demo uses synthetic review data only.</li>
+        <li>This console is not proof of submission. Only Devpost submission URL, official selection, prize, claimable reward, or payable status changes the income state.</li>
+      </ul>
+    </section>
+  </main>
+  <div class="toast" id="toast">Copied</div>
+  <script>
+        async function copyText(text){ await navigator.clipboard.writeText(text || ''); const toast=document.getElementById('toast'); toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1100); }
+    document.querySelectorAll('.copy-near').forEach((button)=>{
+      button.addEventListener('click',()=>{
+        const block = button.closest('article, section');
+        const textArea = block ? block.querySelector('textarea') : null;
+        copyText(textArea ? textArea.value : '');
+      });
+    });
+    document.querySelectorAll('.copy-value').forEach((button)=>{
+      button.addEventListener('click',()=>copyText(button.dataset.copy || ''));
+    });
+  </script>
+</body>
+</html>

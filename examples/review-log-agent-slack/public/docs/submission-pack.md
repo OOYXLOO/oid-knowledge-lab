@@ -20,6 +20,7 @@ Live demo:
 https://review-log-agent-slack.vercel.app/
 https://review-log-agent-slack.vercel.app/playground.html
 https://review-log-agent-slack.vercel.app/submission.html
+https://review-log-agent-slack.vercel.app/docs/slack-agent-submit-console-20260702.html
 ```
 
 Local static demo:
@@ -80,6 +81,7 @@ Ready:
 - Interactive playground.
 - Architecture notes.
 - Devpost copy-paste submit pack.
+- One-page submit console with copy buttons for Devpost fields, video metadata, sandbox event code, and judge emails.
 - Devpost field pack.
 - Demo video script.
 - Rendered demo video, 96 seconds, H.264 MP4, under three minutes.

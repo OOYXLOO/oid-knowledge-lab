@@ -171,6 +171,7 @@ function renderSubmissionPage() {
       <ul>
         <li><a href="docs/architecture.md">Architecture notes</a></li>
         <li><a href="docs/devpost-copy-paste-submit.zh.md">Devpost copy-paste submit pack</a></li>
+        <li><a href="docs/slack-agent-submit-console-20260702.html">One-page submit console</a></li>
         <li><a href="docs/devpost-field-pack.md">Devpost field pack</a></li>
         <li><a href="docs/judge-verification.md">Judge verification checklist</a></li>
         <li><a href="docs/official-submission-requirements.md">Official submission requirements map</a></li>

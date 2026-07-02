@@ -31,6 +31,7 @@ function testCopiesOnlyPublicSubmissionDocs() {
     "official-submission-requirements.md",
     "public-verification.md",
     "reviewer-quickstart.md",
+    "slack-agent-submit-console-20260702.html",
     "slack-app-handler-contract.md",
     "slack-app-manifest.json",
     "slack-sandbox-setup-card.md",
@@ -46,6 +47,7 @@ function testCopiesOnlyPublicSubmissionDocs() {
   assert.ok(fs.existsSync(path.join(outputDir, "devpost-copy-paste-submit.zh.md")));
   assert.ok(fs.existsSync(path.join(outputDir, "github-source-fallback.md")));
   assert.ok(fs.existsSync(path.join(outputDir, "reviewer-quickstart.md")));
+  assert.ok(fs.existsSync(path.join(outputDir, "slack-agent-submit-console-20260702.html")));
   assert.ok(fs.existsSync(path.join(outputDir, "slack-sandbox-setup-card.md")));
 }
 

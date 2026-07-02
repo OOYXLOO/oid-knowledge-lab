@@ -12,6 +12,8 @@ function testRendersSubmissionPageWithCoreLinks() {
   assert.match(html, /media\/review-log-agent-slack-demo\.mp4/);
   assert.match(html, /docs\/architecture\.md/);
   assert.match(html, /docs\/devpost-field-pack\.md/);
+  assert.match(html, /docs\/slack-agent-submit-console-20260702\.html/);
+  assert.match(html, /One-page submit console/);
   assert.match(html, /docs\/judge-verification\.md/);
   assert.match(html, /docs\/official-submission-requirements\.md/);
   assert.match(html, /Official submission requirements map/);
