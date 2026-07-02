@@ -11,6 +11,8 @@ An operations ledger for generated media provenance, review, and Backblaze B2 st
 ## Links
 
 - App: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/
+- Review risk matrix: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?view=review
+- Judging evidence view: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?view=evidence
 - Source repository: https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio
 - Demo video: https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4
 - 3-minute walkthrough: https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/demo-video/

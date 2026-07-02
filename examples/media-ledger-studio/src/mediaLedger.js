@@ -188,6 +188,8 @@ export function createDevpostFields({
     projectName: "Media Ledger Studio",
     tagline: "An operations ledger for generated media provenance, review, and Backblaze B2 storage handoff.",
     appUrl,
+    reviewRiskUrl: `${appUrl.replace(/\/+$/g, "")}/?view=review`,
+    judgingEvidenceUrl: `${appUrl.replace(/\/+$/g, "")}/?view=evidence`,
     sourceRepoUrl,
     videoUrl,
     walkthroughUrl: "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/demo-video/",

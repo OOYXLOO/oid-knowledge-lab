@@ -2,6 +2,8 @@
   "projectName": "Media Ledger Studio",
   "tagline": "An operations ledger for generated media provenance, review, and Backblaze B2 storage handoff.",
   "appUrl": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/",
+  "reviewRiskUrl": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?view=review",
+  "judgingEvidenceUrl": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?view=evidence",
   "sourceRepoUrl": "https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/media-ledger-studio",
   "videoUrl": "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/main/examples/media-ledger-studio/public/media-ledger-studio-demo.mp4",
   "walkthroughUrl": "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/demo-video/",

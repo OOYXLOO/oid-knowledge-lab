@@ -78,6 +78,8 @@ assert.match(devpostFields.challengeReadiness, /Do not describe this as a live B
 assert.match(devpostFields.storageHandoffSummary, /3 generated assets/);
 assert.match(devpostFields.storageHandoffSummary, /JSON sidecar records/);
 assert.equal(devpostFields.appUrl, "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/");
+assert.equal(devpostFields.reviewRiskUrl, "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?view=review");
+assert.equal(devpostFields.judgingEvidenceUrl, "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/?view=evidence");
 assert.equal(devpostFields.walkthroughUrl, "https://ooyxloo.github.io/oid-knowledge-lab/media-ledger-studio/demo-video/");
 assert.equal(devpostFields.walkthroughRawUrl, "https://raw.githubusercontent.com/OOYXLOO/oid-knowledge-lab/gh-pages/media-ledger-studio/demo-video.html");
 assert.match(devpostFields.videoUrl, /media-ledger-studio-demo\.mp4$/);

@@ -21,6 +21,8 @@ ${fields.tagline}
 ## Links
 
 - App: ${fields.appUrl}
+- Review risk matrix: ${fields.reviewRiskUrl}
+- Judging evidence view: ${fields.judgingEvidenceUrl}
 - Source repository: ${fields.sourceRepoUrl}
 - Demo video: ${fields.videoUrl}
 - 3-minute walkthrough: ${fields.walkthroughUrl}
