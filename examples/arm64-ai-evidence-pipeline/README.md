@@ -13,6 +13,7 @@ The current report is only a local baseline unless it is rerun on an Arm64 envir
 
 ```bash
 npm run arm:benchmark
+npm run arm:verify
 ```
 
 Custom platform note:
@@ -31,3 +32,11 @@ examples/arm64-ai-evidence-pipeline/reports/benchmark.md
 ## Boundary
 
 Do not claim Arm64 optimization until the benchmark is rerun on an Arm64 platform and the resulting report shows `environment.arch` as `arm64`.
+
+For a real challenge submission, rerun the benchmark on an Arm64 environment and verify with:
+
+```bash
+npm run arm:verify -- --require-arm64
+```
+
+The GitHub Actions workflow `.github/workflows/arm-benchmark.yml` is intentionally a baseline verifier by default. It does not create an Arm64 claim on `ubuntu-latest`.

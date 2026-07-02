@@ -1,0 +1,41 @@
+name: Arm evidence benchmark
+
+on:
+  workflow_dispatch:
+    inputs:
+      require_arm64:
+        description: "Fail unless the generated report is from an arm64 runner"
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+      platform_note:
+        description: "Benchmark platform note"
+        required: true
+        default: "GitHub Actions baseline; not an Arm64 claim unless environment.arch is arm64"
+  push:
+    paths:
+      - ".github/workflows/arm-benchmark.yml"
+      - "examples/arm64-ai-evidence-pipeline/**"
+      - "package.json"
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Run benchmark
+        run: |
+          npm run arm:benchmark -- --platform-note "${{ inputs.platform_note || 'GitHub Actions baseline; not an Arm64 claim unless environment.arch is arm64' }}"
+      - name: Verify benchmark
+        run: |
+          if [ "${{ inputs.require_arm64 || 'false' }}" = "true" ]; then
+            npm run arm:verify -- --require-arm64
+          else
+            npm run arm:verify
+          fi

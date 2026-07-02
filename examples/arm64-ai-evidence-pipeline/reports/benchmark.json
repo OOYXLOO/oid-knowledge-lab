@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-02T05:44:24.572Z",
+  "generated_at": "2026-07-02T05:52:58.172Z",
   "platform_note": "local baseline; rerun on an Arm64 environment before challenge submission",
   "environment": {
     "node": "v24.13.0",
@@ -16,8 +16,8 @@
   "results": {
     "baseline": {
       "label": "baseline",
-      "duration_ms": 51.339,
-      "avg_iteration_ms": 0.042782,
+      "duration_ms": 52.091,
+      "avg_iteration_ms": 0.043409,
       "heap_delta_bytes": 638344,
       "result": [
         {
@@ -94,9 +94,9 @@
     },
     "optimized": {
       "label": "optimized",
-      "duration_ms": 32.347,
-      "avg_iteration_ms": 0.026956,
-      "heap_delta_bytes": 1047136,
+      "duration_ms": 34.3,
+      "avg_iteration_ms": 0.028583,
+      "heap_delta_bytes": -79744,
       "result": [
         {
           "question": "Which events explain webhook retry trace latency?",
@@ -172,7 +172,7 @@
     }
   },
   "summary": {
-    "speedup": 1.59,
+    "speedup": 1.52,
     "arm64_ready": false,
     "claim_boundary": "Do not claim Arm64 optimization until this benchmark is rerun on Arm64."
   }

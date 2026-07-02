@@ -1,6 +1,6 @@
 # Arm64 AI Evidence Pipeline Benchmark
 
-Generated at: 2026-07-02T05:44:24.572Z
+Generated at: 2026-07-02T05:52:58.172Z
 
 ## Platform
 
@@ -20,10 +20,10 @@ Generated at: 2026-07-02T05:44:24.572Z
 
 | Mode | Total ms | Avg iteration ms | Heap delta bytes |
 |---|---:|---:|---:|
-| Baseline scan | 51.339 | 0.042782 | 638344 |
-| Indexed query | 32.347 | 0.026956 | 1047136 |
+| Baseline scan | 52.091 | 0.043409 | 638344 |
+| Indexed query | 34.3 | 0.028583 | -79744 |
 
-Speedup estimate: 1.59x
+Speedup estimate: 1.52x
 
 ## Submission Boundary
 
