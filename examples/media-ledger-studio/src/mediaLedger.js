@@ -151,6 +151,13 @@ export function findRunById(id, runs = sampleRuns) {
   return runs.find((run) => run.id === id) || runs[0];
 }
 
+export function resolveInitialRunId(search = "", runs = sampleRuns) {
+  const fallbackId = runs[0]?.id || "";
+  const params = new URLSearchParams(search.startsWith("?") ? search : `?${search}`);
+  const requestedId = params.get("run");
+  return runs.some((run) => run.id === requestedId) ? requestedId : fallbackId;
+}
+
 export function createProviderModelList(runs = sampleRuns) {
   const seen = new Set();
   return runs

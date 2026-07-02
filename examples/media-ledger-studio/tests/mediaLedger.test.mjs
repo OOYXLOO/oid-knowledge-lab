@@ -12,6 +12,7 @@ import {
   createSubmissionPack,
   createLiveIntegrationBundle,
   findRunById,
+  resolveInitialRunId,
   sampleRuns,
   summarizeLedger
 } from "../src/mediaLedger.js";
@@ -26,6 +27,9 @@ assert.equal(summary.totalMegabytes > 10, true);
 const selected = findRunById("run-storyboard-014", sampleRuns);
 assert.equal(selected.title, "Launch storyboard clip");
 assert.equal(selected.storage.storageClass, "Backblaze B2 Standard");
+assert.equal(resolveInitialRunId("?run=run-storyboard-014", sampleRuns), "run-storyboard-014");
+assert.equal(resolveInitialRunId("?run=missing-run", sampleRuns), "run-cover-001");
+assert.equal(resolveInitialRunId("", sampleRuns), "run-cover-001");
 
 const pack = createSubmissionPack(sampleRuns);
 assert.equal(pack.appName, "Media Ledger Studio");

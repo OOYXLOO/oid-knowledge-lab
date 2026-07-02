@@ -6,6 +6,7 @@ import {
   createReviewRiskMatrix,
   createSubmissionPack,
   findRunById,
+  resolveInitialRunId,
   sampleRuns,
   summarizeLedger
 } from "./mediaLedger.js";
@@ -16,7 +17,7 @@ function formatBytes(bytes) {
 }
 
 function App() {
-  const [selectedId, setSelectedId] = useState(sampleRuns[0].id);
+  const [selectedId, setSelectedId] = useState(() => resolveInitialRunId(window.location.search, sampleRuns));
   const [view, setView] = useState("pipeline");
   const selected = findRunById(selectedId);
   const summary = useMemo(() => summarizeLedger(sampleRuns), []);
