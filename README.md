@@ -11,6 +11,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Editor pitch pack: <https://ooyxloo.github.io/oid-knowledge-lab/editor-pitch-pack.html>
 - Editor decision brief: <https://ooyxloo.github.io/oid-knowledge-lab/editor-decision-brief.html>
 - Editor trust packet: <https://ooyxloo.github.io/oid-knowledge-lab/editor-trust-packet.html>
+- Paid writing editor quickstart: <https://ooyxloo.github.io/oid-knowledge-lab/paid-writing-p0-editor-quickstart.html>
 - AI reviewability brief: <https://ooyxloo.github.io/oid-knowledge-lab/ai-reviewability-brief.html>
 - Identity research readiness: <https://ooyxloo.github.io/oid-knowledge-lab/auth0-research-readiness.html>
 - Code reviewer readiness: <https://ooyxloo.github.io/oid-knowledge-lab/geektastic-reviewer-readiness.html>
