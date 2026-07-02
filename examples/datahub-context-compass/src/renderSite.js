@@ -44,6 +44,9 @@ function render(report) {
     .metric { background: white; border: 1px solid #dfe4ec; border-radius: 8px; padding: 16px; }
     .metric b { display: block; font-size: 2rem; }
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .video-band { margin: 0 0 22px; display: grid; gap: 10px; }
+    .video-band video { width: 100%; aspect-ratio: 16 / 9; border: 1px solid #dfe4ec; border-radius: 8px; background: #091014; }
+    .video-band a { color: #175b3c; font-weight: 700; }
     .change { background: white; border: 1px solid #dfe4ec; border-radius: 8px; padding: 18px; min-height: 340px; display: grid; gap: 12px; align-content: start; }
     .change header { display: flex; justify-content: space-between; gap: 12px; align-items: center; text-transform: uppercase; font-size: 0.76rem; color: #58667a; }
     .change header span { padding: 5px 8px; border-radius: 999px; background: #eef2f7; }
@@ -70,6 +73,10 @@ function render(report) {
       <div class="metric"><b>${report.summary.blocked}</b><span>blocked</span></div>
       <div class="metric"><b>${report.summary.review}</b><span>review</span></div>
       <div class="metric"><b>${report.summary.ready}</b><span>ready</span></div>
+    </section>
+    <section class="video-band" aria-label="Demo video">
+      <video controls preload="metadata" src="media/datahub-context-compass-demo.mp4"></video>
+      <a href="media/datahub-context-compass-demo.mp4">Open demo video</a>
     </section>
     <section class="grid">${cards}</section>
     <footer>Generated for ${escapeHtml(report.workspace)} at ${escapeHtml(report.generatedAt)}. Sample data only.</footer>
