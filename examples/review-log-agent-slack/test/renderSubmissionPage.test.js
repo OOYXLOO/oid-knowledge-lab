@@ -28,6 +28,7 @@ function testRendersSubmissionPageWithCoreLinks() {
   assert.match(html, /Slack app handler contract/);
   assert.match(html, /Judge Fit Checklist/);
   assert.match(html, /New Slack Agent/);
+  assert.match(html, /Best Technological Implementation/);
   assert.match(html, /MCP-style tool wrapper/);
   assert.match(html, /POST \/api\/agent\/call/);
   assert.match(html, /Sandbox URL/);

@@ -2,6 +2,18 @@
 
 This file maps Slack Agent Builder Challenge submission requirements to current Review Log Agent evidence.
 
+## Official Challenge Facts
+
+- Challenge: Slack Agent Builder Challenge.
+- Deadline: July 13, 2026 at 5:00 PM PDT.
+- Prize pool: USD 42,000 cash.
+- Relevant prize targets for this project:
+  - New Slack Agent: first place USD 8,000, second place USD 4,000.
+  - Best UX: USD 2,000.
+  - Most Innovative Slack Agent: USD 2,000.
+  - Best Technological Implementation: USD 2,000.
+- Required technology fit: the project must use at least one of Slack AI capabilities, MCP server integration, or Real-Time Search API.
+
 ## Required Submission Items
 
 | Requirement | Current Evidence | Status |
@@ -17,7 +29,7 @@ This file maps Slack Agent Builder Challenge submission requirements to current 
 
 ## Slack Technology Mapping
 
-The current project demonstrates two Slack Challenge-relevant integration shapes:
+The current project demonstrates three Slack Challenge-relevant integration shapes:
 
 1. Slash command endpoint
    - Endpoint: `https://review-log-agent-slack.vercel.app/api/slack/commands/review-log`
@@ -47,3 +59,21 @@ The current project demonstrates two Slack Challenge-relevant integration shapes
 ## Current Missing Item
 
 The only required field still missing is the Slack developer sandbox URL. This is account-side platform evidence, not a code gap. The current implementation should not store Slack credentials, tokens, cookies, private workspace exports, or account-local data.
+
+## Recommended Track Positioning
+
+Primary track:
+
+```text
+New Slack Agent
+```
+
+Secondary award fit:
+
+```text
+Best Technological Implementation
+Best UX
+Most Innovative Slack Agent
+```
+
+Rationale: the project is an original Slack review agent with a tested review-log core, slash-command surface, public agent-tool API, MCP-style tool wrapper, browser playground, source snapshot, and a judge verification path. The remaining sandbox URL is an account-side setup item, not a missing implementation concept.

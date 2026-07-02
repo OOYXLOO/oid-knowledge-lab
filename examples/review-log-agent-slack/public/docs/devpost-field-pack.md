@@ -42,7 +42,21 @@ Teams increasingly use AI-assisted drafting inside collaboration tools, but the 
 ## Challenge Fit
 
 ```text
-This project is currently a prototype core, static demo, browser playground, and MCP-style tool wrapper for a Slack review agent. The planned Slack shape is a message shortcut, slash command, workflow step, or MCP tool integration that receives a sanitized thread, calls the review-log core, and returns an ephemeral Markdown handoff for owner review.
+This project is currently a prototype core, static demo, browser playground, public agent-tool API, slash-command endpoint, and MCP-style tool wrapper for a Slack review agent. The planned Slack shape is a message shortcut, slash command, workflow step, or MCP tool integration that receives a sanitized thread, calls the review-log core, and returns an ephemeral Markdown handoff for owner review.
+```
+
+## Recommended Track
+
+```text
+New Slack Agent
+```
+
+## Secondary Award Fit
+
+```text
+Best Technological Implementation
+Best UX
+Most Innovative Slack Agent
 ```
 
 ## Built With
@@ -65,6 +79,8 @@ https://review-log-agent-slack.vercel.app/media/review-log-agent-slack-demo.mp4
 https://review-log-agent-slack.vercel.app/docs/judge-verification.md
 https://review-log-agent-slack.vercel.app/docs/official-submission-requirements.md
 https://review-log-agent-slack.vercel.app/docs/source-snapshot.md
+https://review-log-agent-slack.vercel.app/api/agent/tools
+https://review-log-agent-slack.vercel.app/api/agent/call
 https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/review-log-agent-slack/docs/github-source-fallback.md
 https://oid-knowledge-lab.vercel.app/evidence-log-playground.html
 https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack
