@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "generatedAt": "2026-07-02T21:42:46.722Z",
+  "checks": [
+    {
+      "name": "apache-license",
+      "ok": true
+    },
+    {
+      "name": "readme-positioning",
+      "ok": true
+    },
+    {
+      "name": "devpost-field-pack",
+      "ok": true
+    },
+    {
+      "name": "demo-video-script",
+      "ok": true
+    },
+    {
+      "name": "sample-risk-brief",
+      "ok": true
+    },
+    {
+      "name": "mcp-read-plan",
+      "ok": true
+    },
+    {
+      "name": "static-demo",
+      "ok": true
+    },
+    {
+      "name": "source-and-tests",
+      "ok": true
+    }
+  ]
+}

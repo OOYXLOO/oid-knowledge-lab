@@ -27,6 +27,7 @@ can do real work instead of guessing. This prototype demonstrates the core loop:
 npm run check
 npm test
 npm run build
+npm run verify:submission
 npm run demo
 ```
 
@@ -37,6 +38,7 @@ reports/sample-risk-brief.md
 reports/sample-risk-brief.json
 reports/datahub-mcp-read-plan.md
 reports/datahub-mcp-read-plan.json
+reports/submission-verification.json
 public/index.html
 ```
 
