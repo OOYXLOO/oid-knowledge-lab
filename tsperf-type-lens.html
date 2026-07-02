@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TSPerf Type Lens - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">TypeScript performance research</p>
+      <h1>TSPerf Type Lens surfaces expensive type declarations inside VS Code.</h1>
+      <p class="summary">A prototype extension and analyzer that ranks TypeScript type, interface, and class declarations by checker timing, structural depth, generic surface, syntax drivers, and optimization hints.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="https://algora.io/challenges/tsperf">TSPerf challenge</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/docs/articles/tsperf-type-lens-case-study.md">Case study</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/tsperf-type-lens">Source snapshot</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="TSPerf Type Lens validation summary">
+      <article><span>Prototype</span><strong>Runnable</strong><small>VS Code CodeLens plus CLI analyzer</small></article>
+      <article><span>Validation</span><strong>80 files</strong><small>Type-Fest source declarations</small></article>
+      <article><span>Signals</span><strong>Heuristic</strong><small>Timing, depth, syntax, recursion</small></article>
+      <article><span>Boundary</span><strong>Research</strong><small>Needs tsserver correlation before final claim</small></article>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Problem</p>
+      <h2>Type complexity is hard to inspect during review</h2>
+      <p class="panel-copy">Large TypeScript libraries can hide expensive conditional, mapped, recursive, or template-literal type declarations behind small aliases. TSPerf Type Lens makes those hotspots visible near the source before they become editor latency or CI compile-time surprises.</p>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Current implementation</p>
+      <h2>Signals collected per declaration</h2>
+      <table class="handoff-table">
+        <thead><tr><th>Signal</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>Checker timing</td><td>Measures declared-type resolution, type string expansion, and total checker time for a declaration.</td></tr>
+          <tr><td>Structural depth</td><td>Ranks nested helper shapes that often indicate hard-to-review type computation.</td></tr>
+          <tr><td>Syntax drivers</td><td>Counts conditional, mapped, infer, indexed-access, union, intersection, keyof, and template-literal features.</td></tr>
+          <tr><td>Reference footprint</td><td>Tracks identifier references and unique references to highlight wide helper dependencies.</td></tr>
+          <tr><td>Recommendations</td><td>Suggests trace capture, recursion guards, branch splitting, key precomputation, or alias simplification.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Validation snapshot</p>
+      <h2>Type-Fest hotspot scan</h2>
+      <p class="panel-copy">The prototype was run against the Type-Fest source declarations at commit <code>1b7eed6</code>. The validation scan analyzed 80 files and 209 declarations with no diagnostics or parse errors.</p>
+      <table class="handoff-table">
+        <thead><tr><th>Rank</th><th>Declaration</th><th>Observed driver</th><th>Primary action</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><code>GreaterThan</code></td><td>Depth 15, conditional types, infer helpers</td><td>Reduce nested branches or introduce capped helper aliases.</td></tr>
+          <tr><td>2</td><td><code>DelimiterCasedPropertiesArrayDeep</code></td><td>Recursive deep case conversion</td><td>Add recursion-depth guard or narrower accumulator shape.</td></tr>
+          <tr><td>3</td><td><code>PropertyOf</code></td><td>Recursive property lookup helpers</td><td>Split conditional branches and avoid broad distributive conditionals.</td></tr>
+          <tr><td>6</td><td><code>_ArraySlice</code></td><td>Checker-time spike</td><td>Capture a tsc or tsserver trace and split or cache the declaration first.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Verification</p>
+      <h2>Local checks</h2>
+      <pre><code>npm run verify
+
+Result:
+node --check src/analyzer.js
+node --check src/extension.js
+node scripts/smoke-test.js
+ok: true</code></pre>
+      <p class="panel-copy">The current source is a research prototype, not a claim that all TypeScript editor latency is explained by these heuristics. The next stronger validation step is to compare hotspots against tsserver traces from larger public projects.</p>
+    </section>
+
+    <section class="panel">
+      <p class="eyebrow">Next research step</p>
+      <h2>Move from heuristic ranking to trace-backed evidence</h2>
+      <p class="panel-copy">The useful next increment is to collect a small public benchmark set, run TSPerf Type Lens, capture TypeScript server traces for the top hotspots, and publish a comparison table that shows where the heuristic matches or misses real editor cost.</p>
+    </section>
+  </main>
+</body>
+</html>
