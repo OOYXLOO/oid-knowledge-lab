@@ -35,6 +35,16 @@ ${evidence.judgingChecklist
   .map((item) => `- ${item.label} [${item.status}]: ${item.evidence}`)
   .join("\n")}
 
+## Review Risk Matrix
+
+- Client-ready assets: ${evidence.reviewRiskMatrix.summary.clientReady}
+- Assets needing review: ${evidence.reviewRiskMatrix.summary.needsReview}
+- High-risk assets: ${evidence.reviewRiskMatrix.summary.highRisk}
+
+${evidence.reviewRiskMatrix.rows
+  .map((row) => `- ${row.title} [${row.severity}]: ${row.nextAction}`)
+  .join("\n")}
+
 ## Honest Boundary
 
 ${evidence.honestBoundary}

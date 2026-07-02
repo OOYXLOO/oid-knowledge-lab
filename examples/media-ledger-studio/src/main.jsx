@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import {
   createDevpostFields,
   createJudgingEvidencePack,
+  createReviewRiskMatrix,
   createSubmissionPack,
   findRunById,
   sampleRuns,
@@ -22,6 +23,7 @@ function App() {
   const pack = useMemo(() => createSubmissionPack(sampleRuns), []);
   const fields = useMemo(() => createDevpostFields(), []);
   const evidence = useMemo(() => createJudgingEvidencePack(sampleRuns), []);
+  const reviewRisk = useMemo(() => createReviewRiskMatrix(sampleRuns), []);
 
   return (
     <main className="app-shell">
@@ -78,7 +80,10 @@ function App() {
         )}
         {view === "submission" && <SubmissionView fields={fields} pack={pack} />}
         {view === "evidence" && <EvidenceView evidence={evidence} />}
-        {view !== "pipeline" && view !== "submission" && view !== "evidence" && <PlaceholderView view={view} />}
+        {view === "review" && <ReviewView reviewRisk={reviewRisk} />}
+        {view !== "pipeline" && view !== "submission" && view !== "evidence" && view !== "review" && (
+          <PlaceholderView view={view} />
+        )}
       </section>
     </main>
   );
@@ -310,6 +315,47 @@ function SubmissionView({ fields, pack }) {
           ))}
         </div>
       </article>
+    </section>
+  );
+}
+
+function ReviewView({ reviewRisk }) {
+  return (
+    <section className="review-grid">
+      <article className="submission-card wide">
+        <div className="panel-heading">
+          <h2>Review risk matrix</h2>
+          <span>Client handoff control</span>
+        </div>
+        <div className="risk-metrics">
+          <Metric label="Client-ready" value={reviewRisk.summary.clientReady} />
+          <Metric label="Needs review" value={reviewRisk.summary.needsReview} />
+          <Metric label="High risk" value={reviewRisk.summary.highRisk} />
+        </div>
+      </article>
+
+      {reviewRisk.rows.map((row) => (
+        <article className={`risk-card ${row.severity}`} key={row.runId}>
+          <div className="risk-card-header">
+            <div>
+              <h2>{row.title}</h2>
+              <span>{row.runId}</span>
+            </div>
+            <strong>{row.severity}</strong>
+          </div>
+          <dl>
+            <Field label="Owner" value={row.owner} />
+            <Field label="Decision" value={row.reviewDecision} />
+            <Field label="Object key" value={row.objectKey} />
+            <Field label="Next action" value={row.nextAction} />
+          </dl>
+          <ul>
+            {row.issues.map((issue) => (
+              <li key={issue}>{issue}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
     </section>
   );
 }

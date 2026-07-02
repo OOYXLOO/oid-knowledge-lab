@@ -6,6 +6,7 @@ import {
   createJudgingEvidencePack,
   createProviderModelList,
   createReadinessChecklist,
+  createReviewRiskMatrix,
   createSidecarMetadataManifest,
   createStorageHandoffManifest,
   createSubmissionPack,
@@ -149,5 +150,17 @@ assert.equal(judgingEvidence.metrics.genblazeRequestPlans, sampleRuns.length);
 assert.equal(judgingEvidence.judgingChecklist.some((item) => item.label === "Live adapter boundary"), true);
 assert.match(judgingEvidence.honestBoundary, /dry-run prototype/);
 assert.match(judgingEvidence.honestBoundary, /does not claim real B2 uploads/);
+assert.equal(judgingEvidence.reviewRiskMatrix.summary.highRisk, 1);
+
+const reviewRiskMatrix = createReviewRiskMatrix(sampleRuns);
+assert.equal(reviewRiskMatrix.rows.length, sampleRuns.length);
+assert.equal(reviewRiskMatrix.summary.clientReady, 1);
+assert.equal(reviewRiskMatrix.summary.needsReview, 2);
+assert.equal(reviewRiskMatrix.summary.highRisk, 1);
+assert.equal(reviewRiskMatrix.rows.find((row) => row.runId === "run-cover-001").severity, "medium");
+assert.equal(reviewRiskMatrix.rows.find((row) => row.runId === "run-storyboard-014").severity, "high");
+assert.equal(reviewRiskMatrix.rows.find((row) => row.runId === "run-audio-006").severity, "low");
+assert.match(reviewRiskMatrix.rows.find((row) => row.runId === "run-storyboard-014").nextAction, /transcript/i);
+assert.match(reviewRiskMatrix.rows.find((row) => row.runId === "run-audio-006").nextAction, /license/i);
 
 console.log("mediaLedger tests passed");

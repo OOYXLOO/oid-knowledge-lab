@@ -52,6 +52,57 @@
     "sidecarUploadPlans": 3,
     "genblazeRequestPlans": 3
   },
+  "reviewRiskMatrix": {
+    "summary": {
+      "clientReady": 1,
+      "needsReview": 2,
+      "highRisk": 1
+    },
+    "rows": [
+      {
+        "runId": "run-cover-001",
+        "title": "Editorial cover image",
+        "owner": "Mira Chen",
+        "severity": "medium",
+        "clientReady": false,
+        "issues": [
+          "Campaign metadata needs a final handoff note."
+        ],
+        "nextAction": "Add final campaign ID and metadata note to the delivery record.",
+        "reviewDecision": "Approved with metadata note",
+        "objectKey": "projects/editorial-cover/run-cover-001/final.png"
+      },
+      {
+        "runId": "run-storyboard-014",
+        "title": "Launch storyboard clip",
+        "owner": "Alex Rivera",
+        "severity": "high",
+        "clientReady": false,
+        "issues": [
+          "Reviewer hold or status requires follow-up before handoff.",
+          "Review score is below the normal client-ready threshold.",
+          "Transcript metadata is incomplete.",
+          "License or rights check must be confirmed."
+        ],
+        "nextAction": "Add reviewer initials and transcript metadata before client handoff.",
+        "reviewDecision": "Hold",
+        "objectKey": "projects/launch-storyboard/run-storyboard-014/storyboard.webm"
+      },
+      {
+        "runId": "run-audio-006",
+        "title": "Ambient audio bed",
+        "owner": "Noor Patel",
+        "severity": "low",
+        "clientReady": true,
+        "issues": [
+          "License or rights check must be confirmed."
+        ],
+        "nextAction": "Confirm license and rights checks, then attach the result to the sidecar.",
+        "reviewDecision": "Archive candidate",
+        "objectKey": "projects/audio-bed/run-audio-006/loop.wav"
+      }
+    ]
+  },
   "honestBoundary": "This public build is a dry-run prototype. It does not claim real B2 uploads or real Genblaze calls until live credentials and provider access are supplied.",
   "nextUpgrade": "Connect live B2 and Genblaze credentials in a private environment, run the adapter verification, and replace the dry-run blocker summary with a live-ready report."
 }

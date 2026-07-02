@@ -207,6 +207,7 @@ export function createDevpostFields({
 export function createJudgingEvidencePack(runs = sampleRuns) {
   const pack = createSubmissionPack(runs);
   const integration = createIntegrationReadinessReport(runs);
+  const reviewRiskMatrix = createReviewRiskMatrix(runs);
   const assetTypes = [...new Set(runs.map((run) => run.storage.contentType.split("/")[0]))];
   return {
     projectName: "Media Ledger Studio",
@@ -259,6 +260,7 @@ export function createJudgingEvidencePack(runs = sampleRuns) {
       sidecarUploadPlans: integration.totals.sidecarUploads,
       genblazeRequestPlans: integration.totals.genblazeRequests
     },
+    reviewRiskMatrix,
     honestBoundary:
       integration.readyForLiveRun
         ? "All required live environment variables are present for an adapter run. Credential values are never printed."
@@ -266,6 +268,76 @@ export function createJudgingEvidencePack(runs = sampleRuns) {
     nextUpgrade:
       "Connect live B2 and Genblaze credentials in a private environment, run the adapter verification, and replace the dry-run blocker summary with a live-ready report."
   };
+}
+
+export function createReviewRiskMatrix(runs = sampleRuns) {
+  const rows = runs.map((run) => {
+    const notes = [
+      run.status,
+      run.license,
+      run.review.decision,
+      run.review.notes,
+      ...run.safetyNotes
+    ].join(" ");
+    const issues = [];
+    if (/needs|hold/i.test(run.status) || /hold/i.test(run.review.decision)) {
+      issues.push("Reviewer hold or status requires follow-up before handoff.");
+    }
+    if (run.review.score < 80) {
+      issues.push("Review score is below the normal client-ready threshold.");
+    }
+    if (/transcript/i.test(notes)) {
+      issues.push("Transcript metadata is incomplete.");
+    }
+    if (/license|rights|copyright/i.test(notes)) {
+      issues.push("License or rights check must be confirmed.");
+    }
+    if (/campaign ID|metadata note/i.test(notes)) {
+      issues.push("Campaign metadata needs a final handoff note.");
+    }
+
+    const severity = issues.some((issue) => /hold|score|transcript/i.test(issue))
+      ? "high"
+      : issues.some((issue) => /campaign|metadata/i.test(issue))
+        ? "medium"
+        : "low";
+    const nextAction = chooseReviewNextAction(issues);
+
+    return {
+      runId: run.id,
+      title: run.title,
+      owner: run.owner,
+      severity,
+      clientReady: severity === "low",
+      issues: issues.length ? issues : ["No handoff blockers found."],
+      nextAction,
+      reviewDecision: run.review.decision,
+      objectKey: run.storage.objectKey
+    };
+  });
+
+  return {
+    summary: {
+      clientReady: rows.filter((row) => row.clientReady).length,
+      needsReview: rows.filter((row) => !row.clientReady).length,
+      highRisk: rows.filter((row) => row.severity === "high").length
+    },
+    rows
+  };
+}
+
+function chooseReviewNextAction(issues) {
+  const issueText = issues.join(" ");
+  if (/transcript/i.test(issueText)) {
+    return "Add reviewer initials and transcript metadata before client handoff.";
+  }
+  if (/license|rights|copyright/i.test(issueText)) {
+    return "Confirm license and rights checks, then attach the result to the sidecar.";
+  }
+  if (/campaign|metadata/i.test(issueText)) {
+    return "Add final campaign ID and metadata note to the delivery record.";
+  }
+  return "Ready for normal storage handoff.";
 }
 
 export function createStorageHandoffManifest(runs = sampleRuns) {

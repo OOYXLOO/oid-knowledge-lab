@@ -30,6 +30,16 @@ Generated-media teams need a durable review ledger, not only final files. Media 
 - Integrity evidence [ready]: SHA-256 media checksums plus sidecar-to-media pairing checks
 - Live adapter boundary [blocked-on-env]: Missing 4 live environment variable(s): B2_KEY_ID, B2_APP_KEY, B2_BUCKET, GMI_API_KEY
 
+## Review Risk Matrix
+
+- Client-ready assets: 1
+- Assets needing review: 2
+- High-risk assets: 1
+
+- Editorial cover image [medium]: Add final campaign ID and metadata note to the delivery record.
+- Launch storyboard clip [high]: Add reviewer initials and transcript metadata before client handoff.
+- Ambient audio bed [low]: Confirm license and rights checks, then attach the result to the sidecar.
+
 ## Honest Boundary
 
 This public build is a dry-run prototype. It does not claim real B2 uploads or real Genblaze calls until live credentials and provider access are supplied.
