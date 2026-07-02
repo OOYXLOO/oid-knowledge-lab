@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Agent Docs First-Minute Audit - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Developer Docs Sample</p>
+      <h1>AI Agent Docs First-Minute Audit</h1>
+      <p class="summary">A compact sample for reviewing developer documentation around AI-agent trust, identity, boundaries, quickstarts, and proof paths before rewriting the docs.</p>
+      <div class="links">
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="developer-docs-trial-pack.html">Developer docs trial pack</a>
+        <a href="developer-docs-sample-diagnosis.html">Docs sample diagnosis</a>
+        <a href="mattermost-review-log-workflow-outline.html">Review-log workflow outline</a>
+        <a href="draftdev-writer-network-hub.html">Writer hub</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Audit signals">
+      <article><span>Reader</span><strong>Developer</strong><small>First integration path</small></article>
+      <article><span>Topic</span><strong>AI agents</strong><small>Identity and trust</small></article>
+      <article><span>Output</span><strong>Docs audit</strong><small>Rewrite targets</small></article>
+      <article><span>Boundary</span><strong>Public-safe</strong><small>No private data</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Goal</p>
+        <h2>The first minute should answer three questions</h2>
+        <p class="panel-copy">What problem does this agent identity layer solve? What can a developer build or verify first? What trust, boundary, or production-readiness claim is proven today?</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Audit checklist</p>
+        <h2>What I would inspect first</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Area</th><th>Review question</th><th>Good signal</th></tr></thead>
+        <tbody>
+          <tr><td>Mental model</td><td>Can a new reader explain the product in one sentence?</td><td>The first page names the actors, trust boundary, and first integration path.</td></tr>
+          <tr><td>First integration</td><td>Can a developer complete a small useful step quickly?</td><td>The quickstart has prerequisites, expected output, and a success check.</td></tr>
+          <tr><td>Trust boundary</td><td>Does the doc distinguish identity, authorization, signing, delegation, and audit evidence?</td><td>Terms are defined before API details depend on them.</td></tr>
+          <tr><td>Agent behavior</td><td>Are examples clear about what is deterministic, simulated, or model-dependent?</td><td>Future claims and live behavior are separated.</td></tr>
+          <tr><td>Evidence</td><td>Can a reviewer see what changed or what was verified?</td><td>The doc includes logs, receipts, screenshots, tests, or handoff notes.</td></tr>
+          <tr><td>Safety</td><td>Are credentials, keys, private logs, and user data excluded from examples?</td><td>Samples use placeholders and explain what must stay private.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Rewrite targets</p>
+        <h2>Where I would start</h2>
+      </div>
+      <div class="queue-list">
+        <article><span>1</span><strong>Landing page first paragraph</strong><p>Replace abstract claims with a concrete reader promise, developer persona, and first thing to try.</p></article>
+        <article><span>2</span><strong>Quickstart</strong><p>Show the smallest useful setup path with expected output and failure notes.</p></article>
+        <article><span>3</span><strong>Trust model page</strong><p>Define identity, trust relationship, delegation, verification, and audit trail before deep API details.</p></article>
+        <article><span>4</span><strong>Examples</strong><p>Label examples as live, dry-run, simulated, or future, and keep private data out of public docs.</p></article>
+        <article><span>5</span><strong>Review handoff</strong><p>Add a checklist for what reviewers should confirm before treating an integration as production-ready.</p></article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Before / after pattern</p>
+        <h2>Make the trust claim concrete</h2>
+        <pre><code>Before:
+Our platform enables trusted AI agent collaboration across ecosystems.
+
+After:
+Willow gives each AI agent a verifiable identity record so another service can decide whether to trust a request, inspect the delegation chain, and keep an audit trail for review.</code></pre>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Boundary</p>
+        <h2>What this sample does not claim</h2>
+        <p class="panel-copy">This sample does not claim knowledge of any private product roadmap, private repository, account dashboard, or customer data. A real docs audit should start from the client's current docs, product behavior, and verified integration state.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
