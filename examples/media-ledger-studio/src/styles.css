@@ -124,6 +124,13 @@ h1 {
   line-height: 1.55;
 }
 
+.topbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
 .topbar button {
   border: 0;
   background: #12383c;
@@ -132,6 +139,10 @@ h1 {
   border-radius: 6px;
   cursor: pointer;
   white-space: nowrap;
+}
+
+.topbar button + button {
+  background: #245255;
 }
 
 .metrics {
@@ -521,5 +532,9 @@ ul {
 
   .topbar {
     flex-direction: column;
+  }
+
+  .topbar-actions {
+    justify-content: flex-start;
   }
 }

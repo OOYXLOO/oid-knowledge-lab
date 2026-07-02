@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { createRoot } from "react-dom/client";
 import {
   createDevpostFields,
+  createDevpostSubmissionText,
   createJudgingEvidencePack,
   createReviewRiskMatrix,
   createSubmissionPack,
@@ -24,6 +25,7 @@ function App() {
   const summary = useMemo(() => summarizeLedger(sampleRuns), []);
   const pack = useMemo(() => createSubmissionPack(sampleRuns), []);
   const fields = useMemo(() => createDevpostFields(), []);
+  const submissionText = useMemo(() => createDevpostSubmissionText(fields), [fields]);
   const evidence = useMemo(() => createJudgingEvidencePack(sampleRuns), []);
   const reviewRisk = useMemo(() => createReviewRiskMatrix(sampleRuns), []);
 
@@ -63,9 +65,14 @@ function App() {
             <h1>Generated media operations ledger</h1>
             <p>Track prompts, model runs, B2 storage records, checksums, and review decisions in one auditable handoff.</p>
           </div>
-          <button onClick={() => navigator.clipboard?.writeText(JSON.stringify(pack, null, 2))}>
-            Copy pack
-          </button>
+          <div className="topbar-actions">
+            <button onClick={() => navigator.clipboard?.writeText(submissionText)}>
+              Copy Devpost fields
+            </button>
+            <button onClick={() => navigator.clipboard?.writeText(JSON.stringify(pack, null, 2))}>
+              Copy pack
+            </button>
+          </div>
         </header>
 
         <section className="metrics" aria-label="Ledger summary">

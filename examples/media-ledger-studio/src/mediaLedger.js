@@ -220,6 +220,39 @@ export function createDevpostFields({
   };
 }
 
+export function createDevpostSubmissionText(fields = createDevpostFields()) {
+  return [
+    `Project Name: ${fields.projectName}`,
+    `Tagline: ${fields.tagline}`,
+    "",
+    "Links",
+    `App: ${fields.appUrl}`,
+    `Review Risk Matrix: ${fields.reviewRiskUrl}`,
+    `Judging Evidence View: ${fields.judgingEvidenceUrl}`,
+    `Source Repository: ${fields.sourceRepoUrl}`,
+    `Demo Video: ${fields.videoUrl}`,
+    `3-Minute Walkthrough: ${fields.walkthroughUrl}`,
+    "",
+    `Built With: ${fields.builtWith}`,
+    "",
+    `Inspiration: ${fields.inspiration}`,
+    "",
+    `What It Does: ${fields.whatItDoes}`,
+    "",
+    `How It Uses Backblaze B2: ${fields.howBackblazeB2IsUsed}`,
+    "",
+    `How It Uses Genblaze: ${fields.howGenblazeIsUsed}`,
+    "",
+    `Challenge Fit: ${fields.challengeFit}`,
+    "",
+    `Challenge Readiness: ${fields.challengeReadiness}`,
+    "",
+    `Storage Handoff Summary: ${fields.storageHandoffSummary}`,
+    "",
+    `What's Next: ${fields.whatIsNext}`
+  ].join("\n");
+}
+
 export function createJudgingEvidencePack(runs = sampleRuns) {
   const pack = createSubmissionPack(runs);
   const integration = createIntegrationReadinessReport(runs);

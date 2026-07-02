@@ -1,11 +1,12 @@
 import { mkdirSync, writeFileSync } from "node:fs";
-import { createDevpostFields } from "../src/mediaLedger.js";
+import { createDevpostFields, createDevpostSubmissionText } from "../src/mediaLedger.js";
 
 const outDir = "docs";
 mkdirSync(outDir, { recursive: true });
 
 const fields = createDevpostFields();
 writeFileSync(`${outDir}/devpost-field-pack.json`, `${JSON.stringify(fields, null, 2)}\n`);
+writeFileSync(`${outDir}/devpost-submission-copy.txt`, `${createDevpostSubmissionText(fields)}\n`);
 writeFileSync(
   `${outDir}/devpost-field-pack.md`,
   `# Media Ledger Studio Devpost Field Pack
@@ -76,4 +77,4 @@ ${fields.whatIsNext}
 `
 );
 
-console.log(`Exported ${outDir}/devpost-field-pack.md and ${outDir}/devpost-field-pack.json`);
+console.log(`Exported ${outDir}/devpost-field-pack.md, ${outDir}/devpost-field-pack.json, and ${outDir}/devpost-submission-copy.txt`);

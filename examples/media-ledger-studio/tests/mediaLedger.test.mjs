@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import {
   createChallengeReadinessScore,
   createDevpostFields,
+  createDevpostSubmissionText,
   createIntegrationReadinessReport,
   createJudgingEvidencePack,
   createProviderModelList,
@@ -85,6 +86,14 @@ assert.equal(devpostFields.walkthroughRawUrl, "https://raw.githubusercontent.com
 assert.match(devpostFields.videoUrl, /media-ledger-studio-demo\.mp4$/);
 assert.match(devpostFields.sourceRepoUrl, /github\.com\/OOYXLOO\/oid-knowledge-lab/);
 assert.match(devpostFields.challengeFit, /Backblaze B2/);
+
+const devpostSubmissionText = createDevpostSubmissionText(devpostFields);
+assert.match(devpostSubmissionText, /Project Name: Media Ledger Studio/);
+assert.match(devpostSubmissionText, /App: https:\/\/ooyxloo\.github\.io\/oid-knowledge-lab\/media-ledger-studio\//);
+assert.match(devpostSubmissionText, /Review Risk Matrix: .*view=review/);
+assert.match(devpostSubmissionText, /Judging Evidence View: .*view=evidence/);
+assert.match(devpostSubmissionText, /3-Minute Walkthrough: .*demo-video/);
+assert.match(devpostSubmissionText, /Backblaze B2/);
 
 const liveBundle = createLiveIntegrationBundle(sampleRuns, {
   publicBaseUrl: "https://media-ledger-studio-static.vercel.app",
