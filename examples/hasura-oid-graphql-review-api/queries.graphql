@@ -1,0 +1,68 @@
+query OpenOidFindings {
+  oid_findings(
+    where: {status: {_eq: "open"}}
+    order_by: [{severity: desc}, {updated_at: desc}]
+  ) {
+    id
+    severity
+    finding_type
+    reviewer_note
+    action_owner
+    oid_asset {
+      dotted_oid
+      friendly_name
+      category
+    }
+  }
+}
+
+query CertificateOidRows {
+  oid_assets(
+    where: {category: {_in: ["certificate", "security"]}}
+    order_by: {dotted_oid: asc}
+  ) {
+    dotted_oid
+    friendly_name
+    source_note
+    oid_findings(where: {status: {_neq: "resolved"}}) {
+      severity
+      finding_type
+      status
+    }
+  }
+}
+
+query OwnerQueue($owner: String!) {
+  oid_findings(
+    where: {
+      action_owner: {_eq: $owner},
+      status: {_in: ["open", "triaged"]}
+    }
+    order_by: {updated_at: desc}
+  ) {
+    id
+    status
+    severity
+    reviewer_note
+    oid_asset {
+      asset_key
+      dotted_oid
+      friendly_name
+    }
+  }
+}
+
+mutation MarkFindingTriaged($id: bigint!, $note: String!) {
+  update_oid_findings_by_pk(
+    pk_columns: {id: $id},
+    _set: {
+      status: "triaged",
+      reviewer_note: $note
+    }
+  ) {
+    id
+    status
+    reviewer_note
+    updated_at
+  }
+}

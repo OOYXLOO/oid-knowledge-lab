@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hasura OID GraphQL Review API Packet - OID Knowledge Lab</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Hasura tutorial pitch packet</p>
+      <h1>Build a GraphQL review API for OID inventory cleanup</h1>
+      <p class="summary">A Hasura-focused tutorial packet for modeling sanitized OID review records in Postgres, exposing reviewer queues with GraphQL, and publishing only safe derived outputs.</p>
+      <div class="links">
+        <a href="./">Dashboard</a>
+        <a href="hasura-reviewer-hub.html">Hasura hub</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="technical-rigor-proof.html">Technical proof</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/hasura-oid-graphql-review-api">Example files</a>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Hasura tutorial fit">
+      <article><span>Backend</span><strong>Hasura</strong><small>GraphQL API</small></article>
+      <article><span>Database</span><strong>Postgres</strong><small>Review schema</small></article>
+      <article><span>Domain</span><strong>OID</strong><small>Inventory cleanup</small></article>
+      <article><span>Boundary</span><strong>Sanitized</strong><small>No secrets</small></article>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Article fit</p>
+        <h2>Implementation-backed Hasura tutorial</h2>
+        <p class="panel-copy">The tutorial would show developers how to build a small review API from a sanitized OID inventory. Hasura is the useful center of the article: it turns Postgres review tables into GraphQL queues, applies role permissions, and keeps mutation scope separate from public reporting.</p>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>Reader need</th><th>Packet answer</th></tr></thead>
+        <tbody>
+          <tr><td>Data modeling</td><td>Postgres tables for OID assets, findings, owners, status, and sanitized notes.</td></tr>
+          <tr><td>GraphQL usage</td><td>Queries for open findings, certificate rows, owner queues, and status updates.</td></tr>
+          <tr><td>Permissions</td><td>Separate reviewer and maintainer roles with restricted update scope.</td></tr>
+          <tr><td>Safe publishing</td><td>No private keys, customer inventories, raw scans, account exports, or copied page bodies.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Proof files</p>
+        <h2>Example package</h2>
+      </div>
+      <table class="handoff-table">
+        <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/hasura-oid-graphql-review-api/schema.sql">schema.sql</a></td><td>Postgres schema, indexes, and public seed records.</td></tr>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/hasura-oid-graphql-review-api/queries.graphql">queries.graphql</a></td><td>Review queue, certificate row, owner queue, and triage mutation examples.</td></tr>
+          <tr><td><a href="https://github.com/OOYXLOO/oid-knowledge-lab/blob/main/examples/hasura-oid-graphql-review-api/permissions.md">permissions.md</a></td><td>Suggested Hasura role boundary for reviewers and maintainers.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Proposed outline</p>
+        <h2>Article structure</h2>
+      </div>
+      <ol class="numbered-list">
+        <li>Why OID inventory cleanup benefits from a review API.</li>
+        <li>Create Postgres tables for sanitized OID assets and findings.</li>
+        <li>Track the tables in Hasura and inspect generated GraphQL.</li>
+        <li>Build open-finding, certificate-row, and owner-queue queries.</li>
+        <li>Add a restricted mutation for triage updates.</li>
+        <li>Define safe export rules for public Markdown or CSV handoffs.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <div>
+        <p class="eyebrow">Copy-ready pitch</p>
+        <h2>Short application text</h2>
+      </div>
+      <pre class="audit-handoff is-visible">I would like to pitch an implementation-backed Hasura tutorial: Build a GraphQL Review API for OID Inventory Cleanup.
+
+The article would show how to model sanitized Object Identifier inventory rows in Postgres, expose reviewer queues with Hasura GraphQL, add role-aware status updates, and publish safe Markdown/CSV summaries without private keys, customer inventories, raw scans, account exports, or copied third-party registry page bodies.
+
+Proof packet:
+https://ooyxloo.github.io/oid-knowledge-lab/hasura-oid-graphql-review-api-packet.html</pre>
+    </section>
+  </main>
+</body>
+</html>
