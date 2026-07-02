@@ -148,6 +148,7 @@ function renderSubmissionPage() {
         <a href="index.html">Static demo<span>Generated evidence log from a sample review thread.</span></a>
         <a href="playground.html">Interactive playground<span>Edit a Slack-style JSON thread and generate a Markdown handoff.</span></a>
         <a href="media/review-log-agent-slack-demo.mp4">Demo video<span>96-second MP4 walkthrough for reviewers and submission forms.</span></a>
+        <a href="docs/official-submission-requirements.md">Requirements map<span>Official submission items mapped to current evidence.</span></a>
         <a href="https://github.com/OOYXLOO/oid-knowledge-lab/tree/main/examples/review-log-agent-slack">Source snapshot<span>Public GitHub source copy for review.</span></a>
         <a href="https://oid-knowledge-lab.vercel.app/evidence-log-playground.html">Related proof<span>Adjacent evidence-log validation surface.</span></a>
       </nav>
@@ -169,6 +170,7 @@ function renderSubmissionPage() {
         <li><a href="docs/architecture.md">Architecture notes</a></li>
         <li><a href="docs/devpost-field-pack.md">Devpost field pack</a></li>
         <li><a href="docs/judge-verification.md">Judge verification checklist</a></li>
+        <li><a href="docs/official-submission-requirements.md">Official submission requirements map</a></li>
         <li><a href="docs/reviewer-quickstart.md">Reviewer quickstart</a></li>
         <li><a href="docs/demo-video-script.md">Demo video script</a></li>
         <li><a href="docs/submission-pack.md">Submission pack notes</a></li>
@@ -197,7 +199,7 @@ function renderSubmissionPage() {
         <div class="callout">Ready: synthetic Slack-style sample data and browser-local review flow that does not require private workspace content.</div>
         <div class="callout">Ready: Slack app manifest template with a slash command, message shortcut, and minimum bot scopes.</div>
         <div class="callout">Ready: public GitHub source snapshot in the OID Knowledge Lab repository.</div>
-        <div class="callout">Needed: Slack developer sandbox URL, live Slack app shape, and final Devpost submission.</div>
+        <div class="callout">Needed: Slack developer sandbox URL and final Devpost submission. This is the remaining account-side field, not a code gap.</div>
       </div>
       <p><a class="media-link" href="media/review-log-agent-slack-demo.mp4">Open the public MP4 demo video</a></p>
     </section>
