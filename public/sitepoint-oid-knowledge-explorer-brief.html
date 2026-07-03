@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SitePoint OID Knowledge Explorer Brief</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Article brief</p>
+      <h1>Build a searchable OID knowledge explorer</h1>
+      <p class="summary">A practical SitePoint-style tutorial brief for turning public Object Identifier metadata into a reproducible static web explorer with responsible crawl boundaries and client-side search.</p>
+      <div class="links">
+        <a href="index.html">Explorer</a>
+        <a href="source-policy.html">Source policy</a>
+        <a href="dataset-manifest.html">Dataset manifest</a>
+        <a href="writing-samples.html">Writing samples</a>
+        <a href="https://github.com/OOYXLOO/oid-knowledge-lab">Repository</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Working title</h2>
+      <pre><code>Build a searchable OID knowledge explorer with static JSON, client-side indexes, and reproducible crawl logs</code></pre>
+    </section>
+
+    <section class="panel">
+      <h2>One-sentence pitch</h2>
+      <p class="panel-copy">This article shows how to turn public Object Identifier data into a small, reproducible web knowledge explorer that records crawl boundaries, keeps private data out of the dataset, and gives reviewers a fast way to inspect identifiers, ownership hints, and evidence quality.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Reader value</h2>
+      <ul>
+        <li>Model public OID records as JSONL and static JSON indexes.</li>
+        <li>Separate raw crawl records, normalized records, coverage reports, and publishable site assets.</li>
+        <li>Build a small browser UI for search and review.</li>
+        <li>Keep robots.txt, rate limits, source attribution, and private-data boundaries visible.</li>
+        <li>Publish a static site that can be audited and reproduced later.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Why it fits SitePoint</h2>
+      <p class="panel-copy">SitePoint readers are developers and technical creators who value practical web projects. This topic combines a real data domain, static-site architecture, JavaScript indexing, responsible crawling boundaries, and a deployable demo.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Proposed outline</h2>
+      <ol>
+        <li>What Object Identifiers are and why a searchable explorer is useful.</li>
+        <li>Define the dataset boundaries: public metadata only, no credentials, no account exports, no private customer data.</li>
+        <li>Create a JSONL record shape for OID entries and source evidence.</li>
+        <li>Generate summary reports and a compact public index.</li>
+        <li>Build a static search UI with client-side filtering.</li>
+        <li>Add evidence panels for source, coverage, status, and review notes.</li>
+        <li>Add a publishable-output guard that blocks sensitive or non-public material.</li>
+        <li>Deploy the static site and keep crawl logs reproducible.</li>
+        <li>Extend the explorer for compliance, certificate policy review, or enterprise OID inventory checks.</li>
+      </ol>
+    </section>
+
+    <section class="panel">
+      <h2>Demo assets</h2>
+      <ul>
+        <li><a href="https://github.com/OOYXLOO/oid-knowledge-lab">Public project</a></li>
+        <li><a href="index.html">Static explorer</a></li>
+        <li><a href="source-policy.html">Source policy</a></li>
+        <li><a href="dataset-manifest.html">Dataset manifest</a></li>
+        <li><a href="writing-samples.html">Writing samples</a></li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Editorial boundary</h2>
+      <p class="panel-copy">The article can be rewritten to match SitePoint's editorial voice, length, and code sample preferences. Any final draft should avoid credentials, private account pages, copied private exports, payment information, KYC/tax data, or private customer datasets.</p>
+    </section>
+  </main>
+</body>
+</html>
