@@ -22,6 +22,7 @@ The current source adapter targets public OID-base pages through the site's site
 - Evidence Log Agent writing sample: <https://ooyxloo.github.io/oid-knowledge-lab/evidence-log-agent-writing-sample.html>
 - Full Evidence Log Agent Markdown sample: `writing-samples/build-an-evidence-log-agent-for-slack-review-threads.md`
 - SitePoint OID knowledge explorer brief: <https://ooyxloo.github.io/oid-knowledge-lab/sitepoint-oid-knowledge-explorer-brief.html>
+- Vultr Creator field pack: <https://ooyxloo.github.io/oid-knowledge-lab/vultr-creator-field-pack.html>
 - Developer docs trial pack: <https://ooyxloo.github.io/oid-knowledge-lab/developer-docs-trial-pack.html>
 - Developer docs sample diagnosis: <https://ooyxloo.github.io/oid-knowledge-lab/developer-docs-sample-diagnosis.html>
 - Airbyte OID knowledge pipeline packet: <https://ooyxloo.github.io/oid-knowledge-lab/airbyte-oid-knowledge-pipeline-packet.html>
